@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "freight-intelligence"
+version = "0.1.0"
+description = "End-to-end intelligent supply chain and logistics analytics platform"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+license = {text = "MIT"}
+
+authors = [
+    {name = "Diego Leonardo Alves de Andrade"}
+]
+
+dependencies = [
+    "pandas>=2.2",
+    "polars>=1.0",
+    "pyarrow>=18.0",
+    "duckdb>=1.1",
+    "numpy>=2.0",
+    "scikit-learn>=1.5",
+    "plotly>=5.24"
+]
+
+[project.optional-dependencies]
+
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.8",
+    "pre-commit>=4.0"
+]
+
+ml = [
+    "xgboost>=2.1",
+    "lightgbm>=4.5",
+    "shap>=0.46",
+    "mlflow>=2.18"
+]
+
+optimization = [
+    "ortools>=9.11"
+]
+
+app = [
+    "streamlit>=1.40",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.setuptools.packages.find]
+include = ["freight_intelligence*"]

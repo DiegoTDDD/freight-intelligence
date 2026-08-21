@@ -1,0 +1,107 @@
+# ==============================
+# PYTHON
+# ==============================
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# ==============================
+# JUPYTER
+# ==============================
+
+.ipynb_checkpoints/
+
+# ==============================
+# ENVIRONMENT / SECRETS
+# ==============================
+
+.env
+.env.*
+!.env.example
+
+# ==============================
+# DATA
+# ==============================
+
+data/raw/*
+data/bronze/*
+data/silver/*
+data/gold/*
+
+!data/raw/.gitkeep
+!data/bronze/.gitkeep
+!data/silver/.gitkeep
+!data/gold/.gitkeep
+
+*.csv
+*.csv.gz
+*.parquet
+*.feather
+*.arrow
+*.zip
+*.7z
+
+# ==============================
+# MACHINE LEARNING
+# ==============================
+
+models/
+artifacts/
+mlruns/
+*.pkl
+*.pickle
+*.joblib
+*.onnx
+
+# ==============================
+# DATABASE
+# ==============================
+
+*.duckdb
+*.db
+*.sqlite
+*.sqlite3
+
+# ==============================
+# LOGS
+# ==============================
+
+logs/
+*.log
+
+# ==============================
+# OS
+# ==============================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# IDE
+# ==============================
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+.idea/
+
+# ==============================
+# TEMPORARY
+# ==============================
+
+*.tmp
+*.temp
+*.bak
+*.
+# Python package metadata
+*.egg-info/
