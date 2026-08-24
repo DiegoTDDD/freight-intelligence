@@ -9,7 +9,7 @@ st.set_page_config(page_title="Macroeconomia & Escassez", layout="wide", initial
 # Conexão e extração de ambas as tabelas da Camada Gold
 @st.cache_data
 def carregar_dados():
-    engine = create_engine("postgresql://admin:adminpassword@localhost:5432/economics_gold")
+    engine = create_engine("postgresql://admin:adminpassword@db_gold:5432/economics_gold")
     df_macro = pd.read_sql("SELECT * FROM vw_gold_macroeconomia ORDER BY data", engine)
     df_btc = pd.read_sql("SELECT * FROM vw_gold_bitcoin ORDER BY data", engine)
     
