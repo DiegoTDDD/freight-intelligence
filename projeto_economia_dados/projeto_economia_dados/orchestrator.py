@@ -13,16 +13,14 @@ def run_pipeline():
     logging.info("Iniciando orquestração completa da plataforma de dados...")
     for step_name, script in pipeline_steps:
         logging.info(f"[{step_name}] Executando script: {script}")
-        if not sys.os.path.exists(script) if hasattr(sys, 'os') else False: # fallback check
-            pass
         result = subprocess.run([sys.executable, script], capture_output=True, text=True)
         if result.returncode != 0:
-            logging.error(f"Erro em [{step_name}] ({script}):
-{result.stderr}")
+            err_msg = f"Erro em [{step_name}] ({script}):\n{result.stderr}"
+            logging.error(err_msg)
             sys.exit(1)
         else:
-            logging.info(f"Sucesso em [{step_name}]:
-{result.stdout}")
+            out_msg = f"Sucesso em [{step_name}]:\n{result.stdout}"
+            logging.info(out_msg)
     logging.info("Pipeline executado com sucesso de ponta a ponta.")
 
 if __name__ == "__main__":
