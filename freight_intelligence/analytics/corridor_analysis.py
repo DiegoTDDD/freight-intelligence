@@ -1,16 +1,21 @@
-from pathlib import Path
-
 import polars as pl
 
 
-INPUT = Path("data/gold/faf5/top_corridors.parquet")
-OUTPUT = Path("data/gold/faf5/corridor_summary.parquet")
+INPUT_PATH = "data/gold/faf5/top_corridors.parquet"
+OUTPUT_PATH = "data/gold/faf5/corridor_summary.parquet"
 
 
-def main() -> None:
+def main():
     df = (
-        pl.scan_parquet(INPUT)
-        .group_by(["dms_orig", "dms_dest", "year"])
+        pl.scan_parquet(INPUT_PATH)
+        .filter(pl.col("dms_orig") != pl.col("dms_dest"))
+        .group_by(
+            [
+                "dms_orig",
+                "dms_dest",
+                "year",
+            ]
+        )
         .agg(
             pl.col("tons").sum().alias("total_tons")
         )
@@ -18,10 +23,9 @@ def main() -> None:
         .collect()
     )
 
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    df.write_parquet(OUTPUT)
+    df.write_parquet(OUTPUT_PATH)
 
-    print(f"Corridor analysis created: {OUTPUT}")
+    print(f"Corridor analysis created: {OUTPUT_PATH}")
     print(f"Records: {df.height}")
 
 
