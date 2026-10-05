@@ -22,6 +22,8 @@ def test_gold_datasets_exist():
         "commodity_mix.parquet",
         "mode_mix.parquet",
         "top_corridors.parquet",
+        "corridor_summary.parquet",
+        "corridor_concentration.parquet",
     ]
 
     for filename in expected:
@@ -85,6 +87,8 @@ def test_silver_metric_types():
     )
 
     assert set(metrics) == {"tons", "value", "tmiles"}
+
+
 def test_silver_no_nulls_in_key_columns():
     key_columns = [
         "dms_orig",
@@ -101,20 +105,21 @@ def test_silver_no_nulls_in_key_columns():
 
 
 def test_silver_metric_values_non_negative():
-    df = (
-        pl.scan_parquet(SILVER)
-        .select("value")
-        .collect()
-    )
+    df = pl.scan_parquet(SILVER).select("value").collect()
 
     assert df.get_column("value").min() >= 0
+
 
 def test_gold_annual_kpis_quality():
     df = pl.read_parquet(GOLD / "annual_kpis.parquet")
 
     assert df.get_column("year").min() == 2017
     assert df.get_column("year").max() == 2050
-    assert set(df.get_column("metric_type").unique()) == {"tons", "value", "tmiles"}
+    assert set(df.get_column("metric_type").unique()) == {
+        "tons",
+        "value",
+        "tmiles",
+    }
     assert df.get_column("total_value").min() >= 0
     assert df.get_column("avg_value").min() >= 0
     assert df.get_column("records").min() > 0
@@ -154,3 +159,27 @@ def test_gold_corridor_summary_quality():
     assert df.get_column("year").min() == 2017
     assert df.get_column("year").max() == 2050
     assert df.get_column("total_tons").min() >= 0
+    assert df.get_column("share").min() >= 0
+    assert df.get_column("share").max() <= 1
+    assert df.get_column("rank").min() == 1
+
+
+def test_gold_corridor_concentration_quality():
+    df = pl.read_parquet(GOLD / "corridor_concentration.parquet")
+
+    assert df.get_column("year").min() == 2017
+    assert df.get_column("year").max() == 2050
+
+    assert df.get_column("total_tons").min() >= 0
+    assert df.get_column("top10_tons").min() >= 0
+    assert df.get_column("top50_tons").min() >= 0
+    assert df.get_column("top100_tons").min() >= 0
+
+    assert df.get_column("top10_share").min() >= 0
+    assert df.get_column("top10_share").max() <= 1
+
+    assert df.get_column("top50_share").min() >= 0
+    assert df.get_column("top50_share").max() <= 1
+
+    assert df.get_column("top100_share").min() >= 0
+    assert df.get_column("top100_share").max() <= 1
