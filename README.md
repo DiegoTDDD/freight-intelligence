@@ -1,5 +1,7 @@
 # Freight Intelligence
 
+![CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/actions/workflows/ci_pipeline.yml/badge.svg)
+
 End-to-end freight intelligence platform for analyzing and forecasting freight flows using large-scale transportation data.
 
 ## Architecture
@@ -108,6 +110,10 @@ data/gold/faf5/
 ```
 
 These datasets support freight-flow analysis, forecasting, visualization and optimization.
+
+## Continuous Integration
+
+GitHub Actions runs the configuration tests (`tests/test_config.py`) on every push and pull request. `tests/test_faf5.py` validates the full FAF5 dataset (~100M rows), which is generated locally and is not stored in the repository, so it only runs where that data exists.
 
 ## Data Engineering Principles
 
