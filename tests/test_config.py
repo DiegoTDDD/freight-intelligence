@@ -1,7 +1,7 @@
 from freight_intelligence.config.settings import (
+    FAF_RAW_DIR,
     PROJECT_ROOT,
     RAW_DATA_DIR,
-    FAF_RAW_DIR,
 )
 
 

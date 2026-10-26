@@ -1,6 +1,5 @@
 import polars as pl
 
-
 INPUT_PATH = "data/gold/faf5/top_corridors.parquet"
 OUTPUT_PATH = "data/gold/faf5/corridor_summary.parquet"
 CONCENTRATION_OUTPUT_PATH = "data/gold/faf5/corridor_concentration.parquet"

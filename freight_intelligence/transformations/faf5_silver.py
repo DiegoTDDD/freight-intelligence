@@ -2,7 +2,6 @@ from pathlib import Path
 
 import polars as pl
 
-
 BRONZE_PATH = Path("data/bronze/faf5/faf5_forecasts.parquet")
 SILVER_DIR = Path("data/silver/faf5")
 
@@ -11,6 +10,11 @@ YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2025, 2030, 2035, 2040, 2045,
 
 def build_silver() -> Path:
     SILVER_DIR.mkdir(parents=True, exist_ok=True)
+
+    output = SILVER_DIR / "faf5_long.parquet"
+    if output.exists():
+        print(f"Silver dataset already exists; reusing: {output}", flush=True)
+        return output
 
     lf = pl.scan_parquet(BRONZE_PATH)
 
@@ -57,8 +61,6 @@ def build_silver() -> Path:
         .filter(pl.col("value").is_not_null())
         .sort(["year", "fr_orig", "fr_dest"])
     )
-
-    output = SILVER_DIR / "faf5_long.parquet"
 
     lf.sink_parquet(
         output,

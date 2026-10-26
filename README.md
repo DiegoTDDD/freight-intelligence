@@ -104,12 +104,40 @@ The analytics layer produces business-ready datasets:
 data/gold/faf5/
 
 ├── annual_kpis.parquet
+├── annual_growth.parquet
+├── annual_cagr.parquet
 ├── commodity_mix.parquet
+├── commodity_lookup.parquet
+├── commodity_growth.parquet
+├── commodity_share_change.parquet
 ├── mode_mix.parquet
-└── top_corridors.parquet
+├── top_corridors.parquet
+├── corridor_summary.parquet
+└── corridor_concentration.parquet
 ```
 
 These datasets support freight-flow analysis, forecasting, visualization and optimization.
+
+## Running the Pipeline
+
+Place the FAF5.5.1 source files in the data/raw/faf5/forecast/ directory:
+
+- FAF5.5.1_HiLoForecasts.csv
+- FAF5_metadata.xlsx
+
+The pipeline reuses existing Bronze and Silver Parquet files. Use fresh source data only after removing or updating the corresponding generated outputs. The `--skip-existing` option skips a step only when all of its expected output files exist; it does not check whether those files are up to date.
+
+Run the complete pipeline from the project root:
+
+    python -m freight_intelligence.pipeline
+
+Launch the dashboard after generating the datasets:
+
+    streamlit run dashboards/app.py
+
+Install application dependencies with:
+
+    python -m pip install -e ".[app]"
 
 ## Continuous Integration
 
@@ -169,17 +197,18 @@ freight-intelligence/
 - [x] Bronze layer
 - [x] Silver transformation
 - [x] Gold analytical layer
+- [x] Data quality tests
+- [x] Freight corridor analytics
+- [x] Interactive dashboard
 - [x] Automated tests
 - [x] Git repository
 - [x] GitHub integration
+- [x] Continuous integration (GitHub Actions)
 
 ### Next Steps
 
-- [ ] Data quality tests
-- [ ] Freight corridor analytics
-- [ ] Interactive dashboard
 - [ ] Forecasting models
 - [ ] Route optimization
 - [ ] API layer
 - [ ] Dockerization
-- [ ] CI/CD
+- [ ] Continuous deployment (CD)

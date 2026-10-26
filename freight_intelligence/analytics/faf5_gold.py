@@ -2,7 +2,6 @@ from pathlib import Path
 
 import polars as pl
 
-
 SILVER_PATH = Path("data/silver/faf5/faf5_long.parquet")
 GOLD_DIR = Path("data/gold/faf5")
 

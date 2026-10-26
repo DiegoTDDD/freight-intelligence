@@ -4,7 +4,6 @@ import polars as pl
 
 from freight_intelligence.config.settings import FAF_RAW_DIR
 
-
 CSV_PATH = FAF_RAW_DIR / "forecast" / "FAF5.5.1_HiLoForecasts.csv"
 BRONZE_DIR = Path("data/bronze/faf5")
 
@@ -15,6 +14,9 @@ def ingest_faf5() -> Path:
     BRONZE_DIR.mkdir(parents=True, exist_ok=True)
 
     output_path = BRONZE_DIR / "faf5_forecasts.parquet"
+    if output_path.exists():
+        print(f"Bronze dataset already exists; reusing: {output_path}", flush=True)
+        return output_path
 
     (
         pl.scan_csv(

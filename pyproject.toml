@@ -18,6 +18,7 @@ dependencies = [
     "pandas>=2.2",
     "polars>=1.0",
     "pyarrow>=18.0",
+    "openpyxl>=3.1",
     "duckdb>=1.1",
     "numpy>=2.0",
     "scikit-learn>=1.5",
