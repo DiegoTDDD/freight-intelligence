@@ -1,0 +1,101 @@
+name: How-to-run check
+
+# Runs the steps of the README section "Running it" for real, with the real FAF5.5.1 file, and then the
+# whole test suite (which checks the exact row counts of every layer). Heavy (about 100 million rows), so it
+# runs when this file changes and on demand ("Run workflow").
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/howto-check.yml"
+
+jobs:
+  readme-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: "README step 1: environment and installation"
+        run: |
+          python -m venv .venv
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
+          .venv/bin/pip install -e ".[app,dev]"
+
+      - name: "README step 2: find and download the FAF5.5.1 file"
+        run: |
+          python - <<'PY'
+          import os, re, shutil, sys, urllib.request, zipfile
+          from urllib.parse import urljoin
+          UA = {"User-Agent": "Mozilla/5.0"}
+          pages = ["https://faf.ornl.gov/faf5/", "https://faf.ornl.gov/faf5/Default.aspx", "https://www.bts.gov/faf",
+                   "https://www.bts.gov/faf/faf5", "https://www.bts.gov/archive/subject_areas/freight_transportation/faf"]
+          found = []
+          for p in pages:
+              try:
+                  html = urllib.request.urlopen(urllib.request.Request(p, headers=UA), timeout=60).read().decode("utf-8", "ignore")
+              except Exception as e:
+                  print(f"::notice::page {p}: {e}")
+                  continue
+              links = [urljoin(p, h) for h in re.findall(r'href=["\']([^"\']+)', html) if re.search(r"FAF5[^\"']*\.zip", h, re.I)]
+              print(f"::notice::page {p}: {len(html)} bytes, zip links: {len(links)}")
+              found += links
+          found = list(dict.fromkeys(found))
+          for l in found:
+              print("link found:", l)
+          candidates = [l for l in found if "5.5.1" in l and "hilo" in l.lower()]
+          candidates += ["https://faf.ornl.gov/faf5/data/download_files/FAF5.5.1_HiLoForecasts.zip"]
+          os.makedirs("data/raw/faf5/forecast", exist_ok=True)
+          for url in dict.fromkeys(candidates):
+              try:
+                  print("trying", url)
+                  req = urllib.request.Request(url, headers=UA)
+                  with urllib.request.urlopen(req, timeout=300) as r, open("faf.zip", "wb") as out:
+                      shutil.copyfileobj(r, out)
+                  with zipfile.ZipFile("faf.zip") as z:
+                      names = [n for n in z.namelist() if n.lower().endswith("hiloforecasts.csv")]
+                      print("zip content:", z.namelist()[:6])
+                      assert names, "no HiLoForecasts csv inside the zip"
+                      with z.open(names[0]) as src, open("data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv", "wb") as dst:
+                          shutil.copyfileobj(src, dst)
+                  print("downloaded from", url)
+                  break
+              except Exception as e:
+                  print(f"::notice::{url}: {e}")
+          else:
+              print("::error::could not download FAF5.5.1_HiLoForecasts from any link; links found on the pages: " + " | ".join(found[:12]))
+              sys.exit(1)
+          PY
+          ls -la data/raw/faf5/forecast
+          head -c 400 data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv; echo
+
+      - name: "README step 3: build the layers (Bronze, Silver, Gold and the corridor tables)"
+        run: |
+          python -m freight_intelligence.ingestion.faf5
+          python -m freight_intelligence.transformations.faf5_silver
+          python -m freight_intelligence.analytics.faf5_gold
+          python -m freight_intelligence.analytics.corridor_analysis
+          du -sh data/*
+
+      - name: "README step 5: the test suite (row counts of every layer)"
+        run: python -m pytest -v
+
+      - name: "README step 4: the dashboard starts"
+        run: |
+          nohup python -m streamlit run dashboards/app.py --server.headless true --server.port 8501 > dashboard.log 2>&1 &
+          for i in $(seq 1 45); do
+            if curl -sf http://127.0.0.1:8501/_stcore/health >/dev/null; then echo "dashboard is up"; exit 0; fi
+            sleep 2
+          done
+          tail -30 dashboard.log
+          exit 1
