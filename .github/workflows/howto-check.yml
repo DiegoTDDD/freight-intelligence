@@ -69,6 +69,7 @@ jobs:
                       with z.open(names[0]) as src, open("data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv", "wb") as dst:
                           shutil.copyfileobj(src, dst)
                   print("downloaded from", url)
+                  print("::notice::downloaded FAF5.5.1 from " + url)
                   break
               except Exception as e:
                   print(f"::notice::{url}: {e}")
@@ -78,6 +79,7 @@ jobs:
           PY
           ls -la data/raw/faf5/forecast
           head -c 400 data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv; echo
+          echo "::notice::csv header: $(head -1 data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv | cut -c1-300) | lines: $(wc -l < data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv)"
 
       - name: "README step 3: build the layers (Bronze, Silver, Gold and the corridor tables)"
         run: |
@@ -88,7 +90,12 @@ jobs:
           du -sh data/*
 
       - name: "README step 5: the test suite (row counts of every layer)"
-        run: python -m pytest -v
+        run: |
+          python -m pytest -q --tb=short 2>&1 | tee pytest.log
+          if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+            echo "::error::pytest failed: $(grep -E '^(FAILED|ERROR|E  )' pytest.log | head -10 | tr '\n' '|' | cut -c1-1200)"
+            exit 1
+          fi
 
       - name: "README step 4: the dashboard starts"
         run: |
