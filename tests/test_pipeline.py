@@ -2,6 +2,34 @@ import subprocess
 import sys
 from pathlib import Path
 
+STEP_NAMES = (
+    "ingest_faf5",
+    "build_silver",
+    "build_gold",
+    "build_commodity_lookup",
+    "build_annual_growth",
+    "build_annual_cagr",
+    "build_commodity_growth",
+    "build_commodity_share_change",
+    "build_corridor_analysis",
+)
+
+
+def patch_steps(monkeypatch, pipeline, called):
+    for name in STEP_NAMES:
+        if name in ("ingest_faf5", "build_silver"):
+            monkeypatch.setattr(
+                pipeline,
+                name,
+                lambda force=False, name=name: called.append((name, force)),
+            )
+        else:
+            monkeypatch.setattr(
+                pipeline,
+                name,
+                lambda name=name: called.append((name, None)),
+            )
+
 
 def test_pipeline_help_does_not_run_steps():
     result = subprocess.run(
@@ -18,69 +46,87 @@ def test_pipeline_help_does_not_run_steps():
     assert "Pipeline completed successfully." not in result.stdout
 
 
-def test_skip_existing_skips_steps_with_all_outputs(monkeypatch, tmp_path):
+def test_skip_existing_skips_steps_with_all_outputs(monkeypatch):
     from freight_intelligence import pipeline
 
     called = []
     monkeypatch.setattr(sys, "argv", ["pipeline.py", "--skip-existing"])
     monkeypatch.setattr(pipeline.os, "chdir", lambda path: None)
-    monkeypatch.setattr(
-        Path,
-        "is_file",
-        lambda self: True,
-    )
-
-    for name in (
-        "ingest_faf5",
-        "build_silver",
-        "build_gold",
-        "build_commodity_lookup",
-        "build_annual_growth",
-        "build_annual_cagr",
-        "build_commodity_growth",
-        "build_commodity_share_change",
-        "build_corridor_analysis",
-    ):
-        monkeypatch.setattr(
-            pipeline,
-            name,
-            lambda name=name: called.append(name),
-        )
+    monkeypatch.setattr(Path, "is_file", lambda self: True)
+    patch_steps(monkeypatch, pipeline, called)
 
     pipeline.main()
 
     assert called == []
 
 
-
-
-def test_skip_existing_runs_step_when_output_is_missing(monkeypatch):
+def test_default_run_executes_all_steps_and_forces_bronze_and_silver(
+    monkeypatch,
+):
     from freight_intelligence import pipeline
 
     called = []
+    monkeypatch.setattr(sys, "argv", ["pipeline.py"])
+    monkeypatch.setattr(pipeline.os, "chdir", lambda path: None)
+    patch_steps(monkeypatch, pipeline, called)
+
+    pipeline.main()
+
+    assert [name for name, force in called] == list(STEP_NAMES)
+    assert called[0] == ("ingest_faf5", True)
+    assert called[1] == ("build_silver", True)
+
+
+def test_missing_bronze_rebuilds_dependent_steps(monkeypatch):
+    from freight_intelligence import pipeline
+
+    called = []
+    missing_output = Path("data/bronze/faf5/faf5_forecasts.parquet")
+
     monkeypatch.setattr(sys, "argv", ["pipeline.py", "--skip-existing"])
     monkeypatch.setattr(pipeline.os, "chdir", lambda path: None)
+    monkeypatch.setattr(
+        Path,
+        "is_file",
+        lambda self: self != missing_output,
+    )
+    patch_steps(monkeypatch, pipeline, called)
 
-    missing_output = Path("data/bronze/faf5/faf5_forecasts.parquet")
-    monkeypatch.setattr(Path, "is_file", lambda self: self != missing_output)
+    pipeline.main()
 
-    for name in (
+    assert [name for name, force in called] == [
         "ingest_faf5",
         "build_silver",
         "build_gold",
-        "build_commodity_lookup",
         "build_annual_growth",
         "build_annual_cagr",
         "build_commodity_growth",
         "build_commodity_share_change",
         "build_corridor_analysis",
-    ):
-        monkeypatch.setattr(
-            pipeline,
-            name,
-            lambda name=name: called.append(name),
-        )
+    ]
+    assert ("ingest_faf5", False) in called
+    assert ("build_silver", True) in called
+
+
+def test_missing_lookup_rebuilds_only_commodity_dependents(monkeypatch):
+    from freight_intelligence import pipeline
+
+    called = []
+    missing_output = Path("data/gold/faf5/commodity_lookup.parquet")
+
+    monkeypatch.setattr(sys, "argv", ["pipeline.py", "--skip-existing"])
+    monkeypatch.setattr(pipeline.os, "chdir", lambda path: None)
+    monkeypatch.setattr(
+        Path,
+        "is_file",
+        lambda self: self != missing_output,
+    )
+    patch_steps(monkeypatch, pipeline, called)
 
     pipeline.main()
 
-    assert called == ["ingest_faf5"]
+    assert [name for name, force in called] == [
+        "build_commodity_lookup",
+        "build_commodity_growth",
+        "build_commodity_share_change",
+    ]

@@ -8,11 +8,11 @@ SILVER_DIR = Path("data/silver/faf5")
 YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2025, 2030, 2035, 2040, 2045, 2050]
 
 
-def build_silver() -> Path:
+def build_silver(force: bool = False) -> Path:
     SILVER_DIR.mkdir(parents=True, exist_ok=True)
 
     output = SILVER_DIR / "faf5_long.parquet"
-    if output.exists():
+    if output.exists() and not force:
         print(f"Silver dataset already exists; reusing: {output}", flush=True)
         return output
 

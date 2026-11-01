@@ -8,13 +8,13 @@ CSV_PATH = FAF_RAW_DIR / "forecast" / "FAF5.5.1_HiLoForecasts.csv"
 BRONZE_DIR = Path("data/bronze/faf5")
 
 
-def ingest_faf5() -> Path:
+def ingest_faf5(force: bool = False) -> Path:
     """Convert the official FAF5 CSV into partitioned Parquet."""
 
     BRONZE_DIR.mkdir(parents=True, exist_ok=True)
 
     output_path = BRONZE_DIR / "faf5_forecasts.parquet"
-    if output_path.exists():
+    if output_path.exists() and not force:
         print(f"Bronze dataset already exists; reusing: {output_path}", flush=True)
         return output_path
 

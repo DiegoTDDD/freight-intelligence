@@ -22,15 +22,30 @@ def main() -> None:
     parser.add_argument(
         "--skip-existing",
         action="store_true",
-        help="Skip steps only when all expected outputs exist.",
+        help=(
+            "Skip steps whose outputs exist, unless an upstream dependency "
+            "must be rebuilt."
+        ),
     )
     args = parser.parse_args()
 
     os.chdir(Path(__file__).resolve().parents[1])
 
     steps = [
-        ("Bronze ingestion", ingest_faf5, ["data/bronze/faf5/faf5_forecasts.parquet"]),
-        ("Silver transformation", build_silver, ["data/silver/faf5/faf5_long.parquet"]),
+        (
+            "Bronze ingestion",
+            ingest_faf5,
+            ["data/bronze/faf5/faf5_forecasts.parquet"],
+            [],
+            True,
+        ),
+        (
+            "Silver transformation",
+            build_silver,
+            ["data/silver/faf5/faf5_long.parquet"],
+            ["Bronze ingestion"],
+            True,
+        ),
         (
             "Gold analytics",
             build_gold,
@@ -40,23 +55,43 @@ def main() -> None:
                 "data/gold/faf5/top_corridors.parquet",
                 "data/gold/faf5/commodity_mix.parquet",
             ],
+            ["Silver transformation"],
+            False,
         ),
         (
             "Commodity lookup",
             build_commodity_lookup,
             ["data/gold/faf5/commodity_lookup.parquet"],
+            [],
+            False,
         ),
-        ("Annual growth", build_annual_growth, ["data/gold/faf5/annual_growth.parquet"]),
-        ("Annual CAGR", build_annual_cagr, ["data/gold/faf5/annual_cagr.parquet"]),
+        (
+            "Annual growth",
+            build_annual_growth,
+            ["data/gold/faf5/annual_growth.parquet"],
+            ["Gold analytics"],
+            False,
+        ),
+        (
+            "Annual CAGR",
+            build_annual_cagr,
+            ["data/gold/faf5/annual_cagr.parquet"],
+            ["Gold analytics"],
+            False,
+        ),
         (
             "Commodity growth",
             build_commodity_growth,
             ["data/gold/faf5/commodity_growth.parquet"],
+            ["Gold analytics", "Commodity lookup"],
+            False,
         ),
         (
             "Commodity share change",
             build_commodity_share_change,
             ["data/gold/faf5/commodity_share_change.parquet"],
+            ["Gold analytics", "Commodity lookup"],
+            False,
         ),
         (
             "Corridor analysis",
@@ -65,16 +100,30 @@ def main() -> None:
                 "data/gold/faf5/corridor_summary.parquet",
                 "data/gold/faf5/corridor_concentration.parquet",
             ],
+            ["Gold analytics"],
+            False,
         ),
     ]
 
-    for name, step, outputs in steps:
-        if args.skip_existing and all(Path(output).is_file() for output in outputs):
+    rebuilt = {}
+
+    for name, step, outputs, dependencies, accepts_force in steps:
+        dependency_rebuilt = any(rebuilt[dependency] for dependency in dependencies)
+        outputs_exist = all(Path(output).is_file() for output in outputs)
+
+        if args.skip_existing and outputs_exist and not dependency_rebuilt:
             print(f"\n===== {name}: skipped (outputs exist) =====", flush=True)
+            rebuilt[name] = False
             continue
 
         print(f"\n===== {name} =====", flush=True)
-        step()
+
+        if accepts_force:
+            step(force=not args.skip_existing or dependency_rebuilt)
+        else:
+            step()
+
+        rebuilt[name] = True
 
     print("\nPipeline completed successfully.", flush=True)
 
