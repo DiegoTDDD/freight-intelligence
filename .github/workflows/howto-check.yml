@@ -26,13 +26,13 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: "README step 1: environment and installation"
+      - name: "README: environment and python -m pip install -e \".[app,dev]\""
         run: |
           python -m venv .venv
           echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
           .venv/bin/pip install -e ".[app,dev]"
 
-      - name: "README step 2: find and download the FAF5.5.1 file"
+      - name: "README: put FAF5.5.1_HiLoForecasts.csv and FAF5_metadata.xlsx in data/raw/faf5/forecast/"
         run: |
           python - <<'PY'
           import os, re, shutil, sys, urllib.request, zipfile
@@ -63,11 +63,14 @@ jobs:
                   with urllib.request.urlopen(req, timeout=300) as r, open("faf.zip", "wb") as out:
                       shutil.copyfileobj(r, out)
                   with zipfile.ZipFile("faf.zip") as z:
-                      names = [n for n in z.namelist() if n.lower().endswith("hiloforecasts.csv")]
-                      print("zip content:", z.namelist()[:6])
-                      assert names, "no HiLoForecasts csv inside the zip"
-                      with z.open(names[0]) as src, open("data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv", "wb") as dst:
-                          shutil.copyfileobj(src, dst)
+                      print("zip content:", z.namelist())
+                      print("::notice::zip content: " + " | ".join(z.namelist()[:12]))
+                      for n in z.namelist():
+                          if n.endswith("/"):
+                              continue
+                          with z.open(n) as src, open(os.path.join("data/raw/faf5/forecast", os.path.basename(n)), "wb") as dst:
+                              shutil.copyfileobj(src, dst)
+                  assert os.path.exists("data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv"), "csv missing in the zip"
                   print("downloaded from", url)
                   print("::notice::downloaded FAF5.5.1 from " + url)
                   break
@@ -76,20 +79,40 @@ jobs:
           else:
               print("::error::could not download FAF5.5.1_HiLoForecasts from any link; links found on the pages: " + " | ".join(found[:12]))
               sys.exit(1)
+          meta = "data/raw/faf5/forecast/FAF5_metadata.xlsx"
+          if not os.path.exists(meta):
+              xlsx = []
+              for p in pages[:2]:
+                  try:
+                      html = urllib.request.urlopen(urllib.request.Request(p, headers=UA), timeout=60).read().decode("utf-8", "ignore")
+                  except Exception:
+                      continue
+                  xlsx += [urljoin(p, h) for h in re.findall(r'href=["\']([^"\']+)', html) if re.search(r"metadata|\.xlsx", h, re.I)]
+              xlsx = list(dict.fromkeys(xlsx))
+              print("::notice::metadata-like links: " + " | ".join(xlsx[:10]))
+              for url in xlsx:
+                  if url.lower().endswith(".xlsx"):
+                      try:
+                          urllib.request.urlretrieve(url, meta)
+                          print("::notice::metadata downloaded from " + url)
+                          break
+                      except Exception as e:
+                          print(f"::notice::{url}: {e}")
+          if not os.path.exists(meta):
+              print("::error::FAF5_metadata.xlsx was not in the zip and no .xlsx link was found")
+              sys.exit(1)
           PY
           ls -la data/raw/faf5/forecast
           head -c 400 data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv; echo
           echo "::notice::csv header: $(head -1 data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv | cut -c1-300) | lines: $(wc -l < data/raw/faf5/forecast/FAF5.5.1_HiLoForecasts.csv)"
 
-      - name: "README step 3: build the layers (Bronze, Silver, Gold and the corridor tables)"
+      - name: "README: python -m freight_intelligence.pipeline (the complete pipeline)"
         run: |
-          python -m freight_intelligence.ingestion.faf5
-          python -m freight_intelligence.transformations.faf5_silver
-          python -m freight_intelligence.analytics.faf5_gold
-          python -m freight_intelligence.analytics.corridor_analysis
+          python -m freight_intelligence.pipeline 2>&1 | tail -40
+          ls -la data/gold/faf5
           du -sh data/*
 
-      - name: "README step 5: the test suite (row counts of every layer)"
+      - name: "README: python -m pytest (row counts and quality of every layer)"
         run: |
           python -m pytest -q --tb=short 2>&1 | tee pytest.log
           if [ "${PIPESTATUS[0]}" -ne 0 ]; then
@@ -97,7 +120,7 @@ jobs:
             exit 1
           fi
 
-      - name: "README step 4: the dashboard starts"
+      - name: "README: streamlit run dashboards/app.py starts"
         run: |
           nohup python -m streamlit run dashboards/app.py --server.headless true --server.port 8501 > dashboard.log 2>&1 &
           for i in $(seq 1 45); do
