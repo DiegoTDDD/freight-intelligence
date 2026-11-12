@@ -12,8 +12,8 @@ foi autorizado. O histórico original permanece em roteiro_original.md.
 | Otimização | Oferta/demanda, capacidade e custos explícitos | Implementado e testado |
 | API | Endpoints e permissões documentados | Implementado e testado |
 | Docker | Imagens reproduzíveis e verificações reais | Concluído; imagem ampliada aprovada localmente e no GitHub |
-| CD | Publicar somente depois de CI aprovado | Configuração preparada; ativação e prova remota pendentes |
-| Portfólio | Guia de uso, arquitetura, resultados e limitações | Documentação em consolidação; publicação final pendente |
+| CD | Publicar somente depois de CI aprovado | Deploy hook autorizado e salvo; primeira prova automática pendente |
+| Portfólio | Guia de uso, arquitetura, resultados e limitações | Documentado e versão be0280d publicada; conferência final em andamento |
 | Brasil | Fonte oficial, unidades, filtros e downloads | Implementado com ANTT ferroviário |
 | Rotas reais | Traçado geográfico, fonte e exportação | Implementado com OSRM/OSM, perfil de automóvel de referência |
 | Português | Navegação, controles e explicações em português | Implementado, com seleção de inglês |

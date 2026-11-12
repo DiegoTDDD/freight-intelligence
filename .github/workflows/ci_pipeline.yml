@@ -7,6 +7,27 @@ on:
     branches: [ main ]
 
 jobs:
+  deploy:
+    name: Deploy tested dashboard
+    needs: [test, docker, dashboard]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/loginexus-preview-20261112'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: loginexus-preview-deployment
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+    - name: Deploy the exact revision that passed all checks
+      env:
+        RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      run: python scripts/deploy_dashboard.py
+
   dashboard:
     name: Hosted dashboard image
     runs-on: ubuntu-latest

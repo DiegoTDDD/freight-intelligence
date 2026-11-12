@@ -1,4 +1,4 @@
-# Dashboard preview draft. Does not deploy until explicitly created in Render.
+# GitHub Actions deploys the exact tested SHA using a private Render deploy hook.
 services:
   - type: web
     name: loginexus-dashboard-preview
@@ -6,7 +6,7 @@ services:
     plan: free
     dockerfilePath: ./deployment/Dockerfile.dashboard
     dockerContext: .
-    autoDeployTrigger: checksPass
+    autoDeployTrigger: "off"
     healthCheckPath: /_stcore/health
     envVars:
       - key: PORT

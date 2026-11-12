@@ -36,10 +36,12 @@ Site: https://loginexus-dashboard-preview.onrender.com/
 Branch: `codex/loginexus-preview-20261112`.
 PR: https://github.com/DiegoTDDD/freight-intelligence/pull/1
 
-A versão ampliada está sendo preparada para publicação. Configuração de CI inclui
-push na branch vinculada; o Blueprint pede implantação somente após checks aprovados.
-A ativação na hospedagem, a execução remota e a conferência pública ainda precisam
-ser observadas antes de declarar o CD e a publicação final concluídos. Não houve
+Versão ampliada `be0280d` publicada manualmente com sucesso no serviço existente.
+Configuração de CI inclui push na branch vinculada. Como a origem do serviço é
+uma URL pública, a publicação contínua usa o deploy hook oficial, autorizado pelo
+proprietário e guardado como segredo GitHub. O CI só publica o SHA completo após
+os jobs de validação aprovarem. A primeira execução automática e a conferência
+pública final ainda precisam ser observadas antes de declarar o CD concluído. Não houve
 merge em main. Os registros históricos de development_handoff.md podem descrever
 estados antigos; este documento prevalece para o estado consolidado.
 
