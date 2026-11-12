@@ -11,7 +11,7 @@ foi autorizado. O histórico original permanece em roteiro_original.md.
 | Previsões | Histórico verificável, validação e teste reservados | Concluído com ANTT 2006–2025; limites descritos em brasil.md |
 | Otimização | Oferta/demanda, capacidade e custos explícitos | Implementado e testado |
 | API | Endpoints e permissões documentados | Implementado e testado |
-| Docker | Imagens reproduzíveis e verificações reais | Implementado; imagem ampliada em validação |
+| Docker | Imagens reproduzíveis e verificações reais | Concluído; imagem ampliada aprovada localmente e no GitHub |
 | CD | Publicar somente depois de CI aprovado | Configuração preparada; ativação e prova remota pendentes |
 | Portfólio | Guia de uso, arquitetura, resultados e limitações | Documentação em consolidação; publicação final pendente |
 | Brasil | Fonte oficial, unidades, filtros e downloads | Implementado com ANTT ferroviário |
@@ -30,6 +30,11 @@ As saídas Gold afetadas foram recalculadas e os resultados dependentes revalida
 Suíte completa local: **320 testes aprovados**, incluindo os testes dos dados reais.
 Ruff aprovado. O único aviso remanescente é uma descontinuação do TestClient upstream.
 Não significa falha da aplicação.
+
+A revisão `499a252` também passou nas quatro verificações remotas: Windows,
+Ubuntu, API/contêineres e imagem do painel. Execução do envio:
+https://github.com/DiegoTDDD/freight-intelligence/actions/runs/43301679357
+O mapa e a área brasileira foram conferidos visualmente no navegador.
 
 ## Limite da conclusão
 

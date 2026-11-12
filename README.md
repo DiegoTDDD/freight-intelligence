@@ -45,6 +45,10 @@ Previsões são estimativas, não promessas. A base brasileira cobre ferrovias c
 não todos os modais. Rotas para automóvel não certificam trânsito de caminhões.
 O snapshot pode ser recuperado e reconstruído fora do provedor atual.
 
+![Área brasileira em português](docs/images/brasil.png)
+
+![Traçado real São Paulo–Campinas](docs/images/rota-real.png)
+
 ## Architecture
 
 The project follows a Medallion Architecture:

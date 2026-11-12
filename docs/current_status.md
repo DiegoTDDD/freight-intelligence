@@ -26,6 +26,10 @@ Imagem ampliada do painel passou no teste de 512 MiB, sem rede e somente leitura
 incluindo a área brasileira, exemplo de rota salvo e troca de idioma.
 Aviso remanescente: descontinuação upstream do Starlette TestClient.
 
+CI remoto da revisão `499a252`: quatro verificações aprovadas (Windows, Ubuntu,
+API/contêineres e imagem do painel), execução 43301679357. As imagens de referência
+do painel estão em docs/images; fontes e limitações permanecem documentadas.
+
 ## Publicação
 
 Site: https://loginexus-dashboard-preview.onrender.com/
