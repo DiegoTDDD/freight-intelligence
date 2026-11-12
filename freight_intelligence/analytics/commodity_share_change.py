@@ -37,7 +37,6 @@ def main():
 
     print(f"Commodity share change analysis created: {OUTPUT_PATH}")
     print(f"Records: {share_change.height}")
-    print(share_change.head(10))
 
 
 if __name__ == "__main__":

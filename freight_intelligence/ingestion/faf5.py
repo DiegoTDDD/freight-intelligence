@@ -3,6 +3,7 @@ from pathlib import Path
 import polars as pl
 
 from freight_intelligence.config.settings import FAF_RAW_DIR
+from freight_intelligence.utils.atomic_output import atomic_output
 
 CSV_PATH = FAF_RAW_DIR / "forecast" / "FAF5.5.1_HiLoForecasts.csv"
 BRONZE_DIR = Path("data/bronze/faf5")
@@ -18,17 +19,15 @@ def ingest_faf5(force: bool = False) -> Path:
         print(f"Bronze dataset already exists; reusing: {output_path}", flush=True)
         return output_path
 
-    (
+    with atomic_output(output_path) as temporary:
         pl.scan_csv(
             CSV_PATH,
             infer_schema_length=10_000,
             null_values=["NULL", "null", ""],
-        )
-        .sink_parquet(
-            output_path,
+        ).sink_parquet(
+            temporary,
             compression="zstd",
         )
-    )
 
     return output_path
 

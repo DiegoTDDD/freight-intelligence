@@ -8,7 +8,13 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    name: Lightweight tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -21,9 +27,45 @@ jobs:
     - name: Install project and test tools
       run: |
         python -m pip install --upgrade pip
-        pip install -e . pytest
+        python -m pip install -e ".[app,dev]"
+
+    - name: Check code quality
+      run: python -m ruff check .
 
     - name: Run tests
       # tests/test_faf5.py validates the full local FAF5 dataset (~100M rows),
-      # which is not stored in the repository, so only the config tests run in CI.
-      run: python -m pytest tests/test_config.py -q
+      # which is not stored in the repository. Run lightweight tests with temporary fixtures.
+      run: python -m pytest tests --ignore=tests/test_faf5.py -q --junitxml=test-results.xml
+
+    - name: Preserve test report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-${{ matrix.os }}
+        path: test-results.xml
+        if-no-files-found: ignore
+        retention-days: 7
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Validate optional users-registry Compose configuration
+      run: python3 scripts/check_users_compose.py
+
+    - name: Validate review-only deployment configuration
+      run: python3 scripts/check_production_config.py
+
+    - name: Build API image
+      run: docker build -t loginexus-api:ci .
+
+    - name: Verify pinned runtime dependencies
+      run: docker run --rm loginexus-api:ci python -m freight_intelligence.utils.runtime_lock
+
+    - name: Check local and authenticated API containers
+      run: python3 scripts/check_api_container.py --image loginexus-api:ci
+
+    - name: Check proxy-to-API permission boundaries
+      run: python3 scripts/check_proxy_runtime.py --image loginexus-api:ci

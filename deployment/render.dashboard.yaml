@@ -1,0 +1,13 @@
+# Dashboard preview draft. Does not deploy until explicitly created in Render.
+services:
+  - type: web
+    name: loginexus-dashboard-preview
+    runtime: docker
+    plan: free
+    dockerfilePath: ./deployment/Dockerfile.dashboard
+    dockerContext: .
+    autoDeployTrigger: "off"
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: PORT
+        value: "8501"

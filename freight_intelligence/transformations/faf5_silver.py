@@ -2,6 +2,8 @@ from pathlib import Path
 
 import polars as pl
 
+from freight_intelligence.utils.atomic_output import atomic_output
+
 BRONZE_PATH = Path("data/bronze/faf5/faf5_forecasts.parquet")
 SILVER_DIR = Path("data/silver/faf5")
 
@@ -62,10 +64,8 @@ def build_silver(force: bool = False) -> Path:
         .sort(["year", "fr_orig", "fr_dest"])
     )
 
-    lf.sink_parquet(
-        output,
-        compression="zstd",
-    )
+    with atomic_output(output) as temporary:
+        lf.sink_parquet(temporary, compression="zstd")
 
     return output
 

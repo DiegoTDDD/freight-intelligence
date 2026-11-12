@@ -130,3 +130,43 @@ def test_missing_lookup_rebuilds_only_commodity_dependents(monkeypatch):
         "build_commodity_growth",
         "build_commodity_share_change",
     ]
+
+
+def test_plan_never_invokes_steps_and_tracks_dependency_rebuilds(monkeypatch, capsys):
+    import json
+
+    from freight_intelligence import pipeline
+
+    called = []
+    monkeypatch.setattr(sys, "argv", ["pipeline.py", "--plan", "--skip-existing"])
+    monkeypatch.setattr(pipeline.os, "chdir", lambda path: None)
+    missing = Path("data/bronze/faf5/faf5_forecasts.parquet")
+    monkeypatch.setattr(Path, "is_file", lambda self: self != missing)
+    patch_steps(monkeypatch, pipeline, called)
+    pipeline.main()
+    plan = json.loads(capsys.readouterr().out)
+    assert plan["plan_only"] is True
+    assert called == []
+    steps = {row["step"]: row for row in plan["steps"]}
+    assert steps["Bronze ingestion"]["missing_outputs"] == [str(missing).replace('\\', '/')]
+    assert steps["Silver transformation"]["action"] == "run"
+    assert "upstream" in steps["Silver transformation"]["reason"]
+    assert steps["Commodity lookup"]["action"] == "skip"
+    assert steps["Gold analytics"]["large_data_step"] is True
+
+
+def test_plan_default_reports_full_rebuild_without_executing(monkeypatch, capsys):
+    import json
+
+    from freight_intelligence import pipeline
+
+    called = []
+    monkeypatch.setattr(sys, "argv", ["pipeline.py", "--plan"])
+    monkeypatch.setattr(pipeline.os, "chdir", lambda path: None)
+    monkeypatch.setattr(Path, "is_file", lambda self: True)
+    patch_steps(monkeypatch, pipeline, called)
+    pipeline.main()
+    plan = json.loads(capsys.readouterr().out)
+    assert called == []
+    assert len(plan["steps"]) == 9
+    assert all(row["action"] == "run" for row in plan["steps"])

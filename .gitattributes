@@ -1,0 +1,4 @@
+# Preserve snapshot bytes so the published files match their SHA-256 manifest.
+deployment/preview_data/** -text
+# This is an archived upstream document; preserve original formatting.
+deployment/preview_data/data/raw/faf5/forecast/bts_FAF_HiLoForecasts_README_20230929.txt -whitespace

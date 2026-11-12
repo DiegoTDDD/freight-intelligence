@@ -1,0 +1,97 @@
+{
+  "source": "Local analytical aggregates derived from public FAF5.5.1",
+  "interpretation": "Includes scenario projection years; not observed future demand",
+  "excluded": "Raw datasets, Silver, credentials and saved transport scenarios",
+  "files": [
+    {
+      "path": "data/gold/faf5/annual_kpis.parquet",
+      "bytes": 2515,
+      "sha256": "8b0f9d96d741f5e47984bc8499e6bf5e60661e4d538678ef434f340b455e6e4e"
+    },
+    {
+      "path": "data/gold/faf5/annual_growth.parquet",
+      "bytes": 4425,
+      "sha256": "6eb976928cc7a5a6345b82203b0520dcadeb71a2fc96f864ec956616db5f3222"
+    },
+    {
+      "path": "data/gold/faf5/annual_cagr.parquet",
+      "bytes": 2193,
+      "sha256": "b569b67b61971d7937dc58d384e1c219dfc46f2022cfd2399b4cf42f449506f6"
+    },
+    {
+      "path": "data/gold/faf5/mode_mix.parquet",
+      "bytes": 3225,
+      "sha256": "a81ead3c58abc93220c713efe05e1ddfb18cc4c940a386e8b0d8b5479ddf4682"
+    },
+    {
+      "path": "data/gold/faf5/commodity_mix.parquet",
+      "bytes": 10307,
+      "sha256": "dd9d6db9cd4dfb4afa11a5c733427f8dd56877367b3c9ea3bca7cbce6fe18ff9"
+    },
+    {
+      "path": "data/gold/faf5/commodity_lookup.parquet",
+      "bytes": 1543,
+      "sha256": "dd498f2789f0e077d5675e0ece68994b789ac535eb548afe1d7df905836d2051"
+    },
+    {
+      "path": "data/gold/faf5/commodity_growth.parquet",
+      "bytes": 4806,
+      "sha256": "c8ae4194a9c7fd3a8b1d09192438fa6e77d9ae132bd206beae73e3998d990cf4"
+    },
+    {
+      "path": "data/gold/faf5/commodity_share_change.parquet",
+      "bytes": 4174,
+      "sha256": "d4d84005a5d0530674624ebf8fa1010816364a006a93b0bb0a85f0abc3d9010b"
+    },
+    {
+      "path": "data/gold/faf5/top_corridors.parquet",
+      "bytes": 4634460,
+      "sha256": "375f18fdd517c36ce27069ca94cf30efe3d8b4e9c7d2bde667e9af28e4600844"
+    },
+    {
+      "path": "data/gold/faf5/corridor_summary.parquet",
+      "bytes": 3874600,
+      "sha256": "97054346d389d588563b7b37364d0e757ecec491b6e119734df713f95895a228"
+    },
+    {
+      "path": "data/gold/faf5/corridor_concentration.parquet",
+      "bytes": 3523,
+      "sha256": "d142600db33cfb6db17be2b0fdb6cc0aaf75758b4704a36e99cab0dd9d0e9e4a"
+    },
+    {
+      "path": "data/raw/faf5/forecast/bts_FAF_HiLoForecasts_README_20230929.txt",
+      "bytes": 10944,
+      "sha256": "5bfe4bccd10cd47c26c17b873fd5a657a297c348e153aef858b9f2ad1d8edfaa"
+    },
+    {
+      "path": "models/faf5/annual/metadata.json",
+      "bytes": 590,
+      "sha256": "a9fd00c72357ea43e8a680726be43aeb6f6be7ae2d03ee7223eb9648e74ccf11"
+    },
+    {
+      "path": "models/faf5/annual/forecast.parquet",
+      "bytes": 2582,
+      "sha256": "5daee26a754c82e5872bef6f227fc349c444154b79579b1f2e67fb7ff7e6c561"
+    },
+    {
+      "path": "models/faf5/annual/evaluation.parquet",
+      "bytes": 3837,
+      "sha256": "07ba842940429f10a8f40f100c104e32632733b4d40e5bbcbf92e95edb687a25"
+    },
+    {
+      "path": "artifacts/evaluation/annual/metadata.json",
+      "bytes": 836,
+      "sha256": "7964b9399e02921cb5b8ab710b9a5df5e4c1e761f135a70194f91a6a9e813ce4"
+    },
+    {
+      "path": "artifacts/evaluation/annual/predictions.parquet",
+      "bytes": 6261,
+      "sha256": "96b65bc89a8883b0c5705c66399de1aff481167bf704f9144cc5c1ebcfdc0f8a"
+    },
+    {
+      "path": "artifacts/evaluation/annual/scores.parquet",
+      "bytes": 4251,
+      "sha256": "0c2d4a6b58232c0b45be6d908b56485d63e66d98cde60595f92dcbf135341760"
+    }
+  ]
+}

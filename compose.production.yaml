@@ -1,0 +1,48 @@
+# Review-only deployment template. Default bindings remain loopback.
+services:
+  api:
+    ports: !reset []
+    environment:
+      LOGINEXUS_REQUIRE_AUTH: "true"
+      LOGINEXUS_API_KEY: ""
+      LOGINEXUS_API_USERS_FILE: /run/loginexus/users.json
+    volumes:
+      - type: bind
+        source: "${LOGINEXUS_USERS_FILE:?Set the private users registry path}"
+        target: /run/loginexus/users.json
+        read_only: true
+        bind:
+          create_host_path: false
+    networks: [backend]
+  proxy:
+    image: caddy:2@sha256:9c1b76fb701c1f77383d3124d9f626e38bcf83bc1255ed47475d4f2420701d03
+    environment:
+      LOGINEXUS_DOMAIN: "${LOGINEXUS_DOMAIN:?Set the intended DNS hostname}"
+    ports:
+      - "${LOGINEXUS_BIND_ADDRESS:-127.0.0.1}:80:80"
+      - "${LOGINEXUS_BIND_ADDRESS:-127.0.0.1}:443:443"
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    security_opt: [no-new-privileges:true]
+    volumes:
+      - type: bind
+        source: ./deployment/Caddyfile
+        target: /etc/caddy/Caddyfile
+        read_only: true
+        bind:
+          create_host_path: false
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [backend, edge]
+    depends_on:
+      api:
+        condition: service_healthy
+networks:
+  backend:
+    internal: true
+  edge: {}
+volumes:
+  caddy_data: {}
+  caddy_config: {}
