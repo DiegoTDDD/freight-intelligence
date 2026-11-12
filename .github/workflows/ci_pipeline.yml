@@ -46,6 +46,19 @@ jobs:
         if-no-files-found: ignore
         retention-days: 7
 
+    - name: Build verified source and data recovery package
+      if: runner.os == 'Linux'
+      run: python scripts/package_recovery.py --output recovery-package
+
+    - name: Preserve recovery package
+      if: runner.os == 'Linux'
+      uses: actions/upload-artifact@v4
+      with:
+        name: loginexus-recovery-${{ github.sha }}
+        path: recovery-package/*
+        if-no-files-found: error
+        retention-days: 30
+
   docker:
     runs-on: ubuntu-latest
     timeout-minutes: 15

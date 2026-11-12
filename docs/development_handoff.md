@@ -241,3 +241,23 @@ versions, and analytical/forecast/temporal views passed inside a read-only netwo
 publication requires explicit authorization for commit/push to DiegoTDDD/freight-intelligence.
 No Git staging, commit, push or Render service creation has occurred. Owner is logged into
 Render; use the dashboard-specific blueprint, not the earlier empty-data API-only draft.
+
+### 2026-11-12 publicação concluída e recuperação reproduzível
+
+Correção dos registros anteriores: commit d3f32a1 foi autorizado, publicado na branch
+codex/loginexus-preview-20261112 e implantado no Render Free. URL pública:
+https://loginexus-dashboard-preview.onrender.com/. PR #1 ainda em rascunho, main intacta.
+CI Windows, Ubuntu e Docker aprovados; 276 testes leves locais na revisão publicada.
+Nenhuma garantia de hospedagem gratuita eterna, nenhum recurso pago contratado.
+
+Backup independente de código/snapshot gerado e verificado. Continuação local adiciona
+scripts/package_recovery.py, docs/recovery.md e cinco testes: arquivo commitado versus
+alteração local, recusa de sobrescrita, caminhos privados/inseguros e hash inválido.
+Todos passaram, Ruff passou. O guia anterior não selecionava o snapshot ao abrir pelo
+inicializador padrão: agora instrui LOGINEXUS_DASHBOARD_DATA_ROOT explicitamente ou
+Docker, que já configura esse diretório. Mudanças desta continuação ainda locais.
+Consultar current_status.md para o estado consolidado, não os estados cronológicos acima.
+
+Integração seguinte: o CI Ubuntu passa a gerar o ZIP e SHA-256 da revisão testada,
+com retenção explícita de 30 dias. Testes de recuperação (5) e Ruff aprovados.
+A ferramenta e o guia são incluídos no PR existente, sem merge e sem nova implantação.

@@ -153,6 +153,10 @@ Install application dependencies with:
 
 ## Continuous Integration
 
+The Ubuntu job also builds a verified source/data recovery ZIP and SHA-256 checksum
+for the committed revision. GitHub retains this downloadable artifact for 30 days;
+save an independent copy for longer retention. See [recovery instructions](docs/recovery.md).
+
 GitHub Actions runs the lightweight tests on every push and pull request:
 
     python -m pytest tests --ignore=tests/test_faf5.py -q
