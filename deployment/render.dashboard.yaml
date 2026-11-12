@@ -6,7 +6,7 @@ services:
     plan: free
     dockerfilePath: ./deployment/Dockerfile.dashboard
     dockerContext: .
-    autoDeployTrigger: "off"
+    autoDeployTrigger: checksPass
     healthCheckPath: /_stcore/health
     envVars:
       - key: PORT

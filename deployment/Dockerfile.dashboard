@@ -9,6 +9,8 @@ COPY freight_intelligence ./freight_intelligence
 COPY dashboards ./dashboards
 COPY docs/examples ./docs/examples
 COPY deployment/preview_data ./preview-data
+COPY deployment/brazil_data ./deployment/brazil_data
+COPY deployment/route_examples ./deployment/route_examples
 RUN python -m pip install --no-deps -e . && python -m pip check
 ENV LOGINEXUS_DASHBOARD_DATA_ROOT=/app/preview-data HOME=/tmp
 USER 10001:10001

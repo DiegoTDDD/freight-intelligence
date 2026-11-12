@@ -35,7 +35,7 @@ def evaluate_temporally(data, min_train_points=4, horizon_points=1, test_points=
     if any(data.null_count().row(0)):
         raise ValueError("Input contains null values")
     if data["metric_type"].dtype != pl.String or not set(data["metric_type"]).issubset(
-        {"tons", "value", "tmiles"}
+        {"tons", "value", "tmiles", "tonne_km"}
     ):
         raise ValueError("Unsupported metric_type")
     if not data["year"].dtype.is_integer() or not data["total_value"].dtype.is_numeric():

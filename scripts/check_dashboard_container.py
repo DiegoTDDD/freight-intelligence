@@ -10,6 +10,7 @@ from pathlib import Path
 def check_inside_container():
     from streamlit.testing.v1 import AppTest
 
+    from freight_intelligence.dashboard_i18n import translate
     from freight_intelligence.utils.runtime_lock import main as verify_runtime
 
     verify_runtime(["--lock", "/app/requirements/dashboard-linux-py313.lock"])
@@ -24,16 +25,24 @@ def check_inside_container():
         "Freight analytics": "Annual Freight Evolution",
         "Scenario extrapolations": "Annual scenario extrapolations",
         "Temporal evaluation": "Temporal model evaluation",
+        "Brazilian freight": "Brazilian railway freight",
     }
     for workspace, heading in expectations.items():
         app.selectbox(key="workspace").select(workspace).run()
         if app.exception or app.error:
             raise RuntimeError(f"{workspace}: {list(app.exception)} {list(app.error)}")
-        if heading not in [element.value for element in app.subheader]:
+        if translate(heading) not in [element.value for element in app.subheader]:
             raise RuntimeError(f"{workspace}: expected content missing")
         if not app.dataframe or not app.metric:
             raise RuntimeError(f"{workspace}: expected data and metrics missing")
         print(f"Dashboard workspace passed: {workspace}")
+    app.selectbox(key="workspace").select("Real road routes").run()
+    app.button[1].click().run()
+    if app.exception or not app.metric or app.metric[0].value != "93.17":
+        raise RuntimeError("Saved real-road route failed offline")
+    app.selectbox(key="language").select("en").run()
+    if app.exception or app.subheader[0].value != "Routes on real roads":
+        raise RuntimeError("Language switch failed")
     print(f"Verified {len(manifest['files'])} snapshot files; no network or writable app data")
 
 

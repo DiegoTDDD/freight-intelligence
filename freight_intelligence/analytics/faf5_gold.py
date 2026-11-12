@@ -36,7 +36,7 @@ def build_gold() -> None:
 
     by_mode = (
         lf.filter(pl.col("metric_type") == "tons")
-        .group_by(["year", "fr_inmode"])
+        .group_by(["year", "dms_mode"])
         .agg(
             pl.col("value").sum().alias("tons"),
         )
@@ -65,7 +65,7 @@ def build_gold() -> None:
                 "year",
                 "dms_orig",
                 "dms_dest",
-                "fr_inmode",
+                "dms_mode",
             ]
         )
         .agg(

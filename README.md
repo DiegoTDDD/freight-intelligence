@@ -1,8 +1,49 @@
-# Freight Intelligence
+# LogiNexus — Freight Intelligence
 
 ![CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/actions/workflows/ci_pipeline.yml/badge.svg)
 
 End-to-end freight intelligence platform for analyzing and forecasting freight flows using large-scale transportation data.
+
+**[Abrir o painel online](https://loginexus-dashboard-preview.onrender.com/)** ·
+[Roteiro e entregas](docs/plano_finalizacao.md) · [Dados brasileiros](docs/brasil.md) ·
+[Rotas reais](docs/rotas_reais.md) · [Recuperação](docs/recovery.md)
+
+O LogiNexus reúne engenharia de dados em escala, análises de cargas, avaliação de
+previsões e otimização de transporte. O painel abre em português e permite selecionar
+inglês. A base FAF dos EUA inclui estimativas e cenários; a área brasileira usa
+movimentações ferroviárias declaradas à ANTT entre 2006 e 2025. As fontes e unidades
+permanecem separadas. A demonstração também consulta rotas reais sobre OpenStreetMap,
+com perfil de automóvel de referência e limites explícitos para uso com caminhões.
+
+### Experimentar sem processar os dados grandes
+
+A imagem do painel inclui os pequenos agregados públicos, a avaliação histórica
+brasileira e um trajeto geográfico salvo. Na raiz do repositório, com Docker:
+
+```text
+docker build -f deployment/Dockerfile.dashboard -t loginexus-dashboard:local .
+docker run --rm -p 127.0.0.1:8502:8501 loginexus-dashboard:local
+```
+
+Abra `http://127.0.0.1:8502/`. Não é necessário baixar a base bruta nem executar o
+pipeline de 97,6 milhões de linhas para usar essa demonstração. Consultas novas de
+rotas e o mapa de fundo precisam de acesso à internet. O serviço de hospedagem
+gratuita pode demorar para reativar depois de um período sem acesso.
+
+### Resultados verificáveis
+
+- Pipeline real: 2.503.352 linhas Bronze e 97.630.728 linhas Silver; execução completa
+  concluída localmente em 12/11/2026. Indicadores de modal doméstico usam `dms_mode`.
+- Brasil: 20 anos completos de dados ANTT, com fontes e hashes; 2023–2025 reservados
+  para teste. WAPE do modelo escolhido na validação: 4,75% em TU e 1,61% em TKU.
+- Rotas: traçado GeoJSON real, fonte e data; cálculo separado de cenários com custos
+  e restrições explícitos. Não há alegação de economia operacional medida.
+- Validação: 320 testes locais aprovados, incluindo os dados reais, além das
+  verificações de imagem e das rotinas de CI. Detalhes em [finalização](docs/plano_finalizacao.md).
+
+Previsões são estimativas, não promessas. A base brasileira cobre ferrovias concedidas,
+não todos os modais. Rotas para automóvel não certificam trânsito de caminhões.
+O snapshot pode ser recuperado e reconstruído fora do provedor atual.
 
 ## Architecture
 

@@ -270,3 +270,17 @@ scripts/check_dashboard_container.py. The checker validates 59 runtime pins and
 views via Streamlit AppTest under 512 MiB, no network, read-only root filesystem,
 non-root image user and dropped capabilities. Local integration passed against
 loginexus-dashboard:preview. No pipeline or hosted service change is performed.
+
+### 2026-11-12 escopo ampliado autorizado
+
+Usuário autorizou concluir todo o roteiro de 12 etapas e adicionar as três frentes
+antes da finalização. Pipeline completo executado com sucesso; dados reais validados.
+ANTT/SIADE 2006–2025 incorporado com 20 anos completos, TU/TKU, hashes e relatórios
+históricos com validação até 2022 e teste 2023–2025. PT padrão e inglês opcional;
+rotas geográficas OSRM/OSM com GeoJSON e exemplo São Paulo–Campinas. Perfil de
+automóvel explicitamente separado de roteamento operacional de caminhões.
+Corrigido modal doméstico FAF para dms_mode (antes fr_inmode). Gold/modelos e
+snapshot derivados recalculados. Suíte completa 320 passou e Ruff passou. Imagem
+loginexus-dashboard:final passou offline/read-only/512 MiB com os novos workspaces.
+Implementação pronta; publicação remota e prova de CD ainda pendentes neste registro.
+Nenhum recurso pago e nenhum merge em main. Consultar plano_finalizacao.md.

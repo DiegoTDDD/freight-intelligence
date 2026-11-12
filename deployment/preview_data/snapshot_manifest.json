@@ -6,27 +6,27 @@
     {
       "path": "data/gold/faf5/annual_kpis.parquet",
       "bytes": 2515,
-      "sha256": "8b0f9d96d741f5e47984bc8499e6bf5e60661e4d538678ef434f340b455e6e4e"
+      "sha256": "c98a90688690f32f693572584ef334e7203dfc3d83ae1566bea1f9c08f125a97"
     },
     {
       "path": "data/gold/faf5/annual_growth.parquet",
-      "bytes": 4425,
-      "sha256": "6eb976928cc7a5a6345b82203b0520dcadeb71a2fc96f864ec956616db5f3222"
+      "bytes": 5860,
+      "sha256": "152f5629c94221bf160a41308ae13eb421041c7291a27232b131cf621b76bac9"
     },
     {
       "path": "data/gold/faf5/annual_cagr.parquet",
       "bytes": 2193,
-      "sha256": "b569b67b61971d7937dc58d384e1c219dfc46f2022cfd2399b4cf42f449506f6"
+      "sha256": "160e86d40da7674dec3ae1976824f5bef0df3f100cc958a773359dacf871f8a7"
     },
     {
       "path": "data/gold/faf5/mode_mix.parquet",
-      "bytes": 3225,
-      "sha256": "a81ead3c58abc93220c713efe05e1ddfb18cc4c940a386e8b0d8b5479ddf4682"
+      "bytes": 3252,
+      "sha256": "c074631ef0105950174ee4ed68a6cb6476cbb2bc79b95d1dbd2b5e5df10beec7"
     },
     {
       "path": "data/gold/faf5/commodity_mix.parquet",
-      "bytes": 10307,
-      "sha256": "dd9d6db9cd4dfb4afa11a5c733427f8dd56877367b3c9ea3bca7cbce6fe18ff9"
+      "bytes": 10315,
+      "sha256": "e4219fcc223dc057223b8150b3547e419da12f29d83b5f160146010573882132"
     },
     {
       "path": "data/gold/faf5/commodity_lookup.parquet",
@@ -36,27 +36,27 @@
     {
       "path": "data/gold/faf5/commodity_growth.parquet",
       "bytes": 4806,
-      "sha256": "c8ae4194a9c7fd3a8b1d09192438fa6e77d9ae132bd206beae73e3998d990cf4"
+      "sha256": "4ebc7d57579cf7cad8cd9021dfe0707ecad6fd9101d887d22e9659f98d9acc02"
     },
     {
       "path": "data/gold/faf5/commodity_share_change.parquet",
       "bytes": 4174,
-      "sha256": "d4d84005a5d0530674624ebf8fa1010816364a006a93b0bb0a85f0abc3d9010b"
+      "sha256": "7094bdc1fe299ea918dd85e9068cd282fbfef773214146248a3e2ad417eda4df"
     },
     {
       "path": "data/gold/faf5/top_corridors.parquet",
-      "bytes": 4634460,
-      "sha256": "375f18fdd517c36ce27069ca94cf30efe3d8b4e9c7d2bde667e9af28e4600844"
+      "bytes": 7159587,
+      "sha256": "033cc0c0cbf59f04c7729d3a6f9dcabb492366d523a084eb3b1ed709d8161c88"
     },
     {
       "path": "data/gold/faf5/corridor_summary.parquet",
-      "bytes": 3874600,
-      "sha256": "97054346d389d588563b7b37364d0e757ecec491b6e119734df713f95895a228"
+      "bytes": 3858173,
+      "sha256": "0b525e3eba36b66b5bd4edc2e88f7470e8cf88fe8c18fe2af42d649a407fd78b"
     },
     {
       "path": "data/gold/faf5/corridor_concentration.parquet",
       "bytes": 3523,
-      "sha256": "d142600db33cfb6db17be2b0fdb6cc0aaf75758b4704a36e99cab0dd9d0e9e4a"
+      "sha256": "ca81c0efbcde5ad116ea483e7647bb45abb5d34b1857f37ba21549fcbbe267b4"
     },
     {
       "path": "data/raw/faf5/forecast/bts_FAF_HiLoForecasts_README_20230929.txt",
@@ -66,32 +66,32 @@
     {
       "path": "models/faf5/annual/metadata.json",
       "bytes": 590,
-      "sha256": "a9fd00c72357ea43e8a680726be43aeb6f6be7ae2d03ee7223eb9648e74ccf11"
+      "sha256": "4b48eb4614ce80358dca16ba17c2c86edf08cb8b9d88da5f9dc03dfab3f2089b"
     },
     {
       "path": "models/faf5/annual/forecast.parquet",
       "bytes": 2582,
-      "sha256": "5daee26a754c82e5872bef6f227fc349c444154b79579b1f2e67fb7ff7e6c561"
+      "sha256": "2e5cae62a621c13087b08338ecf26e6b20cf96b15b1237107e5d3ecb17f5a3bb"
     },
     {
       "path": "models/faf5/annual/evaluation.parquet",
       "bytes": 3837,
-      "sha256": "07ba842940429f10a8f40f100c104e32632733b4d40e5bbcbf92e95edb687a25"
+      "sha256": "7e6c1c4c95a2408f32636d15889fbc92c652905ad7f44509c68a5f18238dbbe2"
     },
     {
       "path": "artifacts/evaluation/annual/metadata.json",
       "bytes": 836,
-      "sha256": "7964b9399e02921cb5b8ab710b9a5df5e4c1e761f135a70194f91a6a9e813ce4"
+      "sha256": "34785ed58ca9e41159ddf444a2f5e41da5d8d3178e96a63b3d9ca9b077dc9cc7"
     },
     {
       "path": "artifacts/evaluation/annual/predictions.parquet",
       "bytes": 6261,
-      "sha256": "96b65bc89a8883b0c5705c66399de1aff481167bf704f9144cc5c1ebcfdc0f8a"
+      "sha256": "9d420343fe95fe096670d6ac8fd08d33c1c63bb61e2fb169d86a615698bf624e"
     },
     {
       "path": "artifacts/evaluation/annual/scores.parquet",
       "bytes": 4251,
-      "sha256": "0c2d4a6b58232c0b45be6d908b56485d63e66d98cde60595f92dcbf135341760"
+      "sha256": "f72001197339538d0001214a3773946221766230266640602a61835d50f813b6"
     }
   ]
 }

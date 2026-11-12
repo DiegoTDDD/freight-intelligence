@@ -1,9 +1,10 @@
 # Recuperar o LogiNexus
 
-O ZIP contém uma revisão do código e os pequenos agregados públicos FAF incluídos nela.
+O ZIP contém uma revisão do código, os pequenos agregados públicos FAF e ANTT,
+a avaliação histórica brasileira e o exemplo de rota geográfica incluídos nela.
 Não inclui ambientes Python, imagem Docker completa, senhas, uploads de sessão,
 dados brutos nem o Silver de aproximadamente 100 milhões de linhas.
-A revisão exata está em `REVISION.txt`; o manifesto do snapshot registra seus hashes.
+A revisão exata está em `REVISION.txt`; os manifestos dos conjuntos registram seus hashes.
 
 ## Abrir a cópia com os dados incluídos
 

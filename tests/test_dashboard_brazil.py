@@ -1,0 +1,37 @@
+from pathlib import Path
+
+from streamlit.testing.v1 import AppTest
+
+APP = Path(__file__).resolve().parents[1] / "dashboards/app.py"
+
+
+def test_portuguese_default_and_brazil_observed_evaluation(monkeypatch):
+    monkeypatch.delenv("LOGINEXUS_LANGUAGE", raising=False)
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    assert not app.exception
+    assert app.selectbox(key="language").value == "pt"
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    assert not app.exception and not app.error
+    assert any(item.value == "Transporte ferroviário de cargas no Brasil" for item in app.subheader)
+    assert any(item.label == "Anos completos" and item.value == "20" for item in app.metric)
+    assert any("2023–2025" in item.value for item in app.caption)
+    app.selectbox(key="brazil_metric").select("tonne_km").run()
+    assert not app.exception
+    assert "TKU" in app.metric[0].value
+    app.selectbox(key="language").select("en").run()
+    assert any(item.value == "Brazilian railway freight" for item in app.subheader)
+
+
+def test_saved_real_route_and_consent_before_live_requests(monkeypatch):
+    monkeypatch.delenv("LOGINEXUS_LANGUAGE", raising=False)
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Real road routes").run()
+    app.button[0].click().run()
+    assert any("Confirme" in item.value for item in app.error)
+    assert not app.metric
+    app.button[1].click().run()
+    assert not app.exception
+    assert any(
+        item.label == "Distância da rota (km)" and item.value == "93.17" for item in app.metric
+    )
+    assert "OSRM" in app.get("json")[0].value

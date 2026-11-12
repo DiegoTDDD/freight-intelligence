@@ -1,0 +1,212 @@
+{
+  "catalog_url": "https://dados.antt.gov.br/api/3/action/package_show?id=438a5184-09db-49a3-88c8-0bad418b4409",
+  "catalog_sha256": "d70e098bced0c5f4f7a96b65d3a52cbe2e98b0c7ebada53469c9955aa0e4e9da",
+  "retrieved_at": "2026-11-12",
+  "license": "Creative Commons Atribuição",
+  "excluded_partial_years": "2026 onward",
+  "resources": [
+    {
+      "year": 2006,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/67965b5b-daee-4b9d-83cd-baff16e5427d/download/producao_origem_destino_2006.csv",
+      "sha256": "93d1625b763064e76a11ba57ba1f8d90ca20620eaed63dbbd9260b68c0d29c83",
+      "bytes": 862284,
+      "rows": 11499,
+      "months": 12
+    },
+    {
+      "year": 2007,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/bcfcc472-284e-4aff-991b-08d1465a0396/download/producao_origem_destino_2007.csv",
+      "sha256": "6bb372e271a7eca8db921835cb7f85ade9ce739e45175900d6b724b2e40986f6",
+      "bytes": 849455,
+      "rows": 11356,
+      "months": 12
+    },
+    {
+      "year": 2008,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/9e3335c2-6aab-44ce-90a6-d369eff35a65/download/producao_origem_destino_2008.csv",
+      "sha256": "5ecd1d56b394e0a67a81bb1001dddc9903e19690d70e2bc95d0dcc1c1d873dfa",
+      "bytes": 805632,
+      "rows": 10791,
+      "months": 12
+    },
+    {
+      "year": 2009,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/e22c7159-7a0d-433f-9f64-9b6138e50d15/download/producao_origem_destino_2009.csv",
+      "sha256": "c9a6c035757c44818a99fcc448956588c13fbecc7188352a81b4965e8bab6904",
+      "bytes": 747758,
+      "rows": 10077,
+      "months": 12
+    },
+    {
+      "year": 2010,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/5eb5d49c-7bd1-4a7c-85a2-bcb51f3d0cd1/download/producao_origem_destino_2010.csv",
+      "sha256": "c8197cb3da9a7e123e81b980276d1c61e8468c085532201c9b699b9e886fd48b",
+      "bytes": 712142,
+      "rows": 9467,
+      "months": 12
+    },
+    {
+      "year": 2011,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/780985a0-7b44-430b-b334-8f18d4634b56/download/producao_origem_destino_2011.csv",
+      "sha256": "79f17b3a2a296e9d40bb5b2a5d724e5575a054e7ab32e9bc2b17b47dce8e19ec",
+      "bytes": 662138,
+      "rows": 8784,
+      "months": 12
+    },
+    {
+      "year": 2012,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/a8735e59-5e9a-4e26-a85d-a8ac4b4ba0c5/download/producao_origem_destino_2012.csv",
+      "sha256": "b1a8a616420f932066f8be8059c995fc972259efe2f9db29e6193520e3a4eef8",
+      "bytes": 644004,
+      "rows": 8493,
+      "months": 12
+    },
+    {
+      "year": 2013,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/3af9247f-60cf-4598-8c7c-8cb6220ecb38/download/producao_origem_destino_2013.csv",
+      "sha256": "2c742384b57222bb7d4c62831899428147c6ea2b05877bd0227066eeb1fa41dc",
+      "bytes": 605259,
+      "rows": 7962,
+      "months": 12
+    },
+    {
+      "year": 2014,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/70417d23-57bd-4f0e-9a59-783dcf08f693/download/producao_origem_destino_2014.csv",
+      "sha256": "f7849831d9abcfe801b2f0972e18f3671ab36dd2665149de37a34dba3322805a",
+      "bytes": 557256,
+      "rows": 7278,
+      "months": 12
+    },
+    {
+      "year": 2015,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/c85e9743-af99-44b1-94ad-230d6d6d9495/download/producao_origem_destino_2015.csv",
+      "sha256": "ee6675a0cb0517feb91d50d68c8e91ffc390c3e971c2a03dc18cf38d5089494d",
+      "bytes": 543511,
+      "rows": 7082,
+      "months": 12
+    },
+    {
+      "year": 2016,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/3585517d-2a4c-48da-9f54-f1cf12a1e9d4/download/producao_origem_destino_2016.csv",
+      "sha256": "fd2277c6a0370fa917e85007ef2f888045202840f45b4a21b1ff16559facd792",
+      "bytes": 532459,
+      "rows": 6962,
+      "months": 12
+    },
+    {
+      "year": 2017,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/1d72f99e-9a5e-45c3-b9f4-72898409b4a3/download/producao_origem_destino_2017.csv",
+      "sha256": "7ab9641ce13d40b7be8a8d8fb6fe9a8f4d4f098dd98f6a50501073ee86d5173d",
+      "bytes": 548871,
+      "rows": 7139,
+      "months": 12
+    },
+    {
+      "year": 2018,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/ff4dce38-bdb4-43ab-8d64-7b9ad0936e52/download/producao_origem_destino_2018.csv",
+      "sha256": "93f6cbc032479fbb141acd7aa11ed6f55428ffff9f944f89ea843bb1a747aa80",
+      "bytes": 587080,
+      "rows": 7598,
+      "months": 12
+    },
+    {
+      "year": 2019,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/052db0cf-13fa-4d47-8b28-034e079b6b18/download/producao_origem_destino_2019.csv",
+      "sha256": "d8b95d12da135fda7717e02b3f3742d06a849ff2879a7355b54a3bb451d789ea",
+      "bytes": 613614,
+      "rows": 7965,
+      "months": 12
+    },
+    {
+      "year": 2020,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/5e5e8507-aadc-4c9e-a654-237f1c9ef3aa/download/producao_origem_destino_2020.csv",
+      "sha256": "fc0fd03dd61c62db50c50b8cd286fb3250deb0cf00807592e6c2f37ded562eff",
+      "bytes": 596198,
+      "rows": 7748,
+      "months": 12
+    },
+    {
+      "year": 2021,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/1fa04c4d-dde4-416a-b794-9006b6cf5df1/download/producao_origem_destino_2021.csv",
+      "sha256": "08d37a3d8224c9ef6d7368bc213d98282a19d48714bebab999f36d8db213f3cd",
+      "bytes": 612764,
+      "rows": 7955,
+      "months": 12
+    },
+    {
+      "year": 2022,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/9a823c7c-0a07-43e5-ba66-e6305fe51138/download/producao_origem_destino_2022.csv",
+      "sha256": "2771a886016599a0c9988acf089cba4f9c7a0758c6d7092390ac601bec58426a",
+      "bytes": 611115,
+      "rows": 7972,
+      "months": 12
+    },
+    {
+      "year": 2023,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/758da4ad-5546-4051-96fd-29fdc5a4076e/download/producao_origem_destino_2023.csv",
+      "sha256": "e82ccde481d0d3b385b11dfc932a49e03eedb0f4f03f7d0dba4112f3c8d6122e",
+      "bytes": 609408,
+      "rows": 7928,
+      "months": 12
+    },
+    {
+      "year": 2024,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/c32ca914-0aa3-4282-b92a-6eb4200c5033/download/producao_origem_destino_2024.csv",
+      "sha256": "5f596d970ca568679b1db2962f82b92b21e39ad9f6fe871137613d4dcf7a0673",
+      "bytes": 607661,
+      "rows": 7911,
+      "months": 12
+    },
+    {
+      "year": 2025,
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/d7263808-bd77-4153-9910-49e041d73b21/download/producao_origem_destino_2025.csv",
+      "sha256": "265a40f1759fcb6af5a83d28b687d3621d8cf50054ae777f80e7cb0d9e863114",
+      "bytes": 601420,
+      "rows": 7802,
+      "months": 12
+    }
+  ],
+  "interpretation": "Reported cargo movements on federally conceded Brazilian railways; not all modes. TU sums movements and may count cargo again on successive reporting flows. Administrative reports may be revised; coverage can change between years.",
+  "files": [
+    {
+      "path": "annual.parquet",
+      "bytes": 1494,
+      "sha256": "e98c82630593621232fbd96a664928ec5472d0a489d3231e713a82f85108b302"
+    },
+    {
+      "path": "commodities.parquet",
+      "bytes": 16708,
+      "sha256": "838000d38d6cd467dbbff6f9d83d583cbaaa64373e82b449211b718c07f21520"
+    },
+    {
+      "path": "corridors.parquet",
+      "bytes": 14107,
+      "sha256": "6e20a50cbd1edc77e47c6e445b1d2abcf635e97e7a790755988cd65e0ba29b48"
+    },
+    {
+      "path": "historical_evaluation.zip",
+      "bytes": 5797,
+      "sha256": "4c72acbf271b5864702ab486b432a82ff35be44d948ba07d46ae62bffb257ca8"
+    },
+    {
+      "path": "monthly.parquet",
+      "bytes": 3911,
+      "sha256": "2e6c4456ed07aadf052889d8a8442548d5aca19013cdb76af4e2d95e989ba48c"
+    },
+    {
+      "path": "observations.csv",
+      "bytes": 1049,
+      "sha256": "e427e932ca4a19e8c14cb4950eb5d2302088aa6088fb9bf534adb3ca75ac18a5"
+    },
+    {
+      "path": "railways.parquet",
+      "bytes": 4142,
+      "sha256": "44afd14e45f88ef706b08ca7263af770b127f963ee05f86b9669033ea8790fa3"
+    },
+    {
+      "path": "source_manifest.json",
+      "bytes": 583,
+      "sha256": "396837e22e84646929f6e09d81dd07c9459debfeeb34ed22958d84ad7193e053"
+    }
+  ]
+}

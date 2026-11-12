@@ -2,7 +2,7 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, codex/loginexus-preview-20261112 ]
   pull_request:
     branches: [ main ]
 

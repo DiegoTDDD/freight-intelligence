@@ -116,3 +116,6 @@ secrets/
 !deployment/preview_data/models/**
 !deployment/preview_data/artifacts/
 !deployment/preview_data/artifacts/**
+!deployment/brazil_data/*.parquet
+!deployment/brazil_data/*.csv
+!deployment/brazil_data/*.zip

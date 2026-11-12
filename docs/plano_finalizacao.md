@@ -1,0 +1,39 @@
+# Plano consolidado de finalização
+
+Escopo aprovado pelo usuário: concluir as 12 etapas do roteiro original e incluir
+rotas reais, análises brasileiras e experiência em português antes de finalizar.
+A autorização inclui a validação completa dos dados locais; nenhum recurso pago
+foi autorizado. O histórico original permanece em roteiro_original.md.
+
+| Entrega | Critério | Estado nesta revisão |
+| --- | --- | --- |
+| Pipeline | Execução completa e teste dos dados reais | Concluído; log preservado e testes aprovados |
+| Previsões | Histórico verificável, validação e teste reservados | Concluído com ANTT 2006–2025; limites descritos em brasil.md |
+| Otimização | Oferta/demanda, capacidade e custos explícitos | Implementado e testado |
+| API | Endpoints e permissões documentados | Implementado e testado |
+| Docker | Imagens reproduzíveis e verificações reais | Implementado; imagem ampliada em validação |
+| CD | Publicar somente depois de CI aprovado | Configuração preparada; ativação e prova remota pendentes |
+| Portfólio | Guia de uso, arquitetura, resultados e limitações | Documentação em consolidação; publicação final pendente |
+| Brasil | Fonte oficial, unidades, filtros e downloads | Implementado com ANTT ferroviário |
+| Rotas reais | Traçado geográfico, fonte e exportação | Implementado com OSRM/OSM, perfil de automóvel de referência |
+| Português | Navegação, controles e explicações em português | Implementado, com seleção de inglês |
+
+## Evidência local
+
+Em 12/11/2026 o pipeline completo terminou com sucesso, incluindo Bronze, Silver
+e todas as saídas Gold. A execução usou dois threads do Polars e escrita em staging
+para Bronze/Silver. Os dados reais têm 2.503.352 linhas Bronze e 97.630.728 Silver.
+Depois foi corrigida a dimensão modal Gold: `dms_mode` representa o trecho doméstico;
+`fr_inmode` representa a entrada internacional e não deve ser usado em seu lugar.
+As saídas Gold afetadas foram recalculadas e os resultados dependentes revalidados.
+
+Suíte completa local: **320 testes aprovados**, incluindo os testes dos dados reais.
+Ruff aprovado. O único aviso remanescente é uma descontinuação do TestClient upstream.
+Não significa falha da aplicação.
+
+## Limite da conclusão
+
+Concluir este escopo entrega uma demonstração de portfólio reproduzível, publicada
+e com resultados auditáveis. Não certifica roteamento operacional de caminhões,
+cobertura de todos os modais brasileiros, precisão futura ou hospedagem gratuita
+eterna. Esses limites fazem parte dos resultados, não são funcionalidades fictícias.

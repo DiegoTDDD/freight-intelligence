@@ -12,6 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 APP = ROOT / "dashboards/app.py"
 
 
+@pytest.fixture(autouse=True)
+def english_ui(monkeypatch):
+    monkeypatch.setenv("LOGINEXUS_LANGUAGE", "en")
+
+
 @pytest.fixture
 def dashboard_root(tmp_path, monkeypatch):
     gold = tmp_path / "data/gold/faf5"

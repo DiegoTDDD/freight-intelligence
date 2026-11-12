@@ -18,4 +18,8 @@
 !deployment/Dockerfile.dashboard
 !deployment/preview_data/
 !deployment/preview_data/**
+!deployment/brazil_data/
+!deployment/brazil_data/**
+!deployment/route_examples/
+!deployment/route_examples/**
 !requirements/dashboard-linux-py313.lock

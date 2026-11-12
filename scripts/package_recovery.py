@@ -29,9 +29,23 @@ def verify_archive(archive):
             data = bundle.read(PREFIX + "deployment/preview_data/" + record["path"])
             if hashlib.sha256(data).hexdigest() != record["sha256"]:
                 raise ValueError(f"Snapshot hash mismatch: {path}")
+        count = len(manifest["files"])
+        for directory, filename in (("brazil_data", "provenance.json"),
+                                    ("route_examples", "manifest.json")):
+            base = PREFIX + f"deployment/{directory}/"
+            if base + filename not in bundle.namelist():
+                continue  # Earlier committed revisions may not include these features.
+            additional = json.loads(bundle.read(base + filename))
+            for record in additional["files"]:
+                path = PurePosixPath(record["path"])
+                if len(path.parts) != 1 or PureWindowsPath(record["path"]).drive or "\\" in record["path"]:
+                    raise ValueError("Unsafe additional snapshot path")
+                if hashlib.sha256(bundle.read(base + record["path"])).hexdigest() != record["sha256"]:
+                    raise ValueError(f"Additional snapshot hash mismatch: {path}")
+                count += 1
         if not manifest["files"] or bundle.testzip() is not None:
             raise ValueError("Invalid archive integrity")
-        return len(manifest["files"])
+        return count
 
 
 def package_recovery(destination, revision="HEAD", root=ROOT):
