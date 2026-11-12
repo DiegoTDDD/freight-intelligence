@@ -1,4 +1,25 @@
-# Local read-only API
+# Read-only API
+
+## Hosted entry point
+
+The hosting image serves the dashboard at `/` and an independent HTTP API at
+`/api`, with interactive documentation at `/api/docs` and the machine-readable
+contract at `/api/openapi.json`. These share one hosting process and its free-tier
+availability limits; this is not a separate server or an availability guarantee.
+
+The hosted API reads only the reviewed `deployment/preview_data` snapshot (or the
+explicit `LOGINEXUS_DASHBOARD_DATA_ROOT`). Every optional reader is pinned to that
+root, so saved plans elsewhere in the project cannot become public accidentally.
+The published snapshot contains annual indicators, scenario extrapolations and
+their temporal evaluation. Transport plans are not bundled and return HTTP 503.
+There are no write, upload, training or optimization endpoints.
+
+Authentication settings remain effective on the mounted API. In the public-data
+deployment, anonymous reads are intentional; never place private data in the
+public snapshot. The container check exercises both the dashboard and the real
+API HTTP server without network access, within 512 MiB and on a read-only filesystem.
+
+## Local standalone server
 
 Install and start from the project environment:
 
@@ -46,7 +67,7 @@ The summary exposes scenario name, certified status, units, cost/supply totals, 
 
 The default data locations resolve from the package's project root. Tests inject temporary directories through `create_app(gold_dir=..., model_dir=..., transport_dir=...)`; importing the API does not read or create datasets. Responses retain source units and label the projected scenario values explicitly.
 
-This milestone is for local use and binds to loopback in the documented command. Optional [API-key authentication](api_authentication.md) protects all data endpoints when configured. Public hosting, per-user access control and deployment remain separate tasks.
+The standalone command binds to loopback. Optional [API-key authentication](api_authentication.md) protects all data endpoints when configured, including when mounted under `/api`. Per-user permissions are also supported; hosting uses the snapshot isolation described above.
 
 ### Forecast freshness and consistency
 

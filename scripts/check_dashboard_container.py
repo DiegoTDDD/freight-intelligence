@@ -4,7 +4,60 @@ import argparse
 import hashlib
 import json
 import subprocess
+import uuid
 from pathlib import Path
+
+
+def check_http_server(image):
+    """Exercise the actual shipped ASGI entry point, without external network access."""
+    name = "loginexus-http-check-" + uuid.uuid4().hex[:12]
+    probe = r'''
+import json
+import time
+import urllib.error
+import urllib.request
+
+base = "http://127.0.0.1:8501"
+deadline = time.monotonic() + 45
+while True:
+    try:
+        with urllib.request.urlopen(base + "/_stcore/health", timeout=2) as response:
+            assert response.status == 200
+        break
+    except (OSError, urllib.error.URLError):
+        if time.monotonic() >= deadline:
+            raise RuntimeError("Hosted server did not start") from None
+        time.sleep(0.25)
+
+for path in ("/", "/api/docs", "/api/health", "/api/ready",
+             "/api/annual-kpis?metric_type=tons", "/api/annual-forecast",
+             "/api/temporal-evaluation"):
+    with urllib.request.urlopen(base + path, timeout=10) as response:
+        assert response.status == 200, path
+        response.read()
+with urllib.request.urlopen(base + "/api/openapi.json", timeout=10) as response:
+    assert {"url": "/api"} in json.load(response)["servers"]
+try:
+    urllib.request.urlopen(base + "/api/transport-plan", timeout=10)
+except urllib.error.HTTPError as error:
+    assert error.code == 503
+else:
+    raise RuntimeError("Unexpected private transport plan exposure")
+print("Hosted dashboard + API HTTP checks passed offline within 512 MiB")
+'''
+    try:
+        subprocess.run([
+            "docker", "run", "-d", "--name", name, "--network", "none", "--read-only",
+            "--memory", "512m", "--cpus", "1", "--cap-drop", "ALL",
+            "--security-opt", "no-new-privileges", "--tmpfs", "/tmp:rw,nosuid,size=128m",
+            image,
+        ], check=True, timeout=60, stdout=subprocess.DEVNULL)
+        subprocess.run(["docker", "exec", name, "python", "-c", probe], check=True, timeout=90)
+    finally:
+        subprocess.run(
+            ["docker", "rm", "-f", name], check=False, timeout=30,
+            stdout=subprocess.DEVNULL,
+        )
 
 
 def check_inside_container():
@@ -63,6 +116,7 @@ def main():
         "--mount", f"type=bind,source={Path(__file__).resolve()},target=/check_dashboard.py,readonly",
         args.image, "python", "/check_dashboard.py", "--inside-container",
     ], check=True, timeout=240)
+    check_http_server(args.image)
 
 
 if __name__ == "__main__":

@@ -63,7 +63,12 @@ def create_app(
     app = FastAPI(
         title="LogiNexus Freight Intelligence API",
         version="0.1.0",
-        description="Read-only local access to FAF annual indicators and scenario extrapolations.",
+        description=(
+            "Read-only access to FAF annual indicators and scenario extrapolations. "
+            "Source units: thousands of tons, millions of 2017 USD, and millions of ton-miles. "
+            "Future FAF years are scenarios, not observed outcomes. "
+            "Optional datasets return 503 when unavailable; requests never run the pipeline."
+        ),
     )
     data_routes = APIRouter(dependencies=authentication_dependencies())
     temporal_directory = (
