@@ -261,3 +261,12 @@ Consultar current_status.md para o estado consolidado, não os estados cronológ
 Integração seguinte: o CI Ubuntu passa a gerar o ZIP e SHA-256 da revisão testada,
 com retenção explícita de 30 dias. Testes de recuperação (5) e Ruff aprovados.
 A ferramenta e o guia são incluídos no PR existente, sem merge e sem nova implantação.
+
+### 2026-11-12 hosted dashboard regression gate
+
+Added a separate CI job building deployment/Dockerfile.dashboard and running
+scripts/check_dashboard_container.py. The checker validates 59 runtime pins and
+18 snapshot hashes, then exercises actual analytics, extrapolation and temporal
+views via Streamlit AppTest under 512 MiB, no network, read-only root filesystem,
+non-root image user and dropped capabilities. Local integration passed against
+loginexus-dashboard:preview. No pipeline or hosted service change is performed.

@@ -7,6 +7,19 @@ on:
     branches: [ main ]
 
 jobs:
+  dashboard:
+    name: Hosted dashboard image
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build hosted dashboard image
+      run: docker build -f deployment/Dockerfile.dashboard -t loginexus-dashboard:ci .
+
+    - name: Check pinned runtime, snapshot and dashboard views
+      run: python3 scripts/check_dashboard_container.py --image loginexus-dashboard:ci
+
   test:
     name: Lightweight tests (${{ matrix.os }})
     runs-on: ${{ matrix.os }}

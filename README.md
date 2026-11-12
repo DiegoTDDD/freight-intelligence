@@ -157,6 +157,13 @@ The Ubuntu job also builds a verified source/data recovery ZIP and SHA-256 check
 for the committed revision. GitHub retains this downloadable artifact for 30 days;
 save an independent copy for longer retention. See [recovery instructions](docs/recovery.md).
 
+The hosted-dashboard job separately builds `deployment/Dockerfile.dashboard` and
+checks all 59 runtime pins, the bundled snapshot hashes, and the analytics,
+extrapolation and temporal-evaluation views in a read-only, network-isolated
+512 MiB container. Run the same check locally after building the image:
+
+    python scripts/check_dashboard_container.py --image loginexus-dashboard:ci
+
 GitHub Actions runs the lightweight tests on every push and pull request:
 
     python -m pytest tests --ignore=tests/test_faf5.py -q

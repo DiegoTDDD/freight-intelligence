@@ -33,6 +33,11 @@ O CI agora gera o ZIP verificado e o preserva como artefato por 30 dias. Essas
 mudanças posteriores integram a revisão do PR; o site continua na versão d3f32a1.
 Veja [recuperação](recovery.md).
 
+O CI também constrói separadamente a imagem do painel hospedado e verifica suas
+59 dependências, os 18 arquivos do snapshot e as três áreas analíticas. O teste
+executa em contêiner sem rede, com aplicação somente leitura e limite de 512 MB.
+Essa verificação passou na imagem local antes de ser enviada ao GitHub.
+
 ## Limites e próximos passos reais
 
 A hospedagem gratuita pode suspender por inatividade e depende dos limites e
