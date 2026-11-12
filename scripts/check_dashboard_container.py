@@ -21,6 +21,8 @@ def check_inside_container():
         if hashlib.sha256(data).hexdigest() != record["sha256"]:
             raise RuntimeError(f"Snapshot mismatch: {record['path']}")
     app = AppTest.from_file("/app/dashboards/app.py", default_timeout=45).run()
+    if app.selectbox(key="language").value != "en":
+        raise RuntimeError("New sessions must default to English")
     expectations = {
         "Freight analytics": "Annual Freight Evolution",
         "Scenario extrapolations": "Annual scenario extrapolations",
@@ -31,7 +33,7 @@ def check_inside_container():
         app.selectbox(key="workspace").select(workspace).run()
         if app.exception or app.error:
             raise RuntimeError(f"{workspace}: {list(app.exception)} {list(app.error)}")
-        if translate(heading) not in [element.value for element in app.subheader]:
+        if heading not in [element.value for element in app.subheader]:
             raise RuntimeError(f"{workspace}: expected content missing")
         if not app.dataframe or not app.metric:
             raise RuntimeError(f"{workspace}: expected data and metrics missing")
@@ -40,8 +42,8 @@ def check_inside_container():
     app.button[1].click().run()
     if app.exception or not app.metric or app.metric[0].value != "93.17":
         raise RuntimeError("Saved real-road route failed offline")
-    app.selectbox(key="language").select("en").run()
-    if app.exception or app.subheader[0].value != "Routes on real roads":
+    app.selectbox(key="language").select("pt").run()
+    if app.exception or app.subheader[0].value != translate("Routes on real roads"):
         raise RuntimeError("Language switch failed")
     print(f"Verified {len(manifest['files'])} snapshot files; no network or writable app data")
 

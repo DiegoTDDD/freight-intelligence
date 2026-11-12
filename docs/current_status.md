@@ -18,7 +18,8 @@ estava incorreta. Ver [plano de finalização](plano_finalizacao.md).
 - Rota geográfica real via OSRM/OSM, mapa e GeoJSON, confirmação de envio de
   coordenadas e exemplo público São Paulo–Campinas. Perfil de automóvel de
   referência; não certifica restrições ou operação de caminhões.
-- Painel abre em português, permite inglês e preserva esquemas dos arquivos.
+- Painel abre em inglês, permite português como tradução opcional e preserva
+  esquemas dos arquivos. O padrão foi corrigido após esclarecimento do proprietário.
 - Otimização, API autenticada, imagens fixadas e backups reproduzíveis mantidos.
 
 Suíte completa local: **320 testes aprovados**, incluindo dados reais. Ruff aprovado.

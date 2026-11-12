@@ -59,8 +59,8 @@ def render_brazil(t):
         ["tons", "tonne_km"],
         key="brazil_metric",
         format_func=lambda value: {
-            "tons": "Toneladas úteis (TU)",
-            "tonne_km": "Toneladas-quilômetro úteis (TKU)",
+            "tons": t("Net tonnes (TU)"),
+            "tonne_km": t("Net tonne-kilometres (TKU)"),
         }[value],
     )
     unit = "TU" if metric == "tons" else "TKU"
@@ -192,7 +192,7 @@ def render_geographic_routes(t):
             "The public demo is for light, noncommercial use and may be unavailable."
         )
     )
-    st.warning(LIMITATIONS)
+    st.warning(t(LIMITATIONS))
     with st.form("geographic_route_form", enter_to_submit=False):
         left, right = st.columns(2)
         with left:
@@ -232,7 +232,7 @@ def render_geographic_routes(t):
                         origin_lon, origin_lat, destination_lon, destination_lat
                     )
             except (ValueError, KeyError, TypeError, json.JSONDecodeError) as error:
-                st.error(str(error))
+                st.error(t(str(error)))
     result = st.session_state.get("geographic_route")
     if result is None:
         return
@@ -268,7 +268,7 @@ def render_geographic_routes(t):
     st.markdown(
         "© [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) · "
         "[OSRM / FOSSGIS](https://routing.openstreetmap.de/about.html) · "
-        "[Corrigir o mapa / Fix the map](https://www.openstreetmap.org/fixthemap)"
+        "[Fix the map](https://www.openstreetmap.org/fixthemap)"
     )
     st.caption(t("The basemap also loads tiles from an external map provider."))
     st.download_button(

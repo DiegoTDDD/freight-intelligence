@@ -37,9 +37,9 @@ st.set_page_config(
 )
 
 language = st.sidebar.selectbox(
-    "Idioma / Language",
-    ["pt", "en"],
-    index=1 if os.environ.get("LOGINEXUS_LANGUAGE") == "en" else 0,
+    "Language / Idioma",
+    ["en", "pt"],
+    index=1 if os.environ.get("LOGINEXUS_LANGUAGE") == "pt" else 0,
     format_func=lambda value: {"pt": "Português", "en": "English"}[value],
     key="language",
 )

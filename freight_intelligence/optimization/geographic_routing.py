@@ -14,9 +14,9 @@ MAX_BYTES = 2 * 1024 * 1024
 _lock = threading.Lock()
 _last_request = float("-inf")
 LIMITATIONS = (
-    "Trajeto de referência para automóvel sobre vias OpenStreetMap. Não valida altura, "
-    "peso, eixos, carga perigosa, pedágios ou permissões de caminhões. Duração sem "
-    "trânsito ao vivo. Confirme condições e restrições antes de qualquer viagem."
+    "Reference car route on OpenStreetMap roads. Does not validate truck height, weight, "
+    "axles, hazardous cargo, tolls or access permissions. Duration excludes live traffic. "
+    "Verify current conditions and restrictions before travelling."
 )
 
 
@@ -30,18 +30,18 @@ def coordinates(longitude, latitude):
         type(value) not in (int, float) or not math.isfinite(value)
         for value in (longitude, latitude)
     ):
-        raise ValueError("Coordenadas precisam ser números finitos")
+        raise ValueError("Coordinates must be finite numbers")
     if not -180 <= longitude <= 180 or not -85 <= latitude <= 85:
-        raise ValueError("Longitude entre -180 e 180; latitude entre -85 e 85")
+        raise ValueError("Longitude must be between -180 and 180; latitude between -85 and 85")
     return [float(longitude), float(latitude)]
 
 
 def parse_response(payload, origin, destination):
     if not payload or len(payload) > MAX_BYTES:
-        raise ValueError("Resposta de rota vazia ou acima do limite")
+        raise ValueError("Empty or oversized route response")
     body = json.loads(payload)
     if not isinstance(body, dict) or body.get("code") != "Ok" or not body.get("routes"):
-        raise ValueError("O serviço não encontrou uma rota entre esses pontos")
+        raise ValueError("The service did not find a route between these points")
     route = body["routes"][0]
     geometry = route.get("geometry", {})
     path = geometry.get("coordinates")
@@ -50,18 +50,18 @@ def parse_response(payload, origin, destination):
         or not isinstance(path, list)
         or not 2 <= len(path) <= 50000
     ):
-        raise ValueError("Geometria de rota inválida")
+        raise ValueError("Invalid route geometry")
     for point in path:
         if not isinstance(point, list) or len(point) != 2:
-            raise ValueError("Ponto de rota inválido")
+            raise ValueError("Invalid route point")
         coordinates(*point)
     for field in ("distance", "duration"):
         value = route.get(field)
         if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
-            raise ValueError("Distância ou duração inválida")
+            raise ValueError("Invalid distance or duration")
     waypoints = body.get("waypoints", [])
     if len(waypoints) != 2:
-        raise ValueError("Pontos ajustados à rede ausentes")
+        raise ValueError("Snapped road points are missing")
     for waypoint in waypoints:
         distance = waypoint.get("distance")
         if (
@@ -69,7 +69,7 @@ def parse_response(payload, origin, destination):
             or not math.isfinite(distance)
             or not 0 <= distance <= 1000
         ):
-            raise ValueError("Coordenada distante demais de uma via roteável (máximo 1 km)")
+            raise ValueError("Coordinate too far from a routable road (maximum 1 km)")
         coordinates(*waypoint["location"])
     return {
         "type": "FeatureCollection",
@@ -102,12 +102,12 @@ def request_route(origin_lon, origin_lat, destination_lon, destination_lat):
     origin = coordinates(origin_lon, origin_lat)
     destination = coordinates(destination_lon, destination_lat)
     if origin == destination:
-        raise ValueError("Escolha origem e destino diferentes")
+        raise ValueError("Choose different origin and destination points")
     global _last_request
     with _lock:
         now = time.monotonic()
         if now - _last_request < 2:
-            raise ValueError("Aguarde dois segundos antes de consultar outra rota")
+            raise ValueError("Wait two seconds before requesting another route")
         _last_request = now
     points = ";".join(
         ",".join(f"{value:.6f}" for value in point) for point in (origin, destination)
@@ -129,6 +129,6 @@ def request_route(origin_lon, origin_lat, destination_lon, destination_lat):
             payload = response.read(MAX_BYTES + 1)
     except (OSError, urllib.error.URLError) as error:
         raise ValueError(
-            "Serviço de rotas indisponível; tente mais tarde ou use uma rota salva"
+            "Routing service unavailable; try later or use a saved route"
         ) from error
     return parse_response(payload, origin, destination)

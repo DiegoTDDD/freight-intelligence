@@ -1,42 +1,39 @@
-# Rotas em vias reais
+# Real-road geographic routes
 
-Na área **Rotas no mapa**, informe latitude/longitude da origem e do destino e
-confirme o envio das coordenadas. O botão consulta o OSRM, sobre a rede real do
-OpenStreetMap, e exibe o traçado, distância, tempo estimado e download GeoJSON.
+In **Real road routes**, enter origin/destination latitude and longitude and confirm
+coordinate sharing. The calculation requests OSRM routing over real OpenStreetMap
+roads and displays a route line, distance, estimated duration and GeoJSON download.
 
-O exemplo São Paulo–Campinas foi consultado em 12/11/2026: aproximadamente 93,17 km,
-75,7 minutos estimados e 1.225 pontos no traçado. O exemplo pode ser carregado sem
-uma nova consulta de roteamento. É uma resposta histórica salva; não confirma as
-condições da via no momento da viagem.
+The saved São Paulo–Campinas example was requested on 2026-11-12: approximately
+93.17 km, 75.7 estimated minutes and 1,225 geometry points. Loading it makes no new
+routing request. It is a historical response, not confirmation of current conditions.
 
-## Perfil e limites
+## Profile and limitations
 
-O serviço público oferece um **perfil de automóvel de referência**. Não certifica
-rota para caminhão: altura, peso, eixos, carga perigosa, permissões locais e pedágios
-não são validados. O tempo não usa trânsito ao vivo. Para cenários de veículos com
-restrições explícitas, a área de rede fornecida permanece separada; nela a qualidade
-das restrições depende dos dados informados.
+The public service uses a **reference car profile**. It does not certify truck access:
+height, weight, axles, hazardous cargo, local permissions and tolls are not validated.
+Duration excludes live traffic. The supplied-network workspace remains separate and
+uses the restrictions explicitly provided with that network.
 
-Não há endereço inferido, rastreamento do usuário ou geolocalização automática.
-As coordenadas iniciais são pontos públicos de São Paulo e Campinas. O envio só
-ocorre após submissão com a confirmação marcada. As coordenadas podem ser registradas
-pelo fornecedor externo. O mapa de fundo também carrega imagens de outro fornecedor.
+There is no inferred address, user tracking or automatic geolocation. Initial values
+are public points in São Paulo and Campinas. New coordinates are sent only on explicit
+submission with confirmation. The routing provider may log them; the basemap also
+loads resources from an external provider. Do not submit private locations.
 
-## Serviço, atribuição e recuperação
+## Service and attribution
 
-- [Documentação OSRM](https://project-osrm.org/docs/v5.24.0/api/).
-- [Política do servidor de demonstração](https://github.com/Project-OSRM/osrm-backend/wiki/Demo-server).
-- [FOSSGIS: uso e privacidade](https://routing.openstreetmap.de/about.html).
-- Dados © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL.
+- [OSRM API documentation](https://project-osrm.org/docs/v5.24.0/api/).
+- [Demo server policy](https://github.com/Project-OSRM/osrm-backend/wiki/Demo-server).
+- [FOSSGIS usage and privacy](https://routing.openstreetmap.de/about.html).
+- Data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL.
 
-O servidor é de demonstração, para uso leve e não comercial, sem garantia de
-disponibilidade. O cliente usa HTTPS, identificação da aplicação, espera mínima
-de dois segundos entre chamadas por processo e cache limitado de 24 horas.
-Não há consultas periódicas. Falhas não geram rotas sintéticas de substituição.
+The demo is for light noncommercial use, with no uptime guarantee. The HTTPS client
+identifies the application, enforces at least two seconds between requests per process
+and uses a bounded 24-hour cache. There is no periodic polling or fabricated fallback.
 
-O cliente limita a resposta a 2 MiB e 50 mil pontos, rejeita coordenadas inválidas,
-ajustes a vias acima de 1 km e respostas sem rota. Redirecionamentos são recusados.
-O GeoJSON exportado contém perfil, origem, destino, pontos ajustados, fonte, data,
-versão de dados quando fornecida e hash da resposta. Atribuição e link para corrigir
-o mapa aparecem na interface. Uso comercial ou maior volume exige infraestrutura
-e condições de serviço adequadas; não há contratação automática neste projeto.
+Responses are limited to 2 MiB and 50,000 points. Invalid coordinates, road snaps above
+1 km, redirects and missing routes are rejected. GeoJSON exports include the profile,
+coordinates, snapped points, source, retrieval time, provider data version if supplied
+and response hash. Attribution and a map-correction link appear in the interface.
+Commercial or heavier use requires appropriate infrastructure and service terms;
+this project does not automatically purchase those resources.

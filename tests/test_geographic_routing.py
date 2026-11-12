@@ -40,11 +40,11 @@ def test_invalid_coordinates_never_contact_provider(point, monkeypatch):
 
 
 def test_missing_route_and_large_snap_are_rejected():
-    with pytest.raises(ValueError, match="não encontrou"):
+    with pytest.raises(ValueError, match="did not find"):
         routes.parse_response(b'{"code":"NoRoute"}', [0, 0], [1, 1])
     data = response()
     data["waypoints"][0]["distance"] = 2000
-    with pytest.raises(ValueError, match="distante"):
+    with pytest.raises(ValueError, match="too far"):
         routes.parse_response(json.dumps(data).encode(), [0, 0], [1, 1])
 
 
@@ -55,7 +55,7 @@ def test_failed_provider_does_not_create_synthetic_route(monkeypatch):
 
     monkeypatch.setattr(routes, "_last_request", float("-inf"))
     monkeypatch.setattr(routes.urllib.request, "build_opener", lambda *a: Broken())
-    with pytest.raises(ValueError, match="indisponível"):
+    with pytest.raises(ValueError, match="unavailable"):
         routes.request_route(-46, -23, -47, -22)
-    with pytest.raises(ValueError, match="Aguarde"):
+    with pytest.raises(ValueError, match="Wait"):
         routes.request_route(-46, -23, -47, -22)

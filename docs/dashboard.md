@@ -1,5 +1,10 @@
 # Local visual dashboard
 
+English is the project and dashboard default. Portuguese is an optional interface
+translation selected from **Language / Idioma**. `LOGINEXUS_LANGUAGE=pt` can explicitly
+override the initial language for a local deployment. Internal identifiers and
+downloaded source data retain their original schemas and units.
+
 Run the dashboard from the project's Python environment:
 
 ```bash

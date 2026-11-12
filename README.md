@@ -4,53 +4,52 @@
 
 End-to-end freight intelligence platform for analyzing and forecasting freight flows using large-scale transportation data.
 
-**[Abrir o painel online](https://loginexus-dashboard-preview.onrender.com/)** ·
-[Roteiro e entregas](docs/plano_finalizacao.md) · [Dados brasileiros](docs/brasil.md) ·
-[Rotas reais](docs/rotas_reais.md) · [Recuperação](docs/recovery.md)
+**[Open the live dashboard](https://loginexus-dashboard-preview.onrender.com/)** ·
+[Roadmap and delivery (Portuguese)](docs/plano_finalizacao.md) · [Brazilian data](docs/brasil.md) ·
+[Real-road routes](docs/rotas_reais.md) · [Recovery (Portuguese)](docs/recovery.md)
 
-A publicação contínua foi comprovada: após os testes, o GitHub aciona o Render
-para o mesmo código validado. Ver [configuração e recuperação do CD](docs/publicacao_continua.md).
+Continuous deployment is verified: after the checks pass, GitHub deploys the exact
+tested revision to Render. See [deployment and recovery](docs/publicacao_continua.md).
 
-O LogiNexus reúne engenharia de dados em escala, análises de cargas, avaliação de
-previsões e otimização de transporte. O painel abre em português e permite selecionar
-inglês. A base FAF dos EUA inclui estimativas e cenários; a área brasileira usa
-movimentações ferroviárias declaradas à ANTT entre 2006 e 2025. As fontes e unidades
-permanecem separadas. A demonstração também consulta rotas reais sobre OpenStreetMap,
-com perfil de automóvel de referência e limites explícitos para uso com caminhões.
+LogiNexus combines large-scale data engineering, freight analytics, forecasting
+evaluation and transport optimization. **The project and dashboard default to English;
+Portuguese is an optional interface translation.** The US FAF data includes estimates
+and scenarios; the Brazilian workspace uses railway movements reported to ANTT for
+2006–2025. Sources and units stay separate. The demo also queries real OpenStreetMap
+road routes, using a reference car profile with explicit limitations for truck use.
 
-### Experimentar sem processar os dados grandes
+### Try the demo without processing the large dataset
 
-A imagem do painel inclui os pequenos agregados públicos, a avaliação histórica
-brasileira e um trajeto geográfico salvo. Na raiz do repositório, com Docker:
+The dashboard image includes small public aggregates, the Brazilian historical
+evaluation and a saved geographic route. From the repository root, with Docker:
 
 ```text
 docker build -f deployment/Dockerfile.dashboard -t loginexus-dashboard:local .
 docker run --rm -p 127.0.0.1:8502:8501 loginexus-dashboard:local
 ```
 
-Abra `http://127.0.0.1:8502/`. Não é necessário baixar a base bruta nem executar o
-pipeline de 97,6 milhões de linhas para usar essa demonstração. Consultas novas de
-rotas e o mapa de fundo precisam de acesso à internet. O serviço de hospedagem
-gratuita pode demorar para reativar depois de um período sem acesso.
+Open `http://127.0.0.1:8502/`. Using this demo does not require downloading the raw
+dataset or running the 97.6-million-row pipeline. New route requests and the basemap
+require internet access. Free hosting may take time to wake after inactivity.
 
-### Resultados verificáveis
+### Verifiable results
 
-- Pipeline real: 2.503.352 linhas Bronze e 97.630.728 linhas Silver; execução completa
-  concluída localmente em 12/11/2026. Indicadores de modal doméstico usam `dms_mode`.
-- Brasil: 20 anos completos de dados ANTT, com fontes e hashes; 2023–2025 reservados
-  para teste. WAPE do modelo escolhido na validação: 4,75% em TU e 1,61% em TKU.
-- Rotas: traçado GeoJSON real, fonte e data; cálculo separado de cenários com custos
-  e restrições explícitos. Não há alegação de economia operacional medida.
-- Validação: 320 testes locais aprovados, incluindo os dados reais, além das
-  verificações de imagem e das rotinas de CI. Detalhes em [finalização](docs/plano_finalizacao.md).
+- Real pipeline: 2,503,352 Bronze rows and 97,630,728 Silver rows; the full local run
+  completed on 2026-11-12. Domestic mode indicators use `dms_mode`.
+- Brazil: 20 complete years of ANTT reports with source hashes; 2023–2025 reserved
+  for testing. Validation-selected model test WAPE: 4.75% TU and 1.61% TKU.
+- Routes: real GeoJSON geometry, source and retrieval date; separate scenario
+  calculations use explicit costs and restrictions. No measured savings are claimed.
+- Validation: 320 integration tests passed, including real-data checks, plus six
+  deployment tests. See [delivery evidence](docs/plano_finalizacao.md).
 
-Previsões são estimativas, não promessas. A base brasileira cobre ferrovias concedidas,
-não todos os modais. Rotas para automóvel não certificam trânsito de caminhões.
-O snapshot pode ser recuperado e reconstruído fora do provedor atual.
+Forecasts are estimates, not guarantees. Brazilian data covers federally conceded
+railways, not every mode. Car-reference routes do not certify truck access.
+The snapshot can be recovered and rebuilt independently of the current host.
 
-![Área brasileira em português](docs/images/brasil.png)
+![Brazilian workspace with the optional Portuguese translation](docs/images/brasil.png)
 
-![Traçado real São Paulo–Campinas](docs/images/rota-real.png)
+![Real São Paulo–Campinas route](docs/images/rota-real.png)
 
 ## Architecture
 

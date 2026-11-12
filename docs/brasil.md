@@ -1,59 +1,55 @@
-# Frete ferroviário brasileiro e previsão histórica
+# Brazilian railway freight and historical forecasts
 
-A área **Frete no Brasil** apresenta dados reais declarados no SIADE/ANTT para as
-ferrovias federais concedidas, de 2006 a 2025. Não representa o transporte rodoviário,
-o conjunto de todos os modais nem uma contagem de remessas únicas. Uma mesma carga
-pode aparecer em fluxos sucessivos ou em mais de uma concessionária.
+The **Brazilian freight** workspace presents movements reported to ANTT/SIADE for
+federally conceded Brazilian railways, covering 2006–2025. It does not cover all
+Brazilian freight modes or count unique shipments: cargo can appear in successive
+flows or in reports from more than one railway operator.
 
-## Fonte e preparação
+## Official source and preparation
 
-- [Catálogo oficial SIADE/ANTT](https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409).
-- [Dicionário oficial](https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/5eb3b609-29c8-4108-a5ac-0d55950a0064/download/producao_origem_destino_dicionario_dados.pdf).
-- Fonte: Agência Nacional de Transportes Terrestres. Licença declarada no catálogo:
-  Creative Commons Atribuição. Acesso: 12/11/2026.
+- [ANTT/SIADE catalogue](https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409).
+- [Official data dictionary](https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409/resource/5eb3b609-29c8-4108-a5ac-0d55950a0064/download/producao_origem_destino_dicionario_dados.pdf).
+- Attribution: Agência Nacional de Transportes Terrestres. The catalogue declares
+  Creative Commons Attribution. Retrieved on 2026-11-12.
 
-Foram aceitos 20 arquivos anuais com os 12 meses presentes. O arquivo de 2026 foi
-excluído por representar um ano em andamento. A presença dos meses não comprova
-que todas as declarações de cada concessionária sejam completas ou definitivas.
+Twenty yearly files containing all twelve reported months were accepted. The partial
+2026 archive was excluded. Month presence does not prove every operator's reports are
+complete or final. Administrative records may be revised and coverage may change.
 
-O parser reconhece o separador `;`, textos UTF-8/Windows-1252 e números brasileiros:
-`1.234,5` corresponde a 1234,5. Valores negativos, formatos ambíguos, meses inválidos
-e ano incompatível são rejeitados. Arquivos brutos permanecem fora do Git.
+The parser accepts semicolon-separated UTF-8/Windows-1252 text and Brazilian numbers:
+`1.234,5` becomes 1234.5. Negative values, ambiguous formats, invalid months and year
+mismatches fail validation. Raw files stay outside Git.
 
-**TU** significa toneladas úteis; **TKU**, toneladas-quilômetro úteis. Essas unidades
-não são intercambiáveis com milhares de toneladas/milhões de toneladas-milha do FAF.
-Os agregados separados preservam ano, mês, mercadoria, ferrovia e estados dos fluxos.
-`deployment/brazil_data/provenance.json` registra URLs, hashes, tamanhos e quantidades
-de registros das fontes e dos arquivos derivados.
+**TU** denotes net tonnes and **TKU** net tonne-kilometres. These are kept separate
+from FAF's thousands of source tons and millions of ton-miles. Aggregates retain
+year, month, commodity, railway and flow origin/destination states.
+`deployment/brazil_data/provenance.json` records source URLs, hashes, sizes and rows.
 
-Para preparar outra cópia sem substituir a existente:
+Create another snapshot without replacing the existing one:
 
 ```text
-python scripts/prepare_brazil_rail.py --output NOVA_PASTA --raw NOVA_PASTA_BRUTA
+python scripts/prepare_brazil_rail.py --output NEW_OUTPUT_DIRECTORY --raw NEW_RAW_DIRECTORY
 ```
 
-## Avaliação dos modelos
+## Forecast evaluation
 
-Comparação entre persistência, tendência linear e crescimento composto. O treinamento
-começa com 2006–2013 e a validação expande o histórico até o último alvo de 2022.
-A seleção usa somente o MAE de validação. **2023–2025** são previstos a partir de uma
-única origem e ficam reservados para o teste final; seus erros não mudam a seleção.
+Persistence, linear trend and endpoint CAGR are compared. Training starts with
+2006–2013; expanding validation uses targets through 2022. Selection uses validation
+MAE only. **2023–2025** form a reserved final test predicted from a fixed origin.
+Those test errors never change the selected model.
 
-| Indicador | Modelo escolhido na validação | WAPE no teste 2023–2025 |
+| Metric | Validation-selected model | Test WAPE, 2023–2025 |
 | --- | --- | --- |
-| TU | Crescimento composto | 4,75% |
-| TKU | Crescimento composto | 1,61% |
+| TU | CAGR | 4.75% |
+| TKU | CAGR | 1.61% |
 
-No teste de TU, a tendência linear apresentou erro menor, de aproximadamente 1,96%.
-Ela não foi promovida com base nesse resultado: fazê-lo reutilizaria o teste para
-escolher o modelo. O painel disponibiliza os escores de todos os modelos, MAE, RMSE,
-WAPE e as previsões para auditoria.
+Linear trend achieved a lower TU test error, about 1.96%. It was not promoted using
+that result, which would reuse the reserved test for model selection. The dashboard
+shows all model scores, MAE, RMSE, WAPE and predictions for inspection.
 
-Após calcular o teste, o modelo já escolhido é reajustado com todo o histórico para
-gerar estimativas pontuais de 2026–2028. Essas estimativas não são observações, não
-têm intervalo de previsão e não garantem precisão futura. Mudanças de cobertura,
-revisões administrativas e quebras estruturais limitam a interpretação.
-
-O ZIP baixável contém a série anual exata, o manifesto de origem, a configuração
-de avaliação, previsões, escores e estimativas futuras. A interface lê resultados
-salvos e verifica seus hashes; abrir a página não baixa novamente os arquivos brutos.
+After test scoring, the already-selected model is refit on the complete history to
+estimate 2026–2028. These are point forecasts, not observations, without prediction
+intervals or a future accuracy guarantee. Revisions, coverage and structural changes
+limit interpretation. The downloadable ZIP contains observations, source manifest,
+evaluation settings, predictions, scores and forecasts. Opening this workspace reads
+verified saved results and does not download the raw archives again.

@@ -16,7 +16,7 @@ foi autorizado. O histórico original permanece em roteiro_original.md.
 | Portfólio | Guia de uso, arquitetura, resultados e limitações | Documentado, publicado e conferido; integração na main pelo PR #1 |
 | Brasil | Fonte oficial, unidades, filtros e downloads | Implementado com ANTT ferroviário |
 | Rotas reais | Traçado geográfico, fonte e exportação | Implementado com OSRM/OSM, perfil de automóvel de referência |
-| Português | Navegação, controles e explicações em português | Implementado, com seleção de inglês |
+| Português | Tradução opcional de navegação, controles e explicações | Implementada; inglês permanece o idioma padrão do projeto |
 
 ## Evidência local
 
