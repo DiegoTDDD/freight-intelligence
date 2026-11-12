@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "country": "Brazil",
+  "prepared_on": "2026-11-12",
+  "method": "Reviewed transcription of published chart labels plus verified ANTT rail snapshot",
+  "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
+  "sources": [
+    {
+      "url": "https://ontl.infrasa.gov.br/wp-content/uploads/2025/10/Diagnostico-logistico-2010-2024.pdf",
+      "sha256": "5534dc1dd04112611514c67f2d5abf35f8bce4e49f5e66f91f86503b05c73f5b",
+      "pages": [
+        40,
+        78,
+        110,
+        120,
+        123
+      ]
+    },
+    {
+      "url": "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409",
+      "snapshot_sha256": "e98c82630593621232fbd96a664928ec5472d0a489d3231e713a82f85108b302"
+    }
+  ],
+  "quality_notes": [
+    "Do not sum unlike units or calculate freight modal shares from these indicators.",
+    "Road coverage is registered fleet history, not a road cargo volume series.",
+    "ANTT TRC 2025 cites approximately 1.4 billion tonnes on PDF page 61 and 1.165 billion on page 64 (printed pages 53 and 56); no road tonnage total is promoted here until that scope discrepancy is reconciled.",
+    "Pipeline gas source attribution differs between narrative (ANP) and chart (MME); chart attribution is retained. Oil pipelines cover Transpetro, not all operators.",
+    "Chart values retain source rounding; forecasts are not included."
+  ],
+  "files": [
+    {
+      "path": "indicators.csv",
+      "sha256": "97356061edc83ae83a10e432c7fcae4d3f0afb4d0083f0d02c40ff40af5394aa",
+      "bytes": 32587
+    }
+  ]
+}

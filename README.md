@@ -8,6 +8,9 @@ End-to-end freight intelligence platform for analyzing and forecasting freight f
 [Roadmap and delivery (Portuguese)](docs/plano_finalizacao.md) · [Brazilian data](docs/brasil.md) ·
 [Real-road routes](docs/rotas_reais.md) · [Recovery (Portuguese)](docs/recovery.md)
 
+[Public API documentation](https://loginexus-dashboard-preview.onrender.com/api/docs) ·
+[Truck-aware routing](docs/truck_routing.md) · [Five-mode indicators](docs/brazil_modes.md)
+
 Continuous deployment is verified: after the checks pass, GitHub deploys the exact
 tested revision to Render. See [deployment and recovery](docs/publicacao_continua.md).
 
@@ -43,8 +46,12 @@ require internet access. Free hosting may take time to wake after inactivity.
 - Validation: 320 integration tests passed, including real-data checks, plus six
   deployment tests. See [delivery evidence](docs/plano_finalizacao.md).
 
-Forecasts are estimates, not guarantees. Brazilian data covers federally conceded
-railways, not every mode. Car-reference routes do not certify truck access.
+Forecasts are estimates, not guarantees. The detailed Brazilian cargo series covers
+federally conceded railways; the five-mode view adds independently scoped official
+indicators, with road fleet history rather than unresolved national road tonnage.
+Truck-aware routes apply mapped restrictions to an explicit vehicle profile;
+missing map restrictions still prevent operational certification. Live demo access
+requires operator activation; the reviewed truck example also works offline.
 The snapshot can be recovered and rebuilt independently of the current host.
 
 ![Brazilian workspace with the optional Portuguese translation](docs/images/brasil.png)

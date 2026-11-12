@@ -31,7 +31,7 @@ while True:
 
 for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/annual-kpis?metric_type=tons", "/api/annual-forecast",
-             "/api/temporal-evaluation"):
+             "/api/temporal-evaluation", "/api/brazil/indicators?mode=air"):
     with urllib.request.urlopen(base + path, timeout=10) as response:
         assert response.status == 200, path
         response.read()
@@ -95,6 +95,16 @@ def check_inside_container():
     app.button[1].click().run()
     if app.exception or not app.metric or app.metric[0].value != "93.17":
         raise RuntimeError("Saved real-road route failed offline")
+    app.button[2].click().run()
+    if app.exception or not app.metric or app.metric[0].value != "98.77":
+        raise RuntimeError("Saved truck route failed offline")
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    for mode in ("road", "rail", "water", "air", "pipeline"):
+        app.selectbox(key="brazil_mode").select(mode).run()
+        if app.exception or app.error or not app.metric:
+            raise RuntimeError(f"Brazil modal view failed: {mode}")
+    app.selectbox(key="workspace").select("Real road routes").run()
     app.selectbox(key="language").select("pt").run()
     if app.exception or app.subheader[0].value != translate("Routes on real roads"):
         raise RuntimeError("Language switch failed")

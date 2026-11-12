@@ -36,6 +36,7 @@ Interactive OpenAPI documentation is available at `http://127.0.0.1:8000/docs`.
 | `GET /ready` | Checks that the annual Gold KPI dataset is readable with required columns |
 | `GET /annual-kpis` | Annual Gold rows, optionally filtered by `metric_type`, `start_year`, `end_year` |
 | `GET /annual-forecast` | Saved scenario extrapolations, optionally filtered by `metric_type` |
+| `GET /brazil/indicators` | Scoped indicators for road, rail, water, air and pipelines, filtered by `mode`, `start_year`, `end_year`; includes unit, scope, sources and quality notes |
 | `GET /transport-plan` | Saved allocation, filtered by `origin`, `destination`, `active_only` |
 | `GET /transport-plan/nodes` | Saved node balances and conservation checks |
 | `GET /temporal-evaluation` | Temporal baseline scores, filtered by `metric_type` and `phase` |

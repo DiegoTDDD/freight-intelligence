@@ -3,13 +3,19 @@
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
 from zipfile import ZipFile
 
 import polars as pl
 import streamlit as st
 
+from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.optimization.geographic_routing import LIMITATIONS, request_route
+from freight_intelligence.optimization.truck_routing import (
+    LIMITATIONS as TRUCK_LIMITATIONS,
+)
+from freight_intelligence.optimization.truck_routing import PROFILES, request_truck_route
 
 DEPLOYMENT = Path(__file__).resolve().parents[1] / "deployment"
 
@@ -37,6 +43,11 @@ def load_brazil(signature):
 
 
 def render_brazil(t):
+    view = st.selectbox("Brazilian freight coverage", ["Railway detail", "All five modes"],
+                        key="brazil_view")
+    if view == "All five modes":
+        render_modes()
+        return
     st.subheader(t("Brazilian railway freight"))
     st.caption(t("ANTT · reported cargo movements · 2006–2025 · complete calendar years"))
     st.info(
@@ -177,22 +188,82 @@ def render_brazil(t):
         st.json(provenance)
 
 
+def render_modes():
+    st.subheader("Brazilian freight: five-mode indicator atlas")
+    st.info("Official indicators for road, rail, water, air and pipelines. Each series has its "
+            "own scope and unit. These are not comparable modal shares or complete shipment coverage.")
+    try:
+        data, metadata = load_modes()
+    except (OSError, ValueError, KeyError, pl.exceptions.PolarsError):
+        st.error("The verified modal indicator snapshot is unavailable.")
+        return
+    coverage = data.group_by("mode", "indicator", "unit", "scope").agg(
+        pl.col("year").min().alias("first_year"), pl.col("year").max().alias("last_year")
+    ).sort("mode", "indicator")
+    st.dataframe(coverage, hide_index=True)
+    mode = st.selectbox("Mode", sorted(data["mode"].unique()), key="brazil_mode")
+    subset = data.filter(pl.col("mode") == mode)
+    indicator = st.selectbox("Indicator", sorted(subset["indicator"].unique()),
+                             key="brazil_indicator")
+    series = subset.filter(pl.col("indicator") == indicator).sort("year")
+    st.caption(series["scope"][0])
+    st.metric("Latest reported indicator", f"{series['value'][-1]:,.2f} {series['unit'][0]}",
+              help="Retains source unit and chart rounding; no conversion to common tonnage.")
+    st.caption(f"Reference year: {series['year'][-1]}")
+    st.line_chart(series.select("year", "value"), x="year", y="value")
+    st.dataframe(series, hide_index=True)
+    st.markdown(f"[Official source]({series['source_url'][0]})")
+    st.download_button("Download all modal indicators (CSV)", data.write_csv().encode(),
+                       "brazil_modal_indicators.csv", "text/csv")
+    with st.expander("Coverage, quality notes and source hashes"):
+        for note in metadata["quality_notes"]:
+            st.warning(note)
+        st.json(metadata)
+
+
 @st.cache_data(ttl=86400, max_entries=64, show_spinner=False)
 def cached_route(origin_lon, origin_lat, destination_lon, destination_lat):
     return request_route(origin_lon, origin_lat, destination_lon, destination_lat)
+
+
+@st.cache_data(ttl=86400, max_entries=64, show_spinner=False)
+def cached_truck_route(origin, destination, vehicle):
+    return request_truck_route(origin, destination, vehicle)
+
+
+def saved_route(filename):
+    root = DEPLOYMENT / "route_examples"
+    manifest = json.loads((root / "manifest.json").read_bytes())
+    record = next(item for item in manifest["files"] if item["path"] == filename)
+    if Path(filename).name != filename:
+        raise ValueError("Invalid saved route path")
+    raw = (root / filename).read_bytes()
+    if len(raw) > 2 * 1024 * 1024 or hashlib.sha256(raw).hexdigest() != record["sha256"]:
+        raise ValueError("Saved route integrity mismatch")
+    return json.loads(raw)
 
 
 def render_geographic_routes(t):
     import pydeck as pdk
 
     st.subheader(t("Routes on real roads"))
+    mode = st.selectbox("Routing engine", ["Car reference (OSRM)", "Truck (Valhalla)"],
+                        key="routing_engine")
+    truck = mode == "Truck (Valhalla)"
+    truck_live = os.environ.get("LOGINEXUS_TRUCK_DEMO_ENABLED") == "true"
+    if truck and not truck_live:
+        st.info("Live truck routing is unavailable in this deployment. "
+                "Use the saved truck example below to inspect the route and vehicle profile.")
+    preset = st.selectbox("Demonstration truck profile", list(PROFILES), key="truck_profile") \
+        if truck else None
     st.info(
-        t(
+        "Truck-specific route calculation on OpenStreetMap roads. Example profiles are editable; "
+        "they are not legal vehicle categories or authorization to travel." if truck else t(
             "Use coordinates to obtain a reference driving route from OSRM/OpenStreetMap. "
             "The public demo is for light, noncommercial use and may be unavailable."
         )
     )
-    st.warning(t(LIMITATIONS))
+    st.warning(TRUCK_LIMITATIONS if truck else t(LIMITATIONS))
     with st.form("geographic_route_form", enter_to_submit=False):
         left, right = st.columns(2)
         with left:
@@ -207,8 +278,26 @@ def render_geographic_routes(t):
             destination_lon = st.number_input(
                 t("Destination longitude"), -180.0, 180.0, -47.0608, format="%.6f"
             )
+        vehicle = None
+        if truck:
+            vehicle = {}
+            columns = st.columns(3)
+            labels = {"height": "Height (m)", "width": "Width (m)", "length": "Length (m)",
+                      "weight": "Loaded gross weight (t)", "axle_load": "Maximum axle load (t)",
+                      "axle_count": "Axle count"}
+            limits = {"height": 10.0, "width": 10.0, "length": 50.0, "weight": 100.0,
+                      "axle_load": 40.0, "axle_count": 12}
+            for index, (field, label) in enumerate(labels.items()):
+                with columns[index % 3]:
+                    vehicle[field] = st.number_input(
+                        label, min_value=2 if field == "axle_count" else 0.1,
+                        max_value=limits[field], value=PROFILES[preset][field],
+                        key=f"truck_{preset}_{field}",
+                    )
+            vehicle["hazmat"] = st.checkbox("Hazardous materials", key="truck_hazmat")
         consent = st.checkbox(
-            t("Send these coordinates to the public OSRM service to calculate a route")
+            "Send these coordinates and truck profile to the public Valhalla service"
+            if truck else t("Send these coordinates to the public OSRM service to calculate a route")
         )
         st.caption(
             t(
@@ -216,11 +305,18 @@ def render_geographic_routes(t):
                 "Do not submit private locations. Initial coordinates represent São Paulo and Campinas."
             )
         )
-        submitted = st.form_submit_button(t("Calculate route on the map"))
-    if st.button(t("Show saved São Paulo–Campinas route (no new routing request)")):
-        st.session_state["geographic_route"] = json.loads(
-            (DEPLOYMENT / "route_examples/sao_paulo_campinas.geojson").read_bytes()
-        )
+        submitted = st.form_submit_button(t("Calculate route on the map"),
+                                         disabled=truck and not truck_live)
+    saved_car = st.button(t("Show saved São Paulo–Campinas route (no new routing request)"))
+    saved_truck = st.button("Show saved truck route: São Paulo–Campinas (no routing request)")
+    if saved_car or saved_truck:
+        st.session_state.pop("geographic_route", None)
+        try:
+            st.session_state["geographic_route"] = saved_route(
+                "sao_paulo_campinas_truck.geojson" if saved_truck else "sao_paulo_campinas.geojson"
+            )
+        except (OSError, ValueError, KeyError, StopIteration):
+            st.error("The verified saved route is unavailable.")
     if submitted:
         st.session_state.pop("geographic_route", None)
         if not consent:
@@ -228,8 +324,12 @@ def render_geographic_routes(t):
         else:
             try:
                 with st.spinner(t("Calculating route…")):
-                    st.session_state["geographic_route"] = cached_route(
-                        origin_lon, origin_lat, destination_lon, destination_lat
+                    st.session_state["geographic_route"] = (
+                        cached_truck_route([origin_lon, origin_lat],
+                                           [destination_lon, destination_lat], vehicle)
+                        if truck else cached_route(
+                            origin_lon, origin_lat, destination_lon, destination_lat
+                        )
                     )
             except (ValueError, KeyError, TypeError, json.JSONDecodeError) as error:
                 st.error(t(str(error)))
@@ -238,6 +338,13 @@ def render_geographic_routes(t):
         return
     feature = result["features"][0]
     props, path = feature["properties"], feature["geometry"]["coordinates"]
+    st.caption(f"Calculated profile: {props['profile']} · {props['provider']}")
+    st.caption(t(props["limitations"]))
+    if props.get("vehicle"):
+        st.json(props["vehicle"], expanded=False)
+        with st.expander("Truck itinerary instructions"):
+            for index, instruction in enumerate(props["instructions"], start=1):
+                st.write(f"{index}. {instruction}")
     with st.container(horizontal=True):
         st.metric(t("Route distance (km)"), f"{props['distance_km']:,.2f}")
         st.metric(t("Estimated driving minutes"), f"{props['duration_minutes']:,.1f}")
@@ -262,12 +369,17 @@ def render_geographic_routes(t):
                 zoom=8,
             ),
             map_style="light",
-            tooltip={"text": "OSRM · OpenStreetMap"},
+            tooltip={"text": f"{props['provider']} · OpenStreetMap"},
         )
+    )
+    provider_link = (
+        "[Valhalla / FOSSGIS](https://valhalla.openstreetmap.de/)"
+        if props["profile"] == "truck" else
+        "[OSRM / FOSSGIS](https://routing.openstreetmap.de/about.html)"
     )
     st.markdown(
         "© [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) · "
-        "[OSRM / FOSSGIS](https://routing.openstreetmap.de/about.html) · "
+        + provider_link + " · "
         "[Fix the map](https://www.openstreetmap.org/fixthemap)"
     )
     st.caption(t("The basemap also loads tiles from an external map provider."))

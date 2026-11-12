@@ -13,8 +13,9 @@ is authorized.
 - Validate missing data, invalid queries, OpenAPI prefix and actual container startup.
 - Review and pass CI before deployment; verify the published endpoints afterward.
 
-Implementation is under review. Local mounted API tests and the actual hosted
-HTTP server passed; publication has not yet been performed for this expansion.
+Published revision `424216e` passed all five CI checks. Public health, OpenAPI
+documentation and annual indicators were verified over HTTPS. The subsequent
+Brazilian indicator endpoint is undergoing review with the next expansion.
 
 ## Truck routing
 
@@ -26,7 +27,10 @@ HTTP server passed; publication has not yet been performed for this expansion.
 - Document map restriction gaps, missing live traffic and provider availability.
 - Observe provider usage policy; a free demo does not supply operational certification.
 
-Provider research is in progress; current published routing is still a car reference.
+Valhalla integration and editable profiles are implemented locally; 17 engine
+contract tests and the UI profile/saved-route test passed. One real truck request
+returned 98.771 km for the saved rigid-truck example. Public live use remains
+disabled pending owner approval for the provider's requested external notice.
 
 ## Brazilian modes
 
@@ -37,8 +41,10 @@ Provider research is in progress; current published routing is still a car refer
   or claim complete national coverage from partial concession/operator records.
 - Validate transformations, displayed values, downloads and API contracts.
 
-Official source discovery is in progress. The currently shipped detailed Brazilian
-dataset remains ANTT railway reports; other modes are not yet delivered.
+The reviewed expansion contains 130 annual records across all five modes, with
+integrity validation, UI filtering, CSV export and a read-only API endpoint.
+Road coverage is fleet history, not road cargo tonnage. National shipment coverage
+for every mode remains incomplete; see [precise coverage and source issues](brazil_modes.md).
 
 Passing tests reduces risk; it does not prove that software or source data contain
 zero errors. No commercial completeness claim is made by this expansion plan.

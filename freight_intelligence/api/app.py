@@ -9,6 +9,8 @@ from fastapi import APIRouter, FastAPI, HTTPException, Query
 
 from freight_intelligence.api.security import authentication_dependencies
 from freight_intelligence.api.transport_results import load_transport_results
+from freight_intelligence.brazil_modes import DEFAULT_ROOT as BRAZIL_MODES
+from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.dashboard_data import load_projection_files
 from freight_intelligence.evaluation_results import load_temporal_report
 from freight_intelligence.ml.annual_forecast import INTERPRETATION, PROJECT_ROOT
@@ -52,6 +54,7 @@ def create_app(
     model_dir: Path | None = None,
     transport_dir: Path | None = None,
     evaluation_dir: Path | None = None,
+    brazil_dir: Path | None = None,
 ) -> FastAPI:
     gold = Path(gold_dir) if gold_dir is not None else PROJECT_ROOT / "data/gold/faf5"
     models = Path(model_dir) if model_dir is not None else PROJECT_ROOT / "models/faf5/annual"
@@ -106,6 +109,26 @@ def create_app(
             "count": data.height,
             "data": data.sort(["metric_type", "year"]).to_dicts(),
         }
+
+    @data_routes.get("/brazil/indicators")
+    def brazil_indicators(
+        mode: Literal["road", "rail", "water", "air", "pipeline"] | None = None,
+        start_year: int = Query(default=2000, ge=2000, le=2025),
+        end_year: int = Query(default=2025, ge=2000, le=2025),
+    ):
+        if start_year > end_year:
+            raise HTTPException(status_code=422, detail="start_year must not exceed end_year")
+        try:
+            data, metadata = load_modes(brazil_dir if brazil_dir is not None else BRAZIL_MODES)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Brazilian modal indicators unavailable") \
+                from error
+        data = data.filter(pl.col("year").is_between(start_year, end_year))
+        if mode is not None:
+            data = data.filter(pl.col("mode") == mode)
+        return {"count": data.height, "data": data.to_dicts(),
+                "interpretation": metadata["interpretation"],
+                "quality_notes": metadata["quality_notes"], "sources": metadata["sources"]}
 
     @data_routes.get("/annual-forecast")
     def annual_forecast(metric_type: Metric | None = None):

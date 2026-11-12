@@ -38,3 +38,29 @@ def test_saved_real_route_and_consent_before_live_requests(monkeypatch):
         item.label == "Distância da rota (km)" and item.value == "93.17" for item in app.metric
     )
     assert "OSRM" in app.get("json")[0].value
+
+
+def test_truck_form_and_saved_truck_itinerary():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Real road routes").run()
+    app.selectbox(key="routing_engine").select("Truck (Valhalla)").run()
+    assert not app.exception
+    assert app.number_input(key="truck_Urban rigid truck (example)_weight").value == 16.0
+    app.selectbox(key="truck_profile").select("Articulated truck (example)").run()
+    assert not app.exception
+    assert app.number_input(key="truck_Articulated truck (example)_weight").value == 40.0
+    app.button[2].click().run()
+    assert not app.exception and not app.error
+    assert app.metric[0].value == "98.77"
+    assert any("Calculated profile: truck" in item.value for item in app.caption)
+
+
+def test_all_five_modal_views_load_with_explicit_scope():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    for mode in ("road", "rail", "water", "air", "pipeline"):
+        app.selectbox(key="brazil_mode").select(mode).run()
+        assert not app.exception and not app.error
+        assert app.metric and app.dataframe
+        assert any("not comparable modal shares" in item.value for item in app.info)

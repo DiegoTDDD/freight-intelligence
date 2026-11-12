@@ -22,6 +22,7 @@ def snapshot_api(root: Path):
         model_dir=root / "models/faf5/annual",
         evaluation_dir=root / "artifacts/evaluation/annual",
         transport_dir=root / "artifacts/optimization/transport",
+        brazil_dir=PROJECT / "deployment/brazil_modes",
     )
 
 

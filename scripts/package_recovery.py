@@ -31,6 +31,7 @@ def verify_archive(archive):
                 raise ValueError(f"Snapshot hash mismatch: {path}")
         count = len(manifest["files"])
         for directory, filename in (("brazil_data", "provenance.json"),
+                                    ("brazil_modes", "provenance.json"),
                                     ("route_examples", "manifest.json")):
             base = PREFIX + f"deployment/{directory}/"
             if base + filename not in bundle.namelist():

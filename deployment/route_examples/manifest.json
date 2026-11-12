@@ -1,11 +1,16 @@
 {
-  "source": "OSRM demo / FOSSGIS; OpenStreetMap contributors",
+  "source": "OSRM and Valhalla demos / FOSSGIS; OpenStreetMap contributors",
   "attribution": "https://www.openstreetmap.org/copyright",
   "files": [
     {
       "path": "sao_paulo_campinas.geojson",
       "sha256": "2ec640a22a183dfbc41e0e16839844013a8ccd2a103f319cc9d1f8facc5b259b",
       "bytes": 89347
+    },
+    {
+      "path": "sao_paulo_campinas_truck.geojson",
+      "sha256": "25ae5d72ad86bb05521c71c025a0002a4fe48637e4038f93f9a91889190afe26",
+      "bytes": 100164
     }
   ]
 }

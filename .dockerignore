@@ -20,6 +20,8 @@
 !deployment/preview_data/**
 !deployment/brazil_data/
 !deployment/brazil_data/**
+!deployment/brazil_modes/
+!deployment/brazil_modes/**
 !deployment/route_examples/
 !deployment/route_examples/**
 !requirements/dashboard-linux-py313.lock
