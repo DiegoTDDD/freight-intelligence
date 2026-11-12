@@ -33,7 +33,7 @@ do painel estão em docs/images; fontes e limitações permanecem documentadas.
 ## Publicação
 
 Site: https://loginexus-dashboard-preview.onrender.com/
-Branch: `codex/loginexus-preview-20261112`.
+Branch principal: `main` (integração autorizada pelo proprietário).
 PR: https://github.com/DiegoTDDD/freight-intelligence/pull/1
 
 Versão ampliada `be0280d` publicada manualmente com sucesso no serviço existente.
@@ -43,7 +43,8 @@ proprietário e guardado como segredo GitHub. O CI só publica o SHA completo ap
 os jobs de validação aprovarem. Isso foi comprovado na revisão `be9def7`, workflow
 43316211342: cinco jobs aprovados e implantação `dep-dbr3g83m8hqs739433c0` confirmada
 como Live no Render, com origem Deploy Hook. O painel público foi conferido.
-A integração na main é controlada pelo PR #1; consulte seu estado atual.
+A integração foi concluída pelo PR #1, merge `5725173`, e a hospedagem foi
+vinculada à main. Os envios à main passam pelo mesmo CI antes da implantação.
 Os registros históricos de development_handoff.md podem descrever
 estados antigos; este documento prevalece para o estado consolidado.
 

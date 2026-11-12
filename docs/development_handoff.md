@@ -284,3 +284,16 @@ snapshot derivados recalculados. Suíte completa 320 passou e Ruff passou. Image
 loginexus-dashboard:final passou offline/read-only/512 MiB com os novos workspaces.
 Implementação pronta; publicação remota e prova de CD ainda pendentes neste registro.
 Nenhum recurso pago e nenhum merge em main. Consultar plano_finalizacao.md.
+
+### 2026-11-12 entrega integrada à main
+
+Após confirmação explícita do proprietário, PR #1 incorporado à main com merge
+5725173844762a0debd8db4304a4074087225745. Cópia local atualizada por fast-forward,
+sem reset ou sobrescrita de alterações. Render passou a acompanhar main. CD via
+segredo autorizado já comprovado nas revisões be9def7 e f395970: checks aprovados,
+deploy hook do SHA exato e Live verificado. Pipeline real e 320 testes de integração
+aprovados; seis testes de publicação adicionais aprovados (305 leves + 21 reais).
+Conferidos no site público o histórico brasileiro e a consulta real São Paulo–Campinas.
+Escopo e limites estão em plano_finalizacao.md; não retomar a lista de ideias como
+se não tivesse sido implementada. Nenhum recurso pago, automação periódica ou
+nova funcionalidade pendente foi criado para manter a tarefa artificialmente aberta.
