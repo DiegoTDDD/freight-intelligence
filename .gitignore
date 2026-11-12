@@ -42,6 +42,7 @@ data/gold/*
 !data/gold/.gitkeep
 
 *.csv
+!deployment/brazil_modes/indicators.csv
 *.csv.gz
 *.parquet
 *.feather
