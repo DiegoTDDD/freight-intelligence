@@ -10,7 +10,7 @@ jobs:
   deploy:
     name: Deploy tested dashboard
     needs: [test, docker, dashboard]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/loginexus-preview-20261112'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/codex/loginexus-preview-20261112')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     concurrency:

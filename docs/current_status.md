@@ -40,9 +40,11 @@ Versão ampliada `be0280d` publicada manualmente com sucesso no serviço existen
 Configuração de CI inclui push na branch vinculada. Como a origem do serviço é
 uma URL pública, a publicação contínua usa o deploy hook oficial, autorizado pelo
 proprietário e guardado como segredo GitHub. O CI só publica o SHA completo após
-os jobs de validação aprovarem. A primeira execução automática e a conferência
-pública final ainda precisam ser observadas antes de declarar o CD concluído. Não houve
-merge em main. Os registros históricos de development_handoff.md podem descrever
+os jobs de validação aprovarem. Isso foi comprovado na revisão `be9def7`, workflow
+43316211342: cinco jobs aprovados e implantação `dep-dbr3g83m8hqs739433c0` confirmada
+como Live no Render, com origem Deploy Hook. O painel público foi conferido.
+A integração na main é controlada pelo PR #1; consulte seu estado atual.
+Os registros históricos de development_handoff.md podem descrever
 estados antigos; este documento prevalece para o estado consolidado.
 
 ## Limites

@@ -12,8 +12,8 @@ foi autorizado. O histórico original permanece em roteiro_original.md.
 | Otimização | Oferta/demanda, capacidade e custos explícitos | Implementado e testado |
 | API | Endpoints e permissões documentados | Implementado e testado |
 | Docker | Imagens reproduzíveis e verificações reais | Concluído; imagem ampliada aprovada localmente e no GitHub |
-| CD | Publicar somente depois de CI aprovado | Deploy hook autorizado e salvo; primeira prova automática pendente |
-| Portfólio | Guia de uso, arquitetura, resultados e limitações | Documentado e versão be0280d publicada; conferência final em andamento |
+| CD | Publicar somente depois de CI aprovado | Comprovado: workflow 43316211342 e implantação automática be9def7 ativa |
+| Portfólio | Guia de uso, arquitetura, resultados e limitações | Documentado, publicado e conferido; integração na main pelo PR #1 |
 | Brasil | Fonte oficial, unidades, filtros e downloads | Implementado com ANTT ferroviário |
 | Rotas reais | Traçado geográfico, fonte e exportação | Implementado com OSRM/OSM, perfil de automóvel de referência |
 | Português | Navegação, controles e explicações em português | Implementado, com seleção de inglês |
@@ -35,6 +35,15 @@ A revisão `499a252` também passou nas quatro verificações remotas: Windows,
 Ubuntu, API/contêineres e imagem do painel. Execução do envio:
 https://github.com/DiegoTDDD/freight-intelligence/actions/runs/43301679357
 O mapa e a área brasileira foram conferidos visualmente no navegador.
+
+Publicação contínua comprovada com a revisão `be9def7`: os quatro jobs de validação
+aprovaram e o quinto job acionou o deploy hook para o mesmo SHA. O Render confirmou
+`Deploy succeeded | Live` na implantação `dep-dbr3g83m8hqs739433c0`, com origem
+`Deploy Hook`. Não é apenas um arquivo de configuração preparado.
+
+Foram acrescentados seis testes específicos da publicação (serviço/SHA corretos,
+destino inválido e proteção do segredo em mensagens de falha), todos aprovados.
+A suíte leve remota agora tem 305 testes; a validação dos dados reais tem 21.
 
 ## Limite da conclusão
 

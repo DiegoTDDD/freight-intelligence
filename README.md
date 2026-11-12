@@ -8,6 +8,9 @@ End-to-end freight intelligence platform for analyzing and forecasting freight f
 [Roteiro e entregas](docs/plano_finalizacao.md) · [Dados brasileiros](docs/brasil.md) ·
 [Rotas reais](docs/rotas_reais.md) · [Recuperação](docs/recovery.md)
 
+A publicação contínua foi comprovada: após os testes, o GitHub aciona o Render
+para o mesmo código validado. Ver [configuração e recuperação do CD](docs/publicacao_continua.md).
+
 O LogiNexus reúne engenharia de dados em escala, análises de cargas, avaliação de
 previsões e otimização de transporte. O painel abre em português e permite selecionar
 inglês. A base FAF dos EUA inclui estimativas e cenários; a área brasileira usa

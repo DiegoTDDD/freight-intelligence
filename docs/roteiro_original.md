@@ -103,6 +103,13 @@ Por enquanto, o próximo passo continua sendo concluir a orquestração e valida
 
 ## Reconciliação com o estado atual
 
+Atualização posterior: o usuário aprovou concluir o roteiro e incluir as três
+frentes. Os itens pendentes descritos abaixo foram atendidos conforme o
+[plano consolidado](plano_finalizacao.md): pipeline completo e dados reais validados,
+histórico ANTT para avaliação das previsões, CD comprovado e portfólio publicado.
+O restante desta seção preserva a reconciliação inicial feita ao recuperar o chat,
+não deve ser usado para substituir esse estado atualizado.
+
 O roteiro NÃO está integralmente concluído. As três ideias separadas em proximas_funcionalidades.md são propostas adicionais, não substituem este plano.
 
 - Etapas 1–5: bases implementadas; houve ampliação significativa dos testes e do painel.

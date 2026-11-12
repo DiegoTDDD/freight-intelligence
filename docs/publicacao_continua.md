@@ -9,7 +9,7 @@ A integração usa o [deploy hook oficial](https://render.com/docs/deploy-hooks)
 1. O proprietário autoriza guardar a URL privada como segredo do repositório
    `DiegoTDDD/freight-intelligence`, com o nome `RENDER_DEPLOY_HOOK_URL`.
 2. O GitHub executa testes Windows/Linux, contêineres da API e a imagem do painel.
-3. Somente em um envio à branch vinculada `codex/loginexus-preview-20261112`, após
+3. Somente em um envio à `main` ou à branch de preparação `codex/loginexus-preview-20261112`, após
    os três jobs necessários passarem, a etapa de implantação envia um POST ao Render.
 4. A consulta inclui o SHA completo já testado. Não publica outra revisão que tenha
    sido enviada enquanto os testes estavam em andamento.
@@ -30,7 +30,8 @@ O segredo permite iniciar atualizações deste serviço; não é necessário for
 chave administrativa completa da conta Render. Colaboradores com permissão para
 alterar workflows podem usar os segredos do repositório, conforme as regras do GitHub.
 O proprietário confirmou essa autorização persistente em 12/11/2026. O segredo
-foi salvo no repositório e a integração está em validação por uma execução real.
+foi salvo no repositório. A execução 43316211342 confirmou o deploy automático da
+revisão be9def7; o Render registrou a implantação como Live e com origem Deploy Hook.
 
 ## Recuperação
 
