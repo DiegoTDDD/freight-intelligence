@@ -2,13 +2,53 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, codex/loginexus-preview-20261112 ]
   pull_request:
     branches: [ main ]
 
 jobs:
-  test:
+  deploy:
+    name: Deploy tested dashboard
+    needs: [test, docker, dashboard]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/codex/loginexus-preview-20261112')
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: loginexus-preview-deployment
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+    - name: Deploy the exact revision that passed all checks
+      env:
+        RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      run: python scripts/deploy_dashboard.py
+
+  dashboard:
+    name: Hosted dashboard image
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build hosted dashboard image
+      run: docker build -f deployment/Dockerfile.dashboard -t loginexus-dashboard:ci .
+
+    - name: Check pinned runtime, snapshot and dashboard views
+      run: python3 scripts/check_dashboard_container.py --image loginexus-dashboard:ci
+
+  test:
+    name: Lightweight tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -21,9 +61,58 @@ jobs:
     - name: Install project and test tools
       run: |
         python -m pip install --upgrade pip
-        pip install -e . pytest
+        python -m pip install -e ".[app,dev]"
+
+    - name: Check code quality
+      run: python -m ruff check .
 
     - name: Run tests
       # tests/test_faf5.py validates the full local FAF5 dataset (~100M rows),
-      # which is not stored in the repository, so only the config tests run in CI.
-      run: python -m pytest tests/test_config.py -q
+      # which is not stored in the repository. Run lightweight tests with temporary fixtures.
+      run: python -m pytest tests --ignore=tests/test_faf5.py -q --junitxml=test-results.xml
+
+    - name: Preserve test report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-${{ matrix.os }}
+        path: test-results.xml
+        if-no-files-found: ignore
+        retention-days: 7
+
+    - name: Build verified source and data recovery package
+      if: runner.os == 'Linux'
+      run: python scripts/package_recovery.py --output recovery-package
+
+    - name: Preserve recovery package
+      if: runner.os == 'Linux'
+      uses: actions/upload-artifact@v4
+      with:
+        name: loginexus-recovery-${{ github.sha }}
+        path: recovery-package/*
+        if-no-files-found: error
+        retention-days: 30
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Validate optional users-registry Compose configuration
+      run: python3 scripts/check_users_compose.py
+
+    - name: Validate review-only deployment configuration
+      run: python3 scripts/check_production_config.py
+
+    - name: Build API image
+      run: docker build -t loginexus-api:ci .
+
+    - name: Verify pinned runtime dependencies
+      run: docker run --rm loginexus-api:ci python -m freight_intelligence.utils.runtime_lock
+
+    - name: Check local and authenticated API containers
+      run: python3 scripts/check_api_container.py --image loginexus-api:ci
+
+    - name: Check proxy-to-API permission boundaries
+      run: python3 scripts/check_proxy_runtime.py --image loginexus-api:ci

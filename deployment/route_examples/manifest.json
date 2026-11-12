@@ -1,0 +1,11 @@
+{
+  "source": "OSRM demo / FOSSGIS; OpenStreetMap contributors",
+  "attribution": "https://www.openstreetmap.org/copyright",
+  "files": [
+    {
+      "path": "sao_paulo_campinas.geojson",
+      "sha256": "2ec640a22a183dfbc41e0e16839844013a8ccd2a103f319cc9d1f8facc5b259b",
+      "bytes": 89347
+    }
+  ]
+}

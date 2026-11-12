@@ -1,4 +1,5 @@
 import argparse
+import json
 import os
 from pathlib import Path
 
@@ -18,6 +19,11 @@ from freight_intelligence.transformations.faf5_silver import build_silver
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Run the Freight Intelligence pipeline."
+    )
+    parser.add_argument(
+        "--plan",
+        action="store_true",
+        help="Print a JSON execution plan without running any transformation or writing data.",
     )
     parser.add_argument(
         "--skip-existing",
@@ -106,10 +112,28 @@ def main() -> None:
     ]
 
     rebuilt = {}
+    plan = []
 
     for name, step, outputs, dependencies, accepts_force in steps:
         dependency_rebuilt = any(rebuilt[dependency] for dependency in dependencies)
         outputs_exist = all(Path(output).is_file() for output in outputs)
+
+        if args.plan:
+            skipped = args.skip_existing and outputs_exist and not dependency_rebuilt
+            reason = (
+                "outputs exist and no upstream rebuild" if skipped
+                else "full rebuild requested" if not args.skip_existing
+                else "upstream dependency scheduled for rebuild" if dependency_rebuilt
+                else "one or more output files are missing"
+            )
+            plan.append({
+                "step": name, "action": "skip" if skipped else "run", "reason": reason,
+                "outputs": outputs, "dependencies": dependencies,
+                "missing_outputs": [output for output in outputs if not Path(output).is_file()],
+                "large_data_step": name in {"Bronze ingestion", "Silver transformation", "Gold analytics"},
+            })
+            rebuilt[name] = not skipped
+            continue
 
         if args.skip_existing and outputs_exist and not dependency_rebuilt:
             print(f"\n===== {name}: skipped (outputs exist) =====", flush=True)
@@ -125,7 +149,10 @@ def main() -> None:
 
         rebuilt[name] = True
 
-    print("\nPipeline completed successfully.", flush=True)
+    if args.plan:
+        print(json.dumps({"plan_only": True, "steps": plan}, indent=2))
+    else:
+        print("\nPipeline completed successfully.", flush=True)
 
 
 if __name__ == "__main__":

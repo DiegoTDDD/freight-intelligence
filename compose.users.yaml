@@ -1,0 +1,14 @@
+# Opt-in individual-user configuration. Does not change the default Compose mode.
+services:
+  api:
+    environment:
+      LOGINEXUS_REQUIRE_AUTH: "true"
+      LOGINEXUS_API_KEY: ""
+      LOGINEXUS_API_USERS_FILE: /run/loginexus/users.json
+    volumes:
+      - type: bind
+        source: "${LOGINEXUS_USERS_FILE:?Set LOGINEXUS_USERS_FILE to the private users registry path}"
+        target: /run/loginexus/users.json
+        read_only: true
+        bind:
+          create_host_path: false

@@ -1,0 +1,20 @@
+{
+  "interpretation": "FAF5 scenario extrapolation. Validation measures agreement with held-out FAF scenario values, not accuracy against future observed freight demand.",
+  "input_sha256": "c98a90688690f32f693572584ef334e7203dfc3d83ae1566bea1f9c08f125a97",
+  "min_train_points": 4,
+  "horizon_points": 1,
+  "test_points": 3,
+  "selection_uses": "validation_only",
+  "selection_metric": "mae",
+  "selected_models": {
+    "tmiles": "cagr",
+    "tons": "cagr",
+    "value": "cagr"
+  },
+  "incomplete_validation": "excluded from model selection",
+  "final_test": "single origin; no refitting or selection on test values",
+  "overlapping_windows": "each origin/target pair has equal weight",
+  "current_forecast_outputs": "preserved; report does not promote models automatically",
+  "numpy_version": "2.5.2",
+  "polars_version": "1.43.2"
+}

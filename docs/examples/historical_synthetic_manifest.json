@@ -1,0 +1,8 @@
+{
+  "dataset_id": "synthetic-linear-example",
+  "source": "Generated teaching example; not measured freight",
+  "retrieved_at": "2026-11-11",
+  "scope": "Synthetic aggregate with a linear trend",
+  "record_kind": "synthetic_example",
+  "units": {"tons": "synthetic tons"}
+}

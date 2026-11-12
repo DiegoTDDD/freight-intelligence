@@ -1,0 +1,17 @@
+{
+  "name": "Synthetic teaching example - not FAF operational costs",
+  "flow_unit": "synthetic freight units",
+  "cost_unit": "synthetic cost units",
+  "nodes": [
+    {"id": "supply-a", "balance": 80},
+    {"id": "supply-b", "balance": 20},
+    {"id": "demand-x", "balance": -50},
+    {"id": "demand-y", "balance": -50}
+  ],
+  "arcs": [
+    {"id": "a-x", "origin": "supply-a", "destination": "demand-x", "capacity": 50, "unit_cost": 1},
+    {"id": "a-y", "origin": "supply-a", "destination": "demand-y", "capacity": 50, "unit_cost": 4},
+    {"id": "b-x", "origin": "supply-b", "destination": "demand-x", "capacity": 50, "unit_cost": 3},
+    {"id": "b-y", "origin": "supply-b", "destination": "demand-y", "capacity": 50, "unit_cost": 1}
+  ]
+}

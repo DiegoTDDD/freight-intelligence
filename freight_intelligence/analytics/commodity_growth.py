@@ -43,7 +43,6 @@ def main():
 
     print(f"Commodity growth analysis created: {OUTPUT_PATH}")
     print(f"Records: {growth.height}")
-    print(growth.head(10))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,17 @@
+# Free API preview draft; no custom domain, paid disk or database.
+services:
+  - type: web
+    name: loginexus-api-preview
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeployTrigger: "off"
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: LOGINEXUS_REQUIRE_AUTH
+        value: "true"
+      - key: LOGINEXUS_API_KEY
+        generateValue: true

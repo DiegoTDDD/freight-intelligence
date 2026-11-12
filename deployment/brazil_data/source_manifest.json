@@ -1,0 +1,11 @@
+{
+  "dataset_id": "antt-siade-rail-2006-2025",
+  "source": "https://dados.antt.gov.br/api/3/action/package_show?id=438a5184-09db-49a3-88c8-0bad418b4409",
+  "retrieved_at": "2026-11-12",
+  "scope": "Reported cargo movements on federally conceded Brazilian railways; not all modes. TU sums movements and may count cargo again on successive reporting flows. Administrative reports may be revised; coverage can change between years.",
+  "record_kind": "historical_observations",
+  "units": {
+    "tons": "toneladas úteis (TU)",
+    "tonne_km": "toneladas-quilômetro úteis (TKU)"
+  }
+}

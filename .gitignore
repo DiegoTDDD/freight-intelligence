@@ -105,3 +105,17 @@ desktop.ini
 *.
 # Python package metadata
 *.egg-info/
+# Small versioned examples required by dashboard and automated tests
+!docs/examples/*.csv
+# Local API user registries must never be versioned
+secrets/
+
+# Reviewed public analytical snapshot for dashboard preview builds
+!deployment/preview_data/**/*.parquet
+!deployment/preview_data/models/
+!deployment/preview_data/models/**
+!deployment/preview_data/artifacts/
+!deployment/preview_data/artifacts/**
+!deployment/brazil_data/*.parquet
+!deployment/brazil_data/*.csv
+!deployment/brazil_data/*.zip

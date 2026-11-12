@@ -36,7 +36,6 @@ def main():
 
     print(f"Commodity lookup created: {OUTPUT_PATH}")
     print(f"Categories: {lookup.height}")
-    print(lookup)
 
 
 if __name__ == "__main__":

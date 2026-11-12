@@ -1,0 +1,16 @@
+{
+  "interpretation": "FAF5 scenario extrapolation. Validation measures agreement with held-out FAF scenario values, not accuracy against future observed freight demand.",
+  "input_sha256": "c98a90688690f32f693572584ef334e7203dfc3d83ae1566bea1f9c08f125a97",
+  "end_year": 2055,
+  "holdout_points": 3,
+  "selection_metric": "mae",
+  "tie_break_order": [
+    "persistence",
+    "linear",
+    "cagr"
+  ],
+  "negative_predictions": "clipped to zero",
+  "unavailable_models": "excluded when endpoints or numerical results are invalid",
+  "numpy_version": "2.5.2",
+  "polars_version": "1.43.2"
+}

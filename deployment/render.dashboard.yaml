@@ -1,0 +1,13 @@
+# GitHub Actions deploys the exact tested SHA using a private Render deploy hook.
+services:
+  - type: web
+    name: loginexus-dashboard-preview
+    runtime: docker
+    plan: free
+    dockerfilePath: ./deployment/Dockerfile.dashboard
+    dockerContext: .
+    autoDeployTrigger: "off"
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: PORT
+        value: "8501"

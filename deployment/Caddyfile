@@ -1,0 +1,7 @@
+{
+    admin off
+}
+
+{$LOGINEXUS_DOMAIN} {
+    reverse_proxy api:8000
+}
