@@ -58,6 +58,8 @@ def test_source_audit_creates_candidate_only_for_revisions_without_changing_base
             assert "deployment/brazil_gas/annual.json" in bundle.namelist()
             assert not any("cache" in name or "gn_" in name for name in bundle.namelist())
             assert json.loads(bundle.read("audit-report.json"))["status"] == report["status"]
+            metadata = json.loads(bundle.read("deployment/brazil_modes/provenance.json"))
+            assert any("0 missing daily cells" in note for note in metadata["quality_notes"])
 
 
 def test_invalid_upstream_report_fails_without_publishing_candidate(tmp_path):

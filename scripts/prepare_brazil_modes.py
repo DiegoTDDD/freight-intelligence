@@ -83,12 +83,15 @@ def prepare(output, source_pdf=None, gas_dir=None):
         } for row in rail.to_dicts())
     rows.sort(key=lambda row: (row["mode"], row["indicator"], row["year"]))
     _, gas, gas_metadata = load_gas(gas_dir) if gas_dir is not None else load_gas()
+    operator_count = len(gas_metadata["operators"])
+    operator_label = "five" if operator_count == 5 else str(operator_count)
+    missing_gas_cells = sum(gas["missing_daily_values"].values())
     for kind in ("receipt", "delivery"):
         rows.append({
             "mode": "pipeline", "indicator": f"anp_gas_{kind}_observed_subtotal",
             "year": 2025, "value": gas[kind], "unit": "million_m3",
             "scope": (
-                f"ANP 2025 realized {kind}-point observed subtotal across five reported operators; "
+                f"ANP 2025 realized {kind}-point observed subtotal across {operator_label} reported operators; "
                 f"{gas['missing_daily_values'][kind]} missing daily cells; inter-operator transfers "
                 "may repeat gas. Not production, unique national supply or receipt-plus-delivery total"
             ), "source_url": gas_metadata["source"], "source_page": 0,
@@ -132,7 +135,7 @@ def prepare(output, source_pdf=None, gas_dir=None):
             "is promoted here until that scope discrepancy is reconciled."),
             ("The former ONTL gas movement series was excluded: its 153.1 million m3/day value "
              "is identified as production in EPE BEN 2025, page 16. ANP point movements replace it; "
-             "33 missing daily cells and signed source values remain disclosed. Oil pipelines "
+             f"{missing_gas_cells} missing daily cells and signed source values remain disclosed. Oil pipelines "
              "cover Transpetro, not all operators."),
             "Chart values retain source rounding; forecasts are not included.",
         ],
