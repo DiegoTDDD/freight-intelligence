@@ -24,6 +24,8 @@
 !deployment/brazil_modes/**
 !deployment/brazil_gas/
 !deployment/brazil_gas/**
+!deployment/brazil_water/
+!deployment/brazil_water/**
 !deployment/route_examples/
 !deployment/route_examples/**
 !requirements/dashboard-linux-py313.lock

@@ -16,6 +16,7 @@ from pathlib import Path
 import polars as pl
 
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.brazil_water import load_water
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = (
@@ -95,6 +96,16 @@ def prepare(output, source_pdf=None, gas_dir=None):
                        if gas["missing_daily_values"][kind] else "reported_point_movement_subtotal"),
         })
     rows.sort(key=lambda row: (row["mode"], row["indicator"], row["year"]))
+    water, water_metadata = load_water()
+    water_ids = {"Port throughput": "antaq_2025_port_throughput",
+                 "Coastal cabotage": "coastal_cabotage_volume",
+                 "Inland navigation": "inland_navigation_volume"}
+    for row in water.filter(pl.col("dataset") == "navigation_totals").to_dicts():
+        rows.append({"mode": "water", "indicator": water_ids[row["category"]],
+                     "year": row["year"], "value": row["value"], "unit": row["unit"],
+                     "scope": row["scope"], "source_url": row["source_url"],
+                     "source_page": row["source_page"], "status": "reported_rounded_reference"})
+    rows.sort(key=lambda row: (row["mode"], row["indicator"], row["year"]))
     buffer = io.StringIO(newline="")
     writer = csv.DictWriter(buffer, fieldnames=list(rows[0]), lineterminator="\n")
     writer.writeheader()
@@ -104,7 +115,7 @@ def prepare(output, source_pdf=None, gas_dir=None):
         "schema_version": 1, "country": "Brazil", "prepared_on": datetime.now(UTC).date().isoformat(),
         "method": "Reviewed transcription of published chart labels plus verified ANTT rail snapshot",
         "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
-        "sources": [{"url": SOURCE, "sha256": SOURCE_SHA256,
+        "sources": [*water_metadata["sources"], {"url": SOURCE, "sha256": SOURCE_SHA256,
                      "pages": [40, 78, 110, 123]},
                     {"url": gas_metadata["source"], "files": gas_metadata["sources"]},
                     {"url": ROAD_SOURCE, "pages": [61], "edition": "Anuario TRC 2025 v1.1",

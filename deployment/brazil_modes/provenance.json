@@ -6,6 +6,21 @@
   "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
   "sources": [
     {
+      "url": "https://www.gov.br/antaq/pt-br/central-de-conteudos/publicacoes-da-antaq/Anuario2025.pdf",
+      "sha256": "75a258baeb9267d1cf1c0be8b9353aa31850b950b55197e79b9072e484961e2e",
+      "pages": [
+        2,
+        14,
+        20,
+        22
+      ]
+    },
+    {
+      "url": "https://www.gov.br/antaq/pt-br/central-de-conteudos/noticias/2026/setor-aquaviario-brasileiro-movimentou-em-2025-1-4-bi-de-toneladas/",
+      "sha256": "99bd0e6ca46d959066a39f7a7ee0fac96f2122fa8672a339ce738d3ee67a1426",
+      "description": "HTML bytes archived when reviewed; site navigation can change"
+    },
+    {
       "url": "https://ontl.infrasa.gov.br/wp-content/uploads/2025/10/Diagnostico-logistico-2010-2024.pdf",
       "sha256": "5534dc1dd04112611514c67f2d5abf35f8bce4e49f5e66f91f86503b05c73f5b",
       "pages": [
@@ -196,8 +211,8 @@
   "files": [
     {
       "path": "indicators.csv",
-      "sha256": "cc5251de6c434577ed5fa429f59137990667b2320fbb5bd185c909867e187595",
-      "bytes": 30118
+      "sha256": "6854e4acfe1e30082d5d3e928974e686f788193a1e4a5a84db3913d44b4a93fd",
+      "bytes": 30891
     }
   ]
 }

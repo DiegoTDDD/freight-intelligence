@@ -11,6 +11,8 @@ End-to-end freight intelligence platform for analyzing and forecasting freight f
 [Public API documentation](https://loginexus-dashboard-preview.onrender.com/api/docs) ·
 [Truck-aware routing](docs/truck_routing.md) · [Five-mode indicators](docs/brazil_modes.md)
 
+[ANTAQ inland/coastal references](docs/brazil_water.md) · [ANP source revision audits](docs/source_refresh.md)
+
 Continuous deployment is verified: after the checks pass, GitHub deploys the exact
 tested revision to Render. See [deployment and recovery](docs/publicacao_continua.md).
 

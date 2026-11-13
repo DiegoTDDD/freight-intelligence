@@ -24,6 +24,7 @@ def snapshot_api(root: Path):
         transport_dir=root / "artifacts/optimization/transport",
         brazil_dir=PROJECT / "deployment/brazil_modes",
         gas_dir=PROJECT / "deployment/brazil_gas",
+        water_dir=PROJECT / "deployment/brazil_water",
     )
 
 

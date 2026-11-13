@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "country": "Brazil",
+  "prepared_on": "2026-11-13",
+  "method": "Reviewed transcription of labeled official report figures; no chart digitization",
+  "sources": [
+    {
+      "url": "https://www.gov.br/antaq/pt-br/central-de-conteudos/publicacoes-da-antaq/Anuario2025.pdf",
+      "sha256": "75a258baeb9267d1cf1c0be8b9353aa31850b950b55197e79b9072e484961e2e",
+      "pages": [
+        2,
+        14,
+        20,
+        22
+      ]
+    },
+    {
+      "url": "https://www.gov.br/antaq/pt-br/central-de-conteudos/noticias/2026/setor-aquaviario-brasileiro-movimentou-em-2025-1-4-bi-de-toneladas/",
+      "sha256": "99bd0e6ca46d959066a39f7a7ee0fac96f2122fa8672a339ce738d3ee67a1426",
+      "description": "HTML bytes archived when reviewed; site navigation can change"
+    }
+  ],
+  "quality_notes": [
+    "Keep tonnes, TEU and statistical populations separate; do not sum overlapping indicators.",
+    "Coastal origin/destination states are marginals; no OD links are inferred.",
+    "Interior navigation is a navigation category, not all maritime/coastal traffic on rivers.",
+    "Unlabeled years/states/categories remain unavailable; chart points are not estimated by eye.",
+    "Reported values retain rounding and may be revised; selected categories do not form a census."
+  ],
+  "files": [
+    {
+      "path": "water.csv",
+      "bytes": 12664,
+      "sha256": "e959553b7bb0c98652c6c9291a51c069223549893c31fd6ed964c790a86bf479"
+    }
+  ]
+}

@@ -44,6 +44,7 @@ data/gold/*
 *.csv
 !deployment/brazil_modes/indicators.csv
 !deployment/brazil_gas/monthly.csv
+!deployment/brazil_water/water.csv
 *.csv.gz
 *.parquet
 *.feather

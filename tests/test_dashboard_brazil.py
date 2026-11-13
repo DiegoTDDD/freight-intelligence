@@ -68,3 +68,17 @@ def test_all_five_modal_views_load_with_explicit_scope():
     app.selectbox(key="brazil_gas_point_type").select("receipt").run()
     assert not app.exception and not app.error
     assert any(item.label == "Missing daily cells" and item.value == "31" for item in app.metric)
+
+
+def test_water_navigation_and_regional_reference_views():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("water").run()
+    for dataset in ("navigation_totals", "inland_commodities",
+                    "coastal_state_endpoints", "grain_regions"):
+        app.selectbox(key="brazil_water_dataset").select(dataset).run()
+        assert not app.exception and not app.error
+        assert any("State endpoints do not identify paired routes" in item.value for item in app.warning)
+    app.selectbox(key="water_year_grain_regions").select(2024).run()
+    assert not app.exception

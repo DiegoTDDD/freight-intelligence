@@ -1,7 +1,8 @@
 # Current delivery and remaining work
 
-Reviewed baseline: 2026-11-13, revision `bd3f608`. This page is the current status
-reference; dated handoff entries and the recovered original chat are historical.
+This page describes the current main-branch implementation. Dated handoff entries
+and the recovered original chat are historical. Current verification runs are
+listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/actions/workflows/ci_pipeline.yml).
 
 ## Delivered portfolio scope
 
@@ -13,13 +14,13 @@ reference; dated handoff entries and the recovered original chat are historical.
 | Optimization | Tested constrained transport solver, editable scenarios and comparisons; scenario costs are not measured savings |
 | Dashboard | Published Streamlit app; English default, optional Portuguese translation |
 | Real-road routing | Separate OSRM car-reference and Valhalla truck engines; explicit truck profile, map, instructions and GeoJSON |
-| Brazil | 119 scoped annual indicators across five modes, detailed railway data and 120 monthly ANP gas records |
+| Brazil | 122 scoped annual indicators across five modes, detailed railway data, 120 monthly ANP gas records and 43 ANTAQ water references |
 | Public API | Documented read-only HTTP API under `/api`; configured key/user permissions retained; private local plans excluded |
 | Reproducibility | Pinned container runtimes, snapshot hashes and verified recovery archives |
 | CI and deployment | Windows/Linux tests, API/container and dashboard checks; deploy only the exact tested main revision |
 | GitHub delivery | PR #1 merged; main is the published branch |
 
-Baseline validation: 349 lightweight tests passed locally, all five remote checks
+Historical baseline evidence (`bd3f608`, 2026-11-13): 349 lightweight tests passed locally, all five remote checks
 passed, and the public gas API matched the reviewed records and source hashes.
 The dashboard/API server passed offline/read-only checks within 512 MiB.
 The heavy full pipeline was verified previously and was not rerun for this update.
@@ -39,8 +40,9 @@ The heavy full pipeline was verified previously and was not rerun for this updat
 2. **Road freight:** reconcile the official 1.4/1.165-billion-tonne discrepancy;
    extend movement history and regional flows. Within-city trips are outside the
    current MDF-e scope.
-3. **Water freight:** add separately scoped inland navigation, cabotage and corridor
-   datasets beyond the current port-throughput series.
+3. **Water freight:** [inland/coastal and regional reference analyses](brazil_water.md)
+   are implemented. Extend them to monthly source records, paired OD flows and
+   fuller corridor detail; current state endpoints are marginal totals only.
 4. **Air freight:** extend paid-cargo aggregates to airport/origin/destination and
    finer time periods, preserving the paid/unpaid and domestic/international scope.
 5. **Pipelines:** extend gas history beyond 2025, investigate 33 missing daily cells,

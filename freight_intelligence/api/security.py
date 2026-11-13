@@ -12,6 +12,7 @@ from fastapi.security import APIKeyHeader
 ROUTE_PERMISSIONS = {
     "/brazil/indicators": "analytics",
     "/brazil/gas-movements": "analytics",
+    "/brazil/water-freight": "analytics",
     "/ready": "analytics",
     "/annual-kpis": "analytics",
     "/annual-forecast": "analytics",

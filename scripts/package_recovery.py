@@ -33,6 +33,7 @@ def verify_archive(archive):
         for directory, filename in (("brazil_data", "provenance.json"),
                                     ("brazil_modes", "provenance.json"),
                                     ("brazil_gas", "provenance.json"),
+                                    ("brazil_water", "provenance.json"),
                                     ("route_examples", "manifest.json")):
             base = PREFIX + f"deployment/{directory}/"
             if base + filename not in bundle.namelist():

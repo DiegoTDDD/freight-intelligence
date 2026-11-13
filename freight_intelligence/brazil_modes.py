@@ -9,6 +9,9 @@ import polars as pl
 MODES = ("road", "rail", "water", "air", "pipeline")
 DEFAULT_ROOT = Path(__file__).resolve().parents[1] / "deployment/brazil_modes"
 CONTRACTS = {
+    "antaq_2025_port_throughput": ("water", "million_tonnes", 2025, 2025),
+    "coastal_cabotage_volume": ("water", "million_tonnes", 2025, 2025),
+    "inland_navigation_volume": ("water", "million_tonnes", 2025, 2025),
     "mdfe_recorded_trips": ("road", "million_trips", 2025, 2025),
     "mdfe_transport_work": ("road", "billion_tonne_km", 2025, 2025),
     "registered_trucks": ("road", "million_vehicles", 2010, 2024),

@@ -12,6 +12,7 @@ import streamlit as st
 
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import load_modes
+from freight_intelligence.brazil_water import load_water
 from freight_intelligence.optimization.geographic_routing import LIMITATIONS, request_route
 from freight_intelligence.optimization.truck_routing import (
     LIMITATIONS as TRUCK_LIMITATIONS,
@@ -224,9 +225,48 @@ def render_modes():
                        "brazil_modal_indicators.csv", "text/csv")
     if mode == "pipeline":
         render_gas_movements()
+    if mode == "water":
+        render_water_freight()
     with st.expander("Coverage, quality notes and source hashes"):
         for note in metadata["quality_notes"]:
             st.warning(note)
+        st.json(metadata)
+
+
+def render_water_freight():
+    st.subheader("ANTAQ navigation and regional references")
+    try:
+        data, metadata = load_water()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        st.error("The verified ANTAQ reference snapshot is unavailable.")
+        return
+    labels = {"navigation_totals": "Navigation reference totals",
+              "inland_commodities": "Leading inland cargo categories",
+              "coastal_state_endpoints": "Coastal container origin/destination states",
+              "grain_regions": "Maize/soybean regional port aggregates"}
+    dataset = st.selectbox("Water reference dataset", list(labels),
+                           format_func=labels.get, key="brazil_water_dataset")
+    view = data.filter(pl.col("dataset") == dataset)
+    years = sorted(view["year"].unique())
+    year = st.selectbox("Water reference year", years, index=len(years) - 1,
+                        key=f"water_year_{dataset}")
+    view = view.filter(pl.col("year") == year)
+    directions = sorted(view["direction"].unique())
+    if directions != ["not_applicable"]:
+        direction = st.selectbox("Water reference direction", directions,
+                                 key=f"water_direction_{dataset}")
+        view = view.filter(pl.col("direction") == direction)
+    st.info(view["scope"][0])
+    st.warning("Reference populations overlap. Do not add port, navigation, export or endpoint "
+               "totals together. State endpoints do not identify paired routes; absent states "
+               "are unavailable, not zero.")
+    unit = {"million_tonnes": "Million tonnes", "thousand_TEU": "Thousand TEU"}[view["unit"][0]]
+    chart = view.select("category", "value").rename({"category": "Category", "value": unit})
+    st.bar_chart(chart, x="Category", y=unit)
+    st.dataframe(view, hide_index=True)
+    st.download_button("Download ANTAQ reference tables (CSV)", data.write_csv().encode(),
+                       "antaq_navigation_references.csv", "text/csv")
+    with st.expander("ANTAQ source, precision and coverage"):
         st.json(metadata)
 
 

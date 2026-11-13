@@ -38,6 +38,7 @@ Interactive OpenAPI documentation is available at `http://127.0.0.1:8000/docs`.
 | `GET /annual-forecast` | Saved scenario extrapolations, optionally filtered by `metric_type` |
 | `GET /brazil/indicators` | Scoped indicators for road, rail, water, air and pipelines, filtered by `mode`, `start_year`, `end_year`; includes unit, scope, sources and quality notes |
 | `GET /brazil/gas-movements` | ANP 2025 monthly realized point volumes, filtered by `month`, `point_type` (receipt/delivery) and `operator_id`; retains observed/missing counts and source units |
+| `GET /brazil/water-freight` | ANTAQ navigation/cargo/regional references, filtered by `dataset`, `year` and `direction`; tonnes and TEU retained separately |
 | `GET /transport-plan` | Saved allocation, filtered by `origin`, `destination`, `active_only` |
 | `GET /transport-plan/nodes` | Saved node balances and conservation checks |
 | `GET /temporal-evaluation` | Temporal baseline scores, filtered by `metric_type` and `phase` |

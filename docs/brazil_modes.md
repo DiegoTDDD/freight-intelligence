@@ -1,6 +1,6 @@
 # Brazilian multimodal indicators
 
-The five-mode view covers road, rail, water, air and pipelines with **119 scoped
+The five-mode view covers road, rail, water, air and pipelines with **122 scoped
 annual indicator records**. It complements the detailed railway workspace.
 Coverage is deliberately heterogeneous:
 
@@ -8,7 +8,7 @@ Coverage is deliberately heterogeneous:
 | --- | --- | --- | --- |
 | Road | Registered truck fleet; MDF-e cargo trips and derived transport work | Fleet 2010–2024; operations 2025 | Excludes within-city trips; no reconciled national cargo tonnage |
 | Rail | Net tonnes and tonne-kilometres | 2006–2025 | ANTT federal concessions; repeated cargo movements possible |
-| Water | Port cargo throughput | 2010–2024 | Port handling, not unique shipments or complete inland transport work |
+| Water | Port throughput; coastal/inland navigation, cargo categories and regional references | History 2010–2024; references 2025 and grain regions 2024/2025 | Overlapping populations; endpoint marginals are not OD routes; TEU separate from tonnes |
 | Air | Domestic and international paid cargo | 2010–2024 | ANAC paid cargo; international is linked to Brazil |
 | Pipeline | ANP gas receipt/delivery subtotals; Transpetro oil/product volume | Gas 2025; oil 2010–2024 | Gas missing cells and inter-operator transfers disclosed; oil excludes other operators/mineral pipelines |
 
@@ -16,6 +16,9 @@ This provides indicators for all five modes, **not full national cargo-flow
 coverage for every mode**. Units cannot be added or used to derive modal shares.
 Charts keep their published rounding. No synthetic values or projections are
 inserted into the observed series.
+
+The [detailed ANTAQ view](brazil_water.md) adds 43 navigation, cargo and regional
+reference records and a separate API/CSV export.
 
 ## Sources and reproducibility
 
@@ -66,9 +69,9 @@ Rebuild the gas snapshot first with `python scripts/prepare_brazil_gas.py`
 then `python scripts/prepare_brazil_modes.py`. The gas detail and CSV download
 appear in the pipeline mode view. The API endpoint is
 `GET /api/brazil/gas-movements`, with month, point type and operator-id filters.
-The reduction from 132 to 119 annual records reflects removal of 15 ambiguous
-gas values and addition of two explicitly scoped ANP subtotals, not loss of the
-new 120 monthly movement records.
+The earlier correction reduced 132 to 119 annual records by removing 15 ambiguous
+gas values and adding two ANP subtotals. Three 2025 water references subsequently
+bring the total to 122, alongside 120 monthly gas records and 43 detailed water references.
 
 The oil series remains explicitly operator-scoped. The source's prose growth-rate
 calculations are not imported; charts display the underlying published values only.
