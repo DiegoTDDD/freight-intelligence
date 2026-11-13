@@ -32,8 +32,11 @@ The app identifies itself with `X-Client-Id` and a project-bearing User-Agent.
 
 Live requests are disabled unless the operator sets
 `LOGINEXUS_TRUCK_DEMO_ENABLED=true`. The provider asks published applications to
-notify its maintainers in GitHub Discussions. Owner approval for that external
-notice is pending; the saved demonstration and local integration remain usable.
+notify its maintainers in GitHub Discussions. The owner authorized this notice,
+which was [published on 2026-11-13](https://github.com/valhalla/valhalla/discussions/6503).
+The hosted dashboard image now enables live requests. This is a usage notice,
+not an endorsement or service guarantee from the maintainers. Other launchers
+remain disabled unless the operator explicitly sets the environment variable.
 
 OpenStreetMap may omit or contain stale truck restrictions. This integration does
 not provide legal clearance, live traffic, current closure verification, toll

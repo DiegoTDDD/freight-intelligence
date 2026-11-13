@@ -13,7 +13,7 @@ COPY deployment/brazil_data ./deployment/brazil_data
 COPY deployment/brazil_modes ./deployment/brazil_modes
 COPY deployment/route_examples ./deployment/route_examples
 RUN python -m pip install --no-deps -e . && python -m pip check
-ENV LOGINEXUS_DASHBOARD_DATA_ROOT=/app/preview-data HOME=/tmp
+ENV LOGINEXUS_DASHBOARD_DATA_ROOT=/app/preview-data HOME=/tmp LOGINEXUS_TRUCK_DEMO_ENABLED=true
 USER 10001:10001
 EXPOSE 8501
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s --retries=3 \

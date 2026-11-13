@@ -51,7 +51,9 @@ federally conceded railways; the five-mode view adds independently scoped offici
 indicators, with road fleet history rather than unresolved national road tonnage.
 Truck-aware routes apply mapped restrictions to an explicit vehicle profile;
 missing map restrictions still prevent operational certification. Live demo access
-requires operator activation; the reviewed truck example also works offline.
+is enabled in the hosting image after the provider usage notice; it requires
+explicit coordinate/profile-sharing consent. Other launchers require operator
+activation. The reviewed truck example also works offline.
 The snapshot can be recovered and rebuilt independently of the current host.
 
 ![Brazilian workspace with the optional Portuguese translation](docs/images/brasil.png)

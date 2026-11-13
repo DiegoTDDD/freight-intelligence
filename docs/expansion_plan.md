@@ -30,7 +30,9 @@ Brazilian indicator endpoint is undergoing review with the next expansion.
 Valhalla integration and editable profiles are implemented locally; 17 engine
 contract tests and the UI profile/saved-route test passed. One real truck request
 returned 98.771 km for the saved rigid-truck example. Public live use remains
-disabled pending owner approval for the provider's requested external notice.
+controlled by an operator switch. The owner approved the provider notice, which
+was published as [Valhalla discussion #6503](https://github.com/valhalla/valhalla/discussions/6503)
+on 2026-11-13; the hosting image enables live requests after this notice.
 
 ## Brazilian modes
 
