@@ -5,7 +5,7 @@
 End-to-end freight intelligence platform for analyzing and forecasting freight flows using large-scale transportation data.
 
 **[Open the live dashboard](https://loginexus-dashboard-preview.onrender.com/)** ·
-[Roadmap and delivery (Portuguese)](docs/plano_finalizacao.md) · [Brazilian data](docs/brasil.md) ·
+[Current delivery and remaining work](docs/status.md) · [Brazilian data](docs/brazil_modes.md) ·
 [Real-road routes](docs/rotas_reais.md) · [Recovery (Portuguese)](docs/recovery.md)
 
 [Public API documentation](https://loginexus-dashboard-preview.onrender.com/api/docs) ·
@@ -17,9 +17,10 @@ tested revision to Render. See [deployment and recovery](docs/publicacao_continu
 LogiNexus combines large-scale data engineering, freight analytics, forecasting
 evaluation and transport optimization. **The project and dashboard default to English;
 Portuguese is an optional interface translation.** The US FAF data includes estimates
-and scenarios; the Brazilian workspace uses railway movements reported to ANTT for
-2006–2025. Sources and units stay separate. The demo also queries real OpenStreetMap
-road routes, using a reference car profile with explicit limitations for truck use.
+and scenarios. Brazil includes detailed ANTT railway movements for 2006–2025,
+scoped indicators for five modes and ANP gas-point movements for 2025. Sources
+and units stay separate. Real-road routing offers distinct OSRM car-reference
+and Valhalla truck profiles; mapped restrictions do not provide dispatch certification.
 
 ### Try the demo without processing the large dataset
 

@@ -1,5 +1,9 @@
 # Funcionalidades para discutir depois
 
+**Arquivo histórico.** As três frentes abaixo foram implementadas e ampliadas.
+Consultar [estado atual e pendências](status.md); trechos antigos sobre PR em
+rascunho, pipeline não executado ou CD pendente não descrevem a entrega atual.
+
 As três ideias foram inicialmente separadas a pedido do usuário. Depois ele aprovou
 explicitamente sua implementação junto com as pendências do roteiro original.
 Agora fazem parte de [plano de finalização](plano_finalizacao.md); este arquivo

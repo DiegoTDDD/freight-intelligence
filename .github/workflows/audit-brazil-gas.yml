@@ -1,0 +1,44 @@
+name: Audit Brazilian gas source revisions
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Monday 09:17 UTC (06:17 America/Sao_Paulo); independent of the owner's PC.
+    - cron: '17 9 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-brazil-gas.yml'
+      - 'scripts/audit_brazil_gas.py'
+      - 'scripts/prepare_brazil_gas.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brazil-gas-source-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install bounded data-reader runtime
+        run: python -m pip install polars==2.1.0
+      - name: Fetch, validate and compare all twelve ANP source reports
+        run: python -m scripts.audit_brazil_gas --output source-audit --cache-dir source-cache
+      - name: Keep revision report and candidate for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brazil-gas-source-audit-${{ github.run_id }}
+          path: |
+            source-audit/report.json
+            source-audit/review-candidate.zip
+          if-no-files-found: warn
+          retention-days: 14

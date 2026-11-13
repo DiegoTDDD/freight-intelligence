@@ -6,6 +6,7 @@ import hashlib
 import io
 import json
 import urllib.request
+from datetime import UTC, datetime
 from pathlib import Path
 
 from freight_intelligence.ingestion.brazil_gas import MAX_BYTES, annual_volumes, parse_month
@@ -22,25 +23,29 @@ FILES = ["gn-janeiro.csv", "gn-fevereiro.csv", "gn_marco_2025.csv", "gn_abril_20
          "gn_dezembro_2025.csv"]
 
 
-def prepare(cache, output):
+def fetch_report(url):
+    request = urllib.request.Request(url, headers={
+        "User-Agent": "LogiNexus/0.1 (https://github.com/DiegoTDDD/freight-intelligence)"
+    })
+    with urllib.request.urlopen(request, timeout=30) as response:
+        if response.geturl() != url:
+            raise ValueError("Unexpected ANP source redirect")
+        return response.read(MAX_BYTES + 1)
+
+
+def prepare(cache, output, *, refresh=False, fetch=None):
     cache, output = Path(cache), Path(output)
     cache.mkdir(parents=True, exist_ok=True)
     monthly, sources = [], []
     for month, filename in enumerate(FILES, 1):
         path = cache / filename
-        if path.exists():
+        if path.exists() and not refresh:
             raw = path.read_bytes()
         else:
-            request = urllib.request.Request(BASE + filename, headers={
-                "User-Agent": "LogiNexus/0.1 (https://github.com/DiegoTDDD/freight-intelligence)"
-            })
-            with urllib.request.urlopen(request, timeout=30) as response:
-                if response.geturl() != BASE + filename:
-                    raise ValueError("Unexpected ANP source redirect")
-                raw = response.read(MAX_BYTES + 1)
+            raw = (fetch or fetch_report)(BASE + filename)
         rows, provenance = parse_month(raw, 2025, month)
         # Cache only complete, validated monthly downloads.
-        if not path.exists():
+        if not path.exists() or refresh:
             staging = path.with_suffix(".part")
             staging.write_bytes(raw)
             staging.replace(path)
@@ -55,7 +60,7 @@ def prepare(cache, output):
     files = {"monthly.csv": buffer.getvalue().encode(),
              "annual.json": (json.dumps(annual, indent=2) + "\n").encode()}
     manifest = {
-        "schema_version": 1, "source": SOURCE, "prepared_on": "2026-11-13",
+        "schema_version": 1, "source": SOURCE, "prepared_on": datetime.now(UTC).date().isoformat(),
         "year": 2025, "unit": "source thousand m3; annual outputs million m3",
         "interpretation": (
             "Realized point movements reported by operators, separated into receipts and "
@@ -81,5 +86,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cache-dir", type=Path, default=ROOT / "data/raw/anp/gas/2025")
     parser.add_argument("--output", type=Path, default=ROOT / "deployment/brazil_gas")
+    parser.add_argument("--refresh", action="store_true", help="Re-fetch even when raw cache exists")
     args = parser.parse_args()
-    print(json.dumps(prepare(args.cache_dir, args.output)))
+    print(json.dumps(prepare(args.cache_dir, args.output, refresh=args.refresh)))

@@ -1,4 +1,14 @@
-# Plano consolidado de finalização
+# Delivery plan
+
+The original twelve-stage portfolio roadmap is implemented. Current delivery,
+evidence and outstanding expansion work are maintained in [status.md](status.md).
+The public API, truck routing and five-mode indicators extend the original scope;
+they do not establish operational certification or complete national coverage.
+
+<details>
+<summary>Archived delivery record from 2026-11-12</summary>
+
+## Original delivery record
 
 Escopo aprovado pelo usuário: concluir as 12 etapas do roteiro original e incluir
 rotas reais, análises brasileiras e experiência em português antes de finalizar.
@@ -51,3 +61,5 @@ Concluir este escopo entrega uma demonstração de portfólio reproduzível, pub
 e com resultados auditáveis. Não certifica roteamento operacional de caminhões,
 cobertura de todos os modais brasileiros, precisão futura ou hospedagem gratuita
 eterna. Esses limites fazem parte dos resultados, não são funcionalidades fictícias.
+
+</details>

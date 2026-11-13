@@ -1,6 +1,10 @@
 # Brazilian railway freight and historical forecasts
 
-The **Brazilian freight** workspace presents movements reported to ANTT/SIADE for
+This guide describes **Railway detail**. The same Brazilian workspace also offers
+[five-mode indicators and detailed ANP gas movements](brazil_modes.md). Railway
+coverage limitations below apply to this dataset, not the complete workspace.
+
+The **Railway detail** view presents movements reported to ANTT/SIADE for
 federally conceded Brazilian railways, covering 2006–2025. It does not cover all
 Brazilian freight modes or count unique shipments: cargo can appear in successive
 flows or in reports from more than one railway operator.

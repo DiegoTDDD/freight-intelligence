@@ -1,4 +1,13 @@
-# Estado atual — 12/11/2026
+# Current status
+
+See [the consolidated current delivery and remaining work](status.md).
+The public API, live truck costing and ANP gas detail are delivered. English is
+the default language. The dated record below predates these expansions.
+
+<details>
+<summary>Archived status from 2026-11-12 — not the current feature list</summary>
+
+## Historical record
 
 O escopo ativo inclui as 12 etapas do [roteiro recuperado](roteiro_original.md),
 rotas reais, dados brasileiros e experiência em português, conforme autorização
@@ -56,3 +65,5 @@ cargas únicas ou todos os modais. Modelos fornecem estimativas, sem garantia de
 precisão futura. Hospedagem gratuita e serviços públicos externos têm limitações
 sem garantia de permanência. Código, dados derivados e recuperação são portáveis.
 Nenhum recurso pago foi contratado.
+
+</details>

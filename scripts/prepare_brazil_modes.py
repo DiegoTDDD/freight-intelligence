@@ -10,6 +10,7 @@ import csv
 import hashlib
 import io
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 
 import polars as pl
@@ -45,7 +46,7 @@ SERIES = [
 ]
 
 
-def prepare(output, source_pdf=None):
+def prepare(output, source_pdf=None, gas_dir=None):
     if (source_pdf is not None
             and hashlib.sha256(Path(source_pdf).read_bytes()).hexdigest() != SOURCE_SHA256):
         raise ValueError("Source PDF differs from the reviewed edition; review before updating")
@@ -80,7 +81,7 @@ def prepare(output, source_pdf=None):
             "source_url": rail_source, "source_page": 0, "status": "reported_administrative",
         } for row in rail.to_dicts())
     rows.sort(key=lambda row: (row["mode"], row["indicator"], row["year"]))
-    _, gas, gas_metadata = load_gas()
+    _, gas, gas_metadata = load_gas(gas_dir) if gas_dir is not None else load_gas()
     for kind in ("receipt", "delivery"):
         rows.append({
             "mode": "pipeline", "indicator": f"anp_gas_{kind}_observed_subtotal",
@@ -90,7 +91,8 @@ def prepare(output, source_pdf=None):
                 f"{gas['missing_daily_values'][kind]} missing daily cells; inter-operator transfers "
                 "may repeat gas. Not production, unique national supply or receipt-plus-delivery total"
             ), "source_url": gas_metadata["source"], "source_page": 0,
-            "status": "reported_partial_observed_subtotal",
+            "status": ("reported_partial_observed_subtotal"
+                       if gas["missing_daily_values"][kind] else "reported_point_movement_subtotal"),
         })
     rows.sort(key=lambda row: (row["mode"], row["indicator"], row["year"]))
     buffer = io.StringIO(newline="")
@@ -99,7 +101,7 @@ def prepare(output, source_pdf=None):
     writer.writerows(rows)
     data = buffer.getvalue().encode()
     metadata = {
-        "schema_version": 1, "country": "Brazil", "prepared_on": "2026-11-13",
+        "schema_version": 1, "country": "Brazil", "prepared_on": datetime.now(UTC).date().isoformat(),
         "method": "Reviewed transcription of published chart labels plus verified ANTT rail snapshot",
         "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
         "sources": [{"url": SOURCE, "sha256": SOURCE_SHA256,
@@ -141,5 +143,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "deployment/brazil_modes")
     parser.add_argument("--source-pdf", type=Path)
+    parser.add_argument("--gas-dir", type=Path, help="Validated candidate gas snapshot")
     args = parser.parse_args()
-    print(f"Prepared {prepare(args.output, args.source_pdf)} explicitly scoped modal indicators")
+    print(f"Prepared {prepare(args.output, args.source_pdf, args.gas_dir)} explicitly scoped modal indicators")

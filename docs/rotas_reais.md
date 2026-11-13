@@ -1,5 +1,11 @@
 # Real-road geographic routes
 
+The workspace offers **Car reference (OSRM)** and **Truck (Valhalla)** as separate
+engines. Live truck requests are enabled in the hosted image, with explicit
+dimensions, loaded weight, axle load/count and hazardous-material settings.
+See [truck routing](truck_routing.md) for behavior, limits and the provider notice.
+The sections below describe the car-reference engine specifically.
+
 In **Real road routes**, enter origin/destination latitude and longitude and confirm
 coordinate sharing. The calculation requests OSRM routing over real OpenStreetMap
 roads and displays a route line, distance, estimated duration and GeoJSON download.

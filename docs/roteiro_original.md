@@ -1,5 +1,8 @@
 # Roteiro recuperado — LogiNexus
 
+**Historical source, not the current task list.** The original portfolio stages
+were implemented subsequently. See [current delivery and remaining work](status.md).
+
 Fonte: [Projeto LogiNexus (5)](chatgpt-conversation://6add5979-e434-83e9-92fe-739ff1d2c334). Texto abaixo recuperado do histórico; os estados nele são os daquela conversa, não os atuais.
 
 O plano do **LogiNexus — Freight Intelligence** era construir um projeto de engenharia e análise de dados de ponta a ponta, usando dados reais de transporte de cargas dos Estados Unidos (FAF5), com analytics, machine learning, otimização logística e uma aplicação demonstrável no portfólio.

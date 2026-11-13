@@ -1,4 +1,11 @@
 
+# Development history
+
+**Current authority: [status.md](status.md).** This file preserves chronological
+handoff notes. Statements below about uncommitted work, draft PRs, language defaults,
+local-only APIs or pending deployment describe their dated milestone, not current state.
+The owner later authorized commits, pushes, merge and CI-gated deployment.
+
 ## Development handoff — 2026-11-12
 
 Repository: `C:\Users\Usuario\freight-intelligence`. Python environment:

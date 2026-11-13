@@ -1,5 +1,7 @@
 # Portfolio expansion: review and acceptance criteria
 
+Current delivery and outstanding work: [status.md](status.md).
+
 Owner clarification: this is a personal portfolio project, with professional
 engineering quality. It is not being commissioned for live fleet dispatch.
 English remains the default interface language. No paid hosting or API contract
@@ -14,8 +16,9 @@ is authorized.
 - Review and pass CI before deployment; verify the published endpoints afterward.
 
 Published revision `424216e` passed all five CI checks. Public health, OpenAPI
-documentation and annual indicators were verified over HTTPS. The subsequent
-Brazilian indicator endpoint is undergoing review with the next expansion.
+documentation and annual indicators were verified over HTTPS. Later revisions
+published the Brazilian indicator and gas-movement endpoints, verified against
+their reviewed snapshots. The API shares hosting with the dashboard.
 
 ## Truck routing
 
@@ -27,8 +30,9 @@ Brazilian indicator endpoint is undergoing review with the next expansion.
 - Document map restriction gaps, missing live traffic and provider availability.
 - Observe provider usage policy; a free demo does not supply operational certification.
 
-Valhalla integration and editable profiles are implemented locally; 17 engine
-contract tests and the UI profile/saved-route test passed. One real truck request
+Valhalla integration and editable profiles are published; engine and UI
+contract tests passed. A new live query was verified through the public dashboard.
+One real truck request
 returned 98.771 km for the saved rigid-truck example. Public live use remains
 controlled by an operator switch. The owner approved the provider notice, which
 was published as [Valhalla discussion #6503](https://github.com/valhalla/valhalla/discussions/6503)
