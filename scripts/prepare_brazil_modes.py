@@ -20,6 +20,7 @@ SOURCE = (
     "Diagnostico-logistico-2010-2024.pdf"
 )
 SOURCE_SHA256 = "5534dc1dd04112611514c67f2d5abf35f8bce4e49f5e66f91f86503b05c73f5b"
+ROAD_SOURCE = "https://www.gov.br/antt/pt-br/assuntos/cargas/dadostrc/anuario_trc_2025_antt.pdf"
 SERIES = [
     ("road", "registered_trucks", "million_vehicles", 40,
      "Registered truck fleet (Senatran); stock, not transported cargo or active capacity",
@@ -59,6 +60,17 @@ def prepare(output, source_pdf=None):
             "source_page": page, "status": "reported_rounded_chart_value",
         } for year, value in zip(range(2010, 2025), values, strict=True))
     rail_path = ROOT / "deployment/brazil_data/annual.parquet"
+    for indicator, value, unit, status in (
+        ("mdfe_recorded_trips", 80.4, "million_trips", "reported_rounded_administrative"),
+        ("mdfe_transport_work", 749.4, "billion_tonne_km", "reported_derived_transport_work"),
+    ):
+        rows.append({
+            "mode": "road", "indicator": indicator, "year": 2025, "value": value,
+            "unit": unit, "scope": (
+                "ANTT MDF-e interstate/intermunicipal cargo operations; excludes within-city trips; "
+                "transport work uses source distance estimation, not verified truck GPS tracks"
+            ), "source_url": ROAD_SOURCE, "source_page": 61, "status": status,
+        })
     rail = pl.read_parquet(rail_path)
     rail_source = "https://dados.antt.gov.br/dataset/438a5184-09db-49a3-88c8-0bad418b4409"
     for indicator, column, unit in (("rail_net_tonnes", "tons", "tonnes"),
@@ -81,11 +93,15 @@ def prepare(output, source_pdf=None):
         "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
         "sources": [{"url": SOURCE, "sha256": SOURCE_SHA256,
                      "pages": [40, 78, 110, 120, 123]},
+                    {"url": ROAD_SOURCE, "pages": [61], "edition": "Anuario TRC 2025 v1.1",
+                     "verification": "Official PDF page reviewed; raw download returned HTTP 403; "
+                     "no upstream file hash is claimed"},
                     {"url": rail_source, "snapshot_sha256": hashlib.sha256(
                         rail_path.read_bytes()).hexdigest()}],
         "quality_notes": [
             "Do not sum unlike units or calculate freight modal shares from these indicators.",
-            "Road coverage is registered fleet history, not a road cargo volume series.",
+            ("Road coverage includes fleet history and 2025 MDF-e trips/derived transport work; "
+            "within-city trips and national cargo tonnage are not covered."),
             ("ANTT TRC 2025 cites approximately 1.4 billion tonnes on PDF page 61 and "
             "1.165 billion on page 64 (printed pages 53 and 56); no road tonnage total "
             "is promoted here until that scope discrepancy is reconciled."),

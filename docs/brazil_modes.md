@@ -1,12 +1,12 @@
 # Brazilian multimodal indicators
 
-The five-mode view covers road, rail, water, air and pipelines with **130 scoped
+The five-mode view covers road, rail, water, air and pipelines with **132 scoped
 annual indicator records**. It complements the detailed railway workspace.
 Coverage is deliberately heterogeneous:
 
 | Mode | Indicators | Period | Important boundary |
 | --- | --- | --- | --- |
-| Road | Registered truck fleet | 2010–2024 | Vehicle stock; not cargo volume or active capacity |
+| Road | Registered truck fleet; MDF-e cargo trips and derived transport work | Fleet 2010–2024; operations 2025 | Excludes within-city trips; no reconciled national cargo tonnage |
 | Rail | Net tonnes and tonne-kilometres | 2006–2025 | ANTT federal concessions; repeated cargo movements possible |
 | Water | Port cargo throughput | 2010–2024 | Port handling, not unique shipments or complete inland transport work |
 | Air | Domestic and international paid cargo | 2010–2024 | ANAC paid cargo; international is linked to Brazil |
@@ -25,6 +25,11 @@ pages 40, 78, 110, 120 and 123. Chart labels were transcribed and reviewed;
 this is a curated snapshot, not an automatic live data feed. The exact reviewed
 PDF SHA-256 is pinned in the preparation script and provenance. Rail records
 come from the existing verified ANTT snapshot, whose input hash is also retained.
+The ANTT TRC 2025 yearbook (physical PDF page 61, printed page 53) separately
+reports 80.4 million MDF-e cargo trips and 749.4 billion tonne-kilometres. These
+rounded indicators are curated separately, with transport work marked as derived
+from source distance estimation. The official PDF was reviewed, but automated
+raw download returned HTTP 403; its source-file hash is not claimed.
 
 Rebuild with `python scripts/prepare_brazil_modes.py`. To additionally verify
 the downloaded edition, provide `--source-pdf PATH`; a changed PDF is rejected

@@ -43,9 +43,10 @@ on 2026-11-13; the hosting image enables live requests after this notice.
   or claim complete national coverage from partial concession/operator records.
 - Validate transformations, displayed values, downloads and API contracts.
 
-The reviewed expansion contains 130 annual records across all five modes, with
+The reviewed expansion contains 132 annual records across all five modes, with
 integrity validation, UI filtering, CSV export and a read-only API endpoint.
-Road coverage is fleet history, not road cargo tonnage. National shipment coverage
+Road coverage includes fleet history, MDF-e cargo trips and derived transport
+work, excluding unresolved road tonnage. National shipment coverage
 for every mode remains incomplete; see [precise coverage and source issues](brazil_modes.md).
 
 Passing tests reduces risk; it does not prove that software or source data contain

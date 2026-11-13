@@ -11,7 +11,7 @@ from freight_intelligence.brazil_modes import DEFAULT_ROOT, MODES, load_modes
 
 def test_five_modes_preserve_units_and_published_reference_values():
     data, metadata = load_modes()
-    assert data.height == 130
+    assert data.height == 132
     assert set(data["mode"]) == set(MODES)
     values = {row["indicator"]: (row["value"], row["unit"])
               for row in data.filter(data["year"] == 2024).to_dicts()}
@@ -21,6 +21,10 @@ def test_five_modes_preserve_units_and_published_reference_values():
     assert values["international_paid_cargo"] == (1012.8, "million_kg")
     assert values["natural_gas_daily_movement"] == (153.1, "million_m3_per_day")
     assert values["transpetro_oil_pipeline_movement"] == (79.3, "million_m3_at_20C")
+    road = {row["indicator"]: (row["value"], row["unit"])
+            for row in data.filter((data["mode"] == "road") & (data["year"] == 2025)).to_dicts()}
+    assert road["mdfe_recorded_trips"] == (80.4, "million_trips")
+    assert road["mdfe_transport_work"] == (749.4, "billion_tonne_km")
     assert "not a comparable modal split" in metadata["interpretation"]
 
 

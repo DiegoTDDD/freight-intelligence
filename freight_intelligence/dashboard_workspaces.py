@@ -210,7 +210,10 @@ def render_modes():
     st.metric("Latest reported indicator", f"{series['value'][-1]:,.2f} {series['unit'][0]}",
               help="Retains source unit and chart rounding; no conversion to common tonnage.")
     st.caption(f"Reference year: {series['year'][-1]}")
-    st.line_chart(series.select("year", "value"), x="year", y="value")
+    if series.height > 1:
+        st.line_chart(series.select("year", "value"), x="year", y="value")
+    else:
+        st.bar_chart(series.select("year", "value"), x="year", y="value")
     st.dataframe(series, hide_index=True)
     st.markdown(f"[Official source]({series['source_url'][0]})")
     st.download_button("Download all modal indicators (CSV)", data.write_csv().encode(),

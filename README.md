@@ -48,7 +48,8 @@ require internet access. Free hosting may take time to wake after inactivity.
 
 Forecasts are estimates, not guarantees. The detailed Brazilian cargo series covers
 federally conceded railways; the five-mode view adds independently scoped official
-indicators, with road fleet history rather than unresolved national road tonnage.
+indicators, including road fleet history, MDF-e cargo trips and derived transport
+work. The inconsistent national road tonnage figure remains excluded.
 Truck-aware routes apply mapped restrictions to an explicit vehicle profile;
 missing map restrictions still prevent operational certification. Live demo access
 is enabled in the hosting image after the provider usage notice; it requires
