@@ -12,6 +12,7 @@ import streamlit as st
 
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import load_modes
+from freight_intelligence.brazil_road import load_road
 from freight_intelligence.brazil_water import load_water
 from freight_intelligence.optimization.geographic_routing import LIMITATIONS, request_route
 from freight_intelligence.optimization.truck_routing import (
@@ -227,9 +228,55 @@ def render_modes():
         render_gas_movements()
     if mode == "water":
         render_water_freight()
+    if mode == "road":
+        render_road_flows()
     with st.expander("Coverage, quality notes and source hashes"):
         for note in metadata["quality_notes"]:
             st.warning(note)
+        st.json(metadata)
+
+
+def render_road_flows():
+    st.subheader("Reported regional road freight flows · 2025")
+    try:
+        data, metadata = load_road()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        st.error("The verified regional road flow snapshot is unavailable.")
+        return
+    st.info(metadata["interpretation"])
+    st.warning("National road tonnage remains unreconciled in the source. These are 16 selected "
+               "regional flows, not complete national coverage or operational truck routes. "
+               "A same-region flow is not necessarily a within-city trip.")
+    origin = st.selectbox("Road origin state", ["All", *sorted(data["origin_state"].unique())],
+                          key="road_origin_state")
+    destination = st.selectbox("Road destination state",
+                               ["All", *sorted(data["destination_state"].unique())],
+                               key="road_destination_state")
+    kind = st.selectbox("Regional flow type", ["All published flows", "Within the same region",
+                                               "Between different regions"], key="road_flow_type")
+    view = data
+    if origin != "All":
+        view = view.filter(pl.col("origin_state") == origin)
+    if destination != "All":
+        view = view.filter(pl.col("destination_state") == destination)
+    same = ((pl.col("origin_state") == pl.col("destination_state"))
+            & (pl.col("origin_region") == pl.col("destination_region")))
+    if kind != "All published flows":
+        view = view.filter(same if kind == "Within the same region" else ~same)
+    st.metric("Published flows matching filters", view.height)
+    if view.is_empty():
+        st.info("No published flow matches these filters. Unlisted flows are unavailable, not zero.")
+    else:
+        chart = view.with_columns(pl.concat_str("origin_state", pl.lit(" · "), "origin_region",
+                                                pl.lit(" → "), "destination_state", pl.lit(" · "),
+                                                "destination_region").alias("Regional flow"))
+        st.bar_chart(chart, x="Regional flow", y="tonnes")
+        st.dataframe(view, hide_index=True)
+    st.caption("Shares are the source's rounded percentages, not shares of the filtered table. "
+               "RGIs are groups of municipalities; no reverse flow or road geometry is inferred.")
+    st.download_button("Download published regional road flows (CSV)", data.write_csv().encode(),
+                       "antt_regional_road_flows_2025.csv", "text/csv")
+    with st.expander("Road flow source and coverage"):
         st.json(metadata)
 
 

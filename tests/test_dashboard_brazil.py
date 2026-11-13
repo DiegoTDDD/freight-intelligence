@@ -82,3 +82,17 @@ def test_water_navigation_and_regional_reference_views():
         assert any("State endpoints do not identify paired routes" in item.value for item in app.warning)
     app.selectbox(key="water_year_grain_regions").select(2024).run()
     assert not app.exception
+
+
+def test_regional_road_filters_and_unlisted_pairs():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("road").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Published flows matching filters" and item.value == "16" for item in app.metric)
+    app.selectbox(key="road_origin_state").select("PA").run()
+    assert any(item.label == "Published flows matching filters" and item.value == "2" for item in app.metric)
+    app.selectbox(key="road_destination_state").select("SP").run()
+    assert not app.exception and not app.error
+    assert any("Unlisted flows are unavailable, not zero" in item.value for item in app.info)

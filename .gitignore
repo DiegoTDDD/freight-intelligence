@@ -122,3 +122,4 @@ secrets/
 !deployment/brazil_data/*.parquet
 !deployment/brazil_data/*.csv
 !deployment/brazil_data/*.zip
+!deployment/brazil_road/*.csv

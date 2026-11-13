@@ -13,6 +13,8 @@ from freight_intelligence.brazil_gas_results import DEFAULT_ROOT as BRAZIL_GAS
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import DEFAULT_ROOT as BRAZIL_MODES
 from freight_intelligence.brazil_modes import load_modes
+from freight_intelligence.brazil_road import DEFAULT_ROOT as BRAZIL_ROAD
+from freight_intelligence.brazil_road import STATES, load_road
 from freight_intelligence.brazil_water import DEFAULT_ROOT as BRAZIL_WATER
 from freight_intelligence.brazil_water import load_water
 from freight_intelligence.dashboard_data import load_projection_files
@@ -61,6 +63,7 @@ def create_app(
     brazil_dir: Path | None = None,
     gas_dir: Path | None = None,
     water_dir: Path | None = None,
+    road_dir: Path | None = None,
 ) -> FastAPI:
     gold = Path(gold_dir) if gold_dir is not None else PROJECT_ROOT / "data/gold/faf5"
     models = Path(model_dir) if model_dir is not None else PROJECT_ROOT / "models/faf5/annual"
@@ -136,6 +139,26 @@ def create_app(
                 "interpretation": metadata["interpretation"],
                 "quality_notes": metadata["quality_notes"], "sources": metadata["sources"],
                 "excluded_series": metadata.get("excluded_series", [])}
+
+    @data_routes.get("/brazil/road-flows")
+    def brazil_road_flows(
+        origin_state: str | None = Query(default=None, pattern=f"^({STATES})$"),
+        destination_state: str | None = Query(default=None, pattern=f"^({STATES})$"),
+        same_region: bool | None = None,
+    ):
+        try:
+            data, metadata = load_road(road_dir if road_dir is not None else BRAZIL_ROAD)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified regional road flows unavailable.") from error
+        if origin_state is not None:
+            data = data.filter(pl.col("origin_state") == origin_state)
+        if destination_state is not None:
+            data = data.filter(pl.col("destination_state") == destination_state)
+        if same_region is not None:
+            same = ((pl.col("origin_state") == pl.col("destination_state"))
+                    & (pl.col("origin_region") == pl.col("destination_region")))
+            data = data.filter(same if same_region else ~same)
+        return {"count": data.height, "data": data.to_dicts(), "metadata": metadata}
 
     @data_routes.get("/brazil/water-freight")
     def brazil_water_freight(

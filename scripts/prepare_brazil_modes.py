@@ -122,8 +122,9 @@ def prepare(output, source_pdf=None, gas_dir=None):
                      "pages": [40, 78, 110, 123]},
                     {"url": gas_metadata["source"], "files": gas_metadata["sources"]},
                     {"url": ROAD_SOURCE, "pages": [61], "edition": "Anuario TRC 2025 v1.1",
-                     "verification": "Official PDF page reviewed; raw download returned HTTP 403; "
-                     "no upstream file hash is claimed"},
+                     "sha256": "db96f4a5e779261a28e050b165ef84236ddd92d3ac0f0801a12fb04306e03e0b",
+                     "verification": "Official PDF downloaded and page reviewed; "
+                     "see brazil_road provenance for Table 12 regional flows"},
                     {"url": rail_source, "snapshot_sha256": hashlib.sha256(
                         rail_path.read_bytes()).hexdigest()}],
         "quality_notes": [

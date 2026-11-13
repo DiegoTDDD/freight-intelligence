@@ -81,3 +81,10 @@ Missing evaluation/metadata, a changed Gold file or inconsistent rows return HTT
 The dashboard and API now share this validation. Annual indicators and readiness remain
 independent of forecast availability. Regenerate and validate the small annual forecast
 bundle when the annual Gold changes; this does not require running the full pipeline.
+
+## Regional road flows
+
+`GET /api/brazil/road-flows` serves 16 reviewed ANTT RGI flows for 2025.
+Filter with `origin_state=PA&destination_state=MT&same_region=false`.
+These are selected regional cargo movements, not operational road itineraries.
+See [scope and source quality](brazil_road.md).

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "reference_year": 2025,
+  "source": {
+    "url": "https://www.gov.br/antt/pt-br/assuntos/cargas/dadostrc/anuario_trc_2025_antt.pdf",
+    "sha256": "db96f4a5e779261a28e050b165ef84236ddd92d3ac0f0801a12fb04306e03e0b",
+    "edition": "Anuario TRC 2025 v1.1",
+    "pdf_page": 64,
+    "printed_page": 56,
+    "table": 12
+  },
+  "interpretation": "Selected published MDF-e flows between Immediate Geographic Regions (RGIs), not municipal pairs or truck itineraries.",
+  "quality_notes": [
+    "RGIs group municipalities; a same-region flow can cross municipal boundaries. It is not evidence of an urban-only trip.",
+    "Only the 16 published leading flows are covered. Missing pairs are unavailable, not zero; no reverse flow is inferred.",
+    "The source cites approximately 1.4 billion tonnes on PDF page 61 and 1.165 billion on page 64. National tonnage remains unreconciled.",
+    "Shares retain the source rounding and denominator; they are not recalculated against the selected 16-flow subtotal.",
+    "MDF-e coverage excludes within-municipality trips. Reported movements need not identify unique cargo."
+  ],
+  "files": [
+    {
+      "path": "regional_flows.csv",
+      "sha256": "a41f9f5e75782aec0350e6a85e7af972d951041f11aed2a9e64147b133f4b6ba",
+      "bytes": 819
+    }
+  ]
+}
