@@ -89,6 +89,7 @@ def test_mounted_api_preserves_permission_boundaries(registry, tmp_path):
         assert client.get("/api/transport-plan", headers={"X-API-Key": BOB}).status_code == 503
         assert client.get("/api/annual-kpis", headers={"X-API-Key": BOB}).status_code == 403
         assert client.get("/api/brazil/indicators", headers={"X-API-Key": BOB}).status_code == 403
+        assert client.get("/api/brazil/gas-movements", headers={"X-API-Key": BOB}).status_code == 403
         assert client.get("/api/brazil/indicators", headers={"X-API-Key": ALICE}).status_code == 200
         assert client.get("/api/annual-kpis", headers={"X-API-Key": ALICE}).status_code == 503
         assert client.get("/api/temporal-evaluation", headers={"X-API-Key": ALICE}).status_code == 403

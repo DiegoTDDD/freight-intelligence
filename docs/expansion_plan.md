@@ -43,7 +43,8 @@ on 2026-11-13; the hosting image enables live requests after this notice.
   or claim complete national coverage from partial concession/operator records.
 - Validate transformations, displayed values, downloads and API contracts.
 
-The reviewed expansion contains 132 annual records across all five modes, with
+The reviewed expansion contains 119 annual records across all five modes, plus
+120 ANP monthly gas operator/direction records, with
 integrity validation, UI filtering, CSV export and a read-only API endpoint.
 Road coverage includes fleet history, MDF-e cargo trips and derived transport
 work, excluding unresolved road tonnage. National shipment coverage

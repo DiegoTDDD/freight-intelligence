@@ -9,6 +9,8 @@ from fastapi import APIRouter, FastAPI, HTTPException, Query
 
 from freight_intelligence.api.security import authentication_dependencies
 from freight_intelligence.api.transport_results import load_transport_results
+from freight_intelligence.brazil_gas_results import DEFAULT_ROOT as BRAZIL_GAS
+from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import DEFAULT_ROOT as BRAZIL_MODES
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.dashboard_data import load_projection_files
@@ -55,6 +57,7 @@ def create_app(
     transport_dir: Path | None = None,
     evaluation_dir: Path | None = None,
     brazil_dir: Path | None = None,
+    gas_dir: Path | None = None,
 ) -> FastAPI:
     gold = Path(gold_dir) if gold_dir is not None else PROJECT_ROOT / "data/gold/faf5"
     models = Path(model_dir) if model_dir is not None else PROJECT_ROOT / "models/faf5/annual"
@@ -128,7 +131,30 @@ def create_app(
             data = data.filter(pl.col("mode") == mode)
         return {"count": data.height, "data": data.to_dicts(),
                 "interpretation": metadata["interpretation"],
-                "quality_notes": metadata["quality_notes"], "sources": metadata["sources"]}
+                "quality_notes": metadata["quality_notes"], "sources": metadata["sources"],
+                "excluded_series": metadata.get("excluded_series", [])}
+
+    @data_routes.get("/brazil/gas-movements")
+    def brazil_gas_movements(
+        month: int | None = Query(default=None, ge=1, le=12),
+        point_type: Literal["receipt", "delivery"] | None = None,
+        operator_id: str | None = Query(default=None, pattern=r"^\d{1,20}$"),
+    ):
+        try:
+            data, annual, metadata = load_gas(gas_dir if gas_dir is not None else BRAZIL_GAS)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified ANP gas movements unavailable") \
+                from error
+        if month is not None:
+            data = data.filter(pl.col("month") == month)
+        if point_type is not None:
+            data = data.filter(pl.col("point_type") == point_type)
+        if operator_id is not None:
+            data = data.filter(pl.col("operator_id") == operator_id)
+        return {"count": data.height, "data": data.to_dicts(),
+                "interpretation": metadata["interpretation"],
+                "annual_full_dataset_reference": annual, "sources": metadata["sources"],
+                "unit": "thousand_m3", "year": 2025}
 
     @data_routes.get("/annual-forecast")
     def annual_forecast(metric_type: Metric | None = None):

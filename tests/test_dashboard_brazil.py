@@ -64,3 +64,7 @@ def test_all_five_modal_views_load_with_explicit_scope():
         assert not app.exception and not app.error
         assert app.metric and app.dataframe
         assert any("not comparable modal shares" in item.value for item in app.info)
+    assert any(item.label == "Missing daily cells" and item.value == "2" for item in app.metric)
+    app.selectbox(key="brazil_gas_point_type").select("receipt").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Missing daily cells" and item.value == "31" for item in app.metric)

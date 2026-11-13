@@ -10,6 +10,7 @@ from zipfile import ZipFile
 import polars as pl
 import streamlit as st
 
+from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.optimization.geographic_routing import LIMITATIONS, request_route
 from freight_intelligence.optimization.truck_routing import (
@@ -207,6 +208,9 @@ def render_modes():
                              key="brazil_indicator")
     series = subset.filter(pl.col("indicator") == indicator).sort("year")
     st.caption(series["scope"][0])
+    if "partial" in series["status"][0]:
+        st.warning("Observed subtotal with missing source cells; not complete national supply. "
+                   "Receipts and deliveries must be kept separate.")
     st.metric("Latest reported indicator", f"{series['value'][-1]:,.2f} {series['unit'][0]}",
               help="Retains source unit and chart rounding; no conversion to common tonnage.")
     st.caption(f"Reference year: {series['year'][-1]}")
@@ -218,10 +222,39 @@ def render_modes():
     st.markdown(f"[Official source]({series['source_url'][0]})")
     st.download_button("Download all modal indicators (CSV)", data.write_csv().encode(),
                        "brazil_modal_indicators.csv", "text/csv")
+    if mode == "pipeline":
+        render_gas_movements()
     with st.expander("Coverage, quality notes and source hashes"):
         for note in metadata["quality_notes"]:
             st.warning(note)
         st.json(metadata)
+
+
+def render_gas_movements():
+    st.subheader("Reported gas-pipeline movements · 2025")
+    try:
+        data, _, metadata = load_gas()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        st.error("The verified ANP gas movement snapshot is unavailable.")
+        return
+    st.info(metadata["interpretation"])
+    kind = st.selectbox("Gas point type", ["delivery", "receipt"], key="brazil_gas_point_type")
+    operators = ["All reported operators", *sorted(data["operator"].unique())]
+    operator = st.selectbox("Gas operator", operators, key="brazil_gas_operator")
+    view = data.filter(pl.col("point_type") == kind)
+    if operator != operators[0]:
+        view = view.filter(pl.col("operator") == operator)
+    with st.container(horizontal=True):
+        st.metric("Reported calendar months", view["month"].n_unique())
+        st.metric("Reported operators", view["operator_id"].n_unique())
+        st.metric("Missing daily cells", int(view["missing_daily_values"].sum()))
+    monthly = view.group_by("month").agg(pl.col("volume_thousand_m3").sum()).sort("month")
+    st.caption("Reported signed-volume subtotals in thousand m³. Missing cells remain missing; "
+               "the same gas can cross multiple operators. No production series is substituted.")
+    st.bar_chart(monthly, x="month", y="volume_thousand_m3")
+    st.dataframe(view, hide_index=True)
+    st.download_button("Download ANP gas movements and coverage (CSV)", data.write_csv().encode(),
+                       "anp_gas_movements_2025.csv", "text/csv")
 
 
 @st.cache_data(ttl=86400, max_entries=64, show_spinner=False)

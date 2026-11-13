@@ -1,0 +1,10 @@
+{
+  "year": 2025,
+  "delivery": 32054.468278980545,
+  "receipt": 33538.538272275495,
+  "missing_daily_values": {
+    "receipt": 31,
+    "delivery": 2
+  },
+  "negative_daily_values": 118
+}

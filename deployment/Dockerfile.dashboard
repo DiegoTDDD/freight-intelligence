@@ -11,6 +11,7 @@ COPY docs/examples ./docs/examples
 COPY deployment/preview_data ./preview-data
 COPY deployment/brazil_data ./deployment/brazil_data
 COPY deployment/brazil_modes ./deployment/brazil_modes
+COPY deployment/brazil_gas ./deployment/brazil_gas
 COPY deployment/route_examples ./deployment/route_examples
 RUN python -m pip install --no-deps -e . && python -m pip check
 ENV LOGINEXUS_DASHBOARD_DATA_ROOT=/app/preview-data HOME=/tmp LOGINEXUS_TRUCK_DEMO_ENABLED=true

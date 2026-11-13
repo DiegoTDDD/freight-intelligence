@@ -11,7 +11,7 @@ from freight_intelligence.brazil_modes import DEFAULT_ROOT, MODES, load_modes
 
 def test_five_modes_preserve_units_and_published_reference_values():
     data, metadata = load_modes()
-    assert data.height == 132
+    assert data.height == 119
     assert set(data["mode"]) == set(MODES)
     values = {row["indicator"]: (row["value"], row["unit"])
               for row in data.filter(data["year"] == 2024).to_dicts()}
@@ -19,7 +19,7 @@ def test_five_modes_preserve_units_and_published_reference_values():
     assert values["port_throughput"] == (1322.0, "million_tonnes")
     assert values["domestic_paid_cargo"] == (423.0, "million_kg")
     assert values["international_paid_cargo"] == (1012.8, "million_kg")
-    assert values["natural_gas_daily_movement"] == (153.1, "million_m3_per_day")
+    assert "natural_gas_daily_movement" not in set(data["indicator"])
     assert values["transpetro_oil_pipeline_movement"] == (79.3, "million_m3_at_20C")
     road = {row["indicator"]: (row["value"], row["unit"])
             for row in data.filter((data["mode"] == "road") & (data["year"] == 2025)).to_dicts()}
@@ -53,6 +53,7 @@ def test_public_modal_api_filters_and_missing_data(tmp_path):
         response = client.get("/brazil/indicators?mode=air&start_year=2024&end_year=2024")
         assert response.status_code == 200
         assert response.json()["count"] == 2
+        assert response.json()["excluded_series"][0]["indicator"] == "natural_gas_daily_movement"
         assert {row["mode"] for row in response.json()["data"]} == {"air"}
         assert client.get("/brazil/indicators?mode=unavailable").status_code == 422
         assert client.get("/brazil/indicators?start_year=2025&end_year=2020").status_code == 422

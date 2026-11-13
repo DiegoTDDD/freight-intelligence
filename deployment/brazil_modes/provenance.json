@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "country": "Brazil",
-  "prepared_on": "2026-11-12",
+  "prepared_on": "2026-11-13",
   "method": "Reviewed transcription of published chart labels plus verified ANTT rail snapshot",
   "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
   "sources": [
@@ -12,8 +12,156 @@
         40,
         78,
         110,
-        120,
         123
+      ]
+    },
+    {
+      "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/dados-consolidados-movimentacao-de-gas-natural-em-gasodutos-de-transporte",
+      "files": [
+        {
+          "year": 2025,
+          "month": 1,
+          "sha256": "a4f21e4bed134d537206150063dedce2d23e6e229da023f8e5e30f8d194afda5",
+          "bytes": 3031601,
+          "source_rows": 9035,
+          "realized_volume_rows": 1433,
+          "daily_values": 44423,
+          "missing_daily_values": 31,
+          "negative_daily_values": 10,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn-janeiro.csv"
+        },
+        {
+          "year": 2025,
+          "month": 2,
+          "sha256": "701b0c768d417e43ecd4afbb94984f55cbfc4683d5027e0cd96c6c6c1fe08ca5",
+          "bytes": 3065384,
+          "source_rows": 9195,
+          "realized_volume_rows": 1461,
+          "daily_values": 40908,
+          "missing_daily_values": 0,
+          "negative_daily_values": 9,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn-fevereiro.csv"
+        },
+        {
+          "year": 2025,
+          "month": 3,
+          "sha256": "74a0a9dda553910b3253c84eca3289a24dc7a78b777cb6ec36eb335b0c554f47",
+          "bytes": 2921598,
+          "source_rows": 8594,
+          "realized_volume_rows": 1371,
+          "daily_values": 42501,
+          "missing_daily_values": 0,
+          "negative_daily_values": 16,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_marco_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 4,
+          "sha256": "435a28fd3fffa67f740c2525f9c9dfe37cda36400bed1a4d47fff07972035df1",
+          "bytes": 3031518,
+          "source_rows": 8988,
+          "realized_volume_rows": 1444,
+          "daily_values": 43320,
+          "missing_daily_values": 0,
+          "negative_daily_values": 19,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_abril_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 5,
+          "sha256": "a69e4994b234b08a37e02b65fb872c024f6eb613707812100060cab87da4b2c1",
+          "bytes": 3166610,
+          "source_rows": 9210,
+          "realized_volume_rows": 1477,
+          "daily_values": 45787,
+          "missing_daily_values": 2,
+          "negative_daily_values": 12,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_maio_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 6,
+          "sha256": "f8dfa0ef16fa400b867d439951c5c5a7df62ce9ac483b74badae9efcdf90f2fa",
+          "bytes": 3150317,
+          "source_rows": 9292,
+          "realized_volume_rows": 1493,
+          "daily_values": 44790,
+          "missing_daily_values": 0,
+          "negative_daily_values": 10,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_junho_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 7,
+          "sha256": "b3e0ab89c0837ab8080869a076b50333b5e0f79aab55818122ad8128a3f923c8",
+          "bytes": 3704302,
+          "source_rows": 9913,
+          "realized_volume_rows": 1589,
+          "daily_values": 49259,
+          "missing_daily_values": 0,
+          "negative_daily_values": 21,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_julho_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 8,
+          "sha256": "a6c714668647c07068aa88d70349f05373d6c7f5c60f85a75131ff2d9bd0335d",
+          "bytes": 3413075,
+          "source_rows": 9380,
+          "realized_volume_rows": 1466,
+          "daily_values": 45446,
+          "missing_daily_values": 0,
+          "negative_daily_values": 20,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_agosto_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 9,
+          "sha256": "767761a6bede6d40e93503333d05e99b4e5f44895173dc0a11d4470aade60ea4",
+          "bytes": 3476699,
+          "source_rows": 9458,
+          "realized_volume_rows": 1482,
+          "daily_values": 44460,
+          "missing_daily_values": 0,
+          "negative_daily_values": 0,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_setembro_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "sha256": "400c561081e7650c156c808e87450ca32f26dd1da09e8d8a03c5c41b232dae8b",
+          "bytes": 3729720,
+          "source_rows": 10019,
+          "realized_volume_rows": 1565,
+          "daily_values": 48515,
+          "missing_daily_values": 0,
+          "negative_daily_values": 1,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_outubro_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "sha256": "283b81ea30a694ec9faef77c75508979aa5834077218c736908ea82a74e67994",
+          "bytes": 3403623,
+          "source_rows": 10005,
+          "realized_volume_rows": 1585,
+          "daily_values": 47550,
+          "missing_daily_values": 0,
+          "negative_daily_values": 0,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_novembro_2025.csv"
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "sha256": "b7daa0427202680097c91cf2c28ffaa7e0c377884b245bf4b67101935234d4d9",
+          "bytes": 3590714,
+          "source_rows": 10616,
+          "realized_volume_rows": 1655,
+          "daily_values": 51305,
+          "missing_daily_values": 0,
+          "negative_daily_values": 0,
+          "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_dezembro_2025.csv"
+        }
       ]
     },
     {
@@ -33,14 +181,23 @@
     "Do not sum unlike units or calculate freight modal shares from these indicators.",
     "Road coverage includes fleet history and 2025 MDF-e trips/derived transport work; within-city trips and national cargo tonnage are not covered.",
     "ANTT TRC 2025 cites approximately 1.4 billion tonnes on PDF page 61 and 1.165 billion on page 64 (printed pages 53 and 56); no road tonnage total is promoted here until that scope discrepancy is reconciled.",
-    "Pipeline gas source attribution differs between narrative (ANP) and chart (MME); chart attribution is retained. Oil pipelines cover Transpetro, not all operators.",
+    "The former ONTL gas movement series was excluded: its 153.1 million m3/day value is identified as production in EPE BEN 2025, page 16. ANP point movements replace it; 33 missing daily cells and signed source values remain disclosed. Oil pipelines cover Transpetro, not all operators.",
     "Chart values retain source rounding; forecasts are not included."
+  ],
+  "excluded_series": [
+    {
+      "indicator": "natural_gas_daily_movement",
+      "years": "2010-2024",
+      "reason": "Unresolved production-versus-transport classification",
+      "verification_source": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-885/topico-771/Relat%C3%B3rio%20Final_BEN%202025.pdf",
+      "verification_page": 16
+    }
   ],
   "files": [
     {
       "path": "indicators.csv",
-      "sha256": "e1f02b79faf1e11ffaf0f9dd58d0bf957526cfed162d410a816278eab709f7a9",
-      "bytes": 33247
+      "sha256": "cc5251de6c434577ed5fa429f59137990667b2320fbb5bd185c909867e187595",
+      "bytes": 30118
     }
   ]
 }

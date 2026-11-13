@@ -14,6 +14,8 @@ from pathlib import Path
 
 import polars as pl
 
+from freight_intelligence.brazil_gas_results import load_gas
+
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = (
     "https://ontl.infrasa.gov.br/wp-content/uploads/2025/10/"
@@ -36,10 +38,6 @@ SERIES = [
      "Paid international air cargo linked to Brazil (ANAC); not domestic-only cargo",
      [637.5, 723.3, 747.9, 800.0, 790.7, 750.3, 716.0, 802.1, 906.6, 808.8,
       711.2, 961.5, 984.4, 922.6, 1012.8]),
-    ("pipeline", "natural_gas_daily_movement", "million_m3_per_day", 120,
-     "Annual average daily gas movement; MME attribution in chart 69; not annual tonnes",
-     [62.8, 65.9, 70.4, 77.3, 87.4, 96.2, 103.6, 109.2, 111.9, 122.4,
-      127.4, 133.7, 137.9, 149.8, 153.1]),
     ("pipeline", "transpetro_oil_pipeline_movement", "million_m3_at_20C", 123,
      "Transpetro-reported oil/product pipeline volume; excludes other operators and mineral pipelines",
      [71.9, 73.7, 72.2, 76.7, 74.0, 66.9, 67.4, 63.0, 61.2, 58.1,
@@ -82,17 +80,31 @@ def prepare(output, source_pdf=None):
             "source_url": rail_source, "source_page": 0, "status": "reported_administrative",
         } for row in rail.to_dicts())
     rows.sort(key=lambda row: (row["mode"], row["indicator"], row["year"]))
+    _, gas, gas_metadata = load_gas()
+    for kind in ("receipt", "delivery"):
+        rows.append({
+            "mode": "pipeline", "indicator": f"anp_gas_{kind}_observed_subtotal",
+            "year": 2025, "value": gas[kind], "unit": "million_m3",
+            "scope": (
+                f"ANP 2025 realized {kind}-point observed subtotal across five reported operators; "
+                f"{gas['missing_daily_values'][kind]} missing daily cells; inter-operator transfers "
+                "may repeat gas. Not production, unique national supply or receipt-plus-delivery total"
+            ), "source_url": gas_metadata["source"], "source_page": 0,
+            "status": "reported_partial_observed_subtotal",
+        })
+    rows.sort(key=lambda row: (row["mode"], row["indicator"], row["year"]))
     buffer = io.StringIO(newline="")
     writer = csv.DictWriter(buffer, fieldnames=list(rows[0]), lineterminator="\n")
     writer.writeheader()
     writer.writerows(rows)
     data = buffer.getvalue().encode()
     metadata = {
-        "schema_version": 1, "country": "Brazil", "prepared_on": "2026-11-12",
+        "schema_version": 1, "country": "Brazil", "prepared_on": "2026-11-13",
         "method": "Reviewed transcription of published chart labels plus verified ANTT rail snapshot",
         "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
         "sources": [{"url": SOURCE, "sha256": SOURCE_SHA256,
-                     "pages": [40, 78, 110, 120, 123]},
+                     "pages": [40, 78, 110, 123]},
+                    {"url": gas_metadata["source"], "files": gas_metadata["sources"]},
                     {"url": ROAD_SOURCE, "pages": [61], "edition": "Anuario TRC 2025 v1.1",
                      "verification": "Official PDF page reviewed; raw download returned HTTP 403; "
                      "no upstream file hash is claimed"},
@@ -105,10 +117,16 @@ def prepare(output, source_pdf=None):
             ("ANTT TRC 2025 cites approximately 1.4 billion tonnes on PDF page 61 and "
             "1.165 billion on page 64 (printed pages 53 and 56); no road tonnage total "
             "is promoted here until that scope discrepancy is reconciled."),
-            ("Pipeline gas source attribution differs between narrative (ANP) and chart (MME); "
-            "chart attribution is retained. Oil pipelines cover Transpetro, not all operators."),
+            ("The former ONTL gas movement series was excluded: its 153.1 million m3/day value "
+             "is identified as production in EPE BEN 2025, page 16. ANP point movements replace it; "
+             "33 missing daily cells and signed source values remain disclosed. Oil pipelines "
+             "cover Transpetro, not all operators."),
             "Chart values retain source rounding; forecasts are not included.",
         ],
+        "excluded_series": [{"indicator": "natural_gas_daily_movement", "years": "2010-2024",
+                             "reason": "Unresolved production-versus-transport classification",
+                             "verification_source": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-885/topico-771/Relat%C3%B3rio%20Final_BEN%202025.pdf",
+                             "verification_page": 16}],
         "files": [{"path": "indicators.csv", "sha256": hashlib.sha256(data).hexdigest(),
                    "bytes": len(data)}],
     }

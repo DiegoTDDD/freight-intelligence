@@ -50,6 +50,9 @@ Forecasts are estimates, not guarantees. The detailed Brazilian cargo series cov
 federally conceded railways; the five-mode view adds independently scoped official
 indicators, including road fleet history, MDF-e cargo trips and derived transport
 work. The inconsistent national road tonnage figure remains excluded.
+ANP gas detail covers all twelve 2025 files and five reported operators, with
+receipts/deliveries separated and missing cells disclosed. The ambiguous ONTL
+production-versus-movement gas series has been excluded from transport analytics.
 Truck-aware routes apply mapped restrictions to an explicit vehicle profile;
 missing map restrictions still prevent operational certification. Live demo access
 is enabled in the hosting image after the provider usage notice; it requires

@@ -17,7 +17,8 @@ CONTRACTS = {
     "port_throughput": ("water", "million_tonnes", 2010, 2024),
     "domestic_paid_cargo": ("air", "million_kg", 2010, 2024),
     "international_paid_cargo": ("air", "million_kg", 2010, 2024),
-    "natural_gas_daily_movement": ("pipeline", "million_m3_per_day", 2010, 2024),
+    "anp_gas_receipt_observed_subtotal": ("pipeline", "million_m3", 2025, 2025),
+    "anp_gas_delivery_observed_subtotal": ("pipeline", "million_m3", 2025, 2025),
     "transpetro_oil_pipeline_movement": ("pipeline", "million_m3_at_20C", 2010, 2024),
 }
 

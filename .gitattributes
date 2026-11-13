@@ -2,6 +2,7 @@
 deployment/preview_data/** -text
 deployment/brazil_data/** -text
 deployment/brazil_modes/** -text
+deployment/brazil_gas/** -text
 deployment/route_examples/** -text
 # This is an archived upstream document; preserve original formatting.
 deployment/preview_data/data/raw/faf5/forecast/bts_FAF_HiLoForecasts_README_20230929.txt -whitespace

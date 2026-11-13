@@ -31,7 +31,8 @@ while True:
 
 for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/annual-kpis?metric_type=tons", "/api/annual-forecast",
-             "/api/temporal-evaluation", "/api/brazil/indicators?mode=air"):
+             "/api/temporal-evaluation", "/api/brazil/indicators?mode=air",
+             "/api/brazil/gas-movements?month=12&point_type=receipt"):
     with urllib.request.urlopen(base + path, timeout=10) as response:
         assert response.status == 200, path
         response.read()
