@@ -24,6 +24,7 @@ async def main():
             )
             connections.append(connection)
             for _ in range(3):
+                headings = set()
                 request = BackMsg()
                 request.rerun_script.query_string = ""
                 await connection.send(request.SerializeToString())
@@ -35,7 +36,12 @@ async def main():
                     if (message.HasField("delta") and message.delta.HasField("new_element")
                             and message.delta.new_element.HasField("exception")):
                         raise RuntimeError(message.delta.new_element.exception.message)
+                    if (message.HasField("delta") and message.delta.HasField("new_element")
+                            and message.delta.new_element.HasField("heading")):
+                        headings.add(message.delta.new_element.heading.body)
                     if message.HasField("script_finished"):
+                        assert message.script_finished == ForwardMsg.FINISHED_SUCCESSFULLY
+                        assert "Top Freight Corridors" in headings, headings
                         break
                 samples.append(int(Path("/sys/fs/cgroup/memory.current").read_text()))
         peak = int(Path("/sys/fs/cgroup/memory.peak").read_text())
