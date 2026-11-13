@@ -9,8 +9,6 @@ from pathlib import Path
 import numpy as np
 import polars as pl
 import scipy
-from scipy.optimize import linprog
-from scipy.sparse import coo_matrix
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 INTERPRETATION = (
@@ -47,6 +45,11 @@ def solve_transport(scenario: dict):
     Positive balances supply freight, negative balances demand freight and zero
     balances permit transshipment. Flows are divisible and no demand is dropped.
     """
+    # Saved-result readers also import this module. Load the solver only when
+    # a visitor actually requests an optimization, not for every dashboard/API.
+    from scipy.optimize import linprog
+    from scipy.sparse import coo_matrix
+
     if not isinstance(scenario, dict):
         raise ScenarioError("Scenario must be a JSON object")
     for key in ("name", "flow_unit", "cost_unit"):

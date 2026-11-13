@@ -11,7 +11,11 @@ import polars as pl
 import streamlit as st
 
 from freight_intelligence.api.transport_results import load_transport_results
-from freight_intelligence.dashboard_data import file_signature, load_projection_bundle
+from freight_intelligence.dashboard_data import (
+    file_signature,
+    load_display_corridors,
+    load_projection_bundle,
+)
 from freight_intelligence.dashboard_i18n import translate
 from freight_intelligence.dashboard_workspaces import render_brazil, render_geographic_routes
 from freight_intelligence.evaluation_results import load_temporal_report
@@ -886,7 +890,7 @@ def load_data(signature):
     annual = pl.read_parquet(BASE / "annual_kpis.parquet")
     commodity = pl.read_parquet(BASE / "commodity_mix.parquet")
     mode = pl.read_parquet(BASE / "mode_mix.parquet")
-    corridors = pl.read_parquet(BASE / "top_corridors.parquet")
+    corridors = load_display_corridors(BASE / "top_corridors.parquet", annual["year"].max())
     growth = pl.read_parquet(BASE / "annual_growth.parquet")
     cagr = pl.read_parquet(BASE / "annual_cagr.parquet")
     commodity_growth = pl.read_parquet(BASE / "commodity_growth.parquet")

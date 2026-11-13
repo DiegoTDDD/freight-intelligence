@@ -14,6 +14,18 @@ def file_signature(paths):
     return tuple((str(path), path.stat().st_mtime_ns, path.stat().st_size) for path in paths)
 
 
+def load_display_corridors(path, year):
+    """Collect only the displayed ranking, before per-session cache copies.
+
+    The source can contain nearly a million rows. Keep the same filter/sort/head
+    semantics as the dashboard while allowing Parquet projection/predicate pushdown.
+    """
+    return (
+        pl.scan_parquet(path).filter(pl.col("year") == year)
+        .sort("tons", descending=True).head(20).collect()
+    )
+
+
 def load_projection_bundle(root: Path):
     return load_projection_files(
         root / "models/faf5/annual", root / "data/gold/faf5/annual_kpis.parquet"

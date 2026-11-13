@@ -113,7 +113,7 @@ def test_malformed_summary_and_mismatched_objective(transport_api):
 
 
 def test_serving_does_not_invoke_solver(transport_api, monkeypatch):
-    import freight_intelligence.optimization.transport as optimizer
+    import scipy.optimize as optimizer
 
     client, _ = transport_api
 

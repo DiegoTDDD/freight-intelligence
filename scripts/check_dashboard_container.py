@@ -52,9 +52,13 @@ print("Hosted dashboard + API HTTP checks passed offline within 512 MiB")
             "docker", "run", "-d", "--name", name, "--network", "none", "--read-only",
             "--memory", "512m", "--cpus", "1", "--cap-drop", "ALL",
             "--security-opt", "no-new-privileges", "--tmpfs", "/tmp:rw,nosuid,size=128m",
+            "--mount", f"type=bind,source={Path(__file__).with_name('check_dashboard_sessions.py').resolve()},target=/check_sessions.py,readonly",
             image,
         ], check=True, timeout=60, stdout=subprocess.DEVNULL)
         subprocess.run(["docker", "exec", name, "python", "-c", probe], check=True, timeout=90)
+        subprocess.run(
+            ["docker", "exec", name, "python", "/check_sessions.py"], check=True, timeout=180,
+        )
     finally:
         subprocess.run(
             ["docker", "rm", "-f", name], check=False, timeout=30,
