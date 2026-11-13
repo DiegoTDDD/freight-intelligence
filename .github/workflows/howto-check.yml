@@ -2,17 +2,17 @@ name: How-to-run check
 
 # Runs the steps of the README section "Running it" for real, with the real FAF5.5.1 file, and then the
 # whole test suite (which checks the exact row counts of every layer). Heavy (about 100 million rows), so it
-# runs only on demand ("Run workflow") so a source push cannot start a heavy rebuild.
+# runs when this file changes and on demand ("Run workflow").
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/howto-check.yml"
 
 jobs:
   readme-steps:
     runs-on: ubuntu-latest
     timeout-minutes: 150
-    defaults:
-      run:
-        shell: bash
     steps:
       - uses: actions/checkout@v4
 
@@ -108,17 +108,15 @@ jobs:
 
       - name: "README: python -m freight_intelligence.pipeline (the complete pipeline)"
         run: |
-          if ! python -u -m freight_intelligence.pipeline 2>&1 | tee pipeline.log; then
-            echo "::error::Pipeline failed; see pipeline.log for the complete output"
-            exit 1
-          fi
+          python -m freight_intelligence.pipeline 2>&1 | tail -40
           ls -la data/gold/faf5
           du -sh data/*
 
       - name: "README: python -m pytest (row counts and quality of every layer)"
         run: |
-          if ! python -m pytest -q --tb=short 2>&1 | tee pytest.log; then
-            echo "::error::pytest failed; see pytest.log for the complete output"
+          python -m pytest -q --tb=short 2>&1 | tee pytest.log
+          if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+            echo "::error::pytest failed: $(grep -E '^(FAILED|ERROR|E  )' pytest.log | head -10 | tr '\n' '|' | cut -c1-1200)"
             exit 1
           fi
 
@@ -131,15 +129,3 @@ jobs:
           done
           tail -30 dashboard.log
           exit 1
-
-      - name: Preserve diagnostic logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: howto-check-logs
-          path: |
-            pipeline.log
-            pytest.log
-            dashboard.log
-          if-no-files-found: ignore
-          retention-days: 7
