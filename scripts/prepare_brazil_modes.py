@@ -16,6 +16,7 @@ from pathlib import Path
 import polars as pl
 
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.brazil_road import load_road_monthly
 from freight_intelligence.brazil_water import load_water
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -60,6 +61,12 @@ def prepare(output, source_pdf=None, gas_dir=None):
             "source_page": page, "status": "reported_rounded_chart_value",
         } for year, value in zip(range(2010, 2025), values, strict=True))
     rail_path = ROOT / "deployment/brazil_data/annual.parquet"
+    road_monthly, road_metadata = load_road_monthly()
+    rows.append({"mode": "road", "indicator": "mdfe_recorded_tonnes", "year": 2025,
+                 "value": float(road_monthly["tonnes"].sum()), "unit": "tonnes",
+                 "scope": "Sum of 12 ANTT Chart 45 monthly MDF-e tonnage labels; paid plus own-account transport; excludes within-municipality trips and other MDF-e exemptions; not unique cargo",
+                 "source_url": ROAD_SOURCE, "source_page": 63,
+                 "status": "sum_of_reported_monthly_chart_labels"})
     for indicator, value, unit, status in (
         ("mdfe_recorded_trips", 80.4, "million_trips", "reported_rounded_administrative"),
         ("mdfe_transport_work", 749.4, "billion_tonne_km", "reported_derived_transport_work"),
@@ -129,11 +136,11 @@ def prepare(output, source_pdf=None, gas_dir=None):
                         rail_path.read_bytes()).hexdigest()}],
         "quality_notes": [
             "Do not sum unlike units or calculate freight modal shares from these indicators.",
-            ("Road coverage includes fleet history and 2025 MDF-e trips/derived transport work; "
-            "within-city trips and national cargo tonnage are not covered."),
-            ("ANTT TRC 2025 cites approximately 1.4 billion tonnes on PDF page 61 and "
-            "1.165 billion on page 64 (printed pages 53 and 56); no road tonnage total "
-            "is promoted here until that scope discrepancy is reconciled."),
+            ("Road coverage includes fleet history and 2025 MDF-e trips, derived transport work "
+             "and monthly-label tonnage. Within-city trips and other MDF-e exemptions are excluded."),
+            (f"ANTT Chart 45 monthly tonnes sum to {road_metadata['reconciliation']['annual_tonnes']:,}, "
+             "consistent with the rounded 1.4 billion summary. The 1.165 billion regional "
+             "reference is kept separate and is not substituted for the all-transport annual sum."),
             ("The former ONTL gas movement series was excluded: its 153.1 million m3/day value "
              "is identified as production in EPE BEN 2025, page 16. ANP point movements replace it; "
              f"{missing_gas_cells} missing daily cells and signed source values remain disclosed. Oil pipelines "

@@ -11,11 +11,25 @@ OD matrix, road geometry or truck access permission is inferred. Unlisted pairs
 are unavailable, not zero. The displayed shares retain the publication's
 denominator and rounding; they are not shares of the filtered table.
 
-The national tonnage discrepancy remains unresolved: the summary on PDF page 61
-reports approximately 1.4 billion tonnes, while page 64 uses 1.165 billion. Page 63
-also reports 543 million identifiable and 622 million unidentified tonnes, which
-sum to 1.165 billion; this arithmetic consistency does not explain the difference
-from the summary. The project does not promote either as a reconciled national total.
+## Annual indicator reconstructed from monthly totals
+
+Chart 45 on PDF page 63 (printed page 55) labels all 12 monthly total-tonnage
+values. Their sum is **1,368,699,651 tonnes**, which rounds to **1.4 billion** at
+the summary's precision (PDF page 61). This supplies the annual all-transport
+MDF-e indicator without choosing between inconsistent prose totals. The monthly
+series includes paid and own-account transport; it is administrative reported
+tonnage, not a complete census of unique national cargo. All MDF-e exemptions apply.
+
+The **1.165 billion** figure on page 64 is retained only as the regional table's
+published reference. Page 63's 543 million identifiable plus 622 million
+unidentified tonnes also sum to that reference. The source does not explicitly
+explain this denominator's scope difference from Chart 45. Rounded paid shares
+are not sufficient to identify an exact paid-only total, so no such total is
+invented. Regional shares are never rescaled against the monthly all-transport sum.
+
+The snapshot contains both CSVs. Validation requires exactly one row per month,
+positive integer tonnes, and agreement between the monthly sum, annual metadata
+and rounded summary. A partial series or changed sum is rejected.
 
 The source PDF was downloaded and visually reviewed. Its SHA-256 is
 `db96f4a5e779261a28e050b165ef84236ddd92d3ac0f0801a12fb04306e03e0b`.
@@ -31,3 +45,11 @@ API: `GET /api/brazil/road-flows`, with optional `origin_state`,
 `destination_state` (Brazilian state abbreviations), and `same_region` filters.
 Valid unlisted pairs return an empty list; invalid states return 422; missing or
 inconsistent data returns 503. Existing analytics permissions apply.
+
+`GET /api/brazil/road-monthly` exposes all 12 monthly rows, the annual
+reconciliation and chart provenance. Optional `month=1` selects January; the
+annual metadata still explicitly refers to all 12 months. The generic modal
+endpoint also includes `mdfe_recorded_tonnes` with this annual sum.
+
+The [source audit](source_refresh.md) checks the official PDF weekly and keeps
+changed editions for review. It cannot silently replace the reviewed monthly values.

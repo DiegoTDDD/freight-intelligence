@@ -11,7 +11,7 @@ from freight_intelligence.brazil_modes import DEFAULT_ROOT, MODES, load_modes
 
 def test_five_modes_preserve_units_and_published_reference_values():
     data, metadata = load_modes()
-    assert data.height == 122
+    assert data.height == 123
     assert set(data["mode"]) == set(MODES)
     values = {row["indicator"]: (row["value"], row["unit"])
               for row in data.filter(data["year"] == 2024).to_dicts()}

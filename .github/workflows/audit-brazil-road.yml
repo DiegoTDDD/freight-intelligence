@@ -1,0 +1,42 @@
+name: Audit Brazilian road source revisions
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Monday 09:27 UTC (06:27 America/Sao_Paulo), independent of the owner's PC.
+    - cron: '27 9 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-brazil-road.yml'
+      - 'scripts/audit_brazil_road.py'
+      - 'scripts/prepare_brazil_road.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brazil-road-source-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install bounded data-reader runtime
+        run: python -m pip install polars==2.1.0
+      - name: Validate reviewed annual sum and check the source edition
+        run: python -m scripts.audit_brazil_road --output road-source-audit
+      - name: Keep audit report and unreviewed source when changed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brazil-road-source-audit-${{ github.run_id }}
+          path: road-source-audit/*
+          if-no-files-found: warn
+          retention-days: 14

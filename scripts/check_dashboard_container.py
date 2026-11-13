@@ -34,7 +34,7 @@ for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/temporal-evaluation", "/api/brazil/indicators?mode=air",
              "/api/brazil/gas-movements?month=12&point_type=receipt",
              "/api/brazil/water-freight?dataset=coastal_state_endpoints",
-             "/api/brazil/road-flows?origin_state=MT"):
+             "/api/brazil/road-flows?origin_state=MT", "/api/brazil/road-monthly?month=1"):
     with urllib.request.urlopen(base + path, timeout=10) as response:
         assert response.status == 200, path
         response.read()

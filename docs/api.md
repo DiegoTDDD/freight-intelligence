@@ -88,3 +88,8 @@ bundle when the annual Gold changes; this does not require running the full pipe
 Filter with `origin_state=PA&destination_state=MT&same_region=false`.
 These are selected regional cargo movements, not operational road itineraries.
 See [scope and source quality](brazil_road.md).
+
+`GET /api/brazil/road-monthly?month=1` returns the published January total and
+the annual reconciliation, explicitly calculated from all 12 months. Omit the
+month filter for the complete 2025 monthly table. Invalid months return 422;
+missing or inconsistent monthly data returns 503. Analytics permissions apply.

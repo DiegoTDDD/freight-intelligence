@@ -14,7 +14,7 @@ listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/action
 | Optimization | Tested constrained transport solver, editable scenarios and comparisons; scenario costs are not measured savings |
 | Dashboard | Published Streamlit app; English default, optional Portuguese translation |
 | Real-road routing | Separate OSRM car-reference and Valhalla truck engines; explicit truck profile, map, instructions and GeoJSON |
-| Brazil | 122 scoped annual indicators across five modes, detailed railway data, 120 monthly ANP gas records, 43 ANTAQ water references and 16 ANTT regional road flows |
+| Brazil | 123 scoped annual indicators across five modes, detailed railway data, 120 monthly ANP gas records, 43 ANTAQ water references, 12 road-tonnage months and 16 ANTT regional road flows |
 | Public API | Documented read-only HTTP API under `/api`; configured key/user permissions retained; private local plans excluded |
 | Reproducibility | Pinned container runtimes, snapshot hashes and verified recovery archives |
 | CI and deployment | Windows/Linux tests, API/container and dashboard checks; deploy only the exact tested main revision |
@@ -33,12 +33,15 @@ The heavy full pipeline was verified previously and was not rerun for this updat
 
 ## Remaining work, in priority order
 
-1. **Data refresh:** [ANP 2025 revision auditing](source_refresh.md) automates bounded
-   retrieval, candidate validation and revision reporting. Extend this to other
+1. **Data refresh:** [ANP 2025 and ANTT road revision auditing](source_refresh.md)
+   automates bounded retrieval, candidate validation/review and revision reporting. Extend this to other
    sources/years and integrate reviewed candidates through the normal CI gate;
    a source revision is not automatically an improvement in quality.
-2. **Road freight:** reconcile the official 1.4/1.165-billion-tonne discrepancy;
-   extend movement history and regional flows beyond the [16 published RGI pairs](brazil_road.md).
+2. **Road freight:** extend movement history beyond the 12 published 2025 months
+   and regional flows beyond the [16 published RGI pairs](brazil_road.md).
+   The all-transport annual indicator now sums the monthly labels to 1,368,699,651
+   tonnes, which rounds to the summary's 1.4 billion. The publication's 1.165-billion
+   regional denominator remains separate; its exact scope is not inferred.
    Within-city trips are outside the current MDF-e scope. RGI pairs are groups
    of municipalities, not operational itineraries.
 3. **Water freight:** [inland/coastal and regional reference analyses](brazil_water.md)

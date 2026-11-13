@@ -9,11 +9,32 @@
     "printed_page": 56,
     "table": 12
   },
+  "monthly_source": {
+    "url": "https://www.gov.br/antt/pt-br/assuntos/cargas/dadostrc/anuario_trc_2025_antt.pdf",
+    "sha256": "db96f4a5e779261a28e050b165ef84236ddd92d3ac0f0801a12fb04306e03e0b",
+    "pdf_page": 63,
+    "printed_page": 55,
+    "chart": 45,
+    "scope": "MDF-e reported total tonnes, paid plus own-account transport",
+    "precision": "Published integer-tonne chart labels; paid shares rounded to whole percent"
+  },
+  "reconciliation": {
+    "status": "annual_total_reconstructed_from_monthly_chart",
+    "annual_tonnes": 1368699651,
+    "annual_method": "Sum of all 12 published Chart 45 total-tonnage labels",
+    "summary_rounded_billion_tonnes": 1.4,
+    "summary_pdf_page": 61,
+    "summary_rounding_billion_tonnes": 0.1,
+    "regional_reference_tonnes": 1165000000,
+    "regional_reference_use": "Source reference for Table 12 shares only; not the all-transport annual total",
+    "regional_scope_status": "The yearbook does not explicitly explain this denominator's difference from Chart 45",
+    "paid_tonnage_status": "Not reconstructed: rounded monthly paid shares cannot identify an exact paid-tonnage total"
+  },
   "interpretation": "Selected published MDF-e flows between Immediate Geographic Regions (RGIs), not municipal pairs or truck itineraries.",
   "quality_notes": [
     "RGIs group municipalities; a same-region flow can cross municipal boundaries. It is not evidence of an urban-only trip.",
     "Only the 16 published leading flows are covered. Missing pairs are unavailable, not zero; no reverse flow is inferred.",
-    "The source cites approximately 1.4 billion tonnes on PDF page 61 and 1.165 billion on page 64. National tonnage remains unreconciled.",
+    "The annual MDF-e series uses the 12 Chart 45 monthly labels, whose sum rounds to the summary's 1.4 billion tonnes. The 1.165 billion regional reference is kept separate.",
     "Shares retain the source rounding and denominator; they are not recalculated against the selected 16-flow subtotal.",
     "MDF-e coverage excludes within-municipality trips. Reported movements need not identify unique cargo."
   ],
@@ -22,6 +43,11 @@
       "path": "regional_flows.csv",
       "sha256": "a41f9f5e75782aec0350e6a85e7af972d951041f11aed2a9e64147b133f4b6ba",
       "bytes": 819
+    },
+    {
+      "path": "monthly.csv",
+      "sha256": "7a407e19aca28ce52fa17ae6bb93c0386ebe770ae2b2dc4a8718309c13f5cde7",
+      "bytes": 287
     }
   ]
 }

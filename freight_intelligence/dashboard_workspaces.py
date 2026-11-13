@@ -12,7 +12,7 @@ import streamlit as st
 
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import load_modes
-from freight_intelligence.brazil_road import load_road
+from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_water import load_water
 from freight_intelligence.optimization.geographic_routing import LIMITATIONS, request_route
 from freight_intelligence.optimization.truck_routing import (
@@ -237,15 +237,34 @@ def render_modes():
 
 
 def render_road_flows():
-    st.subheader("Reported regional road freight flows · 2025")
     try:
         data, metadata = load_road()
+        monthly, _ = load_road_monthly()
     except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
         st.error("The verified regional road flow snapshot is unavailable.")
         return
+    st.subheader("Monthly road freight and annual reconciliation · 2025")
+    reconciliation = metadata["reconciliation"]
+    st.metric("MDF-e tonnes · sum of 12 published months", f"{reconciliation['annual_tonnes']:,.0f}")
+    st.success("The 12 monthly totals sum to 1.3687 billion tonnes, consistent with the "
+               "yearbook summary rounded to 1.4 billion. Includes paid and own-account transport.")
+    st.bar_chart(monthly, x="month", y="tonnes")
+    st.dataframe(monthly, hide_index=True)
+    st.caption("Integer-tonne labels from ANTT Chart 45, not raw individual shipments. Paid "
+               "shares are rounded percentages; they do not give exact paid tonnage. "
+               "MDF-e excludes within-municipality trips and has other documented exemptions.")
+    st.download_button("Download monthly road tonnage (CSV)", monthly.write_csv().encode(),
+                       "antt_monthly_road_tonnage_2025.csv", "text/csv")
+    with st.expander("How the annual total and regional reference are kept separate"):
+        st.write("The 1.165 billion-tonne figure is retained only as the publication's regional "
+                 "reference. It is not substituted for the all-transport annual sum. The source "
+                 "does not explain its scope difference; the project does not infer an exact "
+                 "paid-only total from rounded percentages.")
+        st.json(reconciliation)
+        st.json(metadata["monthly_source"])
+    st.subheader("Reported regional road freight flows · 2025")
     st.info(metadata["interpretation"])
-    st.warning("National road tonnage remains unreconciled in the source. These are 16 selected "
-               "regional flows, not complete national coverage or operational truck routes. "
+    st.warning("These are 16 selected regional flows, not complete national coverage or operational truck routes. "
                "A same-region flow is not necessarily a within-city trip.")
     origin = st.selectbox("Road origin state", ["All", *sorted(data["origin_state"].unique())],
                           key="road_origin_state")

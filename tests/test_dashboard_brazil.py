@@ -90,6 +90,9 @@ def test_regional_road_filters_and_unlisted_pairs():
     app.selectbox(key="brazil_view").select("All five modes").run()
     app.selectbox(key="brazil_mode").select("road").run()
     assert not app.exception and not app.error
+    assert any(item.label == "MDF-e tonnes · sum of 12 published months"
+               and item.value == "1,368,699,651" for item in app.metric)
+    assert any("consistent with" in item.value for item in app.success)
     assert any(item.label == "Published flows matching filters" and item.value == "16" for item in app.metric)
     app.selectbox(key="road_origin_state").select("PA").run()
     assert any(item.label == "Published flows matching filters" and item.value == "2" for item in app.metric)

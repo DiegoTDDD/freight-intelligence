@@ -195,8 +195,8 @@
   ],
   "quality_notes": [
     "Do not sum unlike units or calculate freight modal shares from these indicators.",
-    "Road coverage includes fleet history and 2025 MDF-e trips/derived transport work; within-city trips and national cargo tonnage are not covered.",
-    "ANTT TRC 2025 cites approximately 1.4 billion tonnes on PDF page 61 and 1.165 billion on page 64 (printed pages 53 and 56); no road tonnage total is promoted here until that scope discrepancy is reconciled.",
+    "Road coverage includes fleet history and 2025 MDF-e trips, derived transport work and monthly-label tonnage. Within-city trips and other MDF-e exemptions are excluded.",
+    "ANTT Chart 45 monthly tonnes sum to 1,368,699,651, consistent with the rounded 1.4 billion summary. The 1.165 billion regional reference is kept separate and is not substituted for the all-transport annual sum.",
     "The former ONTL gas movement series was excluded: its 153.1 million m3/day value is identified as production in EPE BEN 2025, page 16. ANP point movements replace it; 33 missing daily cells and signed source values remain disclosed. Oil pipelines cover Transpetro, not all operators.",
     "Chart values retain source rounding; forecasts are not included."
   ],
@@ -212,8 +212,8 @@
   "files": [
     {
       "path": "indicators.csv",
-      "sha256": "6854e4acfe1e30082d5d3e928974e686f788193a1e4a5a84db3913d44b4a93fd",
-      "bytes": 30891
+      "sha256": "77fb65be82f890f65fddce7796495d5435cbc93bb7bbe2bca893f1c4b7c39c7c",
+      "bytes": 31230
     }
   ]
 }

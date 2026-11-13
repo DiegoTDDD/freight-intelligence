@@ -1,12 +1,12 @@
 # Brazilian multimodal indicators
 
-The five-mode view covers road, rail, water, air and pipelines with **122 scoped
+The five-mode view covers road, rail, water, air and pipelines with **123 scoped
 annual indicator records**. It complements the detailed railway workspace.
 Coverage is deliberately heterogeneous:
 
 | Mode | Indicators | Period | Important boundary |
 | --- | --- | --- | --- |
-| Road | Registered truck fleet; MDF-e cargo trips and derived transport work | Fleet 2010–2024; operations 2025 | Excludes within-city trips; no reconciled national cargo tonnage |
+| Road | Registered truck fleet; MDF-e cargo trips, derived transport work and monthly-label tonnage | Fleet 2010–2024; operations 2025 | Excludes within-city trips and other MDF-e exemptions; not unique cargo |
 | Rail | Net tonnes and tonne-kilometres | 2006–2025 | ANTT federal concessions; repeated cargo movements possible |
 | Water | Port throughput; coastal/inland navigation, cargo categories and regional references | History 2010–2024; references 2025 and grain regions 2024/2025 | Overlapping populations; endpoint marginals are not OD routes; TEU separate from tonnes |
 | Air | Domestic and international paid cargo | 2010–2024 | ANAC paid cargo; international is linked to Brazil |
@@ -44,9 +44,11 @@ The recovery package verifies these additional data files too.
 
 The [ANTT TRC 2025 yearbook](https://www.gov.br/antt/pt-br/assuntos/cargas/dadostrc/anuario_trc_2025_antt.pdf)
 cites approximately 1.4 billion tonnes on printed page 53 and 1.165 billion on
-page 56. Its published scopes must be reconciled before promoting one number as
-the national road cargo total. The interface includes this issue rather than
-silently choosing a value. Road freight tonnage coverage remains incomplete.
+page 56. The annual all-transport indicator now uses the **sum of all 12 monthly
+Chart 45 labels: 1,368,699,651 tonnes**, which rounds to the summary's 1.4 billion.
+The regional table's 1.165-billion reference is kept separate; its exact scope is
+not inferred from rounded paid-transport shares. See the [monthly reconstruction
+and regional-table rules](brazil_road.md). This is MDF-e coverage, not a full census.
 
 The former ONTL gas series is **excluded**, not merely footnoted. Its 2024 value
 of 153.1 million m³/day is identified as national gas production in the official
@@ -72,6 +74,7 @@ appear in the pipeline mode view. The API endpoint is
 The earlier correction reduced 132 to 119 annual records by removing 15 ambiguous
 gas values and adding two ANP subtotals. Three 2025 water references subsequently
 bring the total to 122, alongside 120 monthly gas records and 43 detailed water references.
+Adding the reconstructed 2025 MDF-e tonnage brings the current annual atlas to 123.
 
 The oil series remains explicitly operator-scoped. The source's prose growth-rate
 calculations are not imported; charts display the underlying published values only.

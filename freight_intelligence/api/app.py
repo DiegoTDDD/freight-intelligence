@@ -14,7 +14,7 @@ from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import DEFAULT_ROOT as BRAZIL_MODES
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import DEFAULT_ROOT as BRAZIL_ROAD
-from freight_intelligence.brazil_road import STATES, load_road
+from freight_intelligence.brazil_road import STATES, load_road, load_road_monthly
 from freight_intelligence.brazil_water import DEFAULT_ROOT as BRAZIL_WATER
 from freight_intelligence.brazil_water import load_water
 from freight_intelligence.dashboard_data import load_projection_files
@@ -139,6 +139,18 @@ def create_app(
                 "interpretation": metadata["interpretation"],
                 "quality_notes": metadata["quality_notes"], "sources": metadata["sources"],
                 "excluded_series": metadata.get("excluded_series", [])}
+
+    @data_routes.get("/brazil/road-monthly")
+    def brazil_road_monthly(month: int | None = Query(default=None, ge=1, le=12)):
+        try:
+            data, metadata = load_road_monthly(road_dir if road_dir is not None else BRAZIL_ROAD)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified monthly road series unavailable.") from error
+        if month is not None:
+            data = data.filter(pl.col("month") == month)
+        return {"count": data.height, "data": data.to_dicts(),
+                "annual_reconciliation": metadata["reconciliation"],
+                "source": metadata["monthly_source"]}
 
     @data_routes.get("/brazil/road-flows")
     def brazil_road_flows(

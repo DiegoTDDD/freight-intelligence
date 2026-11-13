@@ -45,3 +45,18 @@ GitHub schedules may be delayed, and inactive public repositories can have their
 schedules disabled. Artifact retention is not a permanent backup; keep reviewed
 recovery/source archives separately. See [GitHub scheduling](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
 and [artifact retention](https://docs.github.com/en/actions/tutorials/store-and-share-data).
+
+## ANTT road source revision audit
+
+The `Audit Brazilian road source revisions` workflow runs on Mondays at 09:27 UTC
+(06:27 in São Paulo), on demand, and when its script/preparation contract changes.
+It validates the reviewed 12-month sum and downloads the fixed official PDF with
+a 30-second request timeout and 8 MiB size cap. Matching bytes produce an unchanged
+report. Changed PDF bytes are kept as an **unreviewed source**, with the old/new
+hashes; values are never extracted, approved or deployed automatically. Invalid
+responses fail with a report. Outputs cannot be written into serving snapshots.
+
+The workflow is read-only and does not use a deployment secret. Reports and changed
+PDFs are retained as GitHub artifacts for 14 days. GitHub schedules may be delayed
+or disabled for inactive repositories; this is revision detection, not guaranteed
+real-time refresh. The local hourly development automation remains paused.
