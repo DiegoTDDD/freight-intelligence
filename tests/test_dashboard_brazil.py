@@ -84,6 +84,23 @@ def test_water_navigation_and_regional_reference_views():
     assert not app.exception
 
 
+def test_historical_gas_years_keep_display_and_diagnostics_in_the_same_year():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("pipeline").run()
+    app.selectbox(key="brazil_gas_point_type").select("receipt").run()
+    for year, missing in ((2022, "947"), (2023, "1994"), (2024, "7734")):
+        app.selectbox(key="brazil_gas_year").select(year).run()
+        assert not app.exception and not app.error
+        assert any(item.label == "Missing daily cells" and item.value == missing for item in app.metric)
+        movements = next(frame.value for frame in app.dataframe if "point_type" in frame.value.columns
+                         and "year" in frame.value.columns)
+        diagnostics = next(frame.value for frame in app.dataframe if "dates" in frame.value.columns)
+        assert set(movements["year"]) == {year}
+        assert all(date.strip().startswith(str(year)) for dates in diagnostics["dates"] for date in dates.split(","))
+
+
 def test_regional_road_filters_and_unlisted_pairs():
     app = AppTest.from_file(str(APP), default_timeout=30).run()
     app.selectbox(key="workspace").select("Brazilian freight").run()

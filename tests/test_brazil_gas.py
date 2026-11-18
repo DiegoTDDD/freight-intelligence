@@ -58,6 +58,26 @@ def test_missing_cell_is_counted_and_not_zero_imputed():
     assert receipt["volume_thousand_m3"] == 30
 
 
+def test_legacy_realized_label_requires_reviewed_year_and_explicit_unit():
+    rows = source_rows()
+    rows[0] = [cell.replace("2025", "2022") for cell in rows[0]]
+    for row in rows[1:3]:
+        row[12] = "Realizado (mil m³)"
+    data, _ = parse_month(encoded(rows), 2022, 1)
+    assert {row["point_type"]: row["volume_thousand_m3"] for row in data} == {
+        "receipt": 31.0, "delivery": 62.0,
+    }
+    for row in rows[1:3]:
+        row[12] = "Realizado"
+    with pytest.raises(ValueError, match="lacks realized"):
+        parse_month(encoded(rows), 2022, 1)
+    current = source_rows()
+    for row in current[1:3]:
+        row[12] = "Realizado (mil m³)"
+    with pytest.raises(ValueError, match="lacks realized"):
+        parse_month(encoded(current), 2025, 1)
+
+
 def test_historical_exact_duplicate_policy_excludes_only_identical_rows():
     rows = source_rows()
     rows.append(list(rows[1]))

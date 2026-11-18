@@ -14,7 +14,7 @@ listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/action
 | Optimization | Tested constrained transport solver, editable scenarios and comparisons; scenario costs are not measured savings |
 | Dashboard | Published Streamlit app; English default; Portuguese controls and core notices for modal, truck, gas and air workspaces |
 | Real-road routing | Separate OSRM car-reference and Valhalla truck engines; explicit truck profile, map, instructions and GeoJSON |
-| Brazil | 145 scoped annual indicators across five modes; detailed rail; 240 monthly ANP gas records (2024/2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 43 ANTAQ references; 12 road-tonnage months and 16 road RGI pairs |
+| Brazil | 145 scoped annual indicators across five modes; detailed rail; 480 monthly ANP gas records (2022–2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 55 ANTAQ reference/monthly records; 12 road-tonnage months and 16 road RGI pairs |
 | Public API | Documented read-only HTTP API under `/api`; configured key/user permissions retained; private local plans excluded |
 | Reproducibility | Pinned container runtimes, snapshot hashes and verified recovery archives |
 | CI and deployment | Windows/Linux tests, API/container and dashboard checks; deploy only the exact tested main revision |
@@ -45,12 +45,12 @@ The heavy full pipeline was verified previously and was not rerun for this updat
    Within-city trips are outside the current MDF-e scope. RGI pairs are groups
    of municipalities, not operational itineraries.
 3. **Water freight:** [inland/coastal and regional reference analyses](brazil_water.md)
-   are implemented. Extend them to monthly source records, paired OD flows and
+   and twelve 2025 port-handling months are implemented. Extend the monthly history, paired OD flows and
    fuller corridor detail; current state endpoints are marginal totals only.
 4. **Air freight:** [monthly history, airports, stage pairs and reserved forecasts](brazil_air.md)
    are implemented. Further refreshes require reviewing source revisions and
    maintaining explicit Brazilian-endpoint and missing-field coverage.
-5. **Pipelines:** [gas history and diagnostics](brazil_gas_history.md) cover 2024–2025;
+5. **Pipelines:** [gas history and diagnostics](brazil_gas_history.md) cover 2022–2025;
    the 33 missing 2025 cells are traced to source points/dates, without imputation.
    Extend earlier years only after their unit contracts are verified, and add
    other oil-pipeline operators/mineral pipelines where reliable data exists.
@@ -82,3 +82,12 @@ user-specific persistence before it could be accepted.
 These requirements are distinct from the delivered original portfolio roadmap.
 No paid services were purchased. The local hourly development automation is paused;
 it is separate from repository data-refresh workflows.
+
+## Portfolio review when the demo sleeps
+
+The [README](../README.md) inventories all workspaces and delivery components,
+includes screenshots and explains the shared free-host limits. The generated
+[static evidence report](portfolio_evidence.md) exposes counts, observed subtotals,
+all ANAC candidate test scores and source-quality reconciliations without running
+a server. CI checks this report against validated public snapshots. The local
+Docker demo packages the same public data and does not require the large pipeline.

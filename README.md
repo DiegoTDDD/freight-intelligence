@@ -2,439 +2,143 @@
 
 ![CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/actions/workflows/ci_pipeline.yml/badge.svg)
 
-End-to-end freight intelligence platform for analyzing and forecasting freight flows using large-scale transportation data.
+A freight data engineering and analytics portfolio: a **97.6-million-row** Medallion pipeline, observed Brazilian transport histories, evaluated forecasting baselines, constrained transport optimization, truck-aware routing and a documented API.
 
-**[Open the live dashboard](https://loginexus-dashboard-preview.onrender.com/)** ·
-[Current delivery and remaining work](docs/status.md) · [Brazilian data](docs/brazil_modes.md) ·
-[Real-road routes](docs/rotas_reais.md) · [Recovery (Portuguese)](docs/recovery.md)
+**[Review results without starting a server](docs/portfolio_evidence.md)** · **[Open the interactive demo](https://loginexus-dashboard-preview.onrender.com/)** · [Public API](https://loginexus-dashboard-preview.onrender.com/api/docs) · [Current roadmap](docs/expansion_execution.md)
 
-[Public API documentation](https://loginexus-dashboard-preview.onrender.com/api/docs) ·
-[Truck-aware routing](docs/truck_routing.md) · [Five-mode indicators](docs/brazil_modes.md)
+> **Demo hosting:** the dashboard and public API share one free Render service. After 15 minutes without inbound traffic, it sleeps; the next visit normally takes about a minute to wake. Limits and restarts can also affect availability. [Render's free-service policy](https://render.com/docs/free). Screenshots, the static results report, source code, public aggregates and local Docker instructions below do not depend on that service being awake. Free hosting is a demonstration choice, with no permanence or production-uptime guarantee.
 
-[ANTAQ inland/coastal references](docs/brazil_water.md) · [ANP source revision audits](docs/source_refresh.md)
+The project and dashboard default to **English**, with optional Portuguese controls and core notices. Original source identifiers and exported schemas retain their source language.
 
-Continuous deployment is verified: after the checks pass, GitHub deploys the exact
-tested revision to Render. See [deployment and recovery](docs/publicacao_continua.md).
+## What you can review
 
-LogiNexus combines large-scale data engineering, freight analytics, forecasting
-evaluation and transport optimization. **The project and dashboard default to English;
-Portuguese is an optional interface translation.** The US FAF data includes estimates
-and scenarios. Brazil includes detailed ANTT railway movements for 2006–2025,
-scoped indicators for five modes and ANP gas-point movements for 2025. Sources
-and units stay separate. Real-road routing offers distinct OSRM car-reference
-and Valhalla truck profiles; mapped restrictions do not provide dispatch certification.
+| Area | Implemented capability | Evidence and guide |
+| --- | --- | --- |
+| Data engineering | FAF5 CSV → Bronze Parquet → long-format Silver → analytical Gold; streaming/lazy processing, staged file replacement, ordered orchestration and dry-run plan | [Pipeline and original roadmap](docs/roteiro_original.md), [source structure](freight_intelligence/) |
+| Freight analytics | Annual KPIs, growth across irregular years, CAGR, commodity mix, domestic modes, corridor concentration and leading corridors | [Dashboard guide](docs/dashboard.md), [versioned demo aggregates](deployment/preview_data/) |
+| Forecast evaluation | Persistence, linear and CAGR baselines; expanding-window validation; reserved final tests; forecasts separated from observed history and FAF scenarios | [Evaluation methodology](docs/temporal_evaluation.md), [static results for every ANAC baseline](docs/portfolio_evidence.md#forecast-results-including-competing-baselines) |
+| Brazilian railway | ANTT movements, 2006–2025; monthly/annual series, commodities, state pairs and concessionaires; reserved forecast evaluation | [Railway coverage and units](docs/brasil.md) |
+| Brazilian road | Fleet/MDF-e indicators, twelve 2025 tonnage months and sixteen published regional RGI pairs; source denominator reconciliation | [Road scope and reconciliation](docs/brazil_road.md) |
+| Brazilian water | 43 annual/regional references plus twelve 2025 port-handling months; inland cargo, coastal state endpoints and grain-region comparisons | [ANTAQ sources and precision](docs/brazil_water.md) |
+| Brazilian air | 624 monthly aggregates, 2000–2025; 36,860 monthly airport pairs, 2024–2025; 1,102 source airport codes; paid/free/mail separated; evaluated forecasts | [ANAC preparation and limitations](docs/brazil_air.md) |
+| Brazilian pipelines | 480 gas operator/direction/month records, 2022–2025; signed volumes, duplicate policy and missing-cell point/date diagnostics | [ANP gas history and quality](docs/brazil_gas_history.md) |
+| Five-mode atlas | 145 annual indicators with separate units, statistical populations, source links and provenance | [Indicator contracts](docs/brazil_modes.md) |
+| Transport optimization | Minimum-cost allocation, capacities, supply/demand balance, transshipment and infeasibility detection | [Solver and exported results](docs/transport_optimization.md) |
+| Scenario planner | Bounded editable networks, JSON import, separate simulation submission, reference/candidate comparison and portable downloads | [Planner walkthrough](docs/scenario_planner.md), [synthetic input example](docs/examples/transport_scenario.json) |
+| Geographic routing | Distinct OSRM car-reference and Valhalla truck engines; explicit dimensions, weight, axles and hazardous cargo; map, maneuvers and GeoJSON | [Truck profiles and restrictions](docs/truck_routing.md), [saved truck geometry](deployment/route_examples/sao_paulo_campinas_truck.geojson) |
+| Read-only API | Documented indicators, histories, forecasts, quality diagnostics and saved allocations; filters, pagination, optional key/user permissions; hosted public snapshots isolated from private plans | [Endpoint reference](docs/api.md), [authentication and roles](docs/api_authentication.md) |
+| Delivery and recovery | Windows/Linux CI, pinned container runtimes, source/data hashes, memory regression checks, exact-tested-commit deployment and recovery archives | [CI workflow](.github/workflows/ci_pipeline.yml), [deployment](docs/publicacao_continua.md), [recovery](docs/recovery.md) |
+| Source refresh | Scheduled bounded ANP and ANTT revision audits; changed sources quarantined for review rather than automatically published | [Audit policy](docs/source_refresh.md) |
 
-### Try the demo without processing the large dataset
+These are workspaces within one application and analytical package. They do not require separate hosted dashboards.
 
-The dashboard image includes small public aggregates, the Brazilian historical
-evaluation and a saved geographic route. From the repository root, with Docker:
+## Screenshots
 
-```text
+The railway workspace below shows the optional Portuguese interface. The default interface is English. These screenshots document earlier published views; the feature table above includes subsequent air, gas and monthly-water additions.
+
+![Brazilian railway history, with the optional Portuguese translation](docs/images/brasil.png)
+
+![Saved real São Paulo–Campinas road route](docs/images/rota-real.png)
+
+The route screenshot illustrates geographic routing. Current truck costing is a separate engine with an explicit vehicle profile; a car-reference screenshot does not certify truck suitability.
+
+## Results and engineering decisions
+
+- **Scale:** the full local run completed on 2026-11-12 with **2,503,352 Bronze** and **97,630,728 Silver** rows. Domestic mode analytics use the source's `dms_mode` field. The large raw/Silver layers are not committed to Git.
+- **Observed-history forecasting:** ANTT railway evaluation reserves 2023–2025, with validation-selected test WAPE of **4.75% TU / 1.61% TKU**. ANAC selected-model WAPE is **21.96% domestic / 7.32% international**, and both selected models lose to persistence on the reserved test. All candidates are shown in the [static report](docs/portfolio_evidence.md); no reselection on test results or accuracy guarantee is claimed.
+- **Source quality:** 33 blank gas cells in 2025 are traced to points/dates and remain missing. Road monthly labels reconcile to **1,368,699,651 tonnes**, while the separate regional denominator retains its own unresolved source scope. Water monthly displayed values sum to **1,402,731,832 tonnes**, one tonne below that panel edition's annual headline; no month receives an invented adjustment.
+- **Hosting memory:** after a real 512 MiB memory incident, corridor loading was bounded before collection and solver imports deferred. The 2026-11-18 CI revision passed a six-session/18-render check with **249.5 MiB sampled peak** and no OOM events. This is measured test behavior, not an unlimited-concurrency claim. [Incident and correction](docs/memory_incident.md).
+- **Validation:** revision [`2e3b383`](https://github.com/DiegoTDDD/freight-intelligence/commit/2e3b383cb7b669524aea3bdc2c4126daa935606f) passed all five [CI checks](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/44393092735), including **387 lightweight tests on Windows and Linux**, API containers and the hosted image. Local real-data tests add coverage where the large dataset exists. Test counts are dated evidence, not a promise that every future revision has the same count.
+
+The [static evidence report](docs/portfolio_evidence.md) is generated from validated committed snapshots. CI checks it for drift, so reviewing results does not require opening Render or processing the large dataset.
+
+## Run the complete demo locally
+
+With Docker installed, from the repository root:
+
+```bash
 docker build -f deployment/Dockerfile.dashboard -t loginexus-dashboard:local .
 docker run --rm -p 127.0.0.1:8502:8501 loginexus-dashboard:local
 ```
 
-Open `http://127.0.0.1:8502/`. Using this demo does not require downloading the raw
-dataset or running the 97.6-million-row pipeline. New route requests and the basemap
-require internet access. Free hosting may take time to wake after inactivity.
+Open [http://127.0.0.1:8502/](http://127.0.0.1:8502/). The same application and bundled public aggregates run locally. You do **not** need the raw FAF download, a Render account, API credentials or a full pipeline run to review the analytics, saved reports and saved route. New route requests and basemap tiles require internet access and provider availability; private configured authentication can be tested separately.
 
-### Verifiable results
+For a source installation, use Python 3.13:
 
-- Real pipeline: 2,503,352 Bronze rows and 97,630,728 Silver rows; the full local run
-  completed on 2026-11-12. Domestic mode indicators use `dms_mode`.
-- Brazil: 20 complete years of ANTT reports with source hashes; 2023–2025 reserved
-  for testing. Validation-selected model test WAPE: 4.75% TU and 1.61% TKU.
-- Routes: real GeoJSON geometry, source and retrieval date; separate scenario
-  calculations use explicit costs and restrictions. No measured savings are claimed.
-- Validation: 320 integration tests passed, including real-data checks, plus six
-  deployment tests. See [delivery evidence](docs/plano_finalizacao.md).
+```bash
+python -m pip install -e ".[app,dev]"
+python -m streamlit run dashboards/app.py --server.address 127.0.0.1 --server.port 8501
+```
 
-Forecasts are estimates, not guarantees. The detailed Brazilian cargo series covers
-federally conceded railways; the five-mode view adds independently scoped official
-indicators, including road fleet history, MDF-e cargo trips and derived transport
-work. The inconsistent national road tonnage figure remains excluded.
-ANP gas detail covers all twelve 2025 files and five reported operators, with
-receipts/deliveries separated and missing cells disclosed. The ambiguous ONTL
-production-versus-movement gas series has been excluded from transport analytics.
-Truck-aware routes apply mapped restrictions to an explicit vehicle profile;
-missing map restrictions still prevent operational certification. Live demo access
-is enabled in the hosting image after the provider usage notice; it requires
-explicit coordinate/profile-sharing consent. Other launchers require operator
-activation. The reviewed truck example also works offline.
-The snapshot can be recovered and rebuilt independently of the current host.
-
-![Brazilian workspace with the optional Portuguese translation](docs/images/brasil.png)
-
-![Real São Paulo–Campinas route](docs/images/rota-real.png)
+The source launcher normally reads locally generated FAF outputs. Use the Docker demo above for the prepackaged public snapshot. Windows users with the configured project environment can also use [Abrir LogiNexus.cmd](Abrir%20LogiNexus.cmd); [startup guide](docs/dashboard.md).
 
 ## Architecture
 
-The project follows a Medallion Architecture:
-
-```text
-FAF5 Dataset
-     │
-     ▼
-  INGESTION
-     │
-     ▼
-   BRONZE
-Raw structured data in Parquet
-     │
-     ▼
-   SILVER
-Long-format analytical dataset
-     │
-     ▼
-    GOLD
-Business-ready analytical datasets
-     │
-     ├── Annual KPIs
-     ├── Commodity Mix
-     ├── Mode Mix
-     └── Top Freight Corridors
-     │
-     ▼
-Analytics / ML / Optimization
+```mermaid
+flowchart TD
+    FAF[FAF5 source CSV and metadata] --> Bronze[Bronze: source Parquet]
+    Bronze --> Silver[Silver: long analytical table]
+    Silver --> Gold[Gold: KPIs, commodities, modes and corridors]
+    Official[ANTT / ANAC / ANP / ANTAQ sources] --> Review[Source contracts, bounded preparation and provenance]
+    Review --> Public[Versioned public aggregates]
+    Gold --> Analysis[Analytics and evaluated baselines]
+    Public --> Analysis
+    Scenario[Explicit network costs, capacities and demand] --> Solver[Constrained transport solver]
+    Analysis --> UI[Streamlit workspaces]
+    Analysis --> API[Read-only FastAPI endpoints]
+    Solver --> UI
+    Provider[OSRM reference / Valhalla truck provider] --> UI
+    Public --> Static[Static portfolio evidence on GitHub]
+    Checks[Windows/Linux tests and isolated container checks] --> Deploy[Exact tested main commit]
+    Deploy --> Host[Shared Render demo: dashboard and API]
 ```
 
-## Data Source
+The public host reads compact public snapshots. It does not rebuild the ~100-million-row pipeline on startup, run private saved plans or silently fall back to a car route if truck routing fails. The source package, snapshots, tests and recovery archives can be moved to another host.
 
-The project uses the Freight Analysis Framework (FAF5) developed by the U.S. Bureau of Transportation Statistics (BTS) and Oak Ridge National Laboratory (ORNL).
+**Stack:** Python 3.13, Polars, Parquet/PyArrow, DuckDB, NumPy/SciPy, pandas, scikit-learn, Streamlit, FastAPI, Docker, pytest, Ruff and GitHub Actions. Hosted runtime versions are pinned; [dependency policy](docs/runtime_dependencies.md).
 
-The current pipeline processes the FAF5.5.1 high/low freight forecast dataset.
+## Reproduce individual components
 
-## Technology Stack
+| Task | Command | Requirement |
+| --- | --- | --- |
+| Lightweight tests | `python -m pytest tests --ignore=tests/test_faf5.py -q` | Installed app/development dependencies; no large FAF data |
+| Code quality | `python -m ruff check .` | Development dependencies |
+| Rebuild static portfolio report | `python scripts/build_portfolio_evidence.py` | Committed public snapshots; no network |
+| Check portfolio report against data | `python scripts/build_portfolio_evidence.py --check` | Same; fails if the generated report is stale |
+| Preview pipeline decisions | `python -m freight_intelligence.pipeline --plan --skip-existing` | Read-only plan; runs no pipeline step |
+| Solve the synthetic network | `python -m freight_intelligence.optimization.transport --scenario docs/examples/transport_scenario.json` | Writes scenario results; no FAF pipeline |
+| Serve the local API | `python -m uvicorn freight_intelligence.api.app:app --host 127.0.0.1 --port 8000` | Local saved outputs; install `.[api,dev]` |
+| Build a committed-revision recovery ZIP | `python scripts/package_recovery.py --output recovery-package` | Git; validates bundled data hashes |
 
-- Python 3.13
-- Polars
-- Pandas
-- PyArrow
-- DuckDB
-- NumPy
-- Scikit-learn
-- Plotly
-- Pytest
-
-## Pipeline
-
-### Bronze
-
-The ingestion layer converts the original FAF5 CSV dataset into Parquet.
+Public API examples:
 
 ```text
-data/raw/faf5/
-        ↓
-data/bronze/faf5/faf5_forecasts.parquet
+GET /api/brazil/air-freight?view=pairs&year=2025&limit=10
+GET /api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=10
+GET /api/brazil/water-freight?dataset=port_monthly&year=2025
+GET /api/brazil/road-monthly
 ```
 
-Dataset:
+The hosted prefix is `/api`; a separately launched local API uses the endpoint paths without that prefix. Shared-host sleep affects both the public dashboard and these requests. [Full API contracts](docs/api.md).
 
-- 2,503,352 records
-- 82 columns
+### Large FAF pipeline
 
-### Silver
-
-The transformation layer converts the wide FAF5 dataset into a long analytical format.
-
-```text
-data/bronze/faf5/
-        ↓
-data/silver/faf5/faf5_long.parquet
-```
-
-Dataset:
-
-- 97,630,728 records
-- 13 columns
-
-Main analytical dimensions include:
-
-- Origin
-- Destination
-- Freight mode
-- Commodity
-- Trade type
-- Distance band
-- Year
-- Metric type
-
-### Gold
-
-The analytics layer produces business-ready datasets:
-
-```text
-data/gold/faf5/
-
-├── annual_kpis.parquet
-├── annual_growth.parquet
-├── annual_cagr.parquet
-├── commodity_mix.parquet
-├── commodity_lookup.parquet
-├── commodity_growth.parquet
-├── commodity_share_change.parquet
-├── mode_mix.parquet
-├── top_corridors.parquet
-├── corridor_summary.parquet
-└── corridor_concentration.parquet
-```
-
-These datasets support freight-flow analysis, forecasting, visualization and optimization.
-
-## Running the Pipeline
-
-Place the FAF5.5.1 source files in the data/raw/faf5/forecast/ directory:
-
-- FAF5.5.1_HiLoForecasts.csv
-- FAF5_metadata.xlsx
-
-The default command rebuilds all layers, including Bronze and Silver. This processes about 100 million Silver rows. To reuse generated outputs, pass `--skip-existing`; a step is skipped only when all of its outputs exist and none of its upstream dependencies was rebuilt. File timestamps and source changes are not checked, so use the default rebuild after updating the source data.
-
-Run the complete pipeline from the project root:
-
-    python -m freight_intelligence.pipeline
-
-Reuse existing outputs when the source data has not changed:
-
-    python -m freight_intelligence.pipeline --skip-existing
-
-Launch the dashboard after generating the datasets:
-
-    python -m streamlit run dashboards/app.py --server.address 127.0.0.1 --server.port 8501
-
-The sidebar switches between existing freight analytics, saved scenario extrapolations and transport plans. See [the dashboard guide](docs/dashboard.md) for filters, downloads, result validation and local access.
-
-The [Scenario planner](docs/scenario_planner.md) also lets you edit a small transport network and simulate it on explicit submission. Results stay in session memory and can be downloaded without replacing any saved plan.
-
-Import your own scenario JSON or reuse `scenario.json` from a downloaded bundle. Loading validates the input and fills the editors; simulation requires a separate submission.
-
-Capture a solved scenario as a reference to compare costs and link flows against alternatives with matching units and demand. The comparison bundle preserves both inputs and solutions without replacing saved plans.
-
-Install application dependencies with:
-
-    python -m pip install -e ".[app]"
-
-## Continuous Integration
-
-The Ubuntu job also builds a verified source/data recovery ZIP and SHA-256 checksum
-for the committed revision. GitHub retains this downloadable artifact for 30 days;
-save an independent copy for longer retention. See [recovery instructions](docs/recovery.md).
-
-The hosted-dashboard job separately builds `deployment/Dockerfile.dashboard` and
-checks all 59 runtime pins, the bundled snapshot hashes, and the analytics,
-extrapolation and temporal-evaluation views in a read-only, network-isolated
-512 MiB container. Run the same check locally after building the image:
-
-    python scripts/check_dashboard_container.py --image loginexus-dashboard:ci
-
-GitHub Actions runs the lightweight tests on every push and pull request:
-
-    python -m pytest tests --ignore=tests/test_faf5.py -q
-
-These cover configuration, pipeline orchestration, commodity lookup under Windows cp1252, annual scenario extrapolation, transport optimization and read-only API queries with temporary fixtures. `tests/test_faf5.py` validates the full FAF5 dataset (~100M rows), which is generated locally and is not stored in the repository, so it only runs where that data exists. The separate heavy `howto-check.yml` workflow builds all layers, stops on pipeline errors, and preserves diagnostic logs for seven days.
-
-## Annual Scenario Baselines
-
-Run the first forecasting baseline independently of the heavy pipeline:
-
-    python -m freight_intelligence.ml.annual_forecast --end-year 2055
-
-This reads only the small `annual_kpis.parquet` Gold table. For each metric it compares persistence, linear trend, and annualized endpoint CAGR against the final three available scenario points, chooses the lowest MAE, and refits that baseline on the complete input. Calendar-year gaps are respected. Results and provenance are written to the ignored `models/faf5/annual/` directory; existing Gold data is preserved.
-
-FAF5 already includes projections through 2050. Outputs are **scenario extrapolations**, and validation measures agreement with held-out FAF values. It does not establish accuracy against future observed demand. See [the forecasting notes](docs/annual_forecast.md) for outputs, assumptions, and limitations.
-
-## Temporal Baseline Evaluation
-
-Compare the baselines with expanding-window validation and a reserved final test, independently of the current forecast outputs:
-
-    python -m freight_intelligence.ml.temporal_evaluation
-
-See [temporal evaluation](docs/temporal_evaluation.md) for split rules, calendar horizons and the interpretation of FAF scenario test values.
-
-Saved reports are available in the dashboard's **Temporal evaluation** workspace and through `/temporal-evaluation` and `/temporal-evaluation/predictions` in the API. These views verify report consistency and source provenance without running evaluation.
-
-## Transport Scenario Optimization
-
-Solve a supplied network with explicit costs, capacities, supply and demand:
-
-    python -m freight_intelligence.optimization.transport --scenario docs/examples/transport_scenario.json
-
-The bundled example is synthetic. The optimizer preserves flow balance and capacities, supports transshipment, and rejects infeasible scenarios. It writes allocation, node checks and provenance to `artifacts/optimization/transport/`, independently of all FAF layers. See [the optimization guide](docs/transport_optimization.md) for the input contract and limits.
-
-## Local API
-
-Serve the existing annual Gold indicators, optional saved scenario extrapolations and transport allocations:
-
-    python -m pip install -e ".[api,dev]"
-    python -m uvicorn freight_intelligence.api.app:app --host 127.0.0.1 --port 8000
-
-Open `http://127.0.0.1:8000/docs` for interactive documentation. The API only reads saved outputs; it never triggers the pipeline or solver. `/transport-plan` supports filters and pagination, and `/transport-plan/nodes` exposes balance checks. See [API endpoints and behavior](docs/api.md). Optional [API-key authentication](docs/api_authentication.md) protects the data routes and can require a key at startup.
-
-Run the same API in Docker Desktop with the existing Gold and model directories:
-
-    docker compose up --build -d --wait
-
-See [the Docker guide](docs/docker.md) for prerequisites, read-only mounts, health checks and stopping the service.
-
-The Linux API image uses [pinned runtime dependencies](docs/runtime_dependencies.md), verifies installed versions during builds and reuses the dependency layer for code-only changes.
-
-## Data Engineering Principles
-
-The project is designed around:
-
-- Columnar storage with Parquet
-- Lazy execution with Polars
-- Streaming processing for large datasets
-- Medallion architecture
-- Separation between raw, transformed and analytical data
-- Reproducible pipelines
-- Automated testing
-- Git-based version control
-
-## Project Structure
-
-```text
-freight-intelligence/
-│
-├── freight_intelligence/
-│   ├── analytics/
-│   ├── config/
-│   ├── ingestion/
-│   ├── ml/
-│   ├── optimization/
-│   ├── transformations/
-│   └── utils/
-│
-├── data/
-│   ├── raw/
-│   ├── bronze/
-│   ├── silver/
-│   └── gold/
-│
-├── dashboards/
-├── docs/
-├── notebooks/
-├── scripts/
-├── tests/
-│
-├── pyproject.toml
-└── README.md
-```
-
-## Current Status
-
-### Completed
-
-- [x] Project structure
-- [x] Python package configuration
-- [x] Environment setup
-- [x] FAF5 dataset ingestion
-- [x] Bronze layer
-- [x] Silver transformation
-- [x] Gold analytical layer
-- [x] Data quality tests
-- [x] Freight corridor analytics
-- [x] Interactive dashboard
-- [x] Automated tests
-- [x] Git repository
-- [x] GitHub integration
-- [x] Continuous integration (GitHub Actions)
-- [x] Annual scenario baselines with temporal validation
-- [x] Local read-only API for annual indicators and scenario extrapolations
-- [x] Docker image and local Compose runtime for the API
-- [x] Minimum-cost transport scenario allocation with capacity and balance checks
-- [x] Optional API-key authentication and checks for missing mandatory credentials
-- [x] Pinned Linux API runtime dependencies and automated drift checks
-- [x] Dashboard views for scenario extrapolations and transport allocations
-- [x] Expanding-window baseline evaluation with a reserved final test
-- [x] Temporal evaluation report views in the dashboard and read-only API
-- [x] Interactive transport scenario planner with bounded simulation and result download
-- [x] Scenario JSON import, exported-scenario reuse and example reset
-- [x] Reference/candidate scenario comparison with cost/flow differences and portable bundles
-
-### Next Steps
-
-- [ ] Forecasting against separately identified historical observations
-- [ ] Operational routing with supplied road network, vehicle constraints and measured costs
-- [ ] Per-user API access control and production deployment configuration
-- [ ] Continuous deployment (CD)
-
-### Historical observations evaluation
-
-A separate [historical evaluation command](docs/historical_evaluation.md) accepts annual
-observations with an explicit source/units manifest and exports a portable evaluation ZIP.
-The included dataset is synthetic; evaluation on verified historical freight remains pending.
-
-An exploratory evaluation of the archived local FAF5.5.1 **historical estimates** is now
-available through the [2017–2021 adapter](docs/faf_historical.md). It excludes later projection
-years and preserves source hashes. Five annual points and a single test year do not establish
-robust predictive accuracy; evaluation against separately verified observations remains pending.
-
-Individual API-key registries now support independently disabled users and separate
-analytics, transport and evaluation read permissions. See
-[API authentication](docs/api_authentication.md). Public deployment remains pending;
-the local running service was not reconfigured.
-
-### Preview pipeline work without running it
+The FAF5.5.1 high/low forecast input comes from the US Bureau of Transportation Statistics / Oak Ridge National Laboratory. Place `FAF5.5.1_HiLoForecasts.csv` and `FAF5_metadata.xlsx` in `data/raw/faf5/forecast/`.
 
 ```bash
-python -m freight_intelligence.pipeline --plan --skip-existing
+python -m freight_intelligence.pipeline
 ```
 
-This prints a JSON plan of run/skip decisions, missing outputs and upstream dependencies.
-It executes no pipeline step and writes no data. Without `--skip-existing`, `--plan` previews
-the default full rebuild, also without executing it. Large-data stages are marked explicitly.
-The plan is a snapshot of file existence; timestamps, file validity and source freshness are
-not checked. A later actual run recomputes decisions. Previewing is not permission to run
-the large pipeline; no pipeline execution occurs as part of this feature's validation.
+This explicitly rebuilds Bronze, Silver and Gold and processes approximately 100 million Silver rows. It is separate from the small demo. `--skip-existing` reuses steps only when all outputs exist and upstream steps were not rebuilt; it does not prove file validity or source freshness. The separate [heavy how-to workflow](.github/workflows/howto-check.yml) fails on pipeline errors and preserves logs. The default lightweight CI does not download or rebuild this dataset.
 
-### Cross-platform continuous integration
+## Data interpretation and remaining work
 
-The lightweight CI job runs on both Windows and Ubuntu with Python 3.13. Both platforms
-install the app/test dependencies, run Ruff, and execute the fixture-based suite while
-excluding only `tests/test_faf5.py`. Each platform preserves a separate JUnit test report
-for seven days, including failed runs. A failure on one platform does not cancel the other.
-Docker verification remains a separate Linux job; no large dataset is downloaded by these
-jobs. The real-data how-to workflow remains separate. Workflow changes are local until an
-authorized commit/push; no remote CI run is claimed from a local test result.
+- FAF includes estimates and future scenarios. Agreement with held-out FAF scenario points is not evidence of future observed-demand accuracy.
+- Brazilian series use different populations and units. Airport stages, gas-point transfers, railway movements and port handling may repeat the same physical cargo; they are not comparable national modal shares.
+- Truck costing applies available mapped restrictions, not verified current dispatch conditions. Toll pricing, driver-hours compliance, operational certification and provider SLA are not implemented.
+- Optimization examples use explicit **synthetic** demand/cost inputs. Scenario cost differences are not measured savings at a real company.
+- The expanded roadmap is **still open**: acquire paired water OD records, extend road and gas histories, verify additional rail/pipeline coverage, evaluate more adequate historical series, and validate the solver with real operating inputs and outcomes. Availability of source records and business data constrains these claims.
 
-### Windows console compatibility
+See the [current expansion ledger](docs/expansion_execution.md) for concrete deliveries and dependencies, [current status](docs/status.md) for verification context, and the [recovered original roadmap](docs/roteiro_original.md) as historical planning evidence.
 
-Commodity lookup, commodity growth and commodity share-change transformations log only
-summary messages and row counts. They do not print Polars table previews, whose box-drawing
-characters can fail on a strict Windows cp1252 console even when Parquet output succeeded.
-Regression tests use strict cp1252 output with Unicode commodity names and verify that the
-names and calculations are preserved in Parquet. No encoding substitution is applied to data.
-
-### Failed large-file writes
-
-Bronze and Silver now stage each Parquet beside its destination and replace the published
-file only after the writer succeeds. A normal exception cleans up the staging file and
-preserves the previous published output. The streaming write is retained; no full in-memory
-copy is introduced. Replacement requires free space for the staged new file alongside any
-old output. This is single-file publication, not a transaction across pipeline stages or a
-power-loss durability guarantee. A forcibly killed process may leave a hidden staging file;
-it is not considered a published output by `--skip-existing`.
-
-### Growth across irregular source years
-
-`annual_growth.parquet` retains `growth_rate` as change between consecutive supplied
-points. It now also records `previous_year`, `elapsed_years`, and `annualized_growth_rate`.
-For example, 100 to 200 across five years is 100% interval growth, approximately 14.87%
-annualized growth. A zero previous total makes percentage growth unavailable (null), not
-infinite; a fall from a positive total to zero is -100%. Single-point or zero-start CAGR
-is also unavailable. Duplicate metric/year pairs, nulls and invalid numeric totals fail
-before output is written. These calculations still include scenario years when the source
-contains them; annualization does not make a scenario into observed historical growth.
-Existing saved files are not rewritten automatically; new columns appear on the next
-explicit run of these small transformations or an authorized pipeline run.
-
-A consolidated [current implementation and remaining prerequisites](docs/current_status.md)
-records the local milestone and its validation. See it before choosing further roadmap work.
-
-Windows users can double-click `Abrir LogiNexus.cmd` to start or reopen the local dashboard.
-It waits for readiness before opening the browser and never runs the data pipeline.
-See [dashboard startup](docs/dashboard.md) for environment detection and startup logs.
-
-A [review-only HTTPS deployment template](docs/deployment.md) is available for a future
-Docker host. Its API is internal and authenticated; no public deployment has been performed.
+No paid services have been purchased. CI recovery artifacts have limited retention; save an independent copy using the [recovery instructions](docs/recovery.md). The demo can be rebuilt from source and public aggregates; interactive session edits must be exported and are not a persistent customer database.

@@ -104,7 +104,7 @@ See [coverage, forecast evaluation and filters](brazil_air.md).
 
 ## Historical gas and diagnostics
 
-The gas endpoint accepts `year=2024` or `year=2025` (default). Add
+The gas endpoint accepts years 2022–2025 (`year=2025` is the default). Add
 `include_diagnostics=true` for source point/date groups, with
 `diagnostics_limit` up to 500 and `diagnostics_offset`. Normal responses omit large
 diagnostic arrays. See [historical quality rules and investigated absences](brazil_gas_history.md).

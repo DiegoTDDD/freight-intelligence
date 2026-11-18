@@ -47,11 +47,12 @@ on 2026-11-13; the hosting image enables live requests after this notice.
   or claim complete national coverage from partial concession/operator records.
 - Validate transformations, displayed values, downloads and API contracts.
 
-The reviewed expansion contains 122 annual records across all five modes, plus
-120 ANP monthly gas operator/direction records and 43 ANTAQ water references, with
+The reviewed expansion contains 145 annual records across all five modes, plus
+480 ANP monthly gas operator/direction records, 624 ANAC monthly aggregates,
+36,860 recent airport pairs and 55 ANTAQ reference/monthly records, with
 integrity validation, UI filtering, CSV export and a read-only API endpoint.
 Road coverage includes fleet history, MDF-e cargo trips and derived transport
-work, excluding unresolved road tonnage. National shipment coverage
+work and twelve reconciled 2025 tonnage months. National shipment coverage
 for every mode remains incomplete; see [precise coverage and source issues](brazil_modes.md).
 
 Passing tests reduces risk; it does not prove that software or source data contain

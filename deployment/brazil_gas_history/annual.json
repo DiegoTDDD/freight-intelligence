@@ -1,5 +1,25 @@
 [
   {
+    "year": 2022,
+    "delivery": 47256.06592,
+    "receipt": 48926.0079,
+    "missing_daily_values": {
+      "receipt": 947,
+      "delivery": 15109
+    },
+    "negative_daily_values": 0
+  },
+  {
+    "year": 2023,
+    "delivery": 46274.16013354727,
+    "receipt": 46596.77469335095,
+    "missing_daily_values": {
+      "receipt": 1994,
+      "delivery": 25812
+    },
+    "negative_daily_values": 0
+  },
+  {
     "year": 2024,
     "delivery": 44826.157145332574,
     "receipt": 44243.7364387411,

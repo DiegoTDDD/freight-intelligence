@@ -36,6 +36,7 @@ for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/brazil/water-freight?dataset=coastal_state_endpoints",
              "/api/brazil/road-flows?origin_state=MT", "/api/brazil/road-monthly?month=1",
              "/api/brazil/air-freight?view=pairs&year=2025&origin=SBGR",
+             "/api/brazil/gas-movements?year=2022&include_diagnostics=true&diagnostics_limit=1",
              "/api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=1"):
     with urllib.request.urlopen(base + path, timeout=10) as response:
         assert response.status == 200, path

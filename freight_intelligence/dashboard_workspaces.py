@@ -420,7 +420,7 @@ def render_water_freight(t):
 
 def render_gas_movements(t):
     ui = LocalizedUI(t)
-    year = ui.selectbox("Gas reference year", [2024, 2025], index=1, key="brazil_gas_year")
+    year = ui.selectbox("Gas reference year", [2022, 2023, 2024, 2025], index=3, key="brazil_gas_year")
     ui.subheader(f"Reported gas-pipeline movements · {year}")
     try:
         if year == 2025:
@@ -428,6 +428,7 @@ def render_gas_movements(t):
         else:
             data, _, metadata = load_gas_history()
             data = data.filter(pl.col("year") == year)
+            metadata = {**metadata, "sources": [s for s in metadata["sources"] if s["year"] == year]}
     except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
         ui.error("The verified ANP gas movement snapshot is unavailable.")
         return

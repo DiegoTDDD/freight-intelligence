@@ -243,7 +243,7 @@ def create_app(
 
     @data_routes.get("/brazil/gas-movements")
     def brazil_gas_movements(
-        year: int = Query(default=2025, ge=2024, le=2025),
+        year: int = Query(default=2025, ge=2022, le=2025),
         month: int | None = Query(default=None, ge=1, le=12),
         point_type: Literal["receipt", "delivery"] | None = None,
         operator_id: str | None = Query(default=None, pattern=r"^\d{1,20}$"),

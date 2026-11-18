@@ -53,3 +53,13 @@ endpoint also includes `mdfe_recorded_tonnes` with this annual sum.
 
 The [source audit](source_refresh.md) checks the official PDF weekly and keeps
 changed editions for review. It cannot silently replace the reviewed monthly values.
+
+## Review of the preceding year
+
+On 2026-11-18, the 70-page official
+[Cargas — Dados Estatísticos 2024](https://www.gov.br/antt/pt-br/assuntos/cargas/dadostrc/cargas-dados-estatisticos-2024_antt.pdf)
+was checked for a compatible earlier MDF-e movement series. Its road-export
+statistics use Comex Stat and selected foreign destinations, a different population
+from the 2025 domestic MDF-e series. They have not been substituted for a missing
+2024 domestic month or used to claim a comparable national growth rate. Additional
+compatible domestic history remains an acquisition task.

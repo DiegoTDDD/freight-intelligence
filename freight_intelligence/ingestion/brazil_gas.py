@@ -57,6 +57,9 @@ def parse_month(raw, year, month, *, deduplicate_identical=False):
     missing_cells = []
     exact_duplicates_excluded = 0
     missing_shipper_id_rows = 0
+    realized_variables = {"Volume Realizado (mil m³)"}
+    if year == 2022:
+        realized_variables.add("Realizado (mil m³)")  # Reviewed explicit-unit legacy label.
     for row in reader:
         if not row or all(not value.strip() for value in row):
             continue
@@ -65,7 +68,7 @@ def parse_month(raw, year, month, *, deduplicate_identical=False):
             raise ValueError("ANP gas report has malformed rows")
         if any(value.strip() for value in row[13 + days:]):
             raise ValueError("ANP gas report contains values outside calendar-day columns")
-        if row[12].strip() != "Volume Realizado (mil m³)":
+        if row[12].strip() not in realized_variables:
             continue
         point_type = POINT_TYPES.get(row[4].strip())
         if point_type is None:

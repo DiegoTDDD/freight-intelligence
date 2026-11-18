@@ -10,12 +10,16 @@ from freight_intelligence.ingestion.brazil_gas import parse_number
 
 def test_reviewed_history_has_complete_months_and_disclosed_exclusions():
     data, annuals, metadata = load_gas_history()
-    assert data.height == 120 and set(data["year"]) == {2024}
+    assert data.height == 360 and set(data["year"]) == {2022, 2023, 2024}
     assert set(data["month"]) == set(range(1, 13))
-    assert data.filter(data["month"] == 2)["calendar_days"].unique().to_list() == [29]
-    assert annuals[0]["missing_daily_values"] == {"receipt": 7734, "delivery": 79484}
-    assert sum(source["exact_duplicate_rows_excluded"] for source in metadata["sources"]) == 30
-    assert sum(source["missing_shipper_id_rows"] for source in metadata["sources"]) == 10
+    assert data.filter((data["month"] == 2) & (data["year"] == 2024))["calendar_days"].unique().to_list() == [29]
+    assert {a["year"]: a["missing_daily_values"] for a in annuals} == {
+        2022: {"receipt": 947, "delivery": 15109},
+        2023: {"receipt": 1994, "delivery": 25812},
+        2024: {"receipt": 7734, "delivery": 79484},
+    }
+    assert sum(source["exact_duplicate_rows_excluded"] for source in metadata["sources"]) == 35
+    assert sum(source["missing_shipper_id_rows"] for source in metadata["sources"]) == 34
     assert parse_number("- 445,07 ") == Decimal("-445.07")
 
 
@@ -39,6 +43,12 @@ def test_year_filter_and_paginated_diagnostics(tmp_path):
         assert response["diagnostics_total"] == 1 and response["diagnostics"][0]["missing_days"] == 31
         response = client.get("/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=1").json()
         assert response["diagnostics_total"] > 1 and len(response["diagnostics"]) == 1
-        assert client.get("/brazil/gas-movements?year=2023").status_code == 422
+        for year in (2022, 2023):
+            response = client.get(f"/brazil/gas-movements?year={year}&include_diagnostics=true").json()
+            assert response["count"] == 120
+            assert all(row["year"] == year for row in response["data"])
+            assert all(date.startswith(str(year)) for group in response["diagnostics"] for date in group["dates"])
+            assert all(source["year"] == year for source in response["sources"])
+        assert client.get("/brazil/gas-movements?year=2021").status_code == 422
     with TestClient(create_app(gas_history_dir=tmp_path)) as client:
         assert client.get("/brazil/gas-movements?year=2024").status_code == 503

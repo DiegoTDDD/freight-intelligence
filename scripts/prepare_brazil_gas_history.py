@@ -55,7 +55,7 @@ def discover(html, years):
     return result
 
 
-def build(cache, output, years=(2024,)):
+def build(cache, output, years=(2022, 2023, 2024)):
     with urllib.request.urlopen(SOURCE, timeout=30) as response:
         html = response.read(2 * 1024**2).decode("utf-8")
     links = discover(html, years)
@@ -84,6 +84,7 @@ def build(cache, output, years=(2024,)):
     metadata = {"schema_version": 1, "source": SOURCE, "years": list(years), "sources": sources,
                 "interpretation": "ANP historical realized receipt/delivery-point movements. Observed subtotals; operator coverage can change. Inter-operator transfers repeat gas; not unique national supply or production.",
                 "exact_duplicate_policy": "Exclude only identical full volume rows and count exclusions; conflicting duplicate keys fail validation",
+                "realized_label_policy": "Volume Realizado (mil m³); 2022 additionally accepts reviewed Realizado (mil m³). Unitless labels are not accepted.",
                 "files": [{"path": name, "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)}
                           for name, raw in files.items()]}
     output = Path(output)

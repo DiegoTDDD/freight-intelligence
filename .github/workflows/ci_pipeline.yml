@@ -66,6 +66,9 @@ jobs:
     - name: Check code quality
       run: python -m ruff check .
 
+    - name: Check host-independent portfolio evidence against public snapshots
+      run: python scripts/build_portfolio_evidence.py --check
+
     - name: Run tests
       # tests/test_faf5.py validates the full local FAF5 dataset (~100M rows),
       # which is not stored in the repository. Run lightweight tests with temporary fixtures.
