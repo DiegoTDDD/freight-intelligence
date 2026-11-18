@@ -12,10 +12,10 @@ from freight_intelligence.ingestion.brazil_gas import annual_volumes
 DEFAULT_ROOT = Path(__file__).resolve().parents[1] / "deployment/brazil_gas"
 
 
-def load_gas(root=DEFAULT_ROOT):
+def load_gas(root=DEFAULT_ROOT, *, expected_year=2025):
     root = Path(root)
     metadata = json.loads((root / "provenance.json").read_bytes())
-    if metadata.get("schema_version") != 1 or metadata.get("year") != 2025:
+    if metadata.get("schema_version") != 1 or metadata.get("year") != expected_year:
         raise ValueError("Unsupported gas snapshot")
     files = metadata["files"]
     if {record["path"] for record in files} != {"monthly.csv", "annual.json"} or len(files) != 2:
@@ -24,7 +24,7 @@ def load_gas(root=DEFAULT_ROOT):
         raw = (root / record["path"]).read_bytes()
         if len(raw) > 1024 * 1024 or hashlib.sha256(raw).hexdigest() != record["sha256"]:
             raise ValueError("Gas snapshot integrity mismatch")
-    monthly = pl.read_csv(root / "monthly.csv")
+    monthly = pl.read_csv(root / "monthly.csv", schema_overrides={"operator_id": pl.String})
     if monthly.is_empty() or any(monthly.null_count().row(0)):
         raise ValueError("Missing gas aggregate fields")
     counts = ["observed_daily_values", "missing_daily_values", "negative_daily_values"]
@@ -55,6 +55,15 @@ def load_gas(root=DEFAULT_ROOT):
         for field in ("missing_daily_values", "negative_daily_values"):
             if rows[field].sum() != source[field]:
                 raise ValueError("Gas source coverage counts disagree")
+        if "missing_cells" in source:
+            cells = source["missing_cells"]
+            if len(cells) != source["missing_daily_values"]:
+                raise ValueError("Gas missing-cell diagnostic count disagrees")
+            for row in rows.to_dicts():
+                count = sum(cell["operator_id"] == row["operator_id"] and
+                            cell["point_type"] == row["point_type"] for cell in cells)
+                if count != row["missing_daily_values"]:
+                    raise ValueError("Gas missing-cell diagnostics disagree with operator totals")
         if (rows["observed_daily_values"].sum() + rows["missing_daily_values"].sum()
                 != source["daily_values"]):
             raise ValueError("Gas source observation count disagrees")

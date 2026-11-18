@@ -10,11 +10,11 @@ listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/action
 | --- | --- |
 | Data engineering | Bronze/Silver/Gold pipeline; full real run verified, 2,503,352 Bronze and 97,630,728 Silver rows |
 | Analytics | FAF indicators, commodities, domestic modes and corridors, with source units and scenario labels |
-| Forecasting | Baselines, temporal validation and reserved tests; observed ANTT railway history 2006–2025 |
+| Forecasting | Baselines, temporal validation and reserved tests; ANTT railway history 2006–2025 and ANAC paid-stage observed-subtotal evaluation with reserved 2023–2025 tests |
 | Optimization | Tested constrained transport solver, editable scenarios and comparisons; scenario costs are not measured savings |
-| Dashboard | Published Streamlit app; English default, optional Portuguese translation |
+| Dashboard | Published Streamlit app; English default; Portuguese controls and core notices for modal, truck, gas and air workspaces |
 | Real-road routing | Separate OSRM car-reference and Valhalla truck engines; explicit truck profile, map, instructions and GeoJSON |
-| Brazil | 123 scoped annual indicators across five modes, detailed railway data, 120 monthly ANP gas records, 43 ANTAQ water references, 12 road-tonnage months and 16 ANTT regional road flows |
+| Brazil | 145 scoped annual indicators across five modes; detailed rail; 240 monthly ANP gas records (2024/2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 43 ANTAQ references; 12 road-tonnage months and 16 road RGI pairs |
 | Public API | Documented read-only HTTP API under `/api`; configured key/user permissions retained; private local plans excluded |
 | Reproducibility | Pinned container runtimes, snapshot hashes and verified recovery archives |
 | CI and deployment | Windows/Linux tests, API/container and dashboard checks; deploy only the exact tested main revision |
@@ -47,20 +47,27 @@ The heavy full pipeline was verified previously and was not rerun for this updat
 3. **Water freight:** [inland/coastal and regional reference analyses](brazil_water.md)
    are implemented. Extend them to monthly source records, paired OD flows and
    fuller corridor detail; current state endpoints are marginal totals only.
-4. **Air freight:** extend paid-cargo aggregates to airport/origin/destination and
-   finer time periods, preserving the paid/unpaid and domestic/international scope.
-5. **Pipelines:** extend gas history beyond 2025, investigate 33 missing daily cells,
-   and add other oil-pipeline operators/mineral pipelines where reliable data exists.
+4. **Air freight:** [monthly history, airports, stage pairs and reserved forecasts](brazil_air.md)
+   are implemented. Further refreshes require reviewing source revisions and
+   maintaining explicit Brazilian-endpoint and missing-field coverage.
+5. **Pipelines:** [gas history and diagnostics](brazil_gas_history.md) cover 2024–2025;
+   the 33 missing 2025 cells are traced to source points/dates, without imputation.
+   Extend earlier years only after their unit contracts are verified, and add
+   other oil-pipeline operators/mineral pipelines where reliable data exists.
    Gas receipt/delivery point subtotals can repeat transfers and are not national supply.
 6. **Rail:** extend beyond the available federal-concession reports and handle
    repeated movements only where source identifiers support doing so.
 7. **Operational optimization:** connect verified real demand, capacity and costs
    to the solver and evaluate realized outcomes. Synthetic scenario differences
    are not evidence of actual savings.
-8. **Broader forecasting:** add observed histories for other modes and evaluate
-   them on reserved future periods. FAF projections remain scenarios.
-9. **Optional translation:** finish Portuguese for newer modal/truck/gas screens;
-   English remains the project default.
+8. **Broader forecasting:** ANAC paid-stage observed subtotals now complement
+   railway evaluation. Extend reliable histories for remaining modes and evaluate
+   them on reserved periods. Short histories and changing coverage cannot justify
+   claims of complete national demand. FAF projections remain scenarios.
+
+The newer modal/truck/gas/air controls and core notices support Portuguese without
+changing internal choices, source identifiers, exports or the English default.
+Original provenance documents and source-field values retain their source language.
 
 ## Additional requirements for commercial operation
 

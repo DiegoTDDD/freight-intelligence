@@ -1,5 +1,8 @@
 """Display translations; internal identifiers and downloadable source data stay stable."""
 
+from freight_intelligence.dashboard_modal_i18n import DYNAMIC as MODAL_DYNAMIC
+from freight_intelligence.dashboard_modal_i18n import PT as MODAL_PT
+
 PT = {
     "Coordinates must be finite numbers": "Coordenadas precisam ser números finitos",
     "Longitude must be between -180 and 180; latitude between -85 and 85": "Longitude entre -180 e 180; latitude entre -85 e 85",
@@ -333,6 +336,10 @@ DYNAMIC = {
     "Reference: ": "Referência: ",
     ". Candidate: ": ". Alternativa: ",
 }
+
+
+PT.update(MODAL_PT)
+DYNAMIC.update(MODAL_DYNAMIC)
 
 
 def translate(message, language="pt"):

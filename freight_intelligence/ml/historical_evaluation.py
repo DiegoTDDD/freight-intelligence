@@ -47,7 +47,7 @@ def historical_report(source, manifest_bytes, min_train_points=4, test_points=3,
     if any(not isinstance(unit, str) or not unit.strip() for unit in units.values()):
         raise ValueError("Every metric requires a nonempty unit")
     predictions, scores, choices = evaluate_temporally(
-        data, min_train_points=min_train_points, test_points=test_points
+        data, min_train_points=min_train_points, test_points=test_points, metric_types=set(units)
     )
     interpretation = (
         "Synthetic example only; not evidence of accuracy on observed freight."

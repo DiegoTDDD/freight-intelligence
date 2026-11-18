@@ -34,7 +34,9 @@ for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/temporal-evaluation", "/api/brazil/indicators?mode=air",
              "/api/brazil/gas-movements?month=12&point_type=receipt",
              "/api/brazil/water-freight?dataset=coastal_state_endpoints",
-             "/api/brazil/road-flows?origin_state=MT", "/api/brazil/road-monthly?month=1"):
+             "/api/brazil/road-flows?origin_state=MT", "/api/brazil/road-monthly?month=1",
+             "/api/brazil/air-freight?view=pairs&year=2025&origin=SBGR",
+             "/api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=1"):
     with urllib.request.urlopen(base + path, timeout=10) as response:
         assert response.status == 200, path
         response.read()
@@ -111,6 +113,9 @@ def check_inside_container():
         app.selectbox(key="brazil_mode").select(mode).run()
         if app.exception or app.error or not app.metric:
             raise RuntimeError(f"Brazil modal view failed: {mode}")
+    app.selectbox(key="brazil_gas_year").select(2024).run()
+    if app.exception or app.error:
+        raise RuntimeError("Historical gas coverage view failed")
     app.selectbox(key="workspace").select("Real road routes").run()
     app.selectbox(key="language").select("pt").run()
     if app.exception or app.subheader[0].value != translate("Routes on real roads"):

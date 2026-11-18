@@ -15,6 +15,7 @@ ROUTE_PERMISSIONS = {
     "/brazil/water-freight": "analytics",
     "/brazil/road-flows": "analytics",
     "/brazil/road-monthly": "analytics",
+    "/brazil/air-freight": "analytics",
     "/ready": "analytics",
     "/annual-kpis": "analytics",
     "/annual-forecast": "analytics",

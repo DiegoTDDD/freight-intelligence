@@ -93,3 +93,18 @@ See [scope and source quality](brazil_road.md).
 the annual reconciliation, explicitly calculated from all 12 months. Omit the
 month filter for the complete 2025 monthly table. Invalid months return 422;
 missing or inconsistent monthly data returns 503. Analytics permissions apply.
+
+## Airport freight and observed-subtotal forecasts
+
+`GET /api/brazil/air-freight?view=pairs&year=2025&origin=SBGR` exposes reviewed
+ANAC airport-pair stages. Views include monthly/annual aggregates, pairs, airport
+reference data, forecast values and evaluation scores. Pagination is bounded to
+1000 rows per page. Paid/free/mail remain separate and missing fields are counted.
+See [coverage, forecast evaluation and filters](brazil_air.md).
+
+## Historical gas and diagnostics
+
+The gas endpoint accepts `year=2024` or `year=2025` (default). Add
+`include_diagnostics=true` for source point/date groups, with
+`diagnostics_limit` up to 500 and `diagnostics_offset`. Normal responses omit large
+diagnostic arrays. See [historical quality rules and investigated absences](brazil_gas_history.md).

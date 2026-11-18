@@ -6,6 +6,11 @@
   "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
   "sources": [
     {
+      "url": "https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/Dados_Estatisticos.csv",
+      "sha256": "54986d51004d8a0cb326d0898492d8576486cb041bbd0819331092755a7b6480",
+      "scope": "ANAC reported airport-pair stage movements linked to Brazil; paid cargo, free cargo and mail kept separate. Stages can repeat a consignment; not unique end-to-end shipments or booking availability."
+    },
+    {
       "url": "https://www.gov.br/antaq/pt-br/central-de-conteudos/publicacoes-da-antaq/Anuario2025.pdf",
       "sha256": "75a258baeb9267d1cf1c0be8b9353aa31850b950b55197e79b9072e484961e2e",
       "pages": [
@@ -207,13 +212,27 @@
       "reason": "Unresolved production-versus-transport classification",
       "verification_source": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-885/topico-771/Relat%C3%B3rio%20Final_BEN%202025.pdf",
       "verification_page": 16
+    },
+    {
+      "indicator": "domestic_paid_cargo",
+      "years": "2010-2024",
+      "reason": "Older rounded ONTL reference replaced by current pinned ANAC Brazil-endpoint stage aggregates; scopes and revisions are explicit",
+      "verification_source": "https://ontl.infrasa.gov.br/wp-content/uploads/2025/10/Diagnostico-logistico-2010-2024.pdf",
+      "verification_page": 110
+    },
+    {
+      "indicator": "international_paid_cargo",
+      "years": "2010-2024",
+      "reason": "Older rounded ONTL reference replaced by current pinned ANAC Brazil-endpoint stage aggregates; scopes and revisions are explicit",
+      "verification_source": "https://ontl.infrasa.gov.br/wp-content/uploads/2025/10/Diagnostico-logistico-2010-2024.pdf",
+      "verification_page": 110
     }
   ],
   "files": [
     {
       "path": "indicators.csv",
-      "sha256": "77fb65be82f890f65fddce7796495d5435cbc93bb7bbe2bca893f1c4b7c39c7c",
-      "bytes": 31230
+      "sha256": "84eaad0acf4438c9906fb672d376670c6ea54975e271396710a3ac588e40b731",
+      "bytes": 45916
     }
   ]
 }

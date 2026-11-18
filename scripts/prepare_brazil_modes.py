@@ -15,6 +15,7 @@ from pathlib import Path
 
 import polars as pl
 
+from freight_intelligence.brazil_air import load_air
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_road import load_road_monthly
 from freight_intelligence.brazil_water import load_water
@@ -54,6 +55,8 @@ def prepare(output, source_pdf=None, gas_dir=None):
         raise ValueError("Source PDF differs from the reviewed edition; review before updating")
     rows = []
     for mode, indicator, unit, page, scope, values in SERIES:
+        if mode == "air":
+            continue  # Replaced by the pinned ANAC stage aggregates below.
         assert len(values) == 15
         rows.extend({
             "mode": mode, "indicator": indicator, "year": year, "value": float(value),
@@ -61,6 +64,14 @@ def prepare(output, source_pdf=None, gas_dir=None):
             "source_page": page, "status": "reported_rounded_chart_value",
         } for year, value in zip(range(2010, 2025), values, strict=True))
     rail_path = ROOT / "deployment/brazil_data/annual.parquet"
+    air_tables, air_metadata, _ = load_air()
+    for row in air_tables["annual"].to_dicts():
+        missing = row["missing_paid_cargo_kg"]
+        rows.append({"mode": "air", "indicator": f"anac_{row['nature']}_paid_stage_subtotal",
+                     "year": row["year"], "value": float(row["paid_cargo_kg"]), "unit": "kg",
+                     "scope": f"ANAC {row['nature']} Brazil-endpoint stage paid-cargo observed subtotal; {missing} missing cargo fields excluded; all reported flight groups; not unique consignments",
+                     "source_url": air_metadata["source"], "source_page": 0,
+                     "status": "reported_partial_observed_subtotal" if missing else "reported_stage_subtotal"})
     road_monthly, road_metadata = load_road_monthly()
     rows.append({"mode": "road", "indicator": "mdfe_recorded_tonnes", "year": 2025,
                  "value": float(road_monthly["tonnes"].sum()), "unit": "tonnes",
@@ -125,7 +136,9 @@ def prepare(output, source_pdf=None, gas_dir=None):
         "schema_version": 1, "country": "Brazil", "prepared_on": datetime.now(UTC).date().isoformat(),
         "method": "Reviewed transcription of published chart labels plus verified ANTT rail snapshot",
         "interpretation": "Separate modal indicators; not a comparable modal split or complete shipment census",
-        "sources": [*water_metadata["sources"], {"url": SOURCE, "sha256": SOURCE_SHA256,
+        "sources": [{"url": air_metadata["source"], "sha256": air_metadata["source_sha256"],
+                     "scope": air_metadata["interpretation"]},
+                    *water_metadata["sources"], {"url": SOURCE, "sha256": SOURCE_SHA256,
                      "pages": [40, 78, 110, 123]},
                     {"url": gas_metadata["source"], "files": gas_metadata["sources"]},
                     {"url": ROAD_SOURCE, "pages": [61], "edition": "Anuario TRC 2025 v1.1",
@@ -150,7 +163,11 @@ def prepare(output, source_pdf=None, gas_dir=None):
         "excluded_series": [{"indicator": "natural_gas_daily_movement", "years": "2010-2024",
                              "reason": "Unresolved production-versus-transport classification",
                              "verification_source": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-885/topico-771/Relat%C3%B3rio%20Final_BEN%202025.pdf",
-                             "verification_page": 16}],
+                             "verification_page": 16},
+                            *[{"indicator": indicator, "years": "2010-2024",
+                               "reason": "Older rounded ONTL reference replaced by current pinned ANAC Brazil-endpoint stage aggregates; scopes and revisions are explicit",
+                               "verification_source": SOURCE, "verification_page": 110}
+                              for indicator in ("domestic_paid_cargo", "international_paid_cargo")]],
         "files": [{"path": "indicators.csv", "sha256": hashlib.sha256(data).hexdigest(),
                    "bytes": len(data)}],
     }

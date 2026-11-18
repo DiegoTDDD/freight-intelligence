@@ -22,6 +22,288 @@
       "realized_volume_rows": 1433,
       "daily_values": 44423,
       "missing_daily_values": 31,
+      "missing_cells": [
+        {
+          "date": "2025-01-01",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-02",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-03",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-04",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-05",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-06",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-07",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-08",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-09",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-10",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-11",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-12",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-13",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-14",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-15",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-16",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-17",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-18",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-19",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-20",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-21",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-22",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-23",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-24",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-25",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-26",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-27",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-28",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-29",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-30",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-01-31",
+          "operator_id": "3001891441",
+          "point_id": "622847",
+          "point_name": "GARUVA",
+          "point_type": "receipt",
+          "source_record": 8570,
+          "reason": "Blank realized-volume source cell; no reported value"
+        }
+      ],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 10,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn-janeiro.csv"
     },
@@ -34,6 +316,8 @@
       "realized_volume_rows": 1461,
       "daily_values": 40908,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 9,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn-fevereiro.csv"
     },
@@ -46,6 +330,8 @@
       "realized_volume_rows": 1371,
       "daily_values": 42501,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 16,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_marco_2025.csv"
     },
@@ -58,6 +344,8 @@
       "realized_volume_rows": 1444,
       "daily_values": 43320,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 19,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_abril_2025.csv"
     },
@@ -70,6 +358,27 @@
       "realized_volume_rows": 1477,
       "daily_values": 45787,
       "missing_daily_values": 2,
+      "missing_cells": [
+        {
+          "date": "2025-05-31",
+          "operator_id": "3004992714",
+          "point_id": "222747",
+          "point_name": "RPBC",
+          "point_type": "delivery",
+          "source_record": 197,
+          "reason": "Blank realized-volume source cell; no reported value"
+        },
+        {
+          "date": "2025-05-31",
+          "operator_id": "3004992714",
+          "point_id": "222790",
+          "point_name": "S\u00e3o Bernardo do Campo",
+          "point_type": "delivery",
+          "source_record": 202,
+          "reason": "Blank realized-volume source cell; no reported value"
+        }
+      ],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 12,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_maio_2025.csv"
     },
@@ -82,6 +391,8 @@
       "realized_volume_rows": 1493,
       "daily_values": 44790,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 10,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_junho_2025.csv"
     },
@@ -94,6 +405,8 @@
       "realized_volume_rows": 1589,
       "daily_values": 49259,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 21,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_julho_2025.csv"
     },
@@ -106,6 +419,8 @@
       "realized_volume_rows": 1466,
       "daily_values": 45446,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 20,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_agosto_2025.csv"
     },
@@ -118,6 +433,8 @@
       "realized_volume_rows": 1482,
       "daily_values": 44460,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 0,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_setembro_2025.csv"
     },
@@ -130,6 +447,8 @@
       "realized_volume_rows": 1565,
       "daily_values": 48515,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 1,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_outubro_2025.csv"
     },
@@ -142,6 +461,8 @@
       "realized_volume_rows": 1585,
       "daily_values": 47550,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 0,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_novembro_2025.csv"
     },
@@ -154,10 +475,13 @@
       "realized_volume_rows": 1655,
       "daily_values": 51305,
       "missing_daily_values": 0,
+      "missing_cells": [],
+      "exact_duplicate_rows_excluded": 0,
       "negative_daily_values": 0,
       "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/2025/gn_dezembro_2025.csv"
     }
   ],
+  "exact_duplicate_policy": "Reject all duplicate volume-row keys",
   "files": [
     {
       "path": "monthly.csv",

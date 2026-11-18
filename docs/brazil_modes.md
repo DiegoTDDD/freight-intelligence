@@ -1,6 +1,6 @@
 # Brazilian multimodal indicators
 
-The five-mode view covers road, rail, water, air and pipelines with **123 scoped
+The five-mode view covers road, rail, water, air and pipelines with **145 scoped
 annual indicator records**. It complements the detailed railway workspace.
 Coverage is deliberately heterogeneous:
 
@@ -9,8 +9,8 @@ Coverage is deliberately heterogeneous:
 | Road | Registered truck fleet; MDF-e cargo trips, derived transport work and monthly-label tonnage | Fleet 2010–2024; operations 2025 | Excludes within-city trips and other MDF-e exemptions; not unique cargo |
 | Rail | Net tonnes and tonne-kilometres | 2006–2025 | ANTT federal concessions; repeated cargo movements possible |
 | Water | Port throughput; coastal/inland navigation, cargo categories and regional references | History 2010–2024; references 2025 and grain regions 2024/2025 | Overlapping populations; endpoint marginals are not OD routes; TEU separate from tonnes |
-| Air | Domestic and international paid cargo | 2010–2024 | ANAC paid cargo; international is linked to Brazil |
-| Pipeline | ANP gas receipt/delivery subtotals; Transpetro oil/product volume | Gas 2025; oil 2010–2024 | Gas missing cells and inter-operator transfers disclosed; oil excludes other operators/mineral pipelines |
+| Air | Observed paid-cargo stage subtotals; monthly airport and pair detail | Annual/monthly 2000–2025; pairs 2024–2025 | Brazilian-endpoint stages; missing fields counted; paid, free and mail kept separate in detail |
+| Pipeline | ANP gas receipt/delivery subtotals; Transpetro oil/product volume | Gas detail 2024–2025; annual atlas 2025; oil 2010–2024 | Gas coverage changes, missing cells and inter-operator transfers disclosed; oil excludes other operators/mineral pipelines |
 
 This provides indicators for all five modes, **not full national cargo-flow
 coverage for every mode**. Units cannot be added or used to derive modal shares.
@@ -74,7 +74,10 @@ appear in the pipeline mode view. The API endpoint is
 The earlier correction reduced 132 to 119 annual records by removing 15 ambiguous
 gas values and adding two ANP subtotals. Three 2025 water references subsequently
 bring the total to 122, alongside 120 monthly gas records and 43 detailed water references.
-Adding the reconstructed 2025 MDF-e tonnage brings the current annual atlas to 123.
+Adding the reconstructed 2025 MDF-e tonnage brought that historical atlas to 123.
+Replacing 30 older rounded air references with 52 pinned ANAC annual observed-stage
+subtotals brings the current atlas to **145**. The retired air identifiers remain in
+excluded-series metadata; [scope and source edition](brazil_air.md) explain the change.
 
 The oil series remains explicitly operator-scoped. The source's prose growth-rate
 calculations are not imported; charts display the underlying published values only.

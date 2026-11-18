@@ -9,6 +9,10 @@ from fastapi import APIRouter, FastAPI, HTTPException, Query
 
 from freight_intelligence.api.security import authentication_dependencies
 from freight_intelligence.api.transport_results import load_transport_results
+from freight_intelligence.brazil_air import DEFAULT_ROOT as BRAZIL_AIR
+from freight_intelligence.brazil_air import load_air
+from freight_intelligence.brazil_gas_history import DEFAULT_ROOT as GAS_HISTORY
+from freight_intelligence.brazil_gas_history import load_gas_history, missing_groups
 from freight_intelligence.brazil_gas_results import DEFAULT_ROOT as BRAZIL_GAS
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import DEFAULT_ROOT as BRAZIL_MODES
@@ -64,6 +68,8 @@ def create_app(
     gas_dir: Path | None = None,
     water_dir: Path | None = None,
     road_dir: Path | None = None,
+    air_dir: Path | None = None,
+    gas_history_dir: Path | None = None,
 ) -> FastAPI:
     gold = Path(gold_dir) if gold_dir is not None else PROJECT_ROOT / "data/gold/faf5"
     models = Path(model_dir) if model_dir is not None else PROJECT_ROOT / "models/faf5/annual"
@@ -140,6 +146,46 @@ def create_app(
                 "quality_notes": metadata["quality_notes"], "sources": metadata["sources"],
                 "excluded_series": metadata.get("excluded_series", [])}
 
+    @data_routes.get("/brazil/air-freight")
+    def brazil_air_freight(
+        view: Literal["monthly", "annual", "pairs", "airports", "forecast", "scores"] = "monthly",
+        year: int | None = Query(default=None, ge=2000, le=2028),
+        month: int | None = Query(default=None, ge=1, le=12),
+        nature: Literal["domestic", "international"] | None = None,
+        origin: str | None = Query(default=None, min_length=3, max_length=4, pattern="^[A-Z0-9]{3,4}$"),
+        destination: str | None = Query(default=None, min_length=3, max_length=4, pattern="^[A-Z0-9]{3,4}$"),
+        limit: int = Query(default=100, ge=1, le=1000),
+        offset: int = Query(default=0, ge=0),
+    ):
+        try:
+            tables, metadata, report = load_air(air_dir if air_dir is not None else BRAZIL_AIR)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified ANAC air freight unavailable.") from error
+        data = report[view] if view in {"forecast", "scores"} else tables[view]
+        if year is not None and "year" in data.columns:
+            data = data.filter(pl.col("year") == year)
+        if month is not None:
+            if "month" not in data.columns:
+                raise HTTPException(status_code=422, detail="Month filter requires monthly or pair data")
+            data = data.filter(pl.col("month") == month)
+        if nature is not None:
+            if "nature" in data.columns:
+                data = data.filter(pl.col("nature") == nature)
+            elif "metric_type" in data.columns:
+                data = data.filter(pl.col("metric_type") == nature + "_paid_observed_subtotal")
+            else:
+                raise HTTPException(status_code=422, detail="Nature filter is unavailable for airport reference data")
+        for field, value in (("origin", origin), ("destination", destination)):
+            if value is not None:
+                if view != "pairs":
+                    raise HTTPException(status_code=422, detail="Airport filters require pair data")
+                data = data.filter(pl.col(field) == value)
+        if year is not None and "year" not in data.columns:
+            raise HTTPException(status_code=422, detail="Year filter is unavailable for this view")
+        return {"total": data.height, "count": min(limit, max(0, data.height - offset)),
+                "limit": limit, "offset": offset, "data": data.slice(offset, limit).to_dicts(),
+                "metadata": metadata, "forecast_metadata": report["metadata"] if view in {"forecast", "scores"} else None}
+
     @data_routes.get("/brazil/road-monthly")
     def brazil_road_monthly(month: int | None = Query(default=None, ge=1, le=12)):
         try:
@@ -197,12 +243,22 @@ def create_app(
 
     @data_routes.get("/brazil/gas-movements")
     def brazil_gas_movements(
+        year: int = Query(default=2025, ge=2024, le=2025),
         month: int | None = Query(default=None, ge=1, le=12),
         point_type: Literal["receipt", "delivery"] | None = None,
         operator_id: str | None = Query(default=None, pattern=r"^\d{1,20}$"),
+        include_diagnostics: bool = False,
+        diagnostics_limit: int = Query(default=100, ge=1, le=500),
+        diagnostics_offset: int = Query(default=0, ge=0),
     ):
         try:
-            data, annual, metadata = load_gas(gas_dir if gas_dir is not None else BRAZIL_GAS)
+            if year == 2025:
+                data, annual, metadata = load_gas(gas_dir if gas_dir is not None else BRAZIL_GAS)
+            else:
+                data, annuals, history = load_gas_history(gas_history_dir if gas_history_dir is not None else GAS_HISTORY)
+                annual, = [row for row in annuals if row["year"] == year]
+                data = data.filter(pl.col("year") == year)
+                metadata = {**history, "sources": [s for s in history["sources"] if s["year"] == year]}
         except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
             raise HTTPException(status_code=503, detail="Verified ANP gas movements unavailable") \
                 from error
@@ -212,10 +268,19 @@ def create_app(
             data = data.filter(pl.col("point_type") == point_type)
         if operator_id is not None:
             data = data.filter(pl.col("operator_id") == operator_id)
+        diagnostics = []
+        if include_diagnostics:
+            for kind in ((point_type,) if point_type else ("receipt", "delivery")):
+                diagnostics.extend(missing_groups(metadata, kind, operator_id, month))
+        sources = [{key: value for key, value in source.items()
+                    if key not in {"missing_groups", "missing_cells"}} for source in metadata["sources"]]
         return {"count": data.height, "data": data.to_dicts(),
                 "interpretation": metadata["interpretation"],
-                "annual_full_dataset_reference": annual, "sources": metadata["sources"],
-                "unit": "thousand_m3", "year": 2025}
+                "annual_full_dataset_reference": annual, "sources": sources,
+                "diagnostics_total": len(diagnostics),
+                "diagnostics_included": include_diagnostics,
+                "diagnostics": diagnostics[diagnostics_offset:diagnostics_offset + diagnostics_limit],
+                "unit": "thousand_m3", "year": year}
 
     @data_routes.get("/annual-forecast")
     def annual_forecast(metric_type: Metric | None = None):

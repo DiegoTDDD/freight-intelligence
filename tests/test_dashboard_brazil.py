@@ -99,3 +99,36 @@ def test_regional_road_filters_and_unlisted_pairs():
     app.selectbox(key="road_destination_state").select("SP").run()
     assert not app.exception and not app.error
     assert any("Unlisted flows are unavailable, not zero" in item.value for item in app.info)
+
+
+def test_air_monthly_pairs_airports_and_reserved_forecast():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("air").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Observed cargo subtotal (kg)" and item.value == "431,833,387" for item in app.metric)
+    for view in ("Airport pairs", "Airport totals", "Forecast evaluation"):
+        app.selectbox(key="air_view").select(view).run()
+        assert not app.exception and not app.error
+    assert any(item.label == "Reserved-test WAPE" for item in app.metric)
+
+
+def test_modal_and_truck_ui_translation_preserves_internal_choices():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="language").select("pt").run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    assert app.selectbox(key="brazil_view").label == "Cobertura do transporte brasileiro"
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    for mode in ("air", "road", "water", "pipeline"):
+        app.selectbox(key="brazil_mode").select(mode).run()
+        assert not app.exception and not app.error
+        assert app.selectbox(key="brazil_mode").label == "Modal"
+        assert app.selectbox(key="brazil_mode").value == mode
+    app.selectbox(key="brazil_gas_year").select(2024).run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Valores diários ausentes" for item in app.metric)
+    app.selectbox(key="workspace").select("Real road routes").run()
+    app.selectbox(key="routing_engine").select("Truck (Valhalla)").run()
+    assert app.selectbox(key="routing_engine").label == "Serviço de cálculo da rota"
+    assert app.number_input(key="truck_Urban rigid truck (example)_weight").label == "Peso bruto carregado (t)"

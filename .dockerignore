@@ -28,6 +28,10 @@
 !deployment/brazil_water/**
 !deployment/brazil_road/
 !deployment/brazil_road/**
+!deployment/brazil_air/
+!deployment/brazil_air/**
+!deployment/brazil_gas_history/
+!deployment/brazil_gas_history/**
 !deployment/route_examples/
 !deployment/route_examples/**
 !requirements/dashboard-linux-py313.lock

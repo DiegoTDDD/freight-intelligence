@@ -20,7 +20,7 @@ def errors(actual, predicted):
     return absolute, squared
 
 
-def evaluate_temporally(data, min_train_points=4, horizon_points=1, test_points=3):
+def evaluate_temporally(data, min_train_points=4, horizon_points=1, test_points=3, *, metric_types=None):
     for name, value, minimum in (
         ("min_train_points", min_train_points, 2),
         ("horizon_points", horizon_points, 1),
@@ -34,9 +34,11 @@ def evaluate_temporally(data, min_train_points=4, horizon_points=1, test_points=
     data = data.select(sorted(required))
     if any(data.null_count().row(0)):
         raise ValueError("Input contains null values")
-    if data["metric_type"].dtype != pl.String or not set(data["metric_type"]).issubset(
-        {"tons", "value", "tmiles", "tonne_km"}
-    ):
+    allowed = {"tons", "value", "tmiles", "tonne_km"} if metric_types is None else set(metric_types)
+    if (not allowed or any(not isinstance(name, str) or not name.strip() or len(name) > 100
+                           for name in allowed)
+            or data["metric_type"].dtype != pl.String
+            or not set(data["metric_type"]).issubset(allowed)):
         raise ValueError("Unsupported metric_type")
     if not data["year"].dtype.is_integer() or not data["total_value"].dtype.is_numeric():
         raise ValueError("Input requires integer years and numeric values")

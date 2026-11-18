@@ -1,0 +1,12 @@
+[
+  {
+    "year": 2024,
+    "delivery": 44826.157145332574,
+    "receipt": 44243.7364387411,
+    "missing_daily_values": {
+      "receipt": 7734,
+      "delivery": 79484
+    },
+    "negative_daily_values": 2
+  }
+]

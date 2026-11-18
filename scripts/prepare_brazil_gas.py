@@ -33,24 +33,31 @@ def fetch_report(url):
         return response.read(MAX_BYTES + 1)
 
 
-def prepare(cache, output, *, refresh=False, fetch=None):
+def prepare(cache, output, *, refresh=False, fetch=None, year=2025, source_urls=None,
+            deduplicate_identical=False):
     cache, output = Path(cache), Path(output)
     cache.mkdir(parents=True, exist_ok=True)
     monthly, sources = [], []
-    for month, filename in enumerate(FILES, 1):
+    urls = source_urls if source_urls is not None else [BASE + filename for filename in FILES]
+    if len(urls) != 12 or (year != 2025 and source_urls is None):
+        raise ValueError("A reviewed twelve-month URL list is required for each historical year")
+    for month, url in enumerate(urls, 1):
+        from urllib.parse import unquote, urlparse
+
+        filename = Path(unquote(urlparse(url).path)).name
         path = cache / filename
         if path.exists() and not refresh:
             raw = path.read_bytes()
         else:
-            raw = (fetch or fetch_report)(BASE + filename)
-        rows, provenance = parse_month(raw, 2025, month)
+            raw = (fetch or fetch_report)(url)
+        rows, provenance = parse_month(raw, year, month, deduplicate_identical=deduplicate_identical)
         # Cache only complete, validated monthly downloads.
         if not path.exists() or refresh:
             staging = path.with_suffix(".part")
             staging.write_bytes(raw)
             staging.replace(path)
         monthly.extend(rows)
-        sources.append({**provenance, "url": BASE + filename})
+        sources.append({**provenance, "url": url})
         print(f"Validated ANP gas month {month:02}: {provenance['realized_volume_rows']} volume rows")
     annual = annual_volumes(monthly)
     buffer = io.StringIO(newline="")
@@ -61,7 +68,7 @@ def prepare(cache, output, *, refresh=False, fetch=None):
              "annual.json": (json.dumps(annual, indent=2) + "\n").encode()}
     manifest = {
         "schema_version": 1, "source": SOURCE, "prepared_on": datetime.now(UTC).date().isoformat(),
-        "year": 2025, "unit": "source thousand m3; annual outputs million m3",
+        "year": year, "unit": "source thousand m3; annual outputs million m3",
         "interpretation": (
             "Realized point movements reported by operators, separated into receipts and "
             "deliveries. Inter-operator transfers can repeat the same gas. Neither series is "
@@ -72,6 +79,7 @@ def prepare(cache, output, *, refresh=False, fetch=None):
         ),
         "operators": sorted({row["operator"] for row in monthly}),
         "sources": sources,
+        "exact_duplicate_policy": "Exclude identical full rows; reject conflicting duplicates" if deduplicate_identical else "Reject all duplicate volume-row keys",
         "files": [{"path": name, "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)}
                   for name, raw in files.items()],
     }

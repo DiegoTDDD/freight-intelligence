@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "source": "https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/Dados_Estatisticos.csv",
+  "dictionary": "https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo/48-dados-estatisticos-do-transporte-aereo",
+  "source_sha256": "54986d51004d8a0cb326d0898492d8576486cb041bbd0819331092755a7b6480",
+  "source_update_line": [
+    "Atualizado em: 2026-11-13"
+  ],
+  "counts": {
+    "raw_rows": 1102983,
+    "excluded_no_brazil_endpoint_rows": 58525,
+    "selected_rows": 1015280,
+    "excluded_future_or_partial_year_rows": 29178
+  },
+  "end_year": 2025,
+  "pair_start_year": 2024,
+  "interpretation": "ANAC reported airport-pair stage movements linked to Brazil; paid cargo, free cargo and mail kept separate. Stages can repeat a consignment; not unique end-to-end shipments or booking availability.",
+  "quality_notes": [
+    "Source can revise historical records; this edition is pinned by SHA-256.",
+    "Foreign-to-foreign records and incomplete current/future years are excluded.",
+    "All reported flight groups are retained. Nature follows the source classification.",
+    "Missing cargo fields are excluded from sums and counted, never silently filled with zero.",
+    "Airport-pair detail covers the two most recent complete years; annual/monthly aggregates retain older history.",
+    "Airport totals by origin and destination overlap; do not add them as national freight."
+  ],
+  "files": [
+    {
+      "path": "monthly.parquet",
+      "rows": 624,
+      "bytes": 14343,
+      "sha256": "b4feb34e7d28c0fa2a76f0c2f8b5afe4a2c6c237308ebd86c48d0baf367a548b"
+    },
+    {
+      "path": "pairs.parquet",
+      "rows": 36860,
+      "bytes": 223035,
+      "sha256": "6e9be4ca252695b4753e1cb78ebe71b7e00220f5eff1e3d27292b6959d0c233e"
+    },
+    {
+      "path": "annual.parquet",
+      "rows": 52,
+      "bytes": 5720,
+      "sha256": "87528932460b37672e8cd3ddd6dfa4031951b80c8e2a3b7615e109b4605112ba"
+    },
+    {
+      "path": "airports.parquet",
+      "rows": 1102,
+      "bytes": 14380,
+      "sha256": "3a9cda12f410ad77abe610d3e516899f5b973a70b905c9dccf00707392462129"
+    },
+    {
+      "path": "forecast.zip",
+      "bytes": 4898,
+      "sha256": "b0c1b5acb8ca1bf84d4bbaafef1ca6571ec636c821fc3aca03e35d67fa2f211d"
+    }
+  ]
+}

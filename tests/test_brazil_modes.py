@@ -11,14 +11,14 @@ from freight_intelligence.brazil_modes import DEFAULT_ROOT, MODES, load_modes
 
 def test_five_modes_preserve_units_and_published_reference_values():
     data, metadata = load_modes()
-    assert data.height == 123
+    assert data.height == 145
     assert set(data["mode"]) == set(MODES)
     values = {row["indicator"]: (row["value"], row["unit"])
               for row in data.filter(data["year"] == 2024).to_dicts()}
     assert values["registered_trucks"] == (4.1, "million_vehicles")
     assert values["port_throughput"] == (1322.0, "million_tonnes")
-    assert values["domestic_paid_cargo"] == (423.0, "million_kg")
-    assert values["international_paid_cargo"] == (1012.8, "million_kg")
+    assert values["anac_domestic_paid_stage_subtotal"] == (424063773.0, "kg")
+    assert values["anac_international_paid_stage_subtotal"] == (881197381.0, "kg")
     assert "natural_gas_daily_movement" not in set(data["indicator"])
     assert values["transpetro_oil_pipeline_movement"] == (79.3, "million_m3_at_20C")
     road = {row["indicator"]: (row["value"], row["unit"])

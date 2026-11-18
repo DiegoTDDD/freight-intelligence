@@ -24,6 +24,7 @@ HEADERS = [
 
 def parse_number(value):
     text = value.strip()
+    text = re.sub(r"^-\s+", "-", text)  # Legacy CSVs separate a negative sign with spaces.
     if len(text) > 32 or not re.fullmatch(
         r"-?(?:\d+|\d{1,3}(?:\.\d{3})+)(?:,\d+)?(?:[Ee][+-]?\d{1,2})?", text
     ):
@@ -31,7 +32,7 @@ def parse_number(value):
     return Decimal(text.replace(".", "").replace(",", "."))
 
 
-def parse_month(raw, year, month):
+def parse_month(raw, year, month, *, deduplicate_identical=False):
     if not raw or len(raw) > MAX_BYTES:
         raise ValueError("Empty or oversized ANP gas report")
     try:
@@ -42,12 +43,20 @@ def parse_month(raw, year, month):
     header = next(reader)
     days = calendar.monthrange(year, month)[1]
     expected_dates = [f"{day:02}/{month:02}/{year}" for day in range(1, days + 1)]
-    if (header[:13] != HEADERS or header[13:13 + days] != expected_dates
+    def historical_header(values):
+        return [value.strip().casefold().replace(" do gasoduto", " de gasoduto") for value in values]
+
+    header_matches = header[:13] == HEADERS or (
+        year < 2025 and historical_header(header[:13]) == historical_header(HEADERS))
+    if (not header_matches or header[13:13 + days] != expected_dates
             or any(value.strip() for value in header[13 + days:])):
         raise ValueError("ANP gas columns or full calendar month differ from the contract")
-    totals, seen, operator_names = defaultdict(Decimal), set(), {}
+    totals, seen, operator_names = defaultdict(Decimal), {}, {}
     missing, observed, negatives = defaultdict(int), defaultdict(int), defaultdict(int)
     source_rows, selected_rows = 0, 0
+    missing_cells = []
+    exact_duplicates_excluded = 0
+    missing_shipper_id_rows = 0
     for row in reader:
         if not row or all(not value.strip() for value in row):
             continue
@@ -61,21 +70,35 @@ def parse_month(raw, year, month):
         point_type = POINT_TYPES.get(row[4].strip())
         if point_type is None:
             raise ValueError("Unknown ANP realized-volume point type")
-        if any(not row[index].strip() for index in (0, 3, 7, 8, 10)):
+        if any(not row[index].strip() for index in (0, 3, 7, 8)):
             raise ValueError("ANP realized volume lacks required identifiers")
+        if not row[10].strip():
+            if year >= 2025 or not row[9].strip():
+                raise ValueError("ANP realized volume lacks required identifiers")
+            missing_shipper_id_rows += 1
         key = tuple(row[index].strip() for index in (0, 3, 4, 8, 10, 11))
+        if not row[10].strip():
+            key = (*key, row[9].strip())  # Preserve named legacy shipper, never invent an ID.
         if key in seen:
+            if deduplicate_identical and seen[key] == row:
+                exact_duplicates_excluded += 1
+                continue
             raise ValueError("Duplicate ANP point/operator/shipper/contract volume row")
-        seen.add(key)
+        seen[key] = row
         operator_id, operator = row[8].strip(), row[7].strip()
         if operator_id in operator_names and operator_names[operator_id] != operator:
             raise ValueError("Conflicting ANP operator identities")
         operator_names[operator_id] = operator
         group = (operator_id, point_type)
         totals[group] += Decimal(0)
-        for cell in row[13:13 + days]:
+        for day, cell in enumerate(row[13:13 + days], 1):
             if not cell.strip():
                 missing[group] += 1
+                missing_cells.append({"date": f"{year:04}-{month:02}-{day:02}",
+                                      "operator_id": operator_id, "point_id": row[3].strip(),
+                                      "point_name": row[2].strip(), "point_type": point_type,
+                                      "source_record": source_rows + 1,
+                                      "reason": "Blank realized-volume source cell; no reported value"})
                 continue  # Missing remains missing, never a zero-volume observation.
             value = parse_number(cell)
             totals[group] += value
@@ -95,6 +118,9 @@ def parse_month(raw, year, month):
                   "bytes": len(raw), "source_rows": source_rows,
                   "realized_volume_rows": selected_rows, "daily_values": selected_rows * days,
                   "missing_daily_values": sum(missing.values()),
+                  "missing_cells": missing_cells,
+                  "exact_duplicate_rows_excluded": exact_duplicates_excluded,
+                  "missing_shipper_id_rows": missing_shipper_id_rows,
                   "negative_daily_values": sum(negatives.values())}
 
 

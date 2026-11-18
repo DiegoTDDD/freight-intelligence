@@ -58,6 +58,19 @@ def test_missing_cell_is_counted_and_not_zero_imputed():
     assert receipt["volume_thousand_m3"] == 30
 
 
+def test_historical_exact_duplicate_policy_excludes_only_identical_rows():
+    rows = source_rows()
+    rows.append(list(rows[1]))
+    with pytest.raises(ValueError, match="Duplicate"):
+        parse_month(encoded(rows), 2025, 1)
+    data, metadata = parse_month(encoded(rows), 2025, 1, deduplicate_identical=True)
+    assert metadata["exact_duplicate_rows_excluded"] == 1
+    assert next(row for row in data if row["point_type"] == "receipt")["volume_thousand_m3"] == 31
+    rows[-1][13] = "2,0"
+    with pytest.raises(ValueError, match="Duplicate"):
+        parse_month(encoded(rows), 2025, 1, deduplicate_identical=True)
+
+
 def test_signed_roundoff_is_retained_and_counted():
     rows = source_rows()
     rows[1][13] = "-1,5E-14"
