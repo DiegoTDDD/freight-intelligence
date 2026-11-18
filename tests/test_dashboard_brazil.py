@@ -76,7 +76,7 @@ def test_water_navigation_and_regional_reference_views():
     app.selectbox(key="brazil_view").select("All five modes").run()
     app.selectbox(key="brazil_mode").select("water").run()
     for dataset in ("navigation_totals", "inland_commodities",
-                    "coastal_state_endpoints", "grain_regions"):
+                    "coastal_state_endpoints", "port_monthly", "grain_regions"):
         app.selectbox(key="brazil_water_dataset").select(dataset).run()
         assert not app.exception and not app.error
         assert any("State endpoints do not identify paired routes" in item.value for item in app.warning)

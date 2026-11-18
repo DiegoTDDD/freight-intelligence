@@ -10,7 +10,7 @@ DEFAULT_ROOT = Path(__file__).resolve().parents[1] / "deployment/brazil_water"
 CONTRACTS = {"navigation_totals": (3, "million_tonnes"),
              "inland_commodities": (10, "million_tonnes"),
              "coastal_state_endpoints": (22, "thousand_TEU"),
-             "grain_regions": (8, "million_tonnes")}
+             "grain_regions": (8, "million_tonnes"), "port_monthly": (12, "tonnes")}
 
 
 def load_water(root=DEFAULT_ROOT):
@@ -46,4 +46,9 @@ def load_water(root=DEFAULT_ROOT):
                       {"movements", "exports"} if name == "grain_regions" else {"not_applicable"})
         if set(subset["year"]) != years or set(subset["direction"]) != directions:
             raise ValueError("ANTAQ direction or reference year differs from reviewed contract")
+    monthly = data.filter(pl.col("dataset") == "port_monthly").sort("category")
+    if (monthly["category"].to_list() != [f"2025-{month:02d}" for month in range(1, 13)]
+            or monthly["value"].sum() != 1402731832
+            or not (monthly["value"] == monthly["value"].floor()).all()):
+        raise ValueError("ANTAQ monthly display calendar or annual reconciliation mismatch")
     return data.sort("dataset", "year", "direction", "category"), metadata

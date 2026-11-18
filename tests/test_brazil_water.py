@@ -12,7 +12,7 @@ from freight_intelligence.brazil_water import DEFAULT_ROOT, load_water
 
 def test_reviewed_water_records_keep_tonnes_teu_and_endpoints_distinct():
     data, metadata = load_water()
-    assert data.height == 43
+    assert data.height == 55
     totals = {r["category"]: r["value"] for r in
               data.filter(pl.col("dataset") == "navigation_totals").to_dicts()}
     assert totals == {"Port throughput": 1403.1, "Coastal cabotage": 303.7, "Inland navigation": 91.3}
@@ -23,6 +23,10 @@ def test_reviewed_water_records_keep_tonnes_teu_and_endpoints_distinct():
     assert sao_paulo == {"origin": 536.6, "destination": 538.9}
     assert states.filter(pl.col("category") == "RO").is_empty()  # Not a fabricated zero.
     assert any("no OD links" in note for note in metadata["quality_notes"])
+    monthly = data.filter(pl.col("dataset") == "port_monthly")
+    assert monthly.height == 12
+    assert monthly["value"].sum() == 1402731832
+    assert metadata["sources"][-1]["annual_headline_tonnes"] == 1402731833
 
 
 @pytest.mark.parametrize("defect", ["corrupt", "wrong_unit", "wrong_year"])
@@ -55,6 +59,9 @@ def test_water_api_filtering_and_missing_source(tmp_path):
         assert {row["direction"] for row in result.json()["data"]} == {"origin"}
         assert client.get("/brazil/water-freight?year=2026").status_code == 422
         assert client.get("/brazil/water-freight?dataset=unknown").status_code == 422
+        monthly = client.get("/brazil/water-freight?dataset=port_monthly&year=2025").json()
+        assert monthly["count"] == 12
+        assert {row["unit"] for row in monthly["data"]} == {"tonnes"}
         assert client.get("/brazil/water-freight?dataset=inland_commodities&year=2024").json()["count"] == 0
     with TestClient(create_app(water_dir=tmp_path)) as client:
         assert client.get("/brazil/water-freight").status_code == 503

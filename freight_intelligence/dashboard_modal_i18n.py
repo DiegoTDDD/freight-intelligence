@@ -101,6 +101,8 @@ PT = {
     "Road flow source and coverage": "Fonte e cobertura dos fluxos rodoviários",
     "The verified regional road flow snapshot is unavailable.": "O conjunto verificado de fluxos rodoviários está indisponível.",
     "ANTAQ navigation and regional references": "ANTAQ: navegação e referências regionais",
+    "Monthly port handling (2025)": "Movimentação portuária mensal (2025)",
+    "Port handling, both directions and all navigation categories; displayed whole tonnes. Monthly displayed sum is 1,402,731,832 t; panel annual headline is 1,402,731,833 t. The 1 t display precision difference is retained, not allocated to a month. Handling is not unique shipments or paired routes; this panel edition differs from the annual report.": "Movimentação portuária nos dois sentidos e em todas as categorias de navegação; valores exibidos em toneladas inteiras. A soma mensal exibida é 1.402.731.832 t; o total anual do painel é 1.402.731.833 t. A diferença de precisão de 1 t é preservada, sem atribuição a um mês. A movimentação não identifica cargas únicas ou rotas pareadas; esta edição do painel difere do relatório anual.",
     "Water reference dataset": "Conjunto de referência aquaviário", "Water reference year": "Ano da referência aquaviária",
     "Water reference direction": "Sentido da referência aquaviária", "Navigation reference totals": "Totais de referência da navegação",
     "Leading inland cargo categories": "Principais categorias de carga interior",

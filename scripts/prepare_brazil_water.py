@@ -13,6 +13,14 @@ SOURCE_HASH = "75a258baeb9267d1cf1c0be8b9353aa31850b950b55197e79b9072e484961e2e"
 RELEASE = ("https://www.gov.br/antaq/pt-br/central-de-conteudos/noticias/2026/"
            "setor-aquaviario-brasileiro-movimentou-em-2025-1-4-bi-de-toneladas/")
 RELEASE_HASH = "99bd0e6ca46d959066a39f7a7ee0fac96f2122fa8672a339ce738d3ee67a1426"
+PANEL = ("https://aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808"
+         "&sheet=bb5c2c57-9e0e-46d4-a2bb-006e1de59add&opt=currsel%2Cctxmenu")
+MONTHLY_2025 = [93028512, 97302008, 115287326, 110124907, 120338848, 121998232,
+                126842293, 134234671, 121822158, 122459471, 119549800, 119743606]
+MONTHLY_SCOPE = ("Port handling, both directions and all navigation categories; displayed whole tonnes. "
+                 "Monthly displayed sum is 1,402,731,832 t; panel annual headline is 1,402,731,833 t. "
+                 "The 1 t display precision difference is retained, not allocated to a month. "
+                 "Handling is not unique shipments or paired routes; this panel edition differs from the annual report.")
 
 
 def prepare(output, source_pdf=None):
@@ -56,6 +64,9 @@ def prepare(output, source_pdf=None):
                 add("grain_regions", region, direction, year, value, "million_tonnes", 14,
                     "Maize/soybean geographic port aggregates; movements and exports overlap; "
                     "not individual origin-destination corridors or navigable itineraries")
+    for month, tonnes in enumerate(MONTHLY_2025, 1):
+        add("port_monthly", f"2025-{month:02d}", "not_applicable", 2025, tonnes,
+            "tonnes", 0, MONTHLY_SCOPE, PANEL)
     rows.sort(key=lambda r: (r["dataset"], r["year"], r["direction"], r["category"]))
     buffer = io.StringIO(newline="")
     writer = csv.DictWriter(buffer, fieldnames=list(rows[0]), lineterminator="\n")
@@ -63,11 +74,18 @@ def prepare(output, source_pdf=None):
     writer.writerows(rows)
     raw = buffer.getvalue().encode()
     provenance = {
-        "schema_version": 1, "country": "Brazil", "prepared_on": "2026-11-13",
-        "method": "Reviewed transcription of labeled official report figures; no chart digitization",
+        "schema_version": 1, "country": "Brazil", "prepared_on": "2026-11-18",
+        "method": "Reviewed transcription of labeled report figures and interactive data-table rows; no chart digitization",
         "sources": [{"url": SOURCE, "sha256": SOURCE_HASH, "pages": [2, 14, 20, 22]},
                     {"url": RELEASE, "sha256": RELEASE_HASH,
-                     "description": "HTML bytes archived when reviewed; site navigation can change"}],
+                     "description": "HTML bytes archived when reviewed; site navigation can change"},
+                    {"url": PANEL, "reviewed_on": "2026-11-18", "object": "hxpsVb",
+                     "title": "GR1.6 - Evolução da Movimentação", "method": "Exibir dados: 12 rows, 3 columns",
+                     "filters": {"Carga.NRAno": [2025], "DadosEscala": 1, "Carga Mês": "unfiltered"},
+                     "panel_updated_at": "2026-04-01 08:17", "display_unit": "tonnes",
+                     "annual_headline_tonnes": 1402731833,
+                     "monthly_display_sum_tonnes": sum(MONTHLY_2025),
+                     "display_sum_minus_headline_tonnes": -1}],
         "quality_notes": [
             "Keep tonnes, TEU and statistical populations separate; do not sum overlapping indicators.",
             "Coastal origin/destination states are marginals; no OD links are inferred.",

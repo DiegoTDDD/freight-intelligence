@@ -221,7 +221,7 @@ def create_app(
     @data_routes.get("/brazil/water-freight")
     def brazil_water_freight(
         dataset: Literal["navigation_totals", "inland_commodities",
-                         "coastal_state_endpoints", "grain_regions"] | None = None,
+                         "coastal_state_endpoints", "grain_regions", "port_monthly"] | None = None,
         year: int | None = Query(default=None, ge=2024, le=2025),
         direction: Literal["origin", "destination", "movements", "exports",
                            "not_applicable"] | None = None,

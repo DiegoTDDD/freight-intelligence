@@ -389,7 +389,8 @@ def render_water_freight(t):
     labels = {"navigation_totals": "Navigation reference totals",
               "inland_commodities": "Leading inland cargo categories",
               "coastal_state_endpoints": "Coastal container origin/destination states",
-              "grain_regions": "Maize/soybean regional port aggregates"}
+              "grain_regions": "Maize/soybean regional port aggregates",
+              "port_monthly": "Monthly port handling (2025)"}
     dataset = ui.selectbox("Water reference dataset", list(labels),
                            format_func=labels.get, key="brazil_water_dataset")
     view = data.filter(pl.col("dataset") == dataset)
@@ -406,7 +407,8 @@ def render_water_freight(t):
     ui.warning("Reference populations overlap. Do not add port, navigation, export or endpoint "
                "totals together. State endpoints do not identify paired routes; absent states "
                "are unavailable, not zero.")
-    unit = {"million_tonnes": "Million tonnes", "thousand_TEU": "Thousand TEU"}[view["unit"][0]]
+    unit = {"million_tonnes": "Million tonnes", "thousand_TEU": "Thousand TEU",
+            "tonnes": "Tonnes"}[view["unit"][0]]
     chart = view.select("category", "value").rename({"category": "Category", "value": unit})
     st.bar_chart(chart, x="Category", y=unit)
     ui.dataframe(view, hide_index=True)
