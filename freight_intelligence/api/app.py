@@ -20,7 +20,7 @@ from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import DEFAULT_ROOT as BRAZIL_ROAD
 from freight_intelligence.brazil_road import STATES, load_road, load_road_monthly
 from freight_intelligence.brazil_water import DEFAULT_ROOT as BRAZIL_WATER
-from freight_intelligence.brazil_water import load_water
+from freight_intelligence.brazil_water import REGIONS, load_water, load_water_pairs
 from freight_intelligence.dashboard_data import load_projection_files
 from freight_intelligence.evaluation_results import load_temporal_report
 from freight_intelligence.ml.annual_forecast import INTERPRETATION, PROJECT_ROOT
@@ -217,6 +217,24 @@ def create_app(
                     & (pl.col("origin_region") == pl.col("destination_region")))
             data = data.filter(same if same_region else ~same)
         return {"count": data.height, "data": data.to_dicts(), "metadata": metadata}
+
+    @data_routes.get("/brazil/water-pairs")
+    def brazil_water_pairs(
+        year: int = Query(default=2025, ge=2025, le=2025),
+        origin_region: str | None = Query(default=None, max_length=30),
+        destination_region: str | None = Query(default=None, max_length=30),
+    ):
+        for value in (origin_region, destination_region):
+            if value is not None and value not in REGIONS:
+                raise HTTPException(status_code=422, detail="Unsupported Brazilian source region")
+        try:
+            data, metadata = load_water_pairs(water_dir if water_dir is not None else BRAZIL_WATER)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified ANTAQ regional pairs unavailable") from error
+        for field, value in (("origin_region", origin_region), ("destination_region", destination_region)):
+            if value is not None:
+                data = data.filter(pl.col(field) == value)
+        return {"year": year, "count": data.height, "data": data.to_dicts(), "metadata": metadata}
 
     @data_routes.get("/brazil/water-freight")
     def brazil_water_freight(

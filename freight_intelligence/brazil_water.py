@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import math
 from pathlib import Path
 
 import polars as pl
@@ -11,6 +12,38 @@ CONTRACTS = {"navigation_totals": (3, "million_tonnes"),
              "inland_commodities": (10, "million_tonnes"),
              "coastal_state_endpoints": (22, "thousand_TEU"),
              "grain_regions": (8, "million_tonnes"), "port_monthly": (12, "tonnes")}
+REGIONS = ("Centro-Oeste", "Indeterminado", "Nordeste", "Norte", "Sudeste", "Sul",
+           "ZEE/Plat. Continental")
+
+
+def load_water_pairs(root=DEFAULT_ROOT):
+    root = Path(root)
+    metadata = json.loads((root / "coastal_pairs_provenance.json").read_bytes())
+    files = metadata["files"]
+    if (metadata.get("schema_version") != 1 or metadata.get("year") != 2025
+            or metadata.get("unit") != "share_fraction" or len(files) != 3
+            or {r["path"] for r in files} != {"coastal_region_pairs.csv", "cabotage_region_pairs_2025.xlsx",
+                                             "cabotage_region_pairs_2025_context.jpg"}
+            or metadata.get("filters") != {"Carga.NRAno": [2025], "Carga Mês": "unfiltered", "DadosEscala": 1,
+                                            "origin": "unfiltered", "destination": "unfiltered", "cargo": "unfiltered"}):
+        raise ValueError("Invalid ANTAQ regional pair manifest")
+    for record in files:
+        raw = (root / record["path"]).read_bytes()
+        if len(raw) > 65536 or hashlib.sha256(raw).hexdigest() != record["sha256"]:
+            raise ValueError("ANTAQ regional pair integrity mismatch")
+    data = pl.read_csv(root / "coastal_region_pairs.csv")
+    if (set(data.columns) != {"year", "origin_region", "destination_region", "share_of_cabotage"}
+            or data.height != 21 or any(data.null_count().row(0))
+            or not data["year"].dtype.is_integer() or set(data["year"]) != {2025}
+            or data.select("origin_region", "destination_region").is_duplicated().any()
+            or not set(data["origin_region"]).union(data["destination_region"]).issubset(REGIONS)):
+        raise ValueError("Invalid ANTAQ regional pair coverage")
+    shares = data["share_of_cabotage"]
+    if (not shares.dtype.is_numeric() or not shares.is_finite().all()
+            or not shares.is_between(0, 1, closed="right").all()
+            or not math.isclose(shares.sum(), 1, rel_tol=0, abs_tol=1e-12)):
+        raise ValueError("ANTAQ regional shares must reconcile to one")
+    return data.sort("origin_region", "destination_region"), metadata
 
 
 def load_water(root=DEFAULT_ROOT):

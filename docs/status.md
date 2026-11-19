@@ -14,7 +14,7 @@ listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/action
 | Optimization | Tested constrained transport solver, editable scenarios and comparisons; scenario costs are not measured savings |
 | Dashboard | Published Streamlit app; English default; Portuguese controls and core notices for modal, truck, gas and air workspaces |
 | Real-road routing | Separate OSRM car-reference and Valhalla truck engines; explicit truck profile, map, instructions and GeoJSON |
-| Brazil | 145 scoped annual indicators across five modes; detailed rail; 480 monthly ANP gas records (2022–2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 55 ANTAQ reference/monthly records; 12 road-tonnage months and 16 road RGI pairs |
+| Brazil | 145 scoped annual indicators across five modes; detailed rail; 480 monthly ANP gas records (2022–2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 55 ANTAQ reference/monthly records plus 21 paired regional cabotage shares; 12 road-tonnage months and 16 road RGI pairs |
 | Public API | Documented read-only HTTP API under `/api`; configured key/user permissions retained; private local plans excluded |
 | Reproducibility | Pinned container runtimes, snapshot hashes and verified recovery archives |
 | CI and deployment | Windows/Linux tests, API/container and dashboard checks; deploy only the exact tested main revision |
@@ -45,7 +45,8 @@ The heavy full pipeline was verified previously and was not rerun for this updat
    Within-city trips are outside the current MDF-e scope. RGI pairs are groups
    of municipalities, not operational itineraries.
 3. **Water freight:** [inland/coastal and regional reference analyses](brazil_water.md)
-   and twelve 2025 port-handling months are implemented. Extend the monthly history, paired OD flows and
+   and twelve 2025 port-handling months plus 21 paired regional cabotage shares are implemented.
+   Extend the monthly history, port/state-level OD and
    fuller corridor detail; current state endpoints are marginal totals only.
 4. **Air freight:** [monthly history, airports, stage pairs and reserved forecasts](brazil_air.md)
    are implemented. Further refreshes require reviewing source revisions and

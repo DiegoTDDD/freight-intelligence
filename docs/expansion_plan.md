@@ -49,7 +49,8 @@ on 2026-11-13; the hosting image enables live requests after this notice.
 
 The reviewed expansion contains 145 annual records across all five modes, plus
 480 ANP monthly gas operator/direction records, 624 ANAC monthly aggregates,
-36,860 recent airport pairs and 55 ANTAQ reference/monthly records, with
+36,860 recent airport pairs, 55 ANTAQ reference/monthly records and 21 paired
+regional cabotage shares, with
 integrity validation, UI filtering, CSV export and a read-only API endpoint.
 Road coverage includes fleet history, MDF-e cargo trips and derived transport
 work and twelve reconciled 2025 tonnage months. National shipment coverage

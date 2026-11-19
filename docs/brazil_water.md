@@ -52,6 +52,43 @@ reference year and direction. Reader checks enforce hashes, units, populations,
 direction, year coverage and duplicate keys; invalid/missing bundles return 503.
 
 This closes the absence of inland/coastal reference analyses, not complete raw
-waterway-flow coverage. Historical monthly records beyond 2025, paired OD flows and fuller corridor
+waterway-flow coverage. Historical monthly records beyond 2025, finer port/state OD flows and fuller corridor
 detail remain future work. The legacy ANTAQ download page returned 502 during
 source discovery; the reviewed official report remains reproducible independently.
+
+## Paired regional cabotage shares
+
+The separate **Regional cabotage origin–destination shares (2025)** view contains
+21 original region-to-region pairs from the official panel's **GR 4.5** Sankey
+object `wGpRXf`, exported through **Exportar dados** on 2026-11-18.
+It is a paired table, unlike the coastal state marginal endpoint indicators above.
+
+The original [6,026-byte XLSX](../deployment/brazil_water/cabotage_region_pairs_2025.xlsx)
+is preserved unchanged, SHA-256
+`183b4b2a555b0e69fb08553416be9adc31022be9e11d237c3ab6d848ce7a6ab1`.
+Its columns are `Região Origem`, `Região Destino`, `Distribuição Percentual`.
+The numeric values are fractions (0–1), summing to one within floating-point
+tolerance; the dashboard displays them as percentages. The 51.2131250764% link
+from `ZEE/Plat. Continental` to `Sudeste` is preserved rather than assigned to an
+invented coastal state or port. `Indeterminado` also remains a source category.
+
+The reviewed UI selected **2025 only**, no month, geographic or cargo filter,
+and scale `DadosEscala=1`; panel edition updated **2026-04-01 08:17**. The original
+XLSX has **no year column**, so period attribution relies on that recorded export
+context, the [archived export screenshot](../deployment/brazil_water/cabotage_region_pairs_2025_context.jpg)
+showing the year/month controls, and the exact reviewed workbook hash. The reader
+rejects a changed filter-period contract. It is not an automatic current-data feed.
+The panel's contextual transport headline was 222,975,436 displayed tonnes;
+the share view does **not** reconstruct absolute tonnes from that headline or the
+separate 303.7-million-tonne coastal-handling reference.
+
+`GET /api/brazil/water-pairs` returns all 21 records. Optional `origin_region` and
+`destination_region` select source-region labels. Filters preserve the original
+full-panel denominator, with no renormalization. Unlisted pairs return an empty
+selection, not fabricated zero-flow records. Only year 2025 is available.
+
+Rebuild offline with `python scripts/prepare_brazil_water_pairs.py`; the exact
+reviewed XLSX is bundled, and a changed source fails the hash check. The reader
+also validates the calendar, distinct keys, regions, positive fractions and unit
+sum. This supplies regional paired analysis, not port-level routes, live vessel
+positions, navigable itineraries or complete inland/coastal shipment coverage.

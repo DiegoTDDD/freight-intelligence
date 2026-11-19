@@ -34,6 +34,7 @@ def protected(tmp_path, monkeypatch):
         "/transport-plan/nodes",
         "/temporal-evaluation",
         "/temporal-evaluation/predictions",
+        "/brazil/water-pairs",
     ],
 )
 def test_all_data_endpoints_require_key(protected, endpoint):

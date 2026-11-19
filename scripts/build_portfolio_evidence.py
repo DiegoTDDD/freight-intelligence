@@ -10,7 +10,7 @@ from freight_intelligence.brazil_gas_history import load_gas_history
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
-from freight_intelligence.brazil_water import load_water
+from freight_intelligence.brazil_water import load_water, load_water_pairs
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "docs/portfolio_evidence.md"
@@ -29,6 +29,7 @@ def render():
     gas, _, _ = load_gas()
     historical_gas, _, _ = load_gas_history()
     water, _ = load_water()
+    water_pairs, _ = load_water_pairs()
     road, _ = load_road()
     road_months, road_metadata = load_road_monthly()
     modes, _ = load_modes()
@@ -40,6 +41,8 @@ def render():
         ["ANP gas operator/direction/month", gas.height + historical_gas.height,
          f"{historical_gas['year'].min()}–{gas['year'].max()}; coverage changes; not unique national supply"],
         ["ANTAQ references and monthly rows", water.height, "43 annual/regional references plus twelve 2025 port-handling months"],
+        ["ANTAQ paired regional cabotage shares", water_pairs.height,
+         "2025 original region-to-region fractions; offshore and undetermined origins retained"],
         ["ANTT road monthly totals", road_months.height, "2025 published Chart 45 labels"],
         ["ANTT regional road pairs", road.height, "16 published RGI pairs; not municipalities or truck itineraries"],
     ])
@@ -57,6 +60,10 @@ def render():
     water_months = water.filter(pl.col("dataset") == "port_monthly").sort("category")
     water_table = table(["Month", "Displayed port handling (tonnes)"], [
         [r["category"], f'{r["value"]:,.0f}'] for r in water_months.to_dicts()
+    ])
+    pair_table = table(["Origin region", "Destination region", "Share of full panel population"], [
+        [r["origin_region"], r["destination_region"], f'{r["share_of_cabotage"]:.6%}']
+        for r in water_pairs.sort("share_of_cabotage", descending=True).to_dicts()
     ])
     missing = gas.group_by("point_type").agg(pl.col("missing_daily_values").sum()).sort("point_type")
     missing_table = table(["2025 point direction", "Missing daily cells"], [
@@ -116,6 +123,19 @@ with no invented allocation to a month. These are handling movements in both
 directions, not unique cargo or paired OD routes. The rounded annual report is
 a separate edition. See [the source and filters](brazil_water.md) and
 [downloadable source-derived table](../deployment/brazil_water/water.csv).
+
+## Paired regional cabotage distribution
+
+{pair_table}
+
+These 21 pairs are read directly from the original ANTAQ Sankey export, not
+constructed from separate origin/destination totals. Stored fractions reconcile
+to one; table percentages are rounded for display. Filtering keeps the original
+full-population denominator. They do not identify individual ports or nautical
+itineraries and must not be scaled by a different annual/handling total.
+The [original XLSX export](../deployment/brazil_water/cabotage_region_pairs_2025.xlsx)
+and [unrounded derived CSV](../deployment/brazil_water/coastal_region_pairs.csv)
+are versioned with hashes and [reviewed filter/period context](brazil_water.md#paired-regional-cabotage-shares).
 
 ## Gas source quality and road reconciliation
 

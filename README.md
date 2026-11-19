@@ -19,7 +19,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Forecast evaluation | Persistence, linear and CAGR baselines; expanding-window validation; reserved final tests; forecasts separated from observed history and FAF scenarios | [Evaluation methodology](docs/temporal_evaluation.md), [static results for every ANAC baseline](docs/portfolio_evidence.md#forecast-results-including-competing-baselines) |
 | Brazilian railway | ANTT movements, 2006–2025; monthly/annual series, commodities, state pairs and concessionaires; reserved forecast evaluation | [Railway coverage and units](docs/brasil.md) |
 | Brazilian road | Fleet/MDF-e indicators, twelve 2025 tonnage months and sixteen published regional RGI pairs; source denominator reconciliation | [Road scope and reconciliation](docs/brazil_road.md) |
-| Brazilian water | 43 annual/regional references plus twelve 2025 port-handling months; inland cargo, coastal state endpoints and grain-region comparisons | [ANTAQ sources and precision](docs/brazil_water.md) |
+| Brazilian water | 43 annual/regional references, twelve 2025 port-handling months and 21 paired regional cabotage shares; original XLSX preserved | [ANTAQ sources and precision](docs/brazil_water.md) |
 | Brazilian air | 624 monthly aggregates, 2000–2025; 36,860 monthly airport pairs, 2024–2025; 1,102 source airport codes; paid/free/mail separated; evaluated forecasts | [ANAC preparation and limitations](docs/brazil_air.md) |
 | Brazilian pipelines | 480 gas operator/direction/month records, 2022–2025; signed volumes, duplicate policy and missing-cell point/date diagnostics | [ANP gas history and quality](docs/brazil_gas_history.md) |
 | Five-mode atlas | 145 annual indicators with separate units, statistical populations, source links and provenance | [Indicator contracts](docs/brazil_modes.md) |
@@ -34,13 +34,45 @@ These are workspaces within one application and analytical package. They do not 
 
 ## Screenshots
 
-The railway workspace below shows the optional Portuguese interface. The default interface is English. These screenshots document earlier published views; the feature table above includes subsequent air, gas and monthly-water additions.
+These English-interface captures were taken on 2026-11-18 from the local hosted-app entry point and the versioned public snapshots. They show the actual application, including the new regional-pair view. They remain visible on GitHub while Render sleeps. Open the sections below for additional workspaces.
 
-![Brazilian railway history, with the optional Portuguese translation](docs/images/brasil.png)
+**Freight analytics — FAF scenarios, units and annual indicators**
 
-![Saved real São Paulo–Campinas road route](docs/images/rota-real.png)
+![English freight analytics overview](docs/images/analytics-en.jpg)
 
-The route screenshot illustrates geographic routing. Current truck costing is a separate engine with an explicit vehicle profile; a car-reference screenshot does not certify truck suitability.
+**Transport scenario planner — solved synthetic example, allocation and balance checks**
+
+![Synthetic transport scenario with an optimal allocation](docs/images/planner-en.jpg)
+
+<details>
+<summary>Air cargo, gas history, paired water regions and truck routing — four more screens</summary>
+
+**Air cargo — reported domestic monthly paid-cargo subtotals for 2025, with missing-field disclosure.** Stages can repeat a consignment; the chart is not a complete shipment census.
+
+![ANAC monthly air cargo and source coverage](docs/images/air-en.jpg)
+
+**Gas history — reported delivery-point subtotals for 2022, five operators and 15,109 missing daily source cells.** Missing reports remain missing; these are not production or unique national supply figures. The selector supports 2022–2025.
+
+![ANP historical gas movements and missing-cell coverage](docs/images/gas-en.jpg)
+
+**Paired regional cabotage — four reported links originating in Nordeste, 2025.** Their 11.35% share retains the full panel denominator; no port itineraries or tonnes are inferred.
+
+![ANTAQ regional cabotage pairs with preserved denominator](docs/images/water-pairs-en.jpg)
+
+**Saved Valhalla truck route — São Paulo–Campinas.** Original reviewed geometry, displayed without a new routing request. Map restrictions and the saved vehicle profile do not certify current dispatch conditions.
+
+![Saved truck-aware São Paulo–Campinas route with provider attribution](docs/images/truck-route-en.jpg)
+
+</details>
+
+<details>
+<summary>Railway workspace — earlier capture using the optional Portuguese interface</summary>
+
+The railway view includes observed history, monthly movements, commodities and reserved forecast evaluation. This earlier screenshot demonstrates the optional translation; English is the default.
+
+![Brazilian railway history with the optional Portuguese translation](docs/images/brasil.png)
+
+</details>
 
 ## Results and engineering decisions
 
@@ -116,6 +148,7 @@ Public API examples:
 GET /api/brazil/air-freight?view=pairs&year=2025&limit=10
 GET /api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=10
 GET /api/brazil/water-freight?dataset=port_monthly&year=2025
+GET /api/brazil/water-pairs?origin_region=Norte
 GET /api/brazil/road-monthly
 ```
 
@@ -137,7 +170,7 @@ This explicitly rebuilds Bronze, Silver and Gold and processes approximately 100
 - Brazilian series use different populations and units. Airport stages, gas-point transfers, railway movements and port handling may repeat the same physical cargo; they are not comparable national modal shares.
 - Truck costing applies available mapped restrictions, not verified current dispatch conditions. Toll pricing, driver-hours compliance, operational certification and provider SLA are not implemented.
 - Optimization examples use explicit **synthetic** demand/cost inputs. Scenario cost differences are not measured savings at a real company.
-- The expanded roadmap is **still open**: acquire paired water OD records, extend road and gas histories, verify additional rail/pipeline coverage, evaluate more adequate historical series, and validate the solver with real operating inputs and outcomes. Availability of source records and business data constrains these claims.
+- The expanded roadmap is **still open**: acquire finer port/state water OD records and verified absolute volumes, extend road and gas histories, verify additional rail/pipeline coverage, evaluate more adequate historical series, and validate the solver with real operating inputs and outcomes. Availability of source records and business data constrains these claims.
 
 See the [current expansion ledger](docs/expansion_execution.md) for concrete deliveries and dependencies, [current status](docs/status.md) for verification context, and the [recovered original roadmap](docs/roteiro_original.md) as historical planning evidence.
 

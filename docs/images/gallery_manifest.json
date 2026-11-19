@@ -1,0 +1,55 @@
+{
+  "captured_on": "2026-11-18",
+  "entrypoint": "freight_intelligence/hosted_app.py",
+  "capture": "Unedited local app screenshots using versioned public snapshots",
+  "screenshots": [
+    {
+      "path": "analytics-en.jpg",
+      "workspace": "Freight analytics",
+      "scope": "FAF scenario indicators; English",
+      "sha256": "c693ef46b0add03ae0896a698a998ab093acb85acebffa0b179b1b579268a079",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "planner-en.jpg",
+      "workspace": "Scenario planner",
+      "scope": "Solved synthetic example; not actual operating savings",
+      "sha256": "bd089811c7709765e1e14c00051b317209c42302df8241c83f8a1aac677fa261",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "air-en.jpg",
+      "workspace": "Brazilian freight / air",
+      "scope": "2025 domestic monthly paid-stage observed subtotals",
+      "sha256": "6dbb7972c6c07fb1a05c32bc6cb98cdd03b84c1cebc64ce97764d9940c57da9d",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "gas-en.jpg",
+      "workspace": "Brazilian freight / pipeline",
+      "scope": "2022 delivery-point subtotals; source missing-cell counts",
+      "sha256": "0e8f9fcb3d7d748de36adf9610fa42238d90d698f2b9914eda01de0964243f1a",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "water-pairs-en.jpg",
+      "workspace": "Brazilian freight / water",
+      "scope": "2025 Nordeste origin; original full-panel shares",
+      "sha256": "2040969d8ad227579f8465d133d43571e636a13bbb6e84dbf4e1e8317cfee639",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "truck-route-en.jpg",
+      "workspace": "Real road routes",
+      "scope": "Saved Valhalla truck geometry; no new routing request",
+      "sha256": "4fc19b8b0109f813e1ee7aabcb2dd05e0da679c8efdafa1bfccae47cfbcd139b",
+      "width": 1280,
+      "height": 720
+    }
+  ]
+}

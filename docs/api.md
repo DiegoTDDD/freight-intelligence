@@ -104,6 +104,11 @@ See [coverage, forecast evaluation and filters](brazil_air.md).
 
 ## Historical gas and diagnostics
 
+`GET /brazil/water-pairs` exposes 21 paired regional cabotage fractions for 2025.
+Optional `origin_region` and `destination_region` filter source labels; fractions
+retain the full-panel denominator. They are not absolute tonnes or port routes.
+The hosted path is `/api/brazil/water-pairs`; missing/invalid snapshots return 503.
+
 The gas endpoint accepts years 2022–2025 (`year=2025` is the default). Add
 `include_diagnostics=true` for source point/date groups, with
 `diagnostics_limit` up to 500 and `diagnostics_offset`. Normal responses omit large

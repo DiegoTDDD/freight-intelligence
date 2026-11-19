@@ -18,6 +18,7 @@ Check for drift: `python scripts/build_portfolio_evidence.py --check`
 | ANAC airport source codes | 1102 | Reference codes present in the selected pair population |
 | ANP gas operator/direction/month | 480 | 2022–2025; coverage changes; not unique national supply |
 | ANTAQ references and monthly rows | 55 | 43 annual/regional references plus twelve 2025 port-handling months |
+| ANTAQ paired regional cabotage shares | 21 | 2025 original region-to-region fractions; offshore and undetermined origins retained |
 | ANTT road monthly totals | 12 | 2025 published Chart 45 labels |
 | ANTT regional road pairs | 16 | 16 published RGI pairs; not municipalities or truck itineraries |
 
@@ -83,6 +84,41 @@ with no invented allocation to a month. These are handling movements in both
 directions, not unique cargo or paired OD routes. The rounded annual report is
 a separate edition. See [the source and filters](brazil_water.md) and
 [downloadable source-derived table](../deployment/brazil_water/water.csv).
+
+## Paired regional cabotage distribution
+
+| Origin region | Destination region | Share of full panel population |
+| --- | --- | --- |
+| ZEE/Plat. Continental | Sudeste | 51.213125% |
+| ZEE/Plat. Continental | Sul | 7.256645% |
+| Norte | Nordeste | 5.071061% |
+| Nordeste | Nordeste | 5.059674% |
+| Sudeste | Sudeste | 4.933407% |
+| ZEE/Plat. Continental | Nordeste | 4.847250% |
+| Sudeste | Nordeste | 4.010315% |
+| Nordeste | Sudeste | 3.786131% |
+| Sudeste | Sul | 2.876315% |
+| Sul | Nordeste | 2.005669% |
+| Norte | Norte | 1.945592% |
+| Nordeste | Norte | 1.705459% |
+| Sudeste | Norte | 1.287457% |
+| Norte | Sudeste | 1.049922% |
+| Sul | Sul | 0.823380% |
+| Nordeste | Sul | 0.794430% |
+| Sul | Sudeste | 0.649243% |
+| Sul | Norte | 0.422194% |
+| Norte | Sul | 0.246249% |
+| Indeterminado | Sudeste | 0.016438% |
+| Indeterminado | Sul | 0.000043% |
+
+These 21 pairs are read directly from the original ANTAQ Sankey export, not
+constructed from separate origin/destination totals. Stored fractions reconcile
+to one; table percentages are rounded for display. Filtering keeps the original
+full-population denominator. They do not identify individual ports or nautical
+itineraries and must not be scaled by a different annual/handling total.
+The [original XLSX export](../deployment/brazil_water/cabotage_region_pairs_2025.xlsx)
+and [unrounded derived CSV](../deployment/brazil_water/coastal_region_pairs.csv)
+are versioned with hashes and [reviewed filter/period context](brazil_water.md#paired-regional-cabotage-shares).
 
 ## Gas source quality and road reconciliation
 

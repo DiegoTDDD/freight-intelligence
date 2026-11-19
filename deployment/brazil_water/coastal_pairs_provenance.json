@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "year": 2025,
+  "unit": "share_fraction",
+  "scope": "Official 2025 cabotage region-to-region distribution; original shares of the full selected panel population, never renormalized by filters. Includes offshore and undetermined origin categories. Not port-to-port routes, unique consignments or absolute tonnes; do not multiply by a different handling or annual-report total.",
+  "source": "https://aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808&sheet=ecb07b54-35b7-481c-b6df-5109c1a9bedc&opt=currsel%2Cctxmenu",
+  "source_object": "wGpRXf",
+  "reviewed_on": "2026-11-18",
+  "panel_updated_at": "2026-04-01 08:17",
+  "source_headers": [
+    "Região Origem",
+    "Região Destino",
+    "Distribuição Percentual"
+  ],
+  "source_rows": 21,
+  "filters": {
+    "Carga.NRAno": [
+      2025
+    ],
+    "Carga Mês": "unfiltered",
+    "DadosEscala": 1,
+    "origin": "unfiltered",
+    "destination": "unfiltered",
+    "cargo": "unfiltered"
+  },
+  "method": "Original Qlik Exportar dados from GR 4.5; paired regional fractions read directly from XLSX, not inferred from marginals",
+  "period_evidence": "Year 2025 was selected in the UI; the exported workbook contains no year column",
+  "population_headline_displayed_tonnes": 222975436,
+  "population_headline_use": "Context only; no absolute-tonnage reconstruction from shares",
+  "missing_pairs": "Not reported in this export; never fabricated as zero",
+  "files": [
+    {
+      "path": "coastal_region_pairs.csv",
+      "bytes": 928,
+      "sha256": "608bdce3cc6935b2e1df219069a9bb572bc8e39f0a303ee4f1e502c01d6e58b6"
+    },
+    {
+      "path": "cabotage_region_pairs_2025.xlsx",
+      "bytes": 6026,
+      "sha256": "183b4b2a555b0e69fb08553416be9adc31022be9e11d237c3ab6d848ce7a6ab1"
+    },
+    {
+      "path": "cabotage_region_pairs_2025_context.jpg",
+      "bytes": 54547,
+      "sha256": "6022792386604dc798f78802d083c86f07cc92fe7b5636c398f1e150f5888a4b"
+    }
+  ]
+}

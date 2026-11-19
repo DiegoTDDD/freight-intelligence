@@ -15,7 +15,7 @@ from freight_intelligence.brazil_gas_history import load_gas_history, missing_gr
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
-from freight_intelligence.brazil_water import load_water
+from freight_intelligence.brazil_water import load_water, load_water_pairs
 from freight_intelligence.dashboard_ui import LocalizedUI
 from freight_intelligence.optimization.geographic_routing import LIMITATIONS, request_route
 from freight_intelligence.optimization.truck_routing import (
@@ -390,9 +390,13 @@ def render_water_freight(t):
               "inland_commodities": "Leading inland cargo categories",
               "coastal_state_endpoints": "Coastal container origin/destination states",
               "grain_regions": "Maize/soybean regional port aggregates",
-              "port_monthly": "Monthly port handling (2025)"}
+              "port_monthly": "Monthly port handling (2025)",
+              "coastal_region_pairs": "Regional cabotage origin–destination shares (2025)"}
     dataset = ui.selectbox("Water reference dataset", list(labels),
                            format_func=labels.get, key="brazil_water_dataset")
+    if dataset == "coastal_region_pairs":
+        render_water_pairs(t)
+        return
     view = data.filter(pl.col("dataset") == dataset)
     years = sorted(view["year"].unique())
     year = ui.selectbox("Water reference year", years, index=len(years) - 1,
@@ -416,6 +420,48 @@ def render_water_freight(t):
                        "antaq_navigation_references.csv", "text/csv")
     with ui.expander("ANTAQ source, precision and coverage"):
         st.json(metadata)
+
+
+def render_water_pairs(t):
+    ui = LocalizedUI(t)
+    ui.subheader("Regional cabotage origin–destination shares · 2025")
+    try:
+        data, metadata = load_water_pairs()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        ui.error("The verified ANTAQ regional pair snapshot is unavailable.")
+        return
+    ui.info(metadata["scope"])
+    all_regions = "All reported regions"
+    origin = ui.selectbox("Origin region", [all_regions, *sorted(data["origin_region"].unique())],
+                          key="water_pair_origin")
+    destination = ui.selectbox("Destination region", [all_regions, *sorted(data["destination_region"].unique())],
+                               key="water_pair_destination")
+    view = data
+    for field, value in (("origin_region", origin), ("destination_region", destination)):
+        if value != all_regions:
+            view = view.filter(pl.col(field) == value)
+    ui.warning("Shares retain the full 2025 panel denominator after filtering. Unlisted pairs "
+               "are unavailable, not zero; no port-level route or absolute tonnage is inferred.")
+    ui.metric("Reported regional pairs", view.height)
+    ui.metric("Share of full panel population", f"{view['share_of_cabotage'].sum():.2%}")
+    if view.is_empty():
+        ui.info("No reported pair matches these region filters.")
+    else:
+        chart = view.select(
+            pl.concat_str("origin_region", "destination_region", separator=" → ").alias(t("Regional pair")),
+            (pl.col("share_of_cabotage") * 100).alias(t("Share (%)")),
+        )
+        st.bar_chart(chart, x=t("Regional pair"), y=t("Share (%)"), horizontal=True,
+                     height=max(250, view.height * 27))
+        ui.dataframe(view, hide_index=True)
+        ui.download_button("Download filtered regional pairs (CSV)", view.write_csv().encode(),
+                           "antaq_cabotage_region_pairs_2025.csv", "text/csv")
+    with ui.expander("Regional OD source and coverage"):
+        st.json(metadata)
+        ui.download_button("Download original ANTAQ pair export (XLSX)",
+                           (DEPLOYMENT / "brazil_water/cabotage_region_pairs_2025.xlsx").read_bytes(),
+                           "antaq_cabotage_region_pairs_2025.xlsx",
+                           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 
 def render_gas_movements(t):

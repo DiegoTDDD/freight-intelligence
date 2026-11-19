@@ -101,6 +101,24 @@ def test_historical_gas_years_keep_display_and_diagnostics_in_the_same_year():
         assert all(date.strip().startswith(str(year)) for dates in diagnostics["dates"] for date in dates.split(","))
 
 
+def test_regional_water_pairs_filter_without_renormalizing_and_translate():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("water").run()
+    app.selectbox(key="brazil_water_dataset").select("coastal_region_pairs").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Reported regional pairs" and item.value == "21" for item in app.metric)
+    app.selectbox(key="water_pair_origin").select("ZEE/Plat. Continental").run()
+    app.selectbox(key="water_pair_destination").select("Sudeste").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Share of full panel population" and item.value == "51.21%" for item in app.metric)
+    app.selectbox(key="language").select("pt").run()
+    assert not app.exception and not app.error
+    assert app.selectbox(key="water_pair_origin").label == "Região de origem"
+    assert app.selectbox(key="water_pair_origin").value == "ZEE/Plat. Continental"
+
+
 def test_regional_road_filters_and_unlisted_pairs():
     app = AppTest.from_file(str(APP), default_timeout=30).run()
     app.selectbox(key="workspace").select("Brazilian freight").run()
