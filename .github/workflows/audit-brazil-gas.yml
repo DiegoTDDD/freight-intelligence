@@ -11,6 +11,12 @@ on:
       - '.github/workflows/audit-brazil-gas.yml'
       - 'scripts/audit_brazil_gas.py'
       - 'scripts/prepare_brazil_gas.py'
+      - 'scripts/prepare_brazil_gas_history.py'
+      - 'freight_intelligence/brazil_gas_history.py'
+      - 'freight_intelligence/brazil_gas_results.py'
+      - 'freight_intelligence/ingestion/brazil_gas.py'
+      - 'deployment/brazil_gas/provenance.json'
+      - 'deployment/brazil_gas_history/provenance.json'
 
 permissions:
   contents: read
@@ -22,6 +28,11 @@ concurrency:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        year: [2021, 2022, 2023, 2024, 2025]
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -30,13 +41,13 @@ jobs:
           python-version: '3.13'
       - name: Install bounded data-reader runtime
         run: python -m pip install polars==2.1.0
-      - name: Fetch, validate and compare all twelve ANP source reports
-        run: python -m scripts.audit_brazil_gas --output source-audit --cache-dir source-cache
+      - name: Fetch, validate and compare twelve reviewed ANP reports for the selected year
+        run: python -m scripts.audit_brazil_gas --year ${{ matrix.year }} --output source-audit --cache-dir source-cache
       - name: Keep revision report and candidate for review
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: brazil-gas-source-audit-${{ github.run_id }}
+          name: brazil-gas-source-audit-${{ matrix.year }}-${{ github.run_id }}
           path: |
             source-audit/report.json
             source-audit/review-candidate.zip

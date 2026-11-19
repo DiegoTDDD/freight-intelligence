@@ -35,12 +35,14 @@ The heavy full pipeline was verified previously and was not rerun for this updat
 
 ## Remaining work, in priority order
 
-1. **Data refresh:** [ANP 2025 and ANTT road revision auditing](source_refresh.md)
+1. **Data refresh:** [ANP 2021–2025 and ANTT road revision auditing](source_refresh.md)
    automates bounded retrieval, candidate validation/review and revision reporting. Extend this to other
    sources/years and integrate reviewed candidates through the normal CI gate;
    a source revision is not automatically an improvement in quality.
 2. **Road freight:** extend compatible movement history before July 2024
-   and regional flows beyond the [16 published RGI pairs](brazil_road.md).
+   and sub-state flows beyond the [16 published RGI pairs](brazil_road.md).
+   The [775 reviewed 2025 state pairs](brazil_road_od.md) now reconcile by origin
+   and destination to 1,368,627,704 tonnes, with EX retained.
    The [reviewed panel history](brazil_road_history.md) now covers 28 months,
    July 2024–October 2026, with N/S components and explicit partial-year flags.
    The archived yearbook annual indicator sums its monthly labels to 1,368,699,651

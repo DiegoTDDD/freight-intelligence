@@ -29,7 +29,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Geographic routing | Distinct OSRM car-reference and Valhalla truck engines; explicit dimensions, weight, axles and hazardous cargo; map, maneuvers and GeoJSON | [Truck profiles and restrictions](docs/truck_routing.md), [saved truck geometry](deployment/route_examples/sao_paulo_campinas_truck.geojson) |
 | Read-only API | Documented indicators, histories, forecasts, quality diagnostics and saved allocations; filters, pagination, optional key/user permissions; hosted public snapshots isolated from private plans | [Endpoint reference](docs/api.md), [authentication and roles](docs/api_authentication.md) |
 | Delivery and recovery | Windows/Linux CI, pinned container runtimes, source/data hashes, memory regression checks, exact-tested-commit deployment and recovery archives | [CI workflow](.github/workflows/ci_pipeline.yml), [deployment](docs/publicacao_continua.md), [recovery](docs/recovery.md) |
-| Source refresh | Scheduled bounded ANP and ANTT revision audits; changed sources quarantined for review rather than automatically published | [Audit policy](docs/source_refresh.md) |
+| Source refresh | Scheduled bounded ANP 2021–2025 (60 monthly reports) and ANTT revision audits; changed sources quarantined for review rather than automatically published | [Audit policy](docs/source_refresh.md) |
 
 These are workspaces within one application and analytical package. They do not require separate hosted dashboards.
 
