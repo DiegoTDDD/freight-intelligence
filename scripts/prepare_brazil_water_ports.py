@@ -45,7 +45,7 @@ def prepare(root=DEFAULT_ROOT):
                 "precision": "Unrounded numeric XLSX values retained; each origin sum rounds to the displayed whole-tonne total",
                 "files": files}
     (root / "port_pairs.csv").write_bytes(raw)
-    (root / "port_pairs_provenance.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+    (root / "port_pairs_provenance.json").write_bytes((json.dumps(metadata, indent=2) + "\n").encode())
     return data
 
 
