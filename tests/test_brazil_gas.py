@@ -178,3 +178,20 @@ def test_gas_snapshot_integrity_and_consistency_fail_closed(tmp_path, defect):
     path.write_text(json.dumps(manifest))
     with pytest.raises(ValueError):
         load_gas(root)
+
+
+def test_2021_unitless_realized_requires_pinned_official_dictionary():
+    from freight_intelligence.ingestion.brazil_gas import LEGACY_UNITS_SHA256
+    rows = source_rows()
+    rows[0] = [cell.replace("2025", "2021") for cell in rows[0]]
+    for row in rows[1:]:
+        row[12] = row[12].replace(" (mil m³)", "")
+    with pytest.raises(ValueError, match="lacks realized"):
+        parse_month(encoded(rows), 2021, 1)
+    with pytest.raises(ValueError):
+        parse_month(encoded(rows), 2021, 1, legacy_unit_contract="wrong")
+    data, metadata = parse_month(encoded(rows), 2021, 1, legacy_unit_contract=LEGACY_UNITS_SHA256)
+    assert metadata["realized_volume_rows"] == 2
+    assert sum(row["volume_thousand_m3"] for row in data) == 93
+    with pytest.raises(ValueError):
+        parse_month(encoded(source_rows()), 2025, 1, legacy_unit_contract=LEGACY_UNITS_SHA256)

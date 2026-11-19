@@ -14,6 +14,11 @@ from urllib.parse import unquote, urljoin, urlparse
 import polars as pl
 
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.ingestion.brazil_gas import (
+    LEGACY_UNITS_FILE,
+    LEGACY_UNITS_SHA256,
+    LEGACY_UNITS_URL,
+)
 from scripts.prepare_brazil_gas import ROOT, SOURCE, prepare
 
 MONTHS = ("janeiro", "fevereiro", "marco", "abril", "maio", "junho", "julho", "agosto",
@@ -55,16 +60,26 @@ def discover(html, years):
     return result
 
 
-def build(cache, output, years=(2022, 2023, 2024)):
+def build(cache, output, years=(2021, 2022, 2023, 2024), *, unit_document=None):
     with urllib.request.urlopen(SOURCE, timeout=30) as response:
         html = response.read(2 * 1024**2).decode("utf-8")
     links = discover(html, years)
+    unit_raw = None
+    if 2021 in years:
+        if unit_document is None:
+            with urllib.request.urlopen(LEGACY_UNITS_URL, timeout=30) as response:
+                unit_raw = response.read(2 * 1024**2 + 1)
+        else:
+            unit_raw = Path(unit_document).read_bytes()
+        if len(unit_raw) > 2 * 1024**2 or hashlib.sha256(unit_raw).hexdigest() != LEGACY_UNITS_SHA256:
+            raise ValueError("ANP legacy unit metadata differs from reviewed edition")
     frames, annuals, sources = [], [], []
     with tempfile.TemporaryDirectory(prefix="loginexus-gas-history-") as staging:
         for year in years:
             directory = Path(staging) / str(year)
             prepare(Path(cache) / str(year), directory, year=year, source_urls=links[year],
-                    deduplicate_identical=True)
+                    deduplicate_identical=True,
+                    legacy_unit_contract=LEGACY_UNITS_SHA256 if year == 2021 else None)
             data, annual, metadata = load_gas(directory, expected_year=year)
             frames.append(data)
             annuals.append(annual)
@@ -81,10 +96,16 @@ def build(cache, output, years=(2022, 2023, 2024)):
     monthly = pl.concat(frames).sort("year", "month", "operator_id", "point_type")
     files = {"monthly.csv": monthly.write_csv().encode(),
              "annual.json": (json.dumps(annuals, indent=2) + "\n").encode()}
+    if unit_raw is not None:
+        files[LEGACY_UNITS_FILE] = unit_raw
     metadata = {"schema_version": 1, "source": SOURCE, "years": list(years), "sources": sources,
                 "interpretation": "ANP historical realized receipt/delivery-point movements. Observed subtotals; operator coverage can change. Inter-operator transfers repeat gas; not unique national supply or production.",
                 "exact_duplicate_policy": "Exclude only identical full volume rows and count exclusions; conflicting duplicate keys fail validation",
-                "realized_label_policy": "Volume Realizado (mil m³); 2022 additionally accepts reviewed Realizado (mil m³). Unitless labels are not accepted.",
+                "realized_label_policy": "Volume Realizado (mil m³); 2022 additionally accepts Realizado (mil m³). The exact 2021 label Volume Realizado requires the reviewed archived official unit contract; other unitless labels are rejected.",
+                "legacy_unit_contract": ({"url": LEGACY_UNITS_URL, "sha256": LEGACY_UNITS_SHA256,
+                                          "file": LEGACY_UNITS_FILE, "version": "2026-06-12", "page": 2,
+                                          "year": 2021, "variable": "Volume Realizado", "unit": "thousand_m3"}
+                                         if unit_raw is not None else None),
                 "files": [{"path": name, "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)}
                           for name, raw in files.items()]}
     output = Path(output)

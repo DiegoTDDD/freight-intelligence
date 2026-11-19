@@ -21,7 +21,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Brazilian road | Fleet/MDF-e indicators, twelve 2025 tonnage months and sixteen published regional RGI pairs; source denominator reconciliation | [Road scope and reconciliation](docs/brazil_road.md) |
 | Brazilian water | 43 annual/regional references, twelve 2025 port-handling months and 21 paired regional cabotage shares; original XLSX preserved | [ANTAQ sources and precision](docs/brazil_water.md) |
 | Brazilian air | 624 monthly aggregates, 2000–2025; 36,860 monthly airport pairs, 2024–2025; 1,102 source airport codes; paid/free/mail separated; evaluated forecasts | [ANAC preparation and limitations](docs/brazil_air.md) |
-| Brazilian pipelines | 480 gas operator/direction/month records, 2022–2025; signed volumes, duplicate policy and missing-cell point/date diagnostics | [ANP gas history and quality](docs/brazil_gas_history.md) |
+| Brazilian pipelines | 600 gas operator/direction/month records, 2021–2025; signed volumes, duplicate policy and missing-cell point/date diagnostics | [ANP gas history and quality](docs/brazil_gas_history.md) |
 | Five-mode atlas | 145 annual indicators with separate units, statistical populations, source links and provenance | [Indicator contracts](docs/brazil_modes.md) |
 | Transport optimization | Minimum-cost allocation, capacities, supply/demand balance, transshipment and infeasibility detection | [Solver and exported results](docs/transport_optimization.md) |
 | Scenario planner | Bounded editable networks, JSON import, separate simulation submission, reference/candidate comparison and portable downloads | [Planner walkthrough](docs/scenario_planner.md), [synthetic input example](docs/examples/transport_scenario.json) |
@@ -51,7 +51,7 @@ These English-interface captures were taken on 2026-11-18 from the local hosted-
 
 ![ANAC monthly air cargo and source coverage](docs/images/air-en.jpg)
 
-**Gas history — reported delivery-point subtotals for 2022, five operators and 15,109 missing daily source cells.** Missing reports remain missing; these are not production or unique national supply figures. The selector supports 2022–2025.
+**Gas history — reported delivery-point subtotals for 2022, five operators and 15,109 missing daily source cells.** Missing reports remain missing; these are not production or unique national supply figures. The selector supports 2021–2025.
 
 ![ANP historical gas movements and missing-cell coverage](docs/images/gas-en.jpg)
 

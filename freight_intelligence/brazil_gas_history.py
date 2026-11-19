@@ -8,7 +8,12 @@ from pathlib import Path
 
 import polars as pl
 
-from freight_intelligence.ingestion.brazil_gas import annual_volumes
+from freight_intelligence.ingestion.brazil_gas import (
+    LEGACY_UNITS_FILE,
+    LEGACY_UNITS_SHA256,
+    LEGACY_UNITS_URL,
+    annual_volumes,
+)
 
 DEFAULT_ROOT = Path(__file__).resolve().parents[1] / "deployment/brazil_gas_history"
 
@@ -16,7 +21,8 @@ DEFAULT_ROOT = Path(__file__).resolve().parents[1] / "deployment/brazil_gas_hist
 def load_gas_history(root=DEFAULT_ROOT):
     root = Path(root).resolve()
     signature = tuple((name, (root / name).stat().st_mtime_ns, (root / name).stat().st_size)
-                      for name in ("provenance.json", "monthly.csv", "annual.json"))
+                      for name in ("provenance.json", "monthly.csv", "annual.json", LEGACY_UNITS_FILE)
+                      if (root / name).exists())
     return _cached_history(root, signature)
 
 
@@ -30,8 +36,18 @@ def _cached_history(root, signature):
         raise ValueError("Historical gas provenance exceeds size limit")
     metadata = json.loads(raw_metadata)
     files = metadata["files"]
-    if (metadata.get("schema_version") != 1 or len(files) != 2
-            or {r["path"] for r in files} != {"monthly.csv", "annual.json"}):
+    expected_files = {"monthly.csv", "annual.json"}
+    if 2021 in metadata["years"]:
+        expected_files.add(LEGACY_UNITS_FILE)
+        expected_contract = {"url": LEGACY_UNITS_URL, "sha256": LEGACY_UNITS_SHA256,
+                             "file": LEGACY_UNITS_FILE, "version": "2026-06-12", "page": 2,
+                             "year": 2021, "variable": "Volume Realizado", "unit": "thousand_m3"}
+        if metadata.get("legacy_unit_contract") != expected_contract:
+            raise ValueError("Invalid historical gas unit contract")
+        if hashlib.sha256((root / LEGACY_UNITS_FILE).read_bytes()).hexdigest() != LEGACY_UNITS_SHA256:
+            raise ValueError("Historical gas unit contract integrity mismatch")
+    if (metadata.get("schema_version") != 1 or len(files) != len(expected_files)
+            or {r["path"] for r in files} != expected_files):
         raise ValueError("Invalid historical gas manifest")
     for record in files:
         raw = (root / record["path"]).read_bytes()
@@ -59,6 +75,8 @@ def _cached_history(root, signature):
         if len(sources) != 12 or {s["month"] for s in sources} != set(range(1, 13)):
             raise ValueError("Missing historical gas source months")
         for source in sources:
+            if year == 2021 and source.get("legacy_unit_contract_sha256") != LEGACY_UNITS_SHA256:
+                raise ValueError("Missing historical gas source unit contract")
             subset = rows.filter(pl.col("month") == source["month"])
             if (subset["missing_daily_values"].sum() != source["missing_daily_values"]
                     or sum(len(g["dates"]) for g in source["missing_groups"]) != source["missing_daily_values"]

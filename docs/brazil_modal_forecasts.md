@@ -66,7 +66,7 @@ python scripts/prepare_brazil_modal_forecasts.py
 
 It reads the committed 145-row modal atlas; it does not rerun Bronze/Silver/Gold,
 download raw data or call routing providers. The normal CI and exact-commit
-deployment gate publish a reviewed update. Gas has only four reviewed complete
+deployment gate publish a reviewed update. Gas has only five reviewed complete
 years and the MDF-e movement snapshot has one; they are not padded with fabricated
 annual history to satisfy a forecast training window. Road fleet stock is not
 substituted for freight demand.

@@ -9,6 +9,10 @@ from collections import defaultdict
 from decimal import Decimal
 
 MAX_BYTES = 8 * 1024 * 1024
+LEGACY_UNITS_SHA256 = "c885e815d1c00048d41e5aecb299bb7ffe44f03bffeb6543fababaf2223ac67e"
+LEGACY_UNITS_URL = ("https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/"
+                    "arquivos-movimentacao-de-gas-natural-em-gasodutos-de-transporte/metadados-gn-sim.pdf")
+LEGACY_UNITS_FILE = "anp_gas_units_2026_06.pdf"
 POINT_TYPES = {"Ponto de Recebimento": "receipt", "Ponto de Entrega": "delivery"}
 HEADERS = [
     "Código da Instalação de Transporte", "Nome da Instalação de Transporte",
@@ -32,7 +36,9 @@ def parse_number(value):
     return Decimal(text.replace(".", "").replace(",", "."))
 
 
-def parse_month(raw, year, month, *, deduplicate_identical=False):
+def parse_month(raw, year, month, *, deduplicate_identical=False, legacy_unit_contract=None):
+    if legacy_unit_contract is not None and (year != 2021 or legacy_unit_contract != LEGACY_UNITS_SHA256):
+        raise ValueError("Unreviewed ANP legacy unit contract or reference year")
     if not raw or len(raw) > MAX_BYTES:
         raise ValueError("Empty or oversized ANP gas report")
     try:
@@ -60,6 +66,8 @@ def parse_month(raw, year, month, *, deduplicate_identical=False):
     realized_variables = {"Volume Realizado (mil m³)"}
     if year == 2022:
         realized_variables.add("Realizado (mil m³)")  # Reviewed explicit-unit legacy label.
+    if year == 2021 and legacy_unit_contract == LEGACY_UNITS_SHA256:
+        realized_variables.add("Volume Realizado")  # Official metadata page 2 defines thousand m³.
     for row in reader:
         if not row or all(not value.strip() for value in row):
             continue
@@ -124,7 +132,8 @@ def parse_month(raw, year, month, *, deduplicate_identical=False):
                   "missing_cells": missing_cells,
                   "exact_duplicate_rows_excluded": exact_duplicates_excluded,
                   "missing_shipper_id_rows": missing_shipper_id_rows,
-                  "negative_daily_values": sum(negatives.values())}
+                  "negative_daily_values": sum(negatives.values()),
+                  **({"legacy_unit_contract_sha256": legacy_unit_contract} if legacy_unit_contract else {})}
 
 
 def annual_volumes(monthly):

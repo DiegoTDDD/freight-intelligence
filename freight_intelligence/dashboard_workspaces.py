@@ -498,7 +498,7 @@ def render_water_pairs(t):
 
 def render_gas_movements(t):
     ui = LocalizedUI(t)
-    year = ui.selectbox("Gas reference year", [2022, 2023, 2024, 2025], index=3, key="brazil_gas_year")
+    year = ui.selectbox("Gas reference year", [2021, 2022, 2023, 2024, 2025], index=4, key="brazil_gas_year")
     ui.subheader(f"Reported gas-pipeline movements · {year}")
     try:
         if year == 2025:

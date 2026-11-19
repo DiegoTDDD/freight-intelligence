@@ -14,7 +14,7 @@ listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/action
 | Optimization | Tested constrained transport solver, editable scenarios and comparisons; scenario costs are not measured savings |
 | Dashboard | Published Streamlit app; English default; Portuguese controls and core notices for modal, truck, gas and air workspaces |
 | Real-road routing | Separate OSRM car-reference and Valhalla truck engines; explicit truck profile, map, instructions and GeoJSON |
-| Brazil | 145 scoped annual indicators across five modes; detailed rail; 480 monthly ANP gas records (2022–2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 55 ANTAQ reference/monthly records plus 21 paired regional cabotage shares; 12 road-tonnage months and 16 road RGI pairs |
+| Brazil | 145 scoped annual indicators across five modes; detailed rail; 600 monthly ANP gas records (2021–2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 55 ANTAQ reference/monthly records plus 21 paired regional cabotage shares; 12 road-tonnage months and 16 road RGI pairs |
 | Public API | Documented read-only HTTP API under `/api`; configured key/user permissions retained; private local plans excluded |
 | Reproducibility | Pinned container runtimes, snapshot hashes and verified recovery archives |
 | CI and deployment | Windows/Linux tests, API/container and dashboard checks; deploy only the exact tested main revision |
@@ -51,7 +51,7 @@ The heavy full pipeline was verified previously and was not rerun for this updat
 4. **Air freight:** [monthly history, airports, stage pairs and reserved forecasts](brazil_air.md)
    are implemented. Further refreshes require reviewing source revisions and
    maintaining explicit Brazilian-endpoint and missing-field coverage.
-5. **Pipelines:** [gas history and diagnostics](brazil_gas_history.md) cover 2022–2025;
+5. **Pipelines:** [gas history and diagnostics](brazil_gas_history.md) cover 2021–2025;
    the 33 missing 2025 cells are traced to source points/dates, without imputation.
    Extend earlier years only after their unit contracts are verified, and add
    other oil-pipeline operators/mineral pipelines where reliable data exists.

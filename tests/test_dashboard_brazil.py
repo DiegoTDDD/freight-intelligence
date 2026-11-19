@@ -90,7 +90,7 @@ def test_historical_gas_years_keep_display_and_diagnostics_in_the_same_year():
     app.selectbox(key="brazil_view").select("All five modes").run()
     app.selectbox(key="brazil_mode").select("pipeline").run()
     app.selectbox(key="brazil_gas_point_type").select("receipt").run()
-    for year, missing in ((2022, "947"), (2023, "1994"), (2024, "7734")):
+    for year, missing in ((2021, "368"), (2022, "947"), (2023, "1994"), (2024, "7734")):
         app.selectbox(key="brazil_gas_year").select(year).run()
         assert not app.exception and not app.error
         assert any(item.label == "Missing daily cells" and item.value == missing for item in app.metric)

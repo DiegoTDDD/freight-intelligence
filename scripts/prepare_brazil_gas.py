@@ -34,7 +34,7 @@ def fetch_report(url):
 
 
 def prepare(cache, output, *, refresh=False, fetch=None, year=2025, source_urls=None,
-            deduplicate_identical=False):
+            deduplicate_identical=False, legacy_unit_contract=None):
     cache, output = Path(cache), Path(output)
     cache.mkdir(parents=True, exist_ok=True)
     monthly, sources = [], []
@@ -50,7 +50,8 @@ def prepare(cache, output, *, refresh=False, fetch=None, year=2025, source_urls=
             raw = path.read_bytes()
         else:
             raw = (fetch or fetch_report)(url)
-        rows, provenance = parse_month(raw, year, month, deduplicate_identical=deduplicate_identical)
+        rows, provenance = parse_month(raw, year, month, deduplicate_identical=deduplicate_identical,
+                                       legacy_unit_contract=legacy_unit_contract)
         # Cache only complete, validated monthly downloads.
         if not path.exists() or refresh:
             staging = path.with_suffix(".part")

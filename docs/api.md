@@ -115,7 +115,7 @@ vintage reports. `mode=water|pipeline`, `view=scores|predictions|forecast`, opti
 pagination are supported. These forecasts retain a 2024 cutoff; they are not
 current observations. [Source, protocol and units](brazil_modal_forecasts.md).
 
-The gas endpoint accepts years 2022–2025 (`year=2025` is the default). Add
+The gas endpoint accepts years 2021–2025 (`year=2025` is the default). Add
 `include_diagnostics=true` for source point/date groups, with
 `diagnostics_limit` up to 500 and `diagnostics_offset`. Normal responses omit large
 diagnostic arrays. See [historical quality rules and investigated absences](brazil_gas_history.md).

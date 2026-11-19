@@ -48,7 +48,7 @@ on 2026-11-13; the hosting image enables live requests after this notice.
 - Validate transformations, displayed values, downloads and API contracts.
 
 The reviewed expansion contains 145 annual records across all five modes, plus
-480 ANP monthly gas operator/direction records, 624 ANAC monthly aggregates,
+600 ANP monthly gas operator/direction records, 624 ANAC monthly aggregates,
 36,860 recent airport pairs, 55 ANTAQ reference/monthly records and 21 paired
 regional cabotage shares, with
 integrity validation, UI filtering, CSV export and a read-only API endpoint.

@@ -10,7 +10,7 @@ Coverage is deliberately heterogeneous:
 | Rail | Net tonnes and tonne-kilometres | 2006–2025 | ANTT federal concessions; repeated cargo movements possible |
 | Water | Port throughput; coastal/inland navigation, cargo categories and regional references | History 2010–2024; references 2025 and grain regions 2024/2025 | Overlapping populations; endpoint marginals are not OD routes; TEU separate from tonnes |
 | Air | Observed paid-cargo stage subtotals; monthly airport and pair detail | Annual/monthly 2000–2025; pairs 2024–2025 | Brazilian-endpoint stages; missing fields counted; paid, free and mail kept separate in detail |
-| Pipeline | ANP gas receipt/delivery subtotals; Transpetro oil/product volume | Gas detail 2022–2025; annual atlas 2025; oil 2010–2024 | Gas coverage changes, missing cells and inter-operator transfers disclosed; oil excludes other operators/mineral pipelines |
+| Pipeline | ANP gas receipt/delivery subtotals; Transpetro oil/product volume | Gas detail 2021–2025; annual atlas 2025; oil 2010–2024 | Gas coverage changes, missing cells and inter-operator transfers disclosed; oil excludes other operators/mineral pipelines |
 
 This provides indicators for all five modes, **not full national cargo-flow
 coverage for every mode**. Units cannot be added or used to derive modal shares.
