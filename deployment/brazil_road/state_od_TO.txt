@@ -1,0 +1,1331 @@
+Browser tab: 11, Title: "Microsoft Power BI", URL: "https://app.powerbi.com/view?r=eyJrIjoiYWNhMTRjYmQtZjczYy00OGJkLThiZWQtOTAwYjEwMmNjOWY4IiwidCI6Ijg3YmJlOWRlLWE4OTItNGNkZS1hNDY2LTg4Zjk4MmZiYzQ5MCJ9".
+0 AXWebArea Microsoft Power BI, URL: app.powerbi.com/view?r=eyJrIjoiYWNhMTRjYmQtZjczYy00OGJkLThiZWQtOTAwYjEwMmNjOWY4IiwidCI6Ijg3YmJlOWRlLWE4OTItNGNkZS1hNDY2LTg4Zjk4MmZiYzQ5MCJ9
+	1 container embedWrapperID
+		2 container
+			3 container Origem|Destino
+				4 container
+					5 content list
+						6 button Mostrar os atalhos de teclado
+						7 container
+							8 link Description: Mostrar dicas do leitor de tela (abre em uma nova guia), Value: go.microsoft.com/fwlink/?linkid=852575
+							9 image
+						10 button Pular para o conteúdo principal
+					11 container
+						12 container Relatório do Power BI
+							13 heading Description: Relatório do Power BI, Value: 2, ID: defaultTitle
+								14 text Relatório do Power BI
+							202 container Imagem
+							203 container Imagem
+							204 container Imagem
+							205 container
+								20807 container ORIGEM « DESTINO
+									20808 container
+										20809 text ORIGEM  « DESTINO
+							209 container
+								210 container Cartão
+									211 table
+										212 row dataAtualização, SUROC última atualização: mar/26 cartão
+											213 cell
+												214 checkbox Description: dataAtualização, SUROC última atualização: mar/26 cartão, Value: 0
+													215 image
+														216 image
+													21019 text SUROC
+última atualização: mar/26
+							218 container Imagem
+							219 container
+								20810 container Escopo
+									20811 text Escopo
+							222 container
+								223 table
+									224 row Visão Geral
+										225 cell
+											226 checkbox Visão Geral, Value: 0
+												227 image
+													228 image
+												20812 text Visão Geral
+									1369 row Indicadores
+										1370 cell
+											1371 checkbox Indicadores, Value: 0
+												1372 image
+													1373 image
+												20813 text Indicadores
+									1375 row Mercado Geral
+										1376 cell
+											1377 checkbox Mercado Geral, Value: 0
+												1378 image
+													1379 image
+												20814 text Mercado Geral
+									1381 row Mercado Carga
+										1382 cell
+											1383 checkbox Mercado Carga, Value: 0
+												1384 image
+													1385 image
+												20815 text Mercado Carga
+									1387 row Merc. Carga|RGI
+										1388 cell
+											1389 checkbox Merc. Carga|RGI, Value: 0
+												1390 image
+													1391 image
+												20816 text Merc. Carga|RGI
+									1393 row Origem|Destino
+										1394 cell
+											1395 checkbox Origem|Destino, Value: 1
+												1396 image
+													1397 image
+												20817 text Origem|Destino
+									1399 row Locais Passagem
+										1400 cell
+											1401 checkbox Locais Passagem, Value: 0
+												1402 image
+													1403 image
+												20818 text Locais Passagem
+									1405 row Perfil Passagem
+										1406 cell
+											1407 checkbox Perfil Passagem, Value: 0
+												1408 image
+													1409 image
+												20819 text Perfil Passagem
+									1411 row Transportadores
+										1412 cell
+											1413 checkbox Transportadores, Value: 0
+												1414 image
+													1415 image
+												20820 text Transportadores
+									1417 row Frota
+										1418 cell
+											1419 checkbox Frota, Value: 0
+												1420 image
+													1421 image
+												20821 text Frota
+									1423 row Carroceria|Veículo
+										1424 cell
+											1425 checkbox Carroceria|Veículo, Value: 0
+												1426 image
+													1427 image
+												20822 text Carroceria|Veículo
+									1429 row SEM Carga
+										1430 cell
+											1431 checkbox SEM Carga, Value: 0
+												1432 image
+													1433 image
+												20823 text SEM Carga
+									1435 row Emissão CO2
+										1436 cell
+											1437 checkbox Emissão CO2, Value: 0
+												1438 image
+													1439 image
+												20824 text Emissão CO2
+									1441 row Tabela NCM
+										1442 cell
+											1443 checkbox Tabela NCM, Value: 0
+												1444 image
+													1445 image
+												20825 text Tabela NCM
+									1447 row RGI
+										1448 cell
+											1449 checkbox RGI, Value: 0
+												1450 image
+													1451 image
+												20826 text RGI
+							230 container Data emissão MDFe 
+								231 container
+									20827 heading Data emissão MDFe, Value: 3
+										20828 text Data emissão MDFe
+									233 combo box (collapsed) Description: Ano, Mes, Value: 2025 , Secondary Actions: Expand
+										20829 text 2025
+										20830 text 
+							236 container Incluir dados de carga própria? 
+								237 container
+									20831 heading Incluir dados de carga própria?, Value: 3
+										20832 text Incluir dados de carga própria?
+									239 list cargapropria
+										240 0
+											21020 text Selecionar tudo
+										2227 0
+											21021 text N
+										2228 0
+											21022 text S
+							243 container Imagem
+							244 container
+								20833 container Transportador do veículo de tração
+									20834 text Transportador do veículo de tração
+							247 container
+								20835 container (a partir de out/25)
+									20836 text (a partir de out/25)
+							250 container Categoria do transportador* 
+								251 container
+									20837 heading Categoria do transportador*, Value: 3
+										20838 text Categoria do transportador*
+									253 list TRA_CATEGORIA
+										254 0
+											21023 text CTC
+										2372 0
+											21024 text ETC
+										2374 0
+											2375 container ETC EQUIP.
+												21025 text ETC EQUIP.
+										2377 0
+											21026 text N/I
+										2379 0
+											21027 text TAC
+							257 container Eixos - Tipo do Veículo* 
+								258 container
+									20839 heading Eixos - Tipo do Veículo*, Value: 3
+										20840 text Eixos - Tipo do Veículo*
+									260 combo box (collapsed) Description: eixosdesc, Value: Todos , Secondary Actions: Expand
+										20841 text Todos
+										20842 text 
+							263 container Veículo de Tração* 
+								264 container
+									20843 heading Veículo de Tração*, Value: 3
+										20844 text Veículo de Tração*
+									266 combo box (collapsed) Description: CATEGORIATRACAO, Value: Todos , Secondary Actions: Expand
+										20845 text Todos
+										20846 text 
+							269 container Imagem
+							270 container
+								20847 container Tipo da Carga (em caso de dificuldades para localizar o tipo da carga, pesquise na página )
+									20848 container
+										20849 text Tipo da Carga  (em caso de dificuldades para localizar o tipo da carga, pesquise na página                                )
+							274 button Navegação na página . Clique aqui para Seguir
+							275 container Código da carga (NCM)** 
+								276 container
+									20850 heading Código da carga (NCM)**, Value: 3
+										20851 text Código da carga (NCM)**
+									278 combo box (collapsed) Description: NCM, Value: Todos , Secondary Actions: Expand
+										20852 text Todos
+										20853 text 
+							281 container Grupo da carga (NCM)** 
+								282 container
+									20854 heading Grupo da carga (NCM)**, Value: 3
+										20855 text Grupo da carga (NCM)**
+									284 combo box (collapsed) Description: grupodesc, Value: Todos , Secondary Actions: Expand
+										20856 text Todos
+										20857 text 
+							287 container
+								20858 container (a partir de out/25)
+									20859 text (a partir de out/25)
+							290 container Carroceria (informada no MDFe) 
+								291 container
+									20860 heading Carroceria (informada no MDFe), Value: 3
+										20861 text Carroceria (informada no MDFe)
+									293 combo box (collapsed) Description: tipocargadesc, Value: Todos , Secondary Actions: Expand
+										20862 text Todos
+										20863 text 
+							296 container Tipo da carga (NCM)** 
+								297 container
+									20864 heading Tipo da carga (NCM)**, Value: 3
+										20865 text Tipo da carga (NCM)**
+									299 combo box (collapsed) Description: subgrupodesc, Value: Todos , Secondary Actions: Expand
+										20866 text Todos
+										20867 text 
+							302 container Imagem
+							303 container
+								20868 container Origem e Destino (EX=exterior)
+									20869 container
+										20870 text Origem e Destino  (EX=exterior)
+							307 button Limpar todas as segmentações . Clique aqui para Seguir
+							308 container UF de destino 
+								309 container
+									20871 heading UF de destino, Value: 3
+										20872 text UF de destino
+									311 combo box (collapsed) Description: SG_UFFIM, Value: Todos , Secondary Actions: Expand
+										20873 text Todos
+										20874 text 
+							314 container UF de origem 
+								315 container
+									20875 heading UF de origem, Value: 3
+										20876 text UF de origem
+									317 combo box (expanded) Description: SG_UFINI, Value: TO , Secondary Actions: Collapse
+										20877 text TO
+										21028 text 
+							320 container Emitentes com RNTRC ativo? 
+								321 container
+									322 container Emitentes com RNTRC ativo?
+										20879 heading Emitentes com RNTRC, Value: 3
+											20880 text Emitentes com RNTRC
+										20881 heading ativo?, Value: 3
+											20882 text ativo?
+									325 container Emitente com RNTRC ativo?
+										1481 container
+											1482 checkbox N, Value: 0
+											1483 checkbox S, Value: 0
+							327 container Imagem
+							328 container Quantidade de chaves MDFe 
+								329 container
+									20883 heading Quantidade de chaves MDFe, Value: 3
+										20884 text Quantidade de chaves MDFe
+									331 image Soma de CONTCHAVESMDFE 631,4 Mil.
+										20885 text 631,4 Mil
+							333 container Toneladas 
+								334 container
+									20886 heading Toneladas, Value: 3
+										20887 text Toneladas
+									336 image Soma de CARGAEMTON 17,3 Mi.
+										20888 text 17,3 Mi
+							338 container TKU 
+								339 container
+									20889 heading TKU, Value: 3
+										20890 text TKU
+									341 image TKU 13,6 Bi.
+										20891 text 13,6 Bi
+							343 container Nº de viagens (mín)*** 
+								344 container
+									20892 heading Nº de viagens (mín)***, Value: 3
+										20893 text Nº de viagens (mín)***
+									346 image Soma de CONTVIAGENSMAXKM 593,3 Mil.
+										21029 text 593,3 Mil
+							348 container Estimativa km (max)*** 
+								349 container
+									20894 heading Estimativa km (max)***, Value: 3
+										20895 text Estimativa km (max)***
+									351 image Soma de KMSOMA 438,4 Mi.
+										21030 text 438,4 Mi
+							353 container Estimativa km (mín)*** 
+								354 container
+									20896 heading Estimativa km (mín)***, Value: 3
+										20897 text Estimativa km (mín)***
+									356 image Soma de KMSOMAMAXKM 421,7 Mi.
+										20898 text 421,7 Mi
+							358 container Tração com RNTRC ativo? 
+								359 container
+									360 container Tração com RNTRC ativo?
+										20899 heading Tração com RNTRC, Value: 3
+											20900 text Tração com RNTRC
+										20901 heading ativo?, Value: 3
+											20902 text ativo?
+									363 container ADERE_TRARNTRCATIVO
+										1500 container
+											1501 checkbox N, Value: 0
+											1502 checkbox S, Value: 0
+							365 container Imagem
+							366 container % dos MDFs de carga própria 
+								367 container
+									20903 text % dos MDFs de carga própria
+									368 image
+										369 image
+										370 container Área de plotagem
+											371 list N
+												372 0.699760833755702
+											373 list S
+												374 0.30023916624429803
+										21031 text 70,0%
+										21032 text 30,0%
+										377 list Rótulos da série
+									378 container Legenda Carga Própria?
+										21033 text Carga Própria?
+										379 list Carga Própria?
+											1505 N
+												1506 image
+													1507 image
+													1508 image N
+												21034 text N
+											1510 S
+												1511 image
+													1512 image
+													1513 image S
+												21035 text S
+							386 container % das Toneladas de carga própria 
+								387 container
+									20904 text % das Toneladas de carga própria
+									388 image
+										389 image
+										390 container Área de plotagem
+											391 list N
+												392 0.7570543405076517
+											393 list S
+												394 0.24294565949234834
+										21036 text 75,7%
+										21037 text 24,3%
+										397 list Rótulos da série
+									398 container Legenda Carga Própria?
+										21038 text Carga Própria?
+										399 list Carga Própria?
+											1517 N
+												1518 image
+													1519 image
+													1520 image N
+												21039 text N
+											1522 S
+												1523 image
+													1524 image
+													1525 image S
+												21040 text S
+							406 container Mostrar somente MDFEs com subcontratação? 
+								407 container
+									408 container Mostrar somente MDFEs com subcontratação?
+										20905 heading Mostrar somente, Value: 3
+											20906 text Mostrar somente
+										20907 heading MDFEs com, Value: 3
+											20908 text MDFEs com
+										20909 heading subcontratação?, Value: 3
+											20910 text subcontratação?
+									412 container SUBCONTRATACAO
+										413 checkbox S, Value: 0
+							414 container Toneladas por RGI* de origem 
+								415 container
+									20911 heading Toneladas por RGI* de origem, Value: 3
+										20912 text Toneladas por RGI* de origem
+									417 container Área de plotagem
+										418 container
+											419 container Interactive Map
+										420 container
+											421 container Controles de mapa
+												422 container Map Style Control
+													423 container Style Options
+														424 button Road
+														425 button Satellite
+														426 button Hybrid
+														427 button Grayscale (Dark)
+														428 button Night
+														429 button Grayscale (Light)
+														430 button Terra
+														431 button Blank
+														432 button Blank (Accessible)
+														433 button High contrast (Dark)
+														434 button High contrast (Light)
+													435 button Select Style
+														436 image Road
+														437 text Road
+												438 container Zoom Control
+													439 button Zoom In
+													440 button Zoom Out
+												441 container Pitch Control
+													442 container
+														443 button (disabled) Decrease Pitch
+														444 button Increase Pitch
+													445 button Reset to Default Pitch
+												446 container Rotation Control
+													447 container
+														448 button Rotate Right
+														449 button Rotate Left
+													450 button Reset to Default Rotation
+												451 container selectionControl
+													452 container selectionModes
+														453 button Seleção de círculo
+														454 button Seleção de retângulo
+														455 button Seleção de polígono
+														456 button Seleção de intervalo
+													457 button Modo de seleção
+											458 link Description: Visit azure.microsoft.com, Value: aka.ms/azuremaps
+											459 container
+												20804 text ©2026 OSM ©2026 TomTom
+												461 link Description: Provide Map Data Feedback, Value: aka.ms/azuremaps-feedback?feedbackep=UrlAzureMapsWebSdk&cp=-5.894498362963873~-24.531600000000026&lvl=3.9087066705605045
+										462 image
+										463 list map data
+											21041 data point
+											21042 data point
+										466 container Área de plotagem
+							467 container Toneladas por RGI* de destino 
+								468 container
+									20913 heading Toneladas por RGI* de destino, Value: 3
+										20914 text Toneladas por RGI* de destino
+									470 container Área de plotagem
+										471 container
+											472 container Interactive Map
+										473 container
+											474 container Controles de mapa
+												475 container Map Style Control
+													476 container Style Options
+														477 button Road
+														478 button Satellite
+														479 button Hybrid
+														480 button Grayscale (Dark)
+														481 button Night
+														482 button Grayscale (Light)
+														483 button Terra
+														484 button Blank
+														485 button Blank (Accessible)
+														486 button High contrast (Dark)
+														487 button High contrast (Light)
+													488 button Select Style
+														489 image Road
+														490 text Road
+												491 container Zoom Control
+													492 button Zoom In
+													493 button Zoom Out
+												494 container Pitch Control
+													495 container
+														496 button (disabled) Decrease Pitch
+														497 button Increase Pitch
+													498 button Reset to Default Pitch
+												499 container Rotation Control
+													500 container
+														501 button Rotate Right
+														502 button Rotate Left
+													503 button Reset to Default Rotation
+												504 container selectionControl
+													505 container selectionModes
+														506 button Seleção de círculo
+														507 button Seleção de retângulo
+														508 button Seleção de polígono
+														509 button Seleção de intervalo
+													510 button Modo de seleção
+											511 link Description: Visit azure.microsoft.com, Value: aka.ms/azuremaps
+											512 container
+												513 text ©2026 OSM ©2026 TomTom
+												514 link Description: Provide Map Data Feedback, Value: aka.ms/azuremaps-feedback?feedbackep=UrlAzureMapsWebSdk&cp=-14.34207249846726~-36.33325000000002&lvl=3.353028700569733
+										515 image
+										516 list map data
+											21043 data point
+											21044 data point
+										519 container Área de plotagem
+							520 button Navegação na página . Clique aqui para Seguir
+							521 container
+								20915 container *RGI: Região Geográfica Imediata: Agrupamento de municípios de acordo com a proximidade de centros urbanos para a satisfação das necessidades imediatas das populações (ex. compras de bens de consumo, busca de trabalho, procura por serviços de saúde e educação e prestação de serviços públicos, vide IBGE). Dessa maneira, os 5.571 municípios do Brasil são agrupados em 510 RGIs, facilitando a visualização da movimentação da carga nos mapas e nas tabelas.
+									20916 text *RGI: Região Geográfica Imediata:
+									20917 container
+										20918 text Agrupamento de municípios de acordo com a proximidade de centros urbanos para a satisfação das necessidades imediatas das populações (ex. compras de bens de consumo, busca de trabalho, procura por serviços de saúde e educação e prestação de serviços públicos, vide 
+										20919 link Description: IBGE), Value: biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&id=2100600
+										20920 text . Dessa maneira, os 5.571 municípios do Brasil são agrupados em 510 RGIs, facilitando a visualização da movimentação da carga nos mapas e nas tabelas.
+							528 container Imagem
+							529 container
+								20921 container Detalhamento da Origem e Destino
+									20922 text Detalhamento da Origem e Destino
+							532 container 1º campo a analisar: 
+								533 container
+									20923 heading 1º campo a analisar:, Value: 3
+										20924 text 1º campo a analisar:
+									535 ArvoreCampo1
+										1543 container
+											1544 radio button UF origem, Value: 1
+											1545 radio button RGI origem, Value: 0
+											1546 radio button UF destino, Value: 0
+											1547 radio button RGI destino, Value: 0
+							537 container 2º campo a analisar: 
+								538 container
+									20925 heading 2º campo a analisar:, Value: 3
+										20926 text 2º campo a analisar:
+									540 ArvoreCampo2
+										1550 container
+											1551 radio button UF destino, Value: 1
+											1552 radio button RGI destino, Value: 0
+											1553 radio button UF origem, Value: 0
+											1554 radio button RGI origem, Value: 0
+							542 container Medida a ser visualizada: 
+								543 container
+									20927 heading Medida a ser visualizada:, Value: 3
+										20928 text Medida a ser visualizada:
+									545 TonMDFeMovimentacao
+										1557 container
+											1558 radio button Toneladas, Value: 1
+											1559 radio button MDFes, Value: 0
+							547 button Limpar todas as segmentações . Clique aqui para Seguir
+							548 container Movimentação da Carga (Toneladas ou MDFes) 
+								549 toolbar Cabeçalho do contêiner visual
+								550 container
+									20929 heading Movimentação da Carga (Toneladas ou MDFes), Value: 3
+										20930 text Movimentação da Carga (Toneladas ou MDFes)
+									552 image
+										553 container Área de plotagem
+											554 container Caminho selecionado. Toneladas 17.274.719.
+												555 container
+													21045 text Toneladas 17.274.719
+												557 image
+											21046 container UF origem TO. Toneladas 17.274.719.
+												21047 container
+													21048 text TO 17.274.719
+												21049 image
+										592 image
+										593 container Cabeçalhos de nível
+											594 heading Description: Cabeçalho no nível 0, Value: 1
+											595 heading Description: Cabeçalho no nível 1, Value: 2
+												596 container
+													597 container UF origem
+														21050 text UF origem
+													599 container Remover nível
+														600 text ×
+												601 image
+											602 heading Description: Cabeçalho no nível 2, Value: 3
+												603 container
+													604 container UF destino
+														21051 text UF destino
+													606 container Remover nível
+														607 text ×
+												608 image
+							609 container RGI de Origem 
+								610 container
+									20931 heading RGI de Origem, Value: 3
+										20932 text RGI de Origem
+									612 combo box (collapsed) Description: rgiorigemdesc, Value: Todos , Secondary Actions: Expand
+										20933 text Todos
+										20934 text 
+							615 container Município de Origem 
+								616 container
+									20935 heading Município de Origem, Value: 3
+										20936 text Município de Origem
+									618 combo box (collapsed) Description: municipioorigemdesc, Value: Todos , Secondary Actions: Expand
+										20937 text Todos
+										20938 text 
+							621 container RGI de Destino 
+								622 container
+									20939 heading RGI de Destino, Value: 3
+										20940 text RGI de Destino
+									624 combo box (collapsed) Description: rgidestinodesc, Value: Todos , Secondary Actions: Expand
+										20941 text Todos
+										20942 text 
+							627 container Município de Destino 
+								628 container
+									20943 heading Município de Destino, Value: 3
+										20944 text Município de Destino
+									630 combo box (collapsed) Description: municipiodestinodesc, Value: Todos , Secondary Actions: Expand
+										20945 text Todos
+										20946 text 
+							633 button Navegação na página . Clique aqui para Seguir
+							15 container Toneladas por UF de origem 
+								16 toolbar Cabeçalho do contêiner visual
+								637 container
+									20947 heading Toneladas por UF de origem, Value: 3
+										20948 text Toneladas por UF de origem
+									639 image
+										640 outline Área de plotagem
+											20135 row Description: UF de origem TO. Toneladas 17.274.719., Value: 0
+										21052 text TO
+										21053 text 17 Mi
+							708 container Toneladas por UF de destino 
+								709 container
+									20949 heading Toneladas por UF de destino, Value: 3
+										20950 text Toneladas por UF de destino
+									711 image
+										712 outline Área de plotagem
+											21054 row Description: UF de destino TO. Toneladas 4.421.543., Value: 0
+											21055 row Description: UF de destino MA. Toneladas 2.835.390., Value: 0
+											21056 row Description: UF de destino PA. Toneladas 1.866.377., Value: 0
+											21057 row Description: UF de destino BA. Toneladas 1.384.763., Value: 0
+											20189 row Description: UF de destino MT. Toneladas 1.362.299., Value: 0
+											21058 row Description: UF de destino SP. Toneladas 1.197.290., Value: 0
+											17833 row Description: UF de destino GO. Toneladas 749.365., Value: 0
+											21059 row Description: UF de destino MG. Toneladas 500.626., Value: 0
+											20195 row Description: UF de destino PE. Toneladas 490.878., Value: 0
+											21060 row Description: UF de destino PR. Toneladas 432.866., Value: 0
+											20196 row Description: UF de destino ES. Toneladas 348.211., Value: 0
+											20198 row Description: UF de destino PB. Toneladas 275.580., Value: 0
+											20201 row Description: UF de destino PI. Toneladas 267.193., Value: 0
+											21061 row Description: UF de destino SC. Toneladas 246.928., Value: 0
+											21062 row Description: UF de destino CE. Toneladas 210.223., Value: 0
+											21063 row Description: UF de destino RS. Toneladas 177.932., Value: 0
+											20204 row Description: UF de destino SE. Toneladas 138.602., Value: 0
+											21064 row Description: UF de destino RN. Toneladas 115.202., Value: 0
+											21065 row Description: UF de destino RJ. Toneladas 95.557., Value: 0
+											21066 row Description: UF de destino AL. Toneladas 75.792., Value: 0
+											21067 row Description: UF de destino DF. Toneladas 35.321., Value: 0
+											21068 row Description: UF de destino MS. Toneladas 30.017., Value: 0
+											21069 row Description: UF de destino AP. Toneladas 6.314., Value: 0
+											21070 row Description: UF de destino RO. Toneladas 5.687., Value: 0
+											21071 row Description: UF de destino EX. Toneladas 2.294., Value: 0
+											17846 row Description: UF de destino AM. Toneladas 1.509., Value: 0
+											17847 row Description: UF de destino RR. Toneladas 913., Value: 0
+										21072 text TO
+										21073 text MA
+										21074 text PA
+										21075 text BA
+										21076 text MT
+										21077 text SP
+										21078 text GO
+										21079 text MG
+										21080 text PE
+										21081 text PR
+										21082 text ES
+										21083 text PB
+										21084 text PI
+										21085 text SC
+										21086 text CE
+										21087 text RS
+										21088 text SE
+										21089 text RN
+										21090 text RJ
+										21091 text 4 Mi
+										21092 text 3 Mi
+										21093 text 2 Mi
+										21094 text 1 Mi
+										21095 text 1 Mi
+										21096 text 1 Mi
+										21097 text 1 Mi
+										21098 text 1 Mi
+										21099 text 0 Mi
+										21100 text 0 Mi
+										21101 text 0 Mi
+										21102 text 0 Mi
+										21103 text 0 Mi
+										21104 text 0 Mi
+										21105 text 0 Mi
+										21106 text 0 Mi
+										21107 text …
+							746 container Imagem
+							747 container
+								748 container
+									749 button Rolar para cima
+									750 button Rolar para baixo
+									751 button Role para a esquerda
+									752 button Rolar para a direita
+									753 table
+										21108 row Seleção de Linha RGI de origem RGI de destino Ton TKU
+											21109 cell
+												21110 text Seleção de Linha
+											21111 cell
+												21112 text RGI de origem
+											21113 cell
+												21114 text RGI de destino
+											21115 cell
+												21116 text Ton
+											21117 cell
+												21118 text TKU
+										21119 row Selecionar Linha TO-Colinas do Tocantins MT-Confresa - Vila Rica 924.108 626.778.898
+											21120 cell
+												21121 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21122 cell
+												21123 text TO-Colinas do Tocantins
+											21124 cell
+												21125 text MT-Confresa - Vila Rica
+											21126 cell
+												21127 text 924.108
+											21128 cell
+												21129 text 626.778.898
+										21130 row Selecionar Linha TO-Porto Nacional TO-Porto Nacional 527.136 33.380.099
+											21131 cell
+												21132 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21133 cell
+												21134 text TO-Porto Nacional
+											21135 cell
+												21136 text TO-Porto Nacional
+											21137 cell
+												21138 text 527.136
+											21139 cell
+												21140 text 33.380.099
+										21141 row Selecionar Linha TO-Araguaína MA-Balsas 482.908 162.665.629
+											21142 cell
+												21143 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21144 cell
+												21145 text TO-Araguaína
+											21146 cell
+												21147 text MA-Balsas
+											21148 cell
+												21149 text 482.908
+											21150 cell
+												21151 text 162.665.629
+										21152 row Selecionar Linha TO-Colinas do Tocantins MA-Balsas 467.862 187.763.139
+											21153 cell
+												21154 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21155 cell
+												21156 text TO-Colinas do Tocantins
+											21157 cell
+												21158 text MA-Balsas
+											21159 cell
+												21160 text 467.862
+											21161 cell
+												21162 text 187.763.139
+										21163 row Selecionar Linha TO-Paraíso do Tocantins TO-Porto Nacional 444.098 93.471.620
+											21164 cell
+												21165 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21166 cell
+												21167 text TO-Paraíso do Tocantins
+											21168 cell
+												21169 text TO-Porto Nacional
+											21170 cell
+												21171 text 444.098
+											21172 cell
+												21173 text 93.471.620
+										21174 row Selecionar Linha TO-Araguaína MA-Imperatriz 443.433 98.074.402
+											21175 cell
+												21176 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21177 cell
+												21178 text TO-Araguaína
+											21179 cell
+												21180 text MA-Imperatriz
+											21181 cell
+												21182 text 443.433
+											21183 cell
+												21184 text 98.074.402
+										21185 row Selecionar Linha TO-Gurupi TO-Porto Nacional 418.224 82.659.737
+											21186 cell
+												21187 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21188 cell
+												21189 text TO-Gurupi
+											21190 cell
+												21191 text TO-Porto Nacional
+											21192 cell
+												21193 text 418.224
+											21194 cell
+												21195 text 82.659.737
+										21196 row Selecionar Linha TO-Colinas do Tocantins PA-Redenção 415.809 113.171.401
+											21197 cell
+												21198 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21199 cell
+												21200 text TO-Colinas do Tocantins
+											21201 cell
+												21202 text PA-Redenção
+											21203 cell
+												21204 text 415.809
+											21205 cell
+												21206 text 113.171.401
+										21207 row Selecionar Linha TO-Porto Nacional BA-Salvador 330.777 450.297.410
+											21208 cell
+												21209 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21210 cell
+												21211 text TO-Porto Nacional
+											21212 cell
+												21213 text BA-Salvador
+											21214 cell
+												21215 text 330.777
+											21216 cell
+												21217 text 450.297.410
+										21218 row Selecionar Linha TO-Palmas TO-Porto Nacional 325.421 32.466.869
+											21219 cell
+												21220 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21221 cell
+												21222 text TO-Palmas
+											21223 cell
+												21224 text TO-Porto Nacional
+											21225 cell
+												21226 text 325.421
+											21227 cell
+												21228 text 32.466.869
+										21229 row Selecionar Linha TO-Dianópolis BA-Barreiras 307.645 43.428.772
+											21230 cell
+												21231 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21232 cell
+												21233 text TO-Dianópolis
+											21234 cell
+												21235 text BA-Barreiras
+											21236 cell
+												21237 text 307.645
+											21238 cell
+												21239 text 43.428.772
+										21240 row Selecionar Linha TO-Guaraí TO-Colinas do Tocantins 248.615 47.289.665
+											21241 cell
+												21242 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21243 cell
+												21244 text TO-Guaraí
+											21245 cell
+												21246 text TO-Colinas do Tocantins
+											21247 cell
+												21248 text 248.615
+											21249 cell
+												21250 text 47.289.665
+										21251 row Selecionar Linha TO-Porto Nacional BA-Barreiras 233.168 88.450.063
+											21252 cell
+												21253 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21254 cell
+												21255 text TO-Porto Nacional
+											21256 cell
+												21257 text BA-Barreiras
+											21258 cell
+												21259 text 233.168
+											21260 cell
+												21261 text 88.450.063
+										21262 row Selecionar Linha TO-Gurupi TO-Gurupi 210.448 18.744.392
+											21263 cell
+												21264 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21265 cell
+												21266 text TO-Gurupi
+											21267 cell
+												21268 text TO-Gurupi
+											21269 cell
+												21270 text 210.448
+											21271 cell
+												21272 text 18.744.392
+										21273 row Selecionar Linha TO-Araguaína PA-Marabá 168.357 29.912.992
+											21274 cell
+												21275 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21276 cell
+												21277 text TO-Araguaína
+											21278 cell
+												21279 text PA-Marabá
+											21280 cell
+												21281 text 168.357
+											21282 cell
+												21283 text 29.912.992
+										21284 row Selecionar Linha TO-Gurupi GO-Porangatu 152.295 27.523.395
+											21285 cell
+												21286 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21287 cell
+												21288 text TO-Gurupi
+											21289 cell
+												21290 text GO-Porangatu
+											21291 cell
+												21292 text 152.295
+											21293 cell
+												21294 text 27.523.395
+										21295 row Selecionar Linha TO-Araguaína MA-Açailândia 144.410 49.255.426
+											21296 cell
+												21297 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21298 cell
+												21299 text TO-Araguaína
+											21300 cell
+												21301 text MA-Açailândia
+											21302 cell
+												21303 text 144.410
+											21304 cell
+												21305 text 49.255.426
+										21306 row Selecionar Linha TO-Palmas TO-Colinas do Tocantins 143.595 50.685.638
+											21307 cell
+												21308 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21309 cell
+												21310 text TO-Palmas
+											21311 cell
+												21312 text TO-Colinas do Tocantins
+											21313 cell
+												21314 text 143.595
+											21315 cell
+												21316 text 50.685.638
+										21317 row Selecionar Linha TO-Araguaína TO-Araguaína 134.690 14.649.085
+											21318 cell
+												21319 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21320 cell
+												21321 text TO-Araguaína
+											21322 cell
+												21323 text TO-Araguaína
+											21324 cell
+												21325 text 134.690
+											21326 cell
+												21327 text 14.649.085
+										21328 row Selecionar Linha TO-Colinas do Tocantins TO-Guaraí 127.327 20.984.162
+											21329 cell
+												21330 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21331 cell
+												21332 text TO-Colinas do Tocantins
+											21333 cell
+												21334 text TO-Guaraí
+											21335 cell
+												21336 text 127.327
+											21337 cell
+												21338 text 20.984.162
+										21339 row Total   17.274.719 13.632.313.314
+											21340 cell
+												21341 text Total
+											21342 cell
+											21343 cell
+												21344 text 17.274.719
+											21345 cell
+												21346 text 13.632.313.314
+							993 container
+								994 container
+									995 button Rolar para cima
+									996 button Rolar para baixo
+									997 button Role para a esquerda
+									998 button Rolar para a direita
+									999 table
+										21347 row Seleção de Linha Tipo da carga Ton TKU
+											21348 cell
+												21349 text Seleção de Linha
+											21350 cell
+												21351 text Tipo da carga
+											21352 cell
+												21353 text Ton
+											21354 cell
+												21355 text TKU
+										21356 row Selecionar Linha (não identificado) 9.265.066 7.158.299.903
+											21357 cell
+												21358 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21359 cell
+												21360 text (não identificado)
+											21361 cell
+												21362 text 9.265.066
+											21363 cell
+												21364 text 7.158.299.903
+										21365 row Selecionar Linha 1201-Soja, mesmo triturada. 2.137.035 1.085.734.294
+											21366 cell
+												21367 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21368 cell
+												21369 text 1201-Soja, mesmo triturada.
+											21370 cell
+												21371 text 2.137.035
+											21372 cell
+												21373 text 1.085.734.294
+										21374 row Selecionar Linha 1005-Milho. 1.574.599 1.732.308.027
+											21375 cell
+												21376 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21377 cell
+												21378 text 1005-Milho.
+											21379 cell
+												21380 text 1.574.599
+											21381 cell
+												21382 text 1.732.308.027
+										21383 row Selecionar Linha 2518-Dolomita, mesmo sinterizada ou calcinada, incluindo a dolomita desbastada ou simplesmente cortada à serra ou por outro meio, em blocos ou placas 933.042 436.177.293
+											21384 cell
+												21385 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21386 cell
+												21387 text 2518-Dolomita, mesmo sinterizada ou calcinada, incluindo a dolomita desbastada ou simplesmente cortada à serra ou por outro meio, em blocos ou placas
+											21388 cell
+												21389 text 933.042
+											21390 cell
+												21391 text 436.177.293
+										21392 row Selecionar Linha 2304-Tortas (bagaços) e outros resíduos sólidos, mesmo triturados ou em pellets, da extração do óleo de soja. 433.126 558.487.652
+											21393 cell
+												21394 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21395 cell
+												21396 text 2304-Tortas (bagaços) e outros resíduos sólidos, mesmo triturados ou em pellets, da extração do óleo de soja.
+											21397 cell
+												21398 text 433.126
+											21399 cell
+												21400 text 558.487.652
+										21401 row Selecionar Linha 1006-Arroz. 215.677 217.342.333
+											21402 cell
+												21403 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21404 cell
+												21405 text 1006-Arroz.
+											21406 cell
+												21407 text 215.677
+											21408 cell
+												21409 text 217.342.333
+										21410 row Selecionar Linha 2521-Castinas; pedras calcárias utilizadas na fabricação de cal ou de cimento. 163.884 81.462.463
+											21411 cell
+												21412 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21413 cell
+												21414 text 2521-Castinas; pedras calcárias utilizadas na fabricação de cal ou de cimento.
+											21415 cell
+												21416 text 163.884
+											21417 cell
+												21418 text 81.462.463
+										21419 row Selecionar Linha 2523-Cimentos hidráulicos (incluindo os cimentos não pulverizados, denominados clinkers), mesmo corados. 163.382 55.997.827
+											21420 cell
+												21421 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21422 cell
+												21423 text 2523-Cimentos hidráulicos (incluindo os cimentos não pulverizados, denominados clinkers), mesmo corados.
+											21424 cell
+												21425 text 163.382
+											21426 cell
+												21427 text 55.997.827
+										21428 row Selecionar Linha 0713-Legumes de vagem, secos, em grão, mesmo pelados ou partidos. 147.678 259.197.886
+											21429 cell
+												21430 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21431 cell
+												21432 text 0713-Legumes de vagem, secos, em grão, mesmo pelados ou partidos.
+											21433 cell
+												21434 text 147.678
+											21435 cell
+												21436 text 259.197.886
+										21437 row Selecionar Linha 2309-Preparações do tipo utilizado na alimentação de animais. 143.503 68.332.129
+											21438 cell
+												21439 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21440 cell
+												21441 text 2309-Preparações do tipo utilizado na alimentação de animais.
+											21442 cell
+												21443 text 143.503
+											21444 cell
+												21445 text 68.332.129
+										21446 row Selecionar Linha 3104-Adubos (fertilizantes) minerais ou químicos, potássicos. 132.675 97.678.675
+											21447 cell
+												21448 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21449 cell
+												21450 text 3104-Adubos (fertilizantes) minerais ou químicos, potássicos.
+											21451 cell
+												21452 text 132.675
+											21453 cell
+												21454 text 97.678.675
+										21455 row Selecionar Linha 2710-Óleos de petróleo ou de minerais betuminosos, exceto óleos brutos; preparações não especificadas nem compreendidas noutras posições, que contenha 112.306 44.248.097
+											21456 cell
+												21457 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21458 cell
+												21459 text 2710-Óleos de petróleo ou de minerais betuminosos, exceto óleos brutos; preparações não especificadas nem compreendidas noutras posições, que contenha
+											21460 cell
+												21461 text 112.306
+											21462 cell
+												21463 text 44.248.097
+										21464 row Selecionar Linha 3105-Adubos (fertilizantes) minerais ou químicos, que contenham dois ou três dos seguintes elementos fertilizantes: nitrogênio (azoto), fósforo e potá 105.531 68.996.516
+											21465 cell
+												21466 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21467 cell
+												21468 text 3105-Adubos (fertilizantes) minerais ou químicos, que contenham dois ou três dos seguintes elementos fertilizantes: nitrogênio (azoto), fósforo e potá
+											21469 cell
+												21470 text 105.531
+											21471 cell
+												21472 text 68.996.516
+										21473 row Selecionar Linha 1007-Sorgo de grão. 93.057 145.187.173
+											21474 cell
+												21475 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21476 cell
+												21477 text 1007-Sorgo de grão.
+											21478 cell
+												21479 text 93.057
+											21480 cell
+												21481 text 145.187.173
+										21482 row Selecionar Linha 2517-Calhaus, cascalho, pedras britadas, do tipo normalmente utilizado em concreto (betão) ou para empedramento de estradas, de vias férreas ou outros 85.977 23.146.217
+											21483 cell
+												21484 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21485 cell
+												21486 text 2517-Calhaus, cascalho, pedras britadas, do tipo normalmente utilizado em concreto (betão) ou para empedramento de estradas, de vias férreas ou outros
+											21487 cell
+												21488 text 85.977
+											21489 cell
+												21490 text 23.146.217
+										21491 row Selecionar Linha 4001-Borracha natural, balata, guta-percha, guaiúle, chicle e gomas naturais análogas, em formas primárias ou em chapas, folhas ou tiras. 75.805 70.226.817
+											21492 cell
+												21493 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21494 cell
+												21495 text 4001-Borracha natural, balata, guta-percha, guaiúle, chicle e gomas naturais análogas, em formas primárias ou em chapas, folhas ou tiras.
+											21496 cell
+												21497 text 75.805
+											21498 cell
+												21499 text 70.226.817
+										21500 row Selecionar Linha 3102-Adubos (fertilizantes) minerais ou químicos, nitrogenados (azotados). 70.463 47.928.176
+											21501 cell
+												21502 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21503 cell
+												21504 text 3102-Adubos (fertilizantes) minerais ou químicos, nitrogenados (azotados).
+											21505 cell
+												21506 text 70.463
+											21507 cell
+												21508 text 47.928.176
+										21509 row Selecionar Linha 2207-Álcool etílico não desnaturado, com um teor alcoólico, em volume, igual ou superior a 80 % vol.; álcool etílico e aguardentes, desnaturados, com 68.325 50.714.957
+											21510 cell
+												21511 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21512 cell
+												21513 text 2207-Álcool etílico não desnaturado, com um teor alcoólico, em volume, igual ou superior a 80 % vol.; álcool etílico e aguardentes, desnaturados, com
+											21514 cell
+												21515 text 68.325
+											21516 cell
+												21517 text 50.714.957
+										21518 row Selecionar Linha 1008-Trigo mourisco, painço e alpiste; outros cereais. 68.237 106.424.056
+											21519 cell
+												21520 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21521 cell
+												21522 text 1008-Trigo mourisco, painço e alpiste; outros cereais.
+											21523 cell
+												21524 text 68.237
+											21525 cell
+												21526 text 106.424.056
+										21527 row Selecionar Linha 0201-Carnes de animais da espécie bovina, frescas ou refrigeradas. 67.656 111.343.010
+											21528 cell
+												21529 checkbox (settable, integer) Description: Selecionar Linha, Value: 0
+											21530 cell
+												21531 text 0201-Carnes de animais da espécie bovina, frescas ou refrigeradas.
+											21532 cell
+												21533 text 67.656
+											21534 cell
+												21535 text 111.343.010
+										21536 row Total 17.274.719 13.632.313.314
+											21537 cell
+												21538 text Total
+											21539 cell
+												21540 text 17.274.719
+											21541 cell
+												21542 text 13.632.313.314
+							1196 container Toneladas por mês 
+								1197 container
+									20951 heading Toneladas por mês, Value: 3
+										20952 text Toneladas por mês
+									1199 image
+										1200 image
+										1201 container
+											1202 list periodo
+												21543 container jan 25
+													21544 text jan 25
+												21545 container fev 25
+													21546 text fev 25
+												21547 container mar 25
+													21548 text mar 25
+												21549 container abr 25
+													21550 text abr 25
+												21551 container mai 25
+													21552 text mai 25
+												21553 container jun 25
+													21554 text jun 25
+												21555 container jul 25
+													21556 text jul 25
+												21557 container ago 25
+													21558 text ago 25
+												21559 container set 25
+													21560 text set 25
+												21561 container out 25
+													21562 text out 25
+												21563 container nov 25
+													21564 text nov 25
+												21565 container dez 25
+													21566 text dez 25
+											1203 container Área de plotagem
+												1204 list N
+													1205 578282
+													1206 1023327
+													1207 1374738
+													1208 1278138
+													1209 1308401
+													1210 1261021
+													1211 1246296
+													1212 1500427
+													1213 1448109
+													1214 726856
+													1215 687807
+													1216 644499
+												1217 list S
+													1218 248661
+													1219 273125
+													1220 287597
+													1221 292367
+													1222 355401
+													1223 388673
+													1224 445340
+													1225 439981
+													1226 451350
+													1227 331926
+													1228 370390
+													1229 312007
+										20953 text 0,8 Mi
+										20954 text 1,3 Mi
+										20955 text 1,7 Mi
+										20956 text 1,6 Mi
+										20957 text 1,7 Mi
+										20958 text 1,6 Mi
+										20959 text 1,7 Mi
+										20960 text 1,9 Mi
+										20961 text 1,9 Mi
+										20962 text 1,1 Mi
+										20963 text 1,1 Mi
+										20964 text 1,0 Mi
+										20965 text 0,6 Mi
+										20966 text 1,0 Mi
+										20967 text 1,4 Mi
+										20968 text 1,3 Mi
+										20969 text 1,3 Mi
+										20970 text 1,3 Mi
+										20971 text 1,2 Mi
+										20972 text 1,5 Mi
+										20973 text 1,4 Mi
+										20974 text 0,7 Mi
+										20975 text 0,7 Mi
+										20976 text 0,6 Mi
+										20977 text 0,2 Mi
+										20978 text 0,3 Mi
+										20979 text 0,3 Mi
+										20980 text 0,3 Mi
+										20981 text 0,4 Mi
+										20982 text 0,4 Mi
+										20983 text 0,4 Mi
+										20984 text 0,4 Mi
+										20985 text 0,5 Mi
+										20986 text 0,3 Mi
+										20987 text 0,4 Mi
+										20988 text 0,3 Mi
+										1266 list Rótulos da série
+									1267 container Legenda Carga Própria?
+										20989 text Carga Própria?
+										1268 list Carga Própria?
+											2149 N
+												2150 image
+													2151 image
+													2152 image N
+												20990 text N
+											2154 S
+												2155 image
+													2156 image
+													2157 image S
+												20991 text S
+							1275 container Imagem
+							1276 container
+								1277 container
+									1278 image
+										1279 image
+										1280 container Área de plotagem
+											1281 list 1
+												1282 0.2
+											1283 list 2
+												1284 0.2
+											1285 list 3
+												1286 0.2
+											1287 list 4
+												1288 0.2
+											1289 list 5
+												1290 0.2
+										21567 text 86,1%
+										1292 list Rótulos da série
+							1293 container
+								1294 container
+									1295 image
+										1296 image
+										1297 container Área de plotagem
+											1298 list 1
+												1299 0.2
+											1300 list 2
+												1301 0.2
+											1302 list 3
+												1303 0.2
+											1304 list 4
+												1305 0.2
+											1306 list 5
+												1307 0.2
+										20992 text 92,5%
+										1309 list Rótulos da série
+							1310 container
+								1311 container
+									1312 image
+										1313 image
+										1314 container Área de plotagem
+											1315 list 1
+												1316 0.2
+											1317 list 2
+												1318 0.2
+											1319 list 3
+												1320 0.2
+											1321 list 4
+												1322 0.2
+											1323 list 5
+												1324 0.2
+										20993 text 80,2%
+										1326 list Rótulos da série
+							1327 container
+								1328 image PercetualSubcontratacao 71,4%. Valor mínimo 0,0%. Valor máximo 100,0%.
+									20994 container 0,0%
+										21568 text 0,0%
+									20995 container 100,0%
+										21569 text 100,0%
+									1331 container 71,4%
+										21570 text 71,4%
+							1333 container
+								1334 image Emitente e Tração com RNTRC 80,2%.
+									20997 text 80,2%
+									1336 container
+										20998 text Emitente e Tração com  RNTRC
+							1338 container
+								20999 container % de subcontratação do veículo de tração****
+									21000 text % de subcontratação do
+									21001 text veículo de tração****
+							1342 container
+								1343 image Emitentes com RNTRC 86,1%.
+									21571 text 86,1%
+									21572 text Emitentes com RNTRC
+							1346 container
+								1347 image Tração com RNTRC 92,5%.
+									21573 text 92,5%
+									21574 text Tração com RNTRC
+							1350 container
+								21002 container *Categoria do transportador a partir do cadastro do RNTRC do veículo de tração. O valor 'N/I' / 'não identificado' ocorre quando não foi possível identificar, a partir da placa do veículo de tração, a categoria do transportador ou o tipo do veículo de tração no cadastro do RNTRC da ANTT. 'ETC equip.' são empresas com até 3 veículos de tração registrados em sua frota no período mais recente do relatório, as quais são equiparadas aos Transportadores Autônomos de Carga (TACs). Eixos - Tipo do veículo está disponível a partir de out/25. Considera-se '2-Leve' como veículos de 2 eixos com PBT de até 11 ton. 'Tra+Car' significa um caminhão trator acoplado a um carreta. '9-CVC' são Combinações Veiculares de Carga do tipo Bitrem ou Rodotrem de 9 eixos. 'x-Outros' são os casos em que não foi possível identificar uma combinação veicular. ** Para o NCM, grupo da carga e tipo da carga, a opção 'N/I' / 'não identificado' significa que ou não foi informado o código NCM no MDFe, ou não foi possível identificar o código NCM informado no MDFe na tabela de Nomenclatura Comum do Mercosul. *** O nº de viagens (mín) representa a soma do número das viagens de maior km para a combinação diária de emitente, motorista, veículo de tração e implemento. Ou seja, representa o limite inferior para o total de viagens informadas no MDFe (o limite superior é o nº de chaves MDfe). Esta mesma análise é feita para a soma das distâncias percorridas: km (mín) representa a soma do km das viagens de maior km diária e km (máx) a soma das extensões em km de todas as chaves do MDFe. **** A verificação da situação ativa do RNTRC é feita com base na situação do RNTRC (do emitente e do veículo de tração) na data de emissão do MDFe e para o transporte remunerado de cargas (carga própria='N'). Entende-se que houve subcontratação quando o RNTRC do emitente do MDFe for diferente do RNTRC do veículo de tração, na data de emissão do MDFe. Observa-se também que, no % de subcontratação, não são mostrados os casos em que ou o emitente ou o veículo de tração não possuem RNTRC ativo.
+									21003 container
+										21004 text *Categoria do transportador a partir do cadastro do RNTRC do veículo de tração. O valor 'N/I' / 'não identificado' ocorre quando não foi possível identificar, a partir da placa do veículo de tração, a categoria do transportador ou o tipo do veículo de tração no cadastro do RNTRC da ANTT. 'ETC equip.' são empresas com até 3 veículos de tração registrados em sua frota no período mais recente do relatório, as quais são equiparadas aos Transportadores Autônomos de Carga (TACs).  Eixos - Tipo do veículo está disponível a partir de out/25.  Considera-se '2-Leve' como veículos de 2 eixos com PBT de até 11 ton. 'Tra+Car' significa um caminhão trator acoplado a um carreta. '9-CVC' são Combinações Veiculares de Carga do tipo Bitrem ou Rodotrem de 9 eixos. 'x-Outros' são os casos em que não foi possível identificar uma combinação veicular.
+									21005 container
+										21006 text ** Para o NCM, grupo da carga e tipo da carga, a opção ' N/I ' / 'não identificado' significa que ou não foi informado o código NCM no MDFe, ou não foi possível identificar o código NCM informado no MDFe na tabela de 
+										21007 link Description: Nomenclatura Comum do Mercosul, Value: gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/classificacao-fiscal-de-mercadorias/download-ncm-nomenclatura-comum-do-mercosul
+										21008 text .
+									21009 container
+										21010 text ***  O nº de viagens (mín) representa a soma do número das viagens de maior km para a combinação diária de emitente, motorista, veículo de tração e implemento. Ou seja, representa o limite inferior para o total de viagens informadas no MDFe (o limite superior é o nº de chaves MDfe). Esta mesma análise é feita para a soma das distâncias percorridas: km (mín) representa a soma do km das viagens de maior km diária e km (máx) a soma das extensões em km de todas as chaves do MDFe.
+									21011 container
+										21012 text **** A verificação da situação ativa do RNTRC é feita com base na situação do RNTRC (do emitente e do veículo de tração) na data de emissão do MDFe  e para o transporte remunerado de cargas (carga própria='N') . Entende-se que houve subcontratação quando o RNTRC do emitente do MDFe for diferente do RNTRC do veículo de tração, na data de emissão do MDFe. Observa-se também que, no % de subcontratação, não são mostrados os casos em que ou o emitente ou o veículo de tração não possuem RNTRC ativo.
+			180 button Description: Reduzir, ID: zoomOutButton
+			181 container
+			182 button Description: Ampliar, ID: zoomInButton
+			183 button Description: Nível de zoom. Clique para abrir a caixa de diálogo Zoom, ID: zoomValueButton
+			184 button Description: Ajustar à página, ID: fitToPageButton
+				21013 text 
+		186 container
+			187 link Description: Microsoft Power BI (Abre em uma nova guia), Value: go.microsoft.com/fwlink/?LinkID=722383&clcid=0x409
+			188 button Página Anterior
+				21014 text 
+			190 link 6 de 15
+				191 text 6
+				192 text de
+				193 text 15
+			194 button Próxima Página
+				21015 text 
+			196 button (collapsed) Description: Compartilhar, Secondary Actions: Expand
+				21016 text 
+			198 button Abrir no modo de tela inteira
+				21017 text 
+	200 image
+	20805 text 1 resultado
+	4104 container slicer-dropdown-popup-9218c590-0ba3-08eb-5b2e-274cf5b19003
+		4105 container
+			21018 text 
+			4107 text field (settable) Description: Pesquisar, Value: TO
+		4108 list SG_UFINI
+			20806 1
+
+The focused UI element is 20806 1

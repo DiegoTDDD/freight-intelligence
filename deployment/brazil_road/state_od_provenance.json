@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "year": 2025,
+  "source": "https://app.powerbi.com/view?r=eyJrIjoiYWNhMTRjYmQtZjczYy00OGJkLThiZWQtOTAwYjEwMmNjOWY4IiwidCI6Ijg3YmJlOWRlLWE4OTItNGNkZS1hNDY2LTg4Zjk4MmZiYzQ5MCJ9",
+  "catalogue": "https://www.gov.br/antt/pt-br/assuntos/cargas/dadostrc/movimentacao-de-cargas",
+  "reviewed_on": "2026-11-19",
+  "source_page": "Origem|Destino (6/15)",
+  "units": "published_integer_tonnes",
+  "tonnes": 1368627704,
+  "pairs": 775,
+  "origins": 28,
+  "destinations": 28,
+  "independent_margin_residual_tonnes": 0,
+  "filters": {
+    "year": 2025,
+    "own_account": "both N and S",
+    "cargo": "unfiltered",
+    "vehicle": "unfiltered",
+    "destination": "unfiltered",
+    "origin": "one source UF at a time; all 27 Brazilian UFs plus EX"
+  },
+  "method": "Archived rendered accessibility text for each single-origin destination treemap; Show as table rows recover tiny omitted tiles. Capture JSON is reviewed UI transcription, not a raw upstream download. Independent unfiltered origin and destination margins both reconcile exactly.",
+  "interpretation": "Reported MDF-e road freight movements by origin and destination UF. EX means exterior. These are aggregate observed flows, not truck itineraries, individual consignments or unique trips. Same-state does not mean within-municipality. Unlisted pairs remain unavailable, not zero.",
+  "coverage_note": "Complete reconciliation for the reviewed 2025 panel population, including paid and own-account movements and EX. MDF-e exemptions, including within-municipality trips, still apply. The 16 archived yearbook RGI pairs and its different source edition remain separate.",
+  "displayed_update_stamp": "SUROC última atualização: mar/26; capture date is not a freshness guarantee",
+  "files": [
+    {
+      "path": "state_od.csv",
+      "bytes": 18149,
+      "sha256": "1cbc0ce6ee042fc49144712af350e18e6bb5331a0629d39ffd69e7e5f08cb915"
+    },
+    {
+      "path": "state_od_AC.txt",
+      "bytes": 58410,
+      "sha256": "e5fb5e196d6c069459aad4db7e70e7f660dd7fedb25da5fccba78fc37da67b8a"
+    },
+    {
+      "path": "state_od_AL.txt",
+      "bytes": 58987,
+      "sha256": "da15fc2eb03ed9595a51f3ea2902d6758c1c76c91fe9d631a6aefe52b9dc056d"
+    },
+    {
+      "path": "state_od_AM.txt",
+      "bytes": 58570,
+      "sha256": "33f2396d5ec622502ffecea1fb92161c7229ac92ba3d3586d6c69370feb7f8a1"
+    },
+    {
+      "path": "state_od_AP-table.txt",
+      "bytes": 7306,
+      "sha256": "a6d448f2e3ae2d75dcbc8b82c7faed0881a0412d37798e9c022ff12999baaeff"
+    },
+    {
+      "path": "state_od_AP.txt",
+      "bytes": 58324,
+      "sha256": "93c44f4e97e29cf62955a333f90c86618dc28bc8649630757b243dd2f21a42b6"
+    },
+    {
+      "path": "state_od_BA.txt",
+      "bytes": 58105,
+      "sha256": "f21d1d64e398e727ae9c6290a4dbc0e27a14d9bf7224c15d5556e87d449644b5"
+    },
+    {
+      "path": "state_od_CE.txt",
+      "bytes": 59051,
+      "sha256": "d83a72d268d19093015c545a9acb44d9f6167104de8a06883fa4cd9a61c02fed"
+    },
+    {
+      "path": "state_od_DF-table.txt",
+      "bytes": 7341,
+      "sha256": "4356c9dd45fc93c80aeeb4d91b8c779c3a45d94df262c693cdd011f22f0b9254"
+    },
+    {
+      "path": "state_od_DF.txt",
+      "bytes": 58762,
+      "sha256": "a488c305008f39b1cef45f558e28de784e4f72ba5dcaf19f011eedf2cbdffef0"
+    },
+    {
+      "path": "state_od_ES.txt",
+      "bytes": 59236,
+      "sha256": "251aeb44e38b1f34fa79b8eb3cf8f0b3994f7d7dd5967d3a007ff229fb5e3b78"
+    },
+    {
+      "path": "state_od_EX-table.txt",
+      "bytes": 6487,
+      "sha256": "fe636ae7ece2d39ce4a7c3cc59d3c0fec07ff307f07e66200430b97e91ecc28d"
+    },
+    {
+      "path": "state_od_EX.txt",
+      "bytes": 55916,
+      "sha256": "0086cfe738585f66a6b753c07ae2d94b8ad20ee6ed942c800d8b4a00751a8d7d"
+    },
+    {
+      "path": "state_od_GO.txt",
+      "bytes": 58108,
+      "sha256": "4a164a5d2dd6a7c007579487190b2c355bc597b5f5864cc620f04fa32c807c6e"
+    },
+    {
+      "path": "state_od_MA.txt",
+      "bytes": 57930,
+      "sha256": "1294862d7b9d8a99bf6d599a12bf1983f4dc1bf4c083805bc516815f21d69fa3"
+    },
+    {
+      "path": "state_od_MG.txt",
+      "bytes": 58752,
+      "sha256": "f2b78404999a5df6c704f6dbd293abb22ce90ae2e0bd2765d6b0ae271e092e0b"
+    },
+    {
+      "path": "state_od_MS.txt",
+      "bytes": 58554,
+      "sha256": "be942bc1c5b949f01b46ea494049a8ef7cded254c6b99ff6d930100cfc9726bf"
+    },
+    {
+      "path": "state_od_MT.txt",
+      "bytes": 58001,
+      "sha256": "17cd8ddf65f506df3e50e1f073497bf75454f6a73749b46fa300c24bfbbc4a90"
+    },
+    {
+      "path": "state_od_PA.txt",
+      "bytes": 58191,
+      "sha256": "cbaeae01ba5b4d1355229488201ab0edb94e839e40c9fa15d486bdfd1cb8700d"
+    },
+    {
+      "path": "state_od_PB.txt",
+      "bytes": 58448,
+      "sha256": "0358b4c36de2a0a8e03e30e1fdc3538c262a27da11448c04e4a403136dca051e"
+    },
+    {
+      "path": "state_od_PE.txt",
+      "bytes": 58764,
+      "sha256": "869b0e1f1a3260800a741635d0efe17234e0a866c77516f33193d7f3ebea67d2"
+    },
+    {
+      "path": "state_od_PI-table.txt",
+      "bytes": 6947,
+      "sha256": "b1c3d0497b586b81018f7c4707cd2880a5a03921b059da1b9ed642973b82b2fd"
+    },
+    {
+      "path": "state_od_PI.txt",
+      "bytes": 57243,
+      "sha256": "4f97c9e1da9662868f86bc02ca3b0d5d7070977d8b55d35c9c822fd5d02410c0"
+    },
+    {
+      "path": "state_od_PR.txt",
+      "bytes": 58293,
+      "sha256": "4bf7a5b89b45aba9abeaf3ae6139a15361bd846429b92a0caf8a6b5086a2f8d7"
+    },
+    {
+      "path": "state_od_RJ.txt",
+      "bytes": 58982,
+      "sha256": "2ae129b08aa904376fa8ff9eec8fcfac386232d2f9353322b2f6480da13c3190"
+    },
+    {
+      "path": "state_od_RN-table.txt",
+      "bytes": 7412,
+      "sha256": "de9839ac86208308252dde8339a849b08122c854a6817e73e45dc877986fdce3"
+    },
+    {
+      "path": "state_od_RN.txt",
+      "bytes": 58602,
+      "sha256": "a82971c8f05796d75d8311c3d4f62b82f2cda6d46cbea9ea0a1906ea53260c19"
+    },
+    {
+      "path": "state_od_RO.txt",
+      "bytes": 58452,
+      "sha256": "3ba8a7c293d0448bc3ac2a2b0f73c9f66a8a97ab538bd8a6dbadcd61bf72c0e4"
+    },
+    {
+      "path": "state_od_RR-table.txt",
+      "bytes": 6609,
+      "sha256": "4dc496d0b380d3f2a68433756ec685766fac15e61d6ae942bd8fa92612e65c1c"
+    },
+    {
+      "path": "state_od_RR.txt",
+      "bytes": 56876,
+      "sha256": "9097dc044b2acff4665bc66b4fda4940926f9024e3e051ed8c2b3c0740ed490f"
+    },
+    {
+      "path": "state_od_RS.txt",
+      "bytes": 57193,
+      "sha256": "9ebbee76d82394bf4441bd6632b2c0fb7dcee452fae7690cc6e503b7c6d90cdd"
+    },
+    {
+      "path": "state_od_SC.txt",
+      "bytes": 58234,
+      "sha256": "9d73044d71a47b4ddd83ac310a98e8b658b01ab404efc72f8199281c84188aa6"
+    },
+    {
+      "path": "state_od_SE.txt",
+      "bytes": 58484,
+      "sha256": "df5955755f89520aa4a70e8ff09f7486f064f634a9120b8a050cdd26afbcc1d5"
+    },
+    {
+      "path": "state_od_SP.txt",
+      "bytes": 60023,
+      "sha256": "6aa0a9761cb791bece94ae82e57eb6e490d8e334e7aae0f8324fd046655a8e26"
+    },
+    {
+      "path": "state_od_TO-table.txt",
+      "bytes": 7486,
+      "sha256": "1d3569db8ce9674be99ffa72a5d131c3073454417944331f25381195fd030c1c"
+    },
+    {
+      "path": "state_od_TO.txt",
+      "bytes": 58114,
+      "sha256": "dd4d7c65f5a1715f748199c4743da37658ad11a6303cce7307ec76134122d8db"
+    },
+    {
+      "path": "state_od_capture.json",
+      "bytes": 19351,
+      "sha256": "64ebfb862e97fe5512cbc2565d24995600878d317220fd530f061362e681fed7"
+    },
+    {
+      "path": "state_od_detail-evidence.jpg",
+      "bytes": 44896,
+      "sha256": "086475c1705c35e9e98aec69d756b92b5ec0639a67c01cdbe4976b491953371f"
+    },
+    {
+      "path": "state_od_final-source.jpg",
+      "bytes": 98463,
+      "sha256": "aee0f6da2c3cb759005c339a83c0080cd87917e7e0212c56aeaa6b31f9151f2b"
+    },
+    {
+      "path": "state_od_origins-first.jpg",
+      "bytes": 64912,
+      "sha256": "429a6fa1314fa2eed05a5ded13ff5f9ad6b50456eda0a3ac304cd9e70585db35"
+    },
+    {
+      "path": "state_od_overview.txt",
+      "bytes": 64448,
+      "sha256": "e8fce8dbc390fb7563b849883b8e7521567fbddee5cdb9d1e18e2af49fb5a35a"
+    }
+  ]
+}

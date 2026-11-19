@@ -39,6 +39,7 @@ def verify_archive(archive):
                                     ("brazil_water", "port_pairs_provenance.json"),
                                     ("brazil_road", "provenance.json"),
                                     ("brazil_road", "history_provenance.json"),
+                                     ("brazil_road", "state_od_provenance.json"),
                                     ("brazil_air", "provenance.json"),
                                     ("brazil_gas_history", "provenance.json"),
                                     ("route_examples", "manifest.json")):

@@ -84,6 +84,24 @@ def test_water_navigation_and_regional_reference_views():
     assert not app.exception
 
 
+def test_state_pair_filters_and_portuguese_labels():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("road").run()
+    app.selectbox(key="road_reference_dataset").select("state_pairs").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Reported OD pairs" and item.value == "775" for item in app.metric)
+    app.selectbox(key="road_od_origin").select("SP").run()
+    app.selectbox(key="road_od_destination").select("MG").run()
+    assert any(item.label == "Reported transport (tonnes)" and item.value == "20,814,789" for item in app.metric)
+    app.selectbox(key="road_od_kind").select("Same state").run()
+    assert any(item.label == "Reported OD pairs" and item.value == "0" for item in app.metric)
+    app.selectbox(key="language").select("Português").run()
+    assert not app.exception and not app.error
+    assert app.selectbox(key="road_od_origin").label == "Estado de origem"
+
+
 def test_road_history_preserves_partial_calendar_filters_and_translates():
     app = AppTest.from_file(str(APP), default_timeout=30).run()
     app.selectbox(key="workspace").select("Brazilian freight").run()

@@ -68,6 +68,15 @@
       "sha256": "2c9b887b2c38e7ecadc60077f546e8db8346d065c08b5f7c9efb0c2f93649f58",
       "width": 1280,
       "height": 720
+    },
+    {
+      "path": "road-od-en.jpg",
+      "workspace": "Brazilian freight / road",
+      "scope": "2025; 775 reported UF pairs, both account categories, EX retained; top 20 pairs only in chart",
+      "captured_on": "2026-11-19",
+      "sha256": "67a66218f0321a07b6c455086dd102273bc5c7453238bceb4856dbd3c2b76514",
+      "width": 1280,
+      "height": 720
     }
   ],
   "updated_on": "2026-11-19"

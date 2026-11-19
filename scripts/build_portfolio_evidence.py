@@ -12,6 +12,7 @@ from freight_intelligence.brazil_modal_forecasts import load_modal_forecasts
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_road_history import load_road_history
+from freight_intelligence.brazil_road_od import load_state_pairs
 from freight_intelligence.brazil_water import load_water, load_water_pairs
 from freight_intelligence.brazil_water_ports import load_port_pairs
 
@@ -43,6 +44,12 @@ def render():
     road, _ = load_road()
     road_months, road_metadata = load_road_monthly()
     road_history, _ = load_road_history()
+    road_od, _ = load_state_pairs()
+    road_od_table = table(["Origin UF", "Reported destination pairs", "Published tonnes"], [
+        [origin, subset.height, f"{subset['tonnes'].sum():,}"]
+        for origin in sorted(road_od["origin_state"].unique())
+        for subset in [road_od.filter(pl.col("origin_state") == origin)]
+    ])
     road_history_table = table(["Year", "Observed months", "Full calendar year", "N: non-own-account tonnes",
                                 "S: own-account tonnes", "Observed total tonnes", "MDF-e documents"], [
         [year, total["months_observed"], "Yes" if total["full_year"] else "No",
@@ -70,6 +77,7 @@ def render():
         ["ANTT panel monthly account-category observations", road_history["monthly"].height,
          "28 months, July 2024–October 2026; N/S separated; 2024 and 2026 partial"],
         ["ANTT regional road pairs", road.height, "16 published RGI pairs; not municipalities or truck itineraries"],
+        ["ANTT state road pairs", road_od.height, "2025; 28 origin/destination categories including EX; both independent margins reconcile"],
     ])
     annual = air["annual"].filter(pl.col("year") == air_metadata["end_year"]).sort("nature")
     air_table = table(["Year", "Nature", "Paid cargo (kg)", "Free cargo (kg)", "Mail (kg)",
@@ -211,6 +219,18 @@ the yearbook's 1.165-billion regional reference, but numerical agreement alone
 does not prove identical populations. The source documents an October 2025
 reporting-layout change, so a reported decrease is not proof of lower demand.
 [Source evidence, periods and edition comparison](brazil_road_history.md).
+
+### Reconciled state origin–destination movements · 2025
+
+775 reported pairs sum to **1,368,627,704 integer tonnes**, including paid and
+own-account movements. All 28 independent origin and destination margins
+reconcile exactly. EX means exterior. Unlisted pairs are unavailable, not zero;
+same-state does not mean within-municipality. These are not truck itineraries.
+
+{road_od_table}
+
+[Source evidence, filters and API](brazil_road_od.md) ·
+[Complete paired observations (CSV)](../deployment/brazil_road/state_od.csv).
 
 ## Gas source quality and archived road reconciliation
 

@@ -1,5 +1,7 @@
 # Current delivery and remaining work
 
+2026-11-19 implementation: [775 state OD pairs](brazil_road_od.md), 28 source and destination categories, independently reconciled to 1,368,627,704 integer tonnes for 2025. Filtered UI/API and full CSV; archived yearbook remains separate. Publication is verified per delivery.
+
 This page describes the current main-branch implementation. Dated handoff entries
 and the recovered original chat are historical. Current verification runs are
 listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/actions/workflows/ci_pipeline.yml).

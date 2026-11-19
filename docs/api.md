@@ -84,6 +84,13 @@ bundle when the annual Gold changes; this does not require running the full pipe
 
 ## Regional road flows
 
+`GET /api/brazil/road-state-pairs` serves 775 reviewed 2025 UF→UF pairs, including
+EX/exterior and both account categories. Origin and destination margins independently
+reconcile to 1,368,627,704 integer tonnes. Filters: `origin_state`,
+`destination_state`, `same_state`; year is restricted to 2025. Pagination:
+`limit=1..500` (default 100), `offset>=0`. `filtered_tonnes` covers all matching
+rows, not only the returned page. [Source contract and interpretation](brazil_road_od.md).
+
 `GET /api/brazil/road-history` serves the separately reviewed 28-month panel
 window, July 2024–October 2026: 56 N/S account-category rows containing tonnes
 and document counts. Views: `monthly` (default), `annual` (component/subtotal

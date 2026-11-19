@@ -23,6 +23,7 @@ Check for drift: `python scripts/build_portfolio_evidence.py --check`
 | ANTT archived yearbook monthly totals | 12 | 2025 published Chart 45 labels |
 | ANTT panel monthly account-category observations | 56 | 28 months, July 2024–October 2026; N/S separated; 2024 and 2026 partial |
 | ANTT regional road pairs | 16 | 16 published RGI pairs; not municipalities or truck itineraries |
+| ANTT state road pairs | 775 | 2025; 28 origin/destination categories including EX; both independent margins reconcile |
 
 The full local FAF run previously produced 2,503,352 Bronze and 97,630,728 Silver
 rows. Those raw/large layers are not checked into Git. The compact public demo
@@ -277,6 +278,47 @@ the yearbook's 1.165-billion regional reference, but numerical agreement alone
 does not prove identical populations. The source documents an October 2025
 reporting-layout change, so a reported decrease is not proof of lower demand.
 [Source evidence, periods and edition comparison](brazil_road_history.md).
+
+### Reconciled state origin–destination movements · 2025
+
+775 reported pairs sum to **1,368,627,704 integer tonnes**, including paid and
+own-account movements. All 28 independent origin and destination margins
+reconcile exactly. EX means exterior. Unlisted pairs are unavailable, not zero;
+same-state does not mean within-municipality. These are not truck itineraries.
+
+| Origin UF | Reported destination pairs | Published tonnes |
+| --- | --- | --- |
+| AC | 28 | 519,586 |
+| AL | 27 | 5,419,332 |
+| AM | 28 | 3,835,843 |
+| AP | 27 | 200,467 |
+| BA | 28 | 59,593,473 |
+| CE | 28 | 21,628,387 |
+| DF | 28 | 6,416,386 |
+| ES | 28 | 28,768,066 |
+| EX | 24 | 141,482 |
+| GO | 28 | 82,835,095 |
+| MA | 28 | 24,771,655 |
+| MG | 28 | 149,878,146 |
+| MS | 28 | 65,884,183 |
+| MT | 28 | 182,440,330 |
+| PA | 28 | 28,631,705 |
+| PB | 27 | 14,986,904 |
+| PE | 28 | 31,326,313 |
+| PI | 27 | 11,933,855 |
+| PR | 28 | 141,725,364 |
+| RJ | 28 | 42,571,014 |
+| RN | 28 | 14,736,501 |
+| RO | 28 | 10,770,784 |
+| RR | 28 | 657,882 |
+| RS | 28 | 106,898,445 |
+| SC | 28 | 80,305,808 |
+| SE | 27 | 7,563,272 |
+| SP | 28 | 226,912,707 |
+| TO | 28 | 17,274,719 |
+
+[Source evidence, filters and API](brazil_road_od.md) ·
+[Complete paired observations (CSV)](../deployment/brazil_road/state_od.csv).
 
 ## Gas source quality and archived road reconciliation
 

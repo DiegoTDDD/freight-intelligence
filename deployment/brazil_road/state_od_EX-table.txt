@@ -1,0 +1,178 @@
+Browser tab: 11, Title: "Microsoft Power BI", URL: "https://app.powerbi.com/view?r=eyJrIjoiYWNhMTRjYmQtZjczYy00OGJkLThiZWQtOTAwYjEwMmNjOWY4IiwidCI6Ijg3YmJlOWRlLWE4OTItNGNkZS1hNDY2LTg4Zjk4MmZiYzQ5MCJ9".
+0 AXWebArea Microsoft Power BI, URL: app.powerbi.com/view?r=eyJrIjoiYWNhMTRjYmQtZjczYy00OGJkLThiZWQtOTAwYjEwMmNjOWY4IiwidCI6Ijg3YmJlOWRlLWE4OTItNGNkZS1hNDY2LTg4Zjk4MmZiYzQ5MCJ9
+	1 container embedWrapperID
+		2 container
+			3 container Origem|Destino
+				4 container
+					5 content list
+						6 button Mostrar os atalhos de teclado
+						7 container
+							8 link Description: Mostrar dicas do leitor de tela (abre em uma nova guia), Value: go.microsoft.com/fwlink/?linkid=852575
+							9 image
+						10 button Pular para o conteúdo principal
+					11 container
+						12 container Relatório do Power BI
+							13 heading Description: Relatório do Power BI, Value: 2, ID: defaultTitle
+								14 text Relatório do Power BI
+							15 container Toneladas por UF de destino 
+								16 toolbar Cabeçalho do contêiner visual
+									17 pop up button (collapsed) Description: Filtros no Visual, Secondary Actions: Expand
+										93 text 
+									19 button Alternar para layout vertical
+										94 text 
+								21 container
+									22 button Voltar ao relatório
+										95 text 
+										24 text Voltar ao relatório
+									25 container Toneladas
+										26 text TONELADAS
+									27 container por UF de destino
+										28 text POR UF DE DESTINO
+									29 image
+										30 outline Área de plotagem
+											31 row Description: UF de destino SC. Toneladas 45.068., Value: 0
+											32 row Description: UF de destino MT. Toneladas 40.317., Value: 0
+											33 row Description: UF de destino SP. Toneladas 25.943., Value: 0
+											34 row Description: UF de destino RS. Toneladas 8.754., Value: 0
+											35 row Description: UF de destino PR. Toneladas 7.826., Value: 0
+											36 row Description: UF de destino RJ. Toneladas 3.828., Value: 0
+											37 row Description: UF de destino MG. Toneladas 3.242., Value: 0
+											38 row Description: UF de destino RO. Toneladas 2.936., Value: 0
+											39 row Description: UF de destino MS. Toneladas 864., Value: 0
+											40 row Description: UF de destino RR. Toneladas 538., Value: 0
+											41 row Description: UF de destino PA. Toneladas 501., Value: 0
+											42 row Description: UF de destino MA. Toneladas 403., Value: 0
+											43 row Description: UF de destino AL. Toneladas 261., Value: 0
+											44 row Description: UF de destino CE. Toneladas 211., Value: 0
+											45 row Description: UF de destino BA. Toneladas 189., Value: 0
+											46 row Description: UF de destino GO. Toneladas 155., Value: 0
+											47 row Description: UF de destino ES. Toneladas 131., Value: 0
+											48 row Description: UF de destino AM. Toneladas 130., Value: 0
+											49 row Description: UF de destino PE. Toneladas 96., Value: 0
+											50 row Description: UF de destino DF. Toneladas 48., Value: 0
+											51 row Description: UF de destino RN. Toneladas 27., Value: 0
+											52 row Description: UF de destino AC. Toneladas 11., Value: 0
+										96 text SC
+										97 text MT
+										98 text SP
+										99 text RS
+										100 text PR
+										101 text RJ
+										102 text MG
+										103 text RO
+										104 text MS
+										105 text RR
+										106 text PA
+										107 text 45 Mil
+										108 text 40 Mil
+										109 text 26 Mil
+										110 text 9 Mil
+										111 text 8 Mil
+										112 text 4 Mil
+										113 text 3 Mil
+										114 text 3 Mil
+									115 container
+										116 button Rolar para cima
+										117 button Rolar para baixo
+										118 button Role para a esquerda
+										119 button Rolar para a direita
+										120 table
+											121 row UF de destino Toneladas
+												122 cell
+													123 text UF de destino
+												124 cell
+													125 text Toneladas
+											176 row PA 501
+												177 cell
+													178 text PA
+												179 cell
+													180 text 501
+											181 row MA 403
+												182 cell
+													183 text MA
+												184 cell
+													185 text 403
+											186 row AL 261
+												187 cell
+													188 text AL
+												189 cell
+													190 text 261
+											191 row CE 211
+												192 cell
+													193 text CE
+												194 cell
+													195 text 211
+											196 row BA 189
+												197 cell
+													198 text BA
+												199 cell
+													200 text 189
+											201 row GO 155
+												202 cell
+													203 text GO
+												204 cell
+													205 text 155
+											206 row ES 131
+												207 cell
+													208 text ES
+												209 cell
+													210 text 131
+											211 row AM 130
+												212 cell
+													213 text AM
+												214 cell
+													215 text 130
+											216 row PE 96
+												217 cell
+													218 text PE
+												219 cell
+													220 text 96
+											221 row DF 48
+												222 cell
+													223 text DF
+												224 cell
+													225 text 48
+											227 row RN 27
+												228 cell
+													229 text RN
+												230 cell
+													231 text 27
+											232 row AC 11
+												233 cell
+													234 text AC
+												235 cell
+													236 text 11
+											237 row EX 2
+												238 cell
+													239 text EX
+												240 cell
+													241 text 2
+											242 row PI 1
+												243 cell
+													244 text PI
+												245 cell
+													246 text 1
+			72 button Description: Reduzir, ID: zoomOutButton
+			73 container
+			74 button Description: Ampliar, ID: zoomInButton
+			75 button Description: Nível de zoom. Clique para abrir a caixa de diálogo Zoom, ID: zoomValueButton
+			76 button Description: Ajustar à página, ID: fitToPageButton
+				77 text 
+		78 container
+			79 link Description: Microsoft Power BI (Abre em uma nova guia), Value: go.microsoft.com/fwlink/?LinkID=722383&clcid=0x409
+			80 button Página Anterior
+				81 text 
+			82 link 6 de 15
+				83 text 6
+				84 text de
+				85 text 15
+			86 button Próxima Página
+				87 text 
+			88 button (collapsed) Description: Compartilhar, Secondary Actions: Expand
+				89 text 
+			90 button Abrir no modo de tela inteira
+				91 text 
+	92 image
+	226 text UF de destino RJ, Toneladas 3.828
+
+The focused UI element is 22 button Voltar ao relatório

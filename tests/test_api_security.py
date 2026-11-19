@@ -37,6 +37,7 @@ def protected(tmp_path, monkeypatch):
         "/brazil/water-pairs",
         "/brazil/water-port-pairs",
         "/brazil/road-history",
+        "/brazil/road-state-pairs",
         "/brazil/modal-forecasts",
     ],
 )

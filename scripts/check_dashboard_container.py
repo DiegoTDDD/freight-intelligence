@@ -39,6 +39,7 @@ for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/brazil/modal-forecasts?mode=water&view=scores&phase=test",
              "/api/brazil/road-flows?origin_state=MT", "/api/brazil/road-monthly?month=1",
              "/api/brazil/road-history?year=2024",
+             "/api/brazil/road-state-pairs?origin_state=SP&destination_state=MG",
              "/api/brazil/air-freight?view=pairs&year=2025&origin=SBGR",
              "/api/brazil/gas-movements?year=2022&include_diagnostics=true&diagnostics_limit=1",
              "/api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=1"):
@@ -118,6 +119,12 @@ def check_inside_container():
         app.selectbox(key="brazil_mode").select(mode).run()
         if app.exception or app.error or not app.metric:
             raise RuntimeError(f"Brazil modal view failed: {mode}")
+        if mode == "road":
+            app.selectbox(key="road_reference_dataset").select("state_pairs").run()
+            if app.exception or app.error or not any(
+                item.label == "Reported OD pairs" and item.value == "775" for item in app.metric
+            ):
+                raise RuntimeError("Reconciled state road pairs failed offline")
     app.selectbox(key="brazil_gas_year").select(2024).run()
     if app.exception or app.error:
         raise RuntimeError("Historical gas coverage view failed")

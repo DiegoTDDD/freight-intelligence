@@ -17,6 +17,7 @@ from freight_intelligence.brazil_modal_forecasts import SERIES, load_modal_forec
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_road_history import load_road_history
+from freight_intelligence.brazil_road_od import load_state_pairs
 from freight_intelligence.brazil_water import load_water, load_water_pairs
 from freight_intelligence.brazil_water_ports import load_port_pairs
 from freight_intelligence.dashboard_ui import LocalizedUI
@@ -351,9 +352,13 @@ def render_air_freight(t):
 def render_road_flows(t):
     ui = LocalizedUI(t)
     labels = {"panel_history": "Monthly road history · reviewed panel",
+              "state_pairs": "State origin–destination tonnes · 2025",
               "yearbook_2025": "Archived 2025 yearbook · monthly and regional flows"}
     dataset = ui.selectbox("Road reference dataset", list(labels), format_func=labels.get,
                            key="road_reference_dataset")
+    if dataset == "state_pairs":
+        render_road_state_pairs(t)
+        return
     if dataset == "panel_history":
         render_road_history(t)
         return
@@ -416,6 +421,44 @@ def render_road_flows(t):
     ui.download_button("Download published regional road flows (CSV)", data.write_csv().encode(),
                        "antt_regional_road_flows_2025.csv", "text/csv")
     with ui.expander("Road flow source and coverage"):
+        st.json(metadata)
+
+
+def render_road_state_pairs(t):
+    ui = LocalizedUI(t)
+    ui.subheader("Reported state origin–destination freight · 2025")
+    try:
+        data, metadata = load_state_pairs()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        ui.error("The verified ANTT state-pair snapshot is unavailable.")
+        return
+    ui.info("775 reported pairs reconcile to 1,368,627,704 tonnes and all 28 independent origin and destination totals. Includes own-account transport; EX means exterior.")
+    ui.warning("Observed state flows are not truck routes. Same-state does not mean within-city. Unlisted pairs are unavailable, not zero.")
+    origin = ui.selectbox("Road OD origin", ["All", *sorted(data["origin_state"].unique())], key="road_od_origin")
+    destination = ui.selectbox("Road OD destination", ["All", *sorted(data["destination_state"].unique())],
+                               key="road_od_destination")
+    kind = ui.selectbox("State flow type", ["All published flows", "Same state", "Different states"],
+                        key="road_od_kind")
+    view = data
+    for field, value in (("origin_state", origin), ("destination_state", destination)):
+        if value != "All":
+            view = view.filter(pl.col(field) == value)
+    if kind != "All published flows":
+        view = view.filter(pl.col("same_state") == (kind == "Same state"))
+    ui.metric("Reported OD pairs", str(view.height))
+    ui.metric("Reported transport (tonnes)", f"{view['tonnes'].sum():,.0f}")
+    if view.is_empty():
+        ui.info("No published flow matches these filters. Unlisted flows are unavailable, not zero.")
+    else:
+        chart = view.sort("tonnes", descending=True).head(20).with_columns(
+            pl.concat_str("origin_state", pl.lit(" → "), "destination_state").alias(t("State pair")))
+        st.bar_chart(chart, x=t("State pair"), y="tonnes")
+        ui.caption("Chart shows the 20 largest matching pairs; the table and CSV contain all matching observations.")
+        ui.dataframe(view, hide_index=True)
+    ui.download_button("Download filtered state pairs (CSV)", view.write_csv().encode(),
+                       "antt_state_pairs_2025.csv", "text/csv")
+    with ui.expander("State-pair source, precision and reconciliation"):
+        ui.caption("Integer display tonnes are preserved. Every source and destination margin reconciles exactly. This panel edition remains separate from the archived yearbook.")
         st.json(metadata)
 
 

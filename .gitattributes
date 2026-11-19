@@ -13,3 +13,4 @@ deployment/route_examples/** -text
 deployment/preview_data/data/raw/faf5/forecast/bts_FAF_HiLoForecasts_README_20230929.txt -whitespace
 # Preserve the archived rendered-table overview exactly, including source spacing.
 deployment/brazil_road/history_overview.txt -whitespace
+deployment/brazil_road/state_od_*.txt -whitespace

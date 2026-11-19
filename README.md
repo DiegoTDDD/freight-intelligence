@@ -33,6 +33,8 @@ The project and dashboard default to **English**, with optional Portuguese contr
 
 These are workspaces within one application and analytical package. They do not require separate hosted dashboards.
 
+**Road OD expansion:** [775 reviewed 2025 state pairs](docs/brazil_road_od.md), including EX/exterior, reconcile exactly by origin and destination to **1,368,627,704 tonnes**. [Download the complete CSV](deployment/brazil_road/state_od.csv) or use the filtered public API at `/api/brazil/road-state-pairs`. These are reported movements, not truck itineraries.
+
 ## Screenshots
 
 These English-interface captures were taken on 2026-11-18 and 2026-11-19 from the local hosted-app entry point and the versioned public snapshots. They show the actual application, including the reconciled 510-link cabotage view. They remain visible on GitHub while Render sleeps. Open the sections below for additional workspaces.
@@ -46,11 +48,15 @@ These English-interface captures were taken on 2026-11-18 and 2026-11-19 from th
 ![Synthetic transport scenario with an optimal allocation](docs/images/planner-en.jpg)
 
 <details>
-<summary>Road history, air cargo, gas history, cabotage OD, water regions and truck routing — six more screens</summary>
+<summary>Road OD, road history, air cargo, gas history, cabotage OD, water regions and truck routing — seven more screens</summary>
 
 **Road history — July–December 2024, explicitly 6/12 observed months.** Separate N/S own-account categories and document counts. The selector also provides complete 2025 and partial January–October 2026; source editions remain separate.
 
 ![Reviewed ANTT road history with explicit partial-year coverage](docs/images/road-history-en.jpg)
+
+**State road OD — 775 reported pairs and 1,368,627,704 tonnes for 2025.** All 28 origin and destination margins reconcile exactly, including EX/exterior. The chart shows the 20 largest pairs; all observations remain available in the table and CSV.
+
+![Reconciled 2025 ANTT state OD totals and largest reported pairs](docs/images/road-od-en.jpg)
 
 **Air cargo — reported domestic monthly paid-cargo subtotals for 2025, with missing-field disclosure.** Stages can repeat a consignment; the chart is not a complete shipment census.
 

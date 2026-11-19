@@ -339,6 +339,23 @@ DYNAMIC = {
 
 
 PT.update(MODAL_PT)
+PT.update({
+    "State origin–destination tonnes · 2025": "Toneladas por estado de origem e destino · 2025",
+    "Reported state origin–destination freight · 2025": "Frete informado por estado de origem e destino · 2025",
+    "The verified ANTT state-pair snapshot is unavailable.": "Os pares estaduais verificados da ANTT estão indisponíveis.",
+    "775 reported pairs reconcile to 1,368,627,704 tonnes and all 28 independent origin and destination totals. Includes own-account transport; EX means exterior.": "Os 775 pares informados totalizam 1.368.627.704 toneladas e conferem com os 28 totais independentes de origem e destino. Inclui carga própria; EX significa exterior.",
+    "Observed state flows are not truck routes. Same-state does not mean within-city. Unlisted pairs are unavailable, not zero.": "Fluxos estaduais observados não são rotas de caminhão. Mesmo estado não significa dentro do município. Pares não listados estão indisponíveis, não zerados.",
+    "Road OD origin": "Estado de origem",
+    "Road OD destination": "Estado de destino",
+    "State flow type": "Tipo de fluxo estadual",
+    "Same state": "Mesmo estado",
+    "Different states": "Estados diferentes",
+    "State pair": "Par de estados",
+    "Chart shows the 20 largest matching pairs; the table and CSV contain all matching observations.": "O gráfico mostra os 20 maiores pares filtrados; a tabela e o CSV contêm todas as observações filtradas.",
+    "Download filtered state pairs (CSV)": "Baixar pares estaduais filtrados (CSV)",
+    "State-pair source, precision and reconciliation": "Fonte, precisão e conferência dos pares estaduais",
+    "Integer display tonnes are preserved. Every source and destination margin reconciles exactly. This panel edition remains separate from the archived yearbook.": "As toneladas inteiras exibidas são preservadas. Todos os totais de origem e destino conferem exatamente. Esta edição do painel permanece separada do anuário arquivado.",
+})
 DYNAMIC.update(MODAL_DYNAMIC)
 
 
