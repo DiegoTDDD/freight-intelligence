@@ -19,7 +19,7 @@ Check for drift: `python scripts/build_portfolio_evidence.py --check`
 | ANP gas operator/direction/month | 600 | 2021–2025; coverage changes; not unique national supply |
 | ANTAQ references and monthly rows | 55 | 43 annual/regional references plus twelve 2025 port-handling months |
 | ANTAQ paired regional cabotage shares | 21 | 2025 original region-to-region fractions; offshore and undetermined origins retained |
-| ANTAQ port-to-port cabotage volumes | 77 | 2025; three reviewed origins only: Santos, Suape, Manaus; original numeric tonnes |
+| ANTAQ port-to-port cabotage volumes | 510 | 2025; all 98 reviewed origins and 71 destinations; original numeric tonnes |
 | ANTT road monthly totals | 12 | 2025 published Chart 45 labels |
 | ANTT regional road pairs | 16 | 16 published RGI pairs; not municipalities or truck itineraries |
 
@@ -149,15 +149,110 @@ are versioned with hashes and [reviewed filter/period context](brazil_water.md#p
 
 | Reviewed origin | Reported destination pairs | Transport tonnes |
 | --- | --- | --- |
+| A.D.S. Reparos Navais | 1 | 8,183.984 |
+| Altamira | 1 | 4.500 |
+| Angra dos Reis | 3 | 216,532.933 |
+| Aratu | 15 | 2,216,973.276 |
+| Areia Branca | 5 | 702,407.500 |
+| Bacia Sedimentar Pernambuco-Paraíba | 2 | 35,913.220 |
+| Bacia Sedimentar SEAL | 1 | 7,933.415 |
+| Bacia Sedimentar de Camamu-Almada | 1 | 13,269.740 |
+| Bacia Sedimentar de Campos | 8 | 29,909,502.293 |
+| Bacia Sedimentar de Santos | 8 | 100,690,052.897 |
+| Barra do Riacho | 3 | 54,782.243 |
+| Belém | 4 | 113,826.665 |
+| Brasbunker | 1 | 4,999.782 |
+| Brasil Logística Offshore e Estaleiro Naval | 1 | 6,223.558 |
+| Cabedelo | 5 | 160,302.192 |
+| Cachoeira do Sul | 1 | 7,284.637 |
+| Cattalini Terminais Marítimos | 1 | 4,964.846 |
+| Coari | 3 | 49,011.545 |
+| Estaleiro Atlântico Sul - EAS | 1 | 14,539.693 |
+| Estaleiro Renave | 1 | 1,811.517 |
+| FPSO Brasil | 2 | 18,048.906 |
+| FPSO Cidade de Angra dos Reis | 1 | 155,029.326 |
+| FPSO Cidade de Ilha Bela | 1 | 135,612.016 |
+| FPSO Cidade de Itaguaí | 1 | 1,722,236.455 |
+| FPSO Cidade de Mangaratiba | 1 | 1,761,263.221 |
+| FPSO Cidade de Maricá | 1 | 1,494,278.034 |
+| FPSO Cidade de Paraty | 1 | 760,913.178 |
+| FPSO Cidade de Sao Paulo | 1 | 635,769.780 |
+| FPSO Cidade de Saquarema | 1 | 1,056,514.725 |
+| FPSO Espírito Santo | 6 | 4,020,515.797 |
+| FPSO Frade | 1 | 5.100 |
+| FPSO PIONEIRO DE LIBRA | 1 | 486,779.395 |
+| Fortaleza | 17 | 925,961.280 |
+| IP4 Itacoatiara | 2 | 4,525.478 |
+| Imbituba | 12 | 790,373.157 |
+| Itaguaí | 13 | 804,816.933 |
+| Itajaí | 14 | 1,026,822.794 |
+| Itaqui | 12 | 1,891,925.057 |
+| Maceió | 10 | 1,881,512.173 |
 | Manaus | 13 | 2,687,002.543 |
+| Natal | 1 | 60,047.765 |
+| Niterói | 3 | 3,230.165 |
+| Não Identificado | 1 | 96.000 |
+| Paranaguá | 19 | 1,430,473.721 |
+| Pelotas | 1 | 11,340.413 |
+| Porto Alegre | 1 | 8,889.391 |
+| Porto Chibatão | 4 | 636,622.095 |
+| Porto Engenheiro Zephyrino Lavanère Machado Filho | 1 | 641.508 |
+| Porto Itapoá Terminais Portuários | 13 | 1,698,805.886 |
+| Porto Sudeste do Brasil S/A | 1 | 41,310.685 |
+| Porto de Santo Antônio (IP4 Fernando de Noronha) | 1 | 3,569.410 |
+| Porto do Açu - Terminal TMULT e TCAR | 4 | 13,440.874 |
+| Porto do Açu - Terminal de Minério | 1 | 5,461.432 |
+| Portocel - Terminal Especializado de Barra do Riacho | 1 | 126.000 |
+| Portonave - Terminais Portuários de Navegantes | 10 | 1,014,770.479 |
+| Recife | 4 | 31,706.744 |
+| Rio Grande | 18 | 1,918,645.664 |
+| Rio de Janeiro | 31 | 6,236,692.922 |
+| Salinas (Rio Grande do Norte) | 1 | 6,000.000 |
+| Salvador | 21 | 1,570,957.583 |
 | Santos | 30 | 8,790,074.053 |
 | Suape | 34 | 6,531,260.247 |
+| São Francisco do Sul | 4 | 372,516.296 |
+| São Sebastião | 10 | 1,822,180.659 |
+| TUP ALISEO | 2 | 2,114.100 |
+| TUP TMB - Terminal Marítimo de Belmonte | 1 | 1,090,628.000 |
+| TUP da Salina Guanabara | 1 | 226,072.300 |
+| Teporti | 1 | 21,749.360 |
+| Terminais Fluviais do Brasil | 1 | 232.780 |
+| Terminais Interiores | 2 | 36,652.705 |
+| Terminal Aquaviário da Ilha Comprida | 2 | 96,097.358 |
+| Terminal Aquaviário da Ilha D'Água | 5 | 632,911.292 |
+| Terminal Aquaviário de Angra dos Reis | 1 | 1,003,950.580 |
+| Terminal Aquaviário de Aracaju | 1 | 19,894.740 |
+| Terminal Aquaviário de Barra do Riacho | 1 | 1,883.059 |
+| Terminal Aquaviário de Guamaré | 3 | 87,477.552 |
+| Terminal Aquaviário de Ilha Redonda e Terminal Aquaviário da Ilha Comprida | 2 | 10,203.619 |
+| Terminal Aquaviário de Madre de Deus | 8 | 395,831.503 |
+| Terminal Aquaviário de Manaus | 4 | 201,264.742 |
+| Terminal Aquaviário de Osório | 5 | 389,641.317 |
+| Terminal Aquaviário de São Sebastião (Almirante Barroso) | 8 | 669,230.280 |
+| Terminal Fluvial de Juruti | 1 | 7,160,305.000 |
+| Terminal Hidroviário Cimbagé | 1 | 848.900 |
+| Terminal Marítimo Dow | 1 | 13,316.274 |
+| Terminal Marítimo Inácio Barbosa - TMIB | 1 | 275,077.224 |
+| Terminal Marítimo de Ponta da Madeira | 2 | 3,236,892.686 |
+| Terminal Portuário Privativo da Alumar | 5 | 62,935.202 |
+| Terminal Portuário de São Luis | 1 | 138,377.790 |
+| Terminal Portuário do Pecém | 18 | 2,529,409.823 |
+| Terminal Trombetas | 2 | 6,936,233.310 |
+| Terminal de Embarque Marítimo da Salina Diamante Branco | 1 | 241,404.600 |
+| Terminal de Praia Mole | 2 | 52,559.587 |
+| Terminal de Regaseificação de GNL da Bahia - TRBA | 1 | 17,848.047 |
+| Terminal de Tubarão | 1 | 34,098.407 |
+| Terminal de Uso Privado de Macau | 1 | 591,674.300 |
+| Tup da Salina Francisco Menescal | 1 | 387,425.900 |
+| Vila do Conde | 10 | 746,526.525 |
+| Vitória | 21 | 6,977,381.740 |
 
-These **77 observed pairs** come from three separate original destination-table
+These **510 observed pairs** come from 98 separate original destination-table
 exports, each with exactly one origin selected and the full 2025 calendar.
 The XLSX retains fractional tonnes; every origin subtotal rounds to the
-whole-tonne headline in the archived filter context. This is partial origin
-coverage, not a national total or a navigable itinerary. Unlisted pairs are
+whole-tonne headline in the archived filter context. Both origin and destination margins reconcile the population. This is complete origin
+coverage for the reviewed cabotage table, not unique cargo or a navigable itinerary. Unlisted pairs are
 unavailable, not zero. [Full CSV and original evidence](brazil_water_ports.md).
 
 ## Gas source quality and road reconciliation

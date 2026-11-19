@@ -53,7 +53,7 @@ def render():
         ["ANTAQ paired regional cabotage shares", water_pairs.height,
          "2025 original region-to-region fractions; offshore and undetermined origins retained"],
         ["ANTAQ port-to-port cabotage volumes", port_pairs.height,
-         "2025; three reviewed origins only: Santos, Suape, Manaus; original numeric tonnes"],
+         "2025; all 98 reviewed origins and 71 destinations; original numeric tonnes"],
         ["ANTT road monthly totals", road_months.height, "2025 published Chart 45 labels"],
         ["ANTT regional road pairs", road.height, "16 published RGI pairs; not municipalities or truck itineraries"],
     ])
@@ -173,11 +173,11 @@ are versioned with hashes and [reviewed filter/period context](brazil_water.md#p
 
 {port_table}
 
-These **77 observed pairs** come from three separate original destination-table
+These **510 observed pairs** come from 98 separate original destination-table
 exports, each with exactly one origin selected and the full 2025 calendar.
 The XLSX retains fractional tonnes; every origin subtotal rounds to the
-whole-tonne headline in the archived filter context. This is partial origin
-coverage, not a national total or a navigable itinerary. Unlisted pairs are
+whole-tonne headline in the archived filter context. Both origin and destination margins reconcile the population. This is complete origin
+coverage for the reviewed cabotage table, not unique cargo or a navigable itinerary. Unlisted pairs are
 unavailable, not zero. [Full CSV and original evidence](brazil_water_ports.md).
 
 ## Gas source quality and road reconciliation

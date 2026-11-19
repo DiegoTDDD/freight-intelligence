@@ -19,9 +19,9 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Forecast evaluation | Persistence, linear and CAGR baselines; expanding-window validation and reserved tests for rail, air, port handling and Transpetro oil movements; vintage cutoffs and units kept separate | [Evaluation methodology](docs/temporal_evaluation.md), [all candidate scores](docs/portfolio_evidence.md#forecast-results-including-competing-baselines), [port/oil vintage reports](docs/brazil_modal_forecasts.md) |
 | Brazilian railway | ANTT movements, 2006–2025; monthly/annual series, commodities, state pairs and concessionaires; reserved forecast evaluation | [Railway coverage and units](docs/brasil.md) |
 | Brazilian road | Fleet/MDF-e indicators, twelve 2025 tonnage months and sixteen published regional RGI pairs; source denominator reconciliation | [Road scope and reconciliation](docs/brazil_road.md) |
-| Brazilian water | 43 annual/regional references, twelve 2025 port-handling months and 21 paired regional cabotage shares and 77 observed port pairs from three origins; original XLSX preserved | [ANTAQ sources and precision](docs/brazil_water.md) |
+| Brazilian water | 43 annual/regional references, twelve 2025 port-handling months and 21 paired regional cabotage shares and 510 observed OD pairs covering all 98 reviewed origins; original XLSX preserved | [ANTAQ sources and precision](docs/brazil_water.md) |
 | Brazilian air | 624 monthly aggregates, 2000–2025; 36,860 monthly airport pairs, 2024–2025; 1,102 source airport codes; paid/free/mail separated; evaluated forecasts | [ANAC preparation and limitations](docs/brazil_air.md) |
-| Brazilian port pairs | 77 observed cabotage links from Santos, Suape and Manaus, with original numeric tonnes and archived filters | [Port-pair data and original exports](docs/brazil_water_ports.md) |
+| Brazilian port pairs | 510 observed cabotage links; all 98 origins and 71 destinations in the reviewed 2025 table, with original numeric tonnes and archived filters | [Port-pair data and original exports](docs/brazil_water_ports.md) |
 | Brazilian pipelines | 600 gas operator/direction/month records, 2021–2025; signed volumes, duplicate policy and missing-cell point/date diagnostics | [ANP gas history and quality](docs/brazil_gas_history.md) |
 | Five-mode atlas | 145 annual indicators with separate units, statistical populations, source links and provenance | [Indicator contracts](docs/brazil_modes.md) |
 | Transport optimization | Minimum-cost allocation, capacities, supply/demand balance, transshipment and infeasibility detection | [Solver and exported results](docs/transport_optimization.md) |
@@ -35,7 +35,7 @@ These are workspaces within one application and analytical package. They do not 
 
 ## Screenshots
 
-These English-interface captures were taken on 2026-11-18 from the local hosted-app entry point and the versioned public snapshots. They show the actual application, including the new regional-pair view. They remain visible on GitHub while Render sleeps. Open the sections below for additional workspaces.
+These English-interface captures were taken on 2026-11-18 and 2026-11-19 from the local hosted-app entry point and the versioned public snapshots. They show the actual application, including the reconciled 510-link cabotage view. They remain visible on GitHub while Render sleeps. Open the sections below for additional workspaces.
 
 **Freight analytics — FAF scenarios, units and annual indicators**
 
@@ -46,7 +46,7 @@ These English-interface captures were taken on 2026-11-18 from the local hosted-
 ![Synthetic transport scenario with an optimal allocation](docs/images/planner-en.jpg)
 
 <details>
-<summary>Air cargo, gas history, paired water regions and truck routing — four more screens</summary>
+<summary>Air cargo, gas history, cabotage OD, water regions and truck routing — five more screens</summary>
 
 **Air cargo — reported domestic monthly paid-cargo subtotals for 2025, with missing-field disclosure.** Stages can repeat a consignment; the chart is not a complete shipment census.
 
@@ -59,6 +59,10 @@ These English-interface captures were taken on 2026-11-18 from the local hosted-
 **Paired regional cabotage — four reported links originating in Nordeste, 2025.** Their 11.35% share retains the full panel denominator; no port itineraries or tonnes are inferred.
 
 ![ANTAQ regional cabotage pairs with preserved denominator](docs/images/water-pairs-en.jpg)
+
+**Observed cabotage OD — 510 links covering all 98 origins and 71 destinations in the reviewed 2025 table.** Original volumes reconcile independently by origin and destination to 222,975,436.378 tonnes. Includes offshore/source categories; these are transport events, not unique cargo or navigable itineraries.
+
+![Reconciled ANTAQ cabotage OD totals and destination chart](docs/images/water-od-en.jpg)
 
 **Saved Valhalla truck route — São Paulo–Campinas.** Original reviewed geometry, displayed without a new routing request. Map restrictions and the saved vehicle profile do not certify current dispatch conditions.
 
@@ -179,7 +183,7 @@ see [methodology, units and source-edition limits](docs/brazil_modal_forecasts.m
 - Brazilian series use different populations and units. Airport stages, gas-point transfers, railway movements and port handling may repeat the same physical cargo; they are not comparable national modal shares.
 - Truck costing applies available mapped restrictions, not verified current dispatch conditions. Toll pricing, driver-hours compliance, operational certification and provider SLA are not implemented.
 - Optimization examples use explicit **synthetic** demand/cost inputs. Scenario cost differences are not measured savings at a real company.
-- The expanded roadmap is **still open**: acquire finer port/state water OD records and verified absolute volumes, extend road and gas histories, verify additional rail/pipeline coverage, evaluate more adequate historical series, and validate the solver with real operating inputs and outcomes. Availability of source records and business data constrains these claims.
+- The expanded roadmap is **still open**: extend water OD to other navigation populations and years, extend road and gas histories, verify additional rail/pipeline coverage, evaluate more adequate historical series, and validate the solver with real operating inputs and outcomes. The reviewed 2025 cabotage table now has complete origin coverage with original absolute tonnes. Availability of source records and business data constrains further claims.
 
 See the [current expansion ledger](docs/expansion_execution.md) for concrete deliveries and dependencies, [current status](docs/status.md) for verification context, and the [recovered original roadmap](docs/roteiro_original.md) as historical planning evidence.
 

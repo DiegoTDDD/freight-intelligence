@@ -1,0 +1,1265 @@
+{
+  "schema_version": 1,
+  "year": 2025,
+  "pair_count": 510,
+  "origin_count": 98,
+  "destination_count": 71,
+  "population_tonnes": 222975436.37799987,
+  "displayed_population_tonnes": 222975436,
+  "origins": {
+    "aratu": {
+      "origin_port": "Aratu",
+      "origin_state": "BA",
+      "rows": 15,
+      "tonnes": 2216973.276,
+      "displayed_tonnes": 2216973,
+      "xlsx_sha256": "2aa5bc917dca2d130cc5ad6a98d8d935b5ed726579f30453f3034f8cff0009e1",
+      "context_sha256": "06a8a721323c72fad1fbeedf24bae51e2ee34de424e6784d444b82c02797e2a0"
+    },
+    "juruti": {
+      "origin_port": "Terminal Fluvial de Juruti",
+      "origin_state": "PA",
+      "rows": 1,
+      "tonnes": 7160305,
+      "displayed_tonnes": 7160305,
+      "xlsx_sha256": "52bcf26667125efbb03c5942752eb1ed9dbed4da023148025d5eb6454596ddb9",
+      "context_sha256": "76d851c4a0d79fe9819d3e4a7af1b99776a216b3109f51efc362ea2b7190a8c8"
+    },
+    "manaus": {
+      "origin_port": "Manaus",
+      "origin_state": "AM",
+      "rows": 13,
+      "tonnes": 2687002.543,
+      "displayed_tonnes": 2687003,
+      "xlsx_sha256": "c4bc5a1c56dd17d05a2b0c9862d79dd182e42f87fee0247ca7b700ab6316f7f5",
+      "context_sha256": "e1d27eacc77f7ab0ddcf0bf2d51ebb812d78cc59c4a340ce692fcbeb822f3bdd"
+    },
+    "origin_001": {
+      "origin_port": "Bacia Sedimentar de Santos",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 8,
+      "tonnes": 100690052.897,
+      "displayed_tonnes": 100690053,
+      "xlsx_sha256": "7cd404b61e03daf575e44c85dfe73f5df70cba8af499aaf3e7eff45a6cd943e0",
+      "context_sha256": "e03e2a22b4b8ab7fddd4fc2b2cf08cf7fa233dcd959aaa272c4f672edf194a19"
+    },
+    "origin_002": {
+      "origin_port": "Bacia Sedimentar de Campos",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 8,
+      "tonnes": 29909502.29300001,
+      "displayed_tonnes": 29909502,
+      "xlsx_sha256": "853ccab1349ba1fb07821ed4dbf599b6abeae35c531120c5a417f46a7041ba3d",
+      "context_sha256": "16dce1aa8046bf3bd63a136c0147108f7db18e850a2420e3233965a80d42082a"
+    },
+    "origin_009": {
+      "origin_port": "FPSO Espírito Santo",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 6,
+      "tonnes": 4020515.797000002,
+      "displayed_tonnes": 4020516,
+      "xlsx_sha256": "c28014fbc953744b1cbcea2bea61cd3f714375caeebe209482dfcb0026c45ac7",
+      "context_sha256": "7c71a3ccefbad765e5d927055d51bf0b38b0ebcd141fb985b40650ae769768f8"
+    },
+    "origin_014": {
+      "origin_port": "Rio Grande",
+      "origin_state": "RS",
+      "rows": 18,
+      "tonnes": 1918645.663999998,
+      "displayed_tonnes": 1918646,
+      "xlsx_sha256": "dd44ffa6851b16879a03c994330c8ef7bf35408982538e3ba226f87b2aca990c",
+      "context_sha256": "f4d5309327e184be954c550b6c1276fa2658844963ff98e937ba8f33f1582733"
+    },
+    "origin_015": {
+      "origin_port": "Itaqui",
+      "origin_state": "MA",
+      "rows": 12,
+      "tonnes": 1891925.057,
+      "displayed_tonnes": 1891925,
+      "xlsx_sha256": "2cee1199a9573a4acfb981c5b902c4b829fa35bb9f505be62875d1ca027bf540",
+      "context_sha256": "e4c2757a5f03c7c9bddac402975019eda3546829119f3d4ea22280c72832ef10"
+    },
+    "origin_016": {
+      "origin_port": "Maceió",
+      "origin_state": "AL",
+      "rows": 10,
+      "tonnes": 1881512.172999999,
+      "displayed_tonnes": 1881512,
+      "xlsx_sha256": "14db54c68edef4f07e726576ca3893586a8faa9cdf44274e9388cca58fab32e5",
+      "context_sha256": "4cdd2feaa0b04219124dff54f633e2ce42832a7df2bdd6f8a4971e0f589527b6"
+    },
+    "origin_017": {
+      "origin_port": "São Sebastião",
+      "origin_state": "SP",
+      "rows": 10,
+      "tonnes": 1822180.659,
+      "displayed_tonnes": 1822181,
+      "xlsx_sha256": "1827a2e28f4690bd98b9e81f38a0aa799717010e231ca592f0c1c18249018601",
+      "context_sha256": "1180de7974d431f8c3a57f26a8bea18d22dd03a4e2a2102084ea3d234f785d26"
+    },
+    "origin_018": {
+      "origin_port": "FPSO Cidade de Mangaratiba",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 1761263.221,
+      "displayed_tonnes": 1761263,
+      "xlsx_sha256": "f8629847eba364f716315a74f92640178aa0db4032000f7969a94747ebf16e3a",
+      "context_sha256": "716abd57f297e008bfc5c52dd735616361bf17366eef0d7934dc070bcd942f7b"
+    },
+    "origin_019": {
+      "origin_port": "FPSO Cidade de Itaguaí",
+      "origin_state": "RJ",
+      "rows": 1,
+      "tonnes": 1722236.455,
+      "displayed_tonnes": 1722236,
+      "xlsx_sha256": "1225c3a12a5587aaf267cef04c414ab042ed15d17177e51e246db00227e4ea2a",
+      "context_sha256": "112d3772d25ce0a7bb350f3ff3418ee9a07002afdcbafd655139f6b0ca375f58"
+    },
+    "origin_020": {
+      "origin_port": "Porto Itapoá Terminais Portuários",
+      "origin_state": "SC",
+      "rows": 13,
+      "tonnes": 1698805.886000006,
+      "displayed_tonnes": 1698806,
+      "xlsx_sha256": "9f1152dd33fe862697d6ee1a097b33b20bc1d4742cb405ecc3bad1b55f6b3dcb",
+      "context_sha256": "6f877488bf89038ad3beb2b813494b4fd079091240ffa11d9cbda5a467cb4909"
+    },
+    "origin_021": {
+      "origin_port": "Salvador",
+      "origin_state": "BA",
+      "rows": 21,
+      "tonnes": 1570957.583000005,
+      "displayed_tonnes": 1570958,
+      "xlsx_sha256": "e1049e7994cc56f8da5ecfba8768ab0e6a58966572e530f6098ff31e6065f979",
+      "context_sha256": "8d7f6c3f506e3c6cc1e9dc525dfead3f2a53568841548065306b65066fc9e84a"
+    },
+    "origin_022": {
+      "origin_port": "FPSO Cidade de Maricá",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 1494278.034,
+      "displayed_tonnes": 1494278,
+      "xlsx_sha256": "7ff21ddd58114165c2b2e75c3ffeb0fb7277dd8fce34201258912223dab263d5",
+      "context_sha256": "c00ad496f6e6667eae609bd52ab060027409c7af7516250579074e4456b32867"
+    },
+    "origin_023": {
+      "origin_port": "Paranaguá",
+      "origin_state": "PR",
+      "rows": 19,
+      "tonnes": 1430473.72099999,
+      "displayed_tonnes": 1430474,
+      "xlsx_sha256": "93c659ecc1324d09d2269975b8b2b89b99df26b5c8ed87207c272546da937710",
+      "context_sha256": "75085cd657fdce889b7a5481bf9cfcdd654b1abb8abb28aa731cbe7f995b71da"
+    },
+    "origin_024": {
+      "origin_port": "TUP TMB - Terminal Marítimo de Belmonte",
+      "origin_state": "BA",
+      "rows": 1,
+      "tonnes": 1090628,
+      "displayed_tonnes": 1090628,
+      "xlsx_sha256": "1d22fc6c32d8658deb8383975da4f4be26b32e774395be5e29aca0e679ebe3a7",
+      "context_sha256": "5b9802f3d84846128356df8f37530d57c514ecc787b1e63ace8f4d4e806d414d"
+    },
+    "origin_025": {
+      "origin_port": "FPSO Cidade de Saquarema",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 1056514.725,
+      "displayed_tonnes": 1056515,
+      "xlsx_sha256": "f9eb6dba6562681a39b6d58725a4f32f2c08a7c2ae7b2e76ed0daf529c475d99",
+      "context_sha256": "b749f0859dc61ac7f4e7d225d272c62a12341cc0a4bf3c4356dfef113abd02ea"
+    },
+    "origin_026": {
+      "origin_port": "Itajaí",
+      "origin_state": "SC",
+      "rows": 14,
+      "tonnes": 1026822.794000001,
+      "displayed_tonnes": 1026823,
+      "xlsx_sha256": "d766eb7ceab4402f29a60b207c2818638a359270790f33355e2feaa2609eb11f",
+      "context_sha256": "a7fb2bb02733317fcb7bcd8924ca8b048f5b6a1816b9b749d7d488c7ab014b98"
+    },
+    "origin_027": {
+      "origin_port": "Portonave - Terminais Portuários de Navegantes",
+      "origin_state": "SC",
+      "rows": 10,
+      "tonnes": 1014770.479000003,
+      "displayed_tonnes": 1014770,
+      "xlsx_sha256": "8bb4e11c36c05604b43334c207865c3f2daa327779083b3fec61bb9db40edf53",
+      "context_sha256": "2d131692529410e3d9288789b2643fe432a1ba9968f0d5d7ed615525670428f6"
+    },
+    "origin_028": {
+      "origin_port": "Terminal Aquaviário de Angra dos Reis",
+      "origin_state": "RJ",
+      "rows": 1,
+      "tonnes": 1003950.58,
+      "displayed_tonnes": 1003951,
+      "xlsx_sha256": "9f90f06e26a27c94152d55c30c3c92fcdd35e286a288df7e0da86606a552ccb0",
+      "context_sha256": "9db3f58c8f67d47481b085cc8e6837a37dc6a6433ad7c277a4dd98f7cdc904e3"
+    },
+    "origin_029": {
+      "origin_port": "Fortaleza",
+      "origin_state": "CE",
+      "rows": 17,
+      "tonnes": 925961.2800000004,
+      "displayed_tonnes": 925961,
+      "xlsx_sha256": "9413f01cafc9f6168f2ce5fa119f83318e0ffc315fd5a4d8cdae1f7fe3a12768",
+      "context_sha256": "a4057de9d25be0e068724c91540c5a5a6aacf89351a513a7868213b0f51d40eb"
+    },
+    "origin_030": {
+      "origin_port": "Itaguaí",
+      "origin_state": "RJ",
+      "rows": 13,
+      "tonnes": 804816.9329999996,
+      "displayed_tonnes": 804817,
+      "xlsx_sha256": "396b2fa0a99cd6fd628bc4515f5c30ba5df2524d668310049346593beed94a13",
+      "context_sha256": "071aa09856f95da07cd946e66524884984f02bb5230913b8c68a0588dcdef2d6"
+    },
+    "origin_031": {
+      "origin_port": "Imbituba",
+      "origin_state": "SC",
+      "rows": 12,
+      "tonnes": 790373.1570000049,
+      "displayed_tonnes": 790373,
+      "xlsx_sha256": "2c21046217ae476bab495b22897aa4b582920068c4433cb650fd9b64c89d5df1",
+      "context_sha256": "1e971a0a641649491f928d1efe639daa7a258eb09cda1c5b23b49189fa40cb79"
+    },
+    "origin_032": {
+      "origin_port": "FPSO Cidade de Paraty",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 760913.178,
+      "displayed_tonnes": 760913,
+      "xlsx_sha256": "889b09b32701b94db6f8ff2684aafc8114c1402906263ece07e6ac37796d0c72",
+      "context_sha256": "d8088720e52bdd3a70c2871fda606596cbdb51171649a271a157a779bea8aef0"
+    },
+    "origin_033": {
+      "origin_port": "Vila do Conde",
+      "origin_state": "PA",
+      "rows": 10,
+      "tonnes": 746526.525,
+      "displayed_tonnes": 746527,
+      "xlsx_sha256": "15bf5bd1214de599f4218e0bcbec95e2b9cf0c5de7f095082971a5eadc63f178",
+      "context_sha256": "422b8180b3867eb709a84e2bc11e1375dc42bc5f547cd9fac66f76f506d38d24"
+    },
+    "origin_034": {
+      "origin_port": "Areia Branca",
+      "origin_state": "RN",
+      "rows": 5,
+      "tonnes": 702407.5,
+      "displayed_tonnes": 702408,
+      "xlsx_sha256": "70b37ec131d5ec86f69582e213cbc49c858985f191294a8df7d062267106ce4e",
+      "context_sha256": "1ae9741a2aaa3ab4715bcd089ee5255a363616ff103411c4bb5e6e4e6a8faf44"
+    },
+    "origin_035": {
+      "origin_port": "Terminal Aquaviário de São Sebastião (Almirante Barroso)",
+      "origin_state": "SP",
+      "rows": 8,
+      "tonnes": 669230.2800000001,
+      "displayed_tonnes": 669230,
+      "xlsx_sha256": "82587293c5e33d89f97f86720147f58865891cd5dc3e5a10c8794d3928de1c44",
+      "context_sha256": "d3b9b138f2dc089cdb44fb8c8b7d13e39f09f659ffc99590453d29dc7409084e"
+    },
+    "origin_036": {
+      "origin_port": "Porto Chibatão",
+      "origin_state": "AM",
+      "rows": 4,
+      "tonnes": 636622.095,
+      "displayed_tonnes": 636622,
+      "xlsx_sha256": "54d3dc489d8274035ca1d0d3fcf69dd71d2ad15eec001c1e37aa60d7e5219684",
+      "context_sha256": "25cac9f9a6fcb71fc7c7fea17e844186f634946e6d32e2ebafe7c073af835629"
+    },
+    "origin_037": {
+      "origin_port": "FPSO Cidade de Sao Paulo",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 635769.7799999999,
+      "displayed_tonnes": 635770,
+      "xlsx_sha256": "dca3c9a1ef58cfa106677b843dbbd59c2062ff241a20ac1dfc146c810882d152",
+      "context_sha256": "f2330600d05fc80213ec0e6102626d54d814484fecdb5469cd763ec5a3c98bc6"
+    },
+    "origin_038": {
+      "origin_port": "Terminal Aquaviário da Ilha D'Água",
+      "origin_state": "RJ",
+      "rows": 5,
+      "tonnes": 632911.2919999999,
+      "displayed_tonnes": 632911,
+      "xlsx_sha256": "c111f0b942b849b1437662a713b0bbbb68044fe586271353d2494d943fba8970",
+      "context_sha256": "2fc241ea8784aa8725013ef44126ff3d32751093e7945969bc11d7843b92a1ed"
+    },
+    "origin_039": {
+      "origin_port": "Terminal de Uso Privado de Macau",
+      "origin_state": "RN",
+      "rows": 1,
+      "tonnes": 591674.2999999997,
+      "displayed_tonnes": 591674,
+      "xlsx_sha256": "5a2cf735800dac86f885b8154e9fc7cbb09e6bdc0e9ec748e3ac898537ddd10a",
+      "context_sha256": "4cd7811f143fe8b850f183802e6ed4bd27256f4c304eab62db4c61aad6484317"
+    },
+    "origin_040": {
+      "origin_port": "FPSO PIONEIRO DE LIBRA",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 486779.395,
+      "displayed_tonnes": 486779,
+      "xlsx_sha256": "599401b0eaf48612e6494a1ff7b1148ee8a5ed0788a0457cf2623692776a487d",
+      "context_sha256": "1d3f73482c6f2404cbefb8fb6069d8cf93abca6ebfcf3e48be20de618498eeae"
+    },
+    "origin_041": {
+      "origin_port": "Terminal Aquaviário de Madre de Deus",
+      "origin_state": "BA",
+      "rows": 8,
+      "tonnes": 395831.503,
+      "displayed_tonnes": 395832,
+      "xlsx_sha256": "0e945c624f14830a4233b85bc016be6db863ee5eee8996500697892796c58b76",
+      "context_sha256": "e0d563bf8fac9ca87e10172e512c89b406ea3084d2eafedb793cf8b3a52602d4"
+    },
+    "origin_042": {
+      "origin_port": "Terminal Aquaviário de Osório",
+      "origin_state": "RS",
+      "rows": 5,
+      "tonnes": 389641.317,
+      "displayed_tonnes": 389641,
+      "xlsx_sha256": "bef94f11fd45dbb246c5289360c783fe8e04aa10b7afa8103b9a2ad8b2db4d4d",
+      "context_sha256": "bcb67fee2c14badd371f783ed160007f71be86e4127196aab98f063f21b01209"
+    },
+    "origin_043": {
+      "origin_port": "Tup da Salina Francisco Menescal",
+      "origin_state": "RN",
+      "rows": 1,
+      "tonnes": 387425.9,
+      "displayed_tonnes": 387426,
+      "xlsx_sha256": "e1050af92869073c12983a92da4e49d3741bf45c4aed4deea907ca802ba38d95",
+      "context_sha256": "164a5ab47181550d3d56f0322224e5aab4798a94be8f7f7aa4b6fa95b6892566"
+    },
+    "origin_044": {
+      "origin_port": "São Francisco do Sul",
+      "origin_state": "SC",
+      "rows": 4,
+      "tonnes": 372516.2960000002,
+      "displayed_tonnes": 372516,
+      "xlsx_sha256": "999ee069c59a5546041af3497d15186f72f29ce2f5b7af4ad48d2c8da30d3a19",
+      "context_sha256": "2b9f49dbe3e9078604157bf3475c51929aa1bffbb8d413d78f6bf3073f2799f6"
+    },
+    "origin_045": {
+      "origin_port": "Terminal Marítimo Inácio Barbosa - TMIB",
+      "origin_state": "SE",
+      "rows": 1,
+      "tonnes": 275077.224,
+      "displayed_tonnes": 275077,
+      "xlsx_sha256": "1392e62c3cc68d703de8689ec5cdced732654c2042df4c91ee371f4f77fad470",
+      "context_sha256": "445a5293bfa91436649b7ecf988f9d9fdc2d2d397903ed4047ec04c670e85715"
+    },
+    "origin_046": {
+      "origin_port": "Terminal de Embarque Marítimo da Salina Diamante Branco",
+      "origin_state": "RN",
+      "rows": 1,
+      "tonnes": 241404.5999999999,
+      "displayed_tonnes": 241405,
+      "xlsx_sha256": "26921e07d81ea0a1b6f5a04e4461be56905559d5836d9b19a8e9296b4fcf7a1f",
+      "context_sha256": "16b344255b93e88c2404407fc6d9291ac92aa78abfccd90263a63cee629ca7ef"
+    },
+    "origin_047": {
+      "origin_port": "TUP da Salina Guanabara",
+      "origin_state": "RN",
+      "rows": 1,
+      "tonnes": 226072.3000000001,
+      "displayed_tonnes": 226072,
+      "xlsx_sha256": "fa9a437f4554f57e120297ab3200469b7240a8384b6435eb164d15d1c18a7b20",
+      "context_sha256": "df62535e13c6f1c6ce291267bf208433f79a92eb50492b8c1a9301e4780656b4"
+    },
+    "origin_048": {
+      "origin_port": "Angra dos Reis",
+      "origin_state": "RJ",
+      "rows": 3,
+      "tonnes": 216532.9330000001,
+      "displayed_tonnes": 216533,
+      "xlsx_sha256": "392912ca06f9a2582b1a1601360104a65a1cbaf98226f1030452a1ca6ca4b441",
+      "context_sha256": "7c5535b0e4b31065fcd473fec4bd1df653363ac66384a0df43a473374d3b1aca"
+    },
+    "origin_049": {
+      "origin_port": "Terminal Aquaviário de Manaus",
+      "origin_state": "AM",
+      "rows": 4,
+      "tonnes": 201264.7419999981,
+      "displayed_tonnes": 201265,
+      "xlsx_sha256": "08fd5af611ae3f5505f659103f06505f9e556c196d11caad105946e213da0f49",
+      "context_sha256": "5a51b2dd51961e3b3fd8d0d7a8c79f8b78c58f5a8fb1fcb8bb3bd441472033da"
+    },
+    "origin_050": {
+      "origin_port": "Cabedelo",
+      "origin_state": "PB",
+      "rows": 5,
+      "tonnes": 160302.192,
+      "displayed_tonnes": 160302,
+      "xlsx_sha256": "885cdea382c5dbe6c073245fec413eb44f1a8d6116c5ff937146a9867b573d45",
+      "context_sha256": "aada381e0a3f6beb98fe1662ae084b7fe0e13aa44a60d8ab289897599b4827cb"
+    },
+    "origin_051": {
+      "origin_port": "FPSO Cidade de Angra dos Reis",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 155029.326,
+      "displayed_tonnes": 155029,
+      "xlsx_sha256": "6110358e05b3b1660ba7de4ed71f42d133c26facd6f62c8b46a7060fa469ceb7",
+      "context_sha256": "e98fa84d653d93b771db627dba68ce228101f61586e05f608bfd3d961a994a13"
+    },
+    "origin_052": {
+      "origin_port": "Terminal Portuário de São Luis",
+      "origin_state": "MA",
+      "rows": 1,
+      "tonnes": 138377.79,
+      "displayed_tonnes": 138378,
+      "xlsx_sha256": "36aeb18e7be2f11ea61b2013b62738a6d3a4de223bd498bbf9d7e34cdf019621",
+      "context_sha256": "ae38329ff9ceeac153a04a80fe08d87f0eed66d16eb958a7b366cc7bce2bda5e"
+    },
+    "origin_053": {
+      "origin_port": "FPSO Cidade de Ilha Bela",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 135612.016,
+      "displayed_tonnes": 135612,
+      "xlsx_sha256": "ba608e17221300646c1fca3df9e2cab427ee649141759887a2e5aab35c3d7865",
+      "context_sha256": "60b7506447386f2076c191d9d76556cd01f4b43574857b2356b2d3f209d93410"
+    },
+    "origin_054": {
+      "origin_port": "Belém",
+      "origin_state": "PA",
+      "rows": 4,
+      "tonnes": 113826.665,
+      "displayed_tonnes": 113827,
+      "xlsx_sha256": "c20626638348ce136ee405555fd65ae12d21755217f726d1cb5d86c2b59eb2fb",
+      "context_sha256": "26f50717a6a02c7476104c1474b17ff6e78a93ef421b34c32b6f06df3f2b06ce"
+    },
+    "origin_055": {
+      "origin_port": "Terminal Aquaviário da Ilha Comprida",
+      "origin_state": "RJ",
+      "rows": 2,
+      "tonnes": 96097.35800000001,
+      "displayed_tonnes": 96097,
+      "xlsx_sha256": "8fa97c3b45f20047b388d8461479dc39e39c3230b23dc6bb51bb3d1c574cba7a",
+      "context_sha256": "81916fb25c69d47b2877185bf782388806ca9d946c3ce41aacb2d34d0a24a4e6"
+    },
+    "origin_056": {
+      "origin_port": "Terminal Aquaviário de Guamaré",
+      "origin_state": "RN",
+      "rows": 3,
+      "tonnes": 87477.552,
+      "displayed_tonnes": 87478,
+      "xlsx_sha256": "b3b7372b6d9a749a8877d8bce2b74fefef4f8dffd660a2fd6177a055b0c1dc2f",
+      "context_sha256": "d30099cd1fb5721adc2292bec57fd5177cb90248cd369ce8a1d55dc82745d5ea"
+    },
+    "origin_057": {
+      "origin_port": "Terminal Portuário Privativo da Alumar",
+      "origin_state": "MA",
+      "rows": 5,
+      "tonnes": 62935.202,
+      "displayed_tonnes": 62935,
+      "xlsx_sha256": "b65c4605cad99ef12c1c4ac1d7a64ecada0fbb0d7360d015e7d414b92629f7f8",
+      "context_sha256": "58e9e60ca7d8a502bde32ed09118e64c342c9455a04c7fc27500c3e4fa85a309"
+    },
+    "origin_058": {
+      "origin_port": "Natal",
+      "origin_state": "RN",
+      "rows": 1,
+      "tonnes": 60047.765,
+      "displayed_tonnes": 60048,
+      "xlsx_sha256": "6b25e0220da85656b0fc10548f32619dfa19f6a3729f0efcc45940bf893fc93e",
+      "context_sha256": "e8962b0e45e38fd340e6c35770e56d8ef3aec8e8fafcda89370092fc5386e91f"
+    },
+    "origin_059": {
+      "origin_port": "Barra do Riacho",
+      "origin_state": "ES",
+      "rows": 3,
+      "tonnes": 54782.243,
+      "displayed_tonnes": 54782,
+      "xlsx_sha256": "2685f4d21511fdcccceed75443cb35465d1ae14a184bb2a3d4ff682575d92036",
+      "context_sha256": "0ca8140f983942146a1d3b46e10df169f42cf6f3bb6c68500ca6bf53e2d54b2b"
+    },
+    "origin_060": {
+      "origin_port": "Terminal de Praia Mole",
+      "origin_state": "ES",
+      "rows": 2,
+      "tonnes": 52559.587,
+      "displayed_tonnes": 52560,
+      "xlsx_sha256": "00bcc6b42a683f42e358915e10a581bd0c235947d77ec045bf622cebdc0d0842",
+      "context_sha256": "80c649c55053924554ef96b0f4daf8948c04dbde87e28c4347118e8146fd12b8"
+    },
+    "origin_061": {
+      "origin_port": "Coari",
+      "origin_state": "AM",
+      "rows": 3,
+      "tonnes": 49011.54500000001,
+      "displayed_tonnes": 49012,
+      "xlsx_sha256": "0ceda7b094c76f90ddbd4cb5b99bdab03b940cd429a838adbf22d97ac3482855",
+      "context_sha256": "d9272ec26dceda542b3d486406f8a2f94dbc7b7a2f5b79cc8720e9c10a1e468d"
+    },
+    "origin_062": {
+      "origin_port": "Porto Sudeste do Brasil S/A",
+      "origin_state": "RJ",
+      "rows": 1,
+      "tonnes": 41310.68500000001,
+      "displayed_tonnes": 41311,
+      "xlsx_sha256": "d8b6f7a85c2627b5721e2e2c988149be41b69d35e31d94a2aba175d3539453e6",
+      "context_sha256": "a4d784648a71c863c012d25769adffacebd7080d3b04d6a90ba51edc3a300872"
+    },
+    "origin_063": {
+      "origin_port": "Terminais Interiores",
+      "origin_state": "Indeterminado",
+      "rows": 2,
+      "tonnes": 36652.705,
+      "displayed_tonnes": 36653,
+      "xlsx_sha256": "4ba8bf0e58ee21dba17848f4313fcc4f0804aaec63743f30eaa687963054670c",
+      "context_sha256": "8d2351383d08d7813570c82c0ff22c0292c6e87678c7108de670a2bf0d430425"
+    },
+    "origin_064": {
+      "origin_port": "Bacia Sedimentar Pernambuco-Paraíba",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 2,
+      "tonnes": 35913.22,
+      "displayed_tonnes": 35913,
+      "xlsx_sha256": "878376e2994194b37ee1ae9e310ec65879f164d9c524a6d6fc7285227f61faee",
+      "context_sha256": "502bb7eb25282083fc69c6a190d10d18d60b79622470891bf0bd2c041a49e46e"
+    },
+    "origin_065": {
+      "origin_port": "Terminal de Tubarão",
+      "origin_state": "ES",
+      "rows": 1,
+      "tonnes": 34098.407,
+      "displayed_tonnes": 34098,
+      "xlsx_sha256": "435f42d53aa6d73f02fb7011a167fbd9e8531dca41df929bdb325d1b383d63b6",
+      "context_sha256": "63e5a40786e28cbaff148263ce297f71dc3ccf7b51e9b8d4a41595db2d0c9166"
+    },
+    "origin_066": {
+      "origin_port": "Recife",
+      "origin_state": "PE",
+      "rows": 4,
+      "tonnes": 31706.744,
+      "displayed_tonnes": 31707,
+      "xlsx_sha256": "bc0286ffb77144c132352831484e498e0f97fe85ea580611a663af0e825f87db",
+      "context_sha256": "40c7865af46e372be93712d1c1961ec47c00ed91a89c0ade94f37301cca328e6"
+    },
+    "origin_067": {
+      "origin_port": "Teporti",
+      "origin_state": "SC",
+      "rows": 1,
+      "tonnes": 21749.36,
+      "displayed_tonnes": 21749,
+      "xlsx_sha256": "e70d13ccef8c23d642dde4f35cd760ece672cca6f319bcbe42a068450abf7a70",
+      "context_sha256": "ab80d85248c6ea85d600163dcb4d42099cfb24c14c4a8a63c95091320da03a9d"
+    },
+    "origin_068": {
+      "origin_port": "Terminal Aquaviário de Aracaju",
+      "origin_state": "SE",
+      "rows": 1,
+      "tonnes": 19894.74,
+      "displayed_tonnes": 19895,
+      "xlsx_sha256": "573a94e770bd35d626010e399b7219ec1a7d29ed633279090d4b39abe2bb85c5",
+      "context_sha256": "37f75041ec5c87884ab306da4861aa40b287b0544234a854b5e659c2eeed6dc2"
+    },
+    "origin_069": {
+      "origin_port": "FPSO Brasil",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 2,
+      "tonnes": 18048.906,
+      "displayed_tonnes": 18049,
+      "xlsx_sha256": "774061a1b1f7fe82fdfa8b01997299540f86633f029e6abfb14df17757b919b7",
+      "context_sha256": "3da22322c5a3385f6ce7ea4570b3e9adf5077d9b95c169ebc7ce91d8c8ceded0"
+    },
+    "origin_070": {
+      "origin_port": "Terminal de Regaseificação de GNL da Bahia - TRBA",
+      "origin_state": "BA",
+      "rows": 1,
+      "tonnes": 17848.047,
+      "displayed_tonnes": 17848,
+      "xlsx_sha256": "d045addbc0516f1c02341a42eab75f4b60cb3cf550b72dde4b05997ce72df936",
+      "context_sha256": "80b0d9b0052657223c25d20525e951f6cfc898fcfa7446ba3d9cf15347f70228"
+    },
+    "origin_071": {
+      "origin_port": "Estaleiro Atlântico Sul - EAS",
+      "origin_state": "PE",
+      "rows": 1,
+      "tonnes": 14539.693,
+      "displayed_tonnes": 14540,
+      "xlsx_sha256": "da9378094900de7c628ce19f6444d89e3b673e5c13bf604a9ccacc6eb17224ea",
+      "context_sha256": "24f377585f5e132e251beb499dd19fd606b33fa74e0d73aae176a04d4a68b5f7"
+    },
+    "origin_072": {
+      "origin_port": "Porto do Açu - Terminal TMULT e TCAR",
+      "origin_state": "RJ",
+      "rows": 4,
+      "tonnes": 13440.874,
+      "displayed_tonnes": 13441,
+      "xlsx_sha256": "f00d2c7275c2f24c94c741fa203fcea3cfaf5755538f1541e1a141612ff95e54",
+      "context_sha256": "1d4ede0e33effcf100a368238c23cd9b4fd7714a8639c8607fb462a5733141b3"
+    },
+    "origin_073": {
+      "origin_port": "Terminal Marítimo Dow",
+      "origin_state": "SP",
+      "rows": 1,
+      "tonnes": 13316.274,
+      "displayed_tonnes": 13316,
+      "xlsx_sha256": "f3380f47e9046ee863d7240b62352299d015d8d4ca9ebfbac60c4fe08d2e70d0",
+      "context_sha256": "60a4fb4f50b88af374d681599dd457ed3c6b1e13cf555c869ca74a97cd26eeed"
+    },
+    "origin_074": {
+      "origin_port": "Bacia Sedimentar de Camamu-Almada",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 13269.74,
+      "displayed_tonnes": 13270,
+      "xlsx_sha256": "144d73d8af7064c4f479715a7e17b3f15dfc43c6a6d8bb32eebb434e5860dca5",
+      "context_sha256": "f19fe61a6c134bc73242af08282ea3891914aee1f738f7de1be2a6b7cb8ccb1a"
+    },
+    "origin_075": {
+      "origin_port": "Pelotas",
+      "origin_state": "RS",
+      "rows": 1,
+      "tonnes": 11340.413,
+      "displayed_tonnes": 11340,
+      "xlsx_sha256": "b3f8c62fc214317d282b1df07c7105dc7af3c4d24ad123b8c1c32f3d6f4e9e10",
+      "context_sha256": "97d3904723af283a5a70ef89dc386ed419684922e6d30a463fa8d39df4e8ff75"
+    },
+    "origin_076": {
+      "origin_port": "Terminal Aquaviário de Ilha Redonda e Terminal Aquaviário da Ilha Comprida",
+      "origin_state": "RJ",
+      "rows": 2,
+      "tonnes": 10203.619,
+      "displayed_tonnes": 10204,
+      "xlsx_sha256": "313bafaa691eca0ff4b84a247fac364fc473436feda9797d0f62d8a430e51e04",
+      "context_sha256": "48dd05cf590b1859d6d162b6186e2f75372761c2658d8266e6c1c06235d54f18"
+    },
+    "origin_077": {
+      "origin_port": "Porto Alegre",
+      "origin_state": "RS",
+      "rows": 1,
+      "tonnes": 8889.391,
+      "displayed_tonnes": 8889,
+      "xlsx_sha256": "1a9faa606f19d050b72ce4bdf02436bca98e2417daf20292fd4a3dd78dc31237",
+      "context_sha256": "5ff86dc89a32f75ee3556e886dabfc00364b26ee0d3b61f2aeb678427b21fa8c"
+    },
+    "origin_078": {
+      "origin_port": "A.D.S. Reparos Navais",
+      "origin_state": "RJ",
+      "rows": 1,
+      "tonnes": 8183.984000000001,
+      "displayed_tonnes": 8184,
+      "xlsx_sha256": "01f5911316ad39f1eaf52b5aa8bb93a05b09f210fbdaff13048c77125e6fc745",
+      "context_sha256": "4e7070b73228220bffb1e157567b396dabef5eb78609904b53dceb3ddfef0663"
+    },
+    "origin_079": {
+      "origin_port": "Bacia Sedimentar SEAL",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 7933.415000000001,
+      "displayed_tonnes": 7933,
+      "xlsx_sha256": "1bb3b2c20e5d1a6f98e2f0265f939ac0e8b59893b3ac0cd09211dde8dd281ae6",
+      "context_sha256": "11b2387a6153d1176d7adc3d4f005f4d6ba4106ecd4c802d1a961955b334564a"
+    },
+    "origin_080": {
+      "origin_port": "Cachoeira do Sul",
+      "origin_state": "RS",
+      "rows": 1,
+      "tonnes": 7284.637,
+      "displayed_tonnes": 7285,
+      "xlsx_sha256": "42d3487a24d11886f4089ec26086cd5455d5713e10b0d567388db1f0b8032398",
+      "context_sha256": "894f329cdecb93cad92a3c79d29d9d4d33f44fe7a568c31b4cc8e72391a2c505"
+    },
+    "origin_081": {
+      "origin_port": "Brasil Logística Offshore e Estaleiro Naval",
+      "origin_state": "RJ",
+      "rows": 1,
+      "tonnes": 6223.558,
+      "displayed_tonnes": 6224,
+      "xlsx_sha256": "4a51d150558994403d4a152db98f9e6903cf108e8408fb102377f6cc22345095",
+      "context_sha256": "03e91fd5fc404c34144aaf5c58334df5ff8bb6f139c4d79b5a5d54601aabe2da"
+    },
+    "origin_082": {
+      "origin_port": "Salinas (Rio Grande do Norte)",
+      "origin_state": "RN",
+      "rows": 1,
+      "tonnes": 6000,
+      "displayed_tonnes": 6000,
+      "xlsx_sha256": "2e31ba5b96da820f23d64fc962a7bde70dafe4bf0e7c296980ba0e1586dfd9ca",
+      "context_sha256": "d18dd681de054c53d4e7540c03cbcb8acfd850b61ef606d9d6e7fdad16638ae2"
+    },
+    "origin_083": {
+      "origin_port": "Porto do Açu - Terminal de Minério",
+      "origin_state": "RJ",
+      "rows": 1,
+      "tonnes": 5461.432,
+      "displayed_tonnes": 5461,
+      "xlsx_sha256": "84dd1d730015aada3bdaf06ea2b81ae4beb6ce55ab22a011ff4aa4f0637bcc6e",
+      "context_sha256": "d4ae44d69424324790309f3b2910a9817a75a86231a6cbc8cbf33d892a097729"
+    },
+    "origin_084": {
+      "origin_port": "Brasbunker",
+      "origin_state": "SP",
+      "rows": 1,
+      "tonnes": 4999.782,
+      "displayed_tonnes": 5000,
+      "xlsx_sha256": "979a910ad35dc921e282051d4b2effa0288777d93093e4c5a58d3d1d69dc4f8a",
+      "context_sha256": "eee0dcc17983a5253996919d711552b88983a22540b5d7d6dd8adf59d26cecba"
+    },
+    "origin_085": {
+      "origin_port": "Cattalini Terminais Marítimos",
+      "origin_state": "PR",
+      "rows": 1,
+      "tonnes": 4964.846,
+      "displayed_tonnes": 4965,
+      "xlsx_sha256": "a0ba676db586e1d28f061a2766c2144f7308649379254ce94391e05332e1c2c8",
+      "context_sha256": "a69dd1bb2a807108464a23a88a2264e7f1bec80c4af81e733443dc312a2e1739"
+    },
+    "origin_086": {
+      "origin_port": "IP4 Itacoatiara",
+      "origin_state": "AM",
+      "rows": 2,
+      "tonnes": 4525.478,
+      "displayed_tonnes": 4525,
+      "xlsx_sha256": "1e7767bab0dfe0cc1b20fb8dc56bbff17a3a17141d509d0fe637bee3a39fd93f",
+      "context_sha256": "40870ae6da6d649aa8fb0c9a651619e5d00a4a00f8285ba8e46946fb8d8a2ef7"
+    },
+    "origin_087": {
+      "origin_port": "Porto de Santo Antônio (IP4 Fernando de Noronha)",
+      "origin_state": "PE",
+      "rows": 1,
+      "tonnes": 3569.409999999999,
+      "displayed_tonnes": 3569,
+      "xlsx_sha256": "82c2c6ee1a848d7428751becbbc2364f3a2f8d219cf6634334915045578df8d6",
+      "context_sha256": "c12476a039a8a9d6fa99920ea6e025a7325e279832dcdb9c9a87d430e930a17f"
+    },
+    "origin_088": {
+      "origin_port": "Niterói",
+      "origin_state": "RJ",
+      "rows": 3,
+      "tonnes": 3230.165,
+      "displayed_tonnes": 3230,
+      "xlsx_sha256": "ab60e845bd6b5ef5a14cc5cc4f9821e4a6438023599a9108ed1263a983a1d196",
+      "context_sha256": "82801e74acfaa534b1e1827d673c7285922325cbc4cab5bbb44bed8abe468812"
+    },
+    "origin_089": {
+      "origin_port": "TUP ALISEO",
+      "origin_state": "RJ",
+      "rows": 2,
+      "tonnes": 2114.1,
+      "displayed_tonnes": 2114,
+      "xlsx_sha256": "89775385b835a6700ae33f4f266ab44f6740e4a69f5fd4b823bd2d40b40ce8e5",
+      "context_sha256": "3dcb004d471068936f943680598c413f92352315b390379f2467f42837ce3bed"
+    },
+    "origin_090": {
+      "origin_port": "Terminal Aquaviário de Barra do Riacho",
+      "origin_state": "ES",
+      "rows": 1,
+      "tonnes": 1883.059,
+      "displayed_tonnes": 1883,
+      "xlsx_sha256": "5983ce79606eb38c8e6fa27ed096a7bd9a915ce5d3c4ac64389aabc743d45f95",
+      "context_sha256": "09151bdd8dc8c1cc37488552b8c1c8d2498782d5832854c5c95b67f7a5bb9260"
+    },
+    "origin_091": {
+      "origin_port": "Estaleiro Renave",
+      "origin_state": "RJ",
+      "rows": 1,
+      "tonnes": 1811.517,
+      "displayed_tonnes": 1812,
+      "xlsx_sha256": "0c415e92258dac5c96a323daa3e761415c35d72ec403e1a4a0524c5063ddd045",
+      "context_sha256": "6d8e763664daf2def076d12cf4ad548f2172bc272a727a6a3c36d9ddfc4b6b19"
+    },
+    "origin_092": {
+      "origin_port": "Terminal Hidroviário Cimbagé",
+      "origin_state": "RS",
+      "rows": 1,
+      "tonnes": 848.9,
+      "displayed_tonnes": 849,
+      "xlsx_sha256": "c25d513ad54b9500f9a40dd2df1dac1f86cb01946e2e87a5bd559c145dcbc782",
+      "context_sha256": "e6b2cd53d602cef6fcfe3e9a8f52819c48bc112f021c2356fb67a704d8f32fe4"
+    },
+    "origin_093": {
+      "origin_port": "Porto Engenheiro Zephyrino Lavanère Machado Filho",
+      "origin_state": "RJ",
+      "rows": 1,
+      "tonnes": 641.5079999999999,
+      "displayed_tonnes": 642,
+      "xlsx_sha256": "69e85b1aa1d1d7d3fb5b4bce8e9d04ac6434870a0263c3d49b0daa98d71be5d0",
+      "context_sha256": "00a197830132cb2099144eaa50640454949d683db7e4bbffc7565b8d532051de"
+    },
+    "origin_094": {
+      "origin_port": "Terminais Fluviais do Brasil",
+      "origin_state": "AM",
+      "rows": 1,
+      "tonnes": 232.78,
+      "displayed_tonnes": 233,
+      "xlsx_sha256": "59d8adcc1da5d17a71f4312c5152e42a6f16fde77c0dafbc97d2190f6c279a50",
+      "context_sha256": "5c7eddf45b40a161e3a3612d2b45204bcad549caa242c682683f8ecabeb3e4e5"
+    },
+    "origin_095": {
+      "origin_port": "Portocel - Terminal Especializado de Barra do Riacho",
+      "origin_state": "ES",
+      "rows": 1,
+      "tonnes": 126,
+      "displayed_tonnes": 126,
+      "xlsx_sha256": "2cadc41919be8b49ead61cd3816dcf6cf35dd3a09ad381a16cfdc515f73d241b",
+      "context_sha256": "18728cc9497fa734939f7f782eb2a4cfb8c26e479a72ea757d188cc74a6110c7"
+    },
+    "origin_096": {
+      "origin_port": "Não Identificado",
+      "origin_state": "Indeterminado",
+      "rows": 1,
+      "tonnes": 96,
+      "displayed_tonnes": 96,
+      "xlsx_sha256": "1c9cca63a5befad6d32c0e63acd4164795561ad6b496a3f0e5784bafbfa71328",
+      "context_sha256": "c3fab8e567cd431608272b004a28a4f4efa281a64ffa23162603a46cff7c8485"
+    },
+    "origin_097": {
+      "origin_port": "FPSO Frade",
+      "origin_state": "ZEE/Plat. Continental",
+      "rows": 1,
+      "tonnes": 5.1,
+      "displayed_tonnes": 5,
+      "xlsx_sha256": "8ebcd19dfd39585dfa6f9bdf1806cf7db34e1ae6a7f69a1465dc18b90c4f7ab6",
+      "context_sha256": "de9c4caabc72b4b72d71191fc71b5d48c37872b08361418cd300f488242a2c77"
+    },
+    "origin_098": {
+      "origin_port": "Altamira",
+      "origin_state": "PA",
+      "rows": 1,
+      "tonnes": 4.5,
+      "displayed_tonnes": 4,
+      "xlsx_sha256": "22878066e0ca31afedf2059a8ffa15d7d5e1c624a781558c8fc3bd1d280d5d85",
+      "context_sha256": "31f1211a1dcc879251be612a58c049ee646cc6023d3ea6b07bd719fbfc43afdd"
+    },
+    "pecem": {
+      "origin_port": "Terminal Portuário do Pecém",
+      "origin_state": "CE",
+      "rows": 18,
+      "tonnes": 2529409.822999947,
+      "displayed_tonnes": 2529410,
+      "xlsx_sha256": "44635ebe60b91ac1e290857e7ca035659bd2699ab34a2336d785fdb5d5176d0e",
+      "context_sha256": "99c708edf03211bed1c8d513da816ff8798464478048ffce73f8fbd3c143d802"
+    },
+    "ponta_madeira": {
+      "origin_port": "Terminal Marítimo de Ponta da Madeira",
+      "origin_state": "MA",
+      "rows": 2,
+      "tonnes": 3236892.686,
+      "displayed_tonnes": 3236893,
+      "xlsx_sha256": "d22723be1d5c848110fa43b26e586c0424f2894172c05a5e0f4219a3b827b981",
+      "context_sha256": "2800fe990a817b8a9fdfbc3baf0e5e9d9a3446ebb8e5c44df33a8b120d4cec45"
+    },
+    "rio_janeiro": {
+      "origin_port": "Rio de Janeiro",
+      "origin_state": "RJ",
+      "rows": 31,
+      "tonnes": 6236692.922000028,
+      "displayed_tonnes": 6236693,
+      "xlsx_sha256": "f204dee2189ff92c64e2d64aa8c2187edc8ecd65d6fb7c7a0509c692e429de8c",
+      "context_sha256": "27511dded4887e1902e363d84eefce9abf5c7424a42b6e230ff926ad3e68b5a0"
+    },
+    "santos": {
+      "origin_port": "Santos",
+      "origin_state": "SP",
+      "rows": 30,
+      "tonnes": 8790074.053,
+      "displayed_tonnes": 8790074,
+      "xlsx_sha256": "cef03c802d32ccf31d3f3ad96aa2c864a0fe418fe817d980f057783bc87edb98",
+      "context_sha256": "fdd03ec2bbeeb4488f39a3468f3d54d14a94294d948bfbd20332af9407fd2286"
+    },
+    "suape": {
+      "origin_port": "Suape",
+      "origin_state": "PE",
+      "rows": 34,
+      "tonnes": 6531260.247,
+      "displayed_tonnes": 6531260,
+      "xlsx_sha256": "2d1406ecb9c775ec3e12261964be6e84b2b686f0f55014d80827958352546560",
+      "context_sha256": "c6293939e3d2e0872ed9ece47ece0af1997679bb91ac01247e55f339c7ceecc1"
+    },
+    "trombetas": {
+      "origin_port": "Terminal Trombetas",
+      "origin_state": "PA",
+      "rows": 2,
+      "tonnes": 6936233.31,
+      "displayed_tonnes": 6936233,
+      "xlsx_sha256": "35fddca469c8430e95a114778b629dac6271d8a2cbd1e5a1ae677a9d37dcca7d",
+      "context_sha256": "65124fbbcbc7227425ca7015b38901be134575e16af423f34c5ff7d20ba7df4b"
+    },
+    "vitoria": {
+      "origin_port": "Vitória",
+      "origin_state": "ES",
+      "rows": 21,
+      "tonnes": 6977381.739999886,
+      "displayed_tonnes": 6977382,
+      "xlsx_sha256": "e541e0d2a09d2291f4e271b9a3894b3f579a5562b029fe35723fec25bc63892b",
+      "context_sha256": "502c9f7731649cb6f73c831b6e6ff052cc41ddb69bcbb239dbf0e1b2e2195da7"
+    }
+  },
+  "destinations": [
+    {
+      "destination_state": "SP",
+      "destination_port": "Terminal Aquaviário de São Sebastião (Almirante Barroso)",
+      "tonnes": 46592452.82399999
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal Aquaviário de Angra dos Reis",
+      "tonnes": 34878397.45000002
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal de Petróleo TPET/TOIL - Açu",
+      "tonnes": 30285734.66099998
+    },
+    {
+      "destination_state": "MA",
+      "destination_port": "Terminal Portuário Privativo da Alumar",
+      "tonnes": 10138796.365
+    },
+    {
+      "destination_state": "PE",
+      "destination_port": "Suape",
+      "tonnes": 9897151.635000017
+    },
+    {
+      "destination_state": "SC",
+      "destination_port": "Terminal Aquaviário de São Francisco do Sul",
+      "tonnes": 9863401.627999997
+    },
+    {
+      "destination_state": "BA",
+      "destination_port": "Terminal Aquaviário de Madre de Deus",
+      "tonnes": 9552698.662999999
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal Aquaviário da Ilha D'Água",
+      "tonnes": 9458948.798999997
+    },
+    {
+      "destination_state": "CE",
+      "destination_port": "Terminal Portuário do Pecém",
+      "tonnes": 7846368.836000008
+    },
+    {
+      "destination_state": "RS",
+      "destination_port": "Terminal Aquaviário de Osório",
+      "tonnes": 7005267.989999998
+    },
+    {
+      "destination_state": "SP",
+      "destination_port": "Santos",
+      "tonnes": 5239330.156999871
+    },
+    {
+      "destination_state": "PA",
+      "destination_port": "Vila do Conde",
+      "tonnes": 5239271.289999994
+    },
+    {
+      "destination_state": "PR",
+      "destination_port": "Paranaguá",
+      "tonnes": 3226274.939000002
+    },
+    {
+      "destination_state": "AM",
+      "destination_port": "Porto Chibatão",
+      "tonnes": 2886175.158999994
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Rio de Janeiro",
+      "tonnes": 2578723.58
+    },
+    {
+      "destination_state": "MA",
+      "destination_port": "Itaqui",
+      "tonnes": 2506193.807
+    },
+    {
+      "destination_state": "SC",
+      "destination_port": "São Francisco do Sul",
+      "tonnes": 2454118.091
+    },
+    {
+      "destination_state": "CE",
+      "destination_port": "Fortaleza",
+      "tonnes": 2186467.463
+    },
+    {
+      "destination_state": "ES",
+      "destination_port": "Vitória",
+      "tonnes": 2014028.591000001
+    },
+    {
+      "destination_state": "BA",
+      "destination_port": "Salvador",
+      "tonnes": 1908586.016000001
+    },
+    {
+      "destination_state": "SC",
+      "destination_port": "Porto Itapoá Terminais Portuários",
+      "tonnes": 1678808.69
+    },
+    {
+      "destination_state": "SP",
+      "destination_port": "DP World Santos",
+      "tonnes": 1453087.98
+    },
+    {
+      "destination_state": "RN",
+      "destination_port": "Areia Branca",
+      "tonnes": 1446577.1
+    },
+    {
+      "destination_state": "AM",
+      "destination_port": "Terminais Fluviais do Brasil",
+      "tonnes": 1388048.126
+    },
+    {
+      "destination_state": "PA",
+      "destination_port": "Belém",
+      "tonnes": 1303092.635
+    },
+    {
+      "destination_state": "ES",
+      "destination_port": "Portocel - Terminal Especializado de Barra do Riacho",
+      "tonnes": 1191166.02
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Itaguaí",
+      "tonnes": 1067941.617
+    },
+    {
+      "destination_state": "SC",
+      "destination_port": "Portonave - Terminais Portuários de Navegantes",
+      "tonnes": 932245.000000001
+    },
+    {
+      "destination_state": "RS",
+      "destination_port": "Rio Grande",
+      "tonnes": 901551.9279999994
+    },
+    {
+      "destination_state": "ES",
+      "destination_port": "Terminal de Tubarão",
+      "tonnes": 590313.9979999999
+    },
+    {
+      "destination_state": "ES",
+      "destination_port": "Terminal de Praia Mole",
+      "tonnes": 540168.118
+    },
+    {
+      "destination_state": "PB",
+      "destination_port": "Cabedelo",
+      "tonnes": 531491.761
+    },
+    {
+      "destination_state": "AM",
+      "destination_port": "Super Terminais Comércio e Indústria",
+      "tonnes": 498044.3699999945
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal TKCSA",
+      "tonnes": 379183
+    },
+    {
+      "destination_state": "AL",
+      "destination_port": "Maceió",
+      "tonnes": 371140.228
+    },
+    {
+      "destination_state": "SC",
+      "destination_port": "Itajaí",
+      "tonnes": 370112.3060000007
+    },
+    {
+      "destination_state": "PA",
+      "destination_port": "Santarém",
+      "tonnes": 362182.1079999999
+    },
+    {
+      "destination_state": "BA",
+      "destination_port": "Aratu",
+      "tonnes": 304199.118
+    },
+    {
+      "destination_state": "ES",
+      "destination_port": "Terminal Marítimo Alfandegado Privativo de Uso Misto de Praia Mole",
+      "tonnes": 290526.544
+    },
+    {
+      "destination_state": "SP",
+      "destination_port": "Terminal Marítimo Privativo de Cubatão - TMPC",
+      "tonnes": 281551.892
+    },
+    {
+      "destination_state": "AM",
+      "destination_port": "Cimento Vencemos",
+      "tonnes": 275077.224
+    },
+    {
+      "destination_state": "SP",
+      "destination_port": "Terminal Marítimo Dow",
+      "tonnes": 245284
+    },
+    {
+      "destination_state": "SC",
+      "destination_port": "Imbituba",
+      "tonnes": 182558.2500000001
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal Marítimo Braskem",
+      "tonnes": 123290.602
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal Ilha do Governador",
+      "tonnes": 84992.78
+    },
+    {
+      "destination_state": "PR",
+      "destination_port": "Cattalini Terminais Marítimos",
+      "tonnes": 78372.995
+    },
+    {
+      "destination_state": "ES",
+      "destination_port": "Terminal de Barcaças Oceânicas",
+      "tonnes": 65930.71600000003
+    },
+    {
+      "destination_state": "RN",
+      "destination_port": "Terminal Aquaviário de Guamaré",
+      "tonnes": 49963.58300000001
+    },
+    {
+      "destination_state": "PE",
+      "destination_port": "Recife",
+      "tonnes": 45525.178
+    },
+    {
+      "destination_state": "SP",
+      "destination_port": "São Sebastião",
+      "tonnes": 31499.41
+    },
+    {
+      "destination_state": "SC",
+      "destination_port": "Teporti",
+      "tonnes": 30508.61
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal Flexível de GNL da Baía da Guanabara",
+      "tonnes": 17848.047
+    },
+    {
+      "destination_state": "ES",
+      "destination_port": "Terminal Aquaviário de Barra do Riacho",
+      "tonnes": 15814.07
+    },
+    {
+      "destination_state": "RS",
+      "destination_port": "Porto Alegre",
+      "tonnes": 14143.54
+    },
+    {
+      "destination_state": "BA",
+      "destination_port": "Terminal Marítimo Dow Aratu - Bahia",
+      "tonnes": 13316.274
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal Aquaviário de Ilha Redonda e Terminal Aquaviário da Ilha Comprida",
+      "tonnes": 10400.647
+    },
+    {
+      "destination_state": "SE",
+      "destination_port": "Terminal Marítimo Inácio Barbosa - TMIB",
+      "tonnes": 8001.911000000001
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "TERMINAL TECHNIPFMC DO BRASIL",
+      "tonnes": 7055
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal de Combustíveis Marítimos do Açu - TECMA",
+      "tonnes": 6223.558
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal Nov Flexibles",
+      "tonnes": 5108.927000000001
+    },
+    {
+      "destination_state": "SC",
+      "destination_port": "Poly Terminais Portuários",
+      "tonnes": 4999.782
+    },
+    {
+      "destination_state": "RS",
+      "destination_port": "TUP Supergasbrás",
+      "tonnes": 4041.715
+    },
+    {
+      "destination_state": "AL",
+      "destination_port": "Terminal Braskem",
+      "tonnes": 4004.636
+    },
+    {
+      "destination_state": "RS",
+      "destination_port": "Terminal Portuário Bunge Alimentos",
+      "tonnes": 3499.886
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Angra dos Reis",
+      "tonnes": 2544.816
+    },
+    {
+      "destination_state": "SP",
+      "destination_port": "Base Logística de Dutos",
+      "tonnes": 2155.264
+    },
+    {
+      "destination_state": "AP",
+      "destination_port": "TERMINAL DE MACAPA",
+      "tonnes": 1159.176
+    },
+    {
+      "destination_state": "BA",
+      "destination_port": "TUP Enseada Naval",
+      "tonnes": 910.02
+    },
+    {
+      "destination_state": "RS",
+      "destination_port": "Terminal Santa Clara",
+      "tonnes": 597.277
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Terminal Dome",
+      "tonnes": 552.5250000000001
+    },
+    {
+      "destination_state": "RJ",
+      "destination_port": "Subsea 7 do Brasil Serviços LTDA",
+      "tonnes": 235.476
+    }
+  ],
+  "catalogues": {
+    "origins": {
+      "xlsx": "port_pairs_all_origins_2025.xlsx",
+      "xlsx_sha256": "09e8117437dfc6c1f8ccdc34f46683bd65df463ea83b0c7a431d0ab873657905",
+      "context": "port_pairs_all_origins_2025_context.jpg",
+      "context_sha256": "10510072d3052b59129e928366e1fd3302d3d5e6610b186a6274ffc572b9c544"
+    },
+    "destinations": {
+      "xlsx": "port_pairs_all_destinations_2025.xlsx",
+      "xlsx_sha256": "473672ddbe34a04a92dc8101d59aa7c3064fcf634e08e73aa5d5bfd9528ba81d",
+      "context": "port_pairs_all_destinations_2025_context.jpg",
+      "context_sha256": "694f08dbb09d6e6c666f8c0e5c2872f3e11962517ebb27f530054e0f97a7bba8"
+    }
+  },
+  "csv_sha256": "91685eadfa1d27af214cd94111a34cc178d81913caa0651a66c168e3bb99f8d0"
+}

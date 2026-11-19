@@ -425,7 +425,7 @@ def render_water_freight(t):
               "grain_regions": "Maize/soybean regional port aggregates",
               "port_monthly": "Monthly port handling (2025)",
               "coastal_region_pairs": "Regional cabotage origin–destination shares (2025)",
-              "port_pairs": "Port-to-port cabotage tonnes (2025 · three origins)"}
+              "port_pairs": "Cabotage origin–destination tonnes (2025 · 98 origins)"}
     dataset = ui.selectbox("Water reference dataset", list(labels),
                            format_func=labels.get, key="brazil_water_dataset")
     if dataset == "coastal_region_pairs":
@@ -461,27 +461,32 @@ def render_water_freight(t):
 
 def render_water_port_pairs(t):
     ui = LocalizedUI(t)
-    ui.subheader("Reported port-to-port cabotage · 2025")
+    ui.subheader("Reported cabotage origin–destination flows · 2025")
     try:
         data, metadata = load_port_pairs()
     except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
         ui.error("The verified ANTAQ port-pair snapshot is unavailable.")
         return
-    ui.warning("Coverage includes three reviewed origins only. Unlisted pairs are unavailable, "
-               "not zero; these are reported transport volumes, not navigable itineraries.")
-    origin = ui.selectbox("Origin port", sorted(data["origin_port"].unique()), key="water_port_origin")
-    view = data.filter(pl.col("origin_port") == origin)
+    ui.warning("Coverage reconciles all 98 origins and 71 destinations in the reviewed 2025 cabotage table. "
+               "Includes ports, terminals, offshore and undetermined categories; not unique cargo or navigable itineraries.")
+    all_origins = "All reported origins"
+    origins = sorted(data["origin_port"].unique())
+    origin = ui.selectbox("Source origin", [all_origins, *origins], index=origins.index("Santos") + 1,
+                          key="water_port_origin")
+    view = data if origin == all_origins else data.filter(pl.col("origin_port") == origin)
     all_ports = "All reported destinations"
-    destination = ui.selectbox("Destination port", [all_ports, *sorted(view["destination_port"].unique())],
+    destination = ui.selectbox("Source destination", [all_ports, *sorted(view["destination_port"].unique())],
                                key="water_port_destination")
     if destination != all_ports:
         view = view.filter(pl.col("destination_port") == destination)
-    ui.metric("Reported port pairs", view.height)
+    ui.metric("Reported OD pairs", view.height)
     ui.metric("Reported transport (tonnes)", f"{view['tonnes'].sum():,.3f}")
-    chart = view.select(pl.col("destination_port").alias(t("Destination port")),
+    chart = view.group_by("destination_port").agg(pl.col("tonnes").sum()).sort("tonnes", descending=True).head(20)
+    chart = chart.select(pl.col("destination_port").alias(t("Source destination")),
                         pl.col("tonnes").alias(t("Tonnes")))
-    st.bar_chart(chart, x=t("Destination port"), y=t("Tonnes"), horizontal=True,
-                 height=max(250, view.height * 26))
+    ui.caption("Chart shows up to 20 destinations; the table and CSV retain all filtered links.")
+    st.bar_chart(chart, x=t("Source destination"), y=t("Tonnes"), horizontal=True,
+                 height=max(250, chart.height * 26))
     ui.dataframe(view, hide_index=True)
     ui.download_button("Download filtered port pairs (CSV)", view.write_csv().encode(),
                        "antaq_port_pairs_2025.csv", "text/csv")

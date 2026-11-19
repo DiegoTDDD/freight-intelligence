@@ -50,6 +50,16 @@
       "sha256": "4fc19b8b0109f813e1ee7aabcb2dd05e0da679c8efdafa1bfccae47cfbcd139b",
       "width": 1280,
       "height": 720
+    },
+    {
+      "path": "water-od-en.jpg",
+      "captured_on": "2026-11-19",
+      "workspace": "Brazilian freight / water / cabotage OD",
+      "scope": "All 510 reviewed 2025 cabotage links, 98 origins and 71 destinations; transport events, not unique cargo or navigable itineraries",
+      "sha256": "33891fcce89edf7d12ee846c7a56c2ab80b5d4b4e32282f0133f5483ade7c97a",
+      "width": 1280,
+      "height": 720
     }
-  ]
+  ],
+  "updated_on": "2026-11-19"
 }

@@ -92,13 +92,18 @@ def test_port_pairs_view_filters_original_transport_volumes_and_translates():
     app.selectbox(key="brazil_water_dataset").select("port_pairs").run()
     app.selectbox(key="water_port_origin").select("Santos").run()
     assert not app.exception and not app.error
-    assert any(item.label == "Reported port pairs" and item.value == "30" for item in app.metric)
+    assert any(item.label == "Reported OD pairs" and item.value == "30" for item in app.metric)
     app.selectbox(key="water_port_destination").select("Suape").run()
-    assert any(item.label == "Reported port pairs" and item.value == "1" for item in app.metric)
+    assert any(item.label == "Reported OD pairs" and item.value == "1" for item in app.metric)
     assert any(item.label == "Reported transport (tonnes)" and item.value == "991,103.005" for item in app.metric)
+    app.selectbox(key="water_port_origin").select("All reported origins").run()
+    app.selectbox(key="water_port_destination").select("All reported destinations").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Reported OD pairs" and item.value == "510" for item in app.metric)
+    assert any(item.label == "Reported transport (tonnes)" and item.value == "222,975,436.378" for item in app.metric)
     app.selectbox(key="language").select("Português").run()
     assert not app.exception and not app.error
-    assert any(item.label == "Porto de origem" for item in app.selectbox)
+    assert any(item.label == "Origem na fonte" for item in app.selectbox)
 
 
 def test_historical_gas_years_keep_display_and_diagnostics_in_the_same_year():

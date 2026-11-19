@@ -122,9 +122,9 @@ diagnostic arrays. See [historical quality rules and investigated absences](braz
 
 ### Observed cabotage port pairs
 
-`GET /api/brazil/water-port-pairs` returns 77 reviewed 2025 links from three origins.
+`GET /api/brazil/water-port-pairs` returns 510 reviewed 2025 links covering all 98 source origins and 71 destinations.
 Exact optional filters: `origin_port`, `destination_port`; `year=2025` only.
 Pagination: `limit` (1–500, default 100), `offset` (zero-based). `filtered_tonnes`
-and `total` apply before pagination. Partial origin coverage and original source
+and `total` apply before pagination. Reviewed population coverage and original source
 context are explicit in metadata. Analytics permission is required in authenticated
 mode. See [scope and examples](brazil_water_ports.md).

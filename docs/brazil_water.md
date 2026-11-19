@@ -52,7 +52,7 @@ reference year and direction. Reader checks enforce hashes, units, populations,
 direction, year coverage and duplicate keys; invalid/missing bundles return 503.
 
 This closes the absence of inland/coastal reference analyses, not complete raw
-waterway-flow coverage. Historical monthly records beyond 2025, finer port/state OD flows and fuller corridor
+waterway-flow coverage. Historical monthly records beyond 2025, OD flows outside the reviewed 2025 cabotage population and fuller corridor
 detail remain future work. The legacy ANTAQ download page returned 502 during
 source discovery; the reviewed official report remains reproducible independently.
 
@@ -95,6 +95,6 @@ positions, navigable itineraries or complete inland/coastal shipment coverage.
 
 ## Observed port-level pairs
 
-A separate reviewed view now supplies 77 actual destination links from Santos,
-Suape and Manaus, with original numeric tonnes. See [method, exports and coverage](brazil_water_ports.md).
+A separate reviewed view now supplies 510 observed OD links covering all 98 origins and 71 destinations in the
+reviewed 2025 cabotage table, with original numeric tonnes. See [method, exports and coverage](brazil_water_ports.md).
 This does not expand the regional fractions into inferred port pairs.

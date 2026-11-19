@@ -1,4 +1,168 @@
 year,origin_port,origin_state,destination_port,destination_state,tonnes
+2025,A.D.S. Reparos Navais,RJ,Rio de Janeiro,RJ,8183.984000000001
+2025,Altamira,PA,Salvador,BA,4.5
+2025,Angra dos Reis,RJ,Vitória,ES,560.9
+2025,Angra dos Reis,RJ,Rio de Janeiro,RJ,158434.8370000001
+2025,Angra dos Reis,RJ,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,57537.196
+2025,Aratu,BA,Maceió,AL,6850.458
+2025,Aratu,BA,Terminal Braskem,AL,4004.636
+2025,Aratu,BA,Fortaleza,CE,39879.457
+2025,Aratu,BA,Itaqui,MA,385617.6509999998
+2025,Aratu,BA,Belém,PA,41089.51699999999
+2025,Aratu,BA,Cabedelo,PB,32127.63399999999
+2025,Aratu,BA,Suape,PE,693454.581
+2025,Aratu,BA,Cattalini Terminais Marítimos,PR,78372.995
+2025,Aratu,BA,Paranaguá,PR,14306.927
+2025,Aratu,BA,Terminal Aquaviário da Ilha D'Água,RJ,11813.87
+2025,Aratu,BA,Terminal Ilha do Governador,RJ,58376.749
+2025,Aratu,BA,Terminal Marítimo Braskem,RJ,123290.602
+2025,Aratu,BA,Rio Grande,RS,64099.338
+2025,Aratu,BA,Santos,SP,418404.8610000001
+2025,Aratu,BA,Terminal Marítimo Dow,SP,245284.0
+2025,Areia Branca,RN,Portocel - Terminal Especializado de Barra do Riacho,ES,100538.02
+2025,Areia Branca,RN,Paranaguá,PR,45943.94
+2025,Areia Branca,RN,Rio de Janeiro,RJ,61600.0
+2025,Areia Branca,RN,Porto Alegre,RS,14143.54
+2025,Areia Branca,RN,Santos,SP,480182.0
+2025,Bacia Sedimentar Pernambuco-Paraíba,ZEE/Plat. Continental,Terminal Marítimo Inácio Barbosa - TMIB,SE,68.496
+2025,Bacia Sedimentar Pernambuco-Paraíba,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,35844.724
+2025,Bacia Sedimentar SEAL,ZEE/Plat. Continental,Terminal Marítimo Inácio Barbosa - TMIB,SE,7933.415000000001
+2025,Bacia Sedimentar de Camamu-Almada,ZEE/Plat. Continental,Salvador,BA,13269.74
+2025,Bacia Sedimentar de Campos,ZEE/Plat. Continental,Terminal Aquaviário de Madre de Deus,BA,432513.01
+2025,Bacia Sedimentar de Campos,ZEE/Plat. Continental,Suape,PE,226303.898
+2025,Bacia Sedimentar de Campos,ZEE/Plat. Continental,Terminal Aquaviário da Ilha D'Água,RJ,4282025.528
+2025,Bacia Sedimentar de Campos,ZEE/Plat. Continental,Terminal Aquaviário de Angra dos Reis,RJ,4659983.489
+2025,Bacia Sedimentar de Campos,ZEE/Plat. Continental,Terminal de Petróleo TPET/TOIL - Açu,RJ,2491763.148
+2025,Bacia Sedimentar de Campos,ZEE/Plat. Continental,Terminal Aquaviário de Osório,RS,1332598.92
+2025,Bacia Sedimentar de Campos,ZEE/Plat. Continental,Terminal Aquaviário de São Francisco do Sul,SC,564943.97
+2025,Bacia Sedimentar de Campos,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,15919370.33000001
+2025,Bacia Sedimentar de Santos,ZEE/Plat. Continental,Terminal Aquaviário de Madre de Deus,BA,6763554.729999999
+2025,Bacia Sedimentar de Santos,ZEE/Plat. Continental,Suape,PE,463567.211
+2025,Bacia Sedimentar de Santos,ZEE/Plat. Continental,Terminal Aquaviário da Ilha D'Água,RJ,4599492.917999999
+2025,Bacia Sedimentar de Santos,ZEE/Plat. Continental,Terminal Aquaviário de Angra dos Reis,RJ,29731667.00900001
+2025,Bacia Sedimentar de Santos,ZEE/Plat. Continental,Terminal de Petróleo TPET/TOIL - Açu,RJ,27793971.51299999
+2025,Bacia Sedimentar de Santos,ZEE/Plat. Continental,Terminal Aquaviário de Osório,RS,4692757.579999999
+2025,Bacia Sedimentar de Santos,ZEE/Plat. Continental,Terminal Aquaviário de São Francisco do Sul,SC,8907852.849999996
+2025,Bacia Sedimentar de Santos,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,17737189.086
+2025,Barra do Riacho,ES,Vitória,ES,114.64
+2025,Barra do Riacho,ES,Paranaguá,PR,32912.25900000001
+2025,Barra do Riacho,ES,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,21755.344
+2025,Belém,PA,Terminal Aquaviário de Madre de Deus,BA,93.487
+2025,Belém,PA,Fortaleza,CE,14379.841
+2025,Belém,PA,Itaqui,MA,97756.26599999999
+2025,Belém,PA,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,1597.071
+2025,Brasbunker,SP,Poly Terminais Portuários,SC,4999.782
+2025,Brasil Logística Offshore e Estaleiro Naval,RJ,Terminal de Combustíveis Marítimos do Açu - TECMA,RJ,6223.558
+2025,Cabedelo,PB,TERMINAL DE MACAPA,AP,1159.176
+2025,Cabedelo,PB,Terminal Aquaviário de Madre de Deus,BA,77343.752
+2025,Cabedelo,PB,Fortaleza,CE,40122.452
+2025,Cabedelo,PB,Itaqui,MA,20657.979
+2025,Cabedelo,PB,Suape,PE,21018.833
+2025,Cachoeira do Sul,RS,Terminais Fluviais do Brasil,AM,7284.637
+2025,Cattalini Terminais Marítimos,PR,Cabedelo,PB,4964.846
+2025,Coari,AM,Fortaleza,CE,1957.947
+2025,Coari,AM,Itaqui,MA,11280.118
+2025,Coari,AM,Terminal Aquaviário de Osório,RS,35773.48
+2025,Estaleiro Atlântico Sul - EAS,PE,Terminal Portuário Privativo da Alumar,MA,14539.693
+2025,Estaleiro Renave,RJ,Angra dos Reis,RJ,1811.517
+2025,FPSO Brasil,ZEE/Plat. Continental,Terminal Aquaviário de Angra dos Reis,RJ,17501.481
+2025,FPSO Brasil,ZEE/Plat. Continental,Terminal Dome,RJ,547.4250000000001
+2025,FPSO Cidade de Angra dos Reis,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,155029.326
+2025,FPSO Cidade de Ilha Bela,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,135612.016
+2025,FPSO Cidade de Itaguaí,RJ,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,1722236.455
+2025,FPSO Cidade de Mangaratiba,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,1761263.221
+2025,FPSO Cidade de Maricá,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,1494278.034
+2025,FPSO Cidade de Paraty,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,760913.178
+2025,FPSO Cidade de Sao Paulo,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,635769.7799999999
+2025,FPSO Cidade de Saquarema,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,1056514.725
+2025,FPSO Espírito Santo,ZEE/Plat. Continental,Terminal Aquaviário de Madre de Deus,BA,77565.74
+2025,FPSO Espírito Santo,ZEE/Plat. Continental,Suape,PE,2823400.251000001
+2025,FPSO Espírito Santo,ZEE/Plat. Continental,Terminal Aquaviário da Ilha D'Água,RJ,427017.4999999999
+2025,FPSO Espírito Santo,ZEE/Plat. Continental,Terminal Aquaviário de Angra dos Reis,RJ,10150.196
+2025,FPSO Espírito Santo,ZEE/Plat. Continental,Terminal Aquaviário de Osório,RS,507511.45
+2025,FPSO Espírito Santo,ZEE/Plat. Continental,Terminal Aquaviário de São Francisco do Sul,SC,174870.66
+2025,FPSO Frade,ZEE/Plat. Continental,Terminal Dome,RJ,5.1
+2025,FPSO PIONEIRO DE LIBRA,ZEE/Plat. Continental,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,486779.395
+2025,Fortaleza,CE,Maceió,AL,24504.808
+2025,Fortaleza,CE,Porto Chibatão,AM,169407.471
+2025,Fortaleza,CE,Super Terminais Comércio e Indústria,AM,90.74
+2025,Fortaleza,CE,Salvador,BA,190830.5920000001
+2025,Fortaleza,CE,TUP Enseada Naval,BA,910.02
+2025,Fortaleza,CE,Terminal Aquaviário de Madre de Deus,BA,70.304
+2025,Fortaleza,CE,Terminal de Praia Mole,ES,59248.118
+2025,Fortaleza,CE,Itaqui,MA,84888.567
+2025,Fortaleza,CE,Terminal Portuário Privativo da Alumar,MA,8644.351
+2025,Fortaleza,CE,Belém,PA,173678.485
+2025,Fortaleza,CE,Vila do Conde,PA,5094.13
+2025,Fortaleza,CE,Cabedelo,PB,42990.141
+2025,Fortaleza,CE,Suape,PE,86443.671
+2025,Fortaleza,CE,Paranaguá,PR,6900.718
+2025,Fortaleza,CE,Rio de Janeiro,RJ,7627.08
+2025,Fortaleza,CE,Santos,SP,21912.365
+2025,Fortaleza,CE,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,42719.719
+2025,IP4 Itacoatiara,AM,Itaqui,MA,3922.191
+2025,IP4 Itacoatiara,AM,Paranaguá,PR,603.287
+2025,Imbituba,SC,Porto Chibatão,AM,57090.69899999996
+2025,Imbituba,SC,Salvador,BA,64387.00200000001
+2025,Imbituba,SC,Terminal Portuário do Pecém,CE,312477.2879999999
+2025,Imbituba,SC,Terminal Portuário Privativo da Alumar,MA,44085.526
+2025,Imbituba,SC,Vila do Conde,PA,65732.61000000016
+2025,Imbituba,SC,Suape,PE,209025.2820000001
+2025,Imbituba,SC,Paranaguá,PR,2360.995
+2025,Imbituba,SC,Rio de Janeiro,RJ,280.5
+2025,Imbituba,SC,Porto Itapoá Terminais Portuários,SC,1093.797
+2025,Imbituba,SC,DP World Santos,SP,133.83
+2025,Imbituba,SC,Santos,SP,32037.33800000031
+2025,Imbituba,SC,São Sebastião,SP,1668.29
+2025,Itaguaí,RJ,Porto Chibatão,AM,608234.715
+2025,Itaguaí,RJ,Aratu,BA,30890.69
+2025,Itaguaí,RJ,Terminal Aquaviário de Madre de Deus,BA,175.556
+2025,Itaguaí,RJ,Terminal Portuário do Pecém,CE,59380.88899999999
+2025,Itaguaí,RJ,Vitória,ES,3459.2
+2025,Itaguaí,RJ,Belém,PA,197.2
+2025,Itaguaí,RJ,Vila do Conde,PA,7867.590000000003
+2025,Itaguaí,RJ,Suape,PE,88619.509
+2025,Itaguaí,RJ,Rio de Janeiro,RJ,2.27
+2025,Itaguaí,RJ,Terminal Santa Clara,RS,60.53
+2025,Itaguaí,RJ,Itajaí,SC,2527.014
+2025,Itaguaí,RJ,DP World Santos,SP,310.9
+2025,Itaguaí,RJ,Santos,SP,3090.869999999943
+2025,Itajaí,SC,Porto Chibatão,AM,7287.75
+2025,Itajaí,SC,Super Terminais Comércio e Indústria,AM,36955.71000000008
+2025,Itajaí,SC,Salvador,BA,231396.4530000002
+2025,Itajaí,SC,Terminal Portuário do Pecém,CE,39324.84800000001
+2025,Itajaí,SC,Vila do Conde,PA,3974.550000000001
+2025,Itajaí,SC,Suape,PE,129294.7979999999
+2025,Itajaí,SC,Paranaguá,PR,235989.6550000002
+2025,Itajaí,SC,Itaguaí,RJ,22.501
+2025,Itajaí,SC,Rio de Janeiro,RJ,178.743
+2025,Itajaí,SC,Rio Grande,RS,18479.752
+2025,Itajaí,SC,Imbituba,SC,4799.440000000001
+2025,Itajaí,SC,Porto Itapoá Terminais Portuários,SC,261675.6399999999
+2025,Itajaí,SC,DP World Santos,SP,8183.379999999998
+2025,Itajaí,SC,Santos,SP,49259.57400000095
+2025,Itaqui,MA,Maceió,AL,20211.843
+2025,Itaqui,MA,Terminais Fluviais do Brasil,AM,514376.96
+2025,Itaqui,MA,Terminal Aquaviário de Madre de Deus,BA,28124.94
+2025,Itaqui,MA,Fortaleza,CE,298128.4400000001
+2025,Itaqui,MA,Belém,PA,413635.3729999995
+2025,Itaqui,MA,Santarém,PA,129405.533
+2025,Itaqui,MA,Vila do Conde,PA,128383.76
+2025,Itaqui,MA,Cabedelo,PB,41398.073
+2025,Itaqui,MA,Suape,PE,226294.496
+2025,Itaqui,MA,Terminal Aquaviário da Ilha D'Água,RJ,19129.143
+2025,Itaqui,MA,Santos,SP,35000.0
+2025,Itaqui,MA,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,37836.496
+2025,Maceió,AL,Aratu,BA,13835.472
+2025,Maceió,AL,Terminal Aquaviário de Madre de Deus,BA,93479.69
+2025,Maceió,AL,Fortaleza,CE,34669.325
+2025,Maceió,AL,Vitória,ES,33575.016
+2025,Maceió,AL,Cabedelo,PB,161421.465
+2025,Maceió,AL,Suape,PE,6880.0
+2025,Maceió,AL,Rio de Janeiro,RJ,1256518.531
+2025,Maceió,AL,Terminal Aquaviário de Guamaré,RN,8119.944
+2025,Maceió,AL,Rio Grande,RS,92537.658
+2025,Maceió,AL,Santos,SP,180475.072
 2025,Manaus,AM,Salvador,BA,341868.4539999999
 2025,Manaus,AM,Fortaleza,CE,148.76
 2025,Manaus,AM,Terminal Portuário do Pecém,CE,291938.9810000001
@@ -12,6 +176,143 @@ year,origin_port,origin_state,destination_port,destination_state,tonnes
 2025,Manaus,AM,Itajaí,SC,34421.04900000007
 2025,Manaus,AM,Santos,SP,1202740.582999924
 2025,Manaus,AM,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,135550.585
+2025,Natal,RN,Fortaleza,CE,60047.765
+2025,Niterói,RJ,Vitória,ES,3133.965
+2025,Niterói,RJ,Subsea 7 do Brasil Serviços LTDA,RJ,83.4
+2025,Niterói,RJ,Terminal Nov Flexibles,RJ,12.8
+2025,Não Identificado,Indeterminado,Imbituba,SC,96.0
+2025,Paranaguá,PR,Porto Chibatão,AM,6122.843000000002
+2025,Paranaguá,PR,Super Terminais Comércio e Indústria,AM,35769.75999999996
+2025,Paranaguá,PR,Salvador,BA,8747.517000000002
+2025,Paranaguá,PR,Terminal Portuário do Pecém,CE,65455.97299999998
+2025,Paranaguá,PR,Itaqui,MA,12700.0
+2025,Paranaguá,PR,Terminal Portuário Privativo da Alumar,MA,133878.992
+2025,Paranaguá,PR,Vila do Conde,PA,3472.45
+2025,Paranaguá,PR,Suape,PE,208316.4729999999
+2025,Paranaguá,PR,Itaguaí,RJ,3310.301000000001
+2025,Paranaguá,PR,Rio de Janeiro,RJ,11904.453
+2025,Paranaguá,PR,Terminal Aquaviário de Angra dos Reis,RJ,51915.332
+2025,Paranaguá,PR,Rio Grande,RS,323497.3019999999
+2025,Paranaguá,PR,Imbituba,SC,5910.141
+2025,Paranaguá,PR,Itajaí,SC,30223.15500000001
+2025,Paranaguá,PR,Porto Itapoá Terminais Portuários,SC,40056.46300000001
+2025,Paranaguá,PR,Portonave - Terminais Portuários de Navegantes,SC,15169.21199999999
+2025,Paranaguá,PR,DP World Santos,SP,12111.97
+2025,Paranaguá,PR,Santos,SP,96974.14099999139
+2025,Paranaguá,PR,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,364937.243
+2025,Pelotas,RS,Terminais Fluviais do Brasil,AM,11340.413
+2025,Porto Alegre,RS,Terminais Fluviais do Brasil,AM,8889.391
+2025,Porto Chibatão,AM,Rio de Janeiro,RJ,95042.24199999998
+2025,Porto Chibatão,AM,Imbituba,SC,31.3
+2025,Porto Chibatão,AM,Porto Itapoá Terminais Portuários,SC,88329.32300000002
+2025,Porto Chibatão,AM,DP World Santos,SP,453219.23
+2025,Porto Engenheiro Zephyrino Lavanère Machado Filho,RJ,Rio de Janeiro,RJ,641.5079999999999
+2025,Porto Itapoá Terminais Portuários,SC,Porto Chibatão,AM,302782.0740000001
+2025,Porto Itapoá Terminais Portuários,SC,Terminal Portuário do Pecém,CE,590928.4809999985
+2025,Porto Itapoá Terminais Portuários,SC,Vila do Conde,PA,84901.46999999962
+2025,Porto Itapoá Terminais Portuários,SC,Suape,PE,407993.0059999997
+2025,Porto Itapoá Terminais Portuários,SC,Paranaguá,PR,120421.7060000001
+2025,Porto Itapoá Terminais Portuários,SC,Itaguaí,RJ,48950.54500000002
+2025,Porto Itapoá Terminais Portuários,SC,Rio de Janeiro,RJ,44491.37799999999
+2025,Porto Itapoá Terminais Portuários,SC,Rio Grande,RS,19699.458
+2025,Porto Itapoá Terminais Portuários,SC,Imbituba,SC,108.32
+2025,Porto Itapoá Terminais Portuários,SC,Itajaí,SC,1636.9
+2025,Porto Itapoá Terminais Portuários,SC,Portonave - Terminais Portuários de Navegantes,SC,467.0090000000006
+2025,Porto Itapoá Terminais Portuários,SC,DP World Santos,SP,16205.84
+2025,Porto Itapoá Terminais Portuários,SC,Santos,SP,60219.69900000288
+2025,Porto Sudeste do Brasil S/A,RJ,Salvador,BA,41310.68500000001
+2025,Porto de Santo Antônio (IP4 Fernando de Noronha),PE,Recife,PE,3569.409999999999
+2025,Porto do Açu - Terminal TMULT e TCAR,RJ,Vitória,ES,9915.542
+2025,Porto do Açu - Terminal TMULT e TCAR,RJ,Rio de Janeiro,RJ,171.332
+2025,Porto do Açu - Terminal TMULT e TCAR,RJ,TERMINAL TECHNIPFMC DO BRASIL,RJ,2797.0
+2025,Porto do Açu - Terminal TMULT e TCAR,RJ,Terminal Nov Flexibles,RJ,557.0
+2025,Porto do Açu - Terminal de Minério,RJ,Vitória,ES,5461.432
+2025,Portocel - Terminal Especializado de Barra do Riacho,ES,TERMINAL TECHNIPFMC DO BRASIL,RJ,126.0
+2025,Portonave - Terminais Portuários de Navegantes,SC,Porto Chibatão,AM,148109.0500000001
+2025,Portonave - Terminais Portuários de Navegantes,SC,Terminal Portuário do Pecém,CE,164238.5570000001
+2025,Portonave - Terminais Portuários de Navegantes,SC,Vila do Conde,PA,1574.72
+2025,Portonave - Terminais Portuários de Navegantes,SC,Suape,PE,384114.124
+2025,Portonave - Terminais Portuários de Navegantes,SC,Paranaguá,PR,75777.09599999993
+2025,Portonave - Terminais Portuários de Navegantes,SC,Itaguaí,RJ,31249.90900000001
+2025,Portonave - Terminais Portuários de Navegantes,SC,Rio de Janeiro,RJ,155530.844
+2025,Portonave - Terminais Portuários de Navegantes,SC,Rio Grande,RS,16780.862
+2025,Portonave - Terminais Portuários de Navegantes,SC,Porto Itapoá Terminais Portuários,SC,33.1
+2025,Portonave - Terminais Portuários de Navegantes,SC,Santos,SP,37362.21700000309
+2025,Recife,PE,Terminal Aquaviário de Ilha Redonda e Terminal Aquaviário da Ilha Comprida,RJ,6990.971
+2025,Recife,PE,Terminal Aquaviário de Guamaré,RN,6337.979
+2025,Recife,PE,Rio Grande,RS,14877.908
+2025,Recife,PE,Terminal Portuário Bunge Alimentos,RS,3499.886
+2025,Rio Grande,RS,Porto Chibatão,AM,119444.6080000002
+2025,Rio Grande,RS,Super Terminais Comércio e Indústria,AM,1283.19
+2025,Rio Grande,RS,Terminais Fluviais do Brasil,AM,15969.876
+2025,Rio Grande,RS,Salvador,BA,153994.969
+2025,Rio Grande,RS,Terminal Portuário do Pecém,CE,402323.0430000002
+2025,Rio Grande,RS,Itaqui,MA,11939.984
+2025,Rio Grande,RS,Terminal Portuário Privativo da Alumar,MA,111416.748
+2025,Rio Grande,RS,Vila do Conde,PA,22554.65999999997
+2025,Rio Grande,RS,Suape,PE,468799.1879999998
+2025,Rio Grande,RS,Paranaguá,PR,266388.3800000001
+2025,Rio Grande,RS,Rio de Janeiro,RJ,4666.425
+2025,Rio Grande,RS,Terminal Aquaviário de Angra dos Reis,RJ,40690.233
+2025,Rio Grande,RS,Imbituba,SC,8108.852
+2025,Rio Grande,RS,Itajaí,SC,14755.09500000001
+2025,Rio Grande,RS,Porto Itapoá Terminais Portuários,SC,118269.707
+2025,Rio Grande,RS,Portonave - Terminais Portuários de Navegantes,SC,65322.92699999964
+2025,Rio Grande,RS,DP World Santos,SP,24442.77
+2025,Rio Grande,RS,Santos,SP,68275.0089999995
+2025,Rio de Janeiro,RJ,Maceió,AL,6693.301
+2025,Rio de Janeiro,RJ,Porto Chibatão,AM,57042.555
+2025,Rio de Janeiro,RJ,Terminais Fluviais do Brasil,AM,84020.742
+2025,Rio de Janeiro,RJ,Aratu,BA,80709.855
+2025,Rio de Janeiro,RJ,Salvador,BA,119816.0079999999
+2025,Rio de Janeiro,RJ,Fortaleza,CE,88899.825
+2025,Rio de Janeiro,RJ,Terminal Portuário do Pecém,CE,48348.80199999999
+2025,Rio de Janeiro,RJ,Vitória,ES,480319.7909999999
+2025,Rio de Janeiro,RJ,Itaqui,MA,313607.3060000002
+2025,Rio de Janeiro,RJ,Belém,PA,47692.855
+2025,Rio de Janeiro,RJ,Vila do Conde,PA,4437.23
+2025,Rio de Janeiro,RJ,Cabedelo,PB,30558.423
+2025,Rio de Janeiro,RJ,Suape,PE,596700.7649999998
+2025,Rio de Janeiro,RJ,Paranaguá,PR,414751.333
+2025,Rio de Janeiro,RJ,Itaguaí,RJ,1995.894
+2025,Rio de Janeiro,RJ,Subsea 7 do Brasil Serviços LTDA,RJ,129.0
+2025,Rio de Janeiro,RJ,Terminal Aquaviário de Angra dos Reis,RJ,29862.576
+2025,Rio de Janeiro,RJ,Terminal Ilha do Governador,RJ,26616.031
+2025,Rio de Janeiro,RJ,Terminal Nov Flexibles,RJ,4006.027
+2025,Rio de Janeiro,RJ,Terminal Aquaviário de Guamaré,RN,15891.623
+2025,Rio de Janeiro,RJ,Rio Grande,RS,11258.35
+2025,Rio de Janeiro,RJ,TUP Supergasbrás,RS,4041.715
+2025,Rio de Janeiro,RJ,Terminal Santa Clara,RS,15.22
+2025,Rio de Janeiro,RJ,Imbituba,SC,998.43
+2025,Rio de Janeiro,RJ,Itajaí,SC,4212.25
+2025,Rio de Janeiro,RJ,Porto Itapoá Terminais Portuários,SC,389412.9429999996
+2025,Rio de Janeiro,RJ,Portonave - Terminais Portuários de Navegantes,SC,230802.4070000034
+2025,Rio de Janeiro,RJ,Base Logística de Dutos,SP,2155.264
+2025,Rio de Janeiro,RJ,DP World Santos,SP,4492.900000000001
+2025,Rio de Janeiro,RJ,Santos,SP,699006.0900000181
+2025,Rio de Janeiro,RJ,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,2438197.411
+2025,Salinas (Rio Grande do Norte),RN,Aratu,BA,6000.0
+2025,Salvador,BA,Maceió,AL,8238.606
+2025,Salvador,BA,Porto Chibatão,AM,184699.9790000002
+2025,Salvador,BA,Terminal Aquaviário de Madre de Deus,BA,169.401
+2025,Salvador,BA,Fortaleza,CE,33751.28
+2025,Salvador,BA,Terminal Portuário do Pecém,CE,125130.602
+2025,Salvador,BA,Vitória,ES,1135.5
+2025,Salvador,BA,Belém,PA,9341.904999999999
+2025,Salvador,BA,Vila do Conde,PA,46507.69000000007
+2025,Salvador,BA,Suape,PE,87592.88100000002
+2025,Salvador,BA,Paranaguá,PR,40807.935
+2025,Salvador,BA,Itaguaí,RJ,36695.01700000002
+2025,Salvador,BA,Rio de Janeiro,RJ,24511.984
+2025,Salvador,BA,Rio Grande,RS,61394.418
+2025,Salvador,BA,Terminal Santa Clara,RS,3.7
+2025,Salvador,BA,Imbituba,SC,32123.203
+2025,Salvador,BA,Itajaí,SC,1816.054
+2025,Salvador,BA,Porto Itapoá Terminais Portuários,SC,85961.07400000007
+2025,Salvador,BA,Portonave - Terminais Portuários de Navegantes,SC,118692.9939999992
+2025,Salvador,BA,DP World Santos,SP,268749.58
+2025,Salvador,BA,Santos,SP,340738.2860000009
+2025,Salvador,BA,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,62895.494
 2025,Santos,SP,Maceió,AL,55200.802
 2025,Santos,SP,Porto Chibatão,AM,804869.7039999996
 2025,Santos,SP,Super Terminais Comércio e Indústria,AM,207987.36
@@ -76,3 +377,135 @@ year,origin_port,origin_state,destination_port,destination_state,tonnes
 2025,Suape,PE,DP World Santos,SP,228943.46
 2025,Suape,PE,Santos,SP,303965.8660000068
 2025,Suape,PE,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,418048.031
+2025,São Francisco do Sul,SC,Maceió,AL,29989.349
+2025,São Francisco do Sul,SC,Salvador,BA,99731.99100000013
+2025,São Francisco do Sul,SC,Terminal de Barcaças Oceânicas,ES,65930.71600000003
+2025,São Francisco do Sul,SC,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,176864.24
+2025,São Sebastião,SP,Maceió,AL,29870.634
+2025,São Sebastião,SP,Terminais Fluviais do Brasil,AM,269954.049
+2025,São Sebastião,SP,Fortaleza,CE,142897.58
+2025,São Sebastião,SP,Itaqui,MA,333960.534
+2025,São Sebastião,SP,Terminal Portuário Privativo da Alumar,MA,33082.15
+2025,São Sebastião,SP,Belém,PA,7809.403
+2025,São Sebastião,SP,Suape,PE,235351.917
+2025,São Sebastião,SP,Paranaguá,PR,624400.9720000002
+2025,São Sebastião,SP,Terminal Aquaviário de Angra dos Reis,RJ,7291.503
+2025,São Sebastião,SP,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,137561.917
+2025,TUP ALISEO,RJ,TERMINAL TECHNIPFMC DO BRASIL,RJ,1581.0
+2025,TUP ALISEO,RJ,Terminal Nov Flexibles,RJ,533.1
+2025,TUP TMB - Terminal Marítimo de Belmonte,BA,Portocel - Terminal Especializado de Barra do Riacho,ES,1090628.0
+2025,TUP da Salina Guanabara,RN,Areia Branca,RN,226072.3000000001
+2025,Teporti,SC,Suape,PE,21749.36
+2025,Terminais Fluviais do Brasil,AM,Terminal Portuário do Pecém,CE,232.78
+2025,Terminais Interiores,Indeterminado,Rio de Janeiro,RJ,2000.0
+2025,Terminais Interiores,Indeterminado,Terminal Aquaviário de Angra dos Reis,RJ,34652.705
+2025,Terminal Aquaviário da Ilha Comprida,RJ,Belém,PA,3394.04
+2025,Terminal Aquaviário da Ilha Comprida,RJ,Suape,PE,92703.318
+2025,Terminal Aquaviário da Ilha D'Água,RJ,Terminal Aquaviário de Madre de Deus,BA,221940.96
+2025,Terminal Aquaviário da Ilha D'Água,RJ,Belém,PA,21270.818
+2025,Terminal Aquaviário da Ilha D'Água,RJ,Suape,PE,77987.49100000001
+2025,Terminal Aquaviário da Ilha D'Água,RJ,Terminal Aquaviário de Angra dos Reis,RJ,97417.545
+2025,Terminal Aquaviário da Ilha D'Água,RJ,Terminal Aquaviário de Osório,RS,214294.4779999999
+2025,Terminal Aquaviário de Angra dos Reis,RJ,Terminal Aquaviário de Madre de Deus,BA,1003950.58
+2025,Terminal Aquaviário de Aracaju,SE,Rio Grande,RS,19894.74
+2025,Terminal Aquaviário de Barra do Riacho,ES,Belém,PA,1883.059
+2025,Terminal Aquaviário de Guamaré,RN,Vila do Conde,PA,15729.03
+2025,Terminal Aquaviário de Guamaré,RN,Suape,PE,5556.864
+2025,Terminal Aquaviário de Guamaré,RN,Paranaguá,PR,66191.658
+2025,Terminal Aquaviário de Ilha Redonda e Terminal Aquaviário da Ilha Comprida,RJ,Terminal Aquaviário de Barra do Riacho,ES,6999.609
+2025,Terminal Aquaviário de Ilha Redonda e Terminal Aquaviário da Ilha Comprida,RJ,Belém,PA,3204.01
+2025,Terminal Aquaviário de Madre de Deus,BA,Aratu,BA,1412.821
+2025,Terminal Aquaviário de Madre de Deus,BA,Fortaleza,CE,18081.683
+2025,Terminal Aquaviário de Madre de Deus,BA,Belém,PA,16823.795
+2025,Terminal Aquaviário de Madre de Deus,BA,Vila do Conde,PA,122610.43
+2025,Terminal Aquaviário de Madre de Deus,BA,Cabedelo,PB,7673.575000000002
+2025,Terminal Aquaviário de Madre de Deus,BA,Suape,PE,203295.349
+2025,Terminal Aquaviário de Madre de Deus,BA,Paranaguá,PR,21950.867
+2025,Terminal Aquaviário de Madre de Deus,BA,Rio Grande,RS,3982.983
+2025,Terminal Aquaviário de Manaus,AM,Terminal Aquaviário da Ilha D'Água,RJ,27984.5
+2025,Terminal Aquaviário de Manaus,AM,Terminal Aquaviário de Osório,RS,33029.52
+2025,Terminal Aquaviário de Manaus,AM,Portonave - Terminais Portuários de Navegantes,SC,105775.8839999975
+2025,Terminal Aquaviário de Manaus,AM,Terminal Aquaviário de São Francisco do Sul,SC,34474.838
+2025,Terminal Aquaviário de Osório,RS,Itaqui,MA,130488.835
+2025,Terminal Aquaviário de Osório,RS,Suape,PE,30386.209
+2025,Terminal Aquaviário de Osório,RS,Paranaguá,PR,120516.593
+2025,Terminal Aquaviário de Osório,RS,Terminal Aquaviário da Ilha D'Água,RJ,39855.17
+2025,Terminal Aquaviário de Osório,RS,Terminal Aquaviário de São Francisco do Sul,SC,68394.51000000001
+2025,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,Terminal Aquaviário de Madre de Deus,BA,370334.1
+2025,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,Belém,PA,26159.91
+2025,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,Vila do Conde,PA,6006.65
+2025,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,Cabedelo,PB,24528.146
+2025,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,Suape,PE,44257.16100000001
+2025,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,Terminal Aquaviário da Ilha D'Água,RJ,26105.761
+2025,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,Terminal Aquaviário de Osório,RS,58973.752
+2025,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,Terminal Aquaviário de São Francisco do Sul,SC,112864.8
+2025,Terminal Fluvial de Juruti,PA,Terminal Portuário Privativo da Alumar,MA,7160305.0
+2025,Terminal Hidroviário Cimbagé,RS,Belém,PA,848.9
+2025,Terminal Marítimo Dow,SP,Terminal Marítimo Dow Aratu - Bahia,BA,13316.274
+2025,Terminal Marítimo Inácio Barbosa - TMIB,SE,Cimento Vencemos,AM,275077.224
+2025,Terminal Marítimo de Ponta da Madeira,MA,Terminal Portuário do Pecém,CE,2755972.686
+2025,Terminal Marítimo de Ponta da Madeira,MA,Terminal de Praia Mole,ES,480920.0
+2025,Terminal Portuário Privativo da Alumar,MA,Itaqui,MA,483.5
+2025,Terminal Portuário Privativo da Alumar,MA,Belém,PA,0.01
+2025,Terminal Portuário Privativo da Alumar,MA,Vila do Conde,PA,3009.61
+2025,Terminal Portuário Privativo da Alumar,MA,Paranaguá,PR,58167.237
+2025,Terminal Portuário Privativo da Alumar,MA,Rio Grande,RS,1274.845
+2025,Terminal Portuário de São Luis,MA,Vila do Conde,PA,138377.79
+2025,Terminal Portuário do Pecém,CE,Porto Chibatão,AM,289804.2359999996
+2025,Terminal Portuário do Pecém,CE,Super Terminais Comércio e Indústria,AM,67235.1699999996
+2025,Terminal Portuário do Pecém,CE,Fortaleza,CE,1546.545
+2025,Terminal Portuário do Pecém,CE,Terminal Marítimo Alfandegado Privativo de Uso Misto de Praia Mole,ES,258768.197
+2025,Terminal Portuário do Pecém,CE,Vitória,ES,134567.43
+2025,Terminal Portuário do Pecém,CE,Vila do Conde,PA,59925.18000000178
+2025,Terminal Portuário do Pecém,CE,Suape,PE,108471.153
+2025,Terminal Portuário do Pecém,CE,Paranaguá,PR,10887.803
+2025,Terminal Portuário do Pecém,CE,Itaguaí,RJ,234567.999
+2025,Terminal Portuário do Pecém,CE,Rio de Janeiro,RJ,4597.187
+2025,Terminal Portuário do Pecém,CE,Rio Grande,RS,50693.75799999998
+2025,Terminal Portuário do Pecém,CE,Imbituba,SC,18789.461
+2025,Terminal Portuário do Pecém,CE,Itajaí,SC,27592.485
+2025,Terminal Portuário do Pecém,CE,Porto Itapoá Terminais Portuários,SC,149316.3480000001
+2025,Terminal Portuário do Pecém,CE,Portonave - Terminais Portuários de Navegantes,SC,98907.11099999768
+2025,Terminal Portuário do Pecém,CE,DP World Santos,SP,436293.8600000002
+2025,Terminal Portuário do Pecém,CE,Santos,SP,295894.0079999805
+2025,Terminal Portuário do Pecém,CE,Terminal Marítimo Privativo de Cubatão - TMPC,SP,281551.892
+2025,Terminal Trombetas,PA,Terminal Portuário Privativo da Alumar,MA,2598041.0
+2025,Terminal Trombetas,PA,Vila do Conde,PA,4338192.31
+2025,Terminal de Embarque Marítimo da Salina Diamante Branco,RN,Areia Branca,RN,241404.5999999999
+2025,Terminal de Praia Mole,ES,Super Terminais Comércio e Indústria,AM,20801.24
+2025,Terminal de Praia Mole,ES,Terminal Marítimo Alfandegado Privativo de Uso Misto de Praia Mole,ES,31758.347
+2025,Terminal de Regaseificação de GNL da Bahia - TRBA,BA,Terminal Flexível de GNL da Baía da Guanabara,RJ,17848.047
+2025,Terminal de Tubarão,ES,Terminal Aquaviário de Angra dos Reis,RJ,34098.407
+2025,Terminal de Uso Privado de Macau,RN,Areia Branca,RN,591674.2999999997
+2025,Tup da Salina Francisco Menescal,RN,Areia Branca,RN,387425.9
+2025,Vila do Conde,PA,Maceió,AL,5388.069
+2025,Vila do Conde,PA,Salvador,BA,22297.32900000001
+2025,Vila do Conde,PA,Fortaleza,CE,13600.799
+2025,Vila do Conde,PA,Terminal Portuário do Pecém,CE,440864.464
+2025,Vila do Conde,PA,Terminal Portuário Privativo da Alumar,MA,14850.279
+2025,Vila do Conde,PA,Rio Grande,RS,5142.272
+2025,Vila do Conde,PA,Imbituba,SC,40380.98500000002
+2025,Vila do Conde,PA,Porto Itapoá Terminais Portuários,SC,29745.48300000001
+2025,Vila do Conde,PA,Santos,SP,144425.7249999999
+2025,Vila do Conde,PA,São Sebastião,SP,29831.12
+2025,Vitória,ES,Porto Chibatão,AM,67727.36600000001
+2025,Vitória,ES,Super Terminais Comércio e Indústria,AM,23860.34
+2025,Vitória,ES,Salvador,BA,1477.817
+2025,Vitória,ES,Terminal Aquaviário de Madre de Deus,BA,21319.09
+2025,Vitória,ES,Terminal Portuário do Pecém,CE,1585730.134999999
+2025,Vitória,ES,Itaqui,MA,6671.953
+2025,Vitória,ES,Vila do Conde,PA,2555.06
+2025,Vitória,ES,Suape,PE,670181.4940000002
+2025,Vitória,ES,Paranaguá,PR,19960.275
+2025,Vitória,ES,Angra dos Reis,RJ,733.299
+2025,Vitória,ES,Itaguaí,RJ,226069.966
+2025,Vitória,ES,Rio de Janeiro,RJ,628231.3239999997
+2025,Vitória,ES,TERMINAL TECHNIPFMC DO BRASIL,RJ,2551.0
+2025,Vitória,ES,Terminal TKCSA,RJ,379183.0
+2025,Vitória,ES,Rio Grande,RS,472.364
+2025,Vitória,ES,Terminal Aquaviário de Osório,RS,72198.91
+2025,Vitória,ES,Porto Itapoá Terminais Portuários,SC,10124.206
+2025,Vitória,ES,Portonave - Terminais Portuários de Navegantes,SC,4340.986999999971
+2025,Vitória,ES,São Francisco do Sul,SC,2454118.091
+2025,Vitória,ES,Teporti,SC,30508.61
+2025,Vitória,ES,Santos,SP,769366.4529998886
