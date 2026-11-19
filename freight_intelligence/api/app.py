@@ -25,6 +25,7 @@ from freight_intelligence.brazil_road_history import load_road_history
 from freight_intelligence.brazil_road_od import load_state_pairs
 from freight_intelligence.brazil_water import DEFAULT_ROOT as BRAZIL_WATER
 from freight_intelligence.brazil_water import REGIONS, load_water, load_water_pairs
+from freight_intelligence.brazil_water_history import load_water_history
 from freight_intelligence.brazil_water_ports import load_port_pairs
 from freight_intelligence.dashboard_data import load_projection_files
 from freight_intelligence.evaluation_results import load_temporal_report
@@ -335,6 +336,28 @@ def create_app(
             if value is not None:
                 data = data.filter(pl.col(field) == value)
         return {"year": year, "count": data.height, "data": data.to_dicts(), "metadata": metadata}
+
+    @data_routes.get("/brazil/water-history")
+    def brazil_water_history(
+        view: Literal["monthly", "annual"] = "monthly",
+        year: int | None = Query(default=None, ge=2021, le=2026),
+        month: int | None = Query(default=None, ge=1, le=12),
+        limit: int = Query(default=100, ge=1, le=500),
+        offset: int = Query(default=0, ge=0),
+    ):
+        if month is not None and view != "monthly":
+            raise HTTPException(status_code=422, detail="Month filter requires monthly history")
+        try:
+            tables, metadata = load_water_history(water_dir if water_dir is not None else BRAZIL_WATER)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified ANTAQ monthly history unavailable") from error
+        data = tables[view]
+        for field, value in (("year", year), ("month", month)):
+            if value is not None:
+                data = data.filter(pl.col(field) == value)
+        result = data.slice(offset, limit)
+        return {"view": view, "total": data.height, "count": result.height, "data": result.to_dicts(),
+                "limit": limit, "offset": offset, "metadata": metadata}
 
     @data_routes.get("/brazil/water-freight")
     def brazil_water_freight(

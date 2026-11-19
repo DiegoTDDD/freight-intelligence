@@ -19,6 +19,7 @@ from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_road_history import load_road_history
 from freight_intelligence.brazil_road_od import load_state_pairs
 from freight_intelligence.brazil_water import load_water, load_water_pairs
+from freight_intelligence.brazil_water_history import load_water_history
 from freight_intelligence.brazil_water_ports import load_port_pairs
 from freight_intelligence.dashboard_ui import LocalizedUI
 from freight_intelligence.optimization.geographic_routing import LIMITATIONS, request_route
@@ -521,10 +522,14 @@ def render_water_freight(t):
               "coastal_state_endpoints": "Coastal container origin/destination states",
               "grain_regions": "Maize/soybean regional port aggregates",
               "port_monthly": "Monthly port handling (2025)",
+              "port_history": "Monthly port handling history · 2021–2026",
               "coastal_region_pairs": "Regional cabotage origin–destination shares (2025)",
               "port_pairs": "Cabotage origin–destination tonnes (2025 · 98 origins)"}
     dataset = ui.selectbox("Water reference dataset", list(labels),
                            format_func=labels.get, key="brazil_water_dataset")
+    if dataset == "port_history":
+        render_water_history(t)
+        return
     if dataset == "coastal_region_pairs":
         render_water_pairs(t)
         return
@@ -553,6 +558,42 @@ def render_water_freight(t):
     ui.download_button("Download ANTAQ reference tables (CSV)", data.write_csv().encode(),
                        "antaq_navigation_references.csv", "text/csv")
     with ui.expander("ANTAQ source, precision and coverage"):
+        st.json(metadata)
+
+
+def render_water_history(t):
+    ui = LocalizedUI(t)
+    ui.subheader("Reported port handling history · January 2021–February 2026")
+    try:
+        tables, metadata = load_water_history()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        ui.error("The verified ANTAQ monthly history snapshot is unavailable.")
+        return
+    ui.info("Original ANTAQ monthly export values, both directions and all navigation categories. Port handling can repeat cargo; these are not unique shipments.")
+    year = ui.selectbox("Port history year", ["All reviewed months", *range(2021, 2027)],
+                        key="water_history_year")
+    view = tables["monthly"]
+    annual = tables["annual"]
+    if year != "All reviewed months":
+        view = view.filter(pl.col("year") == year)
+        annual = annual.filter(pl.col("year") == year)
+    columns = st.columns(2)
+    with columns[0]:
+        ui.metric("Observed port months", str(view.height))
+    with columns[1]:
+        ui.metric("Reported handling (tonnes)", f"{view['tonnes'].sum():,.3f}")
+    if year in ("All reviewed months", 2026):
+        ui.warning("2026 is partial: January and February only. Missing months are not zero and totals are not annualized.")
+    chart = view.select(pl.col("period").alias(t("Period")), pl.col("tonnes").alias(t("Tonnes")))
+    st.line_chart(chart, x=t("Period"), y=t("Tonnes"))
+    ui.caption("Five complete calendar years, 2021–2025; 2026 has two observed months. Display formatting does not imply measurement accuracy.")
+    ui.dataframe(view, hide_index=True)
+    ui.download_button("Download filtered port history (CSV)", view.write_csv().encode(),
+                       "antaq_monthly_port_history.csv", "text/csv")
+    with ui.expander("Port history annual totals and rounding"):
+        ui.caption("Summing original numeric months and then rounding reproduces every displayed annual total. The archived 2025 integer-month series remains separate; no month is adjusted.")
+        ui.dataframe(annual, hide_index=True)
+    with ui.expander("Port history source exports and coverage"):
         st.json(metadata)
 
 

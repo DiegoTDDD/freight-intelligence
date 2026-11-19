@@ -340,6 +340,22 @@ DYNAMIC = {
 
 PT.update(MODAL_PT)
 PT.update({
+    "Monthly port handling history · 2021–2026": "Histórico mensal de movimentação portuária · 2021–2026",
+    "Reported port handling history · January 2021–February 2026": "Histórico de movimentação portuária · janeiro de 2021–fevereiro de 2026",
+    "The verified ANTAQ monthly history snapshot is unavailable.": "O histórico mensal verificado da ANTAQ está indisponível.",
+    "Original ANTAQ monthly export values, both directions and all navigation categories. Port handling can repeat cargo; these are not unique shipments.": "Valores mensais originais exportados da ANTAQ, nos dois sentidos e todas as navegações. A movimentação portuária pode repetir cargas; não são remessas únicas.",
+    "Port history year": "Ano do histórico portuário",
+    "All reviewed months": "Todos os meses revisados",
+    "Observed port months": "Meses portuários observados",
+    "Reported handling (tonnes)": "Movimentação informada (toneladas)",
+    "2026 is partial: January and February only. Missing months are not zero and totals are not annualized.": "2026 é parcial: somente janeiro e fevereiro. Meses ausentes não são zero e os totais não são anualizados.",
+    "Five complete calendar years, 2021–2025; 2026 has two observed months. Display formatting does not imply measurement accuracy.": "Cinco anos completos, 2021–2025; 2026 tem dois meses observados. A formatação exibida não implica precisão de medição.",
+    "Download filtered port history (CSV)": "Baixar histórico portuário filtrado (CSV)",
+    "Port history annual totals and rounding": "Totais anuais e arredondamento do histórico portuário",
+    "Summing original numeric months and then rounding reproduces every displayed annual total. The archived 2025 integer-month series remains separate; no month is adjusted.": "Somar os valores mensais originais e depois arredondar reproduz todos os totais anuais exibidos. A série arquivada de meses inteiros de 2025 permanece separada; nenhum mês é ajustado.",
+    "Port history source exports and coverage": "Exportações originais e cobertura do histórico portuário",
+})
+PT.update({
     "State origin–destination tonnes · 2025": "Toneladas por estado de origem e destino · 2025",
     "Reported state origin–destination freight · 2025": "Frete informado por estado de origem e destino · 2025",
     "The verified ANTT state-pair snapshot is unavailable.": "Os pares estaduais verificados da ANTT estão indisponíveis.",

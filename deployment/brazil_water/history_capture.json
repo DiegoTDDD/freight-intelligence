@@ -1,0 +1,24 @@
+{
+  "years": {
+    "2021": {
+      "displayed_annual_tonnes": "1.209.207.335"
+    },
+    "2022": {
+      "displayed_annual_tonnes": "1.220.619.267"
+    },
+    "2023": {
+      "displayed_annual_tonnes": "1.305.105.577"
+    },
+    "2024": {
+      "displayed_annual_tonnes": "1.322.436.997"
+    },
+    "2025": {
+      "displayed_annual_tonnes": "1.402.731.833"
+    },
+    "2026": {
+      "displayed_annual_tonnes": "205.539.907",
+      "months_observed": 2,
+      "full_year": false
+    }
+  }
+}

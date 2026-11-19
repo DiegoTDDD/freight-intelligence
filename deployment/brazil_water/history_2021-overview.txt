@@ -1,0 +1,621 @@
+Browser tab: 13, Title: "Movimentação Portuária", URL: "https://aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808&sheet=bb5c2c57-9e0e-46d4-a2bb-006e1de59add&opt=currsel%2Cctxmenu".
+0 AXWebArea Movimentação Portuária, URL: aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808&sheet=bb5c2c57-9e0e-46d4-a2bb-006e1de59add&opt=currsel%2Cctxmenu
+	1 container
+		2 text . .ὰ .ὰ
+		3 container single-object
+			4 container CURRSELPANEL
+				5 container No campo DadosEscala, 1 está selecionado. No campo Carga.NRAno, 2021 está selecionado.
+					6 content list selection-list
+						7 container (collapsed) Description: No campo DadosEscala, 1 está selecionado., Secondary Actions: Expand
+							8 container
+								9 button (collapsed) Description: No campo DadosEscala, 1 está selecionado., Secondary Actions: Expand
+									10 text DadosEscala
+									11 text 1
+								12 button remove, Help: Limpar seleção para campo: DadosEscala
+						13 container (collapsed) Description: No campo Carga.NRAno, 2021 está selecionado., Secondary Actions: Expand
+							14 container
+								15 button (collapsed) Description: No campo Carga.NRAno, 2021 está selecionado., Secondary Actions: Expand
+									16 text Ano
+									17 text 2021
+								18 button remove, Help: Limpar seleção para campo: Carga.NRAno
+			19 container grid
+				20 text Pasta 1. Movimentação PortuáriaGraf. Selecionar o conteúdo em um objeto atualizará o conteúdo em todos os outros objetos. Navegue entre os objetos com as teclas de seta. Pressione Enter para exibir os dados. Pressione Shift + Alt + F10 para abrir o menu de contexto. Pressione Tab novamente para começar a navegar.
+				21 container
+					22 container Painel de filtro Ano
+						23 container Painel de filtro Ano
+							24 text Painel de filtro
+							25 container
+								26 AXWebArea about:blank
+								27 heading Description: Ano, Value: 6
+									28 text Ano
+					29 container Painel de filtro Mês
+						30 text Painel de filtro
+						31 container
+							32 AXWebArea about:blank
+							33 heading Description: Mês, Value: 6
+								34 text Mês
+					35 container Botão Sem título PT
+						36 text Botão
+						37 text Sem título
+						38 button PT
+					39 container Botão Sem título EN
+						40 text Botão
+						41 text Sem título
+						42 button EN
+					43 container Botão Sem título ES
+						44 text Botão
+						45 text Sem título
+						46 button ES
+					47 container Painel de filtro Tipo de Instalação
+						48 text Painel de filtro
+						49 container
+							50 AXWebArea about:blank
+							51 heading Description: Tipo de Instalação, Value: 6
+								52 text Tipo de Instalação
+					53 container Gráfico de barra GR1.1 - Tipo de Instalação Portuária em toneladas (t) (2021: Jan - Dez) Terminal Autorizado Porto Organizado 0 400.000.000 800.000.000 799.785.156 409.422.179
+						54 text Gráfico de barra
+						55 container uZdfqh_title
+							56 heading GR1.1 - Tipo de Instalação Portuária, Value: 2
+								57 text GR1.1 - Tipo de Instalação Portuária
+							58 heading em toneladas (t) (2021: Jan - Dez), Value: 3
+								59 text em toneladas (t) (2021: Jan - Dez)
+						60 container
+							61 image
+							62 image
+							63 image
+								64 text Terminal Autorizado
+								65 text Porto Organizado
+							66 image
+								593 text 0
+								594 text 400.000.000
+								595 text 800.000.000
+							71 image
+							72 image
+								596 text 799.785.156
+								597 text 409.422.179
+							75 image
+						76 text Fonte: Estatístico Aquaviário - ANTAQ.
+					77 container Gráfico de pizza GR1.2 - Sentido em toneladas (t) (2021: Jan - Dez) Embarcados Desembarcados
+						78 text Gráfico de pizza
+						79 container fkXzqM_title
+							80 heading GR1.2 - Sentido, Value: 2
+								81 text GR1.2 - Sentido
+							82 heading em toneladas (t) (2021: Jan - Dez), Value: 3
+								83 text em toneladas (t) (2021: Jan - Dez)
+						84 container
+							85 image
+							86 image
+							87 image
+								598 text Embarcados
+								599 text Desembarcados
+							90 image
+							91 image
+						92 text Fonte: Estatístico Aquaviário - ANTAQ.
+					93 container Gráfico de barra GR1.3 - Instalação Portuária em toneladas (t) (2021: Jan - Dez) Terminal Marítimo d… Santos Terminal de Tubarão 0 100.000.000 200.000.000 Atualmente Instalação Portuária está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico. Peso Carga Bruta é mostrado. 182.361.835 113.279.537 64.139.915
+						94 text Gráfico de barra
+						95 container txJZujk_title
+							96 heading GR1.3 - Instalação Portuária, Value: 2
+								97 text GR1.3 - Instalação Portuária
+							98 heading em toneladas (t) (2021: Jan - Dez), Value: 3
+								99 text em toneladas (t) (2021: Jan - Dez)
+						100 container
+							101 image
+							102 image
+							103 image
+								600 text Terminal Marítimo d…
+								601 text Santos
+								602 text Terminal de Tubarão
+							104 image
+								603 text 0
+								604 text 100.000.000
+								605 text 200.000.000
+							105 image
+							106 button Atualmente Instalação Portuária está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico.
+								107 text Instalação Portuária
+							108 button Peso Carga Bruta é mostrado.
+							109 image
+								606 text 182.361.835
+								607 text 113.279.537
+								608 text 64.139.915
+							110 image
+						111 text Fonte: Estatístico Aquaviário - ANTAQ.
+					112 container Gráfico de pizza GR1.4 - Perfil de Carga em toneladas (t) (2021: Jan - Dez) Granel Sólido 58.4% Carga Conteinerizada 11.0% Granel Líquido e Gasoso
+						113 text Gráfico de pizza
+						114 container ugGZd_title
+							115 heading GR1.4 - Perfil de Carga, Value: 2
+								116 text GR1.4 - Perfil de Carga
+							117 heading em toneladas (t) (2021: Jan - Dez), Value: 3
+								118 text em toneladas (t) (2021: Jan - Dez)
+						119 container
+							120 image
+							121 image
+							122 image
+								609 text Granel Sólido
+								610 text 58.4%
+								611 text Carga Conteinerizada
+								612 text 11.0%
+								613 text Granel Líquido e Gasoso
+							128 image
+							129 image
+						130 text Fonte: Estatístico Aquaviário - ANTAQ.
+					131 container Gráfico de barra GR1.5 - Tipo de Navegação em toneladas (t) (2021: Jan - Dez) Longo Curso Cabotagem Interior 0 450.000.000 900.000.000 Peso Carga Bruta é mostrado. 855.887.724 282.053.800 67.741.216
+						132 text Gráfico de barra
+						133 container PsFrsj_title
+							134 heading GR1.5 - Tipo de Navegação, Value: 2
+								135 text GR1.5 - Tipo de Navegação
+							136 heading em toneladas (t) (2021: Jan - Dez), Value: 3
+								137 text em toneladas (t) (2021: Jan - Dez)
+						138 container
+							139 image
+							140 image
+							141 image
+								142 text Longo Curso
+								143 text Cabotagem
+								144 text Interior
+							145 image
+								614 text 0
+								615 text 450.000.000
+								616 text 900.000.000
+							150 image
+							151 button Peso Carga Bruta é mostrado.
+							152 image
+								617 text 855.887.724
+								618 text 282.053.800
+								619 text 67.741.216
+							156 image
+						157 text Fonte: Estatístico Aquaviário - ANTAQ.
+					158 container Gráfico de barra GR1.6 - Evolução da Movimentação em toneladas (t) (2021: Jan - Dez) jan fev mar abr mai jun jul 2021 2021 2021 2021 2021 2021 2021 0 60.000.000 120.000.000 Peso Carga Bruta é mostrado.
+						159 text Gráfico de barra
+						160 container hxpsVb_title
+							161 heading GR1.6 - Evolução da Movimentação, Value: 2
+								162 text GR1.6 - Evolução da Movimentação
+							163 heading em toneladas (t) (2021: Jan - Dez), Value: 3
+								164 text em toneladas (t) (2021: Jan - Dez)
+						165 container
+							166 image
+							167 image
+							168 image
+								620 text jan
+								621 text fev
+								622 text mar
+								623 text abr
+								624 text mai
+								625 text jun
+								626 text jul
+							171 image
+								627 text 2021
+								628 text 2021
+								629 text 2021
+								630 text 2021
+								631 text 2021
+								632 text 2021
+								633 text 2021
+							174 image
+								634 text 0
+								635 text 60.000.000
+								636 text 120.000.000
+							178 image
+							179 button Peso Carga Bruta é mostrado.
+							180 image
+							181 image
+						182 text Fonte: Estatístico Aquaviário - ANTAQ.
+					183 container Gráfico de barra GR1.7 - Grupo de Mercadoria em toneladas (t) (2021: Jan - Dez) 26-Minerios, escória… 27-Combustíveis mi… CT-Contêineres 0 200.000.000 600.000.000 Atualmente Grupo de Mercadoria (SH2) está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico. Peso Carga Bruta é mostrado. 407.187.799 320.148.643 132.991.633
+						184 text Gráfico de barra
+						185 container JmXPKn_title
+							186 heading GR1.7 - Grupo de Mercadoria, Value: 2
+								187 text GR1.7 - Grupo de Mercadoria
+							188 heading em toneladas (t) (2021: Jan - Dez), Value: 3
+								189 text em toneladas (t) (2021: Jan - Dez)
+						190 container
+							191 image
+							192 image
+							193 image
+								194 text 26-Minerios, escória…
+								195 text 27-Combustíveis mi…
+								196 text CT-Contêineres
+							197 image
+								637 text 0
+								638 text 200.000.000
+								639 text 600.000.000
+							198 image
+							199 button Atualmente Grupo de Mercadoria (SH2) está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico.
+								200 text Grupo de Mercadoria (SH2)
+							201 button Peso Carga Bruta é mostrado.
+							202 image
+							203 image
+								640 text 407.187.799
+								641 text 320.148.643
+								642 text 132.991.633
+							204 image
+						205 text Fonte: Estatístico Aquaviário - ANTAQ.
+					206 container Painel de filtro Região geográfica
+						207 text Painel de filtro
+						208 container
+							209 AXWebArea about:blank
+							210 heading Description: Região geográfica, Value: 6
+								211 text Região geográfica
+					212 container Painel de filtro UF
+						213 text Painel de filtro
+						214 container
+							215 AXWebArea about:blank
+							216 heading Description: UF, Value: 6
+								217 text UF
+					218 container Painel de filtro Instalação Portuária
+						219 text Painel de filtro
+						220 container
+							221 AXWebArea about:blank
+							222 heading Description: Instalação Portuária, Value: 6
+								223 text Instalação Portuária
+					224 container Mapa Map1.1 - Mapa com as Instalações Portuárias © OpenStreetMap contributors 2000 km triangle_top triangle_left home triangle_right triangle_bottom zoom_in zoom_out crosshair
+						225 container
+							226 text Mapa
+							227 heading Map1.1 - Mapa com as Instalações Portuárias, Value: 2
+								228 text Map1.1 - Mapa com as Instalações Portuárias
+							229 container
+								230 container
+									231 image
+									232 text © 
+									233 link Description: OpenStreetMap contributors, Value: openstreetmap.org/copyright
+									234 text 2000 km
+								235 container
+									236 button triangle_top, Help: Mover para cima
+									237 button triangle_left, Help: Mover para a esquerda
+									238 button (disabled) home, Help: Restaurar zoom
+									239 button triangle_right, Help: Mover para a direita
+									240 button triangle_bottom, Help: Mover para baixo
+									241 button zoom_in, Help: Mais zoom
+									242 button zoom_out, Help: Menos zoom
+									243 button crosshair, Help: Encontrar minha localização
+						244 text Fonte: Estatístico Aquaviário - ANTAQ.
+					245 container Texto e imagem 1. Movimentação Portuária 2021(Jan - Dez)
+						246 text Texto e imagem
+						247 text 1. Movimentação Portuária 2021(Jan - Dez)
+					248 container Texto e imagem Legenda ▆ Porto Organizado ▲Aumento em Relação ao Ano Anterior ▆ Terminal Autorizado ▼Redução em Relação ao Ano Anterior
+						249 text Texto e imagem
+						250 heading Legenda, Value: 2
+							251 text Legenda
+						252 container
+							253 text ▆  Porto Organizado  ▲ Aumento em Relação ao Ano Anterior ▆  Terminal Autorizado  ▼ Redução em Relação ao Ano Anterior
+					254 container Painel de filtro Filtros de Localidade Pesquisar na caixa de listagem Região geográfica Filtro de resultados da pesquisa Pesquisar na caixa de listagem Complexo Portuário Filtro de resultados da pesquisa Município Acostagem Berço
+						255 text Painel de filtro
+						256 heading Filtros de Localidade, Value: 2
+							257 text Filtros de Localidade
+						258 container
+							259 AXWebArea about:blank
+							260 container
+								261 button Pesquisar na caixa de listagem
+								262 heading Região geográfica, Value: 6
+									263 text Região geográfica
+								264 container Filtro de resultados da pesquisa
+									265 text Nenhum valor selecionado.
+									266 container
+										267 row Centro-Oeste Opcional. 1 de 6
+											268 container
+												269 checkbox (settable, integer) Description: Centro-Oeste, Value: 0
+												270 text Centro-Oeste
+										271 row Nordeste Opcional. 2 de 6
+											272 container
+												273 checkbox (settable, integer) Description: Nordeste, Value: 0
+												274 text Nordeste
+										275 row Norte Opcional. 3 de 6
+											276 container
+												277 checkbox (settable, integer) Description: Norte, Value: 0
+												278 text Norte
+										279 row Sudeste Opcional. 4 de 6
+											280 container
+												281 checkbox (settable, integer) Description: Sudeste, Value: 0
+												282 text Sudeste
+										283 row Sul Opcional. 5 de 6
+											284 container
+												285 checkbox (settable, integer) Description: Sul, Value: 0
+												286 text Sul
+							287 container
+								288 button Pesquisar na caixa de listagem
+								289 heading Complexo Portuário, Value: 6
+									290 text Complexo Portuário
+								291 container Filtro de resultados da pesquisa
+									292 text Nenhum valor selecionado.
+									293 container
+										294 row Almeirim Opcional. 1 de 43
+											295 container
+												296 checkbox (settable, integer) Description: Almeirim, Value: 0
+												297 text Almeirim
+										298 row Angra dos Reis Opcional. 2 de 43
+											299 container
+												300 checkbox (settable, integer) Description: Angra dos Reis, Value: 0
+												301 text Angra dos Reis
+										302 row Aracajú Opcional. 3 de 43
+											303 container
+												304 checkbox (settable, integer) Description: Aracajú, Value: 0
+												305 text Aracajú
+										306 row Aratu - Salvador Opcional. 4 de 43
+											307 container
+												308 checkbox (settable, integer) Description: Aratu - Salvador, Value: 0
+												309 text Aratu - Salvador
+										310 row Areia Branca Opcional. 5 de 43
+											311 container
+												312 checkbox (settable, integer) Description: Areia Branca, Value: 0
+												313 text Areia Branca
+										314 row Barra do Riacho Opcional. 6 de 43
+											315 container
+												316 checkbox (settable, integer) Description: Barra do Riacho, Value: 0
+												317 text Barra do Riacho
+										318 row Cabedelo (Instalação Isolada) Opcional. 7 de 43
+											319 container
+												320 checkbox (settable, integer) Description: Cabedelo (Instalação Isolada), Value: 0
+												321 text Cabedelo (Instalação Isolada)
+										322 row Coari (Instalação Isolada) Opcional. 8 de 43
+											323 container
+												324 checkbox (settable, integer) Description: Coari (Instalação Isolada), Value: 0
+												325 text Coari (Instalação Isolada)
+										326 row Corumbá Opcional. 9 de 43
+											327 container
+												328 checkbox (settable, integer) Description: Corumbá, Value: 0
+												329 text Corumbá
+										330 row Forno Opcional. 10 de 43
+											331 container
+												332 checkbox (settable, integer) Description: Forno, Value: 0
+												333 text Forno
+										334 row Ilhéus Opcional. 11 de 43
+											335 container
+												336 checkbox (settable, integer) Description: Ilhéus, Value: 0
+												337 text Ilhéus
+										338 row Imbituba Opcional. 12 de 43
+											339 container
+												340 checkbox (settable, integer) Description: Imbituba, Value: 0
+												341 text Imbituba
+										342 row Itaguaí Opcional. 13 de 43
+											343 container
+												344 checkbox (settable, integer) Description: Itaguaí, Value: 0
+												345 text Itaguaí
+										346 row Itaituba Opcional. 14 de 43
+											347 container
+												348 checkbox (settable, integer) Description: Itaituba, Value: 0
+												349 text Itaituba
+										350 row Itajaí Opcional. 15 de 43
+											351 container
+												352 checkbox (settable, integer) Description: Itajaí, Value: 0
+												353 text Itajaí
+										354 row Itaqui Opcional. 16 de 43
+											355 container
+												356 checkbox (settable, integer) Description: Itaqui, Value: 0
+												357 text Itaqui
+										358 row LDC Pederneiras (Instalação Isolada) Opcional. 17 de 43
+											359 container
+												360 checkbox (settable, integer) Description: LDC Pederneiras (Instalação Isolada), Value: 0
+												361 text LDC Pederneiras (Instalação Isolada)
+										362 row Macapá Opcional. 18 de 43
+											363 container
+												364 checkbox (settable, integer) Description: Macapá, Value: 0
+												365 text Macapá
+							366 heading Description: Município, Value: 6
+								367 text Município
+							368 heading Description: Acostagem, Value: 6
+								369 text Acostagem
+							370 heading Description: Berço, Value: 6
+								371 text Berço
+					372 container Painel de filtro Filtros Gerais Tipo de Instalação Tipo Navegação Sentido Perfil da Carga Grupo de Mercadoria (SH2)
+						373 text Painel de filtro
+						374 heading Filtros Gerais, Value: 2
+							375 text Filtros Gerais
+						376 container
+							377 AXWebArea about:blank
+							378 heading Description: Tipo de Instalação, Value: 6
+								379 text Tipo de Instalação
+							380 heading Description: Tipo Navegação, Value: 6
+								381 text Tipo Navegação
+							382 heading Description: Sentido, Value: 6
+								383 text Sentido
+							384 heading Description: Perfil da Carga, Value: 6
+								385 text Perfil da Carga
+							386 heading Description: Grupo de Mercadoria (SH2), Value: 6
+								387 text Grupo de Mercadoria (SH2)
+							388 button
+					389 container KPI Movimentação Portuária - 2021(Jan - Dez) 1.209.207.335 -
+						390 text KPI
+						391 heading Movimentação Portuária - 2021(Jan - Dez), Value: 2
+							392 text Movimentação Portuária - 2021(Jan - Dez)
+						393 container
+							643 text 1.209.207.335 -
+						395 text                                                              (2020) 0
+					396 container Botão Sem título Tabelas
+						397 text Botão
+						398 text Sem título
+						399 button Tabelas
+					400 container Botão Sem título Gráficos
+						401 text Botão
+						402 text Sem título
+						403 button Gráficos
+					404 container Texto e imagem Sem título Estatístico Aquaviário
+						405 text Texto e imagem
+						406 text Sem título
+						407 text Estatístico Aquaviário
+					408 container Layout container Sem título O contêiner consiste nos seguintes objetos: Texto e imagem. Use as setas para a esquerda e para a direita para navegar pelos gráficos internos. Pressione Enter ou espaço para selecionar os gráficos.
+						409 text Layout container
+						410 text Sem título
+						411 container O contêiner consiste nos seguintes objetos: Texto e imagem. Use as setas para a esquerda e para a direita para navegar pelos gráficos internos. Pressione Enter ou espaço para selecionar os gráficos.
+							412 container Texto e imagem Sem título Adicionar texto e medidas
+								413 container
+									414 text Texto e imagem
+									415 text Sem título
+									416 text Adicionar texto e medidas
+					417 container Texto e imagem Sem título Ouvidoria: 0800 644-5001
+						418 text Texto e imagem
+						419 text Sem título
+						420 container
+							421 text Ouvidoria: 0800 644-5001
+					422 container Texto e imagem Sem título Painel Estatístico Aquaviário - Versão 1.0.1. Todos os direitos reservados.2014 ANTAQ - Agência Nacional de Transportes Aquaviários.SEPN - Quadra 514 - Conjunto "E" - Edifício ANTAQ - CEP-70760-545 - Brasília/DF Fone: (61) 2029-6500
+						423 text Texto e imagem
+						424 text Sem título
+						425 container
+							426 text Painel Estatístico Aquaviário - Versão 1.0.1. Todos os direitos reservados. 2014 ANTAQ - Agência Nacional de Transportes Aquaviários. SEPN - Quadra 514 - Conjunto "E" - Edifício ANTAQ - CEP-70760-545 - Brasília/DF Fone: (61) 2029-6500
+					427 container Texto e imagem Sem título @ gea@antaq.gov.br
+						428 text Texto e imagem
+						429 text Sem título
+						430 container
+							431 text @ gea@antaq.gov.br
+					432 container Botão Sem título em toneladas (t)
+						433 text Botão
+						434 text Sem título
+						435 button em toneladas (t)
+					436 container Botão Sem título em mil x t
+						437 text Botão
+						438 text Sem título
+						439 button em mil x t
+					440 container Botão Sem título em milhões x t
+						441 text Botão
+						442 text Sem título
+						443 button em milhões x t
+					444 container Texto e imagem Sem título Escala dos Dados:
+						445 text Texto e imagem
+						446 text Sem título
+						447 text Escala dos Dados:
+					448 container Botão Sem título remove Limpar
+						449 text Botão
+						450 text Sem título
+						451 button remove Limpar
+							452 text remove
+							453 text Limpar
+					454 container Texto e imagem Documentação:
+						455 text Texto e imagem
+						456 text Documentação:
+					457 container Texto e imagem Dados até: fev/2026 (Atualizado em 01/04/2026 08:17)
+						458 text Texto e imagem
+						459 container
+							460 text Dados até: fev/2026
+							461 text (Atualizado em 01/04/2026 08:17)
+					462 container Texto e imagem Sem título Clique com o botão direito do mouse no gráfico ou tabela para baixar como imagem, pdf ou dados.
+						463 text Texto e imagem
+						464 text Sem título
+						465 text Clique com o botão direito do mouse no gráfico ou tabela para baixar como imagem, pdf ou dados.
+					466 container Texto e imagem Sem título
+						467 text Texto e imagem
+						468 text Sem título
+					469 container Botão Sem título
+						470 text Botão
+						471 text Sem título
+						472 button
+					473 container Layout container Sem título O contêiner consiste nos seguintes objetos: txt, TXT, Relatorios, Indicadores, Transporte TKU, Vias Interiores, Cabotagem, Longo Curso, Conteiner, Movimentação, Abertura, Relatorios, Indicadores, Transporte TKU, Vias Interiores, Cabotagem, Longo Curso, Conteiner, Movimentação, Abertura, log Antaq. Use as setas para a esquerda e para a direita para navegar pelos gráficos internos. Pressione Enter ou espaço para selecionar os gráficos.
+						474 text Layout container
+						475 text Sem título
+						476 container O contêiner consiste nos seguintes objetos: txt, TXT, Relatorios, Indicadores, Transporte TKU, Vias Interiores, Cabotagem, Longo Curso, Conteiner, Movimentação, Abertura, Relatorios, Indicadores, Transporte TKU, Vias Interiores, Cabotagem, Longo Curso, Conteiner, Movimentação, Abertura, log Antaq. Use as setas para a esquerda e para a direita para navegar pelos gráficos internos. Pressione Enter ou espaço para selecionar os gráficos.
+							477 container
+								478 container Botão Sem título Botão
+									479 text Botão
+									480 text Sem título
+									481 button Botão
+										644 text Botão
+								483 container Botão Sem título Botão
+									484 text Botão
+									485 text Sem título
+									486 button Botão
+										645 text Botão
+								488 container Botão Sem título Botão
+									489 text Botão
+									490 text Sem título
+									491 button Botão
+										646 text Botão
+								493 container Botão Sem título Botão
+									494 text Botão
+									495 text Sem título
+									496 button Botão
+										647 text Botão
+								498 container Botão Sem título Botão
+									499 text Botão
+									500 text Sem título
+									501 button Botão
+										648 text Botão
+								503 container Botão Sem título Botão
+									504 text Botão
+									505 text Sem título
+									506 button Botão
+										649 text Botão
+								508 container Botão Sem título Botão
+									509 text Botão
+									510 text Sem título
+									511 button Botão
+										650 text Botão
+								513 container Botão Sem título Botão
+									514 text Botão
+									515 text Sem título
+									516 button Botão
+										651 text Botão
+								518 container Botão Sem título Botão
+									519 text Botão
+									520 text Sem título
+									521 button Botão
+										652 text Botão
+								522 container Botão Sem título Botão
+									523 text Botão
+									524 text Sem título
+									525 button Botão
+										653 text Botão
+								527 container Text Sem título Abertura 
+									528 text Text
+									529 text Sem título
+									530 text field Abertura 
+										531 container
+											532 text Abertura
+								533 container Text Sem título Movimentação 
+									534 text Text
+									535 text Sem título
+									536 text field Movimentação 
+										537 container
+											538 text Movimentação
+								539 container Text Sem título Contêiner 
+									540 text Text
+									541 text Sem título
+									542 text field Contêiner 
+										543 container
+											544 text Contêiner
+								545 container Text Sem título Longo Curso 
+									546 text Text
+									547 text Sem título
+									548 text field Longo Curso 
+										549 container
+											550 text Longo Curso
+								551 container Text Sem título Cabotagem 
+									552 text Text
+									553 text Sem título
+									554 text field Cabotagem 
+										555 container
+											556 text Cabotagem
+								557 container Text Sem título Vias Interiores 
+									558 text Text
+									559 text Sem título
+									560 text field Vias Interiores 
+										561 container
+											562 text Vias Interiores
+								563 container Text Sem título Transporte TKU 
+									564 text Text
+									565 text Sem título
+									566 text field Transporte TKU 
+										567 container
+											568 text Transporte TKU
+								569 container Text Sem título Indicadores 
+									570 text Text
+									571 text Sem título
+									572 text field Indicadores 
+										573 container
+											574 text Indicadores
+								575 container Text Sem título Relatórios 
+									576 text Text
+									577 text Sem título
+									578 text field Relatórios 
+										579 container
+											580 text Relatórios
+								581 container Botão Sem título Botão
+									582 text Botão
+									583 text Sem título
+									584 button Botão
+										654 text Botão
+								586 container Text Sem título Base de Dados 
+									587 text Text
+									588 text Sem título
+									589 text field Base de Dados
+
+										590 container
+											591 text Base de Dados
+		592 AXWebArea about:blank
+
+The focused UI element is 22 container Painel de filtro Ano

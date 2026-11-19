@@ -84,6 +84,12 @@ bundle when the annual Gold changes; this does not require running the full pipe
 
 ## Regional road flows
 
+`GET /api/brazil/water-history` serves 62 original numeric monthly port-handling
+observations, January 2021–February 2026. `view=annual` returns six observed-period
+totals with completeness and rounding residuals. Filters: `year=2021..2026`,
+`month=1..12` (monthly view only). `limit=1..500`, `offset>=0`. 2026 is partial;
+missing months return no rows. [Original exports and interpretation](brazil_water_history.md).
+
 `GET /api/brazil/road-state-pairs` serves 775 reviewed 2025 UF→UF pairs, including
 EX/exterior and both account categories. Origin and destination margins independently
 reconcile to 1,368,627,704 integer tonnes. Filters: `origin_state`,

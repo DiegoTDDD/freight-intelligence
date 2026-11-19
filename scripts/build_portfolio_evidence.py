@@ -14,6 +14,7 @@ from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_road_history import load_road_history
 from freight_intelligence.brazil_road_od import load_state_pairs
 from freight_intelligence.brazil_water import load_water, load_water_pairs
+from freight_intelligence.brazil_water_history import load_water_history
 from freight_intelligence.brazil_water_ports import load_port_pairs
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +34,13 @@ def render():
     gas, _, _ = load_gas()
     historical_gas, _, _ = load_gas_history()
     water, _ = load_water()
+    water_history, _ = load_water_history()
+    water_history_table = table(["Year", "Observed months", "Full year", "Exported tonnes (formatted)",
+                                  "Displayed source total (whole tonnes)"], [
+        [row["year"], row["months_observed"], "Yes" if row["full_year"] else "No",
+         f"{row['tonnes']:,.3f}", f"{row['displayed_total_tonnes']:,}"]
+        for row in water_history["annual"].to_dicts()
+    ])
     water_pairs, _ = load_water_pairs()
     port_pairs, _ = load_port_pairs()
     port_table = table(["Reviewed origin", "Reported destination pairs", "Transport tonnes"], [
@@ -69,6 +77,8 @@ def render():
         ["ANP gas operator/direction/month", gas.height + historical_gas.height,
          f"{historical_gas['year'].min()}–{gas['year'].max()}; coverage changes; not unique national supply"],
         ["ANTAQ references and monthly rows", water.height, "43 annual/regional references plus twelve 2025 port-handling months"],
+        ["ANTAQ original monthly port handling", water_history["monthly"].height,
+         "January 2021–February 2026; five complete years and two partial-year months"],
         ["ANTAQ paired regional cabotage shares", water_pairs.height,
          "2025 original region-to-region fractions; offshore and undetermined origins retained"],
         ["ANTAQ port-to-port cabotage volumes", port_pairs.height,
@@ -231,6 +241,23 @@ same-state does not mean within-municipality. These are not truck itineraries.
 
 [Source evidence, filters and API](brazil_road_od.md) ·
 [Complete paired observations (CSV)](../deployment/brazil_road/state_od.csv).
+
+### Monthly port handling history · 2021–2026
+
+Original numeric ANTAQ exports retain 62 observed months. Both handling directions
+and all navigation categories are included; cargo can repeat across port events.
+2026 is partial and is not annualized. All exported sums reconcile with the
+independently displayed annual/partial-period totals within whole-tonne rounding.
+
+{water_history_table}
+
+For 2025, rounding the original monthly sum gives 1,402,731,833 t; summing the
+twelve individually rounded month labels gives 1,402,731,832 t. The one-tonne
+difference is explained without adjusting a month. Source numeric precision is
+preserved in downloads; displayed decimals do not imply measurement accuracy.
+
+[Original exports, coverage and API](brazil_water_history.md) ·
+[All observed months (CSV)](../deployment/brazil_water/history_monthly.csv).
 
 ## Gas source quality and archived road reconciliation
 

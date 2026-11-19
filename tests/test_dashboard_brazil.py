@@ -84,6 +84,23 @@ def test_water_navigation_and_regional_reference_views():
     assert not app.exception
 
 
+def test_port_history_partial_year_and_translation():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("water").run()
+    app.selectbox(key="brazil_water_dataset").select("port_history").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Observed port months" and item.value == "62" for item in app.metric)
+    app.selectbox(key="water_history_year").select(2026).run()
+    assert any(item.label == "Observed port months" and item.value == "2" for item in app.metric)
+    assert any("2026 is partial" in item.value for item in app.warning)
+    app.selectbox(key="language").select("Português").run()
+    assert not app.exception and not app.error
+    assert app.selectbox(key="water_history_year").label == "Ano do histórico portuário"
+    assert any("somente janeiro e fevereiro" in item.value for item in app.warning)
+
+
 def test_state_pair_filters_and_portuguese_labels():
     app = AppTest.from_file(str(APP), default_timeout=30).run()
     app.selectbox(key="workspace").select("Brazilian freight").run()

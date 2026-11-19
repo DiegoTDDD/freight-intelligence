@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "source": "https://aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808&sheet=bb5c2c57-9e0e-46d4-a2bb-006e1de59add&opt=currsel%2Cctxmenu",
+  "source_object": "hxpsVb",
+  "source_title": "GR1.6 - Evolução da Movimentação",
+  "reviewed_on": "2026-11-19",
+  "unit": "tonnes",
+  "precision": "Original XLSX numeric values retained, including source floating-point artifacts. Displayed decimal places are formatting, not measurement accuracy.",
+  "scope": "Reported Brazilian port handling, both directions and all navigation categories. Handling events can repeat cargo and are not unique shipments, modal demand or paired routes.",
+  "period_start": "2021-01",
+  "period_end": "2026-02",
+  "observed_months": 62,
+  "full_years": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "partial_years": {
+    "2026": [
+      1,
+      2
+    ]
+  },
+  "filters": {
+    "year": "one reviewed year per original export",
+    "month": "unfiltered",
+    "cargo": "unfiltered",
+    "geography": "unfiltered",
+    "navigation": "unfiltered",
+    "direction": "unfiltered",
+    "DadosEscala": 1
+  },
+  "annual_display_tonnes": {
+    "2021": 1209207335,
+    "2022": 1220619267,
+    "2023": 1305105577,
+    "2024": 1322436997,
+    "2025": 1402731833,
+    "2026": 205539907
+  },
+  "panel_updated_at": "2026-04-01 08:17",
+  "source_data_through": "2026-02",
+  "method": "Original Qlik Exportar dados XLSX exports with explicit month and year columns, independently checked against displayed annual or partial-period headlines. Source export context and original rendered overview archived for every year.",
+  "quality_notes": [
+    "2026 contains January and February only; no annualization or missing-month zero filling.",
+    "Monthly export sums reconcile with each rounded annual headline within half a displayed tonne; residuals retained.",
+    "2025 whole-tonne rounding of each exported month exactly reproduces the archived 12-month display series (sum 1,402,731,832); rounding the numeric annual sum gives the headline 1,402,731,833.",
+    "No forecasting or source-edition splicing; older report/ONTL reference series remain separate."
+  ],
+  "files": [
+    {
+      "path": "history_2021-context.jpg",
+      "bytes": 102829,
+      "sha256": "eebb7b6c340afa32f13d93e652bc35b8f81af20399387a600c86eefca48767dd"
+    },
+    {
+      "path": "history_2021-overview.txt",
+      "bytes": 27828,
+      "sha256": "d47f25c7aa0f153ec5bc629a30f3712baf08ca1ef8bce3f8837b5b8cc33cdd61"
+    },
+    {
+      "path": "history_2021.xlsx",
+      "bytes": 5802,
+      "sha256": "93fdb2d9b1798d2eb1ae5df61e14eaa8046dd0cc3054356ae4d8ae97d075f900"
+    },
+    {
+      "path": "history_2022-context.jpg",
+      "bytes": 102916,
+      "sha256": "384d3eb4c9d03f5738884352aa2146a72e0cad277bff6e3dd665b761c1d13c64"
+    },
+    {
+      "path": "history_2022-overview.txt",
+      "bytes": 27840,
+      "sha256": "487dd108a11b91760cb4012d395c3952e99de7cc49dffe8ae0a6c995c5ecf4ce"
+    },
+    {
+      "path": "history_2022.xlsx",
+      "bytes": 5806,
+      "sha256": "b016ad6f3987a9795ad9100614f01f196345cbc65a2572d954f9c214807da033"
+    },
+    {
+      "path": "history_2023-context.jpg",
+      "bytes": 103302,
+      "sha256": "77728f78c40bf2b591556a863a6c0f5d08c6cdb0eedbd1d7386ccb56e159bea8"
+    },
+    {
+      "path": "history_2023-overview.txt",
+      "bytes": 27856,
+      "sha256": "70c8583a75a5b36f77eb2b81a4f42d08eeac5555905d57a637afabb2b28eea11"
+    },
+    {
+      "path": "history_2023.xlsx",
+      "bytes": 5806,
+      "sha256": "3cf66aa6411d6db02501cd7e39b52241a5926eef5e0216fffa20754ba204288c"
+    },
+    {
+      "path": "history_2024-context.jpg",
+      "bytes": 102940,
+      "sha256": "3003c822eb9a1ab1c00797a2a13a4aa88a9d938f4c69e30ad01e65ad94c6317e"
+    },
+    {
+      "path": "history_2024-overview.txt",
+      "bytes": 27842,
+      "sha256": "375603edc0114369c4a678d9c9a7011de6c991566718f2bd6aa815c4caf1119a"
+    },
+    {
+      "path": "history_2024.xlsx",
+      "bytes": 5799,
+      "sha256": "3752be91344d617425fe5bb5339355f8576557d641f54c0e91df5d363a041319"
+    },
+    {
+      "path": "history_2025-context.jpg",
+      "bytes": 102337,
+      "sha256": "e10c8e2cbe2b45d90a482408c3c01b9365f5e6be208406d35bc0e91740772106"
+    },
+    {
+      "path": "history_2025-overview.txt",
+      "bytes": 27850,
+      "sha256": "7ced0819bc1f3220e5f0d6dd85504c1c2803618ef135f330f81a94af89069186"
+    },
+    {
+      "path": "history_2025.xlsx",
+      "bytes": 5803,
+      "sha256": "c27fac7d0c3b5ce331322dfeeebd7bcc653051d10c7eb2a5c3edeb633cf2c908"
+    },
+    {
+      "path": "history_2026-context.jpg",
+      "bytes": 101883,
+      "sha256": "588c1d0f5423e97af176fc1fd8379af2cca7ad41b4c100014c7ebedc19122e49"
+    },
+    {
+      "path": "history_2026-overview.txt",
+      "bytes": 27671,
+      "sha256": "c9f2a4ad302abcf1ebf9a24af3b3996cd937e4921091ac74213c7017ed4dee17"
+    },
+    {
+      "path": "history_2026.xlsx",
+      "bytes": 5493,
+      "sha256": "00c4d9c32b5322a2e8de8d7c2e24b86bfec8f765f64f5f9cd507cb1bc1fc898d"
+    },
+    {
+      "path": "history_annual.csv",
+      "bytes": 465,
+      "sha256": "277867b8d527b6dd9c23f3bb30a02c12228a55e92439679842d9cfff3a21e0f8"
+    },
+    {
+      "path": "history_capture.json",
+      "bytes": 492,
+      "sha256": "5cdff4da91bd96c19f45eca599245f3d2ffa6f66af9d621ab38c860ea622c611"
+    },
+    {
+      "path": "history_monthly.csv",
+      "bytes": 2072,
+      "sha256": "3a48a99979a16fda7c05efdcd4cbdcfa8e36f1e90b7f6f8fcd074e38587e05ec"
+    }
+  ]
+}

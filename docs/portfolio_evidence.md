@@ -18,6 +18,7 @@ Check for drift: `python scripts/build_portfolio_evidence.py --check`
 | ANAC airport source codes | 1102 | Reference codes present in the selected pair population |
 | ANP gas operator/direction/month | 600 | 2021–2025; coverage changes; not unique national supply |
 | ANTAQ references and monthly rows | 55 | 43 annual/regional references plus twelve 2025 port-handling months |
+| ANTAQ original monthly port handling | 62 | January 2021–February 2026; five complete years and two partial-year months |
 | ANTAQ paired regional cabotage shares | 21 | 2025 original region-to-region fractions; offshore and undetermined origins retained |
 | ANTAQ port-to-port cabotage volumes | 510 | 2025; all 98 reviewed origins and 71 destinations; original numeric tonnes |
 | ANTT archived yearbook monthly totals | 12 | 2025 published Chart 45 labels |
@@ -319,6 +320,30 @@ same-state does not mean within-municipality. These are not truck itineraries.
 
 [Source evidence, filters and API](brazil_road_od.md) ·
 [Complete paired observations (CSV)](../deployment/brazil_road/state_od.csv).
+
+### Monthly port handling history · 2021–2026
+
+Original numeric ANTAQ exports retain 62 observed months. Both handling directions
+and all navigation categories are included; cargo can repeat across port events.
+2026 is partial and is not annualized. All exported sums reconcile with the
+independently displayed annual/partial-period totals within whole-tonne rounding.
+
+| Year | Observed months | Full year | Exported tonnes (formatted) | Displayed source total (whole tonnes) |
+| --- | --- | --- | --- | --- |
+| 2021 | 12 | Yes | 1,209,207,335.297 | 1,209,207,335 |
+| 2022 | 12 | Yes | 1,220,619,267.036 | 1,220,619,267 |
+| 2023 | 12 | Yes | 1,305,105,576.675 | 1,305,105,577 |
+| 2024 | 12 | Yes | 1,322,436,996.505 | 1,322,436,997 |
+| 2025 | 12 | Yes | 1,402,731,832.755 | 1,402,731,833 |
+| 2026 | 2 | No | 205,539,907.438 | 205,539,907 |
+
+For 2025, rounding the original monthly sum gives 1,402,731,833 t; summing the
+twelve individually rounded month labels gives 1,402,731,832 t. The one-tonne
+difference is explained without adjusting a month. Source numeric precision is
+preserved in downloads; displayed decimals do not imply measurement accuracy.
+
+[Original exports, coverage and API](brazil_water_history.md) ·
+[All observed months (CSV)](../deployment/brazil_water/history_monthly.csv).
 
 ## Gas source quality and archived road reconciliation
 

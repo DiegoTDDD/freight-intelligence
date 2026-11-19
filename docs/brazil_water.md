@@ -51,8 +51,12 @@ in the dashboard, CSV export and `GET /api/brazil/water-freight`, filtered by da
 reference year and direction. Reader checks enforce hashes, units, populations,
 direction, year coverage and duplicate keys; invalid/missing bundles return 503.
 
+The separate [original monthly export history](brazil_water_history.md) now adds
+62 observed months, January 2021–February 2026. It also explains the 2025 one-tonne
+chart-label difference through individual-month versus annual-sum rounding.
+
 This closes the absence of inland/coastal reference analyses, not complete raw
-waterway-flow coverage. Historical monthly records beyond 2025, OD flows outside the reviewed 2025 cabotage population and fuller corridor
+waterway-flow coverage. Compatible history before 2021, OD flows outside the reviewed 2025 cabotage population and fuller corridor
 detail remain future work. The legacy ANTAQ download page returned 502 during
 source discovery; the reviewed official report remains reproducible independently.
 

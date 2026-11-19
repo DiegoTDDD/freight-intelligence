@@ -125,6 +125,7 @@ secrets/
 !deployment/brazil_data/*.zip
 !deployment/brazil_road/*.csv
 !deployment/brazil_water/port_pairs.csv
+!deployment/brazil_water/history_*.csv
 !deployment/brazil_air/*.parquet
 !deployment/brazil_air/*.zip
 !deployment/brazil_gas_history/*.csv

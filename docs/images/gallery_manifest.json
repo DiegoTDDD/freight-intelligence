@@ -77,6 +77,15 @@
       "sha256": "67a66218f0321a07b6c455086dd102273bc5c7453238bceb4856dbd3c2b76514",
       "width": 1280,
       "height": 720
+    },
+    {
+      "path": "water-history-en.jpg",
+      "workspace": "Brazilian freight / water",
+      "scope": "62 original port-handling months, January 2021\u2013February 2026; partial 2026 warning; all reviewed periods selected",
+      "captured_on": "2026-11-19",
+      "sha256": "041fd0bd7005d0a67b2f3f227c0346a71506bf0089318aa7fecdae441ae81e8c",
+      "width": 1280,
+      "height": 720
     }
   ],
   "updated_on": "2026-11-19"
