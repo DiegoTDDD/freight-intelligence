@@ -20,7 +20,8 @@ Check for drift: `python scripts/build_portfolio_evidence.py --check`
 | ANTAQ references and monthly rows | 55 | 43 annual/regional references plus twelve 2025 port-handling months |
 | ANTAQ paired regional cabotage shares | 21 | 2025 original region-to-region fractions; offshore and undetermined origins retained |
 | ANTAQ port-to-port cabotage volumes | 510 | 2025; all 98 reviewed origins and 71 destinations; original numeric tonnes |
-| ANTT road monthly totals | 12 | 2025 published Chart 45 labels |
+| ANTT archived yearbook monthly totals | 12 | 2025 published Chart 45 labels |
+| ANTT panel monthly account-category observations | 56 | 28 months, July 2024–October 2026; N/S separated; 2024 and 2026 partial |
 | ANTT regional road pairs | 16 | 16 published RGI pairs; not municipalities or truck itineraries |
 
 The full local FAF run previously produced 2,503,352 Bronze and 97,630,728 Silver
@@ -255,7 +256,29 @@ whole-tonne headline in the archived filter context. Both origin and destination
 coverage for the reviewed cabotage table, not unique cargo or a navigable itinerary. Unlisted pairs are
 unavailable, not zero. [Full CSV and original evidence](brazil_water_ports.md).
 
-## Gas source quality and road reconciliation
+## Road movement history from a separately reviewed panel edition
+
+| Year | Observed months | Full calendar year | N: non-own-account tonnes | S: own-account tonnes | Observed total tonnes | MDF-e documents |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2024 | 6 | No | 591,729,835 | 103,289,674 | 695,019,509 | 44,573,360 |
+| 2025 | 12 | Yes | 1,164,978,181 | 203,649,523 | 1,368,627,704 | 90,060,010 |
+| 2026 | 10 | No | 1,099,010,747 | 191,491,774 | 1,290,502,521 | 84,223,450 |
+
+The 28 observed months cover July 2024–October 2026. 2024 and 2026 subtotals
+are **not annual totals**; missing months are not zero-filled or extrapolated.
+These are published integer display values read through the official panel's
+**Show as table** interface. MDF-e document counts do not identify unique trips
+or consignments. All source geographic categories remain included.
+
+The 2025 panel sum is **1,368,627,704 tonnes**, which is **71,947 tonnes lower**
+than the archived yearbook sum. Both editions are preserved; a cause for their
+difference is not invented. The N subtotal of **1,164,978,181 tonnes** rounds to
+the yearbook's 1.165-billion regional reference, but numerical agreement alone
+does not prove identical populations. The source documents an October 2025
+reporting-layout change, so a reported decrease is not proof of lower demand.
+[Source evidence, periods and edition comparison](brazil_road_history.md).
+
+## Gas source quality and archived road reconciliation
 
 | 2025 point direction | Missing daily cells |
 | --- | --- |
@@ -266,7 +289,7 @@ The 2025 missing cells trace to Garuva receipts on January 1–31 and RPBC/São
 Bernardo do Campo deliveries on May 31. The source leaves them blank; no cause
 or volume is inferred. [Historical coverage and quality](brazil_gas_history.md).
 
-The twelve published road-month labels sum to **1,368,699,651 tonnes**.
+The twelve archived yearbook road-month labels sum to **1,368,699,651 tonnes**.
 The separate regional-reference denominator is preserved without guessing
 its scope. [Road source reconciliation](brazil_road.md).
 

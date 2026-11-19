@@ -84,6 +84,26 @@ def test_water_navigation_and_regional_reference_views():
     assert not app.exception
 
 
+def test_road_history_preserves_partial_calendar_filters_and_translates():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("road").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Reported tonnes · selected months" and item.value == "1,368,627,704" for item in app.metric)
+    app.selectbox(key="road_history_year").select(2024).run()
+    assert any(item.label == "Observed months" and item.value == "6/12" for item in app.metric)
+    assert any("Partial calendar year" in item.value for item in app.warning)
+    app.selectbox(key="road_history_account").select("own_account").run()
+    assert any(item.label == "Reported tonnes · selected months" and item.value == "103,289,674" for item in app.metric)
+    rows = next(frame.value for frame in app.dataframe if "account_type" in frame.value.columns and "period" in frame.value.columns)
+    assert set(rows["month"]) == set(range(7, 13)) and set(rows["account_type"]) == {"own_account"}
+    app.selectbox(key="road_history_metric").select("mdfe_documents").run()
+    app.selectbox(key="language").select("Português").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Ano do histórico rodoviário" for item in app.selectbox)
+
+
 def test_port_pairs_view_filters_original_transport_volumes_and_translates():
     app = AppTest.from_file(str(APP), default_timeout=30).run()
     app.selectbox(key="workspace").select("Brazilian freight").run()
@@ -160,6 +180,7 @@ def test_regional_road_filters_and_unlisted_pairs():
     app.selectbox(key="workspace").select("Brazilian freight").run()
     app.selectbox(key="brazil_view").select("All five modes").run()
     app.selectbox(key="brazil_mode").select("road").run()
+    app.selectbox(key="road_reference_dataset").select("yearbook_2025").run()
     assert not app.exception and not app.error
     assert any(item.label == "MDF-e tonnes · sum of 12 published months"
                and item.value == "1,368,699,651" for item in app.metric)

@@ -1,0 +1,706 @@
+Browser tab: 9, Title: "Microsoft Power BI", URL: "https://app.powerbi.com/view?r=eyJrIjoiYWNhMTRjYmQtZjczYy00OGJkLThiZWQtOTAwYjEwMmNjOWY4IiwidCI6Ijg3YmJlOWRlLWE4OTItNGNkZS1hNDY2LTg4Zjk4MmZiYzQ5MCJ9".
+0 AXWebArea Microsoft Power BI, URL: app.powerbi.com/view?r=eyJrIjoiYWNhMTRjYmQtZjczYy00OGJkLThiZWQtOTAwYjEwMmNjOWY4IiwidCI6Ijg3YmJlOWRlLWE4OTItNGNkZS1hNDY2LTg4Zjk4MmZiYzQ5MCJ9
+	1 container
+		2 container embedWrapperID
+			3 container
+				4 container Visão Geral
+					5 container
+						6 content list
+							7 button Mostrar os atalhos de teclado
+							8 container
+								9 link Description: Mostrar dicas do leitor de tela (abre em uma nova guia), Value: go.microsoft.com/fwlink/?linkid=852575
+								10 image
+							11 button Pular para o conteúdo principal
+						12 container
+							13 container Relatório do Power BI
+								14 heading Description: Relatório do Power BI, Value: 2, ID: defaultTitle
+									15 text Relatório do Power BI
+								16 container Imagem
+								17 container Imagem
+								18 container Imagem
+								19 container
+									20 container MOVIMENTAÇÃO DE CARGAS - MDFe
+										21 text MOVIMENTAÇÃO DE CARGAS - MDFe
+								22 container
+									23 container Cartão
+										24 table
+											25 row dataAtualização, SUROC última atualização: mar/26 cartão
+												26 cell
+													27 checkbox Description: dataAtualização, SUROC última atualização: mar/26 cartão, Value: 0
+														28 image
+															29 image
+														30 text SUROC
+última atualização: mar/26
+								31 container
+									32 container Obs.: A queda do nº de MDFes em out/25 pode ser explicada pela adaptação dos transportadores ao novo layout do MDFe, em vigor desde 06/10/2025, conforme Nota Técnica 2025.001. O volume de MDFes apresenta comportamento esperado a partir de 17/out/25.
+										33 text Obs.: A queda do nº de MDFes em out/25 pode ser explicada pela adaptação dos transportadores ao novo layout do MDFe, em vigor desde 06/10/2025, conforme  Nota Técnica 2025.001. O volume de MDFes apresenta comportamento esperado a partir de 17/out/25.
+								34 container Imagem
+								35 container
+									36 container Escopo
+										37 text Escopo
+								38 container
+									39 table
+										40 row Visão Geral
+											41 cell
+												42 checkbox Visão Geral, Value: 1
+													43 image
+														44 image
+													45 text Visão Geral
+										46 row Indicadores
+											47 cell
+												48 checkbox Indicadores, Value: 0
+													49 image
+														50 image
+													51 text Indicadores
+										52 row Mercado Geral
+											53 cell
+												54 checkbox Mercado Geral, Value: 0
+													55 image
+														56 image
+													57 text Mercado Geral
+										58 row Mercado Carga
+											59 cell
+												60 checkbox Mercado Carga, Value: 0
+													61 image
+														62 image
+													63 text Mercado Carga
+										64 row Merc. Carga|RGI
+											65 cell
+												66 checkbox Merc. Carga|RGI, Value: 0
+													67 image
+														68 image
+													69 text Merc. Carga|RGI
+										70 row Origem|Destino
+											71 cell
+												72 checkbox Origem|Destino, Value: 0
+													73 image
+														74 image
+													75 text Origem|Destino
+										76 row Locais Passagem
+											77 cell
+												78 checkbox Locais Passagem, Value: 0
+													79 image
+														80 image
+													81 text Locais Passagem
+										82 row Perfil Passagem
+											83 cell
+												84 checkbox Perfil Passagem, Value: 0
+													85 image
+														86 image
+													87 text Perfil Passagem
+										88 row Transportadores
+											89 cell
+												90 checkbox Transportadores, Value: 0
+													91 image
+														92 image
+													93 text Transportadores
+										94 row Frota
+											95 cell
+												96 checkbox Frota, Value: 0
+													97 image
+														98 image
+													99 text Frota
+										100 row Carroceria|Veículo
+											101 cell
+												102 checkbox Carroceria|Veículo, Value: 0
+													103 image
+														104 image
+													105 text Carroceria|Veículo
+										106 row SEM Carga
+											107 cell
+												108 checkbox SEM Carga, Value: 0
+													109 image
+														110 image
+													111 text SEM Carga
+										112 row Emissão CO2
+											113 cell
+												114 checkbox Emissão CO2, Value: 0
+													115 image
+														116 image
+													117 text Emissão CO2
+										118 row Tabela NCM
+											119 cell
+												120 checkbox Tabela NCM, Value: 0
+													121 image
+														122 image
+													123 text Tabela NCM
+										124 row RGI
+											125 cell
+												126 checkbox RGI, Value: 0
+													127 image
+														128 image
+													129 text RGI
+								130 container Data emissão MDFe 
+									131 container
+										132 heading Data emissão MDFe, Value: 3
+											133 text Data emissão MDFe
+										134 combo box (collapsed) Description: Ano, Mes, Value: Todos , Secondary Actions: Expand
+											135 text Todos
+											136 text 
+								137 container Incluir dados de carga própria? 
+									138 container
+										139 heading Incluir dados de carga própria?, Value: 3
+											140 text Incluir dados de carga própria?
+										141 list cargapropria
+											142 0
+												143 text Selecionar tudo
+											144 0
+												145 text N
+											146 0
+												147 text S
+								148 container Imagem
+								149 container
+									150 container Transportador do veículo de tração
+										151 text Transportador do veículo de tração
+								152 container
+									153 container (a partir de out/25)
+										154 text (a partir de out/25)
+								155 container Veículo de Tração* 
+									156 container
+										157 heading Veículo de Tração*, Value: 3
+											158 text Veículo de Tração*
+										159 combo box (collapsed) Description: CATEGORIATRACAO, Value: Todos , Secondary Actions: Expand
+											160 text Todos
+											161 text 
+								162 container Categoria do transportador* 
+									163 container
+										164 heading Categoria do transportador*, Value: 3
+											165 text Categoria do transportador*
+										166 list TRA_CATEGORIA
+											167 0
+												168 text CTC
+											169 0
+												170 text ETC
+											171 0
+												172 container ETC EQUIP.
+													173 text ETC EQUIP.
+											174 0
+												175 text N/I
+											176 0
+												177 text TAC
+								178 container Eixos - Tipo do Veículo* 
+									179 container
+										180 heading Eixos - Tipo do Veículo*, Value: 3
+											181 text Eixos - Tipo do Veículo*
+										182 combo box (collapsed) Description: eixosdesc, Value: Todos , Secondary Actions: Expand
+											183 text Todos
+											184 text 
+								185 container Imagem
+								186 container
+									187 container Tipo da Carga (em caso de dificuldades para localizar o tipo da carga, pesquise na página )
+										188 container
+											189 text Tipo da Carga  (em caso de dificuldades para localizar o tipo da carga, pesquise na página                                )
+								190 button Navegação na página . Clique aqui para Seguir
+								191 container Código da carga (NCM)** 
+									192 container
+										193 heading Código da carga (NCM)**, Value: 3
+											194 text Código da carga (NCM)**
+										195 combo box (collapsed) Description: NCM, Value: Todos , Secondary Actions: Expand
+											196 text Todos
+											197 text 
+								198 container Grupo da carga (NCM)** 
+									199 container
+										200 heading Grupo da carga (NCM)**, Value: 3
+											201 text Grupo da carga (NCM)**
+										202 combo box (collapsed) Description: grupodesc, Value: Todos , Secondary Actions: Expand
+											203 text Todos
+											204 text 
+								205 container
+									206 container (a partir de out/25)
+										207 text (a partir de out/25)
+								208 container Carroceria (informada no MDFe) 
+									209 container
+										210 heading Carroceria (informada no MDFe), Value: 3
+											211 text Carroceria (informada no MDFe)
+										212 combo box (collapsed) Description: tipocargadesc, Value: Todos , Secondary Actions: Expand
+											213 text Todos
+											214 text 
+								215 container Tipo da carga (NCM)** 
+									216 container
+										217 heading Tipo da carga (NCM)**, Value: 3
+											218 text Tipo da carga (NCM)**
+										219 combo box (collapsed) Description: subgrupodesc, Value: Todos , Secondary Actions: Expand
+											220 text Todos
+											221 text 
+								222 container Imagem
+								223 container
+									224 container Origem e Destino (EX=exterior)
+										225 container
+											226 text Origem e Destino  (EX=exterior)
+								227 button Navegação na página . Clique aqui para Seguir
+								228 button Limpar todas as segmentações . Clique aqui para Seguir
+								229 container UF de destino 
+									230 container
+										231 heading UF de destino, Value: 3
+											232 text UF de destino
+										233 combo box (collapsed) Description: SG_UFFIM, Value: Todos , Secondary Actions: Expand
+											234 text Todos
+											235 text 
+								236 container UF de origem 
+									237 container
+										238 heading UF de origem, Value: 3
+											239 text UF de origem
+										240 combo box (collapsed) Description: SG_UFINI, Value: Todos , Secondary Actions: Expand
+											241 text Todos
+											242 text 
+								243 container RGI de Origem 
+									244 container
+										245 heading RGI de Origem, Value: 3
+											246 text RGI de Origem
+										247 combo box (collapsed) Description: rgiorigemdesc, Value: Todos , Secondary Actions: Expand
+											248 text Todos
+											249 text 
+								250 container RGI de Destino 
+									251 container
+										252 heading RGI de Destino, Value: 3
+											253 text RGI de Destino
+										254 combo box (collapsed) Description: rgidestinodesc, Value: Todos , Secondary Actions: Expand
+											255 text Todos
+											256 text 
+								257 container Emitentes com RNTRC ativo? 
+									258 container
+										259 container Emitentes com RNTRC ativo?
+											260 heading Emitentes com RNTRC, Value: 3
+												261 text Emitentes com RNTRC
+											262 heading ativo?, Value: 3
+												263 text ativo?
+										264 container Emitente com RNTRC ativo?
+											265 container
+												266 checkbox N, Value: 0
+												267 checkbox S, Value: 0
+								268 container Município de Origem 
+									269 container
+										270 heading Município de Origem, Value: 3
+											271 text Município de Origem
+										272 combo box (collapsed) Description: municipioorigemdesc, Value: Todos , Secondary Actions: Expand
+											273 text Todos
+											274 text 
+								275 container Município de Destino 
+									276 container
+										277 heading Município de Destino, Value: 3
+											278 text Município de Destino
+										279 combo box (collapsed) Description: municipiodestinodesc, Value: Todos , Secondary Actions: Expand
+											280 text Todos
+											281 text 
+								282 container Tração com RNTRC ativo? 
+									283 container
+										284 container Tração com RNTRC ativo?
+											285 heading Tração com RNTRC, Value: 3
+												286 text Tração com RNTRC
+											287 heading ativo?, Value: 3
+												288 text ativo?
+										289 container ADERE_TRARNTRCATIVO
+											290 container
+												291 checkbox N, Value: 0
+												292 checkbox S, Value: 0
+								293 container Imagem
+								294 container Quantidade de chaves MDFe 
+									295 container
+										296 heading Quantidade de chaves MDFe, Value: 3
+											297 text Quantidade de chaves MDFe
+										298 image Soma de CONTCHAVESMDFE 218,9 Mi.
+											299 text 218,9 Mi
+								300 container Toneladas 
+									301 container
+										302 heading Toneladas, Value: 3
+											303 text Toneladas
+										304 image Soma de CARGAEMTON 3,4 Bi.
+											305 text 3,4 Bi
+								306 container TKU 
+									307 container
+										308 heading TKU, Value: 3
+											309 text TKU
+										310 image TKU 1,8 Tri.
+											311 text 1,8 Tri
+								312 container Mostrar somente MDFEs com subcontratação? 
+									313 container
+										314 container Mostrar somente MDFEs com subcontratação?
+											315 heading Mostrar somente, Value: 3
+												316 text Mostrar somente
+											317 heading MDFEs com, Value: 3
+												318 text MDFEs com
+											319 heading subcontratação?, Value: 3
+												320 text subcontratação?
+										321 container SUBCONTRATACAO
+											322 checkbox S, Value: 0
+								323 container Nº de viagens (mín)*** 
+									324 container
+										325 heading Nº de viagens (mín)***, Value: 3
+											326 text Nº de viagens (mín)***
+										327 image Soma de CONTVIAGENSMAXKM 195,1 Mi.
+											328 text 195,1 Mi
+								329 container Estimativa km (max)*** 
+									330 container
+										331 heading Estimativa km (max)***, Value: 3
+											332 text Estimativa km (max)***
+										333 image Soma de KMSOMA 87,3 Bi.
+											334 text 87,3 Bi
+								335 container Estimativa km (mín)*** 
+									336 container
+										337 heading Estimativa km (mín)***, Value: 3
+											338 text Estimativa km (mín)***
+										339 image Soma de KMSOMAMAXKM 81,2 Bi.
+											340 text 81,2 Bi
+								341 container Imagem
+								342 container Emissão mensal de MDFes 
+									343 toolbar Cabeçalho do contêiner visual
+									344 container
+										345 heading Emissão mensal de MDFes, Value: 3
+											346 text Emissão mensal de MDFes
+										347 image
+											348 image
+											349 container
+												350 list periodo
+													351 container
+													352 container
+													353 container
+													354 container
+													355 container
+													356 container
+													357 container
+													358 container
+													359 container
+													360 container
+													361 container
+													362 container
+													363 container
+													364 container
+													365 container
+													366 container
+												367 container Área de plotagem
+													368 list N
+														369 5827884
+														370 5881108
+														371 5644991
+														372 6087740
+														373 5565557
+														374 5149645
+														375 5123733
+														376 5411741
+														377 5659584
+														378 5690296
+														379 6111359
+														380 5792702
+														381 6336133
+														382 6344886
+														383 6462452
+														384 4864183
+														385 6007300
+														386 5779096
+														387 5762664
+														388 5736496
+														389 6678164
+														390 6285476
+														391 6278421
+														392 6488340
+														393 7216238
+														394 7098127
+														395 6942047
+														396 7095361
+													397 list S
+														398 1778122
+														399 1794786
+														400 1711701
+														401 1859968
+														402 1689720
+														403 1582138
+														404 1596879
+														405 1643420
+														406 1648821
+														407 1666375
+														408 1766991
+														409 1669436
+														410 1837968
+														411 1829204
+														412 1892001
+														413 1449146
+														414 1763233
+														415 1713071
+														416 1729149
+														417 1644818
+														418 1910179
+														419 1753271
+														420 1787952
+														421 1847581
+														422 2028593
+														423 1964297
+														424 1969570
+														425 2006706
+											426 text 7,6 Mi
+											427 text 7,4 Mi
+											428 text 7,9 Mi
+											429 text 7,3 Mi
+											430 text 6,7 Mi
+											431 text 7,1 Mi
+											432 list Rótulos da série
+										433 container Legenda Carga Própria?
+											434 text Carga Própria?
+											435 list Carga Própria?
+												436 N
+													437 image
+														438 image
+														439 image N
+													440 text N
+												441 S
+													442 image
+														443 image
+														444 image S
+													445 text S
+								446 container Toneladas por mês 
+									447 toolbar Cabeçalho do contêiner visual
+									448 container
+										449 heading Toneladas por mês, Value: 3
+											450 text Toneladas por mês
+										451 image
+											452 image
+											453 container
+												454 list periodo
+													455 container
+													456 container
+													457 container
+													458 container
+													459 container
+													460 container
+													461 container
+													462 container
+													463 container
+													464 container
+													465 container
+													466 container
+													467 container
+													468 container
+													469 container
+													470 container
+												471 container Área de plotagem
+													472 list N
+														473 106517040
+														474 106985800
+														475 100645637
+														476 104421817
+														477 92359498
+														478 80800043
+														479 82777423
+														480 92563369
+														481 98835820
+														482 96338661
+														483 104325271
+														484 99577810
+														485 109398460
+														486 110314892
+														487 109714114
+														488 78674806
+														489 95775232
+														490 86682323
+														491 88726538
+														492 90562180
+														493 105997362
+														494 103154008
+														495 104880149
+														496 113269925
+														497 125627413
+														498 124625619
+														499 121444851
+														500 120722702
+													501 list S
+														502 18373606
+														503 18565328
+														504 17434505
+														505 18075487
+														506 16170624
+														507 14670124
+														508 14943219
+														509 16008372
+														510 16366425
+														511 16191633
+														512 17772507
+														513 17318179
+														514 19273417
+														515 19305422
+														516 19420120
+														517 14017936
+														518 17056167
+														519 15976126
+														520 16484345
+														521 16287970
+														522 19018084
+														523 17656369
+														524 18513662
+														525 19465674
+														526 21744468
+														527 21219460
+														528 20712445
+														529 20389297
+											530 text 124,9 Mi
+											531 text 118,1 Mi
+											532 text 108,5 Mi
+											533 text 95,5 Mi
+											534 text 108,6 Mi
+											535 text 115,2 Mi
+											536 list Rótulos da série
+										537 container Legenda Carga Própria?
+											538 text Carga Própria?
+											539 list Carga Própria?
+												540 N
+													541 image
+														542 image
+														543 image N
+													544 text N
+												545 S
+													546 image
+														547 image
+														548 image S
+													549 text S
+								550 container Imagem
+								551 container % dos MDFes com identificação do tipo da carga (NCM) 
+									552 container
+										553 heading % dos MDFes com identificação do tipo da carga (NCM), Value: 3
+											554 text % dos MDFes com identificação do tipo da carga (NCM)
+										555 image
+											556 image
+											557 container
+												558 list periodo
+													559 container
+													560 container
+													561 container
+													562 container
+													563 container
+													564 container
+													565 container
+													566 container
+													567 container
+													568 container
+													569 container
+													570 container
+													571 container
+													572 container
+													573 container
+													574 container
+													575 container
+													576 container
+												577 list Área de previsão
+												578 image
+												579 list Área de plotagem
+													580 image
+													581 image
+													582 periodo jul 24. Carga Própria? N. % dos MDFes com identificação da carga 25,8%.
+											583 text 25,8%
+											584 text 24,2%
+											585 text 25,6%
+											586 text 18,8%
+											587 text 17,7%
+											588 list Rótulos da série
+										589 container Legenda Carga Própria?
+											590 text Carga Própria?
+											591 list Carga Própria?
+												592 N
+													593 image
+														594 image
+														595 image N
+													596 text N
+												597 S
+													598 image
+														599 image
+														600 image S
+													601 text S
+								602 container Imagem
+								603 container Toneladas por tipo da Carga 
+									604 container
+										605 heading Toneladas por tipo da Carga, Value: 3
+											606 text Toneladas por tipo da Carga
+										607 image
+											608 image
+											609 content list
+												610 container 0 Mi
+													611 text 0 Mi
+												612 container 500 Mi
+													613 text 500 Mi
+												614 container 1.000 Mi
+												615 container 1.500 Mi
+											616 container
+												617 list Tipo da carga
+												618 container Área de plotagem
+													619 list Toneladas
+														620 1565060369
+														621 215234281
+														622 148054821
+														623 86147668
+														624 63283185
+														625 50289588
+														626 47285673
+														627 45623867
+														628 44732502
+														629 41977027
+														630 40640796
+														631 33543964
+														632 29098698
+														633 22852148
+														634 22303199
+														635 22135466
+														636 16930082
+														637 16277160
+														638 16252258
+														639 15911412
+														640 13745578
+														641 13623743
+														642 12610468
+														643 12065436
+														644 11925739
+														645 11668237
+														646 11608677
+											647 text 1.565,1 Mi
+											648 text 215,2 Mi
+											649 text 148,1 Mi
+											650 text 86,1 Mi
+											651 text 63,3 Mi
+											652 text 50,3 Mi
+											653 text 47,3 Mi
+											654 text 45,6 Mi
+											655 text 44,7 Mi
+											656 text 42,0 Mi
+											657 text 40,6 Mi
+											658 text 33,5 Mi
+											659 text 29,1 Mi
+											660 text 22,9 Mi
+											661 text 22,3 Mi
+											662 text 22,1 Mi
+											663 text 16,9 Mi
+											664 text 16,3 Mi
+											665 text 16,3 Mi
+											666 text 13,7 Mi
+											667 text 12,6 Mi
+											668 text 11,9 Mi
+											669 list Rótulos da série
+								670 container
+									671 container *Categoria do transportador a partir do cadastro do RNTRC do veículo de tração. O valor 'N/I' / 'não identificado' ocorre quando não foi possível identificar, a partir da placa do veículo de tração, a categoria do transportador ou o tipo do veículo de tração no cadastro do RNTRC da ANTT. 'ETC equip.' são empresas com até 3 veículos de tração registrados em sua frota no período mais recente do relatório, as quais são equiparadas aos Transportadores Autônomos de Carga (TACs). Eixos - Tipo do veículo está disponível a partir de out/25. Considera-se '2-Leve' como veículos de 2 eixos com PBT de até 11 ton. 'Tra+Car' significa um caminhão trator acoplado a um carreta. '9-CVC' são Combinações Veiculares de Carga do tipo Bitrem ou Rodotrem de 9 eixos. 'x-Outros' são os casos em que não foi possível identificar a combinação veicular. ** Para o NCM, grupo da carga e tipo da carga, a opção 'N/I' / 'não identificado' significa que ou não foi informado o código NCM no MDFe, ou não foi possível identificar o código NCM informado no MDFe na tabela Nomenclatura Comum do Mercosul. *** O nº de viagens (mín) representa a soma do número das viagens de maior km para a combinação diária de emitente, motorista, veículo de tração e implemento. Ou seja, representa o limite inferior para o total de viagens informadas no MDFe (o limite superior é o nº de chaves MDfe). Esta mesma análise é feita para a soma das distâncias percorridas: km (mín) representa a soma do km das viagens de maior km diária e km (máx) a soma das extensões em km de todas as chaves do MDFe.
+										672 container
+											673 text *Categoria do transportador a partir do cadastro do RNTRC do veículo de tração. O valor ' N/I ' / 'não identificado' ocorre quando não foi possível identificar , a partir da placa do veículo de tração,  a categoria do transportador ou o tipo do veículo de tração no cadastro do RNTRC da ANTT.
+										674 text  'ETC equip.' são empresas com até 3 veículos de tração registrados em sua frota no período mais recente do relatório, as quais são equiparadas aos Transportadores Autônomos de Carga (TACs). Eixos - Tipo do veículo está disponível a partir de out/25. Considera-se '2-Leve' como veículos de 2 eixos com PBT de até 11 ton. 'Tra+Car' significa um caminhão trator acoplado a um carreta. '9-CVC' são Combinações Veiculares de Carga do tipo Bitrem ou Rodotrem de 9 eixos. 'x-Outros' são os casos em que não foi possível identificar a combinação veicular.
+										675 container
+											676 text ** Para o NCM, grupo da carga e tipo da carga, a opção ' N/I ' / 'não identificado' significa que ou não foi informado o código NCM no MDFe, ou não foi possível identificar o código NCM informado no MDFe na tabela 
+											677 link Description: Nomenclatura Comum do Mercosul, Value: gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/classificacao-fiscal-de-mercadorias/download-ncm-nomenclatura-comum-do-mercosul
+											678 text .
+										679 container
+											680 text ***  O nº de viagens (mín) representa a soma do número das viagens de maior km para a combinação diária de emitente, motorista, veículo de tração e implemento. Ou seja, representa o limite inferior para o total de viagens informadas no MDFe (o limite superior é o nº de chaves MDfe). Esta mesma análise é feita para a soma das distâncias percorridas: km (mín) representa a soma do km das viagens de maior km diária e km (máx) a soma das extensões em km de todas as chaves do MDFe.
+				681 button Description: Reduzir, ID: zoomOutButton
+				682 container
+				683 button Description: Ampliar, ID: zoomInButton
+				684 button Description: Nível de zoom. Clique para abrir a caixa de diálogo Zoom, ID: zoomValueButton
+				685 button Description: Ajustar à página, ID: fitToPageButton
+					686 text 
+			687 container
+				688 link Description: Microsoft Power BI (Abre em uma nova guia), Value: go.microsoft.com/fwlink/?LinkID=722383&clcid=0x409
+				689 button (disabled) Página Anterior
+					690 text 
+				691 link 1 de 15
+					692 text 1
+					693 text de
+					694 text 15
+				695 button Próxima Página
+					696 text 
+				697 button (collapsed) Description: Compartilhar, Secondary Actions: Expand
+					698 text 
+				699 button Abrir no modo de tela inteira
+					700 text 
+		701 image
+
+The focused UI element is 228 button Limpar todas as segmentações . Clique aqui para Seguir

@@ -38,6 +38,7 @@ for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/brazil/water-port-pairs?origin_port=Santos&destination_port=Suape",
              "/api/brazil/modal-forecasts?mode=water&view=scores&phase=test",
              "/api/brazil/road-flows?origin_state=MT", "/api/brazil/road-monthly?month=1",
+             "/api/brazil/road-history?year=2024",
              "/api/brazil/air-freight?view=pairs&year=2025&origin=SBGR",
              "/api/brazil/gas-movements?year=2022&include_diagnostics=true&diagnostics_limit=1",
              "/api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=1"):

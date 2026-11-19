@@ -21,6 +21,7 @@ from freight_intelligence.brazil_modes import DEFAULT_ROOT as BRAZIL_MODES
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import DEFAULT_ROOT as BRAZIL_ROAD
 from freight_intelligence.brazil_road import STATES, load_road, load_road_monthly
+from freight_intelligence.brazil_road_history import load_road_history
 from freight_intelligence.brazil_water import DEFAULT_ROOT as BRAZIL_WATER
 from freight_intelligence.brazil_water import REGIONS, load_water, load_water_pairs
 from freight_intelligence.brazil_water_ports import load_port_pairs
@@ -189,6 +190,29 @@ def create_app(
         return {"total": data.height, "count": min(limit, max(0, data.height - offset)),
                 "limit": limit, "offset": offset, "data": data.slice(offset, limit).to_dicts(),
                 "metadata": metadata, "forecast_metadata": report["metadata"] if view in {"forecast", "scores"} else None}
+
+    @data_routes.get("/brazil/road-history")
+    def brazil_road_history(
+        view: Literal["monthly", "annual", "editions"] = "monthly",
+        year: int | None = Query(default=None, ge=2024, le=2026),
+        account_type: Literal["non_own_account", "own_account", "all"] | None = None,
+        limit: int = Query(default=100, ge=1, le=500),
+        offset: int = Query(default=0, ge=0),
+    ):
+        if (view == "monthly" and account_type == "all") or (view == "editions" and account_type is not None):
+            raise HTTPException(status_code=422, detail="Account category is unavailable for this view")
+        try:
+            tables, metadata = load_road_history(road_dir if road_dir is not None else BRAZIL_ROAD)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified ANTT road history unavailable") from error
+        data = tables[view]
+        if year is not None:
+            data = data.filter(pl.col("year") == year)
+        if account_type is not None:
+            data = data.filter(pl.col("account_type") == account_type)
+        result = data.slice(offset, limit)
+        return {"view": view, "total": data.height, "count": result.height, "data": result.to_dicts(),
+                "limit": limit, "offset": offset, "metadata": metadata}
 
     @data_routes.get("/brazil/road-monthly")
     def brazil_road_monthly(month: int | None = Query(default=None, ge=1, le=12)):

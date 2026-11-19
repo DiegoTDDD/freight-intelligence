@@ -14,7 +14,7 @@ listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/action
 | Optimization | Tested constrained transport solver, editable scenarios and comparisons; scenario costs are not measured savings |
 | Dashboard | Published Streamlit app; English default; Portuguese controls and core notices for modal, truck, gas and air workspaces |
 | Real-road routing | Separate OSRM car-reference and Valhalla truck engines; explicit truck profile, map, instructions and GeoJSON |
-| Brazil | 145 scoped annual indicators across five modes; detailed rail; 600 monthly ANP gas records (2021–2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 55 ANTAQ reference/monthly records plus 21 paired regional cabotage shares and 510 OD pairs covering all 98 origins in the reviewed cabotage table; 12 road-tonnage months and 16 road RGI pairs |
+| Brazil | 145 scoped annual indicators across five modes; detailed rail; 600 monthly ANP gas records (2021–2025) with source diagnostics; 624 ANAC monthly aggregates and 36,860 recent monthly airport-pair aggregates; 55 ANTAQ reference/monthly records plus 21 paired regional cabotage shares and 510 OD pairs covering all 98 origins in the reviewed cabotage table; 28 road panel months (56 account-category rows) plus 12 archived yearbook months and 16 RGI pairs |
 | Public API | Documented read-only HTTP API under `/api`; configured key/user permissions retained; private local plans excluded |
 | Reproducibility | Pinned container runtimes, snapshot hashes and verified recovery archives |
 | CI and deployment | Windows/Linux tests, API/container and dashboard checks; deploy only the exact tested main revision |
@@ -37,9 +37,11 @@ The heavy full pipeline was verified previously and was not rerun for this updat
    automates bounded retrieval, candidate validation/review and revision reporting. Extend this to other
    sources/years and integrate reviewed candidates through the normal CI gate;
    a source revision is not automatically an improvement in quality.
-2. **Road freight:** extend movement history beyond the 12 published 2025 months
+2. **Road freight:** extend compatible movement history before July 2024
    and regional flows beyond the [16 published RGI pairs](brazil_road.md).
-   The all-transport annual indicator now sums the monthly labels to 1,368,699,651
+   The [reviewed panel history](brazil_road_history.md) now covers 28 months,
+   July 2024–October 2026, with N/S components and explicit partial-year flags.
+   The archived yearbook annual indicator sums its monthly labels to 1,368,699,651
    tonnes, which rounds to the summary's 1.4 billion. The publication's 1.165-billion
    regional denominator remains separate; its exact scope is not inferred.
    Within-city trips are outside the current MDF-e scope. RGI pairs are groups

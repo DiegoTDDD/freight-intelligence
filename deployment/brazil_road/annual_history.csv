@@ -1,0 +1,10 @@
+year,account_type,months_observed,full_year,tonnes,mdfe_documents
+2024,non_own_account,6,false,591729835,34156925
+2024,own_account,6,false,103289674,10416435
+2024,all,6,false,695019509,44573360
+2025,non_own_account,12,true,1164978181,69583465
+2025,own_account,12,true,203649523,20476545
+2025,all,12,true,1368627704,90060010
+2026,non_own_account,10,false,1099010747,65581334
+2026,own_account,10,false,191491774,18642116
+2026,all,10,false,1290502521,84223450

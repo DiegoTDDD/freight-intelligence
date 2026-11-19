@@ -59,6 +59,15 @@
       "sha256": "33891fcce89edf7d12ee846c7a56c2ab80b5d4b4e32282f0133f5483ade7c97a",
       "width": 1280,
       "height": 720
+    },
+    {
+      "path": "road-history-en.jpg",
+      "captured_on": "2026-11-19",
+      "workspace": "Brazilian freight / road / panel history",
+      "scope": "July\u2013December 2024 only; 6/12 months; N/S tonnes and MDF-e document counts; explicitly not a complete annual total",
+      "sha256": "2c9b887b2c38e7ecadc60077f546e8db8346d065c08b5f7c9efb0c2f93649f58",
+      "width": 1280,
+      "height": 720
     }
   ],
   "updated_on": "2026-11-19"

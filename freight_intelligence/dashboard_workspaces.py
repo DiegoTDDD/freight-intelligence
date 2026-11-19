@@ -16,6 +16,7 @@ from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_modal_forecasts import SERIES, load_modal_forecasts
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
+from freight_intelligence.brazil_road_history import load_road_history
 from freight_intelligence.brazil_water import load_water, load_water_pairs
 from freight_intelligence.brazil_water_ports import load_port_pairs
 from freight_intelligence.dashboard_ui import LocalizedUI
@@ -349,6 +350,13 @@ def render_air_freight(t):
 
 def render_road_flows(t):
     ui = LocalizedUI(t)
+    labels = {"panel_history": "Monthly road history · reviewed panel",
+              "yearbook_2025": "Archived 2025 yearbook · monthly and regional flows"}
+    dataset = ui.selectbox("Road reference dataset", list(labels), format_func=labels.get,
+                           key="road_reference_dataset")
+    if dataset == "panel_history":
+        render_road_history(t)
+        return
     try:
         data, metadata = load_road()
         monthly, _ = load_road_monthly()
@@ -408,6 +416,52 @@ def render_road_flows(t):
     ui.download_button("Download published regional road flows (CSV)", data.write_csv().encode(),
                        "antt_regional_road_flows_2025.csv", "text/csv")
     with ui.expander("Road flow source and coverage"):
+        st.json(metadata)
+
+
+def render_road_history(t):
+    ui = LocalizedUI(t)
+    ui.subheader("Reported road movement history · July 2024–October 2026")
+    try:
+        tables, metadata = load_road_history()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        ui.error("The verified ANTT road history snapshot is unavailable.")
+        return
+    ui.info("Reported MDF-e movements; documents can repeat trips or cargo. Integer table display values are preserved.")
+    ui.caption("This reviewed panel edition is kept separate from the archived yearbook indicators above.")
+    year = ui.selectbox("Road history year", [2024, 2025, 2026], index=1, key="road_history_year")
+    account_labels = {"all": "Both account categories", "non_own_account": "Non-own-account (source N)",
+                      "own_account": "Own-account (source S)"}
+    account = ui.selectbox("Road account category", list(account_labels), format_func=account_labels.get,
+                           key="road_history_account")
+    metric = ui.selectbox("Road history metric", ["tonnes", "mdfe_documents"],
+                          format_func={"tonnes": "Tonnes", "mdfe_documents": "MDF-e documents"}.get,
+                          key="road_history_metric")
+    view = tables["monthly"].filter(pl.col("year") == year)
+    if account != "all":
+        view = view.filter(pl.col("account_type") == account)
+    months = view["month"].n_unique()
+    ui.metric("Observed months", f"{months}/12")
+    ui.metric("Reported tonnes · selected months", f"{view['tonnes'].sum():,.0f}")
+    ui.metric("Reported MDF-e documents · selected months", f"{view['mdfe_documents'].sum():,.0f}")
+    if months < 12:
+        ui.warning("Partial calendar year: totals cover only observed months. Missing months are not zero or annualized.")
+    else:
+        ui.caption("Complete calendar year in this reviewed panel snapshot.")
+    if year == 2025:
+        ui.warning("October 2025 has a documented reporting-layout change. A reported decrease is not proof of lower freight demand.")
+    chart = view.select(pl.col("period").alias(t("Period")), pl.col(metric).alias(t("Value")),
+                        pl.col("account_type").replace({key: t(label) for key, label in account_labels.items()})
+                        .alias(t("Account category")))
+    st.line_chart(chart, x=t("Period"), y=t("Value"), color=t("Account category"))
+    ui.dataframe(view, hide_index=True)
+    ui.download_button("Download filtered road history (CSV)", view.write_csv().encode(),
+                       "antt_road_history.csv", "text/csv")
+    with ui.expander("2025 source-edition comparison"):
+        ui.caption("The 2025 panel total is 71,947 tonnes below the archived yearbook total. Different editions remain separate; the cause is not inferred.")
+        ui.dataframe(tables["editions"], hide_index=True)
+        ui.dataframe(tables["annual"].filter(pl.col("year") == 2025), hide_index=True)
+    with ui.expander("Road history source, display precision and coverage"):
         st.json(metadata)
 
 

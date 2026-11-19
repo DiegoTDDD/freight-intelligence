@@ -60,3 +60,11 @@ The workflow is read-only and does not use a deployment secret. Reports and chan
 PDFs are retained as GitHub artifacts for 14 days. GitHub schedules may be delayed
 or disabled for inactive repositories; this is revision detection, not guaranteed
 real-time refresh. The local hourly development automation remains paused.
+
+## Separately reviewed road panel history
+
+The [28-month Power BI capture](brazil_road_history.md) is versioned with its
+rendered-table transcription and source-context hashes. Its source header date
+predates its last table month and is not a freshness guarantee. The weekly road
+PDF audit does not update this separate panel edition. A future panel refresh
+requires explicit evidence review, exact reconstruction and the normal CI gate.

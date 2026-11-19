@@ -61,5 +61,8 @@ On 2026-11-18, the 70-page official
 was checked for a compatible earlier MDF-e movement series. Its road-export
 statistics use Comex Stat and selected foreign destinations, a different population
 from the 2025 domestic MDF-e series. They have not been substituted for a missing
-2024 domestic month or used to claim a comparable national growth rate. Additional
-compatible domestic history remains an acquisition task.
+2024 domestic month or used to claim a comparable national growth rate.
+On 2026-11-19 a [separate official panel review](brazil_road_history.md) acquired
+28 observed months, July 2024–October 2026, including six 2024 months. Its N/S
+categories, published integer precision, partial calendars and geographic scope
+remain explicit. This panel edition does not overwrite the archived yearbook.

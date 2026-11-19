@@ -84,6 +84,16 @@ bundle when the annual Gold changes; this does not require running the full pipe
 
 ## Regional road flows
 
+`GET /api/brazil/road-history` serves the separately reviewed 28-month panel
+window, July 2024–October 2026: 56 N/S account-category rows containing tonnes
+and document counts. Views: `monthly` (default), `annual` (component/subtotal
+rows with completeness flags), `editions` (twelve 2025 source comparisons).
+Optional filters: `year=2024..2026`, `account_type=non_own_account|own_account`.
+`account_type=all` is accepted only for annual subtotals; omit it for both monthly
+categories. Pagination uses `limit` (1–500, default 100) and zero-based `offset`.
+Partial years are not annualized; MDF-e documents are not unique trips.
+[Source capture, units and edition comparison](brazil_road_history.md).
+
 `GET /api/brazil/road-flows` serves 16 reviewed ANTT RGI flows for 2025.
 Filter with `origin_state=PA&destination_state=MT&same_region=false`.
 These are selected regional cargo movements, not operational road itineraries.

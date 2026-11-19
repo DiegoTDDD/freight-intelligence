@@ -18,7 +18,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Freight analytics | Annual KPIs, growth across irregular years, CAGR, commodity mix, domestic modes, corridor concentration and leading corridors | [Dashboard guide](docs/dashboard.md), [versioned demo aggregates](deployment/preview_data/) |
 | Forecast evaluation | Persistence, linear and CAGR baselines; expanding-window validation and reserved tests for rail, air, port handling and Transpetro oil movements; vintage cutoffs and units kept separate | [Evaluation methodology](docs/temporal_evaluation.md), [all candidate scores](docs/portfolio_evidence.md#forecast-results-including-competing-baselines), [port/oil vintage reports](docs/brazil_modal_forecasts.md) |
 | Brazilian railway | ANTT movements, 2006–2025; monthly/annual series, commodities, state pairs and concessionaires; reserved forecast evaluation | [Railway coverage and units](docs/brasil.md) |
-| Brazilian road | Fleet/MDF-e indicators, twelve 2025 tonnage months and sixteen published regional RGI pairs; source denominator reconciliation | [Road scope and reconciliation](docs/brazil_road.md) |
+| Brazilian road | 28 observed months, July 2024–October 2026, split by own-account flag; tonnes/documents and partial-year flags. Archived yearbook months and sixteen RGI pairs remain separate | [Road history and edition comparison](docs/brazil_road_history.md), [archived regional flows](docs/brazil_road.md) |
 | Brazilian water | 43 annual/regional references, twelve 2025 port-handling months and 21 paired regional cabotage shares and 510 observed OD pairs covering all 98 reviewed origins; original XLSX preserved | [ANTAQ sources and precision](docs/brazil_water.md) |
 | Brazilian air | 624 monthly aggregates, 2000–2025; 36,860 monthly airport pairs, 2024–2025; 1,102 source airport codes; paid/free/mail separated; evaluated forecasts | [ANAC preparation and limitations](docs/brazil_air.md) |
 | Brazilian port pairs | 510 observed cabotage links; all 98 origins and 71 destinations in the reviewed 2025 table, with original numeric tonnes and archived filters | [Port-pair data and original exports](docs/brazil_water_ports.md) |
@@ -46,7 +46,11 @@ These English-interface captures were taken on 2026-11-18 and 2026-11-19 from th
 ![Synthetic transport scenario with an optimal allocation](docs/images/planner-en.jpg)
 
 <details>
-<summary>Air cargo, gas history, cabotage OD, water regions and truck routing — five more screens</summary>
+<summary>Road history, air cargo, gas history, cabotage OD, water regions and truck routing — six more screens</summary>
+
+**Road history — July–December 2024, explicitly 6/12 observed months.** Separate N/S own-account categories and document counts. The selector also provides complete 2025 and partial January–October 2026; source editions remain separate.
+
+![Reviewed ANTT road history with explicit partial-year coverage](docs/images/road-history-en.jpg)
 
 **Air cargo — reported domestic monthly paid-cargo subtotals for 2025, with missing-field disclosure.** Stages can repeat a consignment; the chart is not a complete shipment census.
 

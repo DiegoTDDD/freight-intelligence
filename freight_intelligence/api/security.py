@@ -18,6 +18,7 @@ ROUTE_PERMISSIONS = {
     "/brazil/modal-forecasts": "analytics",
     "/brazil/road-flows": "analytics",
     "/brazil/road-monthly": "analytics",
+    "/brazil/road-history": "analytics",
     "/brazil/air-freight": "analytics",
     "/ready": "analytics",
     "/annual-kpis": "analytics",
