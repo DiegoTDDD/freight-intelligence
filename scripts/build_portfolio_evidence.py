@@ -12,6 +12,7 @@ from freight_intelligence.brazil_modal_forecasts import load_modal_forecasts
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_water import load_water, load_water_pairs
+from freight_intelligence.brazil_water_ports import load_port_pairs
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "docs/portfolio_evidence.md"
@@ -31,6 +32,12 @@ def render():
     historical_gas, _, _ = load_gas_history()
     water, _ = load_water()
     water_pairs, _ = load_water_pairs()
+    port_pairs, _ = load_port_pairs()
+    port_table = table(["Reviewed origin", "Reported destination pairs", "Transport tonnes"], [
+        [origin, subset.height, f"{subset['tonnes'].sum():,.3f}"]
+        for origin in sorted(port_pairs["origin_port"].unique())
+        for subset in [port_pairs.filter(pl.col("origin_port") == origin)]
+    ])
     modal_report, _ = load_modal_forecasts()
     road, _ = load_road()
     road_months, road_metadata = load_road_monthly()
@@ -45,6 +52,8 @@ def render():
         ["ANTAQ references and monthly rows", water.height, "43 annual/regional references plus twelve 2025 port-handling months"],
         ["ANTAQ paired regional cabotage shares", water_pairs.height,
          "2025 original region-to-region fractions; offshore and undetermined origins retained"],
+        ["ANTAQ port-to-port cabotage volumes", port_pairs.height,
+         "2025; three reviewed origins only: Santos, Suape, Manaus; original numeric tonnes"],
         ["ANTT road monthly totals", road_months.height, "2025 published Chart 45 labels"],
         ["ANTT regional road pairs", road.height, "16 published RGI pairs; not municipalities or truck itineraries"],
     ])
@@ -159,6 +168,17 @@ itineraries and must not be scaled by a different annual/handling total.
 The [original XLSX export](../deployment/brazil_water/cabotage_region_pairs_2025.xlsx)
 and [unrounded derived CSV](../deployment/brazil_water/coastal_region_pairs.csv)
 are versioned with hashes and [reviewed filter/period context](brazil_water.md#paired-regional-cabotage-shares).
+
+## Port-to-port cabotage volumes
+
+{port_table}
+
+These **77 observed pairs** come from three separate original destination-table
+exports, each with exactly one origin selected and the full 2025 calendar.
+The XLSX retains fractional tonnes; every origin subtotal rounds to the
+whole-tonne headline in the archived filter context. This is partial origin
+coverage, not a national total or a navigable itinerary. Unlisted pairs are
+unavailable, not zero. [Full CSV and original evidence](brazil_water_ports.md).
 
 ## Gas source quality and road reconciliation
 

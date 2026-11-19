@@ -35,6 +35,7 @@ def protected(tmp_path, monkeypatch):
         "/temporal-evaluation",
         "/temporal-evaluation/predictions",
         "/brazil/water-pairs",
+        "/brazil/water-port-pairs",
         "/brazil/modal-forecasts",
     ],
 )

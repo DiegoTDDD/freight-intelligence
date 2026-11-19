@@ -119,3 +119,12 @@ The gas endpoint accepts years 2021–2025 (`year=2025` is the default). Add
 `include_diagnostics=true` for source point/date groups, with
 `diagnostics_limit` up to 500 and `diagnostics_offset`. Normal responses omit large
 diagnostic arrays. See [historical quality rules and investigated absences](brazil_gas_history.md).
+
+### Observed cabotage port pairs
+
+`GET /api/brazil/water-port-pairs` returns 77 reviewed 2025 links from three origins.
+Exact optional filters: `origin_port`, `destination_port`; `year=2025` only.
+Pagination: `limit` (1–500, default 100), `offset` (zero-based). `filtered_tonnes`
+and `total` apply before pagination. Partial origin coverage and original source
+context are explicit in metadata. Analytics permission is required in authenticated
+mode. See [scope and examples](brazil_water_ports.md).

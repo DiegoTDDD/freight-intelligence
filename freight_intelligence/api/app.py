@@ -23,6 +23,7 @@ from freight_intelligence.brazil_road import DEFAULT_ROOT as BRAZIL_ROAD
 from freight_intelligence.brazil_road import STATES, load_road, load_road_monthly
 from freight_intelligence.brazil_water import DEFAULT_ROOT as BRAZIL_WATER
 from freight_intelligence.brazil_water import REGIONS, load_water, load_water_pairs
+from freight_intelligence.brazil_water_ports import load_port_pairs
 from freight_intelligence.dashboard_data import load_projection_files
 from freight_intelligence.evaluation_results import load_temporal_report
 from freight_intelligence.ml.annual_forecast import INTERPRETATION, PROJECT_ROOT
@@ -248,6 +249,26 @@ def create_app(
         return {"total": data.height, "count": min(limit, max(0, data.height - offset)),
                 "data": data.slice(offset, limit).to_dicts(), "limit": limit, "offset": offset,
                 "metadata": metadata, "evaluation_metadata": report["metadata"]}
+
+    @data_routes.get("/brazil/water-port-pairs")
+    def brazil_water_port_pairs(
+        year: int = Query(default=2025, ge=2025, le=2025),
+        origin_port: str | None = Query(default=None, max_length=150),
+        destination_port: str | None = Query(default=None, max_length=150),
+        limit: int = Query(default=100, ge=1, le=500),
+        offset: int = Query(default=0, ge=0),
+    ):
+        try:
+            data, metadata = load_port_pairs(water_dir if water_dir is not None else BRAZIL_WATER)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified ANTAQ port pairs unavailable") from error
+        for field, value in (("origin_port", origin_port), ("destination_port", destination_port)):
+            if value is not None:
+                data = data.filter(pl.col(field) == value)
+        view = data.slice(offset, limit)
+        return {"year": year, "total": data.height, "count": view.height,
+                "data": view.to_dicts(), "limit": limit, "offset": offset,
+                "filtered_tonnes": data["tonnes"].sum(), "metadata": metadata}
 
     @data_routes.get("/brazil/water-pairs")
     def brazil_water_pairs(

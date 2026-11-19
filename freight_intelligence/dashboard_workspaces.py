@@ -17,6 +17,7 @@ from freight_intelligence.brazil_modal_forecasts import SERIES, load_modal_forec
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_water import load_water, load_water_pairs
+from freight_intelligence.brazil_water_ports import load_port_pairs
 from freight_intelligence.dashboard_ui import LocalizedUI
 from freight_intelligence.optimization.geographic_routing import LIMITATIONS, request_route
 from freight_intelligence.optimization.truck_routing import (
@@ -423,11 +424,15 @@ def render_water_freight(t):
               "coastal_state_endpoints": "Coastal container origin/destination states",
               "grain_regions": "Maize/soybean regional port aggregates",
               "port_monthly": "Monthly port handling (2025)",
-              "coastal_region_pairs": "Regional cabotage origin–destination shares (2025)"}
+              "coastal_region_pairs": "Regional cabotage origin–destination shares (2025)",
+              "port_pairs": "Port-to-port cabotage tonnes (2025 · three origins)"}
     dataset = ui.selectbox("Water reference dataset", list(labels),
                            format_func=labels.get, key="brazil_water_dataset")
     if dataset == "coastal_region_pairs":
         render_water_pairs(t)
+        return
+    if dataset == "port_pairs":
+        render_water_port_pairs(t)
         return
     view = data.filter(pl.col("dataset") == dataset)
     years = sorted(view["year"].unique())
@@ -451,6 +456,36 @@ def render_water_freight(t):
     ui.download_button("Download ANTAQ reference tables (CSV)", data.write_csv().encode(),
                        "antaq_navigation_references.csv", "text/csv")
     with ui.expander("ANTAQ source, precision and coverage"):
+        st.json(metadata)
+
+
+def render_water_port_pairs(t):
+    ui = LocalizedUI(t)
+    ui.subheader("Reported port-to-port cabotage · 2025")
+    try:
+        data, metadata = load_port_pairs()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        ui.error("The verified ANTAQ port-pair snapshot is unavailable.")
+        return
+    ui.warning("Coverage includes three reviewed origins only. Unlisted pairs are unavailable, "
+               "not zero; these are reported transport volumes, not navigable itineraries.")
+    origin = ui.selectbox("Origin port", sorted(data["origin_port"].unique()), key="water_port_origin")
+    view = data.filter(pl.col("origin_port") == origin)
+    all_ports = "All reported destinations"
+    destination = ui.selectbox("Destination port", [all_ports, *sorted(view["destination_port"].unique())],
+                               key="water_port_destination")
+    if destination != all_ports:
+        view = view.filter(pl.col("destination_port") == destination)
+    ui.metric("Reported port pairs", view.height)
+    ui.metric("Reported transport (tonnes)", f"{view['tonnes'].sum():,.3f}")
+    chart = view.select(pl.col("destination_port").alias(t("Destination port")),
+                        pl.col("tonnes").alias(t("Tonnes")))
+    st.bar_chart(chart, x=t("Destination port"), y=t("Tonnes"), horizontal=True,
+                 height=max(250, view.height * 26))
+    ui.dataframe(view, hide_index=True)
+    ui.download_button("Download filtered port pairs (CSV)", view.write_csv().encode(),
+                       "antaq_port_pairs_2025.csv", "text/csv")
+    with ui.expander("Port-pair source and coverage"):
         st.json(metadata)
 
 

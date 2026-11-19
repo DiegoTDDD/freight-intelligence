@@ -92,3 +92,9 @@ reviewed XLSX is bundled, and a changed source fails the hash check. The reader
 also validates the calendar, distinct keys, regions, positive fractions and unit
 sum. This supplies regional paired analysis, not port-level routes, live vessel
 positions, navigable itineraries or complete inland/coastal shipment coverage.
+
+## Observed port-level pairs
+
+A separate reviewed view now supplies 77 actual destination links from Santos,
+Suape and Manaus, with original numeric tonnes. See [method, exports and coverage](brazil_water_ports.md).
+This does not expand the regional fractions into inferred port pairs.

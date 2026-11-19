@@ -1,0 +1,78 @@
+year,origin_port,origin_state,destination_port,destination_state,tonnes
+2025,Manaus,AM,Salvador,BA,341868.4539999999
+2025,Manaus,AM,Fortaleza,CE,148.76
+2025,Manaus,AM,Terminal Portuário do Pecém,CE,291938.9810000001
+2025,Manaus,AM,Vitória,ES,12882.818
+2025,Manaus,AM,Suape,PE,288289.347
+2025,Manaus,AM,Paranaguá,PR,74827.53199999998
+2025,Manaus,AM,Itaguaí,RJ,235550.4130000001
+2025,Manaus,AM,Rio de Janeiro,RJ,2243.67
+2025,Manaus,AM,Rio Grande,RS,19405.02
+2025,Manaus,AM,Imbituba,SC,47135.331
+2025,Manaus,AM,Itajaí,SC,34421.04900000007
+2025,Manaus,AM,Santos,SP,1202740.582999924
+2025,Manaus,AM,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,135550.585
+2025,Santos,SP,Maceió,AL,55200.802
+2025,Santos,SP,Porto Chibatão,AM,804869.7039999996
+2025,Santos,SP,Super Terminais Comércio e Indústria,AM,207987.36
+2025,Santos,SP,Terminais Fluviais do Brasil,AM,248081.863
+2025,Santos,SP,Aratu,BA,62643.98
+2025,Santos,SP,Salvador,BA,306689.4320000001
+2025,Santos,SP,Fortaleza,CE,31229.92300000001
+2025,Santos,SP,Terminal Portuário do Pecém,CE,647034.8390000015
+2025,Santos,SP,Terminal de Tubarão,ES,590313.9979999999
+2025,Santos,SP,Vitória,ES,1328737.283000001
+2025,Santos,SP,Itaqui,MA,287291.589
+2025,Santos,SP,Belém,PA,94239.963
+2025,Santos,SP,Santarém,PA,195293.696
+2025,Santos,SP,Vila do Conde,PA,56122.37000000016
+2025,Santos,SP,Cabedelo,PB,87703.45300000001
+2025,Santos,SP,Recife,PE,41955.768
+2025,Santos,SP,Suape,PE,991103.0050000006
+2025,Santos,SP,Paranaguá,PR,820580.3840000007
+2025,Santos,SP,Itaguaí,RJ,181323.4150000003
+2025,Santos,SP,Rio de Janeiro,RJ,45846.22600000002
+2025,Santos,SP,Subsea 7 do Brasil Serviços LTDA,RJ,23.076
+2025,Santos,SP,Terminal Aquaviário de Angra dos Reis,RJ,15004.862
+2025,Santos,SP,Rio Grande,RS,108716.288
+2025,Santos,SP,Terminal Santa Clara,RS,156.29
+2025,Santos,SP,Imbituba,SC,16776.835
+2025,Santos,SP,Itajaí,SC,241474.6720000003
+2025,Santos,SP,Porto Itapoá Terminais Portuários,SC,341222.1319999997
+2025,Santos,SP,Portonave - Terminais Portuários de Navegantes,SC,186298.7779999998
+2025,Santos,SP,DP World Santos,SP,0.26
+2025,Santos,SP,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,796151.8069999999
+2025,Suape,PE,Maceió,AL,184192.358
+2025,Suape,PE,Porto Chibatão,AM,63552.10900000003
+2025,Suape,PE,Super Terminais Comércio e Indústria,AM,104060.8600000006
+2025,Suape,PE,Terminais Fluviais do Brasil,AM,228130.195
+2025,Suape,PE,Aratu,BA,108706.3
+2025,Suape,PE,Salvador,BA,312763.5269999998
+2025,Suape,PE,Terminal Aquaviário de Madre de Deus,BA,462063.323
+2025,Suape,PE,Fortaleza,CE,1367125.841
+2025,Suape,PE,Terminal Portuário do Pecém,CE,316986.4680000002
+2025,Suape,PE,Terminal Aquaviário de Barra do Riacho,ES,8814.461
+2025,Suape,PE,Vitória,ES,165.074
+2025,Suape,PE,Itaqui,MA,804927.3339999994
+2025,Suape,PE,Terminal Portuário Privativo da Alumar,MA,19952.626
+2025,Suape,PE,Belém,PA,441823.3919999998
+2025,Suape,PE,Santarém,PA,37482.879
+2025,Suape,PE,Vila do Conde,PA,122241.9999999997
+2025,Suape,PE,Cabedelo,PB,98126.00499999999
+2025,Suape,PE,Paranaguá,PR,151627.387
+2025,Suape,PE,Itaguaí,RJ,68205.65700000002
+2025,Suape,PE,Rio de Janeiro,RJ,66019.06199999999
+2025,Suape,PE,Terminal Aquaviário da Ilha D'Água,RJ,25524.409
+2025,Suape,PE,Terminal Aquaviário de Angra dos Reis,RJ,148162.112
+2025,Suape,PE,Terminal Aquaviário de Ilha Redonda e Terminal Aquaviário da Ilha Comprida,RJ,3409.676
+2025,Suape,PE,Terminal Aquaviário de Guamaré,RN,19614.037
+2025,Suape,PE,Rio Grande,RS,69344.61199999992
+2025,Suape,PE,Terminal Aquaviário de Osório,RS,58129.9
+2025,Suape,PE,Terminal Santa Clara,RS,361.537
+2025,Suape,PE,Imbituba,SC,7299.952
+2025,Suape,PE,Itajaí,SC,11453.63200000015
+2025,Suape,PE,Porto Itapoá Terminais Portuários,SC,163568.474
+2025,Suape,PE,Portonave - Terminais Portuários de Navegantes,SC,106467.6909999932
+2025,Suape,PE,DP World Santos,SP,228943.46
+2025,Suape,PE,Santos,SP,303965.8660000068
+2025,Suape,PE,Terminal Aquaviário de São Sebastião (Almirante Barroso),SP,418048.031

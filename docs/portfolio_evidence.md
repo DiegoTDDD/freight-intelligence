@@ -19,6 +19,7 @@ Check for drift: `python scripts/build_portfolio_evidence.py --check`
 | ANP gas operator/direction/month | 600 | 2021–2025; coverage changes; not unique national supply |
 | ANTAQ references and monthly rows | 55 | 43 annual/regional references plus twelve 2025 port-handling months |
 | ANTAQ paired regional cabotage shares | 21 | 2025 original region-to-region fractions; offshore and undetermined origins retained |
+| ANTAQ port-to-port cabotage volumes | 77 | 2025; three reviewed origins only: Santos, Suape, Manaus; original numeric tonnes |
 | ANTT road monthly totals | 12 | 2025 published Chart 45 labels |
 | ANTT regional road pairs | 16 | 16 published RGI pairs; not municipalities or truck itineraries |
 
@@ -143,6 +144,21 @@ itineraries and must not be scaled by a different annual/handling total.
 The [original XLSX export](../deployment/brazil_water/cabotage_region_pairs_2025.xlsx)
 and [unrounded derived CSV](../deployment/brazil_water/coastal_region_pairs.csv)
 are versioned with hashes and [reviewed filter/period context](brazil_water.md#paired-regional-cabotage-shares).
+
+## Port-to-port cabotage volumes
+
+| Reviewed origin | Reported destination pairs | Transport tonnes |
+| --- | --- | --- |
+| Manaus | 13 | 2,687,002.543 |
+| Santos | 30 | 8,790,074.053 |
+| Suape | 34 | 6,531,260.247 |
+
+These **77 observed pairs** come from three separate original destination-table
+exports, each with exactly one origin selected and the full 2025 calendar.
+The XLSX retains fractional tonnes; every origin subtotal rounds to the
+whole-tonne headline in the archived filter context. This is partial origin
+coverage, not a national total or a navigable itinerary. Unlisted pairs are
+unavailable, not zero. [Full CSV and original evidence](brazil_water_ports.md).
 
 ## Gas source quality and road reconciliation
 
