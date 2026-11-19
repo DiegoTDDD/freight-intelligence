@@ -8,6 +8,7 @@ import polars as pl
 from freight_intelligence.brazil_air import load_air
 from freight_intelligence.brazil_gas_history import load_gas_history
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.brazil_modal_forecasts import load_modal_forecasts
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_water import load_water, load_water_pairs
@@ -30,6 +31,7 @@ def render():
     historical_gas, _, _ = load_gas_history()
     water, _ = load_water()
     water_pairs, _ = load_water_pairs()
+    modal_report, _ = load_modal_forecasts()
     road, _ = load_road()
     road_months, road_metadata = load_road_monthly()
     modes, _ = load_modes()
@@ -56,6 +58,10 @@ def render():
     score_table = table(["Observed subtotal", "Baseline", "Selected on validation", "Test WAPE"], [
         [r["metric_type"], r["model"], "Yes" if r["selected"] else "No", f'{r["wape"]:.2%}']
         for r in scores.to_dicts()
+    ])
+    modal_score_table = table(["Rounded historical indicator", "Baseline", "Selected on validation", "Test WAPE"], [
+        [r["metric_type"], r["model"], "Yes" if r["selected"] else "No", f'{r["wape"]:.2%}']
+        for r in modal_report["scores"].filter(pl.col("phase") == "test").sort("metric_type", "model").to_dicts()
     ])
     water_months = water.filter(pl.col("dataset") == "port_monthly").sort("category")
     water_table = table(["Month", "Displayed port handling (tonnes)"], [
@@ -112,6 +118,23 @@ predictions, forecasts and source/split metadata.
 The independent [ANTT railway evaluation](brasil.md) covers 2006–2025;
 validation-selected reserved-test WAPE is 4.75% TU and 1.61% TKU. Railway,
 airport-stage and FAF scenario populations must not be treated as equivalent.
+
+## Port and oil-pipeline evaluation with a 2024 observation cutoff
+
+Each series contains fifteen reviewed rounded annual values, 2010–2024.
+Validation ends in 2021; 2022–2024 are reserved for test. Port handling uses
+million tonnes and Transpetro oil/product movements use million m³ at 20°C.
+They are neither added together nor treated as unique national shipments.
+
+{modal_score_table}
+
+The validation-selected port model loses to CAGR on the reserved test; the
+selected oil model loses to persistence. No choices are changed after seeing
+these results. The bundled forecasts for **2025–2027 are vintage estimates from
+a 2024 cutoff**, even for calendar years already past. They are not newly
+observed data and are not spliced with a newer source edition.
+[Method and scope](brazil_modal_forecasts.md) ·
+[portable scores, predictions and source observations](../deployment/brazil_modal_forecasts/forecast.zip).
 
 ## Monthly port handling
 

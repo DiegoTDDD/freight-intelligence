@@ -12,7 +12,7 @@ assurance. It does not replace source evidence or imply unimplemented completion
 | Gas history/quality | 2022–2025, 480 monthly records, reviewed explicit-unit 2022 label, duplicate policy, missing-cell point/date diagnostics | Earlier explicit unit contracts and other pipeline operators/minerals |
 | Rail beyond federal concessions | Detailed ANTT 2006–2025 observations | No verified cross-operator consignment identifiers or additional complete source acquired; physical cargo cannot be deduplicated by guessing |
 | Real operating optimization | Constrained solver and input validation, scenarios and comparisons | Verified operating demand/capacity/cost records and measured outcomes are not supplied. Public benchmarks cannot be called actual company savings |
-| Forecasts for more modes | Railway and ANAC paid-stage observed-subtotal baselines; reserved tests and reports | Histories adequate for other target measures; no accuracy guarantee or fabricated observations |
+| Forecasts for more modes | Railway, ANAC paid-stage subtotals, rounded port handling and Transpetro oil/product baselines; reserved tests, every candidate's scores and vintage reports | Newer reconciled histories and other target measures; no accuracy guarantee, invented observations or reselection on test results |
 | Portuguese UI | Per-render localization of newer modal/truck/gas/air controls/core notices; stable internal values and English default | Source identifiers and original provenance remain untranslated data |
 
 Commercial dispatch certification, toll/driver-hours compliance, paid provider

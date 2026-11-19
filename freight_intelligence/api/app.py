@@ -15,6 +15,8 @@ from freight_intelligence.brazil_gas_history import DEFAULT_ROOT as GAS_HISTORY
 from freight_intelligence.brazil_gas_history import load_gas_history, missing_groups
 from freight_intelligence.brazil_gas_results import DEFAULT_ROOT as BRAZIL_GAS
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.brazil_modal_forecasts import DEFAULT_ROOT as MODAL_FORECASTS
+from freight_intelligence.brazil_modal_forecasts import SERIES, load_modal_forecasts
 from freight_intelligence.brazil_modes import DEFAULT_ROOT as BRAZIL_MODES
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import DEFAULT_ROOT as BRAZIL_ROAD
@@ -70,6 +72,7 @@ def create_app(
     road_dir: Path | None = None,
     air_dir: Path | None = None,
     gas_history_dir: Path | None = None,
+    modal_forecasts_dir: Path | None = None,
 ) -> FastAPI:
     gold = Path(gold_dir) if gold_dir is not None else PROJECT_ROOT / "data/gold/faf5"
     models = Path(model_dir) if model_dir is not None else PROJECT_ROOT / "models/faf5/annual"
@@ -217,6 +220,34 @@ def create_app(
                     & (pl.col("origin_region") == pl.col("destination_region")))
             data = data.filter(same if same_region else ~same)
         return {"count": data.height, "data": data.to_dicts(), "metadata": metadata}
+
+    @data_routes.get("/brazil/modal-forecasts")
+    def brazil_modal_forecasts(
+        view: Literal["scores", "predictions", "forecast"] = "forecast",
+        mode: Literal["water", "pipeline"] | None = None,
+        phase: Literal["validation", "test"] | None = None,
+        year: int | None = Query(default=None, ge=2010, le=2027),
+        limit: int = Query(default=100, ge=1, le=500),
+        offset: int = Query(default=0, ge=0),
+    ):
+        if (phase is not None and view == "forecast") or (year is not None and view == "scores"):
+            raise HTTPException(status_code=422, detail="Filter is unavailable for this report view")
+        try:
+            report, metadata = load_modal_forecasts(
+                modal_forecasts_dir if modal_forecasts_dir is not None else MODAL_FORECASTS,
+                modes_root=brazil_dir)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified modal vintage forecasts unavailable") from error
+        data = report[view]
+        if mode is not None:
+            data = data.filter(pl.col("metric_type").is_in([name for name, contract in SERIES.items() if contract[0] == mode]))
+        if phase is not None:
+            data = data.filter(pl.col("phase") == phase)
+        if year is not None:
+            data = data.filter(pl.col("year") == year)
+        return {"total": data.height, "count": min(limit, max(0, data.height - offset)),
+                "data": data.slice(offset, limit).to_dicts(), "limit": limit, "offset": offset,
+                "metadata": metadata, "evaluation_metadata": report["metadata"]}
 
     @data_routes.get("/brazil/water-pairs")
     def brazil_water_pairs(

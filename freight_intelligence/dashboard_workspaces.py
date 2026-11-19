@@ -13,6 +13,7 @@ import streamlit as st
 from freight_intelligence.brazil_air import CARGO_FIELDS, load_air
 from freight_intelligence.brazil_gas_history import load_gas_history, missing_groups
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.brazil_modal_forecasts import SERIES, load_modal_forecasts
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
 from freight_intelligence.brazil_water import load_water, load_water_pairs
@@ -229,6 +230,8 @@ def render_modes(t):
     ui.markdown(f"[Official source]({series['source_url'][0]})")
     ui.download_button("Download all modal indicators (CSV)", data.write_csv().encode(),
                        "brazil_modal_indicators.csv", "text/csv")
+    if mode in {"water", "pipeline"}:
+        render_modal_forecast(t, mode)
     if mode == "pipeline":
         render_gas_movements(t)
     if mode == "water":
@@ -240,6 +243,35 @@ def render_modes(t):
     with ui.expander("Coverage, quality notes and source hashes"):
         for note in metadata["quality_notes"]:
             ui.warning(note)
+        st.json(metadata)
+
+
+def render_modal_forecast(t, mode):
+    ui = LocalizedUI(t)
+    with ui.expander("Port and oil-pipeline forecast evaluation · 2024 cutoff"):
+        try:
+            report, metadata = load_modal_forecasts()
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+            ui.error("The verified modal forecast report is unavailable.")
+            return
+        metric = next(name for name, contract in SERIES.items() if contract[0] == mode)
+        unit = SERIES[metric][1]
+        ui.caption("Reported rounded histories: 2010–2024. Validation ends in 2021; 2022–2024 are reserved for test.")
+        ui.warning("These are vintage forecasts from a 2024 observation cutoff. Output years 2025–2027 remain model estimates, even when a calendar year is already past. Newer source editions are not silently appended. No uncertainty intervals or accuracy guarantee.")
+        scores = report["scores"].filter(pl.col("metric_type") == metric)
+        chosen = scores.filter((pl.col("phase") == "test") & pl.col("selected"))
+        ui.metric("Vintage selected-model test WAPE", f"{chosen['wape'][0]:.2%}")
+        ui.caption("All candidates remain visible. A model is never reselected using the reserved test errors.")
+        ui.dataframe(scores, hide_index=True)
+        selected = report["predictions"].filter(
+            (pl.col("metric_type") == metric) & (pl.col("phase") == "test") & pl.col("selected"))
+        st.line_chart(selected.select("year", "actual", "prediction"), x="year", y=["actual", "prediction"])
+        ui.caption(f"Source unit: {unit}")
+        ui.dataframe(report["forecast"].filter(pl.col("metric_type") == metric), hide_index=True)
+        ui.download_button("Download port and oil-pipeline evaluation (ZIP)",
+                           (DEPLOYMENT / "brazil_modal_forecasts/forecast.zip").read_bytes(),
+                           "brazil_modal_vintage_evaluation.zip", "application/zip",
+                           key=f"modal_forecast_download_{mode}")
         st.json(metadata)
 
 

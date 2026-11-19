@@ -127,3 +127,4 @@ secrets/
 !deployment/brazil_air/*.parquet
 !deployment/brazil_air/*.zip
 !deployment/brazil_gas_history/*.csv
+!deployment/brazil_modal_forecasts/*.zip

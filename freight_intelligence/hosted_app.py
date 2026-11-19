@@ -28,6 +28,7 @@ def snapshot_api(root: Path):
         road_dir=PROJECT / "deployment/brazil_road",
         air_dir=PROJECT / "deployment/brazil_air",
         gas_history_dir=PROJECT / "deployment/brazil_gas_history",
+        modal_forecasts_dir=PROJECT / "deployment/brazil_modal_forecasts",
     )
 
 

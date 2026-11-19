@@ -119,6 +119,20 @@ def test_regional_water_pairs_filter_without_renormalizing_and_translate():
     assert app.selectbox(key="water_pair_origin").value == "ZEE/Plat. Continental"
 
 
+def test_port_and_oil_forecasts_keep_their_2024_vintage_and_translate():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    for mode, error in (("water", "2.10%"), ("pipeline", "16.91%")):
+        app.selectbox(key="brazil_mode").select(mode).run()
+        assert not app.exception and not app.error
+        assert any(item.label == "Vintage selected-model test WAPE" and item.value == error for item in app.metric)
+        assert any("2024 observation cutoff" in item.value for item in app.warning)
+    app.selectbox(key="language").select("pt").run()
+    assert not app.exception and not app.error
+    assert any("corte de observações em 2024" in item.value for item in app.warning)
+
+
 def test_regional_road_filters_and_unlisted_pairs():
     app = AppTest.from_file(str(APP), default_timeout=30).run()
     app.selectbox(key="workspace").select("Brazilian freight").run()

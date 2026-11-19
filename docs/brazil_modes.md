@@ -18,7 +18,9 @@ Charts keep their published rounding. No synthetic values or projections are
 inserted into the observed series.
 
 The [detailed ANTAQ view](brazil_water.md) adds 43 navigation, cargo and regional
-reference records and a separate API/CSV export.
+references, twelve port-handling months and 21 directly exported paired regional
+shares, with separate API/CSV exports. The [port/oil baseline report](brazil_modal_forecasts.md)
+evaluates the older rounded 2010–2024 histories without splicing source editions.
 
 ## Sources and reproducibility
 
@@ -31,8 +33,8 @@ come from the existing verified ANTT snapshot, whose input hash is also retained
 The ANTT TRC 2025 yearbook (physical PDF page 61, printed page 53) separately
 reports 80.4 million MDF-e cargo trips and 749.4 billion tonne-kilometres. These
 rounded indicators are curated separately, with transport work marked as derived
-from source distance estimation. The official PDF was reviewed, but automated
-raw download returned HTTP 403; its source-file hash is not claimed.
+from source distance estimation. The separately reviewed road PDF hash and its
+monthly reconciliation are documented in [the road source contract](brazil_road.md).
 
 Rebuild with `python scripts/prepare_brazil_modes.py`. To additionally verify
 the downloaded edition, provide `--source-pdf PATH`; a changed PDF is rejected

@@ -109,6 +109,12 @@ Optional `origin_region` and `destination_region` filter source labels; fraction
 retain the full-panel denominator. They are not absolute tonnes or port routes.
 The hosted path is `/api/brazil/water-pairs`; missing/invalid snapshots return 503.
 
+`GET /brazil/modal-forecasts` exposes port-handling and Transpetro oil/product
+vintage reports. `mode=water|pipeline`, `view=scores|predictions|forecast`, optional
+`phase` (scores/predictions) and `year` (predictions/forecast), plus bounded
+pagination are supported. These forecasts retain a 2024 cutoff; they are not
+current observations. [Source, protocol and units](brazil_modal_forecasts.md).
+
 The gas endpoint accepts years 2022–2025 (`year=2025` is the default). Add
 `include_diagnostics=true` for source point/date groups, with
 `diagnostics_limit` up to 500 and `diagnostics_offset`. Normal responses omit large

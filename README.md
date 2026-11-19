@@ -16,7 +16,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | --- | --- | --- |
 | Data engineering | FAF5 CSV → Bronze Parquet → long-format Silver → analytical Gold; streaming/lazy processing, staged file replacement, ordered orchestration and dry-run plan | [Pipeline and original roadmap](docs/roteiro_original.md), [source structure](freight_intelligence/) |
 | Freight analytics | Annual KPIs, growth across irregular years, CAGR, commodity mix, domestic modes, corridor concentration and leading corridors | [Dashboard guide](docs/dashboard.md), [versioned demo aggregates](deployment/preview_data/) |
-| Forecast evaluation | Persistence, linear and CAGR baselines; expanding-window validation; reserved final tests; forecasts separated from observed history and FAF scenarios | [Evaluation methodology](docs/temporal_evaluation.md), [static results for every ANAC baseline](docs/portfolio_evidence.md#forecast-results-including-competing-baselines) |
+| Forecast evaluation | Persistence, linear and CAGR baselines; expanding-window validation and reserved tests for rail, air, port handling and Transpetro oil movements; vintage cutoffs and units kept separate | [Evaluation methodology](docs/temporal_evaluation.md), [all candidate scores](docs/portfolio_evidence.md#forecast-results-including-competing-baselines), [port/oil vintage reports](docs/brazil_modal_forecasts.md) |
 | Brazilian railway | ANTT movements, 2006–2025; monthly/annual series, commodities, state pairs and concessionaires; reserved forecast evaluation | [Railway coverage and units](docs/brasil.md) |
 | Brazilian road | Fleet/MDF-e indicators, twelve 2025 tonnage months and sixteen published regional RGI pairs; source denominator reconciliation | [Road scope and reconciliation](docs/brazil_road.md) |
 | Brazilian water | 43 annual/regional references, twelve 2025 port-handling months and 21 paired regional cabotage shares; original XLSX preserved | [ANTAQ sources and precision](docs/brazil_water.md) |
@@ -149,6 +149,7 @@ GET /api/brazil/air-freight?view=pairs&year=2025&limit=10
 GET /api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=10
 GET /api/brazil/water-freight?dataset=port_monthly&year=2025
 GET /api/brazil/water-pairs?origin_region=Norte
+GET /api/brazil/modal-forecasts?mode=water&view=scores&phase=test
 GET /api/brazil/road-monthly
 ```
 
@@ -165,6 +166,13 @@ python -m freight_intelligence.pipeline
 This explicitly rebuilds Bronze, Silver and Gold and processes approximately 100 million Silver rows. It is separate from the small demo. `--skip-existing` reuses steps only when all outputs exist and upstream steps were not rebuilt; it does not prove file validity or source freshness. The separate [heavy how-to workflow](.github/workflows/howto-check.yml) fails on pipeline errors and preserves logs. The default lightweight CI does not download or rebuild this dataset.
 
 ## Data interpretation and remaining work
+
+Port and Transpetro oil/product baselines now evaluate the reviewed rounded
+2010–2024 histories, reserving 2022–2024. Selected-model test WAPE is **2.10%**
+for port handling and **16.91%** for oil/product movements. Competing baselines
+score better on the reserved test and remain visible. The 2025–2027 outputs are
+**vintage estimates with a 2024 observation cutoff**, not current observed data;
+see [methodology, units and source-edition limits](docs/brazil_modal_forecasts.md).
 
 - FAF includes estimates and future scenarios. Agreement with held-out FAF scenario points is not evidence of future observed-demand accuracy.
 - Brazilian series use different populations and units. Airport stages, gas-point transfers, railway movements and port handling may repeat the same physical cargo; they are not comparable national modal shares.

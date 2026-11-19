@@ -10,7 +10,7 @@ listed in [CI Pipeline](https://github.com/DiegoTDDD/freight-intelligence/action
 | --- | --- |
 | Data engineering | Bronze/Silver/Gold pipeline; full real run verified, 2,503,352 Bronze and 97,630,728 Silver rows |
 | Analytics | FAF indicators, commodities, domestic modes and corridors, with source units and scenario labels |
-| Forecasting | Baselines, temporal validation and reserved tests; ANTT railway history 2006–2025 and ANAC paid-stage observed-subtotal evaluation with reserved 2023–2025 tests |
+| Forecasting | Baselines and reserved tests for ANTT railway, ANAC paid-stage subtotals, port handling and Transpetro oil/product volumes; the last two retain a 2024 source cutoff and reserved 2022–2024 tests |
 | Optimization | Tested constrained transport solver, editable scenarios and comparisons; scenario costs are not measured savings |
 | Dashboard | Published Streamlit app; English default; Portuguese controls and core notices for modal, truck, gas and air workspaces |
 | Real-road routing | Separate OSRM car-reference and Valhalla truck engines; explicit truck profile, map, instructions and GeoJSON |
@@ -61,8 +61,8 @@ The heavy full pipeline was verified previously and was not rerun for this updat
 7. **Operational optimization:** connect verified real demand, capacity and costs
    to the solver and evaluate realized outcomes. Synthetic scenario differences
    are not evidence of actual savings.
-8. **Broader forecasting:** ANAC paid-stage observed subtotals now complement
-   railway evaluation. Extend reliable histories for remaining modes and evaluate
+8. **Broader forecasting:** ANAC paid-stage subtotals, port handling and Transpetro
+   oil/product vintage reports now complement railway evaluation. Extend reliable histories for remaining targets and evaluate
    them on reserved periods. Short histories and changing coverage cannot justify
    claims of complete national demand. FAF projections remain scenarios.
 

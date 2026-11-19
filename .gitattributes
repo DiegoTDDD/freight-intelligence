@@ -2,6 +2,7 @@
 deployment/preview_data/** -text
 deployment/brazil_data/** -text
 deployment/brazil_modes/** -text
+deployment/brazil_modal_forecasts/** -text
 deployment/brazil_gas/** -text
 deployment/brazil_water/** -text
 deployment/brazil_road/** -text

@@ -22,6 +22,8 @@
 !deployment/brazil_data/**
 !deployment/brazil_modes/
 !deployment/brazil_modes/**
+!deployment/brazil_modal_forecasts/
+!deployment/brazil_modal_forecasts/**
 !deployment/brazil_gas/
 !deployment/brazil_gas/**
 !deployment/brazil_water/

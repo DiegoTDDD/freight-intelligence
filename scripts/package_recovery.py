@@ -32,6 +32,7 @@ def verify_archive(archive):
         count = len(manifest["files"])
         for directory, filename in (("brazil_data", "provenance.json"),
                                     ("brazil_modes", "provenance.json"),
+                                    ("brazil_modal_forecasts", "provenance.json"),
                                     ("brazil_gas", "provenance.json"),
                                     ("brazil_water", "provenance.json"),
                                     ("brazil_water", "coastal_pairs_provenance.json"),

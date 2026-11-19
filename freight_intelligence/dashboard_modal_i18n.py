@@ -32,6 +32,13 @@ COLUMNS = {"year": "Year", "month": "Month", "nature": "Flight nature", "origin"
            "indicator": "Indicator", "first_year": "First year", "last_year": "Last year",
            "share_of_cabotage": "Share of cabotage (fraction)"}
 PT = {
+    "Port and oil-pipeline forecast evaluation · 2024 cutoff": "Avaliação de previsões de portos e oleodutos · corte em 2024",
+    "The verified modal forecast report is unavailable.": "O relatório verificado de previsões modais está indisponível.",
+    "Reported rounded histories: 2010–2024. Validation ends in 2021; 2022–2024 are reserved for test.": "Históricos publicados com arredondamento: 2010–2024. A validação termina em 2021; 2022–2024 ficam reservados para teste.",
+    "These are vintage forecasts from a 2024 observation cutoff. Output years 2025–2027 remain model estimates, even when a calendar year is already past. Newer source editions are not silently appended. No uncertainty intervals or accuracy guarantee.": "São previsões com corte de observações em 2024. Os resultados de 2025–2027 continuam sendo estimativas, mesmo quando o ano já passou. Edições mais recentes não são acrescentadas silenciosamente. Sem intervalos de incerteza ou garantia de precisão.",
+    "Vintage selected-model test WAPE": "WAPE de teste do modelo escolhido nessa edição",
+    "All candidates remain visible. A model is never reselected using the reserved test errors.": "Todos os candidatos permanecem visíveis. O modelo não é escolhido novamente pelos erros do teste reservado.",
+    "Download port and oil-pipeline evaluation (ZIP)": "Baixar avaliação de portos e oleodutos (ZIP)",
     "Regional cabotage origin–destination shares (2025)": "Participações regionais de origem–destino na cabotagem (2025)",
     "Regional cabotage origin–destination shares · 2025": "Participações regionais de origem–destino na cabotagem · 2025",
     "The verified ANTAQ regional pair snapshot is unavailable.": "O conjunto verificado de pares regionais da ANTAQ está indisponível.",
@@ -169,6 +176,7 @@ PT = {
     "Value": "Valor", "Unit": "Unidade", "Scope": "Abrangência", "First year": "Primeiro ano", "Last year": "Último ano",
 }
 DYNAMIC = {
+    "Source unit: ": "Unidade da fonte: ",
     "Reference year: ": "Ano de referência: ", "Reported gas-pipeline movements · ": "Movimentos informados em gasodutos · ",
     "Calculated profile: ": "Perfil calculado: ", "Missing-source record groups: ": "Grupos de registros com ausências: ",
     "; table shows at most 100.": "; a tabela mostra no máximo 100.",

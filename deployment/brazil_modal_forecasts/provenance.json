@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-11-19",
+  "source_end_year": 2024,
+  "test_years": [
+    2022,
+    2023,
+    2024
+  ],
+  "forecast_years": [
+    2025,
+    2026,
+    2027
+  ],
+  "forecast_vintage": "2024 observation cutoff",
+  "series": [
+    {
+      "indicator": "port_throughput",
+      "unit": "million_tonnes",
+      "scope": "Brazilian port cargo handling (ANTAQ); includes maritime/inland port activity, not unique shipments",
+      "source_url": "https://ontl.infrasa.gov.br/wp-content/uploads/2025/10/Diagnostico-logistico-2010-2024.pdf",
+      "source_page": 78
+    },
+    {
+      "indicator": "transpetro_oil_pipeline_movement",
+      "unit": "million_m3_at_20C",
+      "scope": "Transpetro-reported oil/product pipeline volume; excludes other operators and mineral pipelines",
+      "source_url": "https://ontl.infrasa.gov.br/wp-content/uploads/2025/10/Diagnostico-logistico-2010-2024.pdf",
+      "source_page": 123
+    }
+  ],
+  "source_documents": [
+    {
+      "url": "https://ontl.infrasa.gov.br/wp-content/uploads/2025/10/Diagnostico-logistico-2010-2024.pdf",
+      "sha256": "5534dc1dd04112611514c67f2d5abf35f8bce4e49f5e66f91f86503b05c73f5b",
+      "pages": [
+        40,
+        78,
+        110,
+        123
+      ]
+    }
+  ],
+  "interpretation": "Vintage forecasts from the reviewed 2010\u20132024 source edition. Forecast years can already be past calendar years; they remain model estimates, never newly observed data. Rounded histories and different statistical populations remain separate. No uncertainty intervals or future accuracy guarantee.",
+  "newer_references": "Separate 2025 ANTAQ handling references are not appended to this older rounded history without a source-edition reconciliation",
+  "files": [
+    {
+      "path": "forecast.zip",
+      "bytes": 4244,
+      "sha256": "7b4775a3b2e4ead19bd86376b1942081e3ce2732d0be4d45c9745c40ab74f90e"
+    }
+  ]
+}

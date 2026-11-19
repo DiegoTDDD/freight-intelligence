@@ -61,6 +61,30 @@ The independent [ANTT railway evaluation](brasil.md) covers 2006–2025;
 validation-selected reserved-test WAPE is 4.75% TU and 1.61% TKU. Railway,
 airport-stage and FAF scenario populations must not be treated as equivalent.
 
+## Port and oil-pipeline evaluation with a 2024 observation cutoff
+
+Each series contains fifteen reviewed rounded annual values, 2010–2024.
+Validation ends in 2021; 2022–2024 are reserved for test. Port handling uses
+million tonnes and Transpetro oil/product movements use million m³ at 20°C.
+They are neither added together nor treated as unique national shipments.
+
+| Rounded historical indicator | Baseline | Selected on validation | Test WAPE |
+| --- | --- | --- | --- |
+| port_throughput | cagr | No | 1.45% |
+| port_throughput | linear | Yes | 2.10% |
+| port_throughput | persistence | No | 5.74% |
+| transpetro_oil_pipeline_movement | cagr | Yes | 16.91% |
+| transpetro_oil_pipeline_movement | linear | No | 27.45% |
+| transpetro_oil_pipeline_movement | persistence | No | 15.35% |
+
+The validation-selected port model loses to CAGR on the reserved test; the
+selected oil model loses to persistence. No choices are changed after seeing
+these results. The bundled forecasts for **2025–2027 are vintage estimates from
+a 2024 cutoff**, even for calendar years already past. They are not newly
+observed data and are not spliced with a newer source edition.
+[Method and scope](brazil_modal_forecasts.md) ·
+[portable scores, predictions and source observations](../deployment/brazil_modal_forecasts/forecast.zip).
+
 ## Monthly port handling
 
 | Month | Displayed port handling (tonnes) |
