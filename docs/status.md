@@ -1,20 +1,22 @@
 # Current delivery status
 
 Reviewed **2026-11-20**. The original **12 portfolio stages are delivered**.
-There are **16 concrete delivered expansion items**, each closed for its stated
-source population and period. **Five additional requirements remain unmet**;
+There are **17 concrete delivered expansion items**, each closed for its stated
+source population and period. **Four additional requirements remain unmet**;
 they are separate entries with exact completion criteria and dependencies.
 
 The authoritative record is the [delivery checklist](expansion_execution.md):
 
 - **O01–O12:** original roadmap, completion criteria and evidence.
-- **E01–E16:** published expansions; completed rows stay closed.
-- **X01–X05:** commercial dispatch, toll/duty compliance, independent
-  hosting, real-company outcomes, additional source coverage. These are not presented as delivered.
+- **E01–E17:** published expansions; completed rows stay closed.
+- **X01–X04:** commercial dispatch, toll/duty compliance, independent
+  hosting and real-company outcomes. These are not presented as delivered.
 - **X06 closed as E15:** the ANAC source now has bounded revision auditing,
   retained changed-source evidence and no automatic promotion.
 - **X07 closed as E16:** four additional ANAC free-cargo/mail targets now have
   reserved-test comparisons, forecasts and public report access.
+- **X05 closed as E17:** 2023 ANAC airport-pair coverage adds 18,699 reconciled
+  monthly records while preserving previous pairs and forecasts.
 
 This replaces the previous open-ended remaining-work list. Additional years or
 sources do not silently reopen delivered work. New coverage needs a named source,

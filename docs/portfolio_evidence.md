@@ -14,7 +14,7 @@ Check for drift: `python scripts/build_portfolio_evidence.py --check`
 | --- | --- | --- |
 | Five-mode annual atlas | 145 | Separately scoped indicators; incompatible units are not summed |
 | ANAC monthly history | 624 | 2000–2025; domestic/international; Brazil-linked stages |
-| ANAC monthly airport pairs | 36860 | 2024–2025; reported stages, not unique consignments |
+| ANAC monthly airport pairs | 55559 | 2023–2025; reported stages, not unique consignments |
 | ANAC airport source codes | 1102 | Reference codes present in the selected pair population |
 | ANP gas operator/direction/month | 600 | 2021–2025; coverage changes; not unique national supply |
 | ANTAQ references and monthly rows | 55 | 43 annual/regional references plus twelve 2025 port-handling months |

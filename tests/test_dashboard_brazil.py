@@ -260,6 +260,10 @@ def test_air_monthly_pairs_airports_and_reserved_forecast():
     for view in ("Airport pairs", "Airport totals", "Forecast evaluation"):
         app.selectbox(key="air_view").select(view).run()
         assert not app.exception and not app.error
+        if view == "Airport pairs":
+            app.selectbox(key="air_year_Airport pairs").select(2023).run()
+            assert not app.exception and not app.error
+            assert any(item.label == "Observed cargo subtotal (kg)" and item.value == "377,421,534" for item in app.metric)
     assert any(item.label == "Reserved-test WAPE" for item in app.metric)
     for nature in ("domestic", "international"):
         app.selectbox(key="air_nature").select(nature).run()

@@ -80,7 +80,7 @@ def render():
     counts = table(["Public snapshot", "Records", "Scope"], [
         ["Five-mode annual atlas", modes.height, "Separately scoped indicators; incompatible units are not summed"],
         ["ANAC monthly history", air["monthly"].height, "2000–2025; domestic/international; Brazil-linked stages"],
-        ["ANAC monthly airport pairs", air["pairs"].height, "2024–2025; reported stages, not unique consignments"],
+        ["ANAC monthly airport pairs", air["pairs"].height, "2023–2025; reported stages, not unique consignments"],
         ["ANAC airport source codes", air["airports"].height, "Reference codes present in the selected pair population"],
         ["ANP gas operator/direction/month", gas.height + historical_gas.height,
          f"{historical_gas['year'].min()}–{gas['year'].max()}; coverage changes; not unique national supply"],

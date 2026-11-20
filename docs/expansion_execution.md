@@ -26,7 +26,7 @@ in the final table or establish commercial readiness.
 | O11 | Continuous deployment | Publish the exact main revision only after required CI jobs succeed | [Workflow](../.github/workflows/ci_pipeline.yml), [policy](publicacao_continua.md) |
 | O12 | Portfolio delivery | README, architecture/use guides, results, limitations, screenshots and recovery package | [README](../README.md), [static results](portfolio_evidence.md), [recovery](recovery.md) |
 
-## Concrete expansions — 16 delivered items
+## Concrete expansions — 17 delivered items
 
 Each row is delivered for its stated source population and period. It is not a
 promise of complete national shipment coverage or unlimited future extensions.
@@ -49,8 +49,9 @@ promise of complete national shipment coverage or unlimited future extensions.
 | E14 | Verified recovery archives and pinned runtime; six-session/eighteen-render memory regression check without OOM | [Recovery](recovery.md), [CI evidence](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/44656414891) |
 | E15 | ANAC revision audit for the fixed consolidated CSV: bounded streaming download, header/source-hash checks, unchanged/changed/failure evidence and quarantine without automatic promotion; closes X06 | [Audit contract](source_refresh.md#anac-air-source-revision-audit), [first live review](evidence/anac_source_review_20261120.json), [workflow](../.github/workflows/audit-brazil-air.yml) |
 | E16 | Four additional ANAC kilogram targets: domestic/international free cargo and mail, 2010–2025 histories, validation-only baseline selection, reserved 2023–2025 tests and 2026–2028 point forecasts; closes X07 | [Target contract and all results](brazil_air.md#forecast-evaluation), [evaluation evidence](evidence/anac_additional_forecasts_20261120.json) |
+| E17 | Added ANAC 2023 airport-pair stages: 18,699 monthly rows, all twelve months, domestic/international kilograms reconciled to independent monthly aggregates; 2024–2025 pairs and forecasts preserved; closes X05 | [Coverage contract](brazil_air.md#added-2023-airport-pair-coverage--x05), [reconciliation evidence](evidence/anac_pairs_2023_review.json) |
 
-## Outstanding requirements — five explicitly not delivered
+## Outstanding requirements — four explicitly not delivered
 
 These requirements remain visible rather than being called completed. They are
 distinct from the closed deliverables above. Each has a concrete completion test
@@ -62,7 +63,6 @@ and dependency; “more data” or “more quality” alone is not an acceptance
 | X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | No reviewed tariff/duty dataset or operating rules selected; calculations are not implemented |
 | X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | Images and permission controls exist; the public API shares the free dashboard service. Independent hosting and an availability contract are not delivered |
 | X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | Real operating records/outcomes not supplied. Synthetic examples are not measured savings |
-| X05 | Additional geographic/source coverage beyond E02/E05–E10 | Name a source, population, period and unit contract; acquire evidence; implement, reconcile and publish the derived view through CI | No further reviewed source contract attached to this baseline. Earlier years, finer road geography, other OD populations, railway/pipeline operators and deduplication identifiers remain unacquired |
 
 ## Closed follow-up X06
 
@@ -84,6 +84,15 @@ and the same eight-year minimum training protocol. Scores, predictions and
 source metadata are available in the dashboard, API and portable report. Other
 unspecified forecasts do not reopen this named delivery. Short inland/port-export
 histories have not been padded or relabeled as sufficient training evidence.
+
+## Closed follow-up X05
+
+X05 required naming a source, population, period and unit contract; acquiring
+source evidence; implementing, reconciling and publishing the derived view.
+E17 meets this for 2023 ANAC airport-pair stages, kilograms and separate flight
+natures, using the already archived official CSV. The added rows reconcile to
+independent monthly totals and are accessible with the existing year/airport
+filters. Other unnamed sources do not reopen this delivered population.
 
 No paid service was purchased. Free hosting/provider limits, source revisions,
 statistical overlap and missing inputs remain documented limitations. Paused local

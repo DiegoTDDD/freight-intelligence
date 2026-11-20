@@ -13,14 +13,14 @@
     "excluded_future_or_partial_year_rows": 29178
   },
   "end_year": 2025,
-  "pair_start_year": 2024,
+  "pair_start_year": 2023,
   "interpretation": "ANAC reported airport-pair stage movements linked to Brazil; paid cargo, free cargo and mail kept separate. Stages can repeat a consignment; not unique end-to-end shipments or booking availability.",
   "quality_notes": [
     "Source can revise historical records; this edition is pinned by SHA-256.",
     "Foreign-to-foreign records and incomplete current/future years are excluded.",
     "All reported flight groups are retained. Nature follows the source classification.",
     "Missing cargo fields are excluded from sums and counted, never silently filled with zero.",
-    "Airport-pair detail covers the two most recent complete years; annual/monthly aggregates retain older history.",
+    "Airport-pair detail starts at the reviewed pair_start_year; annual/monthly aggregates retain older history.",
     "Airport totals by origin and destination overlap; do not add them as national freight."
   ],
   "files": [
@@ -32,9 +32,9 @@
     },
     {
       "path": "pairs.parquet",
-      "rows": 36860,
-      "bytes": 223035,
-      "sha256": "6e9be4ca252695b4753e1cb78ebe71b7e00220f5eff1e3d27292b6959d0c233e"
+      "rows": 55559,
+      "bytes": 321587,
+      "sha256": "d607d08bb351f9653ef7d4a3e9a0ddc3bbdaf1ac1f9e0ebe187ebb8923cb4bfa"
     },
     {
       "path": "annual.parquet",

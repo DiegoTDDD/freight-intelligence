@@ -345,7 +345,7 @@ def render_air_freight(t):
         ui.caption("Departure and arrival totals overlap. Do not add them to calculate national freight.")
     else:
         shown = data.group_by("origin", "destination").agg(pl.col(metric).sum()).sort(metric, descending=True)
-        ui.caption("Airport pairs describe reported flight stages, not booking availability or unique shipment OD. Detail covers 2024–2025.")
+        ui.caption("Airport pairs describe reported flight stages, not booking availability or unique shipment OD. Detail covers 2023–2025.")
     ui.dataframe(shown.head(100), hide_index=True)
     ui.download_button("Download selected ANAC aggregates (CSV)", shown.write_csv().encode(),
                        "anac_selected_air_freight.csv", "text/csv")

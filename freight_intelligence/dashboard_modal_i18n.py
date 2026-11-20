@@ -141,7 +141,7 @@ PT = {
     "Observed subtotal: missing cargo fields are counted and excluded, not imputed as zero.": "Subtotal observado: os campos de carga ausentes são contados e excluídos da soma, sem substituição por zero.",
     "Air airport aggregation": "Agrupamento por aeroporto", "origin": "Origem", "destination": "Destino",
     "Departure and arrival totals overlap. Do not add them to calculate national freight.": "Totais de partidas e chegadas se sobrepõem. Não os some para calcular a carga nacional.",
-    "Airport pairs describe reported flight stages, not booking availability or unique shipment OD. Detail covers 2024–2025.": "As ligações descrevem etapas de voo informadas, sem indicar disponibilidade de contratação ou origem–destino de cargas únicas. O detalhamento cobre 2024–2025.",
+    "Airport pairs describe reported flight stages, not booking availability or unique shipment OD. Detail covers 2023–2025.": "As ligações descrevem etapas de voo informadas, sem indicar disponibilidade de contratação ou origem–destino de cargas únicas. O detalhamento cobre 2023–2025.",
     "Download selected ANAC aggregates (CSV)": "Baixar agregados selecionados da ANAC (CSV)",
     "ANAC source, coverage and airport reference": "Fonte ANAC, cobertura e referência dos aeroportos",
     "Reserved-test WAPE": "WAPE no teste reservado",

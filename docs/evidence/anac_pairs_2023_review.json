@@ -1,0 +1,45 @@
+{
+  "source_sha256": "d8b5e856ce56a355727132e8e0868766c8f16d539d817cb240f20390c7bf7730",
+  "new_period": 2023,
+  "unit": "kg",
+  "population": "Reported domestic/international ANAC airport-pair stages with at least one Brazilian endpoint; original airport codes, not booking routes or unique consignments",
+  "additional_pair_month_rows": 18699,
+  "total_pair_month_rows": 55559,
+  "new_year_months": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "new_year_unique_origins": 339,
+  "new_year_unique_destinations": 342,
+  "new_year_by_nature": [
+    {
+      "nature": "domestic",
+      "pair_month_rows": 13355,
+      "paid_cargo_kg": 377421534,
+      "free_cargo_kg": 7344520,
+      "mail_kg": 67716924,
+      "source_rows": 26244
+    },
+    {
+      "nature": "international",
+      "pair_month_rows": 5344,
+      "paid_cargo_kg": 802405124,
+      "free_cargo_kg": 2609006,
+      "mail_kg": 8059958,
+      "source_rows": 10111
+    }
+  ],
+  "new_year_matches_independently_aggregated_monthly_population": true,
+  "previous_2024_2025_pair_rows_unchanged": true,
+  "monthly_annual_airport_and_forecast_files_unchanged": true
+}

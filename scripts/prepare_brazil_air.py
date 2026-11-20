@@ -29,7 +29,7 @@ FIELDS = {"CARGA_PAGA_KG": "paid_cargo_kg", "CARGA_GRATIS_KG": "free_cargo_kg",
 MEASURES = [*FIELDS.values(), "source_rows", *[f"missing_{v}" for v in FIELDS.values()]]
 
 
-def aggregate(source, end_year=2025, pair_start_year=2024):
+def aggregate(source, end_year=2025, pair_start_year=2023):
     source = Path(source)
     if not 0 < source.stat().st_size <= 450 * 1024**2:
         raise ValueError("Empty or oversized ANAC source")
@@ -124,7 +124,7 @@ def build_forecast(annual, retrieved_at):
                              min_train_points=8, test_points=3, forecast_years=3)
 
 
-def prepare(source, output, end_year=2025, pair_start_year=2024, retrieved_at=None):
+def prepare(source, output, end_year=2025, pair_start_year=2023, retrieved_at=None):
     source, output = Path(source), Path(output)
     monthly, pairs, annual, airports, details = aggregate(source, end_year, pair_start_year)
     output.mkdir(parents=True, exist_ok=True)
@@ -148,7 +148,7 @@ def prepare(source, output, end_year=2025, pair_start_year=2024, retrieved_at=No
                                   "Foreign-to-foreign records and incomplete current/future years are excluded.",
                                   "All reported flight groups are retained. Nature follows the source classification.",
                                   "Missing cargo fields are excluded from sums and counted, never silently filled with zero.",
-                                  "Airport-pair detail covers the two most recent complete years; annual/monthly aggregates retain older history.",
+                                  "Airport-pair detail starts at the reviewed pair_start_year; annual/monthly aggregates retain older history.",
                                   "Airport totals by origin and destination overlap; do not add them as national freight."],
                 "files": files}
     (output / "provenance.json").write_bytes((json.dumps(metadata, indent=2) + "\n").encode())

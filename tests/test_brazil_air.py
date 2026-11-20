@@ -42,7 +42,7 @@ def air_source(tmp_path):
 
 def test_source_aggregation_keeps_units_missingness_and_population(air_source, tmp_path):
     monthly, pairs, annual, _, details = aggregate(air_source)
-    assert monthly.height == 16 * 12 * 2 and pairs.height == 2 * 12 * 2
+    assert monthly.height == 16 * 12 * 2 and pairs.height == 3 * 12 * 2
     assert annual["paid_cargo_kg"].sum() == 3830
     assert annual["free_cargo_kg"].sum() == 768
     assert annual["mail_kg"].sum() == 384
@@ -61,7 +61,7 @@ def test_source_aggregation_keeps_units_missingness_and_population(air_source, t
 
 def test_reviewed_air_snapshot_and_source_contract():
     tables, metadata, report = load_air()
-    assert tables["monthly"].height == 624 and tables["pairs"].height == 36860
+    assert tables["monthly"].height == 624 and tables["pairs"].height == 55559
     assert metadata["source_sha256"] == "d8b5e856ce56a355727132e8e0868766c8f16d539d817cb240f20390c7bf7730"
     review = json.loads((DEFAULT_ROOT.parents[1] / "docs/evidence/anac_source_review_20261120.json").read_bytes())
     comparison = review["body_comparison"]
@@ -178,3 +178,23 @@ def test_forecast_only_rebuild_keeps_source_and_prior_results(tmp_path):
     for destination in (DEFAULT_ROOT, DEFAULT_ROOT / "nested"):
         with pytest.raises(ValueError, match="outside"):
             prepare_forecasts(destination)
+
+
+@pytest.mark.parametrize("nature,rows,paid", [("domestic", 13355, 377421534), ("international", 5344, 802405124)])
+def test_added_2023_pairs_reconcile_and_are_publicly_filterable(nature, rows, paid):
+    tables, metadata, _ = load_air()
+    data = tables["pairs"].filter((pl.col("year") == 2023) & (pl.col("nature") == nature))
+    monthly = tables["monthly"].filter((pl.col("year") == 2023) & (pl.col("nature") == nature))
+    assert metadata["pair_start_year"] == 2023
+    assert data.height == rows and data["paid_cargo_kg"].sum() == paid
+    for field in ("paid_cargo_kg", "free_cargo_kg", "mail_kg", "source_rows"):
+        assert data[field].sum() == monthly[field].sum()
+    assert set(data["month"]) == set(range(1, 13))
+    with TestClient(create_app()) as client:
+        response = client.get(f"/brazil/air-freight?view=pairs&year=2023&nature={nature}&limit=2").json()
+        assert response["total"] == rows and response["count"] == 2
+        assert all(row["year"] == 2023 and row["nature"] == nature for row in response["data"])
+        airport = response["data"][0]["origin"]
+        result = client.get(f"/brazil/air-freight?view=pairs&year=2023&nature={nature}&origin={airport}").json()
+        assert result["count"] > 0 and all(row["origin"] == airport for row in result["data"])
+        assert client.get("/brazil/air-freight?view=pairs&year=2022").json()["count"] == 0

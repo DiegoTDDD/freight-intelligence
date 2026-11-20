@@ -17,7 +17,7 @@ The 361 MB raw source is kept locally, outside the hosted image and repository.
 ## Published scope
 
 - 624 monthly aggregates and 52 annual aggregates: 2000–2025, domestic and international.
-- 36,860 monthly airport-pair aggregates: 2024–2025.
+- 55,559 monthly airport-pair aggregates: 2023–2025.
 - 1,102 airport reference codes/names, preserved as reported rather than inferred geocodes.
 - Paid cargo, free cargo and mail remain separate, in kilograms. Baggage is excluded.
 
@@ -73,7 +73,7 @@ retain original column identifiers so downstream consumers are stable.
 `year`, `month`, `nature`, and pair-only `origin`/`destination` source airport codes.
 Responses are paginated (`limit` up to 1000, `offset`), with population/source metadata.
 Inapplicable filters return 422; missing or inconsistent snapshots return 503.
-Existing analytics permissions apply. Pair queries before 2024 correctly return
+Existing analytics permissions apply. Pair queries before 2023 correctly return
 no rows, without inventing an airport history.
 
 Rebuild with `python -m scripts.prepare_brazil_air --source ARCHIVED_CSV --retrieved-at YYYY-MM-DD`.
@@ -100,3 +100,28 @@ redownload ANAC, rerun raw ingestion, replace serving files or run FAF. A review
 forecast ZIP/provenance change is published through the normal CI gate. Units,
 source observations, reserved-test boundaries, model flags and numeric outputs
 are checked on load; HTTP requests do not train models.
+
+## Added 2023 airport-pair coverage — X05
+
+The same reviewed official CSV supplies **18,699 additional pair/month/nature rows**
+for all twelve months of 2023: 13,355 domestic and 5,344 international. Original
+codes cover 339 origins and 342 destinations across the two populations; these
+are source airport codes, not geocoded road routes or booking availability.
+Paid/free/mail kilograms and source-row counts each reconcile exactly to the
+independently built monthly aggregates for their nature. Domestic paid-stage
+cargo is 377,421,534 kg and international paid-stage cargo is 802,405,124 kg.
+
+All 36,860 earlier published 2024–2025 pair rows are preserved exactly. Monthly,
+annual, airport-reference and forecast files are unchanged. This closes X05 for
+one named additional population and period; it is not complete global/national
+shipment coverage or a promise of unspecified further sources.
+[Machine-readable review](evidence/anac_pairs_2023_review.json).
+
+Select **Airport pairs → Air reference year → 2023** or query:
+
+```text
+GET /api/brazil/air-freight?view=pairs&year=2023&nature=domestic
+```
+
+The preparation default now starts pairs in 2023. No forecast retraining, paid
+provider or large FAF pipeline run is required when reading this published view.
