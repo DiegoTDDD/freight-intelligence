@@ -10,7 +10,7 @@ from zipfile import ZipFile
 import polars as pl
 import streamlit as st
 
-from freight_intelligence.brazil_air import CARGO_FIELDS, load_air
+from freight_intelligence.brazil_air import CARGO_FIELDS, FORECAST_MEASURES, load_air
 from freight_intelligence.brazil_gas_history import load_gas_history, missing_groups
 from freight_intelligence.brazil_gas_results import load_gas
 from freight_intelligence.brazil_inland import COMPONENTS, load_inland
@@ -292,25 +292,28 @@ def render_air_freight(t):
     view = ui.selectbox("Air freight view", ["Monthly history", "Airport pairs", "Airport totals",
                                             "Forecast evaluation"], key="air_view")
     nature = ui.selectbox("Air flight nature", ["domestic", "international"], key="air_nature")
+    metric = ui.selectbox("Air cargo measure", list(CARGO_FIELDS), key="air_metric",
+                          format_func={"paid_cargo_kg": "Paid cargo (kg)", "free_cargo_kg": "Free cargo (kg)",
+                                       "mail_kg": "Mail (kg)"}.get)
     if view == "Forecast evaluation":
-        ui.warning("Forecasts model observed paid-cargo subtotals, not complete demand or unique "
+        ui.warning("Forecasts model separate observed cargo and mail subtotals, not complete demand or unique "
                    "consignments. Missing source fields remain excluded. Point forecasts have no uncertainty intervals.")
-        name = nature + "_paid_observed_subtotal"
+        name = nature + "_" + FORECAST_MEASURES[metric] + "_observed_subtotal"
         scores = report["scores"].filter(pl.col("metric_type") == name)
         chosen = scores.filter(pl.col("selected") & (pl.col("phase") == "test"))
         ui.caption("Training starts in 2010 with eight years. Validation selects the model through "
                    "2022; 2023–2025 are reserved for test. Forecasts cover 2026–2028 after refitting.")
         ui.metric("Reserved-test WAPE", f"{chosen['wape'][0]:.2%}")
         ui.dataframe(scores, hide_index=True)
+        test = report["predictions"].filter(
+            (pl.col("metric_type") == name) & (pl.col("phase") == "test") & pl.col("selected"))
+        st.line_chart(test.select("year", "actual", "prediction"), x="year", y=["actual", "prediction"])
         forecasts = report["forecast"].filter(pl.col("metric_type") == name)
         st.line_chart(forecasts, x="year", y="forecast_value")
         ui.dataframe(forecasts, hide_index=True)
         ui.download_button("Download ANAC evaluation and forecast report", (DEPLOYMENT / "brazil_air/forecast.zip").read_bytes(),
                            "anac_observed_subtotal_evaluation.zip", "application/zip")
         return
-    metric = ui.selectbox("Air cargo measure", list(CARGO_FIELDS), key="air_metric",
-                          format_func={"paid_cargo_kg": "Paid cargo (kg)", "free_cargo_kg": "Free cargo (kg)",
-                                       "mail_kg": "Mail (kg)"}.get)
     data = tables["monthly"] if view == "Monthly history" else tables["pairs"]
     years = sorted(data["year"].unique())
     year = ui.selectbox("Air reference year", years, index=len(years)-1, key=f"air_year_{view}")

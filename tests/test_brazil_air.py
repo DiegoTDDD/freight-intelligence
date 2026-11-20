@@ -2,6 +2,8 @@ import csv
 import hashlib
 import json
 import shutil
+from io import BytesIO
+from zipfile import ZipFile
 
 import polars as pl
 import pytest
@@ -10,6 +12,7 @@ from fastapi.testclient import TestClient
 from freight_intelligence.api.app import create_app
 from freight_intelligence.brazil_air import DEFAULT_ROOT, load_air
 from scripts.prepare_brazil_air import aggregate, prepare
+from scripts.prepare_brazil_air_forecasts import prepare as prepare_forecasts
 
 
 @pytest.fixture
@@ -97,3 +100,77 @@ def test_air_api_filters_pagination_and_unavailable(tmp_path):
         assert forecast["count"] == 3
     with TestClient(create_app(air_dir=tmp_path)) as client:
         assert client.get("/brazil/air-freight").status_code == 503
+
+
+@pytest.mark.parametrize("measure,tag", [("free_cargo_kg", "free"), ("mail_kg", "mail")])
+def test_additional_air_targets_preserve_split_units_and_api_filters(measure, tag):
+    tables, _, report = load_air()
+    with TestClient(create_app()) as client:
+        for nature in ("domestic", "international"):
+            query = f"nature={nature}&measure={measure}"
+            forecast = client.get(f"/brazil/air-freight?view=forecast&{query}").json()
+            assert forecast["count"] == 3
+            assert {r["metric_type"] for r in forecast["data"]} == {f"{nature}_{tag}_observed_subtotal"}
+            assert {r["unit"] for r in forecast["data"]} == {"kg"}
+            assert {r["year"] for r in forecast["data"]} == {2026, 2027, 2028}
+            predictions = client.get(f"/brazil/air-freight?view=predictions&phase=test&{query}").json()["data"]
+            assert len(predictions) == 9 and {r["origin_year"] for r in predictions} == {2022}
+            annual = tables["annual"].filter(pl.col("nature") == nature)
+            actual = dict(zip(annual["year"], annual[measure], strict=True))
+            assert all(r["actual"] == actual[r["year"]] for r in predictions)
+            scores = client.get(f"/brazil/air-freight?view=scores&phase=test&{query}").json()["data"]
+            assert {r["model"] for r in scores} == {"persistence", "linear", "cagr"}
+            assert sum(r["selected"] for r in scores) == 1
+        assert client.get(f"/brazil/air-freight?view=annual&measure={measure}").status_code == 422
+        assert client.get("/brazil/air-freight?view=forecast&phase=test").status_code == 422
+        assert client.get("/brazil/air-freight?view=forecast&measure=unknown").status_code == 422
+    assert len(report["metadata"]["selected_models"]) == 6
+
+
+@pytest.mark.parametrize("defect", ["unit", "test_origin", "actual", "selected", "missing_target"])
+def test_air_reader_rejects_invalid_new_target_report_even_with_updated_archive_hash(tmp_path, defect):
+    root = tmp_path / "air"
+    shutil.copytree(DEFAULT_ROOT, root)
+    path = root / "forecast.zip"
+    with ZipFile(path) as archive:
+        files = {name: archive.read(name) for name in archive.namelist()}
+    name = "forecast" if defect in {"unit", "missing_target"} else "predictions"
+    data = pl.read_csv(files[name + ".csv"])
+    target = pl.col("metric_type") == "domestic_mail_observed_subtotal"
+    if defect == "unit":
+        data = data.with_columns(pl.when(target).then(pl.lit("tonnes")).otherwise(pl.col("unit")).alias("unit"))
+    elif defect == "missing_target":
+        data = data.filter(~target)
+    else:
+        field, value = {"test_origin": ("origin_year", 2024), "actual": ("actual", -1),
+                        "selected": ("selected", False)}[defect]
+        data = data.with_columns(pl.when(target).then(pl.lit(value)).otherwise(pl.col(field)).alias(field))
+    files[name + ".csv"] = data.write_csv().encode()
+    output = BytesIO()
+    with ZipFile(output, "w") as archive:
+        for member, raw in files.items():
+            archive.writestr(member, raw)
+    path.write_bytes(output.getvalue())
+    manifest = json.loads((root / "provenance.json").read_bytes())
+    record = next(r for r in manifest["files"] if r["path"] == "forecast.zip")
+    record.update(sha256=hashlib.sha256(path.read_bytes()).hexdigest(), bytes=path.stat().st_size)
+    (root / "provenance.json").write_text(json.dumps(manifest), encoding="utf-8")
+    with pytest.raises(ValueError, match="ANAC"):
+        load_air(root)
+
+
+def test_forecast_only_rebuild_keeps_source_and_prior_results(tmp_path):
+    before = {p.name: p.read_bytes() for p in DEFAULT_ROOT.iterdir() if p.is_file()}
+    staged = tmp_path / "review"
+    prepare_forecasts(staged)
+    _, _, previous = load_air()
+    _, _, rebuilt = load_air(staged)
+    assert rebuilt["metadata"]["provenance"] == previous["metadata"]["provenance"]
+    for name in ("scores", "predictions", "forecast"):
+        assert rebuilt[name].equals(previous[name])
+    assert before == {p.name: p.read_bytes() for p in DEFAULT_ROOT.iterdir() if p.is_file()}
+    with pytest.raises(FileExistsError):
+        prepare_forecasts(staged)
+    for destination in (DEFAULT_ROOT, DEFAULT_ROOT / "nested"):
+        with pytest.raises(ValueError, match="outside"):
+            prepare_forecasts(destination)

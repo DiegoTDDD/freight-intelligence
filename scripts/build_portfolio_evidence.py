@@ -162,8 +162,8 @@ for the final test. The table includes every candidate, not only the selected on
 
 {score_table}
 
-Both validation-selected models have worse reserved-test errors than
-persistence. This is a disclosed result, not a reason to select again on test
+The two paid-cargo validation-selected models have worse reserved-test errors than
+persistence. The four additional free-cargo/mail targets retain every competing score. This is a disclosed result, not a reason to select again on test
 data. Future forecasts are point estimates without accuracy guarantees.
 The [portable report ZIP](../deployment/brazil_air/forecast.zip) contains scores,
 predictions, forecasts and source/split metadata.

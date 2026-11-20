@@ -159,3 +159,15 @@ Pagination: `limit` (1–500, default 100), `offset` (zero-based). `filtered_ton
 and `total` apply before pagination. Reviewed population coverage and original source
 context are explicit in metadata. Analytics permission is required in authenticated
 mode. See [scope and examples](brazil_water_ports.md).
+
+### ANAC forecast target measures
+
+The air endpoint also exposes `view=predictions` for the portable report's
+validation/test predictions. For `forecast`, `scores` and `predictions`, select
+`measure=paid_cargo_kg|free_cargo_kg|mail_kg`; paid cargo remains the default.
+Use `nature=domestic|international` to keep statistical populations separate.
+`phase=validation|test` applies only to scores/predictions; other combinations
+return 422. The same pagination and analytics permissions apply.
+All six targets use kg, 2010–2025 histories, validation through 2022 and reserved
+2023–2025 tests. Forecast years 2026–2028 are point estimates. No model is trained
+on request. [All results and limitations](brazil_air.md#forecast-evaluation).

@@ -10,7 +10,7 @@ from fastapi import APIRouter, FastAPI, HTTPException, Query
 from freight_intelligence.api.security import authentication_dependencies
 from freight_intelligence.api.transport_results import load_transport_results
 from freight_intelligence.brazil_air import DEFAULT_ROOT as BRAZIL_AIR
-from freight_intelligence.brazil_air import load_air
+from freight_intelligence.brazil_air import FORECAST_MEASURES, load_air
 from freight_intelligence.brazil_gas_history import DEFAULT_ROOT as GAS_HISTORY
 from freight_intelligence.brazil_gas_history import load_gas_history, missing_groups
 from freight_intelligence.brazil_gas_results import DEFAULT_ROOT as BRAZIL_GAS
@@ -156,7 +156,9 @@ def create_app(
 
     @data_routes.get("/brazil/air-freight")
     def brazil_air_freight(
-        view: Literal["monthly", "annual", "pairs", "airports", "forecast", "scores"] = "monthly",
+        view: Literal["monthly", "annual", "pairs", "airports", "forecast", "scores", "predictions"] = "monthly",
+        measure: Literal["paid_cargo_kg", "free_cargo_kg", "mail_kg"] | None = None,
+        phase: Literal["validation", "test"] | None = None,
         year: int | None = Query(default=None, ge=2000, le=2028),
         month: int | None = Query(default=None, ge=1, le=12),
         nature: Literal["domestic", "international"] | None = None,
@@ -169,7 +171,17 @@ def create_app(
             tables, metadata, report = load_air(air_dir if air_dir is not None else BRAZIL_AIR)
         except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
             raise HTTPException(status_code=503, detail="Verified ANAC air freight unavailable.") from error
-        data = report[view] if view in {"forecast", "scores"} else tables[view]
+        report_view = view in {"forecast", "scores", "predictions"}
+        if measure is not None and not report_view:
+            raise HTTPException(status_code=422, detail="Measure filter requires forecast, scores or predictions")
+        if phase is not None and view not in {"scores", "predictions"}:
+            raise HTTPException(status_code=422, detail="Phase filter requires scores or predictions")
+        data = report[view] if report_view else tables[view]
+        if report_view:
+            target = "_" + FORECAST_MEASURES[measure or "paid_cargo_kg"] + "_observed_subtotal"
+            data = data.filter(pl.col("metric_type").str.ends_with(target))
+        if phase is not None:
+            data = data.filter(pl.col("phase") == phase)
         if year is not None and "year" in data.columns:
             data = data.filter(pl.col("year") == year)
         if month is not None:
@@ -180,7 +192,7 @@ def create_app(
             if "nature" in data.columns:
                 data = data.filter(pl.col("nature") == nature)
             elif "metric_type" in data.columns:
-                data = data.filter(pl.col("metric_type") == nature + "_paid_observed_subtotal")
+                data = data.filter(pl.col("metric_type").str.starts_with(nature + "_"))
             else:
                 raise HTTPException(status_code=422, detail="Nature filter is unavailable for airport reference data")
         for field, value in (("origin", origin), ("destination", destination)):
@@ -192,7 +204,7 @@ def create_app(
             raise HTTPException(status_code=422, detail="Year filter is unavailable for this view")
         return {"total": data.height, "count": min(limit, max(0, data.height - offset)),
                 "limit": limit, "offset": offset, "data": data.slice(offset, limit).to_dicts(),
-                "metadata": metadata, "forecast_metadata": report["metadata"] if view in {"forecast", "scores"} else None}
+                "metadata": metadata, "forecast_metadata": report["metadata"] if report_view else None}
 
     @data_routes.get("/brazil/road-state-pairs")
     def brazil_road_state_pairs(

@@ -26,7 +26,7 @@ in the final table or establish commercial readiness.
 | O11 | Continuous deployment | Publish the exact main revision only after required CI jobs succeed | [Workflow](../.github/workflows/ci_pipeline.yml), [policy](publicacao_continua.md) |
 | O12 | Portfolio delivery | README, architecture/use guides, results, limitations, screenshots and recovery package | [README](../README.md), [static results](portfolio_evidence.md), [recovery](recovery.md) |
 
-## Concrete expansions — 15 delivered items
+## Concrete expansions — 16 delivered items
 
 Each row is delivered for its stated source population and period. It is not a
 promise of complete national shipment coverage or unlimited future extensions.
@@ -48,8 +48,9 @@ promise of complete national shipment coverage or unlimited future extensions.
 | E13 | Host-independent review: twelve English-interface screenshots, generated static results, public CSV and source evidence usable while the demo sleeps | [Screenshots](../README.md#screenshots), [static evidence](portfolio_evidence.md) |
 | E14 | Verified recovery archives and pinned runtime; six-session/eighteen-render memory regression check without OOM | [Recovery](recovery.md), [CI evidence](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/44656414891) |
 | E15 | ANAC revision audit for the fixed consolidated CSV: bounded streaming download, header/source-hash checks, unchanged/changed/failure evidence and quarantine without automatic promotion; closes X06 | [Audit contract](source_refresh.md#anac-air-source-revision-audit), [first live review](evidence/anac_source_review_20261120.json), [workflow](../.github/workflows/audit-brazil-air.yml) |
+| E16 | Four additional ANAC kilogram targets: domestic/international free cargo and mail, 2010–2025 histories, validation-only baseline selection, reserved 2023–2025 tests and 2026–2028 point forecasts; closes X07 | [Target contract and all results](brazil_air.md#forecast-evaluation), [evaluation evidence](evidence/anac_additional_forecasts_20261120.json) |
 
-## Outstanding requirements — six explicitly not delivered
+## Outstanding requirements — five explicitly not delivered
 
 These requirements remain visible rather than being called completed. They are
 distinct from the closed deliverables above. Each has a concrete completion test
@@ -62,7 +63,6 @@ and dependency; “more data” or “more quality” alone is not an acceptance
 | X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | Images and permission controls exist; the public API shares the free dashboard service. Independent hosting and an availability contract are not delivered |
 | X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | Real operating records/outcomes not supplied. Synthetic examples are not measured savings |
 | X05 | Additional geographic/source coverage beyond E02/E05–E10 | Name a source, population, period and unit contract; acquire evidence; implement, reconcile and publish the derived view through CI | No further reviewed source contract attached to this baseline. Earlier years, finer road geography, other OD populations, railway/pipeline operators and deduplication identifiers remain unacquired |
-| X07 | Forecasts for additional target measures | Name target, unit and cutoff; obtain sufficient compatible history; compare baselines and score reserved observations | Other targets lack a reviewed sufficient history. Five full inland/port-export years do not satisfy the existing minimum-eight-year annual training protocol |
 
 ## Closed follow-up X06
 
@@ -73,6 +73,17 @@ outcomes, and a live run detected an update-date-only revision; its complete dat
 body matched the reviewed source. The report and separate review are retained.
 Other unspecified provider audits are separate potential contracts, not grounds
 for reopening X06.
+
+## Closed follow-up X07
+
+X07 required naming additional target measures, units and cutoff; obtaining
+sufficient compatible history; comparing baselines and scoring reserved
+observations. E16 meets this for the four ANAC free-cargo/mail targets documented
+above. Each has sixteen reviewed annual observations in kilograms, 2010–2025,
+and the same eight-year minimum training protocol. Scores, predictions and
+source metadata are available in the dashboard, API and portable report. Other
+unspecified forecasts do not reopen this named delivery. Short inland/port-export
+histories have not been padded or relabeled as sufficient training evidence.
 
 No paid service was purchased. Free hosting/provider limits, source revisions,
 statistical overlap and missing inputs remain documented limitations. Paused local

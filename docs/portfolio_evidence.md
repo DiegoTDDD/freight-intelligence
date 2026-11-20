@@ -50,15 +50,27 @@ for the final test. The table includes every candidate, not only the selected on
 
 | Observed subtotal | Baseline | Selected on validation | Test WAPE |
 | --- | --- | --- | --- |
+| domestic_free_observed_subtotal | cagr | No | 35.66% |
+| domestic_free_observed_subtotal | linear | No | 11.85% |
+| domestic_free_observed_subtotal | persistence | Yes | 31.35% |
+| domestic_mail_observed_subtotal | cagr | Yes | 18.67% |
+| domestic_mail_observed_subtotal | linear | No | 24.38% |
+| domestic_mail_observed_subtotal | persistence | No | 21.31% |
 | domestic_paid_observed_subtotal | cagr | No | 12.50% |
 | domestic_paid_observed_subtotal | linear | Yes | 21.96% |
 | domestic_paid_observed_subtotal | persistence | No | 11.61% |
+| international_free_observed_subtotal | cagr | No | 19.52% |
+| international_free_observed_subtotal | linear | No | 6.94% |
+| international_free_observed_subtotal | persistence | Yes | 28.41% |
+| international_mail_observed_subtotal | cagr | No | 32.67% |
+| international_mail_observed_subtotal | linear | No | 18.16% |
+| international_mail_observed_subtotal | persistence | Yes | 26.60% |
 | international_paid_observed_subtotal | cagr | No | 6.61% |
 | international_paid_observed_subtotal | linear | Yes | 7.32% |
 | international_paid_observed_subtotal | persistence | No | 3.79% |
 
-Both validation-selected models have worse reserved-test errors than
-persistence. This is a disclosed result, not a reason to select again on test
+The two paid-cargo validation-selected models have worse reserved-test errors than
+persistence. The four additional free-cargo/mail targets retain every competing score. This is a disclosed result, not a reason to select again on test
 data. Future forecasts are point estimates without accuracy guarantees.
 The [portable report ZIP](../deployment/brazil_air/forecast.zip) contains scores,
 predictions, forecasts and source/split metadata.

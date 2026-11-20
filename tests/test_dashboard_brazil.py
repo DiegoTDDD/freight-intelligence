@@ -261,6 +261,17 @@ def test_air_monthly_pairs_airports_and_reserved_forecast():
         app.selectbox(key="air_view").select(view).run()
         assert not app.exception and not app.error
     assert any(item.label == "Reserved-test WAPE" for item in app.metric)
+    for nature in ("domestic", "international"):
+        app.selectbox(key="air_nature").select(nature).run()
+        for measure in ("free_cargo_kg", "mail_kg"):
+            app.selectbox(key="air_metric").select(measure).run()
+            assert not app.exception and not app.error
+            forecast = app.dataframe[-1].value
+            assert set(forecast["year"]) == {2026, 2027, 2028}
+            assert set(forecast["unit"]) == {"kg"}
+    app.selectbox(key="language").select("pt").run()
+    assert app.selectbox(key="air_metric").label == "Medida da carga aérea"
+    assert any("separadamente" in item.value for item in app.warning)
 
 
 def test_modal_and_truck_ui_translation_preserves_internal_choices():

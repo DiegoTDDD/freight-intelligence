@@ -15,6 +15,7 @@ from pathlib import Path
 
 import polars as pl
 
+from freight_intelligence.brazil_air import forecast_history
 from freight_intelligence.ml.historical_evaluation import historical_report
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -113,6 +114,16 @@ def aggregate(source, end_year=2025, pair_start_year=2024):
         "pair_start_year": pair_start_year}
 
 
+def build_forecast(annual, retrieved_at):
+    history = forecast_history(annual)
+    manifest = {"dataset_id": "anac_cargo_and_mail_stage_subtotals_2010_2025", "source": SOURCE,
+                "retrieved_at": retrieved_at, "record_kind": "historical_observations",
+                "scope": "Separate observed paid-cargo, free-cargo and mail kilogram subtotals on domestic/international Brazil-linked ANAC stages; missing fields excluded and counted; not unique consignments or a complete census",
+                "units": {name: "kg" for name in history["metric_type"].unique()}}
+    return historical_report(history.write_csv().encode(), json.dumps(manifest).encode(),
+                             min_train_points=8, test_points=3, forecast_years=3)
+
+
 def prepare(source, output, end_year=2025, pair_start_year=2024, retrieved_at=None):
     source, output = Path(source), Path(output)
     monthly, pairs, annual, airports, details = aggregate(source, end_year, pair_start_year)
@@ -124,15 +135,7 @@ def prepare(source, output, end_year=2025, pair_start_year=2024, retrieved_at=No
         raw = path.read_bytes()
         files.append({"path": path.name, "rows": data.height, "bytes": len(raw),
                       "sha256": hashlib.sha256(raw).hexdigest()})
-    history = annual.filter(pl.col("year") >= 2010).select(
-        pl.concat_str("nature", pl.lit("_paid_observed_subtotal")).alias("metric_type"),
-        "year", pl.col("paid_cargo_kg").alias("total_value"))
-    manifest = {"dataset_id": "anac_paid_stage_subtotals_2010_2025", "source": SOURCE,
-                "retrieved_at": retrieved_at or datetime.now(UTC).date().isoformat(), "record_kind": "historical_observations",
-                "scope": "Observed paid-cargo kilogram subtotals on Brazil-linked ANAC stages; missing fields excluded and counted; not unique consignments or a complete census",
-                "units": {name: "kg" for name in history["metric_type"].unique()}}
-    report = historical_report(history.write_csv().encode(), json.dumps(manifest).encode(),
-                               min_train_points=8, test_points=3, forecast_years=3)
+    report = build_forecast(annual, retrieved_at or datetime.now(UTC).date().isoformat())
     (output / "forecast.zip").write_bytes(report)
     files.append({"path": "forecast.zip", "bytes": len(report),
                   "sha256": hashlib.sha256(report).hexdigest()})

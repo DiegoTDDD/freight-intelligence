@@ -6,7 +6,7 @@ A freight data engineering and analytics portfolio: a **97.6-million-row** Medal
 
 **[Review results without starting a server](docs/portfolio_evidence.md)** · **[Open the interactive demo](https://loginexus-dashboard-preview.onrender.com/)** · [Public API](https://loginexus-dashboard-preview.onrender.com/api/docs) · [Delivery checklist](docs/expansion_execution.md)
 
-**Delivery status:** the original 12 portfolio stages and 15 concrete expansion items are delivered for their documented coverage. Six additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
+**Delivery status:** the original 12 portfolio stages and 16 concrete expansion items are delivered for their documented coverage. Five additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
 
 > **Demo hosting:** the dashboard and public API share one free Render service. After 15 minutes without inbound traffic, it sleeps; the next visit normally takes about a minute to wake. Limits and restarts can also affect availability. [Render's free-service policy](https://render.com/docs/free). Screenshots, the static results report, source code, public aggregates and local Docker instructions below do not depend on that service being awake. Free hosting is a demonstration choice, with no permanence or production-uptime guarantee.
 
@@ -23,7 +23,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Brazilian road | 28 observed months, July 2024–October 2026, split by own-account flag; 775 paired 2025 state flows with independent margin reconciliation. Archived yearbook months and sixteen RGI pairs remain separate | [Road history](docs/brazil_road_history.md), [state pairs](docs/brazil_road_od.md), [archived regional flows](docs/brazil_road.md) |
 | Brazilian water | 43 annual/regional references, 62 original port-handling months, 21 regional cabotage shares and 510 observed OD pairs; original exports preserved | [ANTAQ sources](docs/brazil_water.md), [monthly history](docs/brazil_water_history.md) |
 | Inland-waterway transport | 62 monthly totals and three navigation components, January 2021–February 2026; 117 source cargo categories in 2025, preserving eight unavailable quantities and 46 explicit zeros | [Original inland transport exports and coverage](docs/brazil_inland.md) |
-| Brazilian air | 624 monthly aggregates, 2000–2025; 36,860 monthly airport pairs, 2024–2025; 1,102 source airport codes; paid/free/mail separated; evaluated forecasts | [ANAC preparation and limitations](docs/brazil_air.md) |
+| Brazilian air | 624 monthly aggregates, 2000–2025; 36,860 monthly airport pairs, 2024–2025; 1,102 source airport codes; paid/free/mail separated; six separately evaluated forecast targets | [ANAC preparation and limitations](docs/brazil_air.md) |
 | Brazilian port pairs | 510 observed cabotage links; all 98 origins and 71 destinations in the reviewed 2025 table, with original numeric tonnes and archived filters | [Port-pair data and original exports](docs/brazil_water_ports.md) |
 | Brazilian pipelines | 600 gas operator/direction/month records, 2021–2025; signed volumes, duplicate policy and missing-cell point/date diagnostics | [ANP gas history and quality](docs/brazil_gas_history.md) |
 | Five-mode atlas | 145 annual indicators with separate units, statistical populations, source links and provenance | [Indicator contracts](docs/brazil_modes.md) |
@@ -111,12 +111,32 @@ The railway view includes observed history, monthly movements, commodities and r
 ## Results and engineering decisions
 
 - **Scale:** the full local run completed on 2026-11-12 with **2,503,352 Bronze** and **97,630,728 Silver** rows. Domestic mode analytics use the source's `dms_mode` field. The large raw/Silver layers are not committed to Git.
-- **Observed-history forecasting:** ANTT railway evaluation reserves 2023–2025, with validation-selected test WAPE of **4.75% TU / 1.61% TKU**. ANAC selected-model WAPE is **21.96% domestic / 7.32% international**, and both selected models lose to persistence on the reserved test. All candidates are shown in the [static report](docs/portfolio_evidence.md); no reselection on test results or accuracy guarantee is claimed.
+- **Observed-history forecasting:** ANTT railway evaluation reserves 2023–2025, with validation-selected test WAPE of **4.75% TU / 1.61% TKU**. ANAC paid-cargo selected-model WAPE is **21.96% domestic / 7.32% international**, and both selected models lose to persistence on the reserved test. Four additional free-cargo/mail targets are evaluated separately, with every competing score disclosed. All candidates are shown in the [static report](docs/portfolio_evidence.md); no reselection on test results or accuracy guarantee is claimed.
 - **Source quality:** 33 blank gas cells in 2025 are traced to points/dates and remain missing. Road monthly labels reconcile to **1,368,699,651 tonnes**, while the separate regional denominator retains its own unresolved source scope. Water monthly displayed values sum to **1,402,731,832 tonnes**, one tonne below that panel edition's annual headline; no month receives an invented adjustment.
 - **Hosting memory:** after a real 512 MiB memory incident, corridor loading was bounded before collection and solver imports deferred. The 2026-11-18 CI revision passed a six-session/18-render check with **249.5 MiB sampled peak** and no OOM events. This is measured test behavior, not an unlimited-concurrency claim. [Incident and correction](docs/memory_incident.md).
 - **Validation:** revision [`2e3b383`](https://github.com/DiegoTDDD/freight-intelligence/commit/2e3b383cb7b669524aea3bdc2c4126daa935606f) passed all five [CI checks](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/44393092735), including **387 lightweight tests on Windows and Linux**, API containers and the hosted image. Local real-data tests add coverage where the large dataset exists. Test counts are dated evidence, not a promise that every future revision has the same count.
 
 The [static evidence report](docs/portfolio_evidence.md) is generated from validated committed snapshots. CI checks it for drift, so reviewing results does not require opening Render or processing the large dataset.
+
+### Additional air forecast targets — visible without the live demo
+
+Six separate ANAC targets are evaluated: paid cargo, free cargo and mail, each
+domestic/international. The four added targets use sixteen annual observations
+in kg (2010–2025), validation through 2022 and a reserved 2023–2025 test.
+
+| Added target | Validation-selected baseline | Reserved-test WAPE |
+| --- | --- | --- |
+| Domestic free cargo | Persistence | 31.35% |
+| International free cargo | Persistence | 28.41% |
+| Domestic mail | CAGR | 18.67% |
+| International mail | Persistence | 26.60% |
+
+Three selected baselines lose to a competitor on the reserved test; selection
+is never repeated on those results. [All candidate scores](docs/portfolio_evidence.md#forecast-results-including-competing-baselines)
+and the [portable evaluation ZIP](deployment/brazil_air/forecast.zip) remain
+available while Render sleeps. In the dashboard choose **Brazilian freight →
+All five modes → air → Forecast evaluation → Air cargo measure**. The API supports
+[scores, predictions and forecasts by measure](docs/brazil_air.md#use-and-rebuild).
 
 ## Run the complete demo locally
 

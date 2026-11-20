@@ -1,0 +1,182 @@
+{
+  "source_sha256": "d8b5e856ce56a355727132e8e0868766c8f16d539d817cb240f20390c7bf7730",
+  "history_years": [
+    2010,
+    2025
+  ],
+  "validation_last_year": 2022,
+  "reserved_test_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "test_origin_year": 2022,
+  "forecast_years": [
+    2026,
+    2027,
+    2028
+  ],
+  "unit": "kg",
+  "additional_target_count": 4,
+  "selected_on": "validation MAE only",
+  "previous_paid_scores_predictions_forecasts_unchanged": true,
+  "all_additional_test_scores": [
+    {
+      "phase": "test",
+      "metric_type": "domestic_free_observed_subtotal",
+      "model": "persistence",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 2369713.3333333335,
+      "rmse": 2392403.7080040094,
+      "wape": 0.3134578209779709,
+      "selected": true
+    },
+    {
+      "phase": "test",
+      "metric_type": "domestic_free_observed_subtotal",
+      "model": "linear",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 896217.8095238073,
+      "rmse": 944445.4914794265,
+      "wape": 0.11854871968830946,
+      "selected": false
+    },
+    {
+      "phase": "test",
+      "metric_type": "domestic_free_observed_subtotal",
+      "model": "cagr",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 2695761.7163525224,
+      "rmse": 2731927.6197910327,
+      "wape": 0.35658641979917255,
+      "selected": false
+    },
+    {
+      "phase": "test",
+      "metric_type": "domestic_mail_observed_subtotal",
+      "model": "persistence",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 11873925.666666666,
+      "rmse": 19081759.722495556,
+      "wape": 0.21312980942508614,
+      "selected": false
+    },
+    {
+      "phase": "test",
+      "metric_type": "domestic_mail_observed_subtotal",
+      "model": "linear",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 13580362.677655676,
+      "rmse": 14467679.674822597,
+      "wape": 0.24375932532048922,
+      "selected": false
+    },
+    {
+      "phase": "test",
+      "metric_type": "domestic_mail_observed_subtotal",
+      "model": "cagr",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 10401784.715162085,
+      "rmse": 15992433.434449047,
+      "wape": 0.18670576658962879,
+      "selected": true
+    },
+    {
+      "phase": "test",
+      "metric_type": "international_free_observed_subtotal",
+      "model": "persistence",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 842002.6666666666,
+      "rmse": 897094.6975788007,
+      "wape": 0.28405781716540435,
+      "selected": true
+    },
+    {
+      "phase": "test",
+      "metric_type": "international_free_observed_subtotal",
+      "model": "linear",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 205847.0256410255,
+      "rmse": 253311.1892200849,
+      "wape": 0.06944450307391828,
+      "selected": false
+    },
+    {
+      "phase": "test",
+      "metric_type": "international_free_observed_subtotal",
+      "model": "cagr",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 578524.2173275602,
+      "rmse": 611246.6760676343,
+      "wape": 0.19517079085029507,
+      "selected": false
+    },
+    {
+      "phase": "test",
+      "metric_type": "international_mail_observed_subtotal",
+      "model": "persistence",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 2537423.0,
+      "rmse": 2774996.17210721,
+      "wape": 0.26599847220517275,
+      "selected": true
+    },
+    {
+      "phase": "test",
+      "metric_type": "international_mail_observed_subtotal",
+      "model": "linear",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 1732213.7032967024,
+      "rmse": 2142229.1942547252,
+      "wape": 0.1815882486324855,
+      "selected": false
+    },
+    {
+      "phase": "test",
+      "metric_type": "international_mail_observed_subtotal",
+      "model": "cagr",
+      "eligible": true,
+      "folds_expected": 1,
+      "folds_available": 1,
+      "prediction_count": 3,
+      "mae": 3116416.4079263303,
+      "rmse": 3369065.4710983904,
+      "wape": 0.32669444679248844,
+      "selected": false
+    }
+  ],
+  "interpretation": "Observed stage subtotals with missing fields excluded; not complete national demand, unique shipments or guaranteed accuracy. Choices remain validation-selected even when another model scores better on the reserved test."
+}
