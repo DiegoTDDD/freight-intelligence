@@ -1,17 +1,19 @@
 # Current delivery status
 
 Reviewed **2026-11-20**. The original **12 portfolio stages are delivered**.
-There are **14 concrete delivered expansion items**, each closed for its stated
-source population and period. **Seven additional requirements remain unmet**;
+There are **15 concrete delivered expansion items**, each closed for its stated
+source population and period. **Six additional requirements remain unmet**;
 they are separate entries with exact completion criteria and dependencies.
 
 The authoritative record is the [delivery checklist](expansion_execution.md):
 
 - **O01–O12:** original roadmap, completion criteria and evidence.
-- **E01–E14:** published expansions; completed rows stay closed.
-- **X01–X07:** commercial dispatch, toll/duty compliance, independent hosting,
-  real-company outcomes, additional source coverage, further source auditing and
-  additional forecast targets. These are not presented as delivered.
+- **E01–E15:** published expansions; completed rows stay closed.
+- **X01–X05 and X07:** commercial dispatch, toll/duty compliance, independent
+  hosting, real-company outcomes, additional source coverage and additional
+  forecast targets. These are not presented as delivered.
+- **X06 closed as E15:** the ANAC source now has bounded revision auditing,
+  retained changed-source evidence and no automatic promotion.
 
 This replaces the previous open-ended remaining-work list. Additional years or
 sources do not silently reopen delivered work. New coverage needs a named source,

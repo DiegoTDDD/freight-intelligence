@@ -26,7 +26,7 @@ in the final table or establish commercial readiness.
 | O11 | Continuous deployment | Publish the exact main revision only after required CI jobs succeed | [Workflow](../.github/workflows/ci_pipeline.yml), [policy](publicacao_continua.md) |
 | O12 | Portfolio delivery | README, architecture/use guides, results, limitations, screenshots and recovery package | [README](../README.md), [static results](portfolio_evidence.md), [recovery](recovery.md) |
 
-## Concrete expansions — 14 delivered items
+## Concrete expansions — 15 delivered items
 
 Each row is delivered for its stated source population and period. It is not a
 promise of complete national shipment coverage or unlimited future extensions.
@@ -47,8 +47,9 @@ promise of complete national shipment coverage or unlimited future extensions.
 | E12 | Scheduled auditing: 60 ANP monthly reports, 2021–2025, pinned 2021 unit dictionary and separate ANTT PDF revision detection; unreviewed revisions cannot replace serving data | [Policy](source_refresh.md), [five-year run](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/44616465030) |
 | E13 | Host-independent review: twelve English-interface screenshots, generated static results, public CSV and source evidence usable while the demo sleeps | [Screenshots](../README.md#screenshots), [static evidence](portfolio_evidence.md) |
 | E14 | Verified recovery archives and pinned runtime; six-session/eighteen-render memory regression check without OOM | [Recovery](recovery.md), [CI evidence](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/44656414891) |
+| E15 | ANAC revision audit for the fixed consolidated CSV: bounded streaming download, header/source-hash checks, unchanged/changed/failure evidence and quarantine without automatic promotion; closes X06 | [Audit contract](source_refresh.md#anac-air-source-revision-audit), [first live review](evidence/anac_source_review_20261120.json), [workflow](../.github/workflows/audit-brazil-air.yml) |
 
-## Outstanding requirements — explicitly not delivered
+## Outstanding requirements — six explicitly not delivered
 
 These requirements remain visible rather than being called completed. They are
 distinct from the closed deliverables above. Each has a concrete completion test
@@ -61,8 +62,17 @@ and dependency; “more data” or “more quality” alone is not an acceptance
 | X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | Images and permission controls exist; the public API shares the free dashboard service. Independent hosting and an availability contract are not delivered |
 | X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | Real operating records/outcomes not supplied. Synthetic examples are not measured savings |
 | X05 | Additional geographic/source coverage beyond E02/E05–E10 | Name a source, population, period and unit contract; acquire evidence; implement, reconcile and publish the derived view through CI | No further reviewed source contract attached to this baseline. Earlier years, finer road geography, other OD populations, railway/pipeline operators and deduplication identifiers remain unacquired |
-| X06 | Revision auditing of additional providers | Name a source/version population; implement bounded retrieval/comparison; retain proof of unchanged, changed and failure behavior | ANP and the ANTT PDF are delivered in E12. Other providers lack an approved retrieval/validation contract and implemented audit |
 | X07 | Forecasts for additional target measures | Name target, unit and cutoff; obtain sufficient compatible history; compare baselines and score reserved observations | Other targets lack a reviewed sufficient history. Five full inland/port-export years do not satisfy the existing minimum-eight-year annual training protocol |
+
+## Closed follow-up X06
+
+X06 required naming a source/version population, implementing bounded retrieval
+and comparison, and retaining proof of unchanged, changed and failure behavior.
+E15 meets that criterion for the ANAC consolidated CSV. Tests cover all three
+outcomes, and a live run detected an update-date-only revision; its complete data
+body matched the reviewed source. The report and separate review are retained.
+Other unspecified provider audits are separate potential contracts, not grounds
+for reopening X06.
 
 No paid service was purchased. Free hosting/provider limits, source revisions,
 statistical overlap and missing inputs remain documented limitations. Paused local

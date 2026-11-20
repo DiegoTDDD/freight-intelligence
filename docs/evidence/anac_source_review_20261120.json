@@ -1,0 +1,52 @@
+{
+  "reviewed_on": "2026-11-20",
+  "method": "Separate manual review after the revision detector quarantined the source; complete CSV body hash matches the exact previously reviewed raw file. Only the first update-date line differs.",
+  "audit_report": {
+    "checked_at": "2026-11-20T04:15:06.426829+00:00",
+    "status": "source_changed_requires_review",
+    "publication": "No served snapshot or deployed service is changed by this audit",
+    "automatic_promotion": false,
+    "full_data_rows_validated": false,
+    "limits": {
+      "max_bytes": 471859200,
+      "chunk_bytes": 1048576,
+      "header_prefix_bytes": 65536,
+      "socket_timeout_seconds": 30,
+      "elapsed_budget_seconds_checked_between_chunks": 300
+    },
+    "source_url": "https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/Dados_Estatisticos.csv",
+    "reviewed_sha256": "54986d51004d8a0cb326d0898492d8576486cb041bbd0819331092755a7b6480",
+    "fetched": {
+      "sha256": "d8b5e856ce56a355727132e8e0868766c8f16d539d817cb240f20390c7bf7730",
+      "bytes": 361057599,
+      "source_update_line": "Atualizado em: 2026-11-20"
+    },
+    "header_validated": true,
+    "reviewed_end_year": 2025,
+    "reviewed_pair_start_year": 2024,
+    "reviewed_rows": {
+      "monthly": 624,
+      "pairs": 36860,
+      "annual": 52,
+      "airports": 1102
+    },
+    "candidate": "unreviewed-source.csv; header checked, row values not approved or promoted"
+  },
+  "body_comparison": {
+    "reviewed_local_source": {
+      "bytes": 361057599,
+      "update_line": "Atualizado em: 2026-11-13",
+      "body_sha256": "b4da648a0f39c75e940893b5c2dc566766858a36ac045b0808355b4d91372b6d",
+      "full_sha256": "54986d51004d8a0cb326d0898492d8576486cb041bbd0819331092755a7b6480"
+    },
+    "new_unreviewed_source": {
+      "bytes": 361057599,
+      "update_line": "Atualizado em: 2026-11-20",
+      "body_sha256": "b4da648a0f39c75e940893b5c2dc566766858a36ac045b0808355b4d91372b6d",
+      "full_sha256": "d8b5e856ce56a355727132e8e0868766c8f16d539d817cb240f20390c7bf7730"
+    },
+    "body_bytes_unchanged": true,
+    "publication_changed": false
+  },
+  "promotion_decision": "Update source SHA-256 and update-line provenance through normal code review/CI; preserve all aggregate and forecast bytes. The audit itself never promotes data."
+}

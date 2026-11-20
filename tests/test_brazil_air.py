@@ -58,7 +58,13 @@ def test_source_aggregation_keeps_units_missingness_and_population(air_source, t
 def test_reviewed_air_snapshot_and_source_contract():
     tables, metadata, report = load_air()
     assert tables["monthly"].height == 624 and tables["pairs"].height == 36860
-    assert metadata["source_sha256"] == "54986d51004d8a0cb326d0898492d8576486cb041bbd0819331092755a7b6480"
+    assert metadata["source_sha256"] == "d8b5e856ce56a355727132e8e0868766c8f16d539d817cb240f20390c7bf7730"
+    review = json.loads((DEFAULT_ROOT.parents[1] / "docs/evidence/anac_source_review_20261120.json").read_bytes())
+    comparison = review["body_comparison"]
+    assert comparison["body_bytes_unchanged"]
+    assert comparison["reviewed_local_source"]["body_sha256"] == comparison["new_unreviewed_source"]["body_sha256"]
+    assert comparison["new_unreviewed_source"]["full_sha256"] == metadata["source_sha256"]
+    assert metadata["source_update_line"] == ["Atualizado em: 2026-11-20"]
     annual = tables["annual"].filter((pl.col("year") == 2025) & (pl.col("nature") == "domestic"))
     assert annual["paid_cargo_kg"].item() == 431833387
     assert report["metadata"]["test_points"] == 3

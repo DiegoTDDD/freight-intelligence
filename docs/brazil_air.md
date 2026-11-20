@@ -2,8 +2,15 @@
 
 This snapshot comes from the [official ANAC statistical CSV](https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/Dados_Estatisticos.csv)
 and its [data dictionary](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo/48-dados-estatisticos-do-transporte-aereo).
-The reviewed edition was retrieved on 2026-11-13, contains 1,102,983 source rows,
-and has SHA-256 `54986d51004d8a0cb326d0898492d8576486cb041bbd0819331092755a7b6480`.
+The original reviewed edition was retrieved on 2026-11-13, contains 1,102,983 source
+rows, and had SHA-256 `54986d51004d8a0cb326d0898492d8576486cb041bbd0819331092755a7b6480`.
+On 2026-11-20 a bounded source audit detected a changed update-date line. A complete
+body-hash comparison with that exact original CSV proved the row/header body was
+identical. The reviewed current source hash is
+`d8b5e856ce56a355727132e8e0868766c8f16d539d817cb240f20390c7bf7730`;
+only source date/hash provenance was updated. All aggregate and forecast bytes
+remain unchanged. [Source review evidence](evidence/anac_source_review_20261120.json)
+and [scheduled audit contract](source_refresh.md) document the distinction.
 The 361 MB raw source is kept locally, outside the hosted image and repository.
 
 ## Published scope

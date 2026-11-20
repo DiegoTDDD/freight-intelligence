@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source": "https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/Dados_Estatisticos.csv",
   "dictionary": "https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo/48-dados-estatisticos-do-transporte-aereo",
-  "source_sha256": "54986d51004d8a0cb326d0898492d8576486cb041bbd0819331092755a7b6480",
+  "source_sha256": "d8b5e856ce56a355727132e8e0868766c8f16d539d817cb240f20390c7bf7730",
   "source_update_line": [
-    "Atualizado em: 2026-11-13"
+    "Atualizado em: 2026-11-20"
   ],
   "counts": {
     "raw_rows": 1102983,

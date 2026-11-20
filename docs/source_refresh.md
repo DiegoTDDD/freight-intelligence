@@ -1,4 +1,4 @@
-# ANP gas source revision audit
+# Brazilian source revision audits
 
 The repository workflow **Audit Brazilian gas source revisions** runs on Mondays
 at 09:17 UTC (06:17 America/Sao_Paulo) and can also be started manually in GitHub
@@ -73,6 +73,50 @@ The workflow is read-only and does not use a deployment secret. Reports and chan
 PDFs are retained as GitHub artifacts for 14 days. GitHub schedules may be delayed
 or disabled for inactive repositories; this is revision detection, not guaranteed
 real-time refresh. The local hourly development automation remains paused.
+
+## ANAC air source revision audit
+
+Checklist item X06 is closed by delivery E15 for this named source.
+
+The separate **Audit Brazilian air source revisions** workflow runs Mondays at
+09:37 UTC (06:37 America/Sao_Paulo), on demand, and when its retrieval contract or
+reviewed baseline changes. It covers one named source: the official consolidated
+ANAC `Dados_Estatisticos.csv` used by the published 2000–2025 aggregate and
+2024–2025 pair snapshots. It does not discover new datasets or extend their scope.
+
+The download streams to disk in at most 1-MiB chunks, retaining at most a 64-KiB
+header prefix in memory. Limits: 450 MiB total, 30-second socket timeout, and a
+300-second elapsed budget checked between reads (a blocked read may consume its
+socket timeout before the next check). Unexpected redirects, invalid/truncated
+lengths, missing/duplicate source columns, invalid update dates and malformed
+header responses fail with a retained report. Partial files are removed.
+
+The detector compares SHA-256 with the reviewed source. Matching bytes produce
+`unchanged` and remove the downloaded temporary file. Changed bytes are retained
+as `unreviewed-source.csv`, with before/after hashes and the source update line.
+This is **header validation and revision detection**, not full row validation or
+approval of new observations. Reports explicitly set `full_data_rows_validated`
+and `automatic_promotion` to false. No aggregate, forecast or serving file is
+replaced by the audit. Changed observations need ingestion and source review.
+
+The read-only workflow has no deployment secret. Reports and changed CSV files
+are kept as Actions artifacts for 14 days; normal schedules/retention limits apply.
+The original CSV can be hundreds of megabytes, so the job runs on GitHub rather
+than in the 512-MiB dashboard service. Local command:
+
+```text
+python -m scripts.audit_brazil_air --output NEW_AIR_AUDIT_DIRECTORY
+```
+
+The first live local run on 2026-11-20 detected a 361,057,599-byte file revision.
+A separate manual comparison with the exact previously reviewed raw CSV proved
+that every byte after the first update-date line was unchanged. Only the date
+changed from 2026-11-13 to 2026-11-20. Source hash/date provenance was reviewed
+and updated through the normal CI path; all Parquet and forecast bytes were
+preserved. [Audit and comparison evidence](evidence/anac_source_review_20261120.json).
+
+This closes X06 for the named ANAC source. Other providers require separately
+named audit contracts; they do not silently reopen this completed requirement.
 
 ## Separately reviewed road panel history
 
