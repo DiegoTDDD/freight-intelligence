@@ -35,6 +35,10 @@ def load_policy(root=DEFAULT_ROOT):
         raise ValueError("Invalid weekly-duty policy limits")
     if date.fromisoformat(policy["supported_from"]) > date.fromisoformat(policy["reviewed_on"]):
         raise ValueError("Invalid weekly-duty policy period")
+    night = policy.get("night_accounting")
+    if (night != {"start_minute": 1320, "end_minute": 300, "nominal_hour_seconds": 3150, "source_id": "clt_73"}
+            or any(type(night[k]) is not int for k in ("start_minute", "end_minute", "nominal_hour_seconds"))):
+        raise ValueError("Invalid reviewed night-accounting policy")
     return policy
 
 
@@ -57,6 +61,41 @@ def parse_history(raw):
     if not isinstance(result, dict):
         raise TypeError("Weekly history must be a JSON object")
     return result
+
+
+def night_accounting(timeline, shifts, policy, supported):
+    """Account observed 22:00-05:00 work exactly; do not infer extension or wages."""
+    night_policy = policy["night_accounting"]
+    daily = [0] * 7
+    for event in timeline:
+        if not event["counts_as_work"]:
+            continue
+        for day in range(event["start_minute"] // 1440, (event["end_minute"] - 1) // 1440 + 1):
+            for left, right in ((day * 1440, day * 1440 + night_policy["end_minute"]),
+                                (day * 1440 + night_policy["start_minute"], (day + 1) * 1440)):
+                daily[day] += max(0, min(right, event["end_minute"]) - max(left, event["start_minute"]))
+    observed = sum(daily)
+    total = sum(e["minutes"] for e in timeline if e["counts_as_work"])
+    # A reduced-hour equivalent minute is 60/52.5 = 8/7 real minutes.
+    # Keep sevenths as integers; only the display layer rounds.
+    equivalent = {"numerator": (total - observed) * 7 + observed * 8, "denominator": 7} if supported else None
+    extension = False
+    for shift in shifts:
+        work = [e for e in timeline if e["counts_as_work"]
+                and shift["start_minute"] <= e["start_minute"] < shift["end_minute"]]
+        for day in range(shift["start_minute"] // 1440, (shift["end_minute"] - 1) // 1440 + 1):
+            five = day * 1440 + night_policy["end_minute"]
+            if (any(e["start_minute"] < five and e["end_minute"] > day * 1440 for e in work)
+                    and any(e["end_minute"] > five for e in work)):
+                extension = True
+    covered = timeline[-1]["end_minute"]
+    return {"observed_night_work_minutes": observed, "observed_day_work_minutes": total - observed,
+            "daily_night_work_minutes": [v if covered > i * 1440 else None for i, v in enumerate(daily)],
+            "base_window_equivalent_work_minutes": equivalent,
+            "post_05_extension_requires_review": extension,
+            "conversion_supported_for_week": supported, "nominal_night_hour_seconds": 3150 if supported else None,
+            "window": "22:00 inclusive to 05:00 exclusive, Sao Paulo local time",
+            "source_id": "clt_73", "extension_conversion_applied": False, "wages_calculated": False}
 
 
 def review_week(payload, root=DEFAULT_ROOT):
@@ -179,7 +218,7 @@ def review_week(payload, root=DEFAULT_ROOT):
             for day in range(clock // 1440, (end - 1) // 1440 + 1):
                 left, right = max(clock, day * 1440), min(end, (day + 1) * 1440)
                 if left < day * 1440 + 300 or right > day * 1440 + 1320:
-                    unknown.append("night_or_multiday_context_not_evaluated")
+                    unknown.append("night_or_multiday_regime_requires_review")
         clock = end
     if last_was_rest:
         finish_rest(False, boundary=True)
@@ -190,11 +229,17 @@ def review_week(payload, root=DEFAULT_ROOT):
         unknown.append("weekly_hours_above_normal_reference_require_payroll_agreement_review")
     if not any(r["qualifies_selected_combined_weekly_rest"] for r in rests):
         unknown.append("no_complete_combined_weekly_rest_observed")
+    night = night_accounting(timeline, shifts, policy, normal_reference is not None)
+    if night["observed_night_work_minutes"]:
+        unknown.append("night_regime_and_reduced_hour_limits_require_review")
+    if night["post_05_extension_requires_review"]:
+        unknown.append("post_05_night_extension_requires_review")
     unknown = sorted(set(unknown))
     return {"status": "selected_limits_exceeded" if flags else "manual_review_required" if unknown else "within_selected_weekly_planning_limits",
             "week_start": payload["week_start"], "timezone": policy["timezone"],
             "covered_minutes": covered, "coverage_complete": covered == 10080, "total_work_minutes": total_work,
             "normal_week_reference_minutes": normal_reference, "violations": flags, "review_reasons": unknown,
+            "night_accounting": night,
             "shifts": shifts, "rest_periods": rests, "timeline": timeline, "sources": policy["sources"],
             "daily_totals": [{"date": (start_date + timedelta(days=i)).isoformat(),
                               "work_minutes": value if covered > i * 1440 else None,
@@ -207,8 +252,15 @@ def review_week(payload, root=DEFAULT_ROOT):
 
 
 def example_history(name="balanced_week"):
-    if name not in {"balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week"}:
+    if name not in {"balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift"}:
         raise ValueError("Unknown weekly example")
+    if name == "night_shift":
+        # Monday 22:00 to Tuesday 06:00; full meal 01:00-02:00 is excluded.
+        return {"week_start": "2026-11-09", "carry_in_rest_minutes": 2880,
+                "carry_in_consecutive_workdays": 0, "overtime_authorized": False,
+                "events": [{"activity": kind, "minutes": minutes} for kind, minutes in
+                           (("rest", 1320), ("driving", 180), ("meal", 60),
+                            ("waiting", 180), ("work", 60), ("rest", 8280))]}
     events, clock = [], 0
 
     def add(kind, minutes):

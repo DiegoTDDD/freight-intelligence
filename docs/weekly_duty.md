@@ -1,8 +1,8 @@
 # Declared seven-day duty review
 
-Open **Trip cost and breaks → Seven-day duty review**. Four explicitly synthetic
+Open **Trip cost and breaks → Seven-day duty review**. Five explicitly synthetic
 examples demonstrate a balanced week, insufficient daily rest, seven workdays and
-incomplete history. An optional JSON editor supports other declared scenarios.
+incomplete history, plus a cross-midnight night shift. An optional JSON editor supports other declared scenarios.
 This is selected-rule screening, not authentication of driver records or a legal,
 payroll or dispatch decision. **X02 remains open** for complete operating acceptance.
 
@@ -56,8 +56,43 @@ A whole reviewed week must fall between 2023-07-12 and 2026-11-20. Outside this
 period, the weekly normal-hour reference is `null` and separate review is required;
 the engine does not apply an old 44-hour ceiling to future periods. Updating the
 version requires a new source/date review, policy hash and regression tests.
-Night/multi-day duty, collective/exempt regimes and actual operating acceptance
-also remain outside this release. No result has `dispatch_authorized: true`.
+Night/multi-day compliance decisions, collective/exempt regimes and actual operating
+acceptance remain outside this release. The base-window accounting below is now
+implemented; no result has `dispatch_authorized: true`.
+
+## Night work: real minutes and reduced-hour accounting
+
+The dated standard-profile policy now records [CLT article 73](https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm):
+the base night window is 22:00 inclusive to 05:00 exclusive and the nominal night
+hour is 52 minutes 30 seconds. This is a selected calculation profile, not a
+determination of an actual employment regime, wages or collective terms.
+
+Only `driving`, `work` and `waiting` in that window are converted. Meals, breaks
+and rest are excluded. Real minutes remain unchanged for elapsed time, rest and
+continuous-driving checks. Work crossing midnight is split over its observed local
+dates; missing history is not filled. Exact equivalent minutes are exported as
+an integer numerator and denominator, using `day_minutes + night_minutes * 8/7`.
+Rounding to two decimals happens only in the displayed hours. This equivalent is
+not silently substituted into the existing daytime threshold checks: reduced-hour
+limit/regime review is explicitly required whenever night work is observed.
+
+Work continuing after 05:00 within a shift that has work before 05:00 is
+conservatively marked for extension review. The engine does not decide whether
+extension treatment applies or convert the post-05:00 work automatically. The
+window's left boundary cannot authenticate an earlier shift. Actual payroll,
+premiums, rotating/collective/exempt regimes and full night-duty compliance are
+not calculated. Outside the reviewed whole-week date range the observed window
+counts remain available, but equivalent minutes and nominal-hour conversion are
+`null`. A night example always requires review and never authorizes dispatch.
+
+**Synthetic example:** Monday 22:00–Tuesday 06:00, with a 01:00–02:00 meal,
+contains 420 real work minutes, 360 night work minutes and 60 day work minutes.
+Its base-window equivalent is exactly `3300/7` minutes, displayed as **7.86 hours**.
+Waiting at 02:00–05:00 is work. The final 05:00–06:00 hour retains its real length
+and triggers extension review. [Input](examples/night_duty_input.json),
+[full report](examples/night_duty_report.json) and the README screenshot remain
+available when hosting sleeps. This advances **X02** without closing its operating
+acceptance requirements.
 
 ## Portable results
 
@@ -67,6 +102,7 @@ also remain outside this release. No result has `dispatch_authorized: true`.
 | Short daily rest | 44 hours | 659-minute intershift rest flagged |
 | Seven workdays | 48 hours | Seventh workday flagged; weekly excess needs review |
 | Incomplete week | 44 observed hours | Missing coverage remains explicit; no clean result |
+| Night shift with extension | 7 real work hours; 6 in the night window | 7.86 base-window equivalent hours; extension/regime review required |
 
 The balanced example has five eight-hour workdays and one four-hour workday,
 with a full meal per shift. Its final declared rest is exactly 2,100 minutes.
@@ -77,7 +113,7 @@ with a full meal per shift. Its final declared rest is exactly 2,100 minutes.
 
 `GET /api/brazil/duty-review?example=balanced_week` returns a published synthetic
 `input` and its `review`. Other example names are `short_daily_rest`,
-`seven_workdays` and `incomplete_week`.
+`seven_workdays`, `incomplete_week` and `night_shift`.
 
 `POST /api/brazil/duty-review` accepts the same input object as application/json
 and returns a stateless calculation. It does not create/update a record and

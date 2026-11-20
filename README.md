@@ -6,7 +6,7 @@ A freight data engineering and analytics portfolio: a **97.6-million-row** Medal
 
 **[Review results without starting a server](docs/portfolio_evidence.md)** · **[Open the interactive demo](https://loginexus-dashboard-preview.onrender.com/)** · [Public API](https://loginexus-dashboard-preview.onrender.com/api/docs) · [Delivery checklist](docs/expansion_execution.md)
 
-**Delivery status:** the original 12 portfolio stages and 19 concrete expansion items are delivered for their documented coverage. Four additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
+**Delivery status:** the original 12 portfolio stages and 20 concrete expansion items are delivered for their documented coverage. Four additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
 
 > **Demo hosting:** the dashboard and public API share one free Render service. After 15 minutes without inbound traffic, it sleeps; the next visit normally takes about a minute to wake. Limits and restarts can also affect availability. [Render's free-service policy](https://render.com/docs/free). Screenshots, the static results report, source code, public aggregates and local Docker instructions below do not depend on that service being awake. Free hosting is a demonstration choice, with no permanence or production-uptime guarantee.
 
@@ -32,6 +32,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Geographic routing | Distinct OSRM car-reference and Valhalla truck engines; explicit dimensions, weight, axles and hazardous cargo; map, maneuvers and GeoJSON | [Truck profiles and restrictions](docs/truck_routing.md), [saved truck geometry](deployment/route_examples/sao_paulo_campinas_truck.geojson) |
 | Trip cost and breaks | Dated Autoban commercial-per-axle tolls for continuous SP-330/SP-348 km 20–100; selected daytime duty limits, loading/waiting as work, pauses and explicit unsupported cases; complete X02 compliance remains open | [Scope, example and API](docs/trip_planning.md) |
 | Seven-day duty review | Explicit declared histories, daily/combined weekly rest checks, seventh-workday flags, missing-data handling, dated policy, chart and bounded stateless API; no dispatch certification | [Rules, examples and API](docs/weekly_duty.md) |
+| Night-work accounting | Exact 22:00–05:00 overlap and reduced-hour equivalents, real time preserved, meals/rest excluded, explicit extension/regime review, cross-midnight example | [Calculation and portable evidence](docs/weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting) |
 | Read-only API | Documented indicators, histories, forecasts, quality diagnostics and saved allocations; filters, pagination, optional key/user permissions; hosted public snapshots isolated from private plans | [Endpoint reference](docs/api.md), [authentication and roles](docs/api_authentication.md) |
 | Delivery and recovery | Windows/Linux CI, pinned container runtimes, source/data hashes, memory regression checks, exact-tested-commit deployment and recovery archives | [CI workflow](.github/workflows/ci_pipeline.yml), [deployment](docs/publicacao_continua.md), [recovery](docs/recovery.md) |
 | Source refresh | Scheduled bounded ANP 2021–2025 (60 monthly reports), ANTT PDF and streaming ANAC CSV revision audits; changed sources quarantined for review rather than automatically published | [Audit policy](docs/source_refresh.md) |
@@ -169,6 +170,19 @@ history. Unknown history is not silently filled with rest or zero work.
 This expands the simulator; complete operational X02 acceptance remains open.
 
 ![English seven-day declared-duty review: explicit coverage and daily work chart](docs/images/weekly-duty-review.jpg)
+
+### Night-work accounting
+
+Choose **Night shift and extension** in the seven-day review. The synthetic
+22:00–06:00 shift excludes a full meal: **7 real work hours**, **6 night-window
+hours** and **7.86 base-window equivalent hours**. Exact fractions are retained
+in JSON. Work after 05:00 requests extension review; real driving/rest durations
+are preserved and no wages or dispatch approval are calculated.
+
+[Policy and calculation](docs/weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting) ·
+[Portable night example](docs/examples/night_duty_report.json).
+
+![English night-work accounting: real and equivalent hours, separate regime and extension review](docs/images/night-duty-review.jpg)
 
 ## Run the complete demo locally
 

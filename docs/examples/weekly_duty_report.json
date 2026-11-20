@@ -8,6 +8,30 @@
   "normal_week_reference_minutes": 2640,
   "violations": [],
   "review_reasons": [],
+  "night_accounting": {
+    "observed_night_work_minutes": 0,
+    "observed_day_work_minutes": 2640,
+    "daily_night_work_minutes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "base_window_equivalent_work_minutes": {
+      "numerator": 18480,
+      "denominator": 7
+    },
+    "post_05_extension_requires_review": false,
+    "conversion_supported_for_week": true,
+    "nominal_night_hour_seconds": 3150,
+    "window": "22:00 inclusive to 05:00 exclusive, Sao Paulo local time",
+    "source_id": "clt_73",
+    "extension_conversion_applied": false,
+    "wages_calculated": false
+  },
   "shifts": [
     {
       "start_minute": 480,
@@ -384,6 +408,10 @@
     {
       "id": "constitution_transition",
       "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc141.htm"
+    },
+    {
+      "id": "clt_73",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm"
     }
   ],
   "daily_totals": [
@@ -431,7 +459,7 @@
     }
   ],
   "policy_reviewed_on": "2026-11-20",
-  "scope": "Selected-rule screening of declared continuous seven-day standard private employed daytime freight records. Not tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
+  "scope": "Selected-rule screening of declared seven-day standard private employed freight records; base 22:00-05:00 reduced-hour accounting is informational. Not tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
   "history_authentication": "Declared scenario only; actual records are not authenticated",
   "dispatch_authorized": false
 }

@@ -117,7 +117,7 @@ def test_continuous_driving_meals_and_night_scope_are_checked():
     history = example_history()
     history["events"][0]["minutes"] -= 240
     history["events"][-1]["minutes"] += 240
-    assert "night_or_multiday_context_not_evaluated" in review_week(history)["review_reasons"]
+    assert "night_or_multiday_regime_requires_review" in review_week(history)["review_reasons"]
 
 
 @pytest.mark.parametrize("defect", ["unknown_field", "bad_activity", "boolean_minutes", "negative", "too_many",
@@ -159,7 +159,7 @@ def test_json_bounds_duplicates_and_changed_policy_are_rejected(tmp_path):
         review_week(example_history(), root)
 
 
-@pytest.mark.parametrize("defect", ["missing_limit", "wrong_type", "boolean_limit"])
+@pytest.mark.parametrize("defect", ["missing_limit", "wrong_type", "boolean_limit", "missing_night", "float_night"])
 def test_structurally_invalid_rehashed_policy_returns_unavailable_not_server_error(tmp_path, defect):
     root = tmp_path / "rules"
     shutil.copytree(DEFAULT_ROOT, root)
@@ -168,8 +168,12 @@ def test_structurally_invalid_rehashed_policy_returns_unavailable_not_server_err
         del policy["limits"]["meal_minutes"]
     elif defect == "wrong_type":
         policy["limits"] = []
-    else:
+    elif defect == "boolean_limit":
         policy["limits"]["meal_minutes"] = True
+    elif defect == "missing_night":
+        del policy["night_accounting"]
+    else:
+        policy["night_accounting"]["nominal_hour_seconds"] = 3150.0
     raw = json.dumps(policy).encode()
     (root / "policy.json").write_bytes(raw)
     manifest = json.loads((root / "manifest.json").read_bytes())

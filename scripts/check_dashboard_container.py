@@ -58,6 +58,16 @@ request = urllib.request.Request(base + "/api/brazil/duty-review", method="POST"
 with urllib.request.urlopen(request, timeout=10) as response:
     submitted = json.load(response)
     assert submitted["review"] == weekly["review"] and submitted["records_saved"] is False
+with urllib.request.urlopen(base + "/api/brazil/duty-review?example=night_shift", timeout=10) as response:
+    night = json.load(response)
+    assert night["review"]["night_accounting"]["observed_night_work_minutes"] == 360
+    assert night["review"]["night_accounting"]["base_window_equivalent_work_minutes"] == {"numerator": 3300, "denominator": 7}
+    assert night["review"]["night_accounting"]["post_05_extension_requires_review"]
+request = urllib.request.Request(base + "/api/brazil/duty-review", method="POST",
+                                 data=json.dumps(night["input"]).encode(),
+                                 headers={"Content-Type": "application/json"})
+with urllib.request.urlopen(request, timeout=10) as response:
+    assert json.load(response)["review"] == night["review"]
 with urllib.request.urlopen(base + "/api/openapi.json", timeout=10) as response:
     assert {"url": "/api"} in json.load(response)["servers"]
 try:

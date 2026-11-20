@@ -3,7 +3,7 @@
   "reviewed_on": "2026-11-20",
   "supported_from": "2023-07-12",
   "timezone": "America/Sao_Paulo (UTC-03 for reviewed period)",
-  "scope": "Selected-rule screening of declared continuous seven-day standard private employed daytime freight records. Not tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
+  "scope": "Selected-rule screening of declared seven-day standard private employed freight records; base 22:00-05:00 reduced-hour accounting is informational. Not tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
   "limits": {
     "week_minutes": 10080,
     "normal_week_minutes": 2640,
@@ -37,7 +37,17 @@
     {
       "id": "constitution_transition",
       "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc141.htm"
+    },
+    {
+      "id": "clt_73",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm"
     }
   ],
-  "future_transition": "EC 141/2026 provides phased weekly-hour/rest changes after publication. This edition does not approve weeks beyond its review date or evaluate collective/exempt/public-contract transition regimes."
+  "future_transition": "EC 141/2026 provides phased weekly-hour/rest changes after publication. This edition does not approve weeks beyond its review date or evaluate collective/exempt/public-contract transition regimes.",
+  "night_accounting": {
+    "start_minute": 1320,
+    "end_minute": 300,
+    "nominal_hour_seconds": 3150,
+    "source_id": "clt_73"
+  }
 }

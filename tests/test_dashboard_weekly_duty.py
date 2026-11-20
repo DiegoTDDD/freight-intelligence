@@ -16,6 +16,14 @@ def test_weekly_review_examples_missing_data_translation_and_invalid_json():
         app.selectbox(key="weekly_example").select(name).run()
         assert not app.exception and not app.error
         assert any(i.value == "Selected planning limits exceeded" for i in app.info)
+    app.selectbox(key="weekly_example").select("night_shift").run()
+    assert not app.exception and not app.error
+    assert any(m.label == "Actual night work hours" and m.value == "6.00" for m in app.metric)
+    assert any(m.label == "Base-window equivalent work hours" and m.value == "7.86" for m in app.metric)
+    assert any(i.value == "Separate review required" for i in app.info)
+    app.selectbox(key="language").select("pt").run()
+    assert any(m.label == "Horas reais de trabalho noturno" and m.value == "6.00" for m in app.metric)
+    app.selectbox(key="language").select("en").run()
     app.selectbox(key="weekly_example").select("incomplete_week").run()
     assert any(i.value == "Separate review required" for i in app.info)
     app.selectbox(key="language").select("pt").run()

@@ -1,14 +1,14 @@
 # Current delivery status
 
 Reviewed **2026-11-20**. The original **12 portfolio stages are delivered**.
-There are **19 concrete delivered expansion items**, each closed for its stated
+There are **20 concrete delivered expansion items**, each closed for its stated
 source population and period. **Four additional requirements remain unmet**;
 they are separate entries with exact completion criteria and dependencies.
 
 The authoritative record is the [delivery checklist](expansion_execution.md):
 
 - **O01–O12:** original roadmap, completion criteria and evidence.
-- **E01–E19:** published expansions; completed rows stay closed.
+- **E01–E20:** published expansions; completed rows stay closed.
 - **X01–X04:** commercial dispatch, toll/duty compliance, independent
   hosting and real-company outcomes. These are not presented as delivered.
 - **X06 closed as E15:** the ANAC source now has bounded revision auditing,
@@ -19,14 +19,15 @@ The authoritative record is the [delivery checklist](expansion_execution.md):
   monthly records while preserving previous pairs and forecasts.
 
 E18 adds dated toll/daytime planning; E19 adds declared seven-day duty review
-with explicit missing data and rule-date support. X02 remains open for
+with explicit missing data and rule-date support. E20 adds exact base-window
+night-work accounting and explicit post-05:00 extension review. X02 remains open for
 complete operating acceptance; a synthetic scenario is not driver-log validation.
 
 This replaces the previous open-ended remaining-work list. Additional years or
 sources do not silently reopen delivered work. New coverage needs a named source,
 population, period, acceptance criterion and its own evidence.
 
-## Latest functional verification
+## Earlier immutable functional baseline
 
 Revision [05ba893](https://github.com/DiegoTDDD/freight-intelligence/commit/05ba893333578e6a2291886e606a56616443dc1f)
 passed **474 lightweight tests on Windows and Linux** and all five CI/deployment

@@ -185,4 +185,7 @@ analytics permission, stores no scenario and never authorizes dispatch.
 `POST /api/brazil/duty-review` evaluates declared JSON without creating records;
 this is a stateless calculation, not a mutable dataset endpoint. Both use analytics
 permissions. The body is bounded at 64 KiB/300 events and ten seconds to receive.
+`example=night_shift` demonstrates real work versus exact reduced-hour equivalents
+for the base 22:00–05:00 window; post-05:00 extension requires review. No wages
+or dispatch authorization are produced. Existing example IDs remain available.
 [Schema, dates, examples and unsupported contexts](weekly_duty.md).

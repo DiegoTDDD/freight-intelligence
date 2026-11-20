@@ -26,7 +26,7 @@ in the final table or establish commercial readiness.
 | O11 | Continuous deployment | Publish the exact main revision only after required CI jobs succeed | [Workflow](../.github/workflows/ci_pipeline.yml), [policy](publicacao_continua.md) |
 | O12 | Portfolio delivery | README, architecture/use guides, results, limitations, screenshots and recovery package | [README](../README.md), [static results](portfolio_evidence.md), [recovery](recovery.md) |
 
-## Concrete expansions — 19 delivered items
+## Concrete expansions — 20 delivered items
 
 Each row is delivered for its stated source population and period. It is not a
 promise of complete national shipment coverage or unlimited future extensions.
@@ -52,6 +52,7 @@ promise of complete national shipment coverage or unlimited future extensions.
 | E17 | Added ANAC 2023 airport-pair stages: 18,699 monthly rows, all twelve months, domestic/international kilograms reconciled to independent monthly aggregates; 2024–2025 pairs and forecasts preserved; closes X05 | [Coverage contract](brazil_air.md#added-2023-airport-pair-coverage--x05), [reconciliation evidence](evidence/anac_pairs_2023_review.json) |
 | E18 | Dated Autoban corridor toll estimates and selected daytime duty planning: integer-cent prices, directional plazas, waiting-as-work, meal/driving breaks and explicit unsupported contexts; X02 remains open for complete operating acceptance | [Scope and results](trip_planning.md), [portable scenario](examples/trip_planning.json), [tariff audit](../.github/workflows/audit-trip-tariffs.yml) |
 | E19 | Declared seven-day duty review: explicit coverage/carry-in context, selected daily/weekly rest, seventh-workday flags, weekly excess review, dated rule support, chart, bounded stateless API and portable examples; X02 remains open | [Policy and results](weekly_duty.md), [example report](examples/weekly_duty_report.json) |
+| E20 | Night-work base-window accounting: exact 22:00–05:00 work overlap, reduced-hour equivalents separate from real minutes, meals/rest excluded, post-05:00 extension review, dated policy and portable cross-midnight example; X02 remains open | [Calculation and limits](weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting), [example report](examples/night_duty_report.json) |
 
 ## Outstanding requirements — four explicitly not delivered
 
@@ -62,7 +63,7 @@ and dependency; “more data” or “more quality” alone is not an acceptance
 | ID | Requirement not delivered | Concrete completion criterion | Current dependency |
 | --- | --- | --- | --- |
 | X01 | Commercial truck dispatch assurance | Identified operating region/vehicle population, validated current restrictions, provider terms and operational acceptance evidence | No operating validation dataset or contracted dispatch assurance supplied; the routing demonstration is not certification |
-| X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | E18 implements dated Autoban prices/daytime checks; E19 adds explicit-history weekly screening. Night-work conversion, collective/exempt regimes, authenticated driver records and operating/legal acceptance remain unimplemented or unverified |
+| X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | E18 implements dated Autoban prices/daytime checks; E19 adds weekly screening; E20 adds base-window night conversion. Night extension/regime and reduced-hour limit decisions, collective/exempt regimes, authenticated records and operating/legal acceptance remain unimplemented or unverified |
 | X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | Images and permission controls exist; the public API shares the free dashboard service. Independent hosting and an availability contract are not delivered |
 | X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | Real operating records/outcomes not supplied. Synthetic examples are not measured savings |
 

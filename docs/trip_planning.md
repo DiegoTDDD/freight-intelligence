@@ -3,7 +3,9 @@
 The **Trip cost and breaks** workspace and `GET /api/brazil/trip-planning`
 calculate a dated planning scenario. They do not authorize dispatch or certify
 complete legal compliance. **X02 remains open** for operating acceptance and the
-unimplemented weekly/night-work/collective-agreement checks.
+remaining night-extension/regime, collective-agreement and real-record validation.
+The separate [weekly review](weekly_duty.md) now implements selected weekly rest
+checks and base-window night-work accounting.
 
 ## Toll contract
 

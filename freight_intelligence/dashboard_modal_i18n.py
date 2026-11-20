@@ -338,3 +338,15 @@ PT.update({"Edit the declared activity history (JSON)": "Editar o histórico de 
            "Minutes": "Minutos"})
 
 PT.update({"Date": "Data"})
+
+PT.update({
+    "Night shift and extension": "Jornada noturna e prorrogação",
+    "Night-work accounting": "Contagem do trabalho noturno",
+    "Actual night work hours": "Horas reais de trabalho noturno",
+    "Base-window equivalent work hours": "Horas equivalentes na faixa-base",
+    "Actual night work counts only work from 22:00 to 05:00. The equivalent includes daytime work plus night work at 52 minutes 30 seconds per nominal hour. Meals and rest are excluded. Post-05:00 extension and pay require separate review; no wage is calculated.": "O trabalho noturno real conta apenas trabalho entre 22h e 5h. O equivalente inclui trabalho diurno e trabalho noturno a 52 minutos e 30 segundos por hora nominal. Refeições e descansos são excluídos. Prorrogação após 5h e pagamento exigem revisão específica; nenhum salário é calculado.",
+    "night_or_multiday_regime_requires_review": "Regime noturno ou de vários dias exige revisão específica",
+    "night_regime_and_reduced_hour_limits_require_review": "Regime noturno e limites com hora reduzida exigem revisão",
+    "post_05_night_extension_requires_review": "Prorrogação noturna após 5h exige revisão",
+    "Rule thresholds apply only to the supported reviewed dates. Future legal transitions, night-work regimes and incomplete boundaries need separate review; overtime is not automatically approved.": "Os limites valem somente para as datas revisadas. Transições legais futuras, regimes noturnos e limites incompletos exigem revisão específica; horas extras não são aprovadas automaticamente."
+})
