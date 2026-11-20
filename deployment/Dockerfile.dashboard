@@ -19,6 +19,7 @@ COPY deployment/brazil_air ./deployment/brazil_air
 COPY deployment/brazil_gas_history ./deployment/brazil_gas_history
 COPY deployment/route_examples ./deployment/route_examples
 COPY deployment/trip_planning ./deployment/trip_planning
+COPY deployment/duty_review ./deployment/duty_review
 RUN python -m pip install --no-deps -e . && python -m pip check
 ENV LOGINEXUS_DASHBOARD_DATA_ROOT=/app/preview-data HOME=/tmp LOGINEXUS_TRUCK_DEMO_ENABLED=true \
     POLARS_MAX_THREADS=2 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1

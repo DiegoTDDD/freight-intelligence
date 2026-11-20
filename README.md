@@ -6,7 +6,7 @@ A freight data engineering and analytics portfolio: a **97.6-million-row** Medal
 
 **[Review results without starting a server](docs/portfolio_evidence.md)** · **[Open the interactive demo](https://loginexus-dashboard-preview.onrender.com/)** · [Public API](https://loginexus-dashboard-preview.onrender.com/api/docs) · [Delivery checklist](docs/expansion_execution.md)
 
-**Delivery status:** the original 12 portfolio stages and 18 concrete expansion items are delivered for their documented coverage. Four additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
+**Delivery status:** the original 12 portfolio stages and 19 concrete expansion items are delivered for their documented coverage. Four additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
 
 > **Demo hosting:** the dashboard and public API share one free Render service. After 15 minutes without inbound traffic, it sleeps; the next visit normally takes about a minute to wake. Limits and restarts can also affect availability. [Render's free-service policy](https://render.com/docs/free). Screenshots, the static results report, source code, public aggregates and local Docker instructions below do not depend on that service being awake. Free hosting is a demonstration choice, with no permanence or production-uptime guarantee.
 
@@ -31,6 +31,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Scenario planner | Bounded editable networks, JSON import, separate simulation submission, reference/candidate comparison and portable downloads | [Planner walkthrough](docs/scenario_planner.md), [synthetic input example](docs/examples/transport_scenario.json) |
 | Geographic routing | Distinct OSRM car-reference and Valhalla truck engines; explicit dimensions, weight, axles and hazardous cargo; map, maneuvers and GeoJSON | [Truck profiles and restrictions](docs/truck_routing.md), [saved truck geometry](deployment/route_examples/sao_paulo_campinas_truck.geojson) |
 | Trip cost and breaks | Dated Autoban commercial-per-axle tolls for continuous SP-330/SP-348 km 20–100; selected daytime duty limits, loading/waiting as work, pauses and explicit unsupported cases; complete X02 compliance remains open | [Scope, example and API](docs/trip_planning.md) |
+| Seven-day duty review | Explicit declared histories, daily/combined weekly rest checks, seventh-workday flags, missing-data handling, dated policy, chart and bounded stateless API; no dispatch certification | [Rules, examples and API](docs/weekly_duty.md) |
 | Read-only API | Documented indicators, histories, forecasts, quality diagnostics and saved allocations; filters, pagination, optional key/user permissions; hosted public snapshots isolated from private plans | [Endpoint reference](docs/api.md), [authentication and roles](docs/api_authentication.md) |
 | Delivery and recovery | Windows/Linux CI, pinned container runtimes, source/data hashes, memory regression checks, exact-tested-commit deployment and recovery archives | [CI workflow](.github/workflows/ci_pipeline.yml), [deployment](docs/publicacao_continua.md), [recovery](docs/recovery.md) |
 | Source refresh | Scheduled bounded ANP 2021–2025 (60 monthly reports), ANTT PDF and streaming ANAC CSV revision audits; changed sources quarantined for review rather than automatically published | [Audit policy](docs/source_refresh.md) |
@@ -156,6 +157,18 @@ and [portable JSON](docs/examples/trip_planning.json) are available while the de
 
 The screenshot shows selected planning limits; complete operating compliance
 remains an open X02 requirement.
+
+### Declared seven-day duty review
+
+Inside **Trip cost and breaks**, choose **Seven-day duty review**. The balanced
+synthetic week displays **168 covered hours and 44 declared work hours** for
+2026-11-09. Other examples flag a short daily rest, seven workdays and incomplete
+history. Unknown history is not silently filled with rest or zero work.
+
+[Full policy, dates and API](docs/weekly_duty.md) · [Portable example report](docs/examples/weekly_duty_report.json).
+This expands the simulator; complete operational X02 acceptance remains open.
+
+![English seven-day declared-duty review: explicit coverage and daily work chart](docs/images/weekly-duty-review.jpg)
 
 ## Run the complete demo locally
 

@@ -1,0 +1,156 @@
+{
+  "week_start": "2026-11-09",
+  "carry_in_rest_minutes": 2880,
+  "carry_in_consecutive_workdays": 0,
+  "overtime_authorized": false,
+  "events": [
+    {
+      "activity": "rest",
+      "minutes": 480
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "meal",
+      "minutes": 60
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "rest",
+      "minutes": 900
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "meal",
+      "minutes": 60
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "rest",
+      "minutes": 900
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "meal",
+      "minutes": 60
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "rest",
+      "minutes": 900
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "meal",
+      "minutes": 60
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "rest",
+      "minutes": 900
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "meal",
+      "minutes": 60
+    },
+    {
+      "activity": "driving",
+      "minutes": 210
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "rest",
+      "minutes": 900
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "driving",
+      "minutes": 90
+    },
+    {
+      "activity": "meal",
+      "minutes": 60
+    },
+    {
+      "activity": "driving",
+      "minutes": 90
+    },
+    {
+      "activity": "work",
+      "minutes": 30
+    },
+    {
+      "activity": "rest",
+      "minutes": 2100
+    }
+  ]
+}

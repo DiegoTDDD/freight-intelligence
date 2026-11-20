@@ -44,11 +44,20 @@ for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/brazil/road-state-pairs?origin_state=SP&destination_state=MG",
              "/api/brazil/air-freight?view=pairs&year=2025&origin=SBGR",
              "/api/brazil/trip-planning",
+             "/api/brazil/duty-review",
              "/api/brazil/gas-movements?year=2022&include_diagnostics=true&diagnostics_limit=1",
              "/api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=1"):
     with urllib.request.urlopen(base + path, timeout=10) as response:
         assert response.status == 200, path
         response.read()
+with urllib.request.urlopen(base + "/api/brazil/duty-review", timeout=10) as response:
+    weekly = json.load(response)
+request = urllib.request.Request(base + "/api/brazil/duty-review", method="POST",
+                                 data=json.dumps(weekly["input"]).encode(),
+                                 headers={"Content-Type": "application/json"})
+with urllib.request.urlopen(request, timeout=10) as response:
+    submitted = json.load(response)
+    assert submitted["review"] == weekly["review"] and submitted["records_saved"] is False
 with urllib.request.urlopen(base + "/api/openapi.json", timeout=10) as response:
     assert {"url": "/api"} in json.load(response)["servers"]
 try:

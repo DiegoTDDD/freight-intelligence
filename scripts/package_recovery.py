@@ -45,7 +45,8 @@ def verify_archive(archive):
                                     ("brazil_air", "provenance.json"),
                                     ("brazil_gas_history", "provenance.json"),
                                     ("route_examples", "manifest.json"),
-                                    ("trip_planning", "manifest.json")):
+                                    ("trip_planning", "manifest.json"),
+                                    ("duty_review", "manifest.json")):
             base = PREFIX + f"deployment/{directory}/"
             if base + filename not in bundle.namelist():
                 continue  # Earlier committed revisions may not include these features.

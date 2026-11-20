@@ -178,3 +178,11 @@ on request. [All results and limitations](brazil_air.md#forecast-evaluation).
 reviewed Autoban tariff snapshot and selected daytime duty rules. It requires
 analytics permission, stores no scenario and never authorizes dispatch.
 [Parameters, limits, source dates and examples](trip_planning.md).
+
+## Declared weekly duty review
+
+`GET /api/brazil/duty-review` returns a published synthetic example.
+`POST /api/brazil/duty-review` evaluates declared JSON without creating records;
+this is a stateless calculation, not a mutable dataset endpoint. Both use analytics
+permissions. The body is bounded at 64 KiB/300 events and ten seconds to receive.
+[Schema, dates, examples and unsupported contexts](weekly_duty.md).

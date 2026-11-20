@@ -281,3 +281,60 @@ PT.update({
     "shift_leaves_less_than_11_hours_in_24_hour_cycle": "A jornada deixa menos de 11 horas no ciclo de 24 horas",
     "night_work_or_multiday_requires_separate_review": "Trabalho noturno ou vários dias exigem revisão específica"
 })
+
+PT.update({
+    "Planning view": "Visão do planejamento",
+    "Single-day cost and breaks": "Custo e pausas de um dia",
+    "Seven-day duty review": "Revisão de jornada de sete dias",
+    "Declared scenarios only. Actual driver records, payroll and collective or exempt regimes are not authenticated. No result authorizes dispatch.": "Somente cenários declarados. Registros reais do motorista, folha de pagamento e regimes coletivos ou excepcionais não são autenticados. Nenhum resultado autoriza despacho.",
+    "Reviewed weekly-duty policy is unavailable.": "A política semanal revisada está indisponível.",
+    "Weekly example": "Exemplo semanal",
+    "Balanced declared week": "Semana declarada equilibrada",
+    "Short daily rest": "Descanso diário curto",
+    "Seven workdays": "Sete dias de trabalho",
+    "Incomplete history": "Histórico incompleto",
+    "Events cover consecutive minutes from Monday midnight. Rest must be explicitly declared; carry-in context may be null when unknown. Examples contain no real driver identities.": "Os eventos cobrem minutos consecutivos a partir de segunda-feira à meia-noite. O descanso deve ser declarado; o contexto anterior pode ser null quando desconhecido. Os exemplos não contêm identidades reais.",
+    "Weekly activity JSON": "Atividades semanais em JSON",
+    "Review declared week": "Revisar semana declarada",
+    "Results use the last submitted JSON for the selected example.": "Os resultados correspondem ao último JSON enviado para o exemplo selecionado.",
+    "Covered hours": "Horas cobertas",
+    "Declared work hours": "Horas de trabalho declaradas",
+    "Selected-rule flags": "Alertas das regras selecionadas",
+    "Within the selected weekly planning limits": "Dentro dos limites semanais de planejamento selecionados",
+    "Minute in week": "Minuto da semana",
+    "Declared rest periods and activity timeline": "Descansos declarados e linha do tempo",
+    "Rule thresholds apply only to the supported reviewed dates. Future legal transitions, night work and incomplete boundaries need separate review; overtime is not automatically approved.": "Os limites valem somente para as datas revisadas. Transições legais futuras, trabalho noturno e limites incompletos exigem revisão específica; horas extras não são aprovadas automaticamente.",
+    "Download weekly review (JSON)": "Baixar revisão semanal (JSON)",
+    "Weekly policy and sources": "Política semanal e fontes",
+    "declared_intershift_rest_below_11_hours": "Descanso declarado entre jornadas inferior a 11 horas",
+    "seventh_workday_before_selected_weekly_rest": "Sétimo dia de trabalho antes do descanso semanal selecionado",
+    "selected_shift_work_limit_exceeded": "Limite de trabalho da jornada selecionado excedido",
+    "selected_shift_span_exceeded": "Duração da jornada selecionada excedida",
+    "selected_full_meal_policy_not_met": "Política selecionada de refeição completa não atendida",
+    "selected_continuous_driving_limit_exceeded": "Limite selecionado de direção contínua excedido",
+    "incomplete_seven_day_coverage": "Cobertura de sete dias incompleta",
+    "unknown_carry_in_history": "Histórico anterior desconhecido",
+    "week_outside_reviewed_rule_period": "Semana fora do período de regras revisado",
+    "night_or_multiday_context_not_evaluated": "Contexto noturno ou de vários dias não avaliado",
+    "trailing_weekly_rest_needs_next_window": "Descanso semanal no final exige a próxima janela",
+    "weekly_hours_above_normal_reference_require_payroll_agreement_review": "Horas semanais acima da referência normal exigem revisão de acordo e pagamento",
+    "no_complete_combined_weekly_rest_observed": "Nenhum descanso semanal combinado completo observado",
+    "shift_still_open_at_window_boundary": "Jornada ainda aberta no limite da janela"
+})
+
+COLUMNS.update({"start_minute": "Start minute", "end_minute": "End minute", "work_minutes": "Work (min)",
+                "elapsed_minutes": "Elapsed (min)", "work_limit_minutes": "Selected work limit (min)",
+                "declared_minutes_including_carry_in": "Rest including prior context (min)",
+                "qualifies_selected_daily_rest": "Meets selected daily rest",
+                "qualifies_selected_combined_weekly_rest": "Meets selected combined weekly rest",
+                "activity": "Activity", "minutes": "Minutes", "counts_as_work": "Counts as work"})
+PT.update({"Edit the declared activity history (JSON)": "Editar o histórico de atividades declarado (JSON)",
+           "Declared week starting: ": "Semana declarada iniciada em: ", " · Policy reviewed: ": " · Política revisada em: ",
+           "Start minute": "Minuto inicial", "End minute": "Minuto final", "Work (min)": "Trabalho (min)",
+           "Elapsed (min)": "Duração (min)", "Selected work limit (min)": "Limite de trabalho selecionado (min)",
+           "Rest including prior context (min)": "Descanso incluindo contexto anterior (min)",
+           "Meets selected daily rest": "Atende ao descanso diário selecionado",
+           "Meets selected combined weekly rest": "Atende ao descanso semanal combinado selecionado",
+           "Minutes": "Minutos"})
+
+PT.update({"Date": "Data"})

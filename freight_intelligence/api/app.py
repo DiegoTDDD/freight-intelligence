@@ -1,12 +1,13 @@
 """Run locally with uvicorn freight_intelligence.api.app:app --host 127.0.0.1."""
 
+import asyncio
 from datetime import date
 from enum import Enum
 from pathlib import Path
 from typing import Literal
 
 import polars as pl
-from fastapi import APIRouter, FastAPI, HTTPException, Query
+from fastapi import APIRouter, FastAPI, HTTPException, Query, Request
 
 from freight_intelligence.api.security import authentication_dependencies
 from freight_intelligence.api.transport_results import load_transport_results
@@ -34,6 +35,14 @@ from freight_intelligence.evaluation_results import load_temporal_report
 from freight_intelligence.ml.annual_forecast import INTERPRETATION, PROJECT_ROOT
 from freight_intelligence.optimization.trip_planning import DEFAULT_ROOT as TRIP_RULES
 from freight_intelligence.optimization.trip_planning import load_rules, plan_trip
+from freight_intelligence.optimization.weekly_duty import DEFAULT_ROOT as WEEKLY_RULES
+from freight_intelligence.optimization.weekly_duty import MAX_BYTES as WEEKLY_MAX_BYTES
+from freight_intelligence.optimization.weekly_duty import (
+    example_history,
+    load_policy,
+    parse_history,
+    review_week,
+)
 
 
 class Metric(str, Enum):
@@ -82,6 +91,7 @@ def create_app(
     gas_history_dir: Path | None = None,
     modal_forecasts_dir: Path | None = None,
     trip_rules_dir: Path | None = None,
+    weekly_rules_dir: Path | None = None,
 ) -> FastAPI:
     gold = Path(gold_dir) if gold_dir is not None else PROJECT_ROOT / "data/gold/faf5"
     models = Path(model_dir) if model_dir is not None else PROJECT_ROOT / "models/faf5/annual"
@@ -110,6 +120,51 @@ def create_app(
     @app.get("/health")
     def health():
         return {"status": "ok"}
+
+    def weekly_policy_root():
+        root = weekly_rules_dir if weekly_rules_dir is not None else WEEKLY_RULES
+        try:
+            load_policy(root)
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            raise HTTPException(status_code=503, detail="Reviewed weekly-duty policy unavailable") from error
+        return root
+
+    @data_routes.get("/brazil/duty-review")
+    def weekly_example(example: Literal["balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week"] = "balanced_week"):
+        root = weekly_policy_root()
+        payload = example_history(example)
+        return {"input": payload, "review": review_week(payload, root), "records_saved": False}
+
+    @data_routes.post("/brazil/duty-review", openapi_extra={"requestBody": {"required": True, "content": {
+        "application/json": {"schema": {"type": "object", "additionalProperties": False,
+            "required": ["week_start", "events", "carry_in_rest_minutes", "carry_in_consecutive_workdays", "overtime_authorized"],
+            "properties": {"week_start": {"type": "string", "format": "date"},
+                "carry_in_rest_minutes": {"type": ["integer", "null"], "minimum": 0, "maximum": 10080},
+                "carry_in_consecutive_workdays": {"type": ["integer", "null"], "minimum": 0, "maximum": 6},
+                "overtime_authorized": {"type": "boolean"},
+                "events": {"type": "array", "minItems": 1, "maxItems": 300, "items": {"type": "object",
+                    "required": ["activity", "minutes"], "additionalProperties": False, "properties": {
+                        "activity": {"type": "string", "enum": ["rest", "driving", "work", "waiting", "meal", "driving_break"]},
+                        "minutes": {"type": "integer", "minimum": 1, "maximum": 10080}}}}}}}}}})
+    async def review_declared_week(request: Request):
+        """Stateless calculation; at most 64 KiB, 300 events and ten seconds to receive the body."""
+        root = weekly_policy_root()
+        if request.headers.get("content-type", "").split(";")[0].strip().lower() != "application/json":
+            raise HTTPException(status_code=415, detail="Use application/json")
+        raw = bytearray()
+        try:
+            async with asyncio.timeout(10):
+                async for chunk in request.stream():
+                    if len(raw) + len(chunk) > WEEKLY_MAX_BYTES:
+                        raise HTTPException(status_code=413, detail="Weekly history exceeds 64 KiB")
+                    raw.extend(chunk)
+        except TimeoutError as error:
+            raise HTTPException(status_code=408, detail="Weekly history body timed out") from error
+        try:
+            result = review_week(parse_history(bytes(raw)), root)
+        except (ValueError, TypeError, KeyError) as error:
+            raise HTTPException(status_code=422, detail=str(error)) from error
+        return {"review": result, "records_saved": False}
 
     @data_routes.get("/brazil/trip-planning")
     def brazil_trip_planning(

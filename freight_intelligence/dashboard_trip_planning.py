@@ -5,12 +5,18 @@ import json
 import streamlit as st
 
 from freight_intelligence.dashboard_ui import LocalizedUI
+from freight_intelligence.dashboard_weekly_duty import render_weekly_duty
 from freight_intelligence.optimization.trip_planning import load_rules, plan_trip
 
 
 def render_trip_planning(t):
     ui = LocalizedUI(t)
     ui.subheader("Trip cost and breaks")
+    view = ui.radio("Planning view", ["Single-day cost and breaks", "Seven-day duty review"],
+                    key="trip_planning_view")
+    if view == "Seven-day duty review":
+        render_weekly_duty(t)
+        return
     ui.info("Continuous SP-330/SP-348 travel between km 20 and km 100. Loaded trucks only. "
             "Selected plazas are calculated from chainage, independently of the route map.")
     ui.warning("Planning simulation: actual driver records, weekly rest, night work and safe stopping "

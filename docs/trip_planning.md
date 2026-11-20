@@ -89,3 +89,10 @@ attempt. Prices and review dates are never promoted automatically. The audit
 covers tariff-PDF bytes only: legal sources, exceptions and actual operating
 records still require separate review. Revisions must be sourced, reviewed,
 tested and published through CI before expanding the accepted date interval.
+
+## Separate declared weekly review
+
+The [seven-day review](weekly_duty.md) now evaluates explicit activity sequences,
+carry-in history and selected daily/weekly rest rules. It does not automatically
+combine with a day/toll scenario or authenticate driver records. Complete X02
+acceptance remains open for the stated operating contexts.
