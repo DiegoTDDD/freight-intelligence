@@ -19,7 +19,7 @@ SOURCE = ("https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B
 MAX_BYTES = 450 * 1024**2
 CHUNK_BYTES = 1024**2
 PREFIX_BYTES = 64 * 1024
-DEADLINE_SECONDS = 300
+DEADLINE_SECONDS = 900
 
 
 def validate_header(prefix):

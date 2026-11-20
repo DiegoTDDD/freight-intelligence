@@ -86,7 +86,7 @@ ANAC `Dados_Estatisticos.csv` used by the published 2000–2025 aggregate and
 
 The download streams to disk in at most 1-MiB chunks, retaining at most a 64-KiB
 header prefix in memory. Limits: 450 MiB total, 30-second socket timeout, and a
-300-second elapsed budget checked between reads (a blocked read may consume its
+900-second elapsed budget checked between reads (a blocked read may consume its
 socket timeout before the next check). Unexpected redirects, invalid/truncated
 lengths, missing/duplicate source columns, invalid update dates and malformed
 header responses fail with a retained report. Partial files are removed.

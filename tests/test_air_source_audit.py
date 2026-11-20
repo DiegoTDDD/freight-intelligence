@@ -88,7 +88,7 @@ def test_invalid_transfers_fail_with_report_and_without_partial_or_candidate(tmp
         clock = lambda: next(calls)
     output = tmp_path / "audit"
     with pytest.raises((ValueError, TimeoutError)):
-        audit(output, opener=opener_for(response), max_bytes=limit, clock=clock)
+        audit(output, opener=opener_for(response), max_bytes=limit, clock=clock, deadline_seconds=300)
     report = json.loads((output / "report.json").read_text())
     assert report["status"] == "validation_failed" and report["failure_type"]
     assert list(output.iterdir()) == [output / "report.json"]
