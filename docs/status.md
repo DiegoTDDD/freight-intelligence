@@ -1,14 +1,14 @@
 # Current delivery status
 
 Reviewed **2026-11-20**. The original **12 portfolio stages are delivered**.
-There are **17 concrete delivered expansion items**, each closed for its stated
+There are **18 concrete delivered expansion items**, each closed for its stated
 source population and period. **Four additional requirements remain unmet**;
 they are separate entries with exact completion criteria and dependencies.
 
 The authoritative record is the [delivery checklist](expansion_execution.md):
 
 - **O01–O12:** original roadmap, completion criteria and evidence.
-- **E01–E17:** published expansions; completed rows stay closed.
+- **E01–E18:** published expansions; completed rows stay closed.
 - **X01–X04:** commercial dispatch, toll/duty compliance, independent
   hosting and real-company outcomes. These are not presented as delivered.
 - **X06 closed as E15:** the ANAC source now has bounded revision auditing,
@@ -17,6 +17,9 @@ The authoritative record is the [delivery checklist](expansion_execution.md):
   reserved-test comparisons, forecasts and public report access.
 - **X05 closed as E17:** 2023 ANAC airport-pair coverage adds 18,699 reconciled
   monthly records while preserving previous pairs and forecasts.
+
+E18 adds a published dated toll/duty planning simulator. X02 remains open for
+complete operating acceptance; a synthetic scenario is not driver-log validation.
 
 This replaces the previous open-ended remaining-work list. Additional years or
 sources do not silently reopen delivered work. New coverage needs a named source,
@@ -40,7 +43,7 @@ Verification results are dated evidence, not a permanent zero-error guarantee.
 
 - [Live dashboard](https://loginexus-dashboard-preview.onrender.com/)
 - [Public API](https://loginexus-dashboard-preview.onrender.com/api/docs)
-- [README inventory and twelve English-interface screenshots](../README.md)
+- [README inventory and English-interface screenshots](../README.md)
 - [Generated static results and source-quality evidence](portfolio_evidence.md)
 - [Recovery procedure](recovery.md)
 - [Deployment and exact-tested-commit policy](publicacao_continua.md)

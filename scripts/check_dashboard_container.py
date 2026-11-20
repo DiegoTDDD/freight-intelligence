@@ -43,6 +43,7 @@ for path in ("/", "/api/docs", "/api/health", "/api/ready",
              "/api/brazil/inland-transport?view=commodities&limit=1",
              "/api/brazil/road-state-pairs?origin_state=SP&destination_state=MG",
              "/api/brazil/air-freight?view=pairs&year=2025&origin=SBGR",
+             "/api/brazil/trip-planning",
              "/api/brazil/gas-movements?year=2022&include_diagnostics=true&diagnostics_limit=1",
              "/api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=1"):
     with urllib.request.urlopen(base + path, timeout=10) as response:

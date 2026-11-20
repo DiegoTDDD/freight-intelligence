@@ -6,7 +6,7 @@ A freight data engineering and analytics portfolio: a **97.6-million-row** Medal
 
 **[Review results without starting a server](docs/portfolio_evidence.md)** · **[Open the interactive demo](https://loginexus-dashboard-preview.onrender.com/)** · [Public API](https://loginexus-dashboard-preview.onrender.com/api/docs) · [Delivery checklist](docs/expansion_execution.md)
 
-**Delivery status:** the original 12 portfolio stages and 17 concrete expansion items are delivered for their documented coverage. Four additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
+**Delivery status:** the original 12 portfolio stages and 18 concrete expansion items are delivered for their documented coverage. Four additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
 
 > **Demo hosting:** the dashboard and public API share one free Render service. After 15 minutes without inbound traffic, it sleeps; the next visit normally takes about a minute to wake. Limits and restarts can also affect availability. [Render's free-service policy](https://render.com/docs/free). Screenshots, the static results report, source code, public aggregates and local Docker instructions below do not depend on that service being awake. Free hosting is a demonstration choice, with no permanence or production-uptime guarantee.
 
@@ -30,6 +30,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Transport optimization | Minimum-cost allocation, capacities, supply/demand balance, transshipment and infeasibility detection | [Solver and exported results](docs/transport_optimization.md) |
 | Scenario planner | Bounded editable networks, JSON import, separate simulation submission, reference/candidate comparison and portable downloads | [Planner walkthrough](docs/scenario_planner.md), [synthetic input example](docs/examples/transport_scenario.json) |
 | Geographic routing | Distinct OSRM car-reference and Valhalla truck engines; explicit dimensions, weight, axles and hazardous cargo; map, maneuvers and GeoJSON | [Truck profiles and restrictions](docs/truck_routing.md), [saved truck geometry](deployment/route_examples/sao_paulo_campinas_truck.geojson) |
+| Trip cost and breaks | Dated Autoban commercial-per-axle tolls for continuous SP-330/SP-348 km 20–100; selected daytime duty limits, loading/waiting as work, pauses and explicit unsupported cases; complete X02 compliance remains open | [Scope, example and API](docs/trip_planning.md) |
 | Read-only API | Documented indicators, histories, forecasts, quality diagnostics and saved allocations; filters, pagination, optional key/user permissions; hosted public snapshots isolated from private plans | [Endpoint reference](docs/api.md), [authentication and roles](docs/api_authentication.md) |
 | Delivery and recovery | Windows/Linux CI, pinned container runtimes, source/data hashes, memory regression checks, exact-tested-commit deployment and recovery archives | [CI workflow](.github/workflows/ci_pipeline.yml), [deployment](docs/publicacao_continua.md), [recovery](docs/recovery.md) |
 | Source refresh | Scheduled bounded ANP 2021–2025 (60 monthly reports), ANTT PDF and streaming ANAC CSV revision audits; changed sources quarantined for review rather than automatically published | [Audit policy](docs/source_refresh.md) |
@@ -137,6 +138,24 @@ and the [portable evaluation ZIP](deployment/brazil_air/forecast.zip) remain
 available while Render sleeps. In the dashboard choose **Brazilian freight →
 All five modes → air → Forecast evaluation → Air cargo measure**. The API supports
 [scores, predictions and forecasts by measure](docs/brazil_air.md#use-and-rebuild).
+
+### Trip cost and breaks — dated planning example
+
+Select **Trip cost and breaks** in the same dashboard. For a loaded two-axle
+truck travelling continuously from km 20 to km 100 of SP-330, the reviewed-date
+estimate is **BRL 57.60**. A declared 120-minute drive, 30-minute loading,
+60-minute waiting and 30-minute delivery totals **240 work minutes** and
+**300 elapsed minutes** with the simulated one-hour meal.
+
+This is a planning simulation using tariffs reviewed on 2026-11-20. It does not
+automatically price the map route or certify driver/legal compliance. Out-of-date
+price requests return `null`; waiting is counted as work. [Full example and rules](docs/trip_planning.md)
+and [portable JSON](docs/examples/trip_planning.json) are available while the demo sleeps.
+
+![English trip cost and breaks workspace: dated toll estimate and work/break timeline](docs/images/trip-cost-breaks.jpg)
+
+The screenshot shows selected planning limits; complete operating compliance
+remains an open X02 requirement.
 
 ## Run the complete demo locally
 

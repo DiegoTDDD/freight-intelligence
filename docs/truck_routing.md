@@ -49,3 +49,11 @@ Primary references:
 - [Valhalla truck costing and options](https://valhalla.github.io/valhalla/api/route/api-reference/)
 - [Valhalla demo policy and client identification](https://github.com/valhalla/valhalla/blob/master/README.md)
 - [OpenStreetMap attribution](https://www.openstreetmap.org/copyright)
+
+## Separate dated trip-planning calculator
+
+The [Trip cost and breaks workspace](trip_planning.md) now estimates selected
+Autoban corridor tolls and screens selected daytime duty limits. This calculation
+is independent of the mapped itinerary; it does not assign toll plazas to Valhalla
+geometry or change the routing provider limitations above. Complete commercial
+driver-hours/dispatch assurance remains explicitly outside this simulation.

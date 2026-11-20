@@ -1,5 +1,6 @@
 """Run locally with uvicorn freight_intelligence.api.app:app --host 127.0.0.1."""
 
+from datetime import date
 from enum import Enum
 from pathlib import Path
 from typing import Literal
@@ -31,6 +32,8 @@ from freight_intelligence.brazil_water_ports import load_port_pairs
 from freight_intelligence.dashboard_data import load_projection_files
 from freight_intelligence.evaluation_results import load_temporal_report
 from freight_intelligence.ml.annual_forecast import INTERPRETATION, PROJECT_ROOT
+from freight_intelligence.optimization.trip_planning import DEFAULT_ROOT as TRIP_RULES
+from freight_intelligence.optimization.trip_planning import load_rules, plan_trip
 
 
 class Metric(str, Enum):
@@ -78,6 +81,7 @@ def create_app(
     air_dir: Path | None = None,
     gas_history_dir: Path | None = None,
     modal_forecasts_dir: Path | None = None,
+    trip_rules_dir: Path | None = None,
 ) -> FastAPI:
     gold = Path(gold_dir) if gold_dir is not None else PROJECT_ROOT / "data/gold/faf5"
     models = Path(model_dir) if model_dir is not None else PROJECT_ROOT / "models/faf5/annual"
@@ -106,6 +110,39 @@ def create_app(
     @app.get("/health")
     def health():
         return {"status": "ok"}
+
+    @data_routes.get("/brazil/trip-planning")
+    def brazil_trip_planning(
+        highway: Literal["SP-330", "SP-348"] = "SP-330",
+        origin_km: float = Query(default=20, ge=20, le=100),
+        destination_km: float = Query(default=100, ge=20, le=100),
+        axles: int = Query(default=2, ge=2, le=9),
+        as_of: date | None = None,
+        driving_minutes: int = Query(default=120, ge=1, le=720),
+        prework_minutes: int = Query(default=30, ge=0, le=720),
+        waiting_minutes: int = Query(default=60, ge=0, le=720),
+        postwork_minutes: int = Query(default=30, ge=1, le=720),
+        prior_drive_minutes: int = Query(default=0, ge=0, le=720),
+        prior_work_minutes: int = Query(default=0, ge=0, le=720),
+        prior_rest_minutes: int = Query(default=660, ge=0, le=1440),
+        overtime_authorized: bool = False,
+        shift_start_minute: int = Query(default=480, ge=0, le=1439),
+    ):
+        root = trip_rules_dir if trip_rules_dir is not None else TRIP_RULES
+        try:
+            load_rules(root)
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            raise HTTPException(status_code=503, detail="Reviewed trip-planning rules unavailable") from error
+        try:
+            return plan_trip(root=root, highway=highway, origin_km=origin_km,
+                             destination_km=destination_km, axles=axles, as_of=as_of,
+                             driving_minutes=driving_minutes, prework_minutes=prework_minutes,
+                             waiting_minutes=waiting_minutes, postwork_minutes=postwork_minutes,
+                             prior_drive_minutes=prior_drive_minutes, prior_work_minutes=prior_work_minutes,
+                             prior_rest_minutes=prior_rest_minutes, overtime_authorized=overtime_authorized,
+                             shift_start_minute=shift_start_minute)
+        except ValueError as error:
+            raise HTTPException(status_code=422, detail=str(error)) from error
 
     @data_routes.get("/ready")
     def ready():

@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-20",
+  "tariff_effective_from": "2026-07-01",
+  "currency": "BRL",
+  "supported_corridor_km": [
+    20,
+    100
+  ],
+  "vehicle_scope": "Loaded commercial truck, 2-9 billable axles; continuous travel on one highway, km 20-100; no exits, discounts, exemptions or automatic matching to a mapped route",
+  "labor_scope": "Brazilian employed single-driver daytime freight planning; no collective extensions, night-work conversion, multi-day/weekly audit or actual driver-log verification",
+  "limits": {
+    "continuous_driving_minutes": 330,
+    "driving_break_minutes": 30,
+    "meal_minutes": 60,
+    "prior_continuous_rest_minutes": 660,
+    "normal_work_minutes": 480,
+    "authorized_overtime_work_minutes": 600,
+    "max_shift_span_minutes": 780
+  },
+  "sources": [
+    {
+      "id": "tariffs",
+      "url": "https://rodovias.motiva.com.br/content/dam/projetos/rodovias/canal-site-rodovias-grupoccr/pt/transparencia/autoban/pdf/transp_regulatoria_autoban_2026.pdf",
+      "reviewed_on": "2026-11-20",
+      "review_method": "Official one-page PDF visually inspected; commercial-per-axle column, 2026 block",
+      "sha256": "3306b1373c8840e0f6c7860e37112c43aaf9c3d711b4a2382b7bf4451e4a51da",
+      "bytes": 123710
+    },
+    {
+      "id": "ctb",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm",
+      "reviewed_on": "2026-11-20",
+      "review_method": "Official document reviewed; raw legal page bytes not archived"
+    },
+    {
+      "id": "clt",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm",
+      "reviewed_on": "2026-11-20",
+      "review_method": "Official document reviewed; raw legal page bytes not archived"
+    },
+    {
+      "id": "adi5322",
+      "url": "https://noticias.stf.jus.br/postsnoticias/stf-invalida-dispositivos-da-lei-dos-caminhoneiros-sobre-tempo-de-espera-jornada-e-descanso/",
+      "reviewed_on": "2026-11-20",
+      "review_method": "Official document reviewed; raw legal page bytes not archived"
+    }
+  ],
+  "stations": [
+    {
+      "id": "perus",
+      "name": "Perus",
+      "highway": "SP-330",
+      "north_km": "26.495",
+      "south_km": "26.495",
+      "commercial_per_axle_cents": 1450
+    },
+    {
+      "id": "valinhos",
+      "name": "Valinhos",
+      "highway": "SP-330",
+      "north_km": "82.000",
+      "south_km": "81.000",
+      "commercial_per_axle_cents": 1430
+    },
+    {
+      "id": "nova_odessa",
+      "name": "Nova Odessa",
+      "highway": "SP-330",
+      "north_km": "118.000",
+      "south_km": "118.000",
+      "commercial_per_axle_cents": 1280
+    },
+    {
+      "id": "limeira_a",
+      "name": "Limeira A",
+      "highway": "SP-330",
+      "north_km": "152.000",
+      "south_km": "152.000",
+      "commercial_per_axle_cents": 970
+    },
+    {
+      "id": "campo_limpo",
+      "name": "Campo Limpo/Caieiras",
+      "highway": "SP-348",
+      "north_km": "39.047",
+      "south_km": "36.000",
+      "commercial_per_axle_cents": 1450
+    },
+    {
+      "id": "itupeva",
+      "name": "Itupeva",
+      "highway": "SP-348",
+      "north_km": "77.430",
+      "south_km": "77.430",
+      "commercial_per_axle_cents": 1430
+    },
+    {
+      "id": "sumare",
+      "name": "Sumare",
+      "highway": "SP-348",
+      "north_km": "115.500",
+      "south_km": "115.500",
+      "commercial_per_axle_cents": 1280
+    },
+    {
+      "id": "limeira_b",
+      "name": "Limeira B",
+      "highway": "SP-348",
+      "north_km": "159.550",
+      "south_km": "159.550",
+      "commercial_per_axle_cents": 970
+    }
+  ],
+  "interpretation": "Dated planning calculations and selected-rule screening only. Not a dispatch authorization, payroll determination or complete legal-compliance certification. Waiting/loading counts as work; daily rest is not split. Safe stopping places and the actual itinerary must be verified separately."
+}

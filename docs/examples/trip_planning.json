@@ -1,0 +1,129 @@
+{
+  "tolls": {
+    "highway": "SP-330",
+    "origin_km": "20.0",
+    "destination_km": "100.0",
+    "billable_axles": 2,
+    "as_of": "2026-11-20",
+    "currency": "BRL",
+    "tariff_effective_from": "2026-07-01",
+    "reviewed_on": "2026-11-20",
+    "direction": "north",
+    "status": "reviewed_date_estimate",
+    "crossings": [
+      {
+        "station_id": "perus",
+        "name": "Perus",
+        "chainage_km": "26.495",
+        "per_axle_cents": 1450,
+        "total_cents": 2900
+      },
+      {
+        "station_id": "valinhos",
+        "name": "Valinhos",
+        "chainage_km": "82.000",
+        "per_axle_cents": 1430,
+        "total_cents": 2860
+      }
+    ],
+    "total_cents": 5760
+  },
+  "duty": {
+    "inputs": {
+      "driving_minutes": 120,
+      "prework_minutes": 30,
+      "waiting_minutes": 60,
+      "postwork_minutes": 30,
+      "prior_drive_minutes": 0,
+      "prior_work_minutes": 0,
+      "prior_rest_minutes": 660,
+      "overtime_authorized": false,
+      "shift_start_minute": 480
+    },
+    "timeline": [
+      {
+        "activity": "loading_or_prework",
+        "start_minute": 0,
+        "end_minute": 30,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "waiting",
+        "start_minute": 30,
+        "end_minute": 90,
+        "minutes": 60,
+        "counts_as_work": true
+      },
+      {
+        "activity": "driving",
+        "start_minute": 90,
+        "end_minute": 210,
+        "minutes": 120,
+        "counts_as_work": true
+      },
+      {
+        "activity": "meal_and_driving_break",
+        "start_minute": 210,
+        "end_minute": 270,
+        "minutes": 60,
+        "counts_as_work": false
+      },
+      {
+        "activity": "delivery_or_postwork",
+        "start_minute": 270,
+        "end_minute": 300,
+        "minutes": 30,
+        "counts_as_work": true
+      }
+    ],
+    "work_minutes": 240,
+    "elapsed_minutes": 300,
+    "selected_work_limit_minutes": 480,
+    "overtime_minutes": 0,
+    "violations": [],
+    "unsupported_context": [],
+    "status": "within_selected_planning_limits",
+    "dispatch_authorized": false,
+    "unverified": [
+      "Actual driver history and tachograph records",
+      "Weekly rest and collective agreements",
+      "Night-work conversion and payroll",
+      "Safe stopping places, traffic and loading forecasts"
+    ]
+  },
+  "sources": [
+    {
+      "id": "tariffs",
+      "url": "https://rodovias.motiva.com.br/content/dam/projetos/rodovias/canal-site-rodovias-grupoccr/pt/transparencia/autoban/pdf/transp_regulatoria_autoban_2026.pdf",
+      "reviewed_on": "2026-11-20",
+      "review_method": "Official one-page PDF visually inspected; commercial-per-axle column, 2026 block",
+      "sha256": "3306b1373c8840e0f6c7860e37112c43aaf9c3d711b4a2382b7bf4451e4a51da",
+      "bytes": 123710
+    },
+    {
+      "id": "ctb",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm",
+      "reviewed_on": "2026-11-20",
+      "review_method": "Official document reviewed; raw legal page bytes not archived"
+    },
+    {
+      "id": "clt",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm",
+      "reviewed_on": "2026-11-20",
+      "review_method": "Official document reviewed; raw legal page bytes not archived"
+    },
+    {
+      "id": "adi5322",
+      "url": "https://noticias.stf.jus.br/postsnoticias/stf-invalida-dispositivos-da-lei-dos-caminhoneiros-sobre-tempo-de-espera-jornada-e-descanso/",
+      "reviewed_on": "2026-11-20",
+      "review_method": "Official document reviewed; raw legal page bytes not archived"
+    }
+  ],
+  "reviewed_on": "2026-11-20",
+  "planning_status": "within_selected_planning_limits",
+  "vehicle_scope": "Loaded commercial truck, 2-9 billable axles; continuous travel on one highway, km 20-100; no exits, discounts, exemptions or automatic matching to a mapped route",
+  "labor_scope": "Brazilian employed single-driver daytime freight planning; no collective extensions, night-work conversion, multi-day/weekly audit or actual driver-log verification",
+  "interpretation": "Dated planning calculations and selected-rule screening only. Not a dispatch authorization, payroll determination or complete legal-compliance certification. Waiting/loading counts as work; daily rest is not split. Safe stopping places and the actual itinerary must be verified separately.",
+  "dispatch_authorized": false
+}

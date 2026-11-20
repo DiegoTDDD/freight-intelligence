@@ -171,3 +171,10 @@ return 422. The same pagination and analytics permissions apply.
 All six targets use kg, 2010–2025 histories, validation through 2022 and reserved
 2023–2025 tests. Forecast years 2026–2028 are point estimates. No model is trained
 on request. [All results and limitations](brazil_air.md#forecast-evaluation).
+
+## Dated trip cost and selected duty planning
+
+`GET /api/brazil/trip-planning` exposes bounded, stateless calculations from the
+reviewed Autoban tariff snapshot and selected daytime duty rules. It requires
+analytics permission, stores no scenario and never authorizes dispatch.
+[Parameters, limits, source dates and examples](trip_planning.md).

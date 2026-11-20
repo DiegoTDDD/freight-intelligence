@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "path": "rules.json",
+      "bytes": 3902,
+      "sha256": "e899ca1d24bec0b87f0245e7e04c61aadaaf9fa091fe5156eaa50c931fa4f664"
+    }
+  ]
+}

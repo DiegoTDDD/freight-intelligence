@@ -26,7 +26,7 @@ in the final table or establish commercial readiness.
 | O11 | Continuous deployment | Publish the exact main revision only after required CI jobs succeed | [Workflow](../.github/workflows/ci_pipeline.yml), [policy](publicacao_continua.md) |
 | O12 | Portfolio delivery | README, architecture/use guides, results, limitations, screenshots and recovery package | [README](../README.md), [static results](portfolio_evidence.md), [recovery](recovery.md) |
 
-## Concrete expansions — 17 delivered items
+## Concrete expansions — 18 delivered items
 
 Each row is delivered for its stated source population and period. It is not a
 promise of complete national shipment coverage or unlimited future extensions.
@@ -50,6 +50,7 @@ promise of complete national shipment coverage or unlimited future extensions.
 | E15 | ANAC revision audit for the fixed consolidated CSV: bounded streaming download, header/source-hash checks, unchanged/changed/failure evidence and quarantine without automatic promotion; closes X06 | [Audit contract](source_refresh.md#anac-air-source-revision-audit), [first live review](evidence/anac_source_review_20261120.json), [workflow](../.github/workflows/audit-brazil-air.yml) |
 | E16 | Four additional ANAC kilogram targets: domestic/international free cargo and mail, 2010–2025 histories, validation-only baseline selection, reserved 2023–2025 tests and 2026–2028 point forecasts; closes X07 | [Target contract and all results](brazil_air.md#forecast-evaluation), [evaluation evidence](evidence/anac_additional_forecasts_20261120.json) |
 | E17 | Added ANAC 2023 airport-pair stages: 18,699 monthly rows, all twelve months, domestic/international kilograms reconciled to independent monthly aggregates; 2024–2025 pairs and forecasts preserved; closes X05 | [Coverage contract](brazil_air.md#added-2023-airport-pair-coverage--x05), [reconciliation evidence](evidence/anac_pairs_2023_review.json) |
+| E18 | Dated Autoban corridor toll estimates and selected daytime duty planning: integer-cent prices, directional plazas, waiting-as-work, meal/driving breaks and explicit unsupported contexts; X02 remains open for complete operating acceptance | [Scope and results](trip_planning.md), [portable scenario](examples/trip_planning.json), [tariff audit](../.github/workflows/audit-trip-tariffs.yml) |
 
 ## Outstanding requirements — four explicitly not delivered
 
@@ -60,7 +61,7 @@ and dependency; “more data” or “more quality” alone is not an acceptance
 | ID | Requirement not delivered | Concrete completion criterion | Current dependency |
 | --- | --- | --- | --- |
 | X01 | Commercial truck dispatch assurance | Identified operating region/vehicle population, validated current restrictions, provider terms and operational acceptance evidence | No operating validation dataset or contracted dispatch assurance supplied; the routing demonstration is not certification |
-| X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | No reviewed tariff/duty dataset or operating rules selected; calculations are not implemented |
+| X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | E18 implements reviewed Autoban tariff inputs and selected daytime duty checks. Complete weekly/night/collective coverage, verified real driver logs and operating/legal acceptance are not delivered |
 | X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | Images and permission controls exist; the public API shares the free dashboard service. Independent hosting and an availability contract are not delivered |
 | X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | Real operating records/outcomes not supplied. Synthetic examples are not measured savings |
 

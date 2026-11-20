@@ -1,0 +1,30 @@
+name: Audit reviewed trip tariffs
+on:
+  schedule:
+    - cron: '7 10 * * 1'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-trip-tariffs.yml'
+      - 'scripts/audit_trip_tariffs.py'
+      - 'deployment/trip_planning/**'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compare official operator PDF with the reviewed tariff source
+        run: python -m scripts.audit_trip_tariffs --output trip-tariff-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trip-tariff-audit-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: trip-tariff-audit.json
+          retention-days: 14

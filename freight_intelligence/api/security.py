@@ -10,6 +10,7 @@ from fastapi import Depends, HTTPException, Request, Security
 from fastapi.security import APIKeyHeader
 
 ROUTE_PERMISSIONS = {
+    "/brazil/trip-planning": "analytics",
     "/brazil/indicators": "analytics",
     "/brazil/gas-movements": "analytics",
     "/brazil/water-freight": "analytics",

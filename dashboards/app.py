@@ -17,6 +17,7 @@ from freight_intelligence.dashboard_data import (
     load_projection_bundle,
 )
 from freight_intelligence.dashboard_i18n import translate
+from freight_intelligence.dashboard_trip_planning import render_trip_planning
 from freight_intelligence.dashboard_workspaces import render_brazil, render_geographic_routes
 from freight_intelligence.evaluation_results import load_temporal_report
 from freight_intelligence.ml.annual_forecast import INTERPRETATION
@@ -66,6 +67,7 @@ view = st.sidebar.selectbox(
         "Freight analytics",
         "Brazilian freight",
         "Real road routes",
+        "Trip cost and breaks",
         "Scenario extrapolations",
         "Temporal evaluation",
         "Historical observations",
@@ -85,6 +87,10 @@ if view == "Brazilian freight":
 
 if view == "Real road routes":
     render_geographic_routes(t)
+    st.stop()
+
+if view == "Trip cost and breaks":
+    render_trip_planning(t)
     st.stop()
 
 if view == "Supplied road route":
