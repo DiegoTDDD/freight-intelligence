@@ -8,6 +8,7 @@ from zipfile import ZipFile
 import polars as pl
 import pytest
 from fastapi.testclient import TestClient
+from polars.testing import assert_frame_equal
 
 from freight_intelligence.api.app import create_app
 from freight_intelligence.brazil_air import DEFAULT_ROOT, load_air
@@ -166,8 +167,11 @@ def test_forecast_only_rebuild_keeps_source_and_prior_results(tmp_path):
     _, _, previous = load_air()
     _, _, rebuilt = load_air(staged)
     assert rebuilt["metadata"]["provenance"] == previous["metadata"]["provenance"]
+    assert rebuilt["metadata"]["selected_models"] == previous["metadata"]["selected_models"]
     for name in ("scores", "predictions", "forecast"):
-        assert rebuilt[name].equals(previous[name])
+        # Linear algebra libraries can differ in final floating-point bits across OSes.
+        # Row order, strings, integers and Boolean selection flags remain exact.
+        assert_frame_equal(rebuilt[name], previous[name], rel_tol=1e-12, abs_tol=1e-8)
     assert before == {p.name: p.read_bytes() for p in DEFAULT_ROOT.iterdir() if p.is_file()}
     with pytest.raises(FileExistsError):
         prepare_forecasts(staged)
