@@ -19,6 +19,8 @@ Check for drift: `python scripts/build_portfolio_evidence.py --check`
 | ANP gas operator/direction/month | 600 | 2021–2025; coverage changes; not unique national supply |
 | ANTAQ references and monthly rows | 55 | 43 annual/regional references plus twelve 2025 port-handling months |
 | ANTAQ original monthly port handling | 62 | January 2021–February 2026; five complete years and two partial-year months |
+| ANTAQ inland-waterway transport months | 62 | 2021–February 2026; original total and three navigation components, separate from handling |
+| ANTAQ inland cargo categories | 117 | 2025; 109 numeric quantities including 46 zeros; eight source dashes remain null |
 | ANTAQ paired regional cabotage shares | 21 | 2025 original region-to-region fractions; offshore and undetermined origins retained |
 | ANTAQ port-to-port cabotage volumes | 510 | 2025; all 98 reviewed origins and 71 destinations; original numeric tonnes |
 | ANTT archived yearbook monthly totals | 12 | 2025 published Chart 45 labels |
@@ -344,6 +346,31 @@ preserved in downloads; displayed decimals do not imply measurement accuracy.
 
 [Original exports, coverage and API](brazil_water_history.md) ·
 [All observed months (CSV)](../deployment/brazil_water/history_monthly.csv).
+
+### Inland-waterway transport and cargo detail
+
+62 months retain international shipping, cabotage with inland navigation and the
+Inland Navigation category. These are transport observations, separate from port
+handling. Monthly totals reconcile with components, and annual/partial totals
+round to the independent source headlines. 2026 has only January and February.
+
+| Year | Observed months | Full year | Transport tonnes (formatted) | Independent headline (whole tonnes) |
+| --- | --- | --- | --- | --- |
+| 2021 | 12 | Yes | 110,751,767.793 | 110,751,768 |
+| 2022 | 12 | Yes | 120,527,603.737 | 120,527,604 |
+| 2023 | 12 | Yes | 130,950,418.859 | 130,950,419 |
+| 2024 | 12 | Yes | 128,907,185.685 | 128,907,186 |
+| 2025 | 12 | Yes | 144,893,597.202 | 144,893,597 |
+| 2026 | 2 | No | 21,024,623.989 | 21,024,624 |
+
+The 2025 commodity export contains 117 categories: 109 numeric quantities,
+including 46 explicit zeros, and eight source dashes kept as null. Original
+shares retain the full denominator after filtering. This is not a paired OD
+matrix or an operational routing dataset.
+
+[Original exports, reconciliation and API](brazil_inland.md) ·
+[Monthly navigation components (CSV)](../deployment/brazil_water/inland_monthly.csv) ·
+[Commodity quantities and status (CSV)](../deployment/brazil_water/inland_commodities_2025.csv).
 
 ## Gas source quality and archived road reconciliation
 

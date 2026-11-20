@@ -1,0 +1,118 @@
+year,commodity,tonnes,share,quantity_status
+2025,Acessórios de Veículos Automóveis,465789.3319999998,0.003214699206829896,reported_numeric
+2025,Adubos (fertilizantes),6910785.386999999,0.04769558849012143,reported_numeric
+2025,Aeronaves e Aparelhos Espaciais,0.0,0.0,reported_numeric
+2025,Alumínio e Suas Obras,268501.34,0.001853093202080387,reported_numeric
+2025,"Amido, Fécula e Inulina",0.0,0.0,reported_numeric
+2025,Amônia,0.0,0.0,reported_numeric
+2025,Animais Vivos,246606.86,0.001701985903878133,reported_numeric
+2025,Areia,0.0,0.0,reported_numeric
+2025,Arroz,52.34,3.612305927295838e-7,reported_numeric
+2025,Aveia,0.0,0.0,reported_numeric
+2025,Açúcar,53273.61,0.0003676740106447206,reported_numeric
+2025,Bauxita,20100844.45,0.1387283140053241,reported_numeric
+2025,"Bebidas, Líquidos Alcoólicos e Vinagres",2995.692,0.00002067511648443393,reported_numeric
+2025,Biodiesel,9259.431999999999,0.00006390504603934418,reported_numeric
+2025,Borracha e Suas Obras,1.91,1.318208697198137e-8,reported_numeric
+2025,"Brinquedos, Jogos e Artigos de Esporte",0.0,0.0,reported_numeric
+2025,Cacau,0.0,0.0,reported_numeric
+2025,Café,0.0,0.0,reported_numeric
+2025,Cal,0.0,0.0,reported_numeric
+2025,Calçados,,0.0,source_dash
+2025,Caminhão,14.591,1.007014822032357e-7,reported_numeric
+2025,Carga de Apoio,5079.31,0.0000350554482605522,reported_numeric
+2025,Carnes Bovinas Congeladas,0.0,0.0,reported_numeric
+2025,Carnes Diversas Congeladas,0.0,0.0,reported_numeric
+2025,Carnes de Aves Congeladas,0.0,0.0,reported_numeric
+2025,Carvão Mineral,695275.9099999999,0.004798527494839524,reported_numeric
+2025,Carvão Vegetal,38718.976,0.000267223512616785,reported_numeric
+2025,Carvões Ativados,0.0,0.0,reported_numeric
+2025,Caulim,652005.688,0.004499893029027513,reported_numeric
+2025,Cevada,0.0,0.0,reported_numeric
+2025,Cimento,839429.236,0.005793418427107789,reported_numeric
+2025,Cobre e Suas Obras,0.0,0.0,reported_numeric
+2025,Cocos e Castanhas,1045.019,7.212320076111518e-6,reported_numeric
+2025,"Combustíveis, Óleos e Produtos Minerais",160005.103,0.001104293813459077,reported_numeric
+2025,Consumo de Bordo,1.3,8.972101080406169e-9,reported_numeric
+2025,Contêineres,13092459.14500133,0.09035912833849236,reported_numeric
+2025,Coque de Petróleo,433391.85,0.002991104219710945,reported_numeric
+2025,Embarcações e Estruturas Flutuantes,540.888,3.733001391675948e-6,reported_numeric
+2025,Enxofre,0.0,0.0,reported_numeric
+2025,Escórias e Cinzas,0.0,0.0,reported_numeric
+2025,Etanol Combustível,357294.93,0.002465912482674343,reported_numeric
+2025,Farinha de Soja,,0.0,source_dash
+2025,Farinha de Trigo,0.0,0.0,reported_numeric
+2025,Ferro e Aço,1042628.252,0.007195820050947074,reported_numeric
+2025,"Fibras, Fios, Tecidos e Outros Artefatos",0.1,6.901616215697053e-10,reported_numeric
+2025,Fosfatos de Cálcio Naturais,27462.6,0.0001895363254852019,reported_numeric
+2025,Frutas Diversas,,0.0,source_dash
+2025,"Gomas, Resinas e Outros Extratos Vegetais",0.0,0.0,reported_numeric
+2025,Gorduras e Óleos Animais ou Vegetais,0.0,0.0,reported_numeric
+2025,Gás de Petróleo,1246820.792,0.008605078596135443,reported_numeric
+2025,Instrumentos Médico-cirúrgicos,0.0,0.0,reported_numeric
+2025,"Instrumentos de Medida, Controle ou Precisão",0.0,0.0,reported_numeric
+2025,"Leite e Derivados, Ovos e Mel",,0.0,source_dash
+2025,Madeira,2058472.119,0.01420678455605067,reported_numeric
+2025,Malte,0.0,0.0,reported_numeric
+2025,Manganês,242062.515,0.001670622578736411,reported_numeric
+2025,Matérias Albuminóides e à Base de Amidos,0.0,0.0,reported_numeric
+2025,"Melões, Melancias e Mamões",0.0,0.0,reported_numeric
+2025,Metais Diversos,689090.3400000001,0.004755837064624195,reported_numeric
+2025,Metais Preciosos e Bijuterias,,0.0,source_dash
+2025,Milho,25255811.22000001,0.1743059162565356,reported_numeric
+2025,Minério de Cobre,79810.28,0.0005508199226273221,reported_numeric
+2025,Minério de Ferro,8772081.283000002,0.06054153842816541,reported_numeric
+2025,Minério de Níquel,0.0,0.0,reported_numeric
+2025,Minério de Zinco,0.0,0.0,reported_numeric
+2025,Minérios Diversos,28466.824,0.000196467094127794,reported_numeric
+2025,"Máquinas, Aparelhos e Materiais Elétricos",21401.575,0.0001477054570614566,reported_numeric
+2025,Mármore e Granito,0.0,0.0,reported_numeric
+2025,Móveis,0.0,0.0,reported_numeric
+2025,Níquel e Suas Obras,0.0,0.0,reported_numeric
+2025,Objetos de Arte,0.0,0.0,reported_numeric
+2025,Obras Diversas,0.0,0.0,reported_numeric
+2025,Obras Diversas de Metais Comuns,0.15,1.035242432354558e-9,reported_numeric
+2025,Obras de Asfalto,4361.031999999999,0.00003009816916837374,reported_numeric
+2025,Obras de Cimento,18642.833,0.0001286656785393321,reported_numeric
+2025,Obras de Couro,0.0,0.0,reported_numeric
+2025,Obras de Madeira,1030.68,7.113357801194637e-6,reported_numeric
+2025,Obras de Papel,0.0,0.0,reported_numeric
+2025,Obras de Pedra,0.0,0.0,reported_numeric
+2025,Pasta de Celulose,2039846.820000001,0.01407823989045007,reported_numeric
+2025,Peixes,0.0,0.0,reported_numeric
+2025,Peles e Couros,0.0,0.0,reported_numeric
+2025,Petróleo e Derivados (Sem Óleo Bruto),10307101.94,0.07113566188594657,reported_numeric
+2025,Petróleo e Derivados (Óleo Bruto),276056.3620000001,0.001905235064425536,reported_numeric
+2025,Plantas Vivas e Produtos de Floricultura,,0.0,source_dash
+2025,"Plantas, Palhas e Forragens",8996.529999999999,0.000062090597333005,reported_numeric
+2025,Plásticos e Suas Obras,57.0,3.93392124294732e-7,reported_numeric
+2025,Preparações Alimentícias Diversas,153954.119,0.001062532244163754,reported_numeric
+2025,Preparações de Frutas,0.0,0.0,reported_numeric
+2025,Preparações de Produtos Hortícolas,0.0,0.0,reported_numeric
+2025,Produtos Diversos da Indústria Química,0.0,0.0,reported_numeric
+2025,Produtos Farmacêuticos,,0.0,source_dash
+2025,"Produtos Hortícolas,  Plantas, Raízes e Tubérculos",2738.71,0.00001890152534609168,reported_numeric
+2025,Produtos Químicos Inorgânicos,5430886.619999999,0.03748189516220415,reported_numeric
+2025,Produtos Químicos Orgânicos,295282.348,0.0020379254411659,reported_numeric
+2025,Produtos da Indústria de Moagem,0.0,0.0,reported_numeric
+2025,Produtos de Perfumaria e Cosméticos,,0.0,source_dash
+2025,"Reatores, Caldeiras e Máquinas",92178.07800000001,0.0006361777178565878,reported_numeric
+2025,Resíduos da Extração do Óleo de Soja,1353081.895,0.009338451947698095,reported_numeric
+2025,"Sabões, Ceras, Velas e Massas",0.0,0.0,reported_numeric
+2025,Sal,14143.54,0.00009761328501135989,reported_numeric
+2025,Sementes e Frutos Oleaginosos,639853.2799999999,0.004416021772914946,reported_numeric
+2025,Semirreboque Baú,1300999.608999994,0.008978999998089885,reported_numeric
+2025,Soda Cáustica,1231295.45,0.008497928644033998,reported_numeric
+2025,Soja,36369997.21200004,0.2510117625231961,reported_numeric
+2025,Terras e Pedras,193878.6299999999,0.001338075896685129,reported_numeric
+2025,"Tintas, Corantes e Vernizes",3.83,2.643319010611971e-8,reported_numeric
+2025,Transações Especiais,0.0,0.0,reported_numeric
+2025,Tratores,297.161,2.050891176272752e-6,reported_numeric
+2025,Trigo,508781.9610000001,0.003511417832291746,reported_numeric
+2025,Veículos Automóveis,677536.8300000008,0.004676099172659982,reported_numeric
+2025,Veículos e Material Para Vias Férreas,0.0,0.0,reported_numeric
+2025,Vidro e Suas Obras,0.0,0.0,reported_numeric
+2025,Ácido Sulfúrico,0.0,0.0,reported_numeric
+2025,Água de Formação,90.0,6.211454594127347e-7,reported_numeric
+2025,Óleo de Palma,6063.711000000001,0.0000418494061649006,reported_numeric
+2025,Óleo de Soja,168960.672,0.001166101713690271,reported_numeric

@@ -84,6 +84,28 @@ def test_water_navigation_and_regional_reference_views():
     assert not app.exception
 
 
+def test_inland_transport_history_cargo_availability_and_translation():
+    app = AppTest.from_file(str(APP), default_timeout=30).run()
+    app.selectbox(key="workspace").select("Brazilian freight").run()
+    app.selectbox(key="brazil_view").select("All five modes").run()
+    app.selectbox(key="brazil_mode").select("water").run()
+    app.selectbox(key="brazil_water_dataset").select("inland_transport").run()
+    assert not app.exception and not app.error
+    assert any(item.label == "Observed inland months" and item.value == "62" for item in app.metric)
+    app.selectbox(key="inland_year").select(2026).run()
+    assert any(item.label == "Observed inland months" and item.value == "2" for item in app.metric)
+    app.selectbox(key="inland_view").select("commodities").run()
+    assert any(item.label == "Source quantities shown as dash" and item.value == "8" for item in app.metric)
+    app.selectbox(key="inland_commodity").select("Produtos Farmacêuticos").run()
+    assert any(item.label == "Reported waterway transport (tonnes)" and item.value == "Unavailable" for item in app.metric)
+    app.selectbox(key="inland_commodity").select("Soja").run()
+    assert any(item.label == "Reported waterway transport (tonnes)" and item.value == "36,369,997.212" for item in app.metric)
+    app.selectbox(key="inland_view").select("navigation").run()
+    app.selectbox(key="language").select("Português").run()
+    assert not app.exception and not app.error
+    assert app.selectbox(key="inland_view").label == "Análise do transporte em vias interiores"
+
+
 def test_port_history_partial_year_and_translation():
     app = AppTest.from_file(str(APP), default_timeout=30).run()
     app.selectbox(key="workspace").select("Brazilian freight").run()

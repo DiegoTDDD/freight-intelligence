@@ -8,6 +8,7 @@ import polars as pl
 from freight_intelligence.brazil_air import load_air
 from freight_intelligence.brazil_gas_history import load_gas_history
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.brazil_inland import load_inland
 from freight_intelligence.brazil_modal_forecasts import load_modal_forecasts
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
@@ -34,6 +35,13 @@ def render():
     gas, _, _ = load_gas()
     historical_gas, _, _ = load_gas_history()
     water, _ = load_water()
+    inland, _ = load_inland()
+    inland_table = table(["Year", "Observed months", "Full year", "Transport tonnes (formatted)",
+                           "Independent headline (whole tonnes)"], [
+        [row["year"], row["months_observed"], "Yes" if row["full_year"] else "No",
+         f"{row['total_tonnes']:,.3f}", f"{row['displayed_total_tonnes']:,}"]
+        for row in inland["annual"].to_dicts()
+    ])
     water_history, _ = load_water_history()
     water_history_table = table(["Year", "Observed months", "Full year", "Exported tonnes (formatted)",
                                   "Displayed source total (whole tonnes)"], [
@@ -79,6 +87,10 @@ def render():
         ["ANTAQ references and monthly rows", water.height, "43 annual/regional references plus twelve 2025 port-handling months"],
         ["ANTAQ original monthly port handling", water_history["monthly"].height,
          "January 2021–February 2026; five complete years and two partial-year months"],
+        ["ANTAQ inland-waterway transport months", inland["monthly"].height,
+         "2021–February 2026; original total and three navigation components, separate from handling"],
+        ["ANTAQ inland cargo categories", inland["commodities"].height,
+         "2025; 109 numeric quantities including 46 zeros; eight source dashes remain null"],
         ["ANTAQ paired regional cabotage shares", water_pairs.height,
          "2025 original region-to-region fractions; offshore and undetermined origins retained"],
         ["ANTAQ port-to-port cabotage volumes", port_pairs.height,
@@ -258,6 +270,24 @@ preserved in downloads; displayed decimals do not imply measurement accuracy.
 
 [Original exports, coverage and API](brazil_water_history.md) ·
 [All observed months (CSV)](../deployment/brazil_water/history_monthly.csv).
+
+### Inland-waterway transport and cargo detail
+
+62 months retain international shipping, cabotage with inland navigation and the
+Inland Navigation category. These are transport observations, separate from port
+handling. Monthly totals reconcile with components, and annual/partial totals
+round to the independent source headlines. 2026 has only January and February.
+
+{inland_table}
+
+The 2025 commodity export contains 117 categories: 109 numeric quantities,
+including 46 explicit zeros, and eight source dashes kept as null. Original
+shares retain the full denominator after filtering. This is not a paired OD
+matrix or an operational routing dataset.
+
+[Original exports, reconciliation and API](brazil_inland.md) ·
+[Monthly navigation components (CSV)](../deployment/brazil_water/inland_monthly.csv) ·
+[Commodity quantities and status (CSV)](../deployment/brazil_water/inland_commodities_2025.csv).
 
 ## Gas source quality and archived road reconciliation
 

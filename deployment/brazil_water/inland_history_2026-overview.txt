@@ -1,0 +1,613 @@
+Browser tab: 15, Title: "5. Transporte Vias Interiores", URL: "https://aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808&sheet=dUKM&bookmark=f57a2dcf-21bc-4446-bdcc-78915e0597a2&opt=currsel%2Cctxmenu".
+1 AXWebArea 5. Transporte Vias Interiores, URL: aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808&sheet=dUKM&bookmark=f57a2dcf-21bc-4446-bdcc-78915e0597a2&opt=currsel%2Cctxmenu
+	2 container
+		3 text . .ὰ .ὰ
+		4 container single-object
+			5 container CURRSELPANEL
+				6 container No campo DadosEscala, 1 está selecionado. No campo Carga.NRAno, 2026 está selecionado.
+					245 content list selection-list
+						246 container (collapsed) Description: No campo DadosEscala, 1 está selecionado., Secondary Actions: Expand
+							247 container
+								248 button (collapsed) Description: No campo DadosEscala, 1 está selecionado., Secondary Actions: Expand
+									249 text DadosEscala
+									250 text 1
+								251 button remove, Help: Limpar seleção para campo: DadosEscala
+						258 container (collapsed) Description: No campo Carga.NRAno, 2026 está selecionado., Secondary Actions: Expand
+							259 container
+								260 button (collapsed) Description: No campo Carga.NRAno, 2026 está selecionado., Secondary Actions: Expand
+									261 text Ano
+									262 text 2026
+								263 button remove, Help: Limpar seleção para campo: Carga.NRAno
+			9 container grid
+				10 text Pasta Transporte Vias InterioresGraf. Selecionar o conteúdo em um objeto atualizará o conteúdo em todos os outros objetos. Navegue entre os objetos com as teclas de seta. Pressione Enter para exibir os dados. Pressione Shift + Alt + F10 para abrir o menu de contexto. Pressione Tab novamente para começar a navegar.
+				11 container
+					12 container Painel de filtro Ano
+						13 text Painel de filtro
+						264 container
+							265 AXWebArea about:blank
+							266 heading Description: Ano, Value: 6
+								267 text Ano
+					14 container Painel de filtro Mês
+						15 text Painel de filtro
+						16 container
+							17 AXWebArea about:blank
+							18 heading Description: Mês, Value: 6
+								19 text Mês
+					20 container Painel de filtro Tipo Percurso Interior
+						21 text Painel de filtro
+						22 container
+							23 AXWebArea about:blank
+							24 heading Description: Tipo Percurso Interior, Value: 6
+								25 text Tipo Percurso Interior
+					26 container Painel de filtro Região Hidr. Destino
+						27 text Painel de filtro
+						268 container
+							269 AXWebArea about:blank
+							270 heading Description: Região Hidr. Destino, Value: 6
+								271 text Região Hidr. Destino
+					28 container Painel de filtro Região Hidr. Origem
+						29 text Painel de filtro
+						272 container
+							273 AXWebArea about:blank
+							274 heading Description: Região Hidr. Origem, Value: 6
+								275 text Região Hidr. Origem
+					30 container Gráfico de barra GR5.1 - Tipo de Navegação em toneladas (t) (2026: Jan - Fev) Longo Curso em vias… Navegação Interior Cabotagem em vias i… 0 5.000.000 10.000.000 Quantidade Transportada é mostrado. 9.121.879 7.428.996 4.473.750
+						31 text Gráfico de barra
+						32 container XTjKQJe_title
+							33 heading GR5.1 - Tipo de Navegação, Value: 2
+								34 text GR5.1 - Tipo de Navegação
+							35 heading em toneladas (t) (2026: Jan - Fev), Value: 3
+								36 text em toneladas (t) (2026: Jan - Fev)
+						37 container
+							38 image
+							39 image
+							40 image
+								276 text Longo Curso em vias…
+								277 text Navegação Interior
+								278 text Cabotagem em vias i…
+							41 image
+								279 text 0
+								280 text 5.000.000
+								281 text 10.000.000
+							42 image
+							43 button Quantidade Transportada é mostrado.
+							44 image
+								282 text 9.121.879
+								283 text 7.428.996
+								284 text 4.473.750
+							45 image
+						46 text Fonte: Estatístico Aquaviário - ANTAQ.
+					47 container Contêiner   Região Hidrográfica Hidrovia Rio Gráfico de barra GR5.3 - Região Hidrográfica em toneladas (t) (2026: Jan - Fev) Amazônica Tocantins-Araguaia Paraguai 0 5.000.000 10.000.000 15.000.000 14.246.459 6.805.738 1.403.817 Fonte: Estatístico Aquaviário - ANTAQ.
+						48 container
+							49 text Contêiner
+							50 heading  , Value: 2
+							51 container hyvKESk_content
+								52 container
+									53 tab group
+										54 tab (selected, settable, boolean) Região Hidrográfica, Value: 1
+Região Hidrográfica
+										55 tab (selectable, settable, boolean) Hidrovia, Value: 0
+Hidrovia
+										56 tab (selectable, settable, boolean) Rio, Value: 0
+Rio
+									57 container Gráfico de barra GR5.3 - Região Hidrográfica em toneladas (t) (2026: Jan - Fev) Amazônica Tocantins-Araguaia Paraguai 0 5.000.000 10.000.000 15.000.000 14.246.459 6.805.738 1.403.817
+										58 text Gráfico de barra
+										59 heading GR5.3 - Região Hidrográfica em toneladas (t) (2026: Jan - Fev), Value: 2
+											60 text GR5.3 - Região Hidrográfica em toneladas (t) (2026: Jan - Fev)
+										285 container
+											286 image
+											287 image
+											288 image
+												289 text  Amazônica
+												290 text   Tocantins-Araguaia
+												291 text   Paraguai
+											292 image
+												293 text 0
+												294 text 5.000.000
+												295 text 10.000.000
+												296 text 15.000.000
+											297 image
+											298 image
+												299 text 14.246.459
+												300 text 6.805.738
+												301 text 1.403.817
+											302 image
+										61 text Fonte: Estatístico Aquaviário - ANTAQ.
+					62 container Painel de filtro Rio Origem
+						63 text Painel de filtro
+						64 container
+							65 AXWebArea about:blank
+							66 heading Description: Rio Origem, Value: 6
+								67 text Rio Origem
+					68 container Painel de filtro Rio Destino
+						69 text Painel de filtro
+						70 container
+							71 AXWebArea about:blank
+							72 heading Description: Rio Destino, Value: 6
+								73 text Rio Destino
+					694 container Gráfico de combinação GR5.8 - Evolução por Tipo de Navegação em toneladas (t) (2026: Jan - Fev) 0 10.000.000 20.000.000 10.430.415 10.594.208 jan fev Mês é mostrado. Medidas Total Longo Curso em vias interiores Longo Curso em vias interiores Cabotagem em vias interiores Cabotagem em vias interiores Navegação Interior
+						695 text Gráfico de combinação
+						696 container kHrhTv_title
+							697 heading GR5.8 - Evolução por Tipo de Navegação, Value: 2
+								698 text GR5.8 - Evolução por Tipo de Navegação
+							699 heading em toneladas (t) (2026: Jan - Fev), Value: 3
+								700 text em toneladas (t) (2026: Jan - Fev)
+						701 container
+							702 image
+							703 image
+							704 image
+								705 text 0
+								706 text 10.000.000
+								707 text 20.000.000
+							708 image
+							709 image
+							710 image
+							711 image
+							712 image
+							713 image
+							714 image
+							715 image
+								716 text 10.430.415
+								717 text 10.594.208
+							718 image
+							719 image
+								720 text jan
+								721 text fev
+							722 button Mês é mostrado.
+							723 image
+								724 container Medidas
+									725 text Medidas
+							726 image
+								727 container Total
+									728 text Total
+								729 container Longo Curso em vias interiores
+									730 text Longo Curso em vias 
+								731 container Longo Curso em vias interiores
+									732 text interiores
+								733 container Cabotagem em vias interiores
+									734 text Cabotagem em vias 
+								735 container Cabotagem em vias interiores
+									736 text interiores
+								737 container Navegação Interior
+									738 text Navegação Interior
+							739 image
+						740 text Fonte: Estatístico Aquaviário - ANTAQ.
+					82 container Gráfico de barra GR5.9 - Porto/UF Origem em toneladas (t) (2026: Jan - Fev) PA RO MS RS AM Não se aplica 0 1.000.000 2.000.000 3.000.000 Atualmente UF Origem está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico. Quantidade Transportada é mostrado. 2.674.172 1.647.856 1.403.817 788.489 778.825
+						83 text Gráfico de barra
+						84 container BJCpvS_title
+							85 heading GR5.9 - Porto/UF Origem, Value: 2
+								86 text GR5.9 - Porto/UF Origem
+							87 heading em toneladas (t) (2026: Jan - Fev), Value: 3
+								88 text em toneladas (t) (2026: Jan - Fev)
+						342 container
+							343 image
+							344 image
+							345 image
+								346 text PA
+								347 text RO
+								348 text MS
+								349 text RS
+								350 text AM
+								351 text Não se aplica
+							352 image
+								353 text 0
+								354 text 1.000.000
+								355 text 2.000.000
+								356 text 3.000.000
+							357 image
+							358 button
+							359 button Atualmente UF Origem está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico.
+								360 text UF Origem
+							361 button Quantidade Transportada é mostrado.
+							362 image
+								656 text 2.674.172
+								657 text 1.647.856
+								658 text 1.403.817
+								659 text 788.489
+								660 text 778.825
+							368 image
+						89 text Fonte: Estatístico Aquaviário - ANTAQ.
+					90 container Gráfico de barra GR5.10 - Porto/UF Destino em toneladas (t) (2026: Jan - Fev) PA AM Não se aplica RS RO Indeterminado 0 1.000.000 2.000.000 3.000.000 4.000.000 Atualmente UF Destino está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico. Quantidade Transportada é mostrado. 3.056.037 1.747.109 1.403.817 788.489 195.608
+						91 text Gráfico de barra
+						92 container cDsQ_title
+							93 heading GR5.10 - Porto/UF Destino, Value: 2
+								94 text GR5.10 - Porto/UF Destino
+							95 heading em toneladas (t) (2026: Jan - Fev), Value: 3
+								96 text em toneladas (t) (2026: Jan - Fev)
+						369 container
+							370 image
+							371 image
+							372 image
+								373 text PA
+								374 text AM
+								375 text Não se aplica
+								376 text RS
+								377 text RO
+								378 text Indeterminado
+							379 image
+								380 text 0
+								381 text 1.000.000
+								382 text 2.000.000
+								383 text 3.000.000
+								384 text 4.000.000
+							385 image
+							386 button
+							387 button Atualmente UF Destino está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico.
+								388 text UF Destino
+							389 button Quantidade Transportada é mostrado.
+							390 image
+								661 text 3.056.037
+								662 text 1.747.109
+								663 text 1.403.817
+								664 text 788.489
+								665 text 195.608
+							396 image
+						97 text Fonte: Estatístico Aquaviário - ANTAQ.
+					98 container Gráfico de barra GR5.2 - Perfil de Carga em toneladas (t) (2026: Jan - Fev) Granel Sólido Granel Líquido e Gas… Carga Conteinerizada Carga Geral 0 5.000.000 10.000.000 20.000.000 Peso Carga Bruta é mostrado. 15.564.137 2.243.943 2.074.467 1.142.077
+						99 text Gráfico de barra
+						100 container GJDD_title
+							101 heading GR5.2 - Perfil de Carga, Value: 2
+								102 text GR5.2 - Perfil de Carga
+							103 heading em toneladas (t) (2026: Jan - Fev), Value: 3
+								104 text em toneladas (t) (2026: Jan - Fev)
+						397 container
+							398 image
+							399 image
+							400 image
+								401 text Granel Sólido
+								402 text Granel Líquido e Gas…
+								403 text Carga Conteinerizada
+								404 text Carga Geral
+							405 image
+								406 text 0
+								407 text 5.000.000
+								408 text 10.000.000
+								409 text 20.000.000
+							410 image
+							411 button Peso Carga Bruta é mostrado.
+							412 image
+								666 text 15.564.137
+								667 text 2.243.943
+								668 text 2.074.467
+								669 text 1.142.077
+							417 image
+						105 text Fonte: Estatístico Aquaviário - ANTAQ.
+					106 container Painel de filtro Filtros de Localidade Região Hidr. Origem Rio Origem Porto Origem
+						107 text Painel de filtro
+						108 heading Filtros de Localidade, Value: 2
+							109 text Filtros de Localidade
+						418 container
+							419 AXWebArea about:blank
+							420 heading Description: Região Hidr. Origem, Value: 6
+								421 text Região Hidr. Origem
+							422 heading Description: Rio Origem, Value: 6
+								423 text Rio Origem
+							424 heading Description: Porto Origem, Value: 6
+								425 text Porto Origem
+							670 button
+					110 container Gráfico de barra GR5.6 - Grupo de Mercadoria em toneladas (t) (2026: Jan - Fev) 12-Sementes e fruto… 26-Minerios, escória… 10-Cereais CT-Contêineres 0 2.000.000 4.000.000 6.000.000 Atualmente Grupo de Mercadoria (SH2) está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico. Peso Carga Bruta é mostrado. 5.491.164 4.939.876 2.625.981 2.074.467
+						111 text Gráfico de barra
+						112 container qmEfBjq_title
+							113 heading GR5.6 - Grupo de Mercadoria, Value: 2
+								114 text GR5.6 - Grupo de Mercadoria
+							115 heading em toneladas (t) (2026: Jan - Fev), Value: 3
+								116 text em toneladas (t) (2026: Jan - Fev)
+						427 container
+							428 image
+							429 image
+							430 image
+								431 text 12-Sementes e fruto…
+								432 text 26-Minerios, escória…
+								433 text 10-Cereais
+								434 text CT-Contêineres
+							435 image
+								436 text 0
+								437 text 2.000.000
+								438 text 4.000.000
+								439 text 6.000.000
+							440 image
+							441 button Atualmente Grupo de Mercadoria (SH2) está selecionado. Clique para expandir ou pressione a tecla Enter para abrir a lista. Selecionar uma opção desta lista alterará os dados no gráfico.
+								442 text Grupo de Mercadoria (SH2)
+							443 button Peso Carga Bruta é mostrado.
+							444 image
+								445 text 5.491.164
+								446 text 4.939.876
+								447 text 2.625.981
+								448 text 2.074.467
+							449 image
+						117 text Fonte: Estatístico Aquaviário - ANTAQ.
+					118 container KPI Transporte Vias Interiores - 2026(Jan - Fev) 21.024.624 -
+						119 text KPI
+						120 heading Transporte Vias Interiores - 2026(Jan - Fev), Value: 2
+							121 text Transporte Vias Interiores - 2026(Jan - Fev)
+						122 container
+							671 text 21.024.624 -
+						124 text                                                              (2025) 144.893.597
+					125 container Painel de filtro Sem título Pesquisar na caixa de listagem Nome da Hidrovia Filtro de resultados da pesquisa
+						126 text Painel de filtro
+						127 text Sem título
+						128 container
+							129 AXWebArea about:blank
+							130 container
+								131 button Pesquisar na caixa de listagem
+								132 heading Nome da Hidrovia, Value: 6
+									133 text Nome da Hidrovia
+								134 container Filtro de resultados da pesquisa
+									135 text Nenhum valor selecionado.
+									450 container
+										451 row Hidrovia do Amazonas Opcional. 1 de 12
+											452 container
+												453 checkbox (settable, integer) Description: Hidrovia do Amazonas, Value: 0
+												454 text Hidrovia do Amazonas
+										455 row Hidrovia do Baixo Amazonas Opcional. 2 de 12
+											456 container
+												457 checkbox (settable, integer) Description: Hidrovia do Baixo Amazonas, Value: 0
+												458 text Hidrovia do Baixo Amazonas
+										459 row Hidrovia do Baixo Tocantins Opcional. 3 de 12
+											460 container
+												461 checkbox (settable, integer) Description: Hidrovia do Baixo Tocantins, Value: 0
+												462 text Hidrovia do Baixo Tocantins
+										463 row Hidrovia do Madeira Opcional. 4 de 12
+											464 container
+												465 checkbox (settable, integer) Description: Hidrovia do Madeira, Value: 0
+												466 text Hidrovia do Madeira
+										467 row Hidrovia do Paraná-Tietê Opcional. 5 de 12
+											468 container
+												469 checkbox (settable, integer) Description: Hidrovia do Paraná-Tietê, Value: 0
+												470 text Hidrovia do Paraná-Tietê
+										471 row Hidrovia do Rio Paraguai Opcional. 6 de 12
+											472 container
+												473 checkbox (settable, integer) Description: Hidrovia do Rio Paraguai, Value: 0
+												474 text Hidrovia do Rio Paraguai
+										475 row Hidrovia do Solimões Opcional. 7 de 12
+											476 container
+												477 checkbox (settable, integer) Description: Hidrovia do Solimões, Value: 0
+												478 text Hidrovia do Solimões
+										479 row Hidrovia do Tapajós Opcional. 8 de 12
+											480 container
+												481 checkbox (settable, integer) Description: Hidrovia do Tapajós, Value: 0
+												482 text Hidrovia do Tapajós
+										483 row Hidrovia do Trombetas Opcional. 9 de 12
+											484 container
+												485 checkbox (settable, integer) Description: Hidrovia do Trombetas, Value: 0
+												486 text Hidrovia do Trombetas
+										487 row Hidrovias do Sul Opcional. 10 de 12
+											488 container
+												489 checkbox (settable, integer) Description: Hidrovias do Sul, Value: 0
+												490 text Hidrovias do Sul
+										491 row Hidrovia do Tocantins Excluído. 11 de 12
+											492 container
+												493 checkbox (settable, integer) Description: Hidrovia do Tocantins, Value: 0
+												494 text Hidrovia do Tocantins
+					136 container Texto e imagem Legenda ▆ Porto Organizado ▲Aumento em Relação ao Ano Anterior ▆ Terminal Autorizado ▼Redução em Relação ao Ano Anterior
+						137 text Texto e imagem
+						138 heading Legenda, Value: 2
+							139 text Legenda
+						140 container
+							141 text ▆  Porto Organizado  ▲ Aumento em Relação ao Ano Anterior ▆  Terminal Autorizado  ▼ Redução em Relação ao Ano Anterior
+					142 container Botão Sem título Gráficos
+						143 text Botão
+						144 text Sem título
+						145 button Gráficos
+					146 container Botão Sem título Tabelas
+						147 text Botão
+						148 text Sem título
+						149 button Tabelas
+					150 container Botão Sem título PT
+						151 text Botão
+						152 text Sem título
+						153 button PT
+					154 container Botão Sem título EN
+						155 text Botão
+						156 text Sem título
+						157 button EN
+					158 container Botão Sem título ES
+						159 text Botão
+						160 text Sem título
+						161 button ES
+					162 container Texto e imagem Sem título Estatístico Aquaviário 
+						163 text Texto e imagem
+						164 text Sem título
+						165 container
+							166 text Estatístico Aquaviário
+					167 container Texto e imagem Sem título Escala dos Dados:
+						168 text Texto e imagem
+						169 text Sem título
+						170 text Escala dos Dados:
+					171 container Botão Sem título em toneladas (t)
+						172 text Botão
+						173 text Sem título
+						174 button em toneladas (t)
+					175 container Botão Sem título em mil x t
+						176 text Botão
+						177 text Sem título
+						178 button em mil x t
+					179 container Botão Sem título em milhões x t
+						180 text Botão
+						181 text Sem título
+						182 button em milhões x t
+					183 container Botão Sem título remove Limpar
+						184 text Botão
+						185 text Sem título
+						186 button remove Limpar
+							672 text remove
+							673 text Limpar
+					189 container Layout container Sem título O contêiner consiste nos seguintes objetos: Texto e imagem. Use as setas para a esquerda e para a direita para navegar pelos gráficos internos. Pressione Enter ou espaço para selecionar os gráficos.
+						190 text Layout container
+						191 text Sem título
+						192 heading 2
+						193 container O contêiner consiste nos seguintes objetos: Texto e imagem. Use as setas para a esquerda e para a direita para navegar pelos gráficos internos. Pressione Enter ou espaço para selecionar os gráficos.
+							194 container Texto e imagem Sem título Adicionar texto e medidas
+								495 container
+									496 text Texto e imagem
+									497 text Sem título
+									498 text Adicionar texto e medidas
+					196 container Texto e imagem Sem título Ouvidoria: 0800 644-5001
+						197 text Texto e imagem
+						198 text Sem título
+						199 container
+							200 text Ouvidoria: 0800 644-5001
+					201 container Texto e imagem Sem título @ gea@antaq.gov.br
+						202 text Texto e imagem
+						203 text Sem título
+						204 container
+							205 text @ gea@antaq.gov.br
+					206 container Texto e imagem Sem título Painel Estatístico Aquaviário - Versão 1.0.1. Todos os direitos reservados.2014 ANTAQ - Agência Nacional de Transportes Aquaviários.SEPN - Quadra 514 - Conjunto "E" - Edifício ANTAQ - CEP-70760-545 - Brasília/DF Fone: (61) 2029-6500
+						207 text Texto e imagem
+						208 text Sem título
+						209 container
+							210 text Painel Estatístico Aquaviário - Versão 1.0.1. Todos os direitos reservados. 2014 ANTAQ - Agência Nacional de Transportes Aquaviários. SEPN - Quadra 514 - Conjunto "E" - Edifício ANTAQ - CEP-70760-545 - Brasília/DF Fone: (61) 2029-6500
+					211 container Texto e imagem 5. Transporte Vias Interiores 2026(Jan - Fev)
+						212 text Texto e imagem
+						213 text 5. Transporte Vias Interiores 2026(Jan - Fev)
+					214 container Texto e imagem Sem título Clique com o botão direito do mouse no gráfico ou tabela para baixar como imagem, pdf ou dados.
+						215 text Texto e imagem
+						216 text Sem título
+						217 text Clique com o botão direito do mouse no gráfico ou tabela para baixar como imagem, pdf ou dados.
+					218 container Texto e imagem Dados até: fev/2026 (Atualizado em 01/04/2026 08:17)
+						219 text Texto e imagem
+						220 container
+							221 text Dados até: fev/2026
+							222 text (Atualizado em 01/04/2026 08:17)
+					223 container Texto e imagem Documentação:
+						224 text Texto e imagem
+						225 text Documentação:
+					226 container Botão Sem título
+						227 text Botão
+						228 text Sem título
+						229 button
+					230 container Texto e imagem Sem título
+						231 text Texto e imagem
+						232 text Sem título
+					233 container Layout container Sem título O contêiner consiste nos seguintes objetos: txt, TXT, Relatorios, Indicadores, Transporte TKU, Vias Interiores, Cabotagem, Longo Curso, Conteiner, Movimentação, Abertura, Relatorios, Indicadores, Transporte TKU, Vias Interiores, Cabotagem, Longo Curso, Conteiner, Movimentação, Abertura, log Antaq. Use as setas para a esquerda e para a direita para navegar pelos gráficos internos. Pressione Enter ou espaço para selecionar os gráficos.
+						234 text Layout container
+						235 text Sem título
+						236 container O contêiner consiste nos seguintes objetos: txt, TXT, Relatorios, Indicadores, Transporte TKU, Vias Interiores, Cabotagem, Longo Curso, Conteiner, Movimentação, Abertura, Relatorios, Indicadores, Transporte TKU, Vias Interiores, Cabotagem, Longo Curso, Conteiner, Movimentação, Abertura, log Antaq. Use as setas para a esquerda e para a direita para navegar pelos gráficos internos. Pressione Enter ou espaço para selecionar os gráficos.
+							237 container
+								499 container Botão Sem título Botão
+									500 text Botão
+									501 text Sem título
+									502 button Botão
+										674 text Botão
+								504 container Botão Sem título Botão
+									505 text Botão
+									506 text Sem título
+									507 button Botão
+										675 text Botão
+								509 container Botão Sem título Botão
+									510 text Botão
+									511 text Sem título
+									512 button Botão
+										676 text Botão
+								514 container Botão Sem título Botão
+									515 text Botão
+									516 text Sem título
+									517 button Botão
+										677 text Botão
+								238 container Botão Sem título Botão
+									519 text Botão
+									239 text Sem título
+									520 button Botão
+										678 text Botão
+								240 container Botão Sem título Botão
+									522 text Botão
+									241 text Sem título
+									523 button Botão
+										679 text Botão
+								525 container Botão Sem título Botão
+									526 text Botão
+									527 text Sem título
+									528 button Botão
+										680 text Botão
+								530 container Botão Sem título Botão
+									531 text Botão
+									532 text Sem título
+									533 button Botão
+										681 text Botão
+								535 container Botão Sem título Botão
+									536 text Botão
+									537 text Sem título
+									538 button Botão
+										682 text Botão
+								540 container Botão Sem título Botão
+									541 text Botão
+									542 text Sem título
+									543 button Botão
+										683 text Botão
+								545 container Text Sem título Abertura 
+									546 text Text
+									547 text Sem título
+									548 text field Abertura 
+										549 container
+											550 text Abertura
+								551 container Text Sem título Movimentação 
+									552 text Text
+									553 text Sem título
+									554 text field Movimentação 
+										555 container
+											556 text Movimentação
+								557 container Text Sem título Contêiner 
+									558 text Text
+									559 text Sem título
+									560 text field Contêiner 
+										561 container
+											562 text Contêiner
+								242 container Text Sem título Longo Curso 
+									563 text Text
+									243 text Sem título
+									564 text field Longo Curso 
+										565 container
+											566 text Longo Curso
+								567 container Text Sem título Cabotagem 
+									568 text Text
+									569 text Sem título
+									570 text field Cabotagem 
+										571 container
+											572 text Cabotagem
+								573 container Text Sem título Vias Interiores 
+									574 text Text
+									575 text Sem título
+									576 text field Vias Interiores 
+										577 container
+											578 text Vias Interiores
+								579 container Text Sem título Transporte TKU 
+									580 text Text
+									581 text Sem título
+									582 text field Transporte TKU 
+										583 container
+											584 text Transporte TKU
+								585 container Text Sem título Indicadores 
+									586 text Text
+									587 text Sem título
+									588 text field Indicadores 
+										589 container
+											590 text Indicadores
+								591 container Text Sem título Relatórios 
+									592 text Text
+									593 text Sem título
+									594 text field Relatórios 
+										595 container
+											596 text Relatórios
+								597 container Botão Sem título Botão
+									598 text Botão
+									599 text Sem título
+									600 button Botão
+										684 text Botão
+								602 container Text Sem título Base de Dados 
+									603 text Text
+									604 text Sem título
+									605 text field Base de Dados
+
+										606 container
+											607 text Base de Dados
+		685 menu
+			686 Exibir dados, ID: view-data
+				687 text Exibir dados
+			688 Exportar como imagem, ID: print-object-image
+				689 text Exportar como imagem
+			690 Exportar para PDF, ID: print-object-pdf
+				691 text Exportar para PDF
+			692 Exportar dados, ID: export-data
+				693 text Exportar dados
+
+The focused UI element is 686 Exibir dados, ID: view-data

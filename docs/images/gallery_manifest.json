@@ -86,6 +86,24 @@
       "sha256": "041fd0bd7005d0a67b2f3f227c0346a71506bf0089318aa7fecdae441ae81e8c",
       "width": 1280,
       "height": 720
+    },
+    {
+      "path": "inland-history-en.jpg",
+      "workspace": "Brazilian freight / water / inland transport",
+      "scope": "62 inland transport months and three navigation components, January 2021\u2013February 2026; partial-year warning; separate from handling",
+      "captured_on": "2026-11-19",
+      "sha256": "74ea356b1074d189c7e3cd21cdef82ccd688ab43bca8e46a0479ab94979e5d35",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "inland-cargo-en.jpg",
+      "workspace": "Brazilian freight / water / inland transport",
+      "scope": "2025 original cargo categories: 117 categories, eight quantities shown as dash; source denominator retained",
+      "captured_on": "2026-11-19",
+      "sha256": "ecf97cdaf48fda7d4cc46ddaae603d357ded717be2d535997652393d5640b7eb",
+      "width": 1280,
+      "height": 720
     }
   ],
   "updated_on": "2026-11-19"

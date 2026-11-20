@@ -84,6 +84,14 @@ bundle when the annual Gold changes; this does not require running the full pipe
 
 ## Regional road flows
 
+`GET /api/brazil/inland-transport` serves separate inland-waterway transport
+observations. Views: `monthly` (62 months, totals plus three navigation components),
+`annual` (six observed-period totals), `navigation` (three 2025 source totals),
+`commodities` (117 categories; eight null quantities and 46 explicit zeros retained).
+Filters: `year=2021..2026` (2025 only for detail views), `month` (monthly only),
+exact `commodity` label (commodity view only). `limit=1..500`, `offset>=0`.
+Shares retain the full source denominator. [Scope and original evidence](brazil_inland.md).
+
 `GET /api/brazil/water-history` serves 62 original numeric monthly port-handling
 observations, January 2021–February 2026. `view=annual` returns six observed-period
 totals with completeness and rounding residuals. Filters: `year=2021..2026`,

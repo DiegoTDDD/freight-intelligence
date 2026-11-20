@@ -37,6 +37,8 @@ These are workspaces within one application and analytical package. They do not 
 
 **Water history expansion:** [62 original monthly port-handling observations](docs/brazil_water_history.md), January 2021–February 2026. Five complete years, explicit partial 2026, filtered CSV/API and annual rounding reconciliation.
 
+**Inland-waterway transport expansion:** [62 months with three navigation components and 117 cargo categories](docs/brazil_inland.md). Source totals reconcile independently; eight dash quantities remain null and 46 explicit zeros stay zero. Transport and port handling remain separate.
+
 ## Screenshots
 
 These English-interface captures were taken on 2026-11-18 and 2026-11-19 from the local hosted-app entry point and the versioned public snapshots. They show the actual application, including the reconciled 510-link cabotage view. They remain visible on GitHub while Render sleeps. Open the sections below for additional workspaces.
@@ -50,7 +52,7 @@ These English-interface captures were taken on 2026-11-18 and 2026-11-19 from th
 ![Synthetic transport scenario with an optimal allocation](docs/images/planner-en.jpg)
 
 <details>
-<summary>Water history, road OD, road history, air cargo, gas history, cabotage OD, water regions and truck routing — eight more screens</summary>
+<summary>Inland transport, water history, road OD, road history, air cargo, gas history, cabotage OD, water regions and truck routing — ten more screens</summary>
 
 **Road history — July–December 2024, explicitly 6/12 observed months.** Separate N/S own-account categories and document counts. The selector also provides complete 2025 and partial January–October 2026; source editions remain separate.
 
@@ -63,6 +65,14 @@ These English-interface captures were taken on 2026-11-18 and 2026-11-19 from th
 **Port handling history — 62 original monthly observations, January 2021–February 2026.** Five complete calendar years; 2026 explicitly has only two observed months. Values cover handling events across both directions and all navigation categories, with original numeric precision retained.
 
 ![ANTAQ monthly port-handling history and explicit partial-2026 coverage](docs/images/water-history-en.jpg)
+
+**Inland-waterway transport — 62 monthly totals with three navigation components.** Includes international shipping and cabotage using inland waterways; five complete years and partial 2026. Separate from port handling and operational routing.
+
+![Reported inland transport history by navigation with partial-2026 coverage](docs/images/inland-history-en.jpg)
+
+**Inland cargo — 117 original source categories for 2025.** Eight quantities shown as dash remain unavailable; 46 explicit numeric zeros remain zero. Shares retain the full source denominator after filtering.
+
+![Inland cargo categories and explicit unavailable-quantity count](docs/images/inland-cargo-en.jpg)
 
 **Air cargo — reported domestic monthly paid-cargo subtotals for 2025, with missing-field disclosure.** Stages can repeat a consignment; the chart is not a complete shipment census.
 

@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "source": "https://aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808&sheet=dUKM&bookmark=f57a2dcf-21bc-4446-bdcc-78915e0597a2&opt=currsel%2Cctxmenu",
+  "detail_source": "https://aquarela.antaq.gov.br/single/?appid=56c32604-37bd-4993-9904-1b2c87706808&sheet=kFxB&bookmark=f57a2dcf-21bc-4446-bdcc-78915e0597a2&opt=currsel%2Cctxmenu",
+  "reviewed_on": "2026-11-19",
+  "unit": "tonnes",
+  "period_start": "2021-01",
+  "period_end": "2026-02",
+  "monthly_observations": 62,
+  "navigation_components": 3,
+  "commodity_year": 2025,
+  "commodity_categories": 117,
+  "numeric_commodity_quantities": 109,
+  "explicit_numeric_zero_quantities": 46,
+  "source_dash_quantities": 8,
+  "scope": "Reported transport using inland waterways, including international shipping and cabotage with inland navigation as well as the Inland Navigation category. Not port handling, unique cargo, operational itineraries or a paired OD matrix. Do not add overlapping navigation, handling and commodity subtotals.",
+  "source_objects": {
+    "monthly": "GR5.8 - Evolução por Tipo de Navegação",
+    "navigation": "GR5.1 - Tipo de Navegação",
+    "commodities": "GR5.6 - Grupo de Mercadoria"
+  },
+  "filters": {
+    "year": "one selected year per monthly export; details 2025 only",
+    "month": "unfiltered; bookmark Jan/Feb filter explicitly removed",
+    "DadosEscala": 1,
+    "geography": "unfiltered",
+    "cargo": "unfiltered",
+    "navigation": "all three source categories"
+  },
+  "displayed_period_totals": {
+    "2021": 110751768,
+    "2022": 120527604,
+    "2023": 130950419,
+    "2024": 128907186,
+    "2025": 144893597,
+    "2026": 21024624
+  },
+  "partial_years": {
+    "2026": [
+      1,
+      2
+    ]
+  },
+  "panel_updated_at": "2026-04-01 08:17",
+  "reconciliation_tolerance_tonnes": 0.0001,
+  "precision": "Original XLSX numeric precision including floating-point artifacts, not measurement accuracy. Component and independent table sums agree within 0.0001 tonnes; period totals round to displayed headlines.",
+  "period_evidence": "Monthly XLSX omits year. Pinned per-year screenshots and rendered overviews record exactly one selected year, no month filter, scale 1; original export bytes are retained.",
+  "quality_notes": [
+    "2026 contains January and February only. Missing months are unavailable, not zeros; no annualization.",
+    "Source shares retain the full 2025 inland transport denominator; filters never renormalize them.",
+    "Eight commodity quantities displayed as dash are null with source_dash status; 46 explicit numeric zeros stay zero. A numeric zero share does not fill a missing quantity.",
+    "The Interior navigation category in a port-handling report is a different population from this transport table; no annual report values are spliced into these observations.",
+    "Original commodity/navigation source labels remain in Portuguese; UI labels can be translated."
+  ],
+  "files": [
+    {
+      "path": "inland_2025-overview.txt",
+      "bytes": 34965,
+      "sha256": "d79a0de670ddf90070bf6430b030cbb50f0ebcde299e87fc28611cabe9682255"
+    },
+    {
+      "path": "inland_annual.csv",
+      "bytes": 850,
+      "sha256": "7bc20e83003caf7d8ed76a305c3ee00b8737c58d872e161e22b4b2db86d1fd6f"
+    },
+    {
+      "path": "inland_capture.json",
+      "bytes": 534,
+      "sha256": "8b7afed3961f8380bdf18a770d135c20159be0600e9569d730a044e3539fa109"
+    },
+    {
+      "path": "inland_commodities_2025-context.jpg",
+      "bytes": 99064,
+      "sha256": "bfe9a20ca63239cb3d3a23e03601de2e4e942ef68587581a707053a3247284c8"
+    },
+    {
+      "path": "inland_commodities_2025.csv",
+      "bytes": 7621,
+      "sha256": "c87df2ce9100d7f63d49f7d63544ba77070a0f464ca96f7e0cb66c851c1de334"
+    },
+    {
+      "path": "inland_commodities_2025.xlsx",
+      "bytes": 10180,
+      "sha256": "4c97b9ef5d42ce73422eb6ee2c7894e74494425c32fdee76b1d9bcd5487a751d"
+    },
+    {
+      "path": "inland_history_2021-context.jpg",
+      "bytes": 99817,
+      "sha256": "79df9edf14c42c3b1d4628e6eca1244126d839d4c3f41eac6f34199c31eee62e"
+    },
+    {
+      "path": "inland_history_2021-overview.txt",
+      "bytes": 27827,
+      "sha256": "dcaf162e7e40c36e0f157e9b0f988be22c452ed8e9bd0cdce996f967344b7199"
+    },
+    {
+      "path": "inland_history_2021.xlsx",
+      "bytes": 6254,
+      "sha256": "29c12f15d51107bb9157992264412acc013ca1fcfaed374736181cac1016069e"
+    },
+    {
+      "path": "inland_history_2022-context.jpg",
+      "bytes": 99761,
+      "sha256": "d4b413f023fb56e0a4fbec1157a0ecb9c40c019b3e3607b1fcfeedd777dc59ac"
+    },
+    {
+      "path": "inland_history_2022-overview.txt",
+      "bytes": 27806,
+      "sha256": "206d4e1bc9fccf0fd483a38e253cdbaea5a5298998c35b2f31a2c6d50711ca6d"
+    },
+    {
+      "path": "inland_history_2022.xlsx",
+      "bytes": 6272,
+      "sha256": "e85d4128529ddb4bc9f25f6cf3b511e43ac1005075672038b261e91dbcbbcd9d"
+    },
+    {
+      "path": "inland_history_2023-context.jpg",
+      "bytes": 100824,
+      "sha256": "486e4d3f5de501763f41d5b622121e0149a75fa76ac210b2309afbc527e2a6fa"
+    },
+    {
+      "path": "inland_history_2023-overview.txt",
+      "bytes": 27838,
+      "sha256": "b52216c5135173727f97420f4891bf4d28a79609f9a2fd38a0abe1bed6a888f7"
+    },
+    {
+      "path": "inland_history_2023.xlsx",
+      "bytes": 6261,
+      "sha256": "25fa2e5530ae4c21f04f5cab7d7f9b40639d2b08c3c4a222a61618dd9382fc10"
+    },
+    {
+      "path": "inland_history_2024-context.jpg",
+      "bytes": 99805,
+      "sha256": "e20f6b42292cc914ef1181bfceef2dbb66a1311afa8a9da1a6ae7565899ff047"
+    },
+    {
+      "path": "inland_history_2024-overview.txt",
+      "bytes": 27800,
+      "sha256": "c58fe2be158de693e1bfb51aa9c25a0d1e52434ee8832ef36b6eadad47bc9b4c"
+    },
+    {
+      "path": "inland_history_2024.xlsx",
+      "bytes": 6274,
+      "sha256": "e56920723d05327fc92eea567d06cc1d003d61e360edbd3b5ea224afecf60e78"
+    },
+    {
+      "path": "inland_history_2025-context.jpg",
+      "bytes": 100892,
+      "sha256": "8f5647fc3960dadfce57de6f8f7290c430905ea7a005a01bd01812567249633b"
+    },
+    {
+      "path": "inland_history_2025-overview.txt",
+      "bytes": 27797,
+      "sha256": "fdc68a6a54cf76d426925265286dab586e17ceed875314f915a48c872e9c2385"
+    },
+    {
+      "path": "inland_history_2025.xlsx",
+      "bytes": 6296,
+      "sha256": "bc8327acb1ead6aea73b6e714a79f3b9c6c7a9c862c42f39c40c36602fac8a66"
+    },
+    {
+      "path": "inland_history_2026-context.jpg",
+      "bytes": 86982,
+      "sha256": "95ee30ca0d92d94a77c018e44348883c43a8869a5909d4d018c112ee18c87ae9"
+    },
+    {
+      "path": "inland_history_2026-overview.txt",
+      "bytes": 27388,
+      "sha256": "ec8e56d14171f88ebb38303d7cbb559b4f89242d95fb891fa2d62693c092e4a2"
+    },
+    {
+      "path": "inland_history_2026.xlsx",
+      "bytes": 5626,
+      "sha256": "3dafa93d912ca1fede7e048e28a0794964a12e2bad4bb9336c4c1a9a4f07f2e0"
+    },
+    {
+      "path": "inland_monthly.csv",
+      "bytes": 5398,
+      "sha256": "b05517a89a689904462d1b34295364cd07d6979e0b8244ed89f07c93b5f31886"
+    },
+    {
+      "path": "inland_navigation_2025-context.jpg",
+      "bytes": 93406,
+      "sha256": "4bb880064be9b5fae005fa555f90032e03153e3d5d275fe8bf8f5f355e9a0339"
+    },
+    {
+      "path": "inland_navigation_2025.csv",
+      "bytes": 304,
+      "sha256": "bd5b1fd76ec0c09f05d1deb7d2d60a601f4fec8dc49cf6bec5ded316de7bdfdd"
+    },
+    {
+      "path": "inland_navigation_2025.xlsx",
+      "bytes": 5679,
+      "sha256": "d5344cdeda3559b5c61d4a17aa47abfcad19819658c8a3880dd7f790d1b62af0"
+    }
+  ]
+}

@@ -15,3 +15,4 @@ deployment/preview_data/data/raw/faf5/forecast/bts_FAF_HiLoForecasts_README_2023
 deployment/brazil_road/history_overview.txt -whitespace
 deployment/brazil_road/state_od_*.txt -whitespace
 deployment/brazil_water/history_*-overview.txt -whitespace
+deployment/brazil_water/inland_*-overview.txt -whitespace

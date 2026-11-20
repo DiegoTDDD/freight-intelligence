@@ -1,0 +1,28 @@
+{
+  "years": {
+    "2021": {
+      "displayed_tonnes": 110751768,
+      "months_observed": 12
+    },
+    "2022": {
+      "displayed_tonnes": 120527604,
+      "months_observed": 12
+    },
+    "2023": {
+      "displayed_tonnes": 130950419,
+      "months_observed": 12
+    },
+    "2024": {
+      "displayed_tonnes": 128907186,
+      "months_observed": 12
+    },
+    "2025": {
+      "displayed_tonnes": 144893597,
+      "months_observed": 12
+    },
+    "2026": {
+      "displayed_tonnes": 21024624,
+      "months_observed": 2
+    }
+  }
+}

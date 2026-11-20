@@ -102,3 +102,11 @@ positions, navigable itineraries or complete inland/coastal shipment coverage.
 A separate reviewed view now supplies 510 observed OD links covering all 98 origins and 71 destinations in the
 reviewed 2025 cabotage table, with original numeric tonnes. See [method, exports and coverage](brazil_water_ports.md).
 This does not expand the regional fractions into inferred port pairs.
+
+## Detailed inland-waterway transport
+
+The [separate inland transport view](brazil_inland.md) adds 62 observed months,
+three navigation components, and 117 source cargo categories for 2025. It covers
+international shipping/cabotage using inland waterways as well as Inland
+Navigation. Its transport totals are not the overlapping port-handling figures
+above. Numeric zero quantities and source dashes remain distinct.

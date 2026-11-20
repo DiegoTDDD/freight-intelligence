@@ -13,6 +13,7 @@ import streamlit as st
 from freight_intelligence.brazil_air import CARGO_FIELDS, load_air
 from freight_intelligence.brazil_gas_history import load_gas_history, missing_groups
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.brazil_inland import COMPONENTS, load_inland
 from freight_intelligence.brazil_modal_forecasts import SERIES, load_modal_forecasts
 from freight_intelligence.brazil_modes import load_modes
 from freight_intelligence.brazil_road import load_road, load_road_monthly
@@ -519,6 +520,7 @@ def render_water_freight(t):
         return
     labels = {"navigation_totals": "Navigation reference totals",
               "inland_commodities": "Leading inland cargo categories",
+              "inland_transport": "Inland-waterway transport · history and cargo",
               "coastal_state_endpoints": "Coastal container origin/destination states",
               "grain_regions": "Maize/soybean regional port aggregates",
               "port_monthly": "Monthly port handling (2025)",
@@ -527,6 +529,9 @@ def render_water_freight(t):
               "port_pairs": "Cabotage origin–destination tonnes (2025 · 98 origins)"}
     dataset = ui.selectbox("Water reference dataset", list(labels),
                            format_func=labels.get, key="brazil_water_dataset")
+    if dataset == "inland_transport":
+        render_inland_transport(t)
+        return
     if dataset == "port_history":
         render_water_history(t)
         return
@@ -558,6 +563,64 @@ def render_water_freight(t):
     ui.download_button("Download ANTAQ reference tables (CSV)", data.write_csv().encode(),
                        "antaq_navigation_references.csv", "text/csv")
     with ui.expander("ANTAQ source, precision and coverage"):
+        st.json(metadata)
+
+
+def render_inland_transport(t):
+    ui = LocalizedUI(t)
+    ui.subheader("Transport using inland waterways")
+    try:
+        tables, metadata = load_inland()
+    except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError):
+        ui.error("The verified inland transport snapshot is unavailable.")
+        return
+    ui.info("Includes international shipping and cabotage using inland waterways, plus Inland Navigation. These transport observations are separate from port handling and are not unique cargo or operational routes.")
+    views = {"monthly": "Monthly navigation history", "commodities": "Source cargo categories · 2025",
+             "navigation": "Navigation composition · 2025"}
+    choice = ui.selectbox("Inland transport view", list(views), format_func=views.get, key="inland_view")
+    labels = {"international_inland": "International shipping with inland navigation",
+              "cabotage_inland": "Cabotage with inland navigation", "inland_navigation": "Inland Navigation"}
+    if choice == "monthly":
+        year = ui.selectbox("Inland history year", ["All reviewed months", *range(2021, 2027)], key="inland_year")
+        navigation = ui.selectbox("Navigation shown", ["all", *COMPONENTS],
+                                  format_func={"all": "All navigation types", **labels}.get,
+                                  key="inland_navigation")
+        data = tables["monthly"] if year == "All reviewed months" else tables["monthly"].filter(pl.col("year") == year)
+        ui.metric("Observed inland months", str(data.height))
+        field = "total_tonnes" if navigation == "all" else navigation
+        ui.metric("Reported waterway transport (tonnes)", f"{data[field].sum():,.3f}")
+        if year in ("All reviewed months", 2026):
+            ui.warning("2026 is partial: January and February only. Missing months are not zero and totals are not annualized.")
+        fields = COMPONENTS if navigation == "all" else (navigation,)
+        chart = data.select(pl.col("period").alias(t("Period")),
+                            *[pl.col(name).alias(t(labels[name])) for name in fields])
+        st.line_chart(chart, x=t("Period"), y=[t(labels[name]) for name in fields])
+        ui.caption("Original monthly totals and three navigation components are preserved. Source numeric precision does not imply measurement accuracy.")
+        ui.dataframe(data, hide_index=True)
+        with ui.expander("Inland annual totals and completeness"):
+            ui.dataframe(tables["annual"], hide_index=True)
+    else:
+        data = tables[choice]
+        if choice == "commodities":
+            commodity = ui.selectbox("Inland source commodity", ["All", *data["commodity"].to_list()], key="inland_commodity")
+            if commodity != "All":
+                data = data.filter(pl.col("commodity") == commodity)
+            missing = data["tonnes"].null_count()
+            ui.metric("Source cargo categories", str(data.height))
+            ui.metric("Source quantities shown as dash", str(missing))
+            ui.warning("Source dash values remain unavailable; explicit numeric zeros stay zero. Shares keep the full 2025 denominator.")
+            chart = data.filter(pl.col("tonnes").is_not_null()).sort("tonnes", descending=True).head(20)
+            if not chart.is_empty():
+                st.bar_chart(chart, x="commodity", y="tonnes", horizontal=True)
+            ui.caption("Original cargo names are source labels. Chart shows up to 20 numeric categories; table and CSV retain unavailable quantities.")
+        else:
+            chart = data.with_columns(pl.col("navigation").replace({name: t(label) for name, label in labels.items()}).alias(t("Navigation type")))
+            st.bar_chart(chart, x=t("Navigation type"), y="tonnes")
+        ui.metric("Reported waterway transport (tonnes)", f"{data['tonnes'].sum():,.3f}" if data["tonnes"].count() else t("Unavailable"))
+        ui.dataframe(data, hide_index=True)
+    ui.download_button("Download filtered inland transport (CSV)", data.write_csv().encode(),
+                       "antaq_inland_transport.csv", "text/csv")
+    with ui.expander("Inland source exports, scope and coverage"):
         st.json(metadata)
 
 

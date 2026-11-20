@@ -15,6 +15,7 @@ from freight_intelligence.brazil_gas_history import DEFAULT_ROOT as GAS_HISTORY
 from freight_intelligence.brazil_gas_history import load_gas_history, missing_groups
 from freight_intelligence.brazil_gas_results import DEFAULT_ROOT as BRAZIL_GAS
 from freight_intelligence.brazil_gas_results import load_gas
+from freight_intelligence.brazil_inland import load_inland
 from freight_intelligence.brazil_modal_forecasts import DEFAULT_ROOT as MODAL_FORECASTS
 from freight_intelligence.brazil_modal_forecasts import SERIES, load_modal_forecasts
 from freight_intelligence.brazil_modes import DEFAULT_ROOT as BRAZIL_MODES
@@ -336,6 +337,31 @@ def create_app(
             if value is not None:
                 data = data.filter(pl.col(field) == value)
         return {"year": year, "count": data.height, "data": data.to_dicts(), "metadata": metadata}
+
+    @data_routes.get("/brazil/inland-transport")
+    def brazil_inland_transport(
+        view: Literal["monthly", "annual", "navigation", "commodities"] = "monthly",
+        year: int | None = Query(default=None, ge=2021, le=2026),
+        month: int | None = Query(default=None, ge=1, le=12),
+        commodity: str | None = Query(default=None, min_length=1, max_length=200),
+        limit: int = Query(default=100, ge=1, le=500),
+        offset: int = Query(default=0, ge=0),
+    ):
+        if ((month is not None and view != "monthly")
+                or (commodity is not None and view != "commodities")
+                or (view in {"navigation", "commodities"} and year not in (None, 2025))):
+            raise HTTPException(status_code=422, detail="Filter unavailable for this inland source view")
+        try:
+            tables, metadata = load_inland(water_dir if water_dir is not None else BRAZIL_WATER)
+        except (OSError, ValueError, KeyError, TypeError, pl.exceptions.PolarsError) as error:
+            raise HTTPException(status_code=503, detail="Verified inland transport unavailable") from error
+        data = tables[view]
+        for field, value in (("year", year), ("month", month), ("commodity", commodity)):
+            if value is not None:
+                data = data.filter(pl.col(field) == value)
+        result = data.slice(offset, limit)
+        return {"view": view, "total": data.height, "count": result.height, "data": result.to_dicts(),
+                "limit": limit, "offset": offset, "metadata": metadata}
 
     @data_routes.get("/brazil/water-history")
     def brazil_water_history(
