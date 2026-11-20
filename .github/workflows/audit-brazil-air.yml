@@ -38,7 +38,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: brazil-air-source-audit-${{ github.run_id }}
+          name: brazil-air-source-audit-${{ github.run_id }}-attempt-${{ github.run_attempt }}
           path: |
             air-source-audit/report.json
             air-source-audit/unreviewed-source.csv

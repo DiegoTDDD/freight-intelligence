@@ -125,3 +125,7 @@ rendered-table transcription and source-context hashes. Its source header date
 predates its last table month and is not a freshness guarantee. The weekly road
 PDF audit does not update this separate panel edition. A future panel refresh
 requires explicit evidence review, exact reconstruction and the normal CI gate.
+
+ANAC report artifact names include the workflow run and attempt number, so a
+manual retry retains the earlier failure report and can upload its own result
+without replacing or colliding with the first attempt.
