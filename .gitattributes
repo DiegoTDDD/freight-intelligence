@@ -9,6 +9,7 @@ deployment/brazil_road/** -text
 deployment/brazil_air/** -text
 deployment/brazil_gas_history/** -text
 deployment/route_examples/** -text
+deployment/trip_planning/** -text
 # This is an archived upstream document; preserve original formatting.
 deployment/preview_data/data/raw/faf5/forecast/bts_FAF_HiLoForecasts_README_20230929.txt -whitespace
 # Preserve the archived rendered-table overview exactly, including source spacing.
