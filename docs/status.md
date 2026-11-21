@@ -23,6 +23,9 @@ with explicit missing data and rule-date support. E20 adds exact base-window
 night-work accounting, exact selected shift/weekly reference comparisons and
 explicit post-05:00 extension review. X02 remains open for
 complete operating acceptance; a synthetic scenario is not driver-log validation.
+The separate conditional extension calculation now quantifies the impact of
+observed continuation work, without replacing the base result or deciding actual
+regime applicability. [Contract and example](weekly_duty.md#conditional-night-extension).
 
 This replaces the previous open-ended remaining-work list. Additional years or
 sources do not silently reopen delivered work. New coverage needs a named source,

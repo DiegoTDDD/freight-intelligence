@@ -32,7 +32,7 @@ The project and dashboard default to **English**, with optional Portuguese contr
 | Geographic routing | Distinct OSRM car-reference and Valhalla truck engines; explicit dimensions, weight, axles and hazardous cargo; map, maneuvers and GeoJSON | [Truck profiles and restrictions](docs/truck_routing.md), [saved truck geometry](deployment/route_examples/sao_paulo_campinas_truck.geojson) |
 | Trip cost and breaks | Dated Autoban commercial-per-axle tolls for continuous SP-330/SP-348 km 20–100; selected daytime duty limits, loading/waiting as work, pauses and explicit unsupported cases; complete X02 compliance remains open | [Scope, example and API](docs/trip_planning.md) |
 | Seven-day duty review | Explicit declared histories, daily/combined weekly rest checks, seventh-workday flags, missing-data handling, dated policy, chart and bounded stateless API; no dispatch certification | [Rules, examples and API](docs/weekly_duty.md) |
-| Night-work accounting | Exact 22:00–05:00 overlap, reduced-hour shift/weekly reference comparisons, real time preserved, meals/rest excluded, explicit extension/regime review and portable examples | [Calculation and portable evidence](docs/weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting) |
+| Night-work accounting | Exact 22:00–05:00 overlap, shift/weekly references and separate conditional extension sensitivity, real time preserved, meals/rest excluded, regime review and portable examples | [Calculation and portable evidence](docs/weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting) |
 | Read-only API | Documented indicators, histories, forecasts, quality diagnostics and saved allocations; filters, pagination, optional key/user permissions; hosted public snapshots isolated from private plans | [Endpoint reference](docs/api.md), [authentication and roles](docs/api_authentication.md) |
 | Delivery and recovery | Windows/Linux CI, pinned container runtimes, source/data hashes, memory regression checks, exact-tested-commit deployment and recovery archives | [CI workflow](.github/workflows/ci_pipeline.yml), [deployment](docs/publicacao_continua.md), [recovery](docs/recovery.md) |
 | Source refresh | Scheduled bounded ANP 2021–2025 (60 monthly reports), ANTT PDF and streaming ANAC CSV revision audits; changed sources quarantined for review rather than automatically published | [Audit policy](docs/source_refresh.md) |
@@ -186,6 +186,17 @@ are preserved and no wages or dispatch approval are calculated.
 [Portable above-reference example](docs/examples/night_limit_report.json).
 
 ![English night-work accounting: exact selected-reference comparison flags 8.86 equivalent hours against eight real work hours](docs/images/night-reference-review.jpg)
+
+**Conditional continuation:** choose **Extension changes the comparison**. The
+22:00–06:01 example has **61 observed continuation work minutes** after 05:00.
+Its base equivalent is **7.87 hours**; if reduced-hour treatment also applies to
+that continuation, the equivalent would be **8.02 hours**. The two comparisons
+remain separate: the base result is not replaced, conditional excess requests
+review, and actual employment-regime applicability is not decided.
+[Calculation and boundaries](docs/weekly_duty.md#conditional-night-extension) ·
+[Portable report](docs/examples/night_extension_report.json).
+
+![English conditional night extension: observed continuation and a separate assumed equivalent](docs/images/night-extension-review.jpg)
 
 ## Run the complete demo locally
 

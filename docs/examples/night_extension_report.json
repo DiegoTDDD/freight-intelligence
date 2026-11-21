@@ -1,0 +1,293 @@
+{
+  "input": {
+    "week_start": "2026-11-09",
+    "carry_in_rest_minutes": 2880,
+    "carry_in_consecutive_workdays": 0,
+    "overtime_authorized": false,
+    "events": [
+      {
+        "activity": "rest",
+        "minutes": 1320
+      },
+      {
+        "activity": "driving",
+        "minutes": 180
+      },
+      {
+        "activity": "meal",
+        "minutes": 60
+      },
+      {
+        "activity": "waiting",
+        "minutes": 180
+      },
+      {
+        "activity": "work",
+        "minutes": 61
+      },
+      {
+        "activity": "rest",
+        "minutes": 8279
+      }
+    ]
+  },
+  "review": {
+    "status": "manual_review_required",
+    "week_start": "2026-11-09",
+    "timezone": "America/Sao_Paulo (UTC-03 for reviewed period)",
+    "covered_minutes": 10080,
+    "coverage_complete": true,
+    "total_work_minutes": 421,
+    "normal_week_reference_minutes": 2640,
+    "violations": [],
+    "review_reasons": [
+      "conditional_extension_reference_exceeded_requires_review",
+      "conditional_night_extension_applicability_requires_review",
+      "night_or_multiday_regime_requires_review",
+      "night_regime_and_reduced_hour_limits_require_review",
+      "post_05_night_extension_requires_review"
+    ],
+    "night_accounting": {
+      "observed_night_work_minutes": 360,
+      "observed_day_work_minutes": 61,
+      "daily_night_work_minutes": [
+        120,
+        240,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_window_equivalent_work_minutes": {
+        "numerator": 3307,
+        "denominator": 7
+      },
+      "shift_reference_comparisons": [
+        {
+          "start_minute": 1320,
+          "end_minute": 1801,
+          "real_work_minutes": 421,
+          "night_work_minutes": 360,
+          "base_window_equivalent_work_minutes": {
+            "numerator": 3307,
+            "denominator": 7
+          },
+          "reference_minutes": 480,
+          "exceeded": false,
+          "excess_equivalent_minutes": {
+            "numerator": 0,
+            "denominator": 7
+          }
+        }
+      ],
+      "week_reference_comparison": {
+        "reference_minutes": 2640,
+        "exceeded": false,
+        "excess_equivalent_minutes": {
+          "numerator": 0,
+          "denominator": 7
+        }
+      },
+      "post_05_extension_requires_review": true,
+      "conversion_supported_for_week": true,
+      "nominal_night_hour_seconds": 3150,
+      "window": "22:00 inclusive to 05:00 exclusive, Sao Paulo local time",
+      "source_id": "clt_73",
+      "extension_conversion_applied": false,
+      "wages_calculated": false,
+      "extension_sensitivity": {
+        "profile": "observed_night_continuation_05_to_22_if_applicable_v1",
+        "applicability": "not_determined",
+        "candidate_work_minutes": 61,
+        "conditional_equivalent_work_minutes": {
+          "numerator": 3368,
+          "denominator": 7
+        },
+        "increment_over_base_equivalent_minutes": {
+          "numerator": 61,
+          "denominator": 7
+        },
+        "shift_scenarios": [
+          {
+            "start_minute": 1320,
+            "end_minute": 1801,
+            "candidate_work_minutes": 61,
+            "continuation_windows": [
+              {
+                "start_minute": 1740,
+                "end_minute": 1801,
+                "observed_work_minutes": 61,
+                "full_22_to_05_shift_span_observed": true
+              }
+            ],
+            "conditional_equivalent_work_minutes": {
+              "numerator": 3368,
+              "denominator": 7
+            },
+            "reference_minutes": 480,
+            "exceeded": true,
+            "excess_equivalent_minutes": {
+              "numerator": 8,
+              "denominator": 7
+            }
+          }
+        ],
+        "week_reference_comparison": {
+          "reference_minutes": 2640,
+          "exceeded": false,
+          "excess_equivalent_minutes": {
+            "numerator": 0,
+            "denominator": 7
+          }
+        },
+        "replaces_base_result": false,
+        "wages_calculated": false,
+        "assumption": "If applicable, also reduce observed 05:00-22:00 work in the same declared shift following observed night work. Meals/rest are excluded. No applicability, payroll or dispatch decision."
+      }
+    },
+    "shifts": [
+      {
+        "start_minute": 1320,
+        "end_minute": 1801,
+        "work_minutes": 421,
+        "elapsed_minutes": 481,
+        "work_limit_minutes": 480
+      }
+    ],
+    "rest_periods": [
+      {
+        "start_minute": 0,
+        "end_minute": 1320,
+        "declared_minutes_including_carry_in": 4200,
+        "qualifies_selected_daily_rest": true,
+        "qualifies_selected_combined_weekly_rest": true
+      },
+      {
+        "start_minute": 1801,
+        "end_minute": 10080,
+        "declared_minutes_including_carry_in": 8279,
+        "qualifies_selected_daily_rest": true,
+        "qualifies_selected_combined_weekly_rest": true
+      }
+    ],
+    "timeline": [
+      {
+        "activity": "rest",
+        "start_minute": 0,
+        "end_minute": 1320,
+        "minutes": 1320,
+        "counts_as_work": false
+      },
+      {
+        "activity": "driving",
+        "start_minute": 1320,
+        "end_minute": 1500,
+        "minutes": 180,
+        "counts_as_work": true
+      },
+      {
+        "activity": "meal",
+        "start_minute": 1500,
+        "end_minute": 1560,
+        "minutes": 60,
+        "counts_as_work": false
+      },
+      {
+        "activity": "waiting",
+        "start_minute": 1560,
+        "end_minute": 1740,
+        "minutes": 180,
+        "counts_as_work": true
+      },
+      {
+        "activity": "work",
+        "start_minute": 1740,
+        "end_minute": 1801,
+        "minutes": 61,
+        "counts_as_work": true
+      },
+      {
+        "activity": "rest",
+        "start_minute": 1801,
+        "end_minute": 10080,
+        "minutes": 8279,
+        "counts_as_work": false
+      }
+    ],
+    "sources": [
+      {
+        "id": "clt_66_67_235",
+        "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm"
+      },
+      {
+        "id": "ctb_67c",
+        "url": "https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm"
+      },
+      {
+        "id": "stf_adi5322",
+        "url": "https://noticias.stf.jus.br/postsnoticias/stf-invalida-dispositivos-da-lei-dos-caminhoneiros-sobre-tempo-de-espera-jornada-e-descanso/"
+      },
+      {
+        "id": "tst_theme265",
+        "url": "https://www.tst.jus.br/documents/d/guest/irr265-2-pdf"
+      },
+      {
+        "id": "constitution_transition",
+        "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc141.htm"
+      },
+      {
+        "id": "clt_73",
+        "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm"
+      }
+    ],
+    "daily_totals": [
+      {
+        "date": "2026-11-09",
+        "work_minutes": 120,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-10",
+        "work_minutes": 301,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-11",
+        "work_minutes": 0,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-12",
+        "work_minutes": 0,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-13",
+        "work_minutes": 0,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-14",
+        "work_minutes": 0,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-15",
+        "work_minutes": 0,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      }
+    ],
+    "policy_reviewed_on": "2026-11-20",
+    "scope": "Selected-rule screening of declared seven-day standard private employed freight records; base night-work references and a separate conditional continuation scenario. Not actual-regime determination, tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
+    "history_authentication": "Declared scenario only; actual records are not authenticated",
+    "dispatch_authorized": false
+  }
+}

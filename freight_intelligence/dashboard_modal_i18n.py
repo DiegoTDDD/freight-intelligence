@@ -340,6 +340,16 @@ PT.update({"Edit the declared activity history (JSON)": "Editar o histórico de 
 PT.update({"Date": "Data"})
 
 PT.update({
+    "Extension changes the comparison": "Prorrogação muda a comparação",
+    "If night extension applies": "Se a prorrogação noturna se aplicar",
+    "Observed continuation work (min)": "Trabalho observado em prorrogação (min)",
+    "Conditional equivalent work hours": "Horas equivalentes condicionais",
+    "conditional_night_extension_applicability_requires_review": "Aplicabilidade da prorrogação noturna exige revisão",
+    "conditional_extension_reference_exceeded_requires_review": "Referência excedida se a prorrogação noturna se aplicar; exige revisão",
+    "Sensitivity scenario only: reduce observed continuation work from 05:00 to 22:00 in the same shift after observed night work, if applicable. Meals, breaks and rest are excluded. The base result stays unchanged; actual applicability and pay are not decided.": "Somente cenário de sensibilidade: reduzir o trabalho observado entre 5h e 22h na mesma jornada após trabalho noturno observado, se aplicável. Refeições, pausas e descansos são excluídos. O resultado-base permanece; enquadramento real e pagamento não são decididos."
+})
+
+PT.update({
     "Reduced-hour reference exceeded": "Referência com hora reduzida excedida",
     "selected_reduced_hour_shift_reference_exceeded": "Referência de jornada com hora reduzida excedida",
     "reduced_hour_week_reference_exceeded_requires_agreement_review": "Referência semanal com hora reduzida excedida; exige revisão do acordo",

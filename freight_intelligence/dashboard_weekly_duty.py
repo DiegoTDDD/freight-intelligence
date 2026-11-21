@@ -23,7 +23,9 @@ def render_weekly_duty(t):
                   "night_regime_and_reduced_hour_limits_require_review": "Night regime and reduced-hour limits require review",
                   "post_05_night_extension_requires_review": "Work after 05:00 needs night-extension review",
                   "selected_reduced_hour_shift_reference_exceeded": "Reduced-hour shift reference exceeded",
-                  "reduced_hour_week_reference_exceeded_requires_agreement_review": "Reduced-hour weekly reference exceeded; agreement review required"}
+                  "reduced_hour_week_reference_exceeded_requires_agreement_review": "Reduced-hour weekly reference exceeded; agreement review required",
+                  "conditional_night_extension_applicability_requires_review": "Night-extension applicability needs review",
+                  "conditional_extension_reference_exceeded_requires_review": "Reference exceeded if night extension applies; review required"}
         return translated if translated != code else labels.get(code, code.replace("_", " ").capitalize())
 
     ui.subheader("Seven-day duty review")
@@ -36,7 +38,8 @@ def render_weekly_duty(t):
         return
     names = {"balanced_week": "Balanced declared week", "short_daily_rest": "Short daily rest",
              "seven_workdays": "Seven workdays", "incomplete_week": "Incomplete history",
-             "night_shift": "Night shift and extension", "night_limit_exceeded": "Reduced-hour reference exceeded"}
+             "night_shift": "Night shift and extension", "night_limit_exceeded": "Reduced-hour reference exceeded",
+             "night_extension_sensitive": "Extension changes the comparison"}
     preset = ui.selectbox("Weekly example", list(names), format_func=names.get, key="weekly_example")
     ui.caption("Events cover consecutive minutes from Monday midnight. Rest must be explicitly declared; "
                "carry-in context may be null when unknown. Examples contain no real driver identities.")
@@ -94,6 +97,22 @@ def render_weekly_duty(t):
             ui.dataframe(rows, hide_index=True)
         ui.caption("Reference comparisons use exact base-window equivalents. A result at or below a reference "
                    "does not approve a night-work regime or post-05:00 extension. Missing dates have no comparison.")
+        sensitivity = night["extension_sensitivity"]
+        if sensitivity["candidate_work_minutes"]:
+            ui.subheader("If night extension applies")
+            columns = st.columns(2)
+            with columns[0]:
+                ui.metric("Observed continuation work (min)", sensitivity["candidate_work_minutes"])
+            with columns[1]:
+                conditional = sensitivity["conditional_equivalent_work_minutes"]
+                ui.metric("Conditional equivalent work hours", f"{conditional['numerator'] / conditional['denominator'] / 60:.2f}" if conditional else t("Unavailable"))
+            ui.caption("Sensitivity scenario only: reduce observed continuation work from 05:00 to 22:00 in the same shift "
+                       "after observed night work, if applicable. Meals, breaks and rest are excluded. "
+                       "The base result stays unchanged; actual applicability and pay are not decided.")
+            ui.dataframe([{t("Shift start (minute)"): row["start_minute"],
+                           t("Observed continuation work (min)"): row["candidate_work_minutes"],
+                           t("Reference comparison"): t("Unavailable") if row["exceeded"] is None else t("Above reference") if row["exceeded"] else t("At or below reference")}
+                          for row in sensitivity["shift_scenarios"] if row["candidate_work_minutes"]], hide_index=True)
     if result["violations"]:
         ui.dataframe([{t("Review flags"): review_label(row["code"]), t("Minute in week"): row["minute"]}
                       for row in result["violations"]], hide_index=True)

@@ -1,0 +1,32 @@
+{
+  "week_start": "2026-11-09",
+  "carry_in_rest_minutes": 2880,
+  "carry_in_consecutive_workdays": 0,
+  "overtime_authorized": false,
+  "events": [
+    {
+      "activity": "rest",
+      "minutes": 1320
+    },
+    {
+      "activity": "driving",
+      "minutes": 180
+    },
+    {
+      "activity": "meal",
+      "minutes": 60
+    },
+    {
+      "activity": "waiting",
+      "minutes": 180
+    },
+    {
+      "activity": "work",
+      "minutes": 61
+    },
+    {
+      "activity": "rest",
+      "minutes": 8279
+    }
+  ]
+}

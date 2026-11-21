@@ -3,7 +3,7 @@
   "reviewed_on": "2026-11-20",
   "supported_from": "2023-07-12",
   "timezone": "America/Sao_Paulo (UTC-03 for reviewed period)",
-  "scope": "Selected-rule screening of declared seven-day standard private employed freight records; base 22:00-05:00 reduced-hour accounting is informational. Not tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
+  "scope": "Selected-rule screening of declared seven-day standard private employed freight records; base night-work references and a separate conditional continuation scenario. Not actual-regime determination, tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
   "limits": {
     "week_minutes": 10080,
     "normal_week_minutes": 2640,
@@ -49,5 +49,7 @@
     "end_minute": 300,
     "nominal_hour_seconds": 3150,
     "source_id": "clt_73"
-  }
+  },
+  "extension_sensitivity_profile": "observed_night_continuation_05_to_22_if_applicable_v1",
+  "extension_sensitivity_reviewed_on": "2026-11-21"
 }

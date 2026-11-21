@@ -1,8 +1,9 @@
 # Declared seven-day duty review
 
-Open **Trip cost and breaks → Seven-day duty review**. Six explicitly synthetic
+Open **Trip cost and breaks → Seven-day duty review**. Seven explicitly synthetic
 examples demonstrate a balanced week, insufficient daily rest, seven workdays and
-incomplete history, a cross-midnight night shift and reduced-hour excess. An optional JSON editor supports other declared scenarios.
+incomplete history, a cross-midnight night shift, reduced-hour excess and conditional
+night extension. An optional JSON editor supports other declared scenarios.
 This is selected-rule screening, not authentication of driver records or a legal,
 payroll or dispatch decision. **X02 remains open** for complete operating acceptance.
 
@@ -81,7 +82,7 @@ does not approve weekly excess. Comparisons export the exact equivalent excess,
 reference and Boolean `exceeded`, and show real/equivalent/reference hours in the
 dashboard. Outside the reviewed period all comparison verdicts, references and
 equivalent excesses are `null`. The comparison covers observed input only; it
-does not fill missing history, approve the regime, extend conversion past 05:00,
+does not fill missing history, approve the regime, automatically extend conversion past 05:00,
 compute remuneration or turn a night scenario into dispatch authorization.
 
 For example, 22:06–05:07 contains 414 night and seven day work minutes:
@@ -97,6 +98,7 @@ premiums, rotating/collective/exempt regimes and full night-duty compliance are
 not calculated. Outside the reviewed whole-week date range the observed window
 counts remain available, but equivalent minutes and nominal-hour conversion are
 `null`. A night example always requires review and never authorizes dispatch.
+The separate conditional sensitivity below does not replace these base results.
 
 **Synthetic example:** Monday 22:00–Tuesday 06:00, with a 01:00–02:00 meal,
 contains 420 real work minutes, 360 night work minutes and 60 day work minutes.
@@ -116,6 +118,48 @@ and [report](examples/night_limit_report.json) are portable evidence of the
 **2026-11-21 E20 enhancement**. The rule-period snapshot remains reviewed through
 2026-11-20; this calculation update does not extend its legal date coverage.
 
+## Conditional night extension
+
+The **If night extension applies** section now calculates an explicitly conditional
+scenario alongside the base result. [CLT 73 paragraphs 4–5](https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm)
+addresses mixed schedules and night extensions; actual applicability still needs
+the employment regime, collective terms and an operating/legal review. This
+calculation is a sensitivity assumption, not a ruling on entitlement or wages.
+
+The hash-pinned profile `observed_night_continuation_05_to_22_if_applicable_v1`
+counts only observed work between 05:00 and 22:00 in the same declared shift,
+after observed work in the preceding 22:00–05:00 window. Meals, driving breaks
+and rest are excluded. Between-shift rest ends a shift; later daytime work is not
+silently attached to the previous night. Disjoint continuation windows prevent
+double counting across midnight/multiple days and never count base night work twice.
+
+The conditional equivalent is exactly `base_equivalent + candidate_minutes/7`:
+each candidate real minute already counted once in the base would count as 8/7
+instead. Exact shift and normal-week comparisons accompany the alternative.
+Daily overtime authorization does not approve weekly excess. The window records
+whether its complete 22:00–05:00 shift span was observed; **that Boolean is context,
+not legal eligibility**. Partial nights are not declared eligible or ineligible.
+Unknown carry-in, missing coverage and open shifts remain review reasons.
+
+`extension_sensitivity.applicability` is always `not_determined` and
+`replaces_base_result` is always false. A conditional excess adds a review reason,
+never an authoritative violation. The parent `extension_conversion_applied`
+remains false. Beyond the existing reviewed whole-week period, observed candidate
+minutes remain available, while conditional equivalents/references/verdicts are
+null. No assumed rest, remuneration or dispatch approval is produced.
+
+**Synthetic example:** `night_extension_sensitive` is 22:00–06:01 with a full
+01:00–02:00 meal. It contains **421 real work minutes**, 360 base night work
+minutes and **61 continuation work minutes**. The base equivalent is `3307/7`
+minutes (**7.87 hours**, below 480). If extension treatment applies, the equivalent
+would be `3368/7` minutes (**8.02 hours**, above 480). The base comparison remains
+false, the conditional comparison is true, violations remain empty and the result
+is **manual review required**. [Input](examples/night_extension_input.json) and
+[full report](examples/night_extension_report.json) are portable evidence. This
+enhances E20's arithmetic without asserting that X02's actual-regime or operating
+acceptance requirements have been met. Profile arithmetic reviewed 2026-11-21;
+the underlying supported rule period remains unchanged.
+
 ## Portable results
 
 | Synthetic scenario | Observed work | Selected result |
@@ -126,6 +170,7 @@ and [report](examples/night_limit_report.json) are portable evidence of the
 | Incomplete week | 44 observed hours | Missing coverage remains explicit; no clean result |
 | Night shift with extension | 7 real work hours; 6 in the night window | 7.86 base-window equivalent hours; extension/regime review required |
 | Reduced-hour reference exceeded | 8 real work hours; 6 in the night window | 8.86 equivalent hours; selected shift reference exceeded |
+| Extension changes the comparison | 7.02 real work hours; 61 continuation minutes | Base 7.87 hours; conditional 8.02 hours; applicability needs review |
 
 The balanced example has five eight-hour workdays and one four-hour workday,
 with a full meal per shift. Its final declared rest is exactly 2,100 minutes.
@@ -136,7 +181,8 @@ with a full meal per shift. Its final declared rest is exactly 2,100 minutes.
 
 `GET /api/brazil/duty-review?example=balanced_week` returns a published synthetic
 `input` and its `review`. Other example names are `short_daily_rest`,
-`seven_workdays`, `incomplete_week`, `night_shift` and `night_limit_exceeded`.
+`seven_workdays`, `incomplete_week`, `night_shift`, `night_limit_exceeded` and
+`night_extension_sensitive`.
 
 `POST /api/brazil/duty-review` accepts the same input object as application/json
 and returns a stateless calculation. It does not create/update a record and

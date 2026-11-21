@@ -41,6 +41,7 @@
     "normal_week_reference_minutes": 2640,
     "violations": [],
     "review_reasons": [
+      "conditional_night_extension_applicability_requires_review",
       "night_or_multiday_regime_requires_review",
       "night_regime_and_reduced_hour_limits_require_review",
       "post_05_night_extension_requires_review"
@@ -93,7 +94,56 @@
       "window": "22:00 inclusive to 05:00 exclusive, Sao Paulo local time",
       "source_id": "clt_73",
       "extension_conversion_applied": false,
-      "wages_calculated": false
+      "wages_calculated": false,
+      "extension_sensitivity": {
+        "profile": "observed_night_continuation_05_to_22_if_applicable_v1",
+        "applicability": "not_determined",
+        "candidate_work_minutes": 60,
+        "conditional_equivalent_work_minutes": {
+          "numerator": 3360,
+          "denominator": 7
+        },
+        "increment_over_base_equivalent_minutes": {
+          "numerator": 60,
+          "denominator": 7
+        },
+        "shift_scenarios": [
+          {
+            "start_minute": 1320,
+            "end_minute": 1800,
+            "candidate_work_minutes": 60,
+            "continuation_windows": [
+              {
+                "start_minute": 1740,
+                "end_minute": 1800,
+                "observed_work_minutes": 60,
+                "full_22_to_05_shift_span_observed": true
+              }
+            ],
+            "conditional_equivalent_work_minutes": {
+              "numerator": 3360,
+              "denominator": 7
+            },
+            "reference_minutes": 480,
+            "exceeded": false,
+            "excess_equivalent_minutes": {
+              "numerator": 0,
+              "denominator": 7
+            }
+          }
+        ],
+        "week_reference_comparison": {
+          "reference_minutes": 2640,
+          "exceeded": false,
+          "excess_equivalent_minutes": {
+            "numerator": 0,
+            "denominator": 7
+          }
+        },
+        "replaces_base_result": false,
+        "wages_calculated": false,
+        "assumption": "If applicable, also reduce observed 05:00-22:00 work in the same declared shift following observed night work. Meals/rest are excluded. No applicability, payroll or dispatch decision."
+      }
     },
     "shifts": [
       {
@@ -235,7 +285,7 @@
       }
     ],
     "policy_reviewed_on": "2026-11-20",
-    "scope": "Selected-rule screening of declared seven-day standard private employed freight records; base 22:00-05:00 reduced-hour accounting is informational. Not tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
+    "scope": "Selected-rule screening of declared seven-day standard private employed freight records; base night-work references and a separate conditional continuation scenario. Not actual-regime determination, tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
     "history_authentication": "Declared scenario only; actual records are not authenticated",
     "dispatch_authorized": false
   }

@@ -159,7 +159,7 @@ def test_json_bounds_duplicates_and_changed_policy_are_rejected(tmp_path):
         review_week(example_history(), root)
 
 
-@pytest.mark.parametrize("defect", ["missing_limit", "wrong_type", "boolean_limit", "missing_night", "float_night"])
+@pytest.mark.parametrize("defect", ["missing_limit", "wrong_type", "boolean_limit", "missing_night", "float_night", "missing_extension_profile"])
 def test_structurally_invalid_rehashed_policy_returns_unavailable_not_server_error(tmp_path, defect):
     root = tmp_path / "rules"
     shutil.copytree(DEFAULT_ROOT, root)
@@ -172,8 +172,10 @@ def test_structurally_invalid_rehashed_policy_returns_unavailable_not_server_err
         policy["limits"]["meal_minutes"] = True
     elif defect == "missing_night":
         del policy["night_accounting"]
-    else:
+    elif defect == "float_night":
         policy["night_accounting"]["nominal_hour_seconds"] = 3150.0
+    else:
+        del policy["extension_sensitivity_profile"]
     raw = json.dumps(policy).encode()
     (root / "policy.json").write_bytes(raw)
     manifest = json.loads((root / "manifest.json").read_bytes())

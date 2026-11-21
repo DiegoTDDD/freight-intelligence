@@ -5,6 +5,8 @@ import json
 from datetime import date, timedelta
 from pathlib import Path
 
+from freight_intelligence.optimization.night_extension import extension_sensitivity
+
 DEFAULT_ROOT = Path(__file__).resolve().parents[2] / "deployment/duty_review"
 MAX_BYTES = 65536
 MAX_EVENTS = 300
@@ -39,6 +41,8 @@ def load_policy(root=DEFAULT_ROOT):
     if (night != {"start_minute": 1320, "end_minute": 300, "nominal_hour_seconds": 3150, "source_id": "clt_73"}
             or any(type(night[k]) is not int for k in ("start_minute", "end_minute", "nominal_hour_seconds"))):
         raise ValueError("Invalid reviewed night-accounting policy")
+    if policy.get("extension_sensitivity_profile") != "observed_night_continuation_05_to_22_if_applicable_v1":
+        raise ValueError("Invalid reviewed extension-sensitivity profile")
     return policy
 
 
@@ -248,6 +252,13 @@ def review_week(payload, root=DEFAULT_ROOT):
     if not any(r["qualifies_selected_combined_weekly_rest"] for r in rests):
         unknown.append("no_complete_combined_weekly_rest_observed")
     night = night_accounting(timeline, shifts, policy, normal_reference is not None)
+    night["extension_sensitivity"] = extension_sensitivity(timeline, shifts, night, policy, normal_reference is not None)
+    sensitivity = night["extension_sensitivity"]
+    if sensitivity["candidate_work_minutes"]:
+        night["post_05_extension_requires_review"] = True
+        unknown.append("conditional_night_extension_applicability_requires_review")
+        if any(row["exceeded"] for row in sensitivity["shift_scenarios"]) or sensitivity["week_reference_comparison"]["exceeded"]:
+            unknown.append("conditional_extension_reference_exceeded_requires_review")
     for comparison in night["shift_reference_comparisons"]:
         if comparison["exceeded"] and comparison["night_work_minutes"]:
             flag("selected_reduced_hour_shift_reference_exceeded", comparison["end_minute"])
@@ -275,16 +286,16 @@ def review_week(payload, root=DEFAULT_ROOT):
 
 
 def example_history(name="balanced_week"):
-    if name not in {"balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift", "night_limit_exceeded"}:
+    if name not in {"balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift", "night_limit_exceeded", "night_extension_sensitive"}:
         raise ValueError("Unknown weekly example")
-    if name in {"night_shift", "night_limit_exceeded"}:
+    if name in {"night_shift", "night_limit_exceeded", "night_extension_sensitive"}:
         # Monday 22:00 to Tuesday 06:00 (or 07:00); meal 01:00-02:00 is excluded.
+        final_work = 120 if name == "night_limit_exceeded" else 61 if name == "night_extension_sensitive" else 60
         return {"week_start": "2026-11-09", "carry_in_rest_minutes": 2880,
                 "carry_in_consecutive_workdays": 0, "overtime_authorized": False,
                 "events": [{"activity": kind, "minutes": minutes} for kind, minutes in
                            (("rest", 1320), ("driving", 180), ("meal", 60),
-                            ("waiting", 180), ("work", 120 if name == "night_limit_exceeded" else 60),
-                            ("rest", 8220 if name == "night_limit_exceeded" else 8280))]}
+                            ("waiting", 180), ("work", final_work), ("rest", 8340 - final_work))]}
     events, clock = [], 0
 
     def add(kind, minutes):

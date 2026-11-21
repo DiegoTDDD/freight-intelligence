@@ -193,4 +193,10 @@ selected shift reference after reduced-hour accounting. Reviews now include
 `night_accounting.shift_reference_comparisons` and `week_reference_comparison`,
 with exact equivalent excess, selected references and Boolean verdicts. Outside
 the reviewed whole-week period these reference/verdict/excess fields are `null`.
+`example=night_extension_sensitive` demonstrates a base result below the reference
+and a conditional extension above it. `night_accounting.extension_sensitivity`
+contains observed candidate minutes, exact alternative equivalents, shift/weekly
+comparisons and declared context. Applicability stays `not_determined`; the base
+result and actual work/rest duration are unchanged. Conditional excess is a review
+reason, not an authoritative violation. [Sensitivity contract](weekly_duty.md#conditional-night-extension).
 [Schema, dates, examples and unsupported contexts](weekly_duty.md).
