@@ -130,7 +130,7 @@ def create_app(
         return root
 
     @data_routes.get("/brazil/duty-review")
-    def weekly_example(example: Literal["balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift"] = "balanced_week"):
+    def weekly_example(example: Literal["balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift", "night_limit_exceeded"] = "balanced_week"):
         root = weekly_policy_root()
         payload = example_history(example)
         return {"input": payload, "review": review_week(payload, root), "records_saved": False}

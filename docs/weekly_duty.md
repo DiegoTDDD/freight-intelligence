@@ -1,8 +1,8 @@
 # Declared seven-day duty review
 
-Open **Trip cost and breaks → Seven-day duty review**. Five explicitly synthetic
+Open **Trip cost and breaks → Seven-day duty review**. Six explicitly synthetic
 examples demonstrate a balanced week, insufficient daily rest, seven workdays and
-incomplete history, plus a cross-midnight night shift. An optional JSON editor supports other declared scenarios.
+incomplete history, a cross-midnight night shift and reduced-hour excess. An optional JSON editor supports other declared scenarios.
 This is selected-rule screening, not authentication of driver records or a legal,
 payroll or dispatch decision. **X02 remains open** for complete operating acceptance.
 
@@ -72,9 +72,22 @@ and rest are excluded. Real minutes remain unchanged for elapsed time, rest and
 continuous-driving checks. Work crossing midnight is split over its observed local
 dates; missing history is not filled. Exact equivalent minutes are exported as
 an integer numerator and denominator, using `day_minutes + night_minutes * 8/7`.
-Rounding to two decimals happens only in the displayed hours. This equivalent is
-not silently substituted into the existing daytime threshold checks: reduced-hour
-limit/regime review is explicitly required whenever night work is observed.
+Rounding to two decimals happens only in the displayed hours. The equivalent is
+compared separately with selected shift references and the normal weekly
+reference, preserving the existing real-minute checks. An above-reference shift
+with observed night work adds `selected_reduced_hour_shift_reference_exceeded`.
+Weekly equivalent excess requests agreement review; daily overtime authorization
+does not approve weekly excess. Comparisons export the exact equivalent excess,
+reference and Boolean `exceeded`, and show real/equivalent/reference hours in the
+dashboard. Outside the reviewed period all comparison verdicts, references and
+equivalent excesses are `null`. The comparison covers observed input only; it
+does not fill missing history, approve the regime, extend conversion past 05:00,
+compute remuneration or turn a night scenario into dispatch authorization.
+
+For example, 22:06–05:07 contains 414 night and seven day work minutes:
+`3361/7` equivalent minutes exceeds 480 by `1/7` minute, even though both display
+as 8.00 hours. The reference verdict is made using integers before display
+rounding. Meals/rest remain excluded from both work totals and their comparisons.
 
 Work continuing after 05:00 within a shift that has work before 05:00 is
 conservatively marked for extension review. The engine does not decide whether
@@ -94,6 +107,15 @@ and triggers extension review. [Input](examples/night_duty_input.json),
 available when hosting sleeps. This advances **X02** without closing its operating
 acceptance requirements.
 
+**Above-reference example:** the `night_limit_exceeded` fixture extends that
+scenario to 07:00. It has **480 real work minutes** and `3720/7` equivalent
+minutes (**8.86 hours**), exceeding the selected 480-minute shift reference by
+exactly `360/7` minutes. It is flagged even though the real-work threshold is not
+exceeded; elapsed time stays 540 real minutes. [Input](examples/night_limit_input.json)
+and [report](examples/night_limit_report.json) are portable evidence of the
+**2026-11-21 E20 enhancement**. The rule-period snapshot remains reviewed through
+2026-11-20; this calculation update does not extend its legal date coverage.
+
 ## Portable results
 
 | Synthetic scenario | Observed work | Selected result |
@@ -103,6 +125,7 @@ acceptance requirements.
 | Seven workdays | 48 hours | Seventh workday flagged; weekly excess needs review |
 | Incomplete week | 44 observed hours | Missing coverage remains explicit; no clean result |
 | Night shift with extension | 7 real work hours; 6 in the night window | 7.86 base-window equivalent hours; extension/regime review required |
+| Reduced-hour reference exceeded | 8 real work hours; 6 in the night window | 8.86 equivalent hours; selected shift reference exceeded |
 
 The balanced example has five eight-hour workdays and one four-hour workday,
 with a full meal per shift. Its final declared rest is exactly 2,100 minutes.
@@ -113,7 +136,7 @@ with a full meal per shift. Its final declared rest is exactly 2,100 minutes.
 
 `GET /api/brazil/duty-review?example=balanced_week` returns a published synthetic
 `input` and its `review`. Other example names are `short_daily_rest`,
-`seven_workdays`, `incomplete_week` and `night_shift`.
+`seven_workdays`, `incomplete_week`, `night_shift` and `night_limit_exceeded`.
 
 `POST /api/brazil/duty-review` accepts the same input object as application/json
 and returns a stateless calculation. It does not create/update a record and

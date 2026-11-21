@@ -1,6 +1,6 @@
 # Current delivery status
 
-Reviewed **2026-11-20**. The original **12 portfolio stages are delivered**.
+Reviewed **2026-11-21**. The original **12 portfolio stages are delivered**.
 There are **20 concrete delivered expansion items**, each closed for its stated
 source population and period. **Four additional requirements remain unmet**;
 they are separate entries with exact completion criteria and dependencies.
@@ -20,7 +20,8 @@ The authoritative record is the [delivery checklist](expansion_execution.md):
 
 E18 adds dated toll/daytime planning; E19 adds declared seven-day duty review
 with explicit missing data and rule-date support. E20 adds exact base-window
-night-work accounting and explicit post-05:00 extension review. X02 remains open for
+night-work accounting, exact selected shift/weekly reference comparisons and
+explicit post-05:00 extension review. X02 remains open for
 complete operating acceptance; a synthetic scenario is not driver-log validation.
 
 This replaces the previous open-ended remaining-work list. Additional years or

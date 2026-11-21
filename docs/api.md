@@ -188,4 +188,9 @@ permissions. The body is bounded at 64 KiB/300 events and ten seconds to receive
 `example=night_shift` demonstrates real work versus exact reduced-hour equivalents
 for the base 22:00–05:00 window; post-05:00 extension requires review. No wages
 or dispatch authorization are produced. Existing example IDs remain available.
+`example=night_limit_exceeded` demonstrates eight real work hours exceeding the
+selected shift reference after reduced-hour accounting. Reviews now include
+`night_accounting.shift_reference_comparisons` and `week_reference_comparison`,
+with exact equivalent excess, selected references and Boolean verdicts. Outside
+the reviewed whole-week period these reference/verdict/excess fields are `null`.
 [Schema, dates, examples and unsupported contexts](weekly_duty.md).

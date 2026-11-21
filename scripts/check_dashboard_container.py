@@ -68,6 +68,11 @@ request = urllib.request.Request(base + "/api/brazil/duty-review", method="POST"
                                  headers={"Content-Type": "application/json"})
 with urllib.request.urlopen(request, timeout=10) as response:
     assert json.load(response)["review"] == night["review"]
+with urllib.request.urlopen(base + "/api/brazil/duty-review?example=night_limit_exceeded", timeout=10) as response:
+    limited = json.load(response)
+    assert limited["review"]["total_work_minutes"] == 480
+    assert limited["review"]["night_accounting"]["shift_reference_comparisons"][0]["exceeded"] is True
+    assert limited["review"]["status"] == "selected_limits_exceeded"
 with urllib.request.urlopen(base + "/api/openapi.json", timeout=10) as response:
     assert {"url": "/api"} in json.load(response)["servers"]
 try:

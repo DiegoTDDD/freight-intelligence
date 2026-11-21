@@ -24,6 +24,112 @@
       "numerator": 18480,
       "denominator": 7
     },
+    "shift_reference_comparisons": [
+      {
+        "start_minute": 480,
+        "end_minute": 1020,
+        "real_work_minutes": 480,
+        "night_work_minutes": 0,
+        "base_window_equivalent_work_minutes": {
+          "numerator": 3360,
+          "denominator": 7
+        },
+        "reference_minutes": 480,
+        "exceeded": false,
+        "excess_equivalent_minutes": {
+          "numerator": 0,
+          "denominator": 7
+        }
+      },
+      {
+        "start_minute": 1920,
+        "end_minute": 2460,
+        "real_work_minutes": 480,
+        "night_work_minutes": 0,
+        "base_window_equivalent_work_minutes": {
+          "numerator": 3360,
+          "denominator": 7
+        },
+        "reference_minutes": 480,
+        "exceeded": false,
+        "excess_equivalent_minutes": {
+          "numerator": 0,
+          "denominator": 7
+        }
+      },
+      {
+        "start_minute": 3360,
+        "end_minute": 3900,
+        "real_work_minutes": 480,
+        "night_work_minutes": 0,
+        "base_window_equivalent_work_minutes": {
+          "numerator": 3360,
+          "denominator": 7
+        },
+        "reference_minutes": 480,
+        "exceeded": false,
+        "excess_equivalent_minutes": {
+          "numerator": 0,
+          "denominator": 7
+        }
+      },
+      {
+        "start_minute": 4800,
+        "end_minute": 5340,
+        "real_work_minutes": 480,
+        "night_work_minutes": 0,
+        "base_window_equivalent_work_minutes": {
+          "numerator": 3360,
+          "denominator": 7
+        },
+        "reference_minutes": 480,
+        "exceeded": false,
+        "excess_equivalent_minutes": {
+          "numerator": 0,
+          "denominator": 7
+        }
+      },
+      {
+        "start_minute": 6240,
+        "end_minute": 6780,
+        "real_work_minutes": 480,
+        "night_work_minutes": 0,
+        "base_window_equivalent_work_minutes": {
+          "numerator": 3360,
+          "denominator": 7
+        },
+        "reference_minutes": 480,
+        "exceeded": false,
+        "excess_equivalent_minutes": {
+          "numerator": 0,
+          "denominator": 7
+        }
+      },
+      {
+        "start_minute": 7680,
+        "end_minute": 7980,
+        "real_work_minutes": 240,
+        "night_work_minutes": 0,
+        "base_window_equivalent_work_minutes": {
+          "numerator": 1680,
+          "denominator": 7
+        },
+        "reference_minutes": 480,
+        "exceeded": false,
+        "excess_equivalent_minutes": {
+          "numerator": 0,
+          "denominator": 7
+        }
+      }
+    ],
+    "week_reference_comparison": {
+      "reference_minutes": 2640,
+      "exceeded": false,
+      "excess_equivalent_minutes": {
+        "numerator": 0,
+        "denominator": 7
+      }
+    },
     "post_05_extension_requires_review": false,
     "conversion_supported_for_week": true,
     "nominal_night_hour_seconds": 3150,

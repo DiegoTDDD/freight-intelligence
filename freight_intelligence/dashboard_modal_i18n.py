@@ -340,6 +340,20 @@ PT.update({"Edit the declared activity history (JSON)": "Editar o histórico de 
 PT.update({"Date": "Data"})
 
 PT.update({
+    "Reduced-hour reference exceeded": "Referência com hora reduzida excedida",
+    "selected_reduced_hour_shift_reference_exceeded": "Referência de jornada com hora reduzida excedida",
+    "reduced_hour_week_reference_exceeded_requires_agreement_review": "Referência semanal com hora reduzida excedida; exige revisão do acordo",
+    "Shift start (minute)": "Início da jornada (minuto)",
+    "Real work (hours)": "Trabalho real (horas)",
+    "Equivalent work (hours)": "Trabalho equivalente (horas)",
+    "Selected reference (hours)": "Referência selecionada (horas)",
+    "Reference comparison": "Comparação com a referência",
+    "Above reference": "Acima da referência",
+    "At or below reference": "Igual ou abaixo da referência",
+    "Reference comparisons use exact base-window equivalents. A result at or below a reference does not approve a night-work regime or post-05:00 extension. Missing dates have no comparison.": "As comparações usam equivalentes exatos da faixa-base. Um resultado igual ou abaixo da referência não aprova regime noturno nem prorrogação após 5h. Datas não cobertas pelas regras não recebem comparação."
+})
+
+PT.update({
     "Night shift and extension": "Jornada noturna e prorrogação",
     "Night-work accounting": "Contagem do trabalho noturno",
     "Actual night work hours": "Horas reais de trabalho noturno",

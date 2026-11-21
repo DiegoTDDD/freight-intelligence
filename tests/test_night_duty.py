@@ -89,3 +89,90 @@ def test_night_example_is_identical_over_stateless_get_and_post():
         assert response.status_code == 200
         assert response.json()["review"] == example["review"]
         assert response.json()["records_saved"] is False
+
+
+@pytest.mark.parametrize("duration,authorized,reference,exceeded", [
+    (419, False, 480, False), (420, False, 480, False), (421, False, 480, True),
+    (539, True, 600, False), (540, True, 600, False), (541, True, 600, True),
+])
+def test_reduced_hour_reference_boundaries_use_exact_values(duration, authorized, reference, exceeded):
+    history = history_at(1320, duration)
+    history["overtime_authorized"] = authorized
+    result = review_week(history)
+    comparison, = result["night_accounting"]["shift_reference_comparisons"]
+    assert comparison["reference_minutes"] == reference
+    assert comparison["exceeded"] is exceeded
+    value = comparison["base_window_equivalent_work_minutes"]
+    assert Fraction(value["numerator"], value["denominator"]) == duration + Fraction(min(420, duration), 7)
+    assert any(v["code"] == "selected_reduced_hour_shift_reference_exceeded" for v in result["violations"]) is exceeded
+    assert comparison["real_work_minutes"] == duration
+
+
+def test_new_example_catches_reduced_hour_excess_without_changing_real_time_checks():
+    result = review_week(example_history("night_limit_exceeded"))
+    assert result["total_work_minutes"] == 480
+    assert result["shifts"][0]["elapsed_minutes"] == 540
+    assert result["status"] == "selected_limits_exceeded"
+    assert [v["code"] for v in result["violations"]] == ["selected_reduced_hour_shift_reference_exceeded"]
+    comparison, = result["night_accounting"]["shift_reference_comparisons"]
+    assert comparison["base_window_equivalent_work_minutes"] == {"numerator": 3720, "denominator": 7}
+    assert comparison["excess_equivalent_minutes"] == {"numerator": 360, "denominator": 7}
+    assert result["dispatch_authorized"] is False
+
+
+def test_excess_smaller_than_display_rounding_is_still_detected():
+    result = review_week(history_at(1326, 421))  # 22:06-05:07: 414 night + 7 day minutes.
+    comparison, = result["night_accounting"]["shift_reference_comparisons"]
+    value = comparison["base_window_equivalent_work_minutes"]
+    assert value == {"numerator": 3361, "denominator": 7}
+    assert f"{value['numerator'] / value['denominator'] / 60:.2f}" == "8.00"
+    assert comparison["exceeded"] is True
+    assert comparison["excess_equivalent_minutes"] == {"numerator": 1, "denominator": 7}
+
+
+def test_weekly_reduced_reference_is_separate_from_daily_authorization_and_real_hours():
+    events, clock = [], 0
+    for day in range(5):
+        start = day * 1440 + 1260  # 21:00-06:00, with a 01:00-02:00 meal.
+        events.append({"activity": "rest", "minutes": start - clock})
+        events.extend({"activity": k, "minutes": m} for k, m in
+                      (("work", 240), ("meal", 60), ("waiting", 240)))
+        clock = start + 540
+    events.append({"activity": "rest", "minutes": 10080 - clock})
+    history = {**example_history(), "events": events, "overtime_authorized": True}
+    result = review_week(history)
+    assert result["total_work_minutes"] == 2400 < result["normal_week_reference_minutes"]
+    night = result["night_accounting"]
+    assert all(c["exceeded"] is False for c in night["shift_reference_comparisons"])
+    assert night["week_reference_comparison"]["reference_minutes"] == 2640
+    assert night["week_reference_comparison"]["exceeded"] is True
+    assert night["week_reference_comparison"]["excess_equivalent_minutes"] == {"numerator": 120, "denominator": 7}
+    assert "reduced_hour_week_reference_exceeded_requires_agreement_review" in result["review_reasons"]
+    assert "weekly_hours_above_normal_reference_require_payroll_agreement_review" not in result["review_reasons"]
+    assert result["dispatch_authorized"] is False
+
+
+def test_unsupported_dates_have_no_reference_verdicts_and_daytime_values_are_preserved():
+    history = example_history("night_limit_exceeded")
+    history["week_start"] = "2026-12-21"
+    result = review_week(history)
+    night = result["night_accounting"]
+    for comparison in [*night["shift_reference_comparisons"], night["week_reference_comparison"]]:
+        assert comparison["reference_minutes"] is None
+        assert comparison["exceeded"] is None and comparison["excess_equivalent_minutes"] is None
+    assert not any(v["code"] == "selected_reduced_hour_shift_reference_exceeded" for v in result["violations"])
+    day = review_week(example_history())
+    assert all(c["base_window_equivalent_work_minutes"]["numerator"] == c["real_work_minutes"] * 7
+               and c["exceeded"] is False for c in day["night_accounting"]["shift_reference_comparisons"])
+    assert day["status"] == "within_selected_weekly_planning_limits"
+
+
+def test_new_example_get_and_post_preserve_exact_reference_evidence():
+    with TestClient(create_app()) as client:
+        response = client.get("/brazil/duty-review?example=night_limit_exceeded")
+        assert response.status_code == 200
+        example = response.json()
+        assert example["review"] == review_week(example["input"])
+        response = client.post("/brazil/duty-review", json=example["input"])
+        assert response.status_code == 200
+        assert response.json()["review"] == example["review"]

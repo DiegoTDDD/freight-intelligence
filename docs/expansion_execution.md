@@ -1,6 +1,6 @@
 # Delivery checklist and outstanding requirements
 
-Reviewed **2026-11-20**. This is the authoritative delivery checklist. The
+Reviewed **2026-11-21**. This is the authoritative delivery checklist. The
 [recovered original roadmap](roteiro_original.md) is historical source material.
 Completed items stay closed for their stated coverage. Additional years, sources
 or commercial assurance do not silently enlarge an existing acceptance criterion.
@@ -52,7 +52,7 @@ promise of complete national shipment coverage or unlimited future extensions.
 | E17 | Added ANAC 2023 airport-pair stages: 18,699 monthly rows, all twelve months, domestic/international kilograms reconciled to independent monthly aggregates; 2024–2025 pairs and forecasts preserved; closes X05 | [Coverage contract](brazil_air.md#added-2023-airport-pair-coverage--x05), [reconciliation evidence](evidence/anac_pairs_2023_review.json) |
 | E18 | Dated Autoban corridor toll estimates and selected daytime duty planning: integer-cent prices, directional plazas, waiting-as-work, meal/driving breaks and explicit unsupported contexts; X02 remains open for complete operating acceptance | [Scope and results](trip_planning.md), [portable scenario](examples/trip_planning.json), [tariff audit](../.github/workflows/audit-trip-tariffs.yml) |
 | E19 | Declared seven-day duty review: explicit coverage/carry-in context, selected daily/weekly rest, seventh-workday flags, weekly excess review, dated rule support, chart, bounded stateless API and portable examples; X02 remains open | [Policy and results](weekly_duty.md), [example report](examples/weekly_duty_report.json) |
-| E20 | Night-work base-window accounting: exact 22:00–05:00 work overlap, reduced-hour equivalents separate from real minutes, meals/rest excluded, post-05:00 extension review, dated policy and portable cross-midnight example; X02 remains open | [Calculation and limits](weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting), [example report](examples/night_duty_report.json) |
+| E20 | Night-work base-window accounting: exact 22:00–05:00 work overlap, real/reduced-hour separation, exact shift/weekly reference comparisons (enhanced 2026-11-21), meals/rest excluded, post-05:00 review, dated policy and portable cross-midnight examples; X02 remains open | [Calculation and limits](weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting), [above-reference report](examples/night_limit_report.json) |
 
 ## Outstanding requirements — four explicitly not delivered
 
@@ -63,7 +63,7 @@ and dependency; “more data” or “more quality” alone is not an acceptance
 | ID | Requirement not delivered | Concrete completion criterion | Current dependency |
 | --- | --- | --- | --- |
 | X01 | Commercial truck dispatch assurance | Identified operating region/vehicle population, validated current restrictions, provider terms and operational acceptance evidence | No operating validation dataset or contracted dispatch assurance supplied; the routing demonstration is not certification |
-| X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | E18 implements dated Autoban prices/daytime checks; E19 adds weekly screening; E20 adds base-window night conversion. Night extension/regime and reduced-hour limit decisions, collective/exempt regimes, authenticated records and operating/legal acceptance remain unimplemented or unverified |
+| X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | E18 implements dated Autoban prices/daytime checks; E19 adds weekly screening; E20 adds base-window night conversion and exact selected-reference comparisons. Night extension and actual regime applicability, collective/exempt terms, authenticated records and operating/legal acceptance remain unimplemented or unverified |
 | X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | Images and permission controls exist; the public API shares the free dashboard service. Independent hosting and an availability contract are not delivered |
 | X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | Real operating records/outcomes not supplied. Synthetic examples are not measured savings |
 
