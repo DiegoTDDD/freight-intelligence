@@ -200,3 +200,11 @@ comparisons and declared context. Applicability stays `not_determined`; the base
 result and actual work/rest duration are unchanged. Conditional excess is a review
 reason, not an authoritative violation. [Sensitivity contract](weekly_duty.md#conditional-night-extension).
 [Schema, dates, examples and unsupported contexts](weekly_duty.md).
+
+**Regime declaration (X02-T07):** `employment_regime` is optional for compatibility,
+but omission defaults to `unknown`. Only `standard_private_employee` within the
+reviewed week range enables selected references. `unknown` and
+`collective_or_exempt` return observed history with null references/qualifications,
+empty violations and manual review required. `unknown_regime` / `special_regime`
+demonstrate the gate. An empty violation list is not approval when checks are
+disabled. [Exact contract](weekly_duty.md#declared-employment-regime).

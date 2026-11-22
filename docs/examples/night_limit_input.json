@@ -1,5 +1,6 @@
 {
   "week_start": "2026-11-09",
+  "employment_regime": "standard_private_employee",
   "carry_in_rest_minutes": 2880,
   "carry_in_consecutive_workdays": 0,
   "overtime_authorized": false,

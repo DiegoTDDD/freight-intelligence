@@ -39,7 +39,8 @@ def render_weekly_duty(t):
     names = {"balanced_week": "Balanced declared week", "short_daily_rest": "Short daily rest",
              "seven_workdays": "Seven workdays", "incomplete_week": "Incomplete history",
              "night_shift": "Night shift and extension", "night_limit_exceeded": "Reduced-hour reference exceeded",
-             "night_extension_sensitive": "Extension changes the comparison"}
+             "night_extension_sensitive": "Extension changes the comparison",
+             "unknown_regime": "Unknown employment regime", "special_regime": "Collective or exempt regime"}
     preset = ui.selectbox("Weekly example", list(names), format_func=names.get, key="weekly_example")
     ui.caption("Events cover consecutive minutes from Monday midnight. Rest must be explicitly declared; "
                "carry-in context may be null when unknown. Examples contain no real driver identities.")
@@ -59,6 +60,13 @@ def render_weekly_duty(t):
     if saved is None:
         return
     result = saved["review"]
+    regime = result["regime_assessment"]
+    if not regime["reference_checks_enabled"]:
+        ui.warning("Reference checks are disabled: the declared regime or week is outside the reviewed standard profile. "
+                   "Observed work and coverage remain visible; unavailable references are not approvals.")
+    regime_labels = {"standard_private_employee": "Standard private employee", "unknown": "Unknown employment regime",
+                     "collective_or_exempt": "Collective or exempt regime"}
+    ui.caption(t("Declared employment regime: ") + t(regime_labels[regime["declared_regime"]]))
     ui.caption("Results use the last submitted JSON for the selected example.")
     ui.caption(t("Declared week starting: ") + result["week_start"] + t(" · Policy reviewed: ") + policy["reviewed_on"])
     columns = st.columns(3)

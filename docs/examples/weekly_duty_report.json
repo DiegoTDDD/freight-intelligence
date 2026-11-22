@@ -8,6 +8,11 @@
   "normal_week_reference_minutes": 2640,
   "violations": [],
   "review_reasons": [],
+  "regime_assessment": {
+    "declared_regime": "standard_private_employee",
+    "reference_checks_enabled": true,
+    "actual_regime_verified": false
+  },
   "night_accounting": {
     "observed_night_work_minutes": 0,
     "observed_day_work_minutes": 2640,

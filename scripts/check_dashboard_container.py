@@ -80,6 +80,12 @@ with urllib.request.urlopen(base + "/api/brazil/duty-review?example=night_extens
     assert review["night_accounting"]["shift_reference_comparisons"][0]["exceeded"] is False
     assert review["night_accounting"]["extension_sensitivity"]["shift_scenarios"][0]["exceeded"] is True
     assert review["night_accounting"]["extension_sensitivity"]["conditional_equivalent_work_minutes"] == {"numerator": 3368, "denominator": 7}
+with urllib.request.urlopen(base + "/api/brazil/duty-review?example=unknown_regime", timeout=10) as response:
+    unknown = json.load(response)["review"]
+    assert unknown["status"] == "manual_review_required" and unknown["violations"] == []
+    assert unknown["regime_assessment"]["reference_checks_enabled"] is False
+    assert unknown["normal_week_reference_minutes"] is None
+    assert unknown["shifts"][0]["work_limit_minutes"] is None
 with urllib.request.urlopen(base + "/api/openapi.json", timeout=10) as response:
     assert {"url": "/api"} in json.load(response)["servers"]
 try:

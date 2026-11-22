@@ -12,6 +12,24 @@ A freight data engineering and analytics portfolio: a **97.6-million-row** Medal
 
 The project and dashboard default to **English**, with optional Portuguese controls and core notices. Original source identifiers and exported schemas retain their source language.
 
+## Roadmap progress
+
+- [x] **Original roadmap: 12/12 stages delivered.**
+- [x] **Documented expansions: 20/20 delivered for their stated coverage.**
+- [x] **Additional requirements closed: 3/7 — X05, X06 and X07.**
+- [ ] **X01:** commercial truck-dispatch assurance.
+- [ ] **X02:** complete toll/driver-hours operating acceptance.
+- [ ] **X03:** independent API hosting and production availability.
+- [ ] **X04:** measured results from an actual company operation.
+
+**Latest implemented checkpoint: X02-T07 — declared regime gate in the weekly review.**
+Omitted/unknown or collective/exempt regimes keep observed work and coverage, but
+receive no standard-profile references or approval. This completes the gate;
+it does not verify an actual employment regime. The [marked X02 checkpoints and
+remaining acceptance gates](docs/expansion_execution.md#x02-implementation-checkpoints)
+remain separate from the four open requirements. These counters must accompany
+future progress reports; enhancements within E20 do not invent new completed stages.
+
 ## What you can review
 
 | Area | Implemented capability | Evidence and guide |

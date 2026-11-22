@@ -130,7 +130,7 @@ def create_app(
         return root
 
     @data_routes.get("/brazil/duty-review")
-    def weekly_example(example: Literal["balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift", "night_limit_exceeded", "night_extension_sensitive"] = "balanced_week"):
+    def weekly_example(example: Literal["balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift", "night_limit_exceeded", "night_extension_sensitive", "unknown_regime", "special_regime"] = "balanced_week"):
         root = weekly_policy_root()
         payload = example_history(example)
         return {"input": payload, "review": review_week(payload, root), "records_saved": False}
@@ -139,6 +139,7 @@ def create_app(
         "application/json": {"schema": {"type": "object", "additionalProperties": False,
             "required": ["week_start", "events", "carry_in_rest_minutes", "carry_in_consecutive_workdays", "overtime_authorized"],
             "properties": {"week_start": {"type": "string", "format": "date"},
+                "employment_regime": {"type": "string", "enum": ["standard_private_employee", "collective_or_exempt", "unknown"], "default": "unknown"},
                 "carry_in_rest_minutes": {"type": ["integer", "null"], "minimum": 0, "maximum": 10080},
                 "carry_in_consecutive_workdays": {"type": ["integer", "null"], "minimum": 0, "maximum": 6},
                 "overtime_authorized": {"type": "boolean"},

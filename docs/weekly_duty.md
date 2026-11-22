@@ -1,9 +1,9 @@
 # Declared seven-day duty review
 
-Open **Trip cost and breaks → Seven-day duty review**. Seven explicitly synthetic
+Open **Trip cost and breaks → Seven-day duty review**. Nine explicitly synthetic
 examples demonstrate a balanced week, insufficient daily rest, seven workdays and
 incomplete history, a cross-midnight night shift, reduced-hour excess and conditional
-night extension. An optional JSON editor supports other declared scenarios.
+night extension, plus unknown and collective/exempt regime examples. An optional JSON editor supports other declared scenarios.
 This is selected-rule screening, not authentication of driver records or a legal,
 payroll or dispatch decision. **X02 remains open** for complete operating acceptance.
 
@@ -27,6 +27,32 @@ window. `carry_in_consecutive_workdays` declares prior workdays before any
 qualifying reset. Either can be `null` when unknown; unknown context prevents a
 clean result. Declare `overtime_authorized` as Boolean. This is self-declaration,
 not verification of an agreement or a tachograph. No driver identifier is accepted.
+
+## Declared employment regime
+
+**X02-T07 is implemented.** The optional `employment_regime` field accepts
+`standard_private_employee`, `collective_or_exempt` or `unknown`. Omission is
+accepted for older clients and means **unknown**, never an implicit standard
+regime. Invalid values, including JSON null, are rejected with 422 by the API.
+The published standard examples explicitly declare their comparison profile.
+
+Only an explicitly declared standard profile **and** a supported whole-week date
+enable the selected reference checks. For unknown/omitted or collective/exempt
+contexts, observed work, timeline, coverage and reference-window overlap remain
+available, but shift limits, weekly references, selected rest qualifications,
+reduced-hour equivalents and base/conditional comparison verdicts are `null`.
+`violations` is empty because the standard profile was not applied; the result is
+**manual review required**, never a clean approval. Unsupported dates now withhold
+the same selected-policy verdicts instead of displaying dated thresholds.
+
+`regime_assessment` reports `declared_regime`, `reference_checks_enabled` and
+`actual_regime_verified: false`. Self-declaration enables a selected calculation
+profile; it does not authenticate actual employment, agreements or exemptions.
+Unknown and special regimes are not treated as noncompliant just because a
+standard-profile threshold would be exceeded. Reference-window overlap is an
+observed timestamp quantity, not a legal night-work classification for those regimes.
+The dashboard shows a disabled-reference notice and keeps the observed work visible.
+Examples: `unknown_regime` and `special_regime`. [Portable special-regime result](examples/duty_regime_report.json).
 
 ## Selected policy and source period
 

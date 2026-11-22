@@ -34,6 +34,11 @@ def test_weekly_review_examples_missing_data_translation_and_invalid_json():
     assert any(m.label == "Observed continuation work (min)" and m.value == "61" for m in app.metric)
     assert any(m.label == "Conditional equivalent work hours" and m.value == "8.02" for m in app.metric)
     assert any(i.value == "Separate review required" for i in app.info)
+    for name in ("unknown_regime", "special_regime"):
+        app.selectbox(key="weekly_example").select(name).run()
+        assert not app.exception and not app.error
+        assert any("Reference checks are disabled" in w.value for w in app.warning)
+        assert any(m.label == "Base-window equivalent work hours" and m.value == "Unavailable" for m in app.metric)
     app.selectbox(key="weekly_example").select("incomplete_week").run()
     assert any(i.value == "Separate review required" for i in app.info)
     app.selectbox(key="language").select("pt").run()

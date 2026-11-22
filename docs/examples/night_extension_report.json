@@ -1,6 +1,7 @@
 {
   "input": {
     "week_start": "2026-11-09",
+    "employment_regime": "standard_private_employee",
     "carry_in_rest_minutes": 2880,
     "carry_in_consecutive_workdays": 0,
     "overtime_authorized": false,
@@ -47,6 +48,11 @@
       "night_regime_and_reduced_hour_limits_require_review",
       "post_05_night_extension_requires_review"
     ],
+    "regime_assessment": {
+      "declared_regime": "standard_private_employee",
+      "reference_checks_enabled": true,
+      "actual_regime_verified": false
+    },
     "night_accounting": {
       "observed_night_work_minutes": 360,
       "observed_day_work_minutes": 61,

@@ -1,5 +1,11 @@
 # Roteiro recuperado — LogiNexus
 
+**Marcação atual: 12/12 etapas originais concluídas; 20/20 expansões entregues;
+3/7 requisitos adicionais encerrados, 4/7 abertos.**
+[Checklist com marcas e passo X02-T07](expansion_execution.md#x02-implementation-checkpoints).
+As frases de pendência no texto histórico abaixo pertencem ao momento em que ele
+foi escrito; não substituem essa marcação atual.
+
 **Historical source, not the current task list.** The original portfolio stages
 were implemented subsequently. See [current delivery and remaining work](status.md).
 

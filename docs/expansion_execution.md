@@ -9,6 +9,39 @@ The original twelve-stage portfolio and the concrete expansion deliveries below
 are implemented and published. This does **not** close the outstanding requirements
 in the final table or establish commercial readiness.
 
+## Progress counter
+
+- [x] Original roadmap: **12/12** delivered stages (O01–O12).
+- [x] Concrete expansions: **20/20** delivered scopes (E01–E20).
+- [x] Additional requirements closed: **3/7** — X05, X06 and X07.
+- [ ] Additional requirements still open: **4/7** — X01, X02, X03 and X04.
+
+Keep these counters in progress updates. A technical checkpoint inside X02 does
+not close X02, and an enhancement to E20 does not create another delivered stage.
+Current checkpoint: **X02-T07, implemented and locally verified**. Every revision
+must pass its own CI before publication.
+
+## X02 implementation checkpoints
+
+- [x] **X02-T01:** dated corridor toll inputs and bounded source-revision audit.
+- [x] **X02-T02:** selected daytime work, driving, meal and rest checks.
+- [x] **X02-T03:** explicit seven-day history, missing coverage and weekly-rest screening.
+- [x] **X02-T04:** real versus reduced-hour night-window accounting.
+- [x] **X02-T05:** exact shift/weekly reference comparisons before display rounding.
+- [x] **X02-T06:** conditional continuation arithmetic, separate from the base result.
+- [x] **X02-T07:** weekly-review regime gate; omitted/unknown/collective/exempt contexts
+  withhold standard references, rest qualifications and threshold verdicts.
+
+These are implemented calculation checkpoints, not seven operating approvals.
+The acceptance gates below still prevent X02 from being marked complete:
+
+- [ ] Verify the actual employment regime and applicable collective/exempt terms.
+- [ ] Obtain and authenticate actual driver activity records and boundary history.
+- [ ] Demonstrate reviewed operating/legal acceptance cases and maintained inputs.
+
+T07 completion does not imply those external inputs exist. The [regime contract](weekly_duty.md#declared-employment-regime)
+defines the implemented behavior and compatibility of older API inputs.
+
 ## Original roadmap — 12 delivered stages
 
 | ID | Stage | Completion criterion met | Evidence |
@@ -52,7 +85,7 @@ promise of complete national shipment coverage or unlimited future extensions.
 | E17 | Added ANAC 2023 airport-pair stages: 18,699 monthly rows, all twelve months, domestic/international kilograms reconciled to independent monthly aggregates; 2024–2025 pairs and forecasts preserved; closes X05 | [Coverage contract](brazil_air.md#added-2023-airport-pair-coverage--x05), [reconciliation evidence](evidence/anac_pairs_2023_review.json) |
 | E18 | Dated Autoban corridor toll estimates and selected daytime duty planning: integer-cent prices, directional plazas, waiting-as-work, meal/driving breaks and explicit unsupported contexts; X02 remains open for complete operating acceptance | [Scope and results](trip_planning.md), [portable scenario](examples/trip_planning.json), [tariff audit](../.github/workflows/audit-trip-tariffs.yml) |
 | E19 | Declared seven-day duty review: explicit coverage/carry-in context, selected daily/weekly rest, seventh-workday flags, weekly excess review, dated rule support, chart, bounded stateless API and portable examples; X02 remains open | [Policy and results](weekly_duty.md), [example report](examples/weekly_duty_report.json) |
-| E20 | Night-work accounting: exact 22:00–05:00 overlap, real/reduced-hour separation, exact shift/weekly references and separate conditional post-05:00 sensitivity (enhanced 2026-11-21), meals/rest excluded, dated policy and portable cross-midnight examples; X02 remains open | [Base calculations](weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting), [conditional extension](weekly_duty.md#conditional-night-extension), [scenario report](examples/night_extension_report.json) |
+| E20 | Night-work accounting: exact 22:00–05:00 overlap, real/reduced-hour separation, shift/weekly references, conditional post-05:00 sensitivity and explicit weekly-review regime gate (X02-T07, enhanced 2026-11-21), meals/rest excluded and portable examples; X02 remains open | [Base calculations](weekly_duty.md#night-work-real-minutes-and-reduced-hour-accounting), [regime gate](weekly_duty.md#declared-employment-regime), [scenario report](examples/night_extension_report.json) |
 
 ## Outstanding requirements — four explicitly not delivered
 

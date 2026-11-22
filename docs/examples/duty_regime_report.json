@@ -1,0 +1,772 @@
+{
+  "input": {
+    "week_start": "2026-11-09",
+    "employment_regime": "collective_or_exempt",
+    "carry_in_rest_minutes": 2880,
+    "carry_in_consecutive_workdays": 0,
+    "overtime_authorized": false,
+    "events": [
+      {
+        "activity": "rest",
+        "minutes": 480
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "meal",
+        "minutes": 60
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "rest",
+        "minutes": 900
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "meal",
+        "minutes": 60
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "rest",
+        "minutes": 900
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "meal",
+        "minutes": 60
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "rest",
+        "minutes": 900
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "meal",
+        "minutes": 60
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "rest",
+        "minutes": 900
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "meal",
+        "minutes": 60
+      },
+      {
+        "activity": "driving",
+        "minutes": 210
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "rest",
+        "minutes": 900
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "driving",
+        "minutes": 90
+      },
+      {
+        "activity": "meal",
+        "minutes": 60
+      },
+      {
+        "activity": "driving",
+        "minutes": 90
+      },
+      {
+        "activity": "work",
+        "minutes": 30
+      },
+      {
+        "activity": "rest",
+        "minutes": 2100
+      }
+    ]
+  },
+  "review": {
+    "status": "manual_review_required",
+    "week_start": "2026-11-09",
+    "timezone": "America/Sao_Paulo (UTC-03 for reviewed period)",
+    "covered_minutes": 10080,
+    "coverage_complete": true,
+    "total_work_minutes": 2640,
+    "normal_week_reference_minutes": null,
+    "violations": [],
+    "review_reasons": [
+      "collective_or_exempt_regime_not_evaluated"
+    ],
+    "regime_assessment": {
+      "declared_regime": "collective_or_exempt",
+      "reference_checks_enabled": false,
+      "actual_regime_verified": false
+    },
+    "night_accounting": {
+      "observed_night_work_minutes": 0,
+      "observed_day_work_minutes": 2640,
+      "daily_night_work_minutes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_window_equivalent_work_minutes": null,
+      "shift_reference_comparisons": [
+        {
+          "start_minute": 480,
+          "end_minute": 1020,
+          "real_work_minutes": 480,
+          "night_work_minutes": 0,
+          "base_window_equivalent_work_minutes": null,
+          "reference_minutes": null,
+          "exceeded": null,
+          "excess_equivalent_minutes": null
+        },
+        {
+          "start_minute": 1920,
+          "end_minute": 2460,
+          "real_work_minutes": 480,
+          "night_work_minutes": 0,
+          "base_window_equivalent_work_minutes": null,
+          "reference_minutes": null,
+          "exceeded": null,
+          "excess_equivalent_minutes": null
+        },
+        {
+          "start_minute": 3360,
+          "end_minute": 3900,
+          "real_work_minutes": 480,
+          "night_work_minutes": 0,
+          "base_window_equivalent_work_minutes": null,
+          "reference_minutes": null,
+          "exceeded": null,
+          "excess_equivalent_minutes": null
+        },
+        {
+          "start_minute": 4800,
+          "end_minute": 5340,
+          "real_work_minutes": 480,
+          "night_work_minutes": 0,
+          "base_window_equivalent_work_minutes": null,
+          "reference_minutes": null,
+          "exceeded": null,
+          "excess_equivalent_minutes": null
+        },
+        {
+          "start_minute": 6240,
+          "end_minute": 6780,
+          "real_work_minutes": 480,
+          "night_work_minutes": 0,
+          "base_window_equivalent_work_minutes": null,
+          "reference_minutes": null,
+          "exceeded": null,
+          "excess_equivalent_minutes": null
+        },
+        {
+          "start_minute": 7680,
+          "end_minute": 7980,
+          "real_work_minutes": 240,
+          "night_work_minutes": 0,
+          "base_window_equivalent_work_minutes": null,
+          "reference_minutes": null,
+          "exceeded": null,
+          "excess_equivalent_minutes": null
+        }
+      ],
+      "week_reference_comparison": {
+        "reference_minutes": null,
+        "exceeded": null,
+        "excess_equivalent_minutes": null
+      },
+      "post_05_extension_requires_review": false,
+      "conversion_supported_for_week": false,
+      "nominal_night_hour_seconds": null,
+      "window": "22:00 inclusive to 05:00 exclusive, Sao Paulo local time",
+      "source_id": "clt_73",
+      "extension_conversion_applied": false,
+      "wages_calculated": false,
+      "extension_sensitivity": {
+        "profile": "observed_night_continuation_05_to_22_if_applicable_v1",
+        "applicability": "not_determined",
+        "candidate_work_minutes": 0,
+        "conditional_equivalent_work_minutes": null,
+        "increment_over_base_equivalent_minutes": null,
+        "shift_scenarios": [
+          {
+            "start_minute": 480,
+            "end_minute": 1020,
+            "candidate_work_minutes": 0,
+            "continuation_windows": [],
+            "conditional_equivalent_work_minutes": null,
+            "reference_minutes": null,
+            "exceeded": null,
+            "excess_equivalent_minutes": null
+          },
+          {
+            "start_minute": 1920,
+            "end_minute": 2460,
+            "candidate_work_minutes": 0,
+            "continuation_windows": [],
+            "conditional_equivalent_work_minutes": null,
+            "reference_minutes": null,
+            "exceeded": null,
+            "excess_equivalent_minutes": null
+          },
+          {
+            "start_minute": 3360,
+            "end_minute": 3900,
+            "candidate_work_minutes": 0,
+            "continuation_windows": [],
+            "conditional_equivalent_work_minutes": null,
+            "reference_minutes": null,
+            "exceeded": null,
+            "excess_equivalent_minutes": null
+          },
+          {
+            "start_minute": 4800,
+            "end_minute": 5340,
+            "candidate_work_minutes": 0,
+            "continuation_windows": [],
+            "conditional_equivalent_work_minutes": null,
+            "reference_minutes": null,
+            "exceeded": null,
+            "excess_equivalent_minutes": null
+          },
+          {
+            "start_minute": 6240,
+            "end_minute": 6780,
+            "candidate_work_minutes": 0,
+            "continuation_windows": [],
+            "conditional_equivalent_work_minutes": null,
+            "reference_minutes": null,
+            "exceeded": null,
+            "excess_equivalent_minutes": null
+          },
+          {
+            "start_minute": 7680,
+            "end_minute": 7980,
+            "candidate_work_minutes": 0,
+            "continuation_windows": [],
+            "conditional_equivalent_work_minutes": null,
+            "reference_minutes": null,
+            "exceeded": null,
+            "excess_equivalent_minutes": null
+          }
+        ],
+        "week_reference_comparison": {
+          "reference_minutes": null,
+          "exceeded": null,
+          "excess_equivalent_minutes": null
+        },
+        "replaces_base_result": false,
+        "wages_calculated": false,
+        "assumption": "If applicable, also reduce observed 05:00-22:00 work in the same declared shift following observed night work. Meals/rest are excluded. No applicability, payroll or dispatch decision."
+      }
+    },
+    "shifts": [
+      {
+        "start_minute": 480,
+        "end_minute": 1020,
+        "work_minutes": 480,
+        "elapsed_minutes": 540,
+        "work_limit_minutes": null
+      },
+      {
+        "start_minute": 1920,
+        "end_minute": 2460,
+        "work_minutes": 480,
+        "elapsed_minutes": 540,
+        "work_limit_minutes": null
+      },
+      {
+        "start_minute": 3360,
+        "end_minute": 3900,
+        "work_minutes": 480,
+        "elapsed_minutes": 540,
+        "work_limit_minutes": null
+      },
+      {
+        "start_minute": 4800,
+        "end_minute": 5340,
+        "work_minutes": 480,
+        "elapsed_minutes": 540,
+        "work_limit_minutes": null
+      },
+      {
+        "start_minute": 6240,
+        "end_minute": 6780,
+        "work_minutes": 480,
+        "elapsed_minutes": 540,
+        "work_limit_minutes": null
+      },
+      {
+        "start_minute": 7680,
+        "end_minute": 7980,
+        "work_minutes": 240,
+        "elapsed_minutes": 300,
+        "work_limit_minutes": null
+      }
+    ],
+    "rest_periods": [
+      {
+        "start_minute": 0,
+        "end_minute": 480,
+        "declared_minutes_including_carry_in": 3360,
+        "qualifies_selected_daily_rest": null,
+        "qualifies_selected_combined_weekly_rest": null
+      },
+      {
+        "start_minute": 1020,
+        "end_minute": 1920,
+        "declared_minutes_including_carry_in": 900,
+        "qualifies_selected_daily_rest": null,
+        "qualifies_selected_combined_weekly_rest": null
+      },
+      {
+        "start_minute": 2460,
+        "end_minute": 3360,
+        "declared_minutes_including_carry_in": 900,
+        "qualifies_selected_daily_rest": null,
+        "qualifies_selected_combined_weekly_rest": null
+      },
+      {
+        "start_minute": 3900,
+        "end_minute": 4800,
+        "declared_minutes_including_carry_in": 900,
+        "qualifies_selected_daily_rest": null,
+        "qualifies_selected_combined_weekly_rest": null
+      },
+      {
+        "start_minute": 5340,
+        "end_minute": 6240,
+        "declared_minutes_including_carry_in": 900,
+        "qualifies_selected_daily_rest": null,
+        "qualifies_selected_combined_weekly_rest": null
+      },
+      {
+        "start_minute": 6780,
+        "end_minute": 7680,
+        "declared_minutes_including_carry_in": 900,
+        "qualifies_selected_daily_rest": null,
+        "qualifies_selected_combined_weekly_rest": null
+      },
+      {
+        "start_minute": 7980,
+        "end_minute": 10080,
+        "declared_minutes_including_carry_in": 2100,
+        "qualifies_selected_daily_rest": null,
+        "qualifies_selected_combined_weekly_rest": null
+      }
+    ],
+    "timeline": [
+      {
+        "activity": "rest",
+        "start_minute": 0,
+        "end_minute": 480,
+        "minutes": 480,
+        "counts_as_work": false
+      },
+      {
+        "activity": "work",
+        "start_minute": 480,
+        "end_minute": 510,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "driving",
+        "start_minute": 510,
+        "end_minute": 720,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "meal",
+        "start_minute": 720,
+        "end_minute": 780,
+        "minutes": 60,
+        "counts_as_work": false
+      },
+      {
+        "activity": "driving",
+        "start_minute": 780,
+        "end_minute": 990,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "work",
+        "start_minute": 990,
+        "end_minute": 1020,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "rest",
+        "start_minute": 1020,
+        "end_minute": 1920,
+        "minutes": 900,
+        "counts_as_work": false
+      },
+      {
+        "activity": "work",
+        "start_minute": 1920,
+        "end_minute": 1950,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "driving",
+        "start_minute": 1950,
+        "end_minute": 2160,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "meal",
+        "start_minute": 2160,
+        "end_minute": 2220,
+        "minutes": 60,
+        "counts_as_work": false
+      },
+      {
+        "activity": "driving",
+        "start_minute": 2220,
+        "end_minute": 2430,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "work",
+        "start_minute": 2430,
+        "end_minute": 2460,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "rest",
+        "start_minute": 2460,
+        "end_minute": 3360,
+        "minutes": 900,
+        "counts_as_work": false
+      },
+      {
+        "activity": "work",
+        "start_minute": 3360,
+        "end_minute": 3390,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "driving",
+        "start_minute": 3390,
+        "end_minute": 3600,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "meal",
+        "start_minute": 3600,
+        "end_minute": 3660,
+        "minutes": 60,
+        "counts_as_work": false
+      },
+      {
+        "activity": "driving",
+        "start_minute": 3660,
+        "end_minute": 3870,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "work",
+        "start_minute": 3870,
+        "end_minute": 3900,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "rest",
+        "start_minute": 3900,
+        "end_minute": 4800,
+        "minutes": 900,
+        "counts_as_work": false
+      },
+      {
+        "activity": "work",
+        "start_minute": 4800,
+        "end_minute": 4830,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "driving",
+        "start_minute": 4830,
+        "end_minute": 5040,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "meal",
+        "start_minute": 5040,
+        "end_minute": 5100,
+        "minutes": 60,
+        "counts_as_work": false
+      },
+      {
+        "activity": "driving",
+        "start_minute": 5100,
+        "end_minute": 5310,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "work",
+        "start_minute": 5310,
+        "end_minute": 5340,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "rest",
+        "start_minute": 5340,
+        "end_minute": 6240,
+        "minutes": 900,
+        "counts_as_work": false
+      },
+      {
+        "activity": "work",
+        "start_minute": 6240,
+        "end_minute": 6270,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "driving",
+        "start_minute": 6270,
+        "end_minute": 6480,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "meal",
+        "start_minute": 6480,
+        "end_minute": 6540,
+        "minutes": 60,
+        "counts_as_work": false
+      },
+      {
+        "activity": "driving",
+        "start_minute": 6540,
+        "end_minute": 6750,
+        "minutes": 210,
+        "counts_as_work": true
+      },
+      {
+        "activity": "work",
+        "start_minute": 6750,
+        "end_minute": 6780,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "rest",
+        "start_minute": 6780,
+        "end_minute": 7680,
+        "minutes": 900,
+        "counts_as_work": false
+      },
+      {
+        "activity": "work",
+        "start_minute": 7680,
+        "end_minute": 7710,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "driving",
+        "start_minute": 7710,
+        "end_minute": 7800,
+        "minutes": 90,
+        "counts_as_work": true
+      },
+      {
+        "activity": "meal",
+        "start_minute": 7800,
+        "end_minute": 7860,
+        "minutes": 60,
+        "counts_as_work": false
+      },
+      {
+        "activity": "driving",
+        "start_minute": 7860,
+        "end_minute": 7950,
+        "minutes": 90,
+        "counts_as_work": true
+      },
+      {
+        "activity": "work",
+        "start_minute": 7950,
+        "end_minute": 7980,
+        "minutes": 30,
+        "counts_as_work": true
+      },
+      {
+        "activity": "rest",
+        "start_minute": 7980,
+        "end_minute": 10080,
+        "minutes": 2100,
+        "counts_as_work": false
+      }
+    ],
+    "sources": [
+      {
+        "id": "clt_66_67_235",
+        "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm"
+      },
+      {
+        "id": "ctb_67c",
+        "url": "https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm"
+      },
+      {
+        "id": "stf_adi5322",
+        "url": "https://noticias.stf.jus.br/postsnoticias/stf-invalida-dispositivos-da-lei-dos-caminhoneiros-sobre-tempo-de-espera-jornada-e-descanso/"
+      },
+      {
+        "id": "tst_theme265",
+        "url": "https://www.tst.jus.br/documents/d/guest/irr265-2-pdf"
+      },
+      {
+        "id": "constitution_transition",
+        "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc141.htm"
+      },
+      {
+        "id": "clt_73",
+        "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm"
+      }
+    ],
+    "daily_totals": [
+      {
+        "date": "2026-11-09",
+        "work_minutes": 480,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-10",
+        "work_minutes": 480,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-11",
+        "work_minutes": 480,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-12",
+        "work_minutes": 480,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-13",
+        "work_minutes": 480,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-14",
+        "work_minutes": 240,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      },
+      {
+        "date": "2026-11-15",
+        "work_minutes": 0,
+        "observed_minutes": 1440,
+        "full_day_covered": true
+      }
+    ],
+    "policy_reviewed_on": "2026-11-20",
+    "scope": "Selected-rule screening of declared seven-day standard private employed freight records; base night-work references and a separate conditional continuation scenario. Not actual-regime determination, tachograph authentication, payroll, collective/exempt-regime validation or dispatch authorization.",
+    "history_authentication": "Declared scenario only; actual records are not authenticated",
+    "dispatch_authorized": false
+  }
+}

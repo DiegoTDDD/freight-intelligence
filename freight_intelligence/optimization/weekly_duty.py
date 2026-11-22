@@ -10,6 +10,7 @@ from freight_intelligence.optimization.night_extension import extension_sensitiv
 DEFAULT_ROOT = Path(__file__).resolve().parents[2] / "deployment/duty_review"
 MAX_BYTES = 65536
 MAX_EVENTS = 300
+REGIMES = {"standard_private_employee", "collective_or_exempt", "unknown"}
 ACTIVITIES = {"rest", "driving", "work", "waiting", "meal", "driving_break"}
 WORK = {"driving", "work", "waiting"}
 
@@ -123,8 +124,11 @@ def night_accounting(timeline, shifts, policy, supported):
 def review_week(payload, root=DEFAULT_ROOT):
     policy = load_policy(root)
     required = {"week_start", "events", "carry_in_rest_minutes", "carry_in_consecutive_workdays", "overtime_authorized"}
-    if not isinstance(payload, dict) or set(payload) != required:
+    if not isinstance(payload, dict) or not required.issubset(payload) or set(payload) - required - {"employment_regime"}:
         raise ValueError("Use exactly the documented weekly-history fields; no driver identifiers")
+    regime = payload.get("employment_regime", "unknown")
+    if not isinstance(regime, str) or regime not in REGIMES:
+        raise ValueError("employment_regime must be standard_private_employee, collective_or_exempt or unknown")
     if not isinstance(payload["week_start"], str) or len(payload["week_start"]) != 10:
         raise ValueError("week_start must be a Monday in YYYY-MM-DD form")
     start_date = date.fromisoformat(payload["week_start"])
@@ -158,9 +162,12 @@ def review_week(payload, root=DEFAULT_ROOT):
         unknown.append("incomplete_seven_day_coverage")
     if carry_rest is None or carry_days is None:
         unknown.append("unknown_carry_in_history")
+    if regime != "standard_private_employee":
+        unknown.append("collective_or_exempt_regime_not_evaluated" if regime == "collective_or_exempt" else "employment_regime_unknown")
     if start_date < date.fromisoformat(policy["supported_from"]) or start_date + timedelta(days=6) > date.fromisoformat(policy["reviewed_on"]):
         unknown.append("week_outside_reviewed_rule_period")
-    normal_reference = limits["normal_week_minutes"] if "week_outside_reviewed_rule_period" not in unknown else None
+    references_enabled = regime == "standard_private_employee" and "week_outside_reviewed_rule_period" not in unknown
+    normal_reference = limits["normal_week_minutes"] if references_enabled else None
     clock = total_work = continuous = 0
     consecutive, last_work_day = carry_days or 0, None
     shift_start, shift_work, meal_seen, meal_followed = None, 0, False, False
@@ -198,7 +205,7 @@ def review_week(payload, root=DEFAULT_ROOT):
             consecutive = 0
         if pending_rest >= limits["driving_break_minutes"]:
             continuous = 0
-        if boundary and 0 < pending_rest < limits["weekly_combined_rest_minutes"]:
+        if references_enabled and boundary and 0 < pending_rest < limits["weekly_combined_rest_minutes"]:
             unknown.append("trailing_weekly_rest_needs_next_window")
         pending_rest, rest_known, last_was_rest = 0, True, False
 
@@ -249,8 +256,15 @@ def review_week(payload, root=DEFAULT_ROOT):
         unknown.append("shift_still_open_at_window_boundary")
     if normal_reference is not None and total_work > normal_reference:
         unknown.append("weekly_hours_above_normal_reference_require_payroll_agreement_review")
-    if not any(r["qualifies_selected_combined_weekly_rest"] for r in rests):
+    if references_enabled and not any(r["qualifies_selected_combined_weekly_rest"] for r in rests):
         unknown.append("no_complete_combined_weekly_rest_observed")
+    if not references_enabled:
+        flags.clear()
+        for shift in shifts:
+            shift["work_limit_minutes"] = None
+        for rest in rests:
+            rest["qualifies_selected_daily_rest"] = None
+            rest["qualifies_selected_combined_weekly_rest"] = None
     night = night_accounting(timeline, shifts, policy, normal_reference is not None)
     night["extension_sensitivity"] = extension_sensitivity(timeline, shifts, night, policy, normal_reference is not None)
     sensitivity = night["extension_sensitivity"]
@@ -273,6 +287,8 @@ def review_week(payload, root=DEFAULT_ROOT):
             "week_start": payload["week_start"], "timezone": policy["timezone"],
             "covered_minutes": covered, "coverage_complete": covered == 10080, "total_work_minutes": total_work,
             "normal_week_reference_minutes": normal_reference, "violations": flags, "review_reasons": unknown,
+            "regime_assessment": {"declared_regime": regime, "reference_checks_enabled": references_enabled,
+                                  "actual_regime_verified": False},
             "night_accounting": night,
             "shifts": shifts, "rest_periods": rests, "timeline": timeline, "sources": policy["sources"],
             "daily_totals": [{"date": (start_date + timedelta(days=i)).isoformat(),
@@ -286,12 +302,12 @@ def review_week(payload, root=DEFAULT_ROOT):
 
 
 def example_history(name="balanced_week"):
-    if name not in {"balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift", "night_limit_exceeded", "night_extension_sensitive"}:
+    if name not in {"balanced_week", "short_daily_rest", "seven_workdays", "incomplete_week", "night_shift", "night_limit_exceeded", "night_extension_sensitive", "unknown_regime", "special_regime"}:
         raise ValueError("Unknown weekly example")
     if name in {"night_shift", "night_limit_exceeded", "night_extension_sensitive"}:
         # Monday 22:00 to Tuesday 06:00 (or 07:00); meal 01:00-02:00 is excluded.
         final_work = 120 if name == "night_limit_exceeded" else 61 if name == "night_extension_sensitive" else 60
-        return {"week_start": "2026-11-09", "carry_in_rest_minutes": 2880,
+        return {"week_start": "2026-11-09", "employment_regime": "standard_private_employee", "carry_in_rest_minutes": 2880,
                 "carry_in_consecutive_workdays": 0, "overtime_authorized": False,
                 "events": [{"activity": kind, "minutes": minutes} for kind, minutes in
                            (("rest", 1320), ("driving", 180), ("meal", 60),
@@ -314,5 +330,5 @@ def example_history(name="balanced_week"):
     add("rest", 10080 - clock)
     if name == "incomplete_week":
         events[-1]["minutes"] -= 1440
-    return {"week_start": "2026-11-09", "carry_in_rest_minutes": 2880,
+    return {"week_start": "2026-11-09", "employment_regime": "unknown" if name == "unknown_regime" else "collective_or_exempt" if name == "special_regime" else "standard_private_employee", "carry_in_rest_minutes": 2880,
             "carry_in_consecutive_workdays": 0, "overtime_authorized": False, "events": events}

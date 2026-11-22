@@ -339,6 +339,17 @@ PT.update({"Edit the declared activity history (JSON)": "Editar o histórico de 
 
 PT.update({"Date": "Data"})
 
+PT.update({"Declared employment regime: ": "Regime de trabalho declarado: ",
+           "Standard private employee": "Empregado privado no perfil padrão"})
+
+PT.update({
+    "Unknown employment regime": "Regime de trabalho desconhecido",
+    "Collective or exempt regime": "Regime coletivo ou excepcional",
+    "employment_regime_unknown": "Regime de trabalho não informado ou desconhecido",
+    "collective_or_exempt_regime_not_evaluated": "Regime coletivo ou excepcional não avaliado",
+    "Reference checks are disabled: the declared regime or week is outside the reviewed standard profile. Observed work and coverage remain visible; unavailable references are not approvals.": "Comparações desativadas: o regime declarado ou a semana estão fora do perfil padrão revisado. Trabalho observado e cobertura permanecem visíveis; referências indisponíveis não significam aprovação."
+})
+
 PT.update({
     "Extension changes the comparison": "Prorrogação muda a comparação",
     "If night extension applies": "Se a prorrogação noturna se aplicar",

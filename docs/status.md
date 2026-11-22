@@ -5,6 +5,10 @@ There are **20 concrete delivered expansion items**, each closed for its stated
 source population and period. **Four additional requirements remain unmet**;
 they are separate entries with exact completion criteria and dependencies.
 
+**Counter: original 12/12; expansions 20/20; additional requirements 3/7 closed
+and 4/7 open. Latest implemented checkpoint: X02-T07.** See the
+[marked checkpoints and acceptance gates](expansion_execution.md#x02-implementation-checkpoints).
+
 The authoritative record is the [delivery checklist](expansion_execution.md):
 
 - **O01–O12:** original roadmap, completion criteria and evidence.
