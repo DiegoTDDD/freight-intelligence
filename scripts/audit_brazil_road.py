@@ -9,18 +9,22 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from freight_intelligence.brazil_road import DEFAULT_ROOT, load_road_monthly
+from freight_intelligence.ingestion.source_fetch import SourceUnavailable, with_retries
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 8 * 1024 * 1024
 
 
 def fetch_source(url):
-    request = urllib.request.Request(url, headers={"User-Agent": "LogiNexus-source-audit/1.0"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        final = urlparse(response.geturl())
-        if final.scheme != "https" or final.hostname != "www.gov.br":
-            raise ValueError("Unexpected ANTT source destination")
-        return response.read(MAX_BYTES + 1)
+    def download():
+        request = urllib.request.Request(url, headers={"User-Agent": "LogiNexus-source-audit/1.0"})
+        with urllib.request.urlopen(request, timeout=30) as response:
+            final = urlparse(response.geturl())
+            if final.scheme != "https" or final.hostname != "www.gov.br":
+                raise ValueError("Unexpected ANTT source destination")
+            return response.read(MAX_BYTES + 1)
+
+    return with_retries(url, download)
 
 
 def audit(output, *, fetch=fetch_source, baseline=DEFAULT_ROOT):
@@ -46,6 +50,10 @@ def audit(output, *, fetch=fetch_source, baseline=DEFAULT_ROOT):
         if changed:
             (output / "unreviewed-source.pdf").write_bytes(raw)
             report["candidate"] = "unreviewed-source.pdf; no new values have been extracted or approved"
+    except SourceUnavailable as error:
+        # The official server could not be reached: nothing was compared, nothing failed validation.
+        report.update(status="source_unreachable", source_url=error.url, attempts=error.attempts,
+                      failure_type=error.last_error)
     except Exception as error:
         report["failure_type"] = type(error).__name__
         raise
@@ -61,4 +69,8 @@ if __name__ == "__main__":
     result = audit(args.output)
     if result["status"] == "source_changed_requires_review":
         print("::warning::ANTT source PDF changed; review before updating published figures")
-    print(json.dumps({"status": result["status"], "reviewed_annual_tonnes": result["reviewed_annual_tonnes"]}))
+    if result["status"] == "source_unreachable":
+        print(f"::warning::ANTT source unreachable after {result['attempts']} attempts "
+              f"({result['failure_type']}); nothing was compared, rerun later")
+    print(json.dumps({"status": result["status"],
+                      "reviewed_annual_tonnes": result.get("reviewed_annual_tonnes")}))

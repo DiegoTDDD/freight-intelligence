@@ -6,8 +6,8 @@ Actions. It runs on a GitHub-hosted runner, independently of the owner's PC. Thi
 does not reactivate the paused hourly local development automation.
 
 The audit covers the reviewed ANP gas reports for **2021–2025**: twelve fixed
-monthly URLs per year, sixty reports in total. Five isolated jobs run with at most
-two years in parallel. It does not discover unreviewed years or update every
+monthly URLs per year, sixty reports in total. Five isolated jobs run one year at a
+time, because parallel bursts made gov.br reset connections from the hosted runner. It does not discover unreviewed years or update every
 Brazilian source. Historical years use their reviewed calendar, exact-duplicate
 policy and explicit unit contracts. For 2021, the official unit dictionary is
 re-fetched and must retain its pinned SHA-256; changed units stop the audit.
@@ -15,7 +15,9 @@ re-fetched and must retain its pinned SHA-256; changed units stop the audit.
 ## What happens on each run
 
 1. For each selected year, fetch all twelve reports again, bypassing cached source bytes. Each request has
-   a 30-second timeout and an 8-MiB bound; unexpected redirects are rejected.
+   a 30-second timeout and an 8-MiB bound; unexpected redirects are rejected. A connection reset, timeout or
+   HTTP 408/425/429/5xx is retried after 5, 15 and 45 seconds. If the server is still unreachable, the report
+   status is `source_unreachable`, the run shows a warning instead of failing, and nothing is compared.
 2. Validate schema, calendar, identifiers, duplicate records and number formats;
    aggregate realized receipts and deliveries separately, keeping missing/signed
    values explicit. Validate the generated bundle and annual/monthly consistency.
@@ -67,7 +69,9 @@ It validates the reviewed 12-month sum and downloads the fixed official PDF with
 a 30-second request timeout and 8 MiB size cap. Matching bytes produce an unchanged
 report. Changed PDF bytes are kept as an **unreviewed source**, with the old/new
 hashes; values are never extracted, approved or deployed automatically. Invalid
-responses fail with a report. Outputs cannot be written into serving snapshots.
+responses fail with a report. Connection resets, timeouts and HTTP 408/425/429/5xx
+are retried after 5, 15 and 45 seconds; a server still unreachable after four
+attempts gives a `source_unreachable` report and a warning, not a failed run. Outputs cannot be written into serving snapshots.
 
 The workflow is read-only and does not use a deployment secret. Reports and changed
 PDFs are retained as GitHub artifacts for 14 days. GitHub schedules may be delayed

@@ -30,7 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      max-parallel: 2
+      # One year at a time: parallel bursts of twelve downloads make gov.br reset connections.
+      max-parallel: 1
       matrix:
         year: [2021, 2022, 2023, 2024, 2025]
     timeout-minutes: 15

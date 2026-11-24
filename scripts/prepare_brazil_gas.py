@@ -10,6 +10,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from freight_intelligence.ingestion.brazil_gas import MAX_BYTES, annual_volumes, parse_month
+from freight_intelligence.ingestion.source_fetch import with_retries
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ("https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/"
@@ -24,13 +25,16 @@ FILES = ["gn-janeiro.csv", "gn-fevereiro.csv", "gn_marco_2025.csv", "gn_abril_20
 
 
 def fetch_report(url):
-    request = urllib.request.Request(url, headers={
-        "User-Agent": "LogiNexus/0.1 (https://github.com/DiegoTDDD/freight-intelligence)"
-    })
-    with urllib.request.urlopen(request, timeout=30) as response:
-        if response.geturl() != url:
-            raise ValueError("Unexpected ANP source redirect")
-        return response.read(MAX_BYTES + 1)
+    def download():
+        request = urllib.request.Request(url, headers={
+            "User-Agent": "LogiNexus/0.1 (https://github.com/DiegoTDDD/freight-intelligence)"
+        })
+        with urllib.request.urlopen(request, timeout=30) as response:
+            if response.geturl() != url:
+                raise ValueError("Unexpected ANP source redirect")
+            return response.read(MAX_BYTES + 1)
+
+    return with_retries(url, download)
 
 
 def prepare(cache, output, *, refresh=False, fetch=None, year=2025, source_urls=None,

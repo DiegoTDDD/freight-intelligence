@@ -19,6 +19,7 @@ from freight_intelligence.ingestion.brazil_gas import (
     LEGACY_UNITS_SHA256,
     LEGACY_UNITS_URL,
 )
+from freight_intelligence.ingestion.source_fetch import SourceUnavailable
 from scripts.prepare_brazil_gas import fetch_report
 from scripts.prepare_brazil_gas import prepare as prepare_gas
 from scripts.prepare_brazil_modes import prepare as prepare_modes
@@ -118,6 +119,10 @@ def audit(output, cache, *, fetch=None, baseline=ROOT / "deployment/brazil_gas",
                     raise ValueError("Candidate archive integrity failure")
             staging.replace(archive)
             report["candidate_sha256"] = hashlib.sha256(archive.read_bytes()).hexdigest()
+    except SourceUnavailable as error:
+        # The official server could not be reached: nothing was compared, nothing failed validation.
+        report.update(status="source_unreachable", source_url=error.url, attempts=error.attempts,
+                      failure_type=error.last_error, source_revisions=[])
     except Exception as error:
         report["status"] = "validation_failed"
         report["failure_type"] = type(error).__name__
@@ -134,4 +139,7 @@ if __name__ == "__main__":
     parser.add_argument("--year", type=int, choices=range(2021, 2026), default=2025)
     args = parser.parse_args()
     result = audit(args.output, args.cache_dir, year=args.year)
+    if result["status"] == "source_unreachable":
+        print(f"::warning::ANP source for {args.year} unreachable after {result['attempts']} attempts "
+              f"({result['failure_type']}); nothing was compared, rerun later")
     print(json.dumps({"status": result["status"], "changed_sources": len(result["source_revisions"])}))
