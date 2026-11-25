@@ -18,8 +18,12 @@ in the final table or establish commercial readiness.
 
 Keep these counters in progress updates. A technical checkpoint inside X02 does
 not close X02, and an enhancement to E20 does not create another delivered stage.
-Current checkpoint: **X02-T07, implemented and locally verified**. Every revision
-must pass its own CI before publication.
+Current checkpoint: **X02-T07, implemented, published and publicly verified**.
+Its [functional revision](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/44973338307)
+passed 636 tests on both Windows and Linux. The subsequent source-audit revision
+[2ec26b1](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/45424964974)
+passed 648 tests on both systems; the nine public duty examples and omitted-regime
+behavior were verified again on 2026-11-25. Every new revision must pass its own CI.
 
 ## X02 implementation checkpoints
 

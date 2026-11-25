@@ -308,9 +308,9 @@ see [methodology, units and source-edition limits](docs/brazil_modal_forecasts.m
 
 - FAF includes estimates and future scenarios. Agreement with held-out FAF scenario points is not evidence of future observed-demand accuracy.
 - Brazilian series use different populations and units. Airport stages, gas-point transfers, railway movements and port handling may repeat the same physical cargo; they are not comparable national modal shares.
-- Truck costing applies available mapped restrictions, not verified current dispatch conditions. Toll pricing, driver-hours compliance, operational certification and provider SLA are not implemented.
+- Truck routing applies available mapped restrictions without verified current dispatch assurance. Dated corridor toll estimates and selected driver-hours calculations are implemented in E18–E20, including the X02-T07 weekly regime gate. Complete operating/legal acceptance, dispatch certification and a provider SLA remain unverified or unavailable.
 - Optimization examples use explicit **synthetic** demand/cost inputs. Scenario cost differences are not measured savings at a real company.
-- The expanded roadmap is **still open**: extend water OD to other navigation populations and years, extend road and gas histories, verify additional rail/pipeline coverage, evaluate more adequate historical series, and validate the solver with real operating inputs and outcomes. The reviewed 2025 cabotage table now has complete origin coverage with original absolute tonnes. Availability of source records and business data constrains further claims.
+- The fixed outstanding requirements are **X01–X04**: commercial dispatch assurance, complete toll/duty operating acceptance, independent API hosting/production availability and measured real-company outcomes. Additional unnamed sources or years do not reopen delivered scopes. The [marked checklist](docs/expansion_execution.md#progress-counter) records 12/12 original stages, 20/20 delivered expansions and 3/7 additional requirements closed.
 
 See the [current expansion ledger](docs/expansion_execution.md) for concrete deliveries and dependencies, [current status](docs/status.md) for verification context, and the [recovered original roadmap](docs/roteiro_original.md) as historical planning evidence.
 
