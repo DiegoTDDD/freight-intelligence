@@ -119,3 +119,9 @@ jobs:
 
     - name: Check proxy-to-API permission boundaries
       run: python3 scripts/check_proxy_runtime.py --image loginexus-api:ci
+
+    - name: Build independent public snapshot API image
+      run: docker build -f deployment/Dockerfile.public-api -t loginexus-public-api:ci .
+
+    - name: Check independent public API offline within hosting limits
+      run: python3 scripts/check_public_api_container.py --image loginexus-public-api:ci

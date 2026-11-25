@@ -1,0 +1,24 @@
+name: Check independent public API
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Check on-demand availability, revision and public-data boundary
+        env:
+          PUBLIC_API_URL: ${{ vars.LOGINEXUS_PUBLIC_API_URL }}
+        run: python scripts/probe_public_api.py --base-url "$PUBLIC_API_URL" --output public-api-probe.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-api-probe-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: public-api-probe.json
+          retention-days: 14

@@ -1,0 +1,16 @@
+# Public snapshots only. Free demonstration: separate process, shared workspace quota, no SLA.
+services:
+  - type: web
+    name: loginexus-public-api
+    runtime: docker
+    plan: free
+    branch: main
+    dockerfilePath: ./deployment/Dockerfile.public-api
+    dockerContext: .
+    autoDeployTrigger: "off"
+    healthCheckPath: /ready
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: LOGINEXUS_REQUIRE_AUTH
+        value: "false"

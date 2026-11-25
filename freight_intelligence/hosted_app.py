@@ -10,28 +10,9 @@ from pathlib import Path
 import streamlit as st
 from starlette.routing import Mount
 
-from freight_intelligence.api.app import create_app
+from freight_intelligence.api.public_snapshot import snapshot_api
 
 PROJECT = Path(__file__).resolve().parents[1]
-
-
-def snapshot_api(root: Path):
-    """Pin every reader to the public snapshot, including optional results."""
-    return create_app(
-        gold_dir=root / "data/gold/faf5",
-        model_dir=root / "models/faf5/annual",
-        evaluation_dir=root / "artifacts/evaluation/annual",
-        transport_dir=root / "artifacts/optimization/transport",
-        brazil_dir=PROJECT / "deployment/brazil_modes",
-        gas_dir=PROJECT / "deployment/brazil_gas",
-        water_dir=PROJECT / "deployment/brazil_water",
-        road_dir=PROJECT / "deployment/brazil_road",
-        air_dir=PROJECT / "deployment/brazil_air",
-        gas_history_dir=PROJECT / "deployment/brazil_gas_history",
-        modal_forecasts_dir=PROJECT / "deployment/brazil_modal_forecasts",
-        trip_rules_dir=PROJECT / "deployment/trip_planning",
-        weekly_rules_dir=PROJECT / "deployment/duty_review",
-    )
 
 
 root = Path(os.environ.get("LOGINEXUS_DASHBOARD_DATA_ROOT", PROJECT / "deployment/preview_data"))

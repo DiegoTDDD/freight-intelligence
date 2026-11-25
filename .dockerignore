@@ -16,6 +16,11 @@
 !docs/examples/**
 !deployment/
 !deployment/Dockerfile.dashboard
+!deployment/Dockerfile.public-api
+!deployment/trip_planning/
+!deployment/trip_planning/**
+!deployment/duty_review/
+!deployment/duty_review/**
 !deployment/preview_data/
 !deployment/preview_data/**
 !deployment/brazil_data/

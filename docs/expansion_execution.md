@@ -25,6 +25,18 @@ passed 636 tests on both Windows and Linux. The subsequent source-audit revision
 passed 648 tests on both systems; the nine public duty examples and omitted-regime
 behavior were verified again on 2026-11-25. Every new revision must pass its own CI.
 
+**Active next requirement: X03.** [Independent API implementation and acceptance](independent_api.md).
+Separate-image work does not close production availability or change the 3/7 counter.
+
+## X03 checkpoints
+
+- [x] **X03-T01:** independent API package, reviewed snapshot isolation, pinned
+  runtime, revision metadata and bounded probe implementation.
+- [ ] **X03-T02:** deploy and verify a separate public service at a tested revision.
+- [ ] **X03-T03:** configure its sampled monitoring and demonstrate a recovery.
+- [ ] **X03-T04:** meet an accepted production-availability requirement; a free
+  sleeping service is not a production SLA.
+
 ## X02 implementation checkpoints
 
 - [x] **X02-T01:** dated corridor toll inputs and bounded source-revision audit.
