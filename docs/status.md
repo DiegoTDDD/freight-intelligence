@@ -1,13 +1,18 @@
 # Current delivery status
 
-Reviewed **2026-11-21**. The original **12 portfolio stages are delivered**.
+Reviewed **2026-11-25**. The original **12 portfolio stages are delivered**.
 There are **20 concrete delivered expansion items**, each closed for its stated
 source population and period. **Four additional requirements remain unmet**;
 they are separate entries with exact completion criteria and dependencies.
 
 **Counter: original 12/12; expansions 20/20; additional requirements 3/7 closed
-and 4/7 open. Latest verified checkpoint: X03-T03.** See the
-[marked checkpoints and acceptance gates](expansion_execution.md#x03-checkpoints).
+and 4/7 open. Latest delivered checkpoint: X04-T01.** See the
+[marked checkpoints and acceptance gates](expansion_execution.md#x04-checkpoints).
+
+**2026-11-25: X04-T01 delivered.** The local operating-allocation comparison
+validates declared flows and reports same-model opportunity, with realized savings
+explicitly unavailable. [Contract and example](operating_comparison.md).
+[Repository review](repository_review_20261125.md) records the subsequent broad audit.
 
 **2026-11-25: X03-T01/T02/T03 delivered.** The public API now has a separate
 Free service, revision/data checks, a configured daily sampled monitor and a

@@ -2,6 +2,8 @@ from pathlib import Path
 
 import polars as pl
 
+from freight_intelligence.utils.atomic_output import atomic_output
+
 SILVER_PATH = Path("data/silver/faf5/faf5_long.parquet")
 GOLD_DIR = Path("data/gold/faf5")
 
@@ -25,10 +27,8 @@ def build_gold() -> None:
         .sort(["year", "metric_type"])
     )
 
-    kpis.sink_parquet(
-        GOLD_DIR / "annual_kpis.parquet",
-        compression="zstd",
-    )
+    with atomic_output(GOLD_DIR / "annual_kpis.parquet") as temporary:
+        kpis.sink_parquet(temporary, compression="zstd")
 
     # =========================================================
     # 2. FLUXOS POR MODO
@@ -49,10 +49,8 @@ def build_gold() -> None:
         .sort(["year", "tons"], descending=[False, True])
     )
 
-    by_mode.sink_parquet(
-        GOLD_DIR / "mode_mix.parquet",
-        compression="zstd",
-    )
+    with atomic_output(GOLD_DIR / "mode_mix.parquet") as temporary:
+        by_mode.sink_parquet(temporary, compression="zstd")
 
     # =========================================================
     # 3. PRINCIPAIS CORREDORES
@@ -74,10 +72,8 @@ def build_gold() -> None:
         .sort(["year", "tons"], descending=[False, True])
     )
 
-    corridors.sink_parquet(
-        GOLD_DIR / "top_corridors.parquet",
-        compression="zstd",
-    )
+    with atomic_output(GOLD_DIR / "top_corridors.parquet") as temporary:
+        corridors.sink_parquet(temporary, compression="zstd")
 
     # =========================================================
     # 4. COMMODITIES
@@ -98,10 +94,8 @@ def build_gold() -> None:
         .sort(["year", "tons"], descending=[False, True])
     )
 
-    commodities.sink_parquet(
-        GOLD_DIR / "commodity_mix.parquet",
-        compression="zstd",
-    )
+    with atomic_output(GOLD_DIR / "commodity_mix.parquet") as temporary:
+        commodities.sink_parquet(temporary, compression="zstd")
 
     print("Gold layer created successfully.")
 

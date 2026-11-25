@@ -3,6 +3,8 @@ from pathlib import Path
 import polars as pl
 from openpyxl import load_workbook
 
+from freight_intelligence.utils.atomic_output import atomic_output
+
 INPUT_PATH = Path("data/raw/faf5/forecast/FAF5_metadata.xlsx")
 OUTPUT_PATH = Path("data/gold/faf5/commodity_lookup.parquet")
 
@@ -32,7 +34,8 @@ def main():
 
     lookup = pl.DataFrame(records).sort("sctg2")
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    lookup.write_parquet(OUTPUT_PATH)
+    with atomic_output(OUTPUT_PATH) as temporary:
+        lookup.write_parquet(temporary)
 
     print(f"Commodity lookup created: {OUTPUT_PATH}")
     print(f"Categories: {lookup.height}")

@@ -5,6 +5,75 @@ from freight_intelligence.transformations import faf5_silver
 from freight_intelligence.utils.atomic_output import atomic_output
 
 
+@pytest.mark.parametrize("module_name", [
+    "annual_growth", "annual_cagr", "commodity_growth", "commodity_share_change", "corridor_analysis",
+])
+def test_analytics_writer_failure_preserves_previous_output(tmp_path, monkeypatch, module_name):
+    import importlib
+
+    import polars as pl
+
+    module = importlib.import_module(f"freight_intelligence.analytics.{module_name}")
+    source, lookup = tmp_path / "input.parquet", tmp_path / "lookup.parquet"
+    pl.DataFrame({
+        "metric_type": ["tons", "tons"], "year": [2020, 2025], "total_value": [10.0, 20.0],
+        "sctg2": [1, 1], "tons": [10.0, 20.0], "share": [1.0, 1.0],
+        "dms_orig": [1, 1], "dms_dest": [2, 2], "dms_mode": [1, 1],
+    }).write_parquet(source)
+    pl.DataFrame({"sctg2": [1], "commodity_name": ["Example"]}).write_parquet(lookup)
+    output = tmp_path / "output.parquet"
+    output.write_bytes(b"previous complete output")
+    monkeypatch.setattr(module, "INPUT_PATH", source)
+    monkeypatch.setattr(module, "OUTPUT_PATH", output)
+    if hasattr(module, "LOOKUP_PATH"):
+        monkeypatch.setattr(module, "LOOKUP_PATH", lookup)
+
+    def interrupted(self, path, **kwargs):
+        path.write_bytes(b"partial output")
+        raise RuntimeError("injected disk failure")
+
+    monkeypatch.setattr(pl.DataFrame, "write_parquet", interrupted)
+    with pytest.raises(RuntimeError, match="disk failure"):
+        module.main()
+    assert output.read_bytes() == b"previous complete output"
+    assert not list(tmp_path.glob(".output-*"))
+
+
+@pytest.mark.parametrize("fail_at", [1, 2, 3, 4])
+def test_gold_sink_failure_preserves_target_file(tmp_path, monkeypatch, fail_at):
+    import polars as pl
+
+    from freight_intelligence.analytics import faf5_gold
+
+    source = tmp_path / "silver.parquet"
+    pl.DataFrame({"metric_type": ["tons"], "year": [2025], "value": [10.0],
+                  "sctg2": [1], "dms_orig": [1], "dms_dest": [2], "dms_mode": [1]}).write_parquet(source)
+    names = ["annual_kpis.parquet", "mode_mix.parquet", "top_corridors.parquet", "commodity_mix.parquet"]
+    gold = tmp_path / "gold"
+    gold.mkdir()
+    for name in names:
+        (gold / name).write_bytes(b"previous complete output")
+    monkeypatch.setattr(faf5_gold, "SILVER_PATH", source)
+    monkeypatch.setattr(faf5_gold, "GOLD_DIR", gold)
+    original = pl.LazyFrame.sink_parquet
+    calls = 0
+
+    def interrupted(self, path, **kwargs):
+        nonlocal calls
+        calls += 1
+        if calls == fail_at:
+            path.write_bytes(b"partial output")
+            raise RuntimeError("injected disk failure")
+        return original(self, path, **kwargs)
+
+    monkeypatch.setattr(pl.LazyFrame, "sink_parquet", interrupted)
+    with pytest.raises(RuntimeError, match="disk failure"):
+        faf5_gold.build_gold()
+    for name in names[fail_at - 1:]:
+        assert (gold / name).read_bytes() == b"previous complete output"
+    assert len(list(gold.iterdir())) == 4
+
+
 def test_failed_write_preserves_previous_complete_output(tmp_path):
     destination = tmp_path / "output.parquet"
     destination.write_bytes(b"old complete output")

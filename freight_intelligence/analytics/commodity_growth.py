@@ -1,5 +1,7 @@
 import polars as pl
 
+from freight_intelligence.utils.atomic_output import atomic_output
+
 INPUT_PATH = "data/gold/faf5/commodity_mix.parquet"
 LOOKUP_PATH = "data/gold/faf5/commodity_lookup.parquet"
 OUTPUT_PATH = "data/gold/faf5/commodity_growth.parquet"
@@ -19,11 +21,12 @@ def main():
         )
         .with_columns(
             (pl.col("end_tons") - pl.col("start_tons")).alias("absolute_change"),
-            (
+            pl.when((pl.col("start_tons") > 0) & (pl.col("end_year") > pl.col("start_year")))
+            .then(
                 (pl.col("end_tons") / pl.col("start_tons"))
                 ** (1 / (pl.col("end_year") - pl.col("start_year")))
                 - 1
-            ).alias("cagr"),
+            ).otherwise(None).alias("cagr"),
         )
         .join(lookup, on="sctg2", how="left")
         .select(
@@ -36,10 +39,11 @@ def main():
             "absolute_change",
             "cagr",
         )
-        .sort("cagr", descending=True)
+        .sort("cagr", descending=True, nulls_last=True)
     )
 
-    growth.write_parquet(OUTPUT_PATH)
+    with atomic_output(OUTPUT_PATH) as temporary:
+        growth.write_parquet(temporary)
 
     print(f"Commodity growth analysis created: {OUTPUT_PATH}")
     print(f"Records: {growth.height}")

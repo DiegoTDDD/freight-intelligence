@@ -1,5 +1,7 @@
 import polars as pl
 
+from freight_intelligence.utils.atomic_output import atomic_output
+
 INPUT_PATH = "data/gold/faf5/commodity_mix.parquet"
 LOOKUP_PATH = "data/gold/faf5/commodity_lookup.parquet"
 OUTPUT_PATH = "data/gold/faf5/commodity_share_change.parquet"
@@ -33,7 +35,8 @@ def main():
         .sort("share_change", descending=True)
     )
 
-    share_change.write_parquet(OUTPUT_PATH)
+    with atomic_output(OUTPUT_PATH) as temporary:
+        share_change.write_parquet(temporary)
 
     print(f"Commodity share change analysis created: {OUTPUT_PATH}")
     print(f"Records: {share_change.height}")

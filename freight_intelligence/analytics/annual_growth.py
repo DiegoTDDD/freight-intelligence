@@ -1,5 +1,7 @@
 import polars as pl
 
+from freight_intelligence.utils.atomic_output import atomic_output
+
 INPUT_PATH = "data/gold/faf5/annual_kpis.parquet"
 OUTPUT_PATH = "data/gold/faf5/annual_growth.parquet"
 
@@ -48,7 +50,8 @@ def main():
         )
     )
 
-    df.write_parquet(OUTPUT_PATH)
+    with atomic_output(OUTPUT_PATH) as temporary:
+        df.write_parquet(temporary)
 
     print(f"Annual growth analysis created: {OUTPUT_PATH}")
     print(f"Records: {df.height}")

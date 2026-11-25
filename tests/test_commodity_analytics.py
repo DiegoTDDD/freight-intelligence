@@ -36,3 +36,15 @@ def test_commodity_analytics_preserve_unicode_with_cp1252_console(tmp_path, monk
     else:
         assert row["share_change"] == pytest.approx(0.15)
     assert b"Records: 2" in stdout.buffer.getvalue()
+
+
+@pytest.mark.parametrize("years,tons", [([2020], [10.0]), ([2020, 2025], [0.0, 10.0])])
+def test_commodity_cagr_undefined_endpoints_are_null(tmp_path, monkeypatch, years, tons):
+    source, lookup, output = [tmp_path / name for name in ["mix.parquet", "lookup.parquet", "out.parquet"]]
+    pl.DataFrame({"sctg2": [1] * len(years), "year": years, "tons": tons}).write_parquet(source)
+    pl.DataFrame({"sctg2": [1], "commodity_name": ["Example"]}).write_parquet(lookup)
+    monkeypatch.setattr(commodity_growth, "INPUT_PATH", source)
+    monkeypatch.setattr(commodity_growth, "LOOKUP_PATH", lookup)
+    monkeypatch.setattr(commodity_growth, "OUTPUT_PATH", output)
+    commodity_growth.main()
+    assert pl.read_parquet(output)["cagr"].item() is None

@@ -2,12 +2,18 @@ name: How-to-run check
 
 # Runs the steps of the README section "Running it" for real, with the real FAF5.5.1 file, and then the
 # whole test suite (which checks the exact row counts of every layer). Heavy (about 100 million rows), so it
-# runs when this file changes and on demand ("Run workflow").
+# runs only on demand ("Run workflow"); editing this file must not launch a heavy run.
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - ".github/workflows/howto-check.yml"
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    # Explicit bash enables -e and pipefail in Actions; a failing producer cannot
+    # be hidden by tail/tee succeeding.
+    shell: bash
 
 jobs:
   readme-steps:
@@ -108,17 +114,36 @@ jobs:
 
       - name: "README: python -m freight_intelligence.pipeline (the complete pipeline)"
         run: |
-          python -m freight_intelligence.pipeline 2>&1 | tail -40
+          python -m freight_intelligence.pipeline > pipeline.log 2>&1 || {
+            status=$?
+            tail -80 pipeline.log
+            echo "::error::pipeline failed with exit code $status; downstream tests were not run"
+            exit "$status"
+          }
+          tail -40 pipeline.log
           ls -la data/gold/faf5
           du -sh data/*
 
       - name: "README: python -m pytest (row counts and quality of every layer)"
         run: |
-          python -m pytest -q --tb=short 2>&1 | tee pytest.log
-          if [ "${PIPESTATUS[0]}" -ne 0 ]; then
-            echo "::error::pytest failed: $(grep -E '^(FAILED|ERROR|E  )' pytest.log | head -10 | tr '\n' '|' | cut -c1-1200)"
-            exit 1
-          fi
+          python -m pytest -q --tb=short > pytest.log 2>&1 || {
+            status=$?
+            tail -80 pytest.log
+            echo "::error::pytest failed with exit code $status"
+            exit "$status"
+          }
+          tail -40 pytest.log
+
+      - name: Preserve pipeline and test diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: howto-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            pipeline.log
+            pytest.log
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: "README: streamlit run dashboards/app.py starts"
         run: |

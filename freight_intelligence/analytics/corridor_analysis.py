@@ -1,5 +1,7 @@
 import polars as pl
 
+from freight_intelligence.utils.atomic_output import atomic_output
+
 INPUT_PATH = "data/gold/faf5/top_corridors.parquet"
 OUTPUT_PATH = "data/gold/faf5/corridor_summary.parquet"
 CONCENTRATION_OUTPUT_PATH = "data/gold/faf5/corridor_concentration.parquet"
@@ -39,7 +41,8 @@ def main():
         .collect()
     )
 
-    df.write_parquet(OUTPUT_PATH)
+    with atomic_output(OUTPUT_PATH) as temporary:
+        df.write_parquet(temporary)
 
     concentration = (
         df.group_by("year")
@@ -66,7 +69,8 @@ def main():
         .sort("year")
     )
 
-    concentration.write_parquet(CONCENTRATION_OUTPUT_PATH)
+    with atomic_output(CONCENTRATION_OUTPUT_PATH) as temporary:
+        concentration.write_parquet(temporary)
 
     print(f"Corridor analysis created: {OUTPUT_PATH}")
     print(f"Corridor concentration created: {CONCENTRATION_OUTPUT_PATH}")

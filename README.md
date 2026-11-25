@@ -22,14 +22,15 @@ The project and dashboard default to **English**, with optional Portuguese contr
 - [ ] **X03:** independent API hosting and production availability.
 - [ ] **X04:** measured results from an actual company operation.
 
-**Latest verified checkpoints: X03-T01/T02/T03 — separate API package, live
-deployment, sampled monitoring and one planned restart check.** The
-[API documentation](https://loginexus-public-api.onrender.com/docs) is served by a
-different process from Streamlit. [Marked checkpoints](docs/expansion_execution.md#x03-checkpoints)
-and [deployment evidence](docs/independent_api.md#observed-deployment) keep the
-remaining production-availability gate visible. X02-T07's regime protection remains
-delivered. These counters accompany future progress reports; enhancements do not
-invent new completed stages.
+**Latest delivered checkpoint: X04-T01 — local operating-allocation comparison.**
+It validates supplied flows and compares model costs without claiming realized
+company savings. [Contract and reproducible example](docs/operating_comparison.md).
+X03-T01/T02/T03 remain delivered: a separate public API, sampled monitoring and
+one planned restart check. [Deployment evidence](docs/independent_api.md#observed-deployment).
+The remaining acceptance gates stay visible in the [marked checklist](docs/expansion_execution.md).
+
+[Repository review, 2026-11-25](docs/repository_review_20261125.md) records the
+review scope, corrections, checks and limitations.
 
 ## What you can review
 
@@ -303,7 +304,7 @@ The FAF5.5.1 high/low forecast input comes from the US Bureau of Transportation 
 python -m freight_intelligence.pipeline
 ```
 
-This explicitly rebuilds Bronze, Silver and Gold and processes approximately 100 million Silver rows. It is separate from the small demo. `--skip-existing` reuses steps only when all outputs exist and upstream steps were not rebuilt; it does not prove file validity or source freshness. The separate [heavy how-to workflow](.github/workflows/howto-check.yml) fails on pipeline errors and preserves logs. The default lightweight CI does not download or rebuild this dataset.
+This explicitly rebuilds Bronze, Silver and Gold and processes approximately 100 million Silver rows. It is separate from the small demo. `--skip-existing` reuses steps only when all outputs exist and upstream steps were not rebuilt; it does not prove file validity or source freshness. The separate [heavy how-to workflow](.github/workflows/howto-check.yml) requires manual dispatch, fails on pipeline errors and preserves logs. The default lightweight CI does not download or rebuild this dataset.
 
 ## Data interpretation and remaining work
 

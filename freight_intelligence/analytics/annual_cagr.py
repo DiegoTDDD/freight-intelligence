@@ -1,6 +1,7 @@
 import polars as pl
 
 from freight_intelligence.analytics.annual_growth import validate_totals
+from freight_intelligence.utils.atomic_output import atomic_output
 
 INPUT_PATH = "data/gold/faf5/annual_kpis.parquet"
 OUTPUT_PATH = "data/gold/faf5/annual_cagr.parquet"
@@ -29,7 +30,8 @@ def main():
         .sort("metric_type")
     )
 
-    cagr.write_parquet(OUTPUT_PATH)
+    with atomic_output(OUTPUT_PATH) as temporary:
+        cagr.write_parquet(temporary)
 
     print(f"Annual CAGR analysis created: {OUTPUT_PATH}")
     print(f"Records: {cagr.height}")

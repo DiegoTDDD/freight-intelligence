@@ -2,7 +2,7 @@
 
 **Marcação atual: 12/12 etapas originais concluídas; 20/20 expansões entregues;
 3/7 requisitos adicionais encerrados, 4/7 abertos.**
-[Checklist com marcas e passo X02-T07](expansion_execution.md#x02-implementation-checkpoints).
+[Checklist atual com marcas e critérios de aceite](expansion_execution.md).
 As frases de pendência no texto histórico abaixo pertencem ao momento em que ele
 foi escrito; não substituem essa marcação atual.
 

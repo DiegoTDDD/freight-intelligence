@@ -1,0 +1,86 @@
+{
+  "reviewed_on": "2026-11-25",
+  "baseline_revision": "71b16b8836115e1e452f250e371eb8a2c1a12e68",
+  "scope": "engineering portfolio review; not commercial certification or exhaustive security audit",
+  "baseline_local_tests": 690,
+  "corrected_local_suite_tests": 707,
+  "additional_real_transform_fixture_test": "passed separately after suite collection; 2 Bronze rows, 78 Silver rows, 11 Gold outputs",
+  "expected_ci_suite_tests": 708,
+  "ruff": "passed",
+  "static_evidence": "passed",
+  "pip_check": "passed",
+  "local_markdown_documents_checked": 48,
+  "missing_local_file_links": 0,
+  "limited_tracked_secret_pattern_hits": 0,
+  "pipeline_full_data_rebuilt": false,
+  "pipeline_plan_only": "all expected local output paths exist; presence does not validate freshness",
+  "local_docker": "unavailable: Docker Desktop engine not running",
+  "live_api": {
+    "status": "passed",
+    "base_url": "https://loginexus-public-api.onrender.com",
+    "version": {
+      "service": "loginexus-public-api",
+      "revision": "5a6c4c74cf7474a5bbcf3d3f1c62944ff695342e",
+      "snapshot_manifest_sha256": "f29023ddea4476c0b28046c89088ae27709800a2f742e7c1c328fa9010168ae2",
+      "hosting": "independent_api_process"
+    },
+    "checks": [
+      {
+        "path": "/ready",
+        "status": 200,
+        "elapsed_seconds": 0.275
+      },
+      {
+        "path": "/annual-kpis?metric_type=tons&start_year=2023&end_year=2023",
+        "status": 200,
+        "elapsed_seconds": 0.254
+      },
+      {
+        "path": "/transport-plan",
+        "status": 503,
+        "elapsed_seconds": 0.267
+      }
+    ],
+    "wake_ready_observed_seconds": 23.241,
+    "target": "On-demand version within 180s; subsequent sampled responses within 10s; not an uptime SLA",
+    "observed_at_utc": "2026-11-25T23:11:50.108288+00:00"
+  },
+  "live_dashboard": {
+    "base": "https://loginexus-dashboard-preview.onrender.com",
+    "checks": [
+      {
+        "path": "/_stcore/health",
+        "status": 200,
+        "bytes": 2,
+        "seconds": 29.476
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "bytes": 11141,
+        "seconds": 0.286
+      },
+      {
+        "path": "/api/ready",
+        "status": 200,
+        "bytes": 44,
+        "seconds": 0.411
+      },
+      {
+        "path": "/api/annual-kpis?metric_type=tons&start_year=2023&end_year=2023",
+        "status": 200,
+        "bytes": 210,
+        "seconds": 0.251
+      }
+    ]
+  },
+  "atomic_write_scope": "per file, not cross-file generation transaction",
+  "source_retry_semantics_preserved": true,
+  "known_test_warning": "upstream Starlette/httpx deprecation",
+  "counters": {
+    "original_delivered": 12,
+    "expansions_delivered": 20,
+    "additional_closed": 3,
+    "additional_total": 7
+  }
+}
