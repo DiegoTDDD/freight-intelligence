@@ -6,8 +6,13 @@ source population and period. **Four additional requirements remain unmet**;
 they are separate entries with exact completion criteria and dependencies.
 
 **Counter: original 12/12; expansions 20/20; additional requirements 3/7 closed
-and 4/7 open. Latest implemented checkpoint: X02-T07.** See the
-[marked checkpoints and acceptance gates](expansion_execution.md#x02-implementation-checkpoints).
+and 4/7 open. Latest verified checkpoint: X03-T03.** See the
+[marked checkpoints and acceptance gates](expansion_execution.md#x03-checkpoints).
+
+**2026-11-25: X03-T01/T02/T03 delivered.** The public API now has a separate
+Free service, revision/data checks, a configured daily sampled monitor and a
+verified planned restart. [Evidence](independent_api.md#observed-deployment).
+X03-T04 production availability remains unmet, so the global counter stays 3/7.
 
 The authoritative record is the [delivery checklist](expansion_execution.md):
 
@@ -52,14 +57,15 @@ Verification results are dated evidence, not a permanent zero-error guarantee.
 ## Review and reproduce
 
 - [Live dashboard](https://loginexus-dashboard-preview.onrender.com/)
-- [Public API](https://loginexus-dashboard-preview.onrender.com/api/docs)
+- [Independent public API](https://loginexus-public-api.onrender.com/docs)
 - [README inventory and English-interface screenshots](../README.md)
 - [Generated static results and source-quality evidence](portfolio_evidence.md)
 - [Recovery procedure](recovery.md)
 - [Deployment and exact-tested-commit policy](publicacao_continua.md)
 
-The dashboard and public API share a free demonstration service that can sleep or
-restart. Screenshots, source code, static results and versioned public aggregates
-remain reviewable without it. Independent API hosting and production availability
-are explicitly outstanding X03 requirements. No paid services were purchased.
+The dashboard and independent API use separate Free services in the same Render
+workspace, sharing its running-hour quota. The older mounted API remains for
+compatibility. Both can sleep/restart. Screenshots, source code, static results
+and versioned aggregates remain reviewable without them. Independent API hosting
+is delivered; production availability remains the open X03-T04 gate. No paid services were purchased.
 Local hourly development automation remains paused; source-revision audits are separate.

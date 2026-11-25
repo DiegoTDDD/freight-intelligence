@@ -1,11 +1,25 @@
 # Read-only API
 
-## Hosted entry point
+## Independent hosted API
+
+The separate public service is **https://loginexus-public-api.onrender.com**,
+with [interactive documentation](https://loginexus-public-api.onrender.com/docs),
+`/openapi.json`, `/health`, `/ready` and `/version`. There is **no `/api` prefix**
+on this host. It runs Uvicorn/FastAPI without a Streamlit server and reads the
+same reviewed snapshots. Authentication settings remain supported; the deployed
+public snapshot is intentionally anonymous. Local/private plans are not bundled.
+
+Separate hosting, version/data checks, sampled monitoring and a planned restart
+were verified on 2026-11-25. The Free API and dashboard share the workspace's
+running-hour quota and have no production SLA. [Evidence, targets and recovery](independent_api.md).
+
+## Legacy dashboard-mounted entry point
 
 The hosting image serves the dashboard at `/` and an independent HTTP API at
 `/api`, with interactive documentation at `/api/docs` and the machine-readable
 contract at `/api/openapi.json`. These share one hosting process and its free-tier
 availability limits; this is not a separate server or an availability guarantee.
+This mount remains for compatibility alongside the independent service above.
 
 The hosted API reads only the reviewed `deployment/preview_data` snapshot (or the
 explicit `LOGINEXUS_DASHBOARD_DATA_ROOT`). Every optional reader is pinned to that

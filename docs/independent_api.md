@@ -13,7 +13,37 @@ Separate hosting on a free plan is not a production uptime contract.
 
 Implementation checkpoint **X03-T01**: separate public-snapshot entry point,
 pinned API runtime, non-root/read-only container checks, metadata and public/private
-boundary tests. Deployment and recovery evidence will be recorded when observed.
+boundary tests. T02 and T03 evidence is recorded below; T04 remains open.
+
+## Observed deployment
+
+On **2026-11-25** the independent API was deployed at
+**https://loginexus-public-api.onrender.com**, documentation at `/docs`.
+Render service `srv-dc3lo8t9el5s738stcog` is **Free** and Blueprint-managed from
+`deployment/render.public-api.yaml`; the dashboard remains on its original service.
+The tested deployed revision is **5a6c4c74cf7474a5bbcf3d3f1c62944ff695342e**,
+with [all five CI checks and 666 tests on both Windows and Linux](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/45709980650).
+The public image also passed real HTTP/data/private-plan checks offline within 512 MiB.
+
+The [first manual monitor run](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/45710738433)
+passed. Its schedule is **09:17 UTC daily (06:17 Sao Paulo)**; GitHub may delay
+scheduled jobs. No scheduled execution or uptime history is claimed before it occurs.
+The bounded probe passed before and after a **planned service restart**, retaining
+the revision and public snapshot-manifest hash. Twenty analytical/duty responses
+matched the legacy dashboard API exactly after the restart. This is one restart
+exercise, not a catastrophic-outage or provider-independence demonstration.
+
+The measured probe totals were about 1.20 seconds initially and 1.04 seconds after
+the restart; the first GitHub sample was about 0.76 seconds. These were warm
+observations. Idle cold-start duration and a statistical availability percentage
+were not measured. The monitor's 180-second identity and 10-second sampled-response
+budgets are explicit demo targets, not production guarantees.
+
+[Machine-readable evidence](evidence/independent_api_delivery_20261125.json) includes
+the deployment identifiers, reports and parity hashes. The UI capture shows the
+Free plan, live revision and recorded restart:
+
+![Independent Free API service with live revision and recorded restart](images/independent-api-render.jpg)
 
 ## Reproduce the independent service
 
@@ -65,7 +95,8 @@ This is sampled demo-service acceptance, not a measured uptime percentage or SLA
 The [monitor workflow](../.github/workflows/probe-public-api.yml) uses the public
 repository variable `LOGINEXUS_PUBLIC_API_URL`. It preserves each run's report
 for 14 days. Scheduling is enabled only after the actual deployed URL is verified;
-monitoring must not be used to keep the free instance continuously awake.
+monitoring must not be used to keep the free instance continuously awake. The daily
+schedule is now configured for the observed service URL.
 Service-monitor failures are separate from ANP/ANTT **source** unavailability:
 their bounded retries and `source_unreachable` warning behavior remain unchanged.
 
@@ -79,4 +110,5 @@ their bounded retries and `source_unreachable` warning behavior remain unchanged
 4. Update the public URL/monitor configuration only if the service URL changed.
 
 The immutable bundled snapshots require no database restore. A documented
-procedure is not itself evidence that a live recovery exercise was performed.
+procedure alone is not recovery evidence; the planned restart described above
+is the observed exercise for this delivery.

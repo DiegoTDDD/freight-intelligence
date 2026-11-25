@@ -1,0 +1,216 @@
+{
+  "observed_on": "2026-11-25",
+  "requirement": "X03",
+  "overall_status": "open: production-availability acceptance remains unmet",
+  "completed_checkpoints": [
+    "X03-T01",
+    "X03-T02",
+    "X03-T03"
+  ],
+  "unmet_checkpoints": [
+    "X03-T04"
+  ],
+  "service_url": "https://loginexus-public-api.onrender.com",
+  "docs_url": "https://loginexus-public-api.onrender.com/docs",
+  "render_service_id": "srv-dc3lo8t9el5s738stcog",
+  "render_blueprint_id": "exs-dc3lmrdg1s2s73bvr34g",
+  "initial_deployment_id": "dep-dc3lo959el5s738stdag",
+  "deployed_revision": "5a6c4c74cf7474a5bbcf3d3f1c62944ff695342e",
+  "plan": "free",
+  "separate_from_dashboard_process": true,
+  "workspace_monthly_running_hours_shared": 750,
+  "service_auto_deploy": "off; manual tested-revision deployment",
+  "ci_run": "https://github.com/DiegoTDDD/freight-intelligence/actions/runs/45709980650",
+  "tests_windows": 666,
+  "tests_linux": 666,
+  "first_monitor_run": "https://github.com/DiegoTDDD/freight-intelligence/actions/runs/45710738433",
+  "first_monitor_trigger": "manual",
+  "first_monitor_conclusion": "success",
+  "monitor_schedule_utc": "17 9 * * *",
+  "monitor_schedule_sao_paulo": "06:17 daily; GitHub scheduling can be delayed",
+  "scheduled_execution_already_observed": false,
+  "initial_probe": {
+    "status": "passed",
+    "base_url": "https://loginexus-public-api.onrender.com",
+    "version": {
+      "service": "loginexus-public-api",
+      "revision": "5a6c4c74cf7474a5bbcf3d3f1c62944ff695342e",
+      "snapshot_manifest_sha256": "f29023ddea4476c0b28046c89088ae27709800a2f742e7c1c328fa9010168ae2",
+      "hosting": "independent_api_process"
+    },
+    "checks": [
+      {
+        "path": "/ready",
+        "status": 200,
+        "elapsed_seconds": 0.253
+      },
+      {
+        "path": "/annual-kpis?metric_type=tons&start_year=2023&end_year=2023",
+        "status": 200,
+        "elapsed_seconds": 0.258
+      },
+      {
+        "path": "/transport-plan",
+        "status": 503,
+        "elapsed_seconds": 0.251
+      }
+    ],
+    "wake_ready_observed_seconds": 1.196,
+    "target": "On-demand version within 180s; subsequent sampled responses within 10s; not an uptime SLA",
+    "observed_at_utc": "2026-11-25T22:09:10.376492+00:00"
+  },
+  "after_planned_restart_probe": {
+    "status": "passed",
+    "base_url": "https://loginexus-public-api.onrender.com",
+    "version": {
+      "service": "loginexus-public-api",
+      "revision": "5a6c4c74cf7474a5bbcf3d3f1c62944ff695342e",
+      "snapshot_manifest_sha256": "f29023ddea4476c0b28046c89088ae27709800a2f742e7c1c328fa9010168ae2",
+      "hosting": "independent_api_process"
+    },
+    "checks": [
+      {
+        "path": "/ready",
+        "status": 200,
+        "elapsed_seconds": 0.252
+      },
+      {
+        "path": "/annual-kpis?metric_type=tons&start_year=2023&end_year=2023",
+        "status": 200,
+        "elapsed_seconds": 0.246
+      },
+      {
+        "path": "/transport-plan",
+        "status": 503,
+        "elapsed_seconds": 0.249
+      }
+    ],
+    "wake_ready_observed_seconds": 1.038,
+    "target": "On-demand version within 180s; subsequent sampled responses within 10s; not an uptime SLA",
+    "observed_at_utc": "2026-11-25T22:11:17.968072+00:00"
+  },
+  "restart_ui_evidence": "../images/independent-api-render.jpg",
+  "restart_event_observed_local": "2026-11-25 19:09 America/Sao_Paulo",
+  "measured_restart_downtime_seconds": null,
+  "idle_cold_start_measured": false,
+  "production_sla": null,
+  "parity_after_restart": {
+    "observed_on": "2026-11-25",
+    "deployed_revision": "5a6c4c74cf7474a5bbcf3d3f1c62944ff695342e",
+    "independent_origin": "https://loginexus-public-api.onrender.com",
+    "legacy_origin": "https://loginexus-dashboard-preview.onrender.com/api",
+    "comparisons_passed": 20,
+    "comparisons": [
+      {
+        "path": "/annual-kpis?metric_type=tons",
+        "equal": true,
+        "response_sha256": "ca932b37e509a9b85e7530feaa52e3178e8096db0ef473b2de3f1b7e97314278"
+      },
+      {
+        "path": "/annual-forecast",
+        "equal": true,
+        "response_sha256": "647797349f165df9e69a7791c8793bbc3405f79770f6b27fa4e3248edbfed0ad"
+      },
+      {
+        "path": "/temporal-evaluation",
+        "equal": true,
+        "response_sha256": "cf7431f11c6309a247f75f549b6a2b091beeb115647cf42a934c959bdbd1e5e9"
+      },
+      {
+        "path": "/brazil/indicators?mode=road",
+        "equal": true,
+        "response_sha256": "0c5c9502dc04c5bffb07fc8e579e474e5820bfd94a87f328aa73a8ca9e8cab3a"
+      },
+      {
+        "path": "/brazil/gas-movements?year=2021&month=12",
+        "equal": true,
+        "response_sha256": "a963939857faff4c2b01fbf86a56f57a631ead29016fbe23a55641390e1a4334"
+      },
+      {
+        "path": "/brazil/road-state-pairs?origin_state=SP",
+        "equal": true,
+        "response_sha256": "6dda6a1dafade8f22130a1d99e3ac1d043493ca75ac0b5d17a3b9554dabaf913"
+      },
+      {
+        "path": "/brazil/water-port-pairs?origin_port=Santos&destination_port=Suape",
+        "equal": true,
+        "response_sha256": "3725623c8b7c7d4a02c4e0caa655a5d489b530276213d2484d712f861f9ae0d6"
+      },
+      {
+        "path": "/brazil/inland-transport?view=commodities&limit=1",
+        "equal": true,
+        "response_sha256": "5fc09a5f06e31c293ee6ac85aaa2ea47dcc0e5f4d7f8608e57195001e2185188"
+      },
+      {
+        "path": "/brazil/air-freight?view=pairs&year=2023&limit=1",
+        "equal": true,
+        "response_sha256": "f5e3797c617d1dc53af1ebc01f683cff7c80020d6214340545fd28c15de43b0c"
+      },
+      {
+        "path": "/brazil/modal-forecasts?mode=water&view=scores&phase=test",
+        "equal": true,
+        "response_sha256": "836993a4098db67ffff63b6fa42c965df55eacf0df4370ae14d9e267afa10c7c"
+      },
+      {
+        "path": "/brazil/trip-planning?as_of=2026-11-20",
+        "equal": true,
+        "response_sha256": "3db4d0dcd38199d6a40259b030ed35165c2b1e369bb63f87bdd9d970735e4596"
+      },
+      {
+        "path": "/brazil/duty-review?example=balanced_week",
+        "equal": true,
+        "response_sha256": "94441d730812a64185f41711da5b10e2c9586960b864491bc8b45802afb05fcf"
+      },
+      {
+        "path": "/brazil/duty-review?example=short_daily_rest",
+        "equal": true,
+        "response_sha256": "f72dc98977c4f47fe7aebb9be0b5e229ec65389a5425ee6276c6135d61e6bc0b"
+      },
+      {
+        "path": "/brazil/duty-review?example=seven_workdays",
+        "equal": true,
+        "response_sha256": "ec1b17922acc8a4be786ac9b437b06cf7fe3909e88319e8948bd4e91014f5027"
+      },
+      {
+        "path": "/brazil/duty-review?example=incomplete_week",
+        "equal": true,
+        "response_sha256": "4730585dcfef7aa49cdb7d8a9c1d6dbdf97a3a1bcd54e60346802f550a877665"
+      },
+      {
+        "path": "/brazil/duty-review?example=night_shift",
+        "equal": true,
+        "response_sha256": "053b67c2d0c7a1405809ff1ae46e126c8b0ecf409c79058a98a7267f0735a3b3"
+      },
+      {
+        "path": "/brazil/duty-review?example=night_limit_exceeded",
+        "equal": true,
+        "response_sha256": "d1b20969f45254a874368b9bc746551c92ea21c08b5836a4c20ce745b33ed4bd"
+      },
+      {
+        "path": "/brazil/duty-review?example=night_extension_sensitive",
+        "equal": true,
+        "response_sha256": "12cc6f72ca027e9d34801ff6b85bd9c3df888cb9cae7603268f07647a957029f"
+      },
+      {
+        "path": "/brazil/duty-review?example=unknown_regime",
+        "equal": true,
+        "response_sha256": "dae98e40401367d7c01afe37597a273c98dc9261210d3bcf85f4aedd43c50cf9"
+      },
+      {
+        "path": "/brazil/duty-review?example=special_regime",
+        "equal": true,
+        "response_sha256": "bc7d070c1c2189d837914c1c2f64f64a36a0f60d0d15ac1dc598143e947d1261"
+      }
+    ],
+    "source_audit_retry_behavior_changed": false
+  },
+  "private_plan_boundary": "503 verified before/after restart; no local private-plan fallback",
+  "gov_br_retry_and_source_unreachable_behavior_modified": false,
+  "paid_service_purchased": false,
+  "counters": {
+    "original_delivered": 12,
+    "expansion_delivered": 20,
+    "additional_closed": 3,
+    "additional_total": 7
+  }
+}

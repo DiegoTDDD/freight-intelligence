@@ -25,15 +25,18 @@ passed 636 tests on both Windows and Linux. The subsequent source-audit revision
 passed 648 tests on both systems; the nine public duty examples and omitted-regime
 behavior were verified again on 2026-11-25. Every new revision must pass its own CI.
 
-**Active next requirement: X03.** [Independent API implementation and acceptance](independent_api.md).
-Separate-image work does not close production availability or change the 3/7 counter.
+**Active requirement: X03; T01–T03 delivered, T04 open.** [Independent API implementation and acceptance](independent_api.md).
+The separate Free service, probe and restart evidence do not close production
+availability or change the 3/7 counter.
 
 ## X03 checkpoints
 
 - [x] **X03-T01:** independent API package, reviewed snapshot isolation, pinned
   runtime, revision metadata and bounded probe implementation.
-- [ ] **X03-T02:** deploy and verify a separate public service at a tested revision.
-- [ ] **X03-T03:** configure its sampled monitoring and demonstrate a recovery.
+- [x] **X03-T02:** separate public service at a tested revision, verified at
+  [loginexus-public-api.onrender.com](https://loginexus-public-api.onrender.com/docs).
+- [x] **X03-T03:** daily sampled monitor configured; first manual workflow passed;
+  one planned restart retained revision/data and passed 20 parity comparisons.
 - [ ] **X03-T04:** meet an accepted production-availability requirement; a free
   sleeping service is not a production SLA.
 
@@ -113,7 +116,7 @@ and dependency; “more data” or “more quality” alone is not an acceptance
 | --- | --- | --- | --- |
 | X01 | Commercial truck dispatch assurance | Identified operating region/vehicle population, validated current restrictions, provider terms and operational acceptance evidence | No operating validation dataset or contracted dispatch assurance supplied; the routing demonstration is not certification |
 | X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | E18 implements dated Autoban prices/daytime checks; E19 adds weekly screening; E20 adds exact night references and conditional extension arithmetic. Applying extension to actual employment regimes, collective/exempt terms, authenticated records and operating/legal acceptance remain unimplemented or unverified |
-| X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | Images and permission controls exist; the public API shares the free dashboard service. Independent hosting and an availability contract are not delivered |
+| X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | T01–T03 delivered: separate Free API, bounded on-demand targets, monitor and planned restart checked. T04 remains open: no accepted production-availability commitment; Free instances sleep and share the workspace quota |
 | X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | Real operating records/outcomes not supplied. Synthetic examples are not measured savings |
 
 ## Closed follow-up X06

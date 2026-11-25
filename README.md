@@ -4,11 +4,11 @@
 
 A freight data engineering and analytics portfolio: a **97.6-million-row** Medallion pipeline, observed Brazilian transport histories, evaluated forecasting baselines, constrained transport optimization, truck-aware routing and a documented API.
 
-**[Review results without starting a server](docs/portfolio_evidence.md)** · **[Open the interactive demo](https://loginexus-dashboard-preview.onrender.com/)** · [Public API](https://loginexus-dashboard-preview.onrender.com/api/docs) · [Delivery checklist](docs/expansion_execution.md)
+**[Review results without starting a server](docs/portfolio_evidence.md)** · **[Open the interactive demo](https://loginexus-dashboard-preview.onrender.com/)** · [Independent public API](https://loginexus-public-api.onrender.com/docs) · [Delivery checklist](docs/expansion_execution.md)
 
 **Delivery status:** the original 12 portfolio stages and 20 concrete expansion items are delivered for their documented coverage. Four additional requirements remain unmet and have explicit completion criteria and dependencies in the [checklist](docs/expansion_execution.md). Additional sources or commercial requirements do not silently enlarge completed work.
 
-> **Demo hosting:** the dashboard and public API share one free Render service. After 15 minutes without inbound traffic, it sleeps; the next visit normally takes about a minute to wake. Limits and restarts can also affect availability. [Render's free-service policy](https://render.com/docs/free). Screenshots, the static results report, source code, public aggregates and local Docker instructions below do not depend on that service being awake. Free hosting is a demonstration choice, with no permanence or production-uptime guarantee.
+> **Demo hosting:** the dashboard and independent API run as separate Free Render services; the older `/api` dashboard mount remains available for compatibility. Each service can sleep after 15 minutes without traffic. Their **750 running hours per month are shared by the workspace**, not allocated per service. [Render's free-service policy](https://render.com/docs/free). Screenshots, static results, source code, public aggregates and local Docker instructions do not depend on either service being awake. This is a demonstration, with no permanence or production-uptime guarantee.
 
 The project and dashboard default to **English**, with optional Portuguese controls and core notices. Original source identifiers and exported schemas retain their source language.
 
@@ -22,13 +22,14 @@ The project and dashboard default to **English**, with optional Portuguese contr
 - [ ] **X03:** independent API hosting and production availability.
 - [ ] **X04:** measured results from an actual company operation.
 
-**Latest implemented checkpoint: X02-T07 — declared regime gate in the weekly review.**
-Omitted/unknown or collective/exempt regimes keep observed work and coverage, but
-receive no standard-profile references or approval. This completes the gate;
-it does not verify an actual employment regime. The [marked X02 checkpoints and
-remaining acceptance gates](docs/expansion_execution.md#x02-implementation-checkpoints)
-remain separate from the four open requirements. These counters must accompany
-future progress reports; enhancements within E20 do not invent new completed stages.
+**Latest verified checkpoints: X03-T01/T02/T03 — separate API package, live
+deployment, sampled monitoring and one planned restart check.** The
+[API documentation](https://loginexus-public-api.onrender.com/docs) is served by a
+different process from Streamlit. [Marked checkpoints](docs/expansion_execution.md#x03-checkpoints)
+and [deployment evidence](docs/independent_api.md#observed-deployment) keep the
+remaining production-availability gate visible. X02-T07's regime protection remains
+delivered. These counters accompany future progress reports; enhancements do not
+invent new completed stages.
 
 ## What you can review
 
@@ -254,7 +255,11 @@ flowchart TD
     Provider[OSRM reference / Valhalla truck provider] --> UI
     Public --> Static[Static portfolio evidence on GitHub]
     Checks[Windows/Linux tests and isolated container checks] --> Deploy[Exact tested main commit]
-    Deploy --> Host[Shared Render demo: dashboard and API]
+    Deploy --> Host[Render dashboard with legacy API mount]
+    Deploy --> Separate[Tested independent API image]
+    Separate --> Manual[Manual deploy at reviewed revision]
+    Manual --> APIHost[Separate Free API service]
+    Monitor[Daily bounded probe] --> APIHost
 ```
 
 The public host reads compact public snapshots. It does not rebuild the ~100-million-row pipeline on startup, run private saved plans or silently fall back to a car route if truck routing fails. The source package, snapshots, tests and recovery archives can be moved to another host.
@@ -274,18 +279,21 @@ The public host reads compact public snapshots. It does not rebuild the ~100-mil
 | Serve the local API | `python -m uvicorn freight_intelligence.api.app:app --host 127.0.0.1 --port 8000` | Local saved outputs; install `.[api,dev]` |
 | Build a committed-revision recovery ZIP | `python scripts/package_recovery.py --output recovery-package` | Git; validates bundled data hashes |
 
-Public API examples:
+Public API examples on the independent host:
 
 ```text
-GET /api/brazil/air-freight?view=pairs&year=2025&limit=10
-GET /api/brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=10
-GET /api/brazil/water-freight?dataset=port_monthly&year=2025
-GET /api/brazil/water-pairs?origin_region=Norte
-GET /api/brazil/modal-forecasts?mode=water&view=scores&phase=test
-GET /api/brazil/road-monthly
+GET /brazil/air-freight?view=pairs&year=2025&limit=10
+GET /brazil/gas-movements?year=2024&include_diagnostics=true&diagnostics_limit=10
+GET /brazil/water-freight?dataset=port_monthly&year=2025
+GET /brazil/water-pairs?origin_region=Norte
+GET /brazil/modal-forecasts?mode=water&view=scores&phase=test
+GET /brazil/road-monthly
 ```
 
-The hosted prefix is `/api`; a separately launched local API uses the endpoint paths without that prefix. Shared-host sleep affects both the public dashboard and these requests. [Full API contracts](docs/api.md).
+On the independent host `https://loginexus-public-api.onrender.com`, endpoint paths
+have **no `/api` prefix**. The older dashboard-hosted mount retains `/api`. Either
+Free service can sleep; dashboard sleep does not require the independent API to
+restart. [Full contracts](docs/api.md) · [Independent deployment and recovery](docs/independent_api.md).
 
 ### Large FAF pipeline
 
