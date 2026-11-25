@@ -1,0 +1,79 @@
+{
+  "provenance": {
+    "kind": "synthetic",
+    "reference": "Teaching fixture; no company operating records"
+  },
+  "period_start": "2026-01-01",
+  "period_end": "2026-01-31",
+  "scenario": {
+    "name": "Synthetic teaching example - not FAF operational costs",
+    "flow_unit": "synthetic freight units",
+    "cost_unit": "synthetic cost units",
+    "nodes": [
+      {
+        "id": "supply-a",
+        "balance": 80
+      },
+      {
+        "id": "supply-b",
+        "balance": 20
+      },
+      {
+        "id": "demand-x",
+        "balance": -50
+      },
+      {
+        "id": "demand-y",
+        "balance": -50
+      }
+    ],
+    "arcs": [
+      {
+        "id": "a-x",
+        "origin": "supply-a",
+        "destination": "demand-x",
+        "capacity": 50,
+        "unit_cost": 1
+      },
+      {
+        "id": "a-y",
+        "origin": "supply-a",
+        "destination": "demand-y",
+        "capacity": 50,
+        "unit_cost": 4
+      },
+      {
+        "id": "b-x",
+        "origin": "supply-b",
+        "destination": "demand-x",
+        "capacity": 50,
+        "unit_cost": 3
+      },
+      {
+        "id": "b-y",
+        "origin": "supply-b",
+        "destination": "demand-y",
+        "capacity": 50,
+        "unit_cost": 1
+      }
+    ]
+  },
+  "observed_flows": [
+    {
+      "arc_id": "a-x",
+      "flow": 30
+    },
+    {
+      "arc_id": "a-y",
+      "flow": 50
+    },
+    {
+      "arc_id": "b-x",
+      "flow": 20
+    },
+    {
+      "arc_id": "b-y",
+      "flow": 0
+    }
+  ]
+}

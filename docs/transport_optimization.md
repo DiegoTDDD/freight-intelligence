@@ -53,3 +53,9 @@ These checks explain common problems but are not a complete feasibility certific
 shared bottlenecks or other cut constraints can still make a scenario infeasible. HiGHS
 remains the final solver and no partial allocation is returned for an infeasible network.
 Planner errors use these explanations without saving or replacing any allocation.
+
+## Comparing a declared observed allocation
+
+The [X04-T01 local comparison](operating_comparison.md) checks observed flows against
+the same network, then compares both allocations at supplied costs. It reports
+modeled opportunity, with realized savings explicitly unavailable.

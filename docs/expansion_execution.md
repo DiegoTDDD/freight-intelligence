@@ -1,6 +1,6 @@
 # Delivery checklist and outstanding requirements
 
-Reviewed **2026-11-21**. This is the authoritative delivery checklist. The
+Reviewed **2026-11-25**. This is the authoritative delivery checklist. The
 [recovered original roadmap](roteiro_original.md) is historical source material.
 Completed items stay closed for their stated coverage. Additional years, sources
 or commercial assurance do not silently enlarge an existing acceptance criterion.
@@ -18,16 +18,21 @@ in the final table or establish commercial readiness.
 
 Keep these counters in progress updates. A technical checkpoint inside X02 does
 not close X02, and an enhancement to E20 does not create another delivered stage.
-Current checkpoint: **X02-T07, implemented, published and publicly verified**.
-Its [functional revision](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/44973338307)
-passed 636 tests on both Windows and Linux. The subsequent source-audit revision
-[2ec26b1](https://github.com/DiegoTDDD/freight-intelligence/actions/runs/45424964974)
-passed 648 tests on both systems; the nine public duty examples and omitted-regime
-behavior were verified again on 2026-11-25. Every new revision must pass its own CI.
+Current checkpoint: **X04-T01, local operating-allocation comparison implemented**.
+The preceding X03-T01-T03 delivery remains published and verified; X03-T04 is open.
+See [independent API evidence](evidence/independent_api_delivery_20261125.json).
+Every new revision must pass its own CI.
 
-**Active requirement: X03; T01–T03 delivered, T04 open.** [Independent API implementation and acceptance](independent_api.md).
-The separate Free service, probe and restart evidence do not close production
-availability or change the 3/7 counter.
+## X04 checkpoints
+
+- [x] **X04-T01:** local observed-allocation comparison with explicit period/provenance,
+  exact arc coverage, flow/capacity/balance checks, same-cost optimum and input hash.
+  [Contract and synthetic reproduction](operating_comparison.md).
+- [ ] **X04-T02:** authenticate real operating inputs and review cost/constraint coverage.
+- [ ] **X04-T03:** compare with realized operating outcomes and retain acceptance evidence.
+
+The synthetic fixture verifies model arithmetic only. T01 does not close X04 or
+change the 3/7 counter; no real operating dataset or realized saving is claimed.
 
 ## X03 checkpoints
 
@@ -117,7 +122,7 @@ and dependency; “more data” or “more quality” alone is not an acceptance
 | X01 | Commercial truck dispatch assurance | Identified operating region/vehicle population, validated current restrictions, provider terms and operational acceptance evidence | No operating validation dataset or contracted dispatch assurance supplied; the routing demonstration is not certification |
 | X02 | Toll and driver-hours compliance | Specified jurisdiction/rules, maintained tariff/duty inputs, implemented calculations and reviewed operating cases | E18 implements dated Autoban prices/daytime checks; E19 adds weekly screening; E20 adds exact night references and conditional extension arithmetic. Applying extension to actual employment regimes, collective/exempt terms, authenticated records and operating/legal acceptance remain unimplemented or unverified |
 | X03 | Independent API hosting and production availability | Separate API deployment at a selected destination, verified permissions, monitoring/recovery checks and an explicit availability target | T01–T03 delivered: separate Free API, bounded on-demand targets, monitor and planned restart checked. T04 remains open: no accepted production-availability commitment; Free instances sleep and share the workspace quota |
-| X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | Real operating records/outcomes not supplied. Synthetic examples are not measured savings |
+| X04 | Measured optimization of a real company operation | Verified demand, capacities and costs; reproducible solved case; comparison with realized outcomes | T01 comparison tool delivered; authenticated operating inputs and realized outcomes still absent. Synthetic examples are not measured savings |
 
 ## Closed follow-up X06
 

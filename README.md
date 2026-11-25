@@ -323,3 +323,10 @@ see [methodology, units and source-edition limits](docs/brazil_modal_forecasts.m
 See the [current expansion ledger](docs/expansion_execution.md) for concrete deliveries and dependencies, [current status](docs/status.md) for verification context, and the [recovered original roadmap](docs/roteiro_original.md) as historical planning evidence.
 
 No paid services have been purchased. CI recovery artifacts have limited retention; save an independent copy using the [recovery instructions](docs/recovery.md). The demo can be rebuilt from source and public aggregates; interactive session edits must be exported and are not a persistent customer database.
+
+### Operating allocation comparison
+
+[X04-T01 comparison tool](docs/operating_comparison.md): validate declared observed
+flows and compare them with the same-network optimum. Includes a reproducible
+synthetic case (290 versus 190 model cost). This is modeled opportunity; real
+company outcomes remain unverified and X04 remains open. No records are uploaded.

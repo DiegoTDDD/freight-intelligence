@@ -1,0 +1,46 @@
+{
+  "status": "comparison_complete",
+  "provenance": {
+    "kind": "synthetic",
+    "reference": "Teaching fixture; no company operating records"
+  },
+  "source_authenticity": "not_independently_verified",
+  "period_start": "2026-01-01",
+  "period_end": "2026-01-31",
+  "flow_unit": "synthetic freight units",
+  "cost_unit": "synthetic cost units",
+  "observed_allocation_model_cost": 290.0,
+  "optimized_model_cost": 190.0,
+  "modeled_opportunity": 100.0,
+  "modeled_opportunity_percent": 34.48275862068966,
+  "realized_savings": null,
+  "x04_acceptance": "unmet: authenticated operating inputs and realized outcomes required",
+  "interpretation": "Both allocations use the same supplied unit costs and constraints. The difference is a modeled opportunity, not realized invoice savings. Flows are divisible; vehicle schedules and omitted constraints are excluded.",
+  "arcs": [
+    {
+      "arc_id": "a-x",
+      "observed_flow": 30.0,
+      "optimized_flow": 50.0,
+      "observed_model_cost": 30.0
+    },
+    {
+      "arc_id": "a-y",
+      "observed_flow": 50.0,
+      "optimized_flow": 30.0,
+      "observed_model_cost": 200.0
+    },
+    {
+      "arc_id": "b-x",
+      "observed_flow": 20.0,
+      "optimized_flow": 0.0,
+      "observed_model_cost": 60.0
+    },
+    {
+      "arc_id": "b-y",
+      "observed_flow": 0.0,
+      "optimized_flow": 20.0,
+      "observed_model_cost": 0.0
+    }
+  ],
+  "input_sha256": "c16878498657fa0a4d3d9b07b92fbca990b06e577b701a90a085d5c59ef40da7"
+}
