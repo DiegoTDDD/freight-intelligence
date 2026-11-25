@@ -11,6 +11,8 @@ deployment/brazil_gas_history/** -text
 deployment/route_examples/** -text
 deployment/trip_planning/** -text
 deployment/duty_review/** -text
+# The portable comparison report identifies this example by its exact bytes.
+docs/examples/operating_comparison_case.json -text
 # This is an archived upstream document; preserve original formatting.
 deployment/preview_data/data/raw/faf5/forecast/bts_FAF_HiLoForecasts_README_20230929.txt -whitespace
 # Preserve the archived rendered-table overview exactly, including source spacing.
