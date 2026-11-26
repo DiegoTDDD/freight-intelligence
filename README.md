@@ -43,9 +43,89 @@ static results page are on GitHub and do not depend on the servers.
 | Trip cost and driver hours | Dated per-axle toll estimates for the SP-330/SP-348 corridor, driving and break timeline, seven-day duty review and exact night-work accounting |
 | Read-only API | Indicators, histories, forecasts, quality diagnostics and saved allocations, with filters, pagination and optional API keys and user roles |
 
-Ten more screenshots and the details of each workspace are in the [project details](docs/project_details.md).
+## Screenshots
 
-![Transport scenario planner: a solved example with allocation and balance checks](docs/images/planner-en.jpg)
+Every workspace of the dashboard, captured from the application running on the versioned public data.
+
+### Planning and optimization
+
+**Transport scenario planner:** a solved synthetic network with the optimal allocation and supply/demand balance checks.
+
+![Transport scenario planner: a solved synthetic network with the optimal allocation and supply/demand balance checks](docs/images/planner-en.jpg)
+
+### Brazilian freight
+
+**Railway:** ANTT history 2006-2025, monthly movements, commodities and the held-out forecast evaluation (shown with the optional Portuguese interface).
+
+![Railway: ANTT history 2006-2025, monthly movements, commodities and the held-out forecast evaluation (shown with the optional Portuguese interface)](docs/images/brasil.png)
+
+**Road history:** monthly ANTT road movements with partial years marked as partial.
+
+![Road history: monthly ANTT road movements with partial years marked as partial](docs/images/road-history-en.jpg)
+
+**Road origin-destination, 2025:** 775 state pairs reconciling exactly to 1,368,627,704 tonnes; the chart shows the 20 largest.
+
+![Road origin-destination, 2025: 775 state pairs reconciling exactly to 1,368,627,704 tonnes; the chart shows the 20 largest](docs/images/road-od-en.jpg)
+
+**Port handling:** 62 monthly observations, January 2021 to February 2026.
+
+![Port handling: 62 monthly observations, January 2021 to February 2026](docs/images/water-history-en.jpg)
+
+**Cabotage origin-destination, 2025:** 510 port-to-port links reconciling to 222,975,436.378 tonnes.
+
+![Cabotage origin-destination, 2025: 510 port-to-port links reconciling to 222,975,436.378 tonnes](docs/images/water-od-en.jpg)
+
+**Regional cabotage:** links originating in Nordeste with the full-panel share kept.
+
+![Regional cabotage: links originating in Nordeste with the full-panel share kept](docs/images/water-pairs-en.jpg)
+
+**Inland waterways:** 62 monthly totals split into three navigation components.
+
+![Inland waterways: 62 monthly totals split into three navigation components](docs/images/inland-history-en.jpg)
+
+**Inland cargo, 2025:** 117 source categories; unavailable quantities stay unavailable.
+
+![Inland cargo, 2025: 117 source categories; unavailable quantities stay unavailable](docs/images/inland-cargo-en.jpg)
+
+**Air cargo:** ANAC 2025 domestic monthly paid cargo with missing fields disclosed.
+
+![Air cargo: ANAC 2025 domestic monthly paid cargo with missing fields disclosed](docs/images/air-en.jpg)
+
+**Gas pipelines:** ANP delivery-point volumes by operator with missing daily cells counted.
+
+![Gas pipelines: ANP delivery-point volumes by operator with missing daily cells counted](docs/images/gas-en.jpg)
+
+### Routing, trip cost and driver hours
+
+**Truck route:** Valhalla São Paulo-Campinas route for a declared truck profile.
+
+![Truck route: Valhalla São Paulo-Campinas route for a declared truck profile](docs/images/truck-route-en.jpg)
+
+**Car reference route:** the OSRM route used for comparison (Portuguese interface).
+
+![Car reference route: the OSRM route used for comparison (Portuguese interface)](docs/images/rota-real.png)
+
+**Trip cost and breaks:** dated per-axle toll estimate and the work and break timeline.
+
+![Trip cost and breaks: dated per-axle toll estimate and the work and break timeline](docs/images/trip-cost-breaks.jpg)
+
+**Seven-day duty review:** declared week with daily work and rest checks.
+
+![Seven-day duty review: declared week with daily work and rest checks](docs/images/weekly-duty-review.jpg)
+
+**Night shift:** night-work hours and the base-window equivalent.
+
+![Night shift: night-work hours and the base-window equivalent](docs/images/night-duty-review.jpg)
+
+**Reduced-hour reference:** a shift that exceeds the eight-hour reference with eight real work hours.
+
+![Reduced-hour reference: a shift that exceeds the eight-hour reference with eight real work hours](docs/images/night-reference-review.jpg)
+
+**Night extension:** work after 05:00 compared separately from the base result.
+
+![Night extension: work after 05:00 compared separately from the base result](docs/images/night-extension-review.jpg)
+
+Each workspace's numbers, units and caveats are in the [project details](docs/project_details.md).
 
 ## Architecture
 
