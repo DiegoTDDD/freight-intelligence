@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.13'
       - name: Install bounded data-reader runtime
@@ -34,7 +34,7 @@ jobs:
         run: python -m scripts.audit_brazil_road --output road-source-audit
       - name: Keep audit report and unreviewed source when changed
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: brazil-road-source-audit-${{ github.run_id }}
           path: road-source-audit/*
